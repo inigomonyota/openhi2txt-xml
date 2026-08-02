@@ -1,4 +1,0 @@
-RANK|SCORE|NAME|EMPTY
-1|500|S Y|     
-2|200|R:.|     
-

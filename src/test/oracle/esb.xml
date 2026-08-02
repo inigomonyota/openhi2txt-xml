@@ -1,0 +1,19 @@
+<hi2txt>
+  <field id="NVRAM UNKNOWN 1"> BJN  LA</field>
+  <table>
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>285353</cell><cell>OBI</cell></row>
+    <row><cell>2</cell><cell>170936</cell><cell>WAN</cell></row>
+    <row><cell>3</cell><cell>154650</cell><cell>HAN</cell></row>
+    <row><cell>4</cell><cell>140212</cell><cell>MLH</cell></row>
+    <row><cell>5</cell><cell>127645</cell><cell>GJR</cell></row>
+    <row><cell>6</cell><cell>113710</cell><cell>NLA</cell></row>
+    <row><cell>7</cell><cell>100175</cell><cell>ROB</cell></row>
+    <row><cell>8</cell><cell>88614</cell><cell>DAR</cell></row>
+    <row><cell>9</cell><cell>75800</cell><cell>JED</cell></row>
+    <row><cell>10</cell><cell>62436</cell><cell>DES</cell></row>
+  </table>
+  <field id="NVRAM UNKNOWN 2">0x3900020001000000000002000000000002000000000000260000008900000200000000000000000000000000000001CA</field>
+  <field id="NVRAM UNKNOWN 1 BIS"> BJN  LA</field>
+  <field id="NVRAM FILLER">0x0F0F0F0F</field>
+</hi2txt>

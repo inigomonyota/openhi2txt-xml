@@ -1,6 +1,0 @@
-RANK|SCORE
-1|5000
-
-CHECK
-0x50
-

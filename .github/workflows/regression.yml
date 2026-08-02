@@ -1,0 +1,58 @@
+name: openhi2txt regression
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      openhi2txt_ref:
+        description: openhi2txt branch, tag, or commit to test
+        required: true
+        default: main
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: regression-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  regression:
+    name: Golden-file regression
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out definitions
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Check out openhi2txt
+        uses: actions/checkout@v6
+        with:
+          repository: inigomonyota/openhi2txt
+          ref: ${{ inputs.openhi2txt_ref || 'main' }}
+          path: openhi2txt
+          persist-credentials: false
+
+      - name: Install native dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends libminizip-dev zlib1g-dev
+
+      - name: Configure openhi2txt
+        run: >-
+          cmake -S openhi2txt -B openhi2txt/build/ci -G Ninja
+          -DCMAKE_BUILD_TYPE=Release
+          -DOPENHI2TXT_BUILD_CLI=ON
+
+      - name: Build openhi2txt
+        run: cmake --build openhi2txt/build/ci --parallel 2
+
+      - name: Run regression suite
+        run: >-
+          python3 tests/run_regressions.py
+          --executable openhi2txt/build/ci/openhi2txt

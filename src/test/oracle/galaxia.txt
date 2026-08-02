@@ -1,0 +1,5 @@
+RANK|SCORE
+1|840
+
+CHECK
+0x55

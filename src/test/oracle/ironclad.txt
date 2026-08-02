@@ -1,0 +1,5 @@
+SCORE
+12100
+
+NAME
+A

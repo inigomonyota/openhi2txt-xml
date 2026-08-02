@@ -1,7 +1,0 @@
-SCORE
-15430
-
-NAME
-IVQ
-
-
