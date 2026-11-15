@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Art of Fighting">
+  <!--
+    Neo Geo saveram, byte-swap=2 ("BACKUP RAM OK !" confirmed).
+    Four contiguous tables @0x330, each 5 x 8B: [SCORE:4 BCD][NAME:4 ASCII 3+space].
+      file order: STORY TOTAL @0x330, STORY TODAY @0x358, VS TODAY @0x380, VS TOTAL @0x3a8.
+    NAME plain ASCII incl digits (SQ2, 42D), byte 0x23 -> '·' (E·K); trailing space TrimR.
+    STORY SCORE = BCD value shown as-is. VS SCORE = "BEAT BY {BCD}" (0x10 BCD = 10).
+  //-->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+    <elt size="816" type="raw" id="HEADER"/>
+    <loop count="5">
+      <elt size="4" type="int"  id="STT_SCORE" base="16"/>
+      <elt size="4" type="text" id="STT_NAME" charset="aofname"/>
+    </loop>
+    <loop count="5">
+      <elt size="4" type="int"  id="STD_SCORE" base="16"/>
+      <elt size="4" type="text" id="STD_NAME" charset="aofname"/>
+    </loop>
+    <loop count="5">
+      <elt size="4" type="int"  id="VSD_VAL" base="16"/>
+      <elt size="4" type="text" id="VSD_NAME" charset="aofname"/>
+    </loop>
+    <loop count="5">
+      <elt size="4" type="int"  id="VST_VAL" base="16"/>
+      <elt size="4" type="text" id="VST_NAME" charset="aofname"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="STORY MODE TODAY'S RANKING">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="STD_SCORE"/>
+      <column id="NAME"  src="STD_NAME" format="TrimR "/>
+    </table>
+    <table id="STORY MODE TOTAL RANKING">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="STT_SCORE"/>
+      <column id="NAME"  src="STT_NAME" format="TrimR "/>
+    </table>
+    <table id="VS MODE TOTAL RANKING">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="VST_VAL" format="beat"/>
+      <column id="NAME"  src="VST_NAME" format="TrimR "/>
+    </table>
+    <table id="VS MODE TODAY'S RANKING">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="VSD_VAL" format="beat"/>
+      <column id="NAME"  src="VSD_NAME" format="TrimR "/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <add>1</add>
+    <case src="1" dst="1ST"/><case src="2" dst="2ND"/><case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/><case src="5" dst="5TH"/>
+  </format>
+  <format id="beat"><prefix>BEAT BY </prefix></format>
+
+  <charset id="aofname">
+    <char src="0x23" dst="·"/>
+  </charset>
+</hi2txt>

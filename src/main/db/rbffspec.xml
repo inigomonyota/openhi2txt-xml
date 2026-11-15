@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Real Bout Fatal Fury Special">
+
+  <!--
+    Neo-Geo native saveram definition.
+    saveram size: 65536 bytes (0x10000)
+
+    Neo-Geo saveram is 16-bit byte-swapped.  Applying byte-swap="2" at
+    structure level turns each 8-byte score record into the natural layout:
+
+      +0      unused/pad
+      +1..+3  SCORE, 3-byte packed BCD
+      +4..+6  NAME, 3 ASCII characters
+      +7      F.RANK code
+
+    Example real score:
+      raw saveram : 20 00 00 84 49 50 00 50
+      swap-2      : 00 20 84 00 50 49 50 00
+      decoded     : 208400 | PIP | BEGINNER
+
+    Each fighter uses a 0x20-byte slot:
+      3 x 8-byte records + 8 unused bytes.
+    CONTINUE PLAYER is output last.
+  -->
+
+  <structure file="saveram" byte-swap="2">
+    <check><size>65536</size></check>
+    <elt size="874" type="raw" id="_PREFIX"/>
+
+    <!-- Slot 0: TERRY BOGARD -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C00_PAD"/>
+      <elt size="3" type="int"  id="C00_SCORE" base="16"/>
+      <elt size="3" type="text" id="C00_NAME"/>
+      <elt size="1" type="int"  id="C00_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C00_TAIL"/>
+
+    <!-- Slot 1: ANDY BOGARD -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C01_PAD"/>
+      <elt size="3" type="int"  id="C01_SCORE" base="16"/>
+      <elt size="3" type="text" id="C01_NAME"/>
+      <elt size="1" type="int"  id="C01_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C01_TAIL"/>
+
+    <!-- Slot 2: JOE HIGASHI -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C02_PAD"/>
+      <elt size="3" type="int"  id="C02_SCORE" base="16"/>
+      <elt size="3" type="text" id="C02_NAME"/>
+      <elt size="1" type="int"  id="C02_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C02_TAIL"/>
+
+    <!-- Slot 3: MAI SHIRANUI -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C03_PAD"/>
+      <elt size="3" type="int"  id="C03_SCORE" base="16"/>
+      <elt size="3" type="text" id="C03_NAME"/>
+      <elt size="1" type="int"  id="C03_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C03_TAIL"/>
+
+    <!-- Slot 4: NIGHTMARE GEESE -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C04_PAD"/>
+      <elt size="3" type="int"  id="C04_SCORE" base="16"/>
+      <elt size="3" type="text" id="C04_NAME"/>
+      <elt size="1" type="int"  id="C04_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C04_TAIL"/>
+
+    <!-- Slot 5: SOKAKU MOCHIZUKI -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C05_PAD"/>
+      <elt size="3" type="int"  id="C05_SCORE" base="16"/>
+      <elt size="3" type="text" id="C05_NAME"/>
+      <elt size="1" type="int"  id="C05_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C05_TAIL"/>
+
+    <!-- Slot 6: BOB WILSON -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C06_PAD"/>
+      <elt size="3" type="int"  id="C06_SCORE" base="16"/>
+      <elt size="3" type="text" id="C06_NAME"/>
+      <elt size="1" type="int"  id="C06_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C06_TAIL"/>
+
+    <!-- Slot 7: HON FU -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C07_PAD"/>
+      <elt size="3" type="int"  id="C07_SCORE" base="16"/>
+      <elt size="3" type="text" id="C07_NAME"/>
+      <elt size="1" type="int"  id="C07_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C07_TAIL"/>
+
+    <!-- Slot 8: BLUE MARY -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C08_PAD"/>
+      <elt size="3" type="int"  id="C08_SCORE" base="16"/>
+      <elt size="3" type="text" id="C08_NAME"/>
+      <elt size="1" type="int"  id="C08_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C08_TAIL"/>
+
+    <!-- Slot 9: FRANCO BASH -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C09_PAD"/>
+      <elt size="3" type="int"  id="C09_SCORE" base="16"/>
+      <elt size="3" type="text" id="C09_NAME"/>
+      <elt size="1" type="int"  id="C09_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C09_TAIL"/>
+
+    <!-- Slot 10: RYUJI YAMAZAKI -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C10_PAD"/>
+      <elt size="3" type="int"  id="C10_SCORE" base="16"/>
+      <elt size="3" type="text" id="C10_NAME"/>
+      <elt size="1" type="int"  id="C10_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C10_TAIL"/>
+
+    <!-- Slot 11: JIN CHONSHU -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C11_PAD"/>
+      <elt size="3" type="int"  id="C11_SCORE" base="16"/>
+      <elt size="3" type="text" id="C11_NAME"/>
+      <elt size="1" type="int"  id="C11_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C11_TAIL"/>
+
+    <!-- Slot 12: JIN CHONREI -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C12_PAD"/>
+      <elt size="3" type="int"  id="C12_SCORE" base="16"/>
+      <elt size="3" type="text" id="C12_NAME"/>
+      <elt size="1" type="int"  id="C12_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C12_TAIL"/>
+
+    <!-- Slot 13: DUCK KING -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C13_PAD"/>
+      <elt size="3" type="int"  id="C13_SCORE" base="16"/>
+      <elt size="3" type="text" id="C13_NAME"/>
+      <elt size="1" type="int"  id="C13_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C13_TAIL"/>
+
+    <!-- Slot 14: KIM KAPHWAN -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C14_PAD"/>
+      <elt size="3" type="int"  id="C14_SCORE" base="16"/>
+      <elt size="3" type="text" id="C14_NAME"/>
+      <elt size="1" type="int"  id="C14_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C14_TAIL"/>
+
+    <!-- Slot 15: BILLY KANE -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C15_PAD"/>
+      <elt size="3" type="int"  id="C15_SCORE" base="16"/>
+      <elt size="3" type="text" id="C15_NAME"/>
+      <elt size="1" type="int"  id="C15_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C15_TAIL"/>
+
+    <!-- Slot 16: CHENG SINZAN -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C16_PAD"/>
+      <elt size="3" type="int"  id="C16_SCORE" base="16"/>
+      <elt size="3" type="text" id="C16_NAME"/>
+      <elt size="1" type="int"  id="C16_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C16_TAIL"/>
+
+    <!-- Slot 17: TUNG FU RUE -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C17_PAD"/>
+      <elt size="3" type="int"  id="C17_SCORE" base="16"/>
+      <elt size="3" type="text" id="C17_NAME"/>
+      <elt size="1" type="int"  id="C17_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C17_TAIL"/>
+
+    <!-- Slot 18: LAURENCE BLOOD -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C18_PAD"/>
+      <elt size="3" type="int"  id="C18_SCORE" base="16"/>
+      <elt size="3" type="text" id="C18_NAME"/>
+      <elt size="1" type="int"  id="C18_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C18_TAIL"/>
+
+    <!-- Slot 19: WOLFGANG KRAUSER -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C19_PAD"/>
+      <elt size="3" type="int"  id="C19_SCORE" base="16"/>
+      <elt size="3" type="text" id="C19_NAME"/>
+      <elt size="1" type="int"  id="C19_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C19_TAIL"/>
+
+    <!-- Slot 20: ANDY BOGARD -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C20_PAD"/>
+      <elt size="3" type="int"  id="C20_SCORE" base="16"/>
+      <elt size="3" type="text" id="C20_NAME"/>
+      <elt size="1" type="int"  id="C20_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C20_TAIL"/>
+
+    <!-- Slot 21: BILLY KANE -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C21_PAD"/>
+      <elt size="3" type="int"  id="C21_SCORE" base="16"/>
+      <elt size="3" type="text" id="C21_NAME"/>
+      <elt size="1" type="int"  id="C21_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C21_TAIL"/>
+
+    <!-- Slot 22: BLUE MARY -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C22_PAD"/>
+      <elt size="3" type="int"  id="C22_SCORE" base="16"/>
+      <elt size="3" type="text" id="C22_NAME"/>
+      <elt size="1" type="int"  id="C22_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C22_TAIL"/>
+
+    <!-- Slot 23: TUNG FU RUE -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_C23_PAD"/>
+      <elt size="3" type="int"  id="C23_SCORE" base="16"/>
+      <elt size="3" type="text" id="C23_NAME"/>
+      <elt size="1" type="int"  id="C23_FRANK"/>
+    </loop>
+    <elt size="8" type="raw" id="_C23_TAIL"/>
+
+    <!-- CONTINUE PLAYER -->
+    <loop count="3">
+      <elt size="1" type="raw"  id="_CONT_PAD"/>
+      <elt size="3" type="int"  id="CONT_SCORE" base="16"/>
+      <elt size="3" type="text" id="CONT_NAME"/>
+      <elt size="1" type="int"  id="CONT_FRANK"/>
+    </loop>
+    <elt size="63870" type="raw" id="_SUFFIX"/>
+  </structure>
+
+  <output>
+    <table id="TERRY BOGARD">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C00_SCORE"/>
+      <column id="NAME" src="C00_NAME"/>
+      <column id="F. RANK" src="C00_FRANK" format="frank"/>
+    </table>
+
+    <table id="ANDY BOGARD">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C01_SCORE"/>
+      <column id="NAME" src="C01_NAME"/>
+      <column id="F. RANK" src="C01_FRANK" format="frank"/>
+    </table>
+
+    <table id="JOE HIGASHI">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C02_SCORE"/>
+      <column id="NAME" src="C02_NAME"/>
+      <column id="F. RANK" src="C02_FRANK" format="frank"/>
+    </table>
+
+    <table id="MAI SHIRANUI">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C03_SCORE"/>
+      <column id="NAME" src="C03_NAME"/>
+      <column id="F. RANK" src="C03_FRANK" format="frank"/>
+    </table>
+
+    <table id="NIGHTMARE GEESE">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C04_SCORE"/>
+      <column id="NAME" src="C04_NAME"/>
+      <column id="F. RANK" src="C04_FRANK" format="frank"/>
+    </table>
+
+    <table id="SOKAKU MOCHIZUKI">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C05_SCORE"/>
+      <column id="NAME" src="C05_NAME"/>
+      <column id="F. RANK" src="C05_FRANK" format="frank"/>
+    </table>
+
+    <table id="BOB WILSON">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C06_SCORE"/>
+      <column id="NAME" src="C06_NAME"/>
+      <column id="F. RANK" src="C06_FRANK" format="frank"/>
+    </table>
+
+    <table id="HON FU">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C07_SCORE"/>
+      <column id="NAME" src="C07_NAME"/>
+      <column id="F. RANK" src="C07_FRANK" format="frank"/>
+    </table>
+
+    <table id="BLUE MARY">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C08_SCORE"/>
+      <column id="NAME" src="C08_NAME"/>
+      <column id="F. RANK" src="C08_FRANK" format="frank"/>
+    </table>
+
+    <table id="FRANCO BASH">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C09_SCORE"/>
+      <column id="NAME" src="C09_NAME"/>
+      <column id="F. RANK" src="C09_FRANK" format="frank"/>
+    </table>
+
+    <table id="RYUJI YAMAZAKI">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C10_SCORE"/>
+      <column id="NAME" src="C10_NAME"/>
+      <column id="F. RANK" src="C10_FRANK" format="frank"/>
+    </table>
+
+    <table id="JIN CHONSHU">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C11_SCORE"/>
+      <column id="NAME" src="C11_NAME"/>
+      <column id="F. RANK" src="C11_FRANK" format="frank"/>
+    </table>
+
+    <table id="JIN CHONREI">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C12_SCORE"/>
+      <column id="NAME" src="C12_NAME"/>
+      <column id="F. RANK" src="C12_FRANK" format="frank"/>
+    </table>
+
+    <table id="DUCK KING">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C13_SCORE"/>
+      <column id="NAME" src="C13_NAME"/>
+      <column id="F. RANK" src="C13_FRANK" format="frank"/>
+    </table>
+
+    <table id="KIM KAPHWAN">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C14_SCORE"/>
+      <column id="NAME" src="C14_NAME"/>
+      <column id="F. RANK" src="C14_FRANK" format="frank"/>
+    </table>
+
+    <table id="BILLY KANE">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C15_SCORE"/>
+      <column id="NAME" src="C15_NAME"/>
+      <column id="F. RANK" src="C15_FRANK" format="frank"/>
+    </table>
+
+    <table id="CHENG SINZAN">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C16_SCORE"/>
+      <column id="NAME" src="C16_NAME"/>
+      <column id="F. RANK" src="C16_FRANK" format="frank"/>
+    </table>
+
+    <table id="TUNG FU RUE">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C17_SCORE"/>
+      <column id="NAME" src="C17_NAME"/>
+      <column id="F. RANK" src="C17_FRANK" format="frank"/>
+    </table>
+
+    <table id="LAURENCE BLOOD">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C18_SCORE"/>
+      <column id="NAME" src="C18_NAME"/>
+      <column id="F. RANK" src="C18_FRANK" format="frank"/>
+    </table>
+
+    <table id="WOLFGANG KRAUSER">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C19_SCORE"/>
+      <column id="NAME" src="C19_NAME"/>
+      <column id="F. RANK" src="C19_FRANK" format="frank"/>
+    </table>
+
+    <table id="ANDY BOGARD">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C20_SCORE"/>
+      <column id="NAME" src="C20_NAME"/>
+      <column id="F. RANK" src="C20_FRANK" format="frank"/>
+    </table>
+
+    <table id="BILLY KANE">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C21_SCORE"/>
+      <column id="NAME" src="C21_NAME"/>
+      <column id="F. RANK" src="C21_FRANK" format="frank"/>
+    </table>
+
+    <table id="BLUE MARY">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C22_SCORE"/>
+      <column id="NAME" src="C22_NAME"/>
+      <column id="F. RANK" src="C22_FRANK" format="frank"/>
+    </table>
+
+    <table id="TUNG FU RUE">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="C23_SCORE"/>
+      <column id="NAME" src="C23_NAME"/>
+      <column id="F. RANK" src="C23_FRANK" format="frank"/>
+    </table>
+
+    <table id="CONTINUE PLAYER">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="POINTS" src="CONT_SCORE"/>
+      <column id="NAME" src="CONT_NAME"/>
+      <column id="F. RANK" src="CONT_FRANK" format="frank"/>
+    </table>
+  </output>
+
+  <format id="rank3">
+    <case src="0" dst="1ST."/>
+    <case src="1" dst="2ND."/>
+    <case src="2" dst="3RD."/>
+  </format>
+
+  <format id="frank">
+    <case src="0" dst="BEGINNER"/>
+    <case src="1" dst="TRAINEE"/>
+    <case src="2" dst="AVERAGE"/>
+    <case src="3" dst="HOPE"/>
+    <case src="4" dst="ACE"/>
+    <case src="5" dst="MASTER"/>
+    <case src="6" dst="GENIUS"/>
+    <case src="7" dst="HOLY"/>
+    <case src="8" dst="BABY"/>
+    <case src="0" default="yes" dst="BEGINNER"/>
+  </format>
+</hi2txt>

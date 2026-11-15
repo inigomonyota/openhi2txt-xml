@@ -1,0 +1,9 @@
+<hi2txt>
+  <table id="LEGENDARY HEROES">
+    <col>CHARACTER</col><col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>KNIGHT</cell><cell>CAVALIER</cell><cell>BRE</cell><cell>99050</cell></row>
+    <row><cell>WIZARD</cell><cell>SQUIRE</cell><cell>M.K</cell><cell>50000</cell></row>
+    <row><cell>BARD</cell><cell>SQUIRE</cell><cell>R.H</cell><cell>50000</cell></row>
+    <row><cell>NINJA</cell><cell>SQUIRE</cell><cell>F.M</cell><cell>50000</cell></row>
+  </table>
+</hi2txt>

@@ -1,0 +1,25 @@
+<hi2txt>
+  <table id="BEST PLAYERS">
+    <col>RANK</col><col>SCORE</col><col>STAGE</col><col>NAME</col><col>CONTINUES</col>
+    <row><cell>1ST</cell><cell>500,000</cell><cell>5</cell><cell>HIRO</cell><cell>1</cell></row>
+    <row><cell>2ND</cell><cell>400,000</cell><cell>4</cell><cell>MAA</cell><cell>4</cell></row>
+    <row><cell>3RD</cell><cell>300,000</cell><cell>3</cell><cell>DON</cell><cell>10</cell></row>
+    <row><cell>4TH</cell><cell>200,000</cell><cell>2</cell><cell>BAZO</cell><cell>11</cell></row>
+    <row><cell>5TH</cell><cell>100,000</cell><cell>1</cell><cell>ARC</cell><cell>12</cell></row>
+    <row><cell>6TH</cell><cell>90,000</cell><cell>1</cell><cell>CHI</cell><cell>13</cell></row>
+    <row><cell>7TH</cell><cell>80,000</cell><cell>1</cell><cell>SIN</cell><cell>14</cell></row>
+    <row><cell>8TH</cell><cell>70,000</cell><cell>1</cell><cell>HIT</cell><cell>15</cell></row>
+    <row><cell>9TH</cell><cell>60,000</cell><cell>1</cell><cell>OGU</cell><cell>16</cell></row>
+    <row><cell>10TH</cell><cell>50,000</cell><cell>1</cell><cell>NAKA</cell><cell>17</cell></row>
+    <row><cell>11TH</cell><cell>40,000</cell><cell>1</cell><cell>MARO</cell><cell>18</cell></row>
+    <row><cell>12TH</cell><cell>30,000</cell><cell>1</cell><cell>RIKA</cell><cell>19</cell></row>
+    <row><cell>13TH</cell><cell>20,000</cell><cell>1</cell><cell>????</cell><cell>20</cell></row>
+    <row><cell>14TH</cell><cell>10,000</cell><cell>1</cell><cell>KAZU</cell><cell>21</cell></row>
+    <row><cell>15TH</cell><cell>9,000</cell><cell>1</cell><cell>BAX</cell><cell>22</cell></row>
+    <row><cell>16TH</cell><cell>8,000</cell><cell>1</cell><cell>SANO</cell><cell>23</cell></row>
+    <row><cell>17TH</cell><cell>7,000</cell><cell>1</cell><cell>YASU</cell><cell>24</cell></row>
+    <row><cell>18TH</cell><cell>6,000</cell><cell>1</cell><cell>JIMB</cell><cell>25</cell></row>
+    <row><cell>19TH</cell><cell>5,000</cell><cell>1</cell><cell>HORI</cell><cell>26</cell></row>
+    <row><cell>20TH</cell><cell>1,000</cell><cell>1</cell><cell>KEN</cell><cell>27</cell></row>
+  </table>
+</hi2txt>

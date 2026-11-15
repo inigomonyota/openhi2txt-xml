@@ -22,6 +22,15 @@
 ; This hiscore.dat is only usable with lua enabled versions of mame since 0.172
 ; For examples of @delay & shared memory see: Gorf/Missile Command (share) & blastoff (@delay)
 
+
+growl:
+@:maincpu,program,10e342,01,01,01
+@:maincpu,program,10e316,12c,00,00
+
+;ringdest: Ring Of Destruction Slam Masters 2
+ringdest:
+@:maincpu,program,ff3c58,90,ff,00
+
 ;@s:acorn/ertictac.cpp
 
 ertictaca:
@@ -331,6 +340,12 @@ marble5:
 @:maincpu,program,401e92,32,00,3a
 
 
+;(marble madness ii (prototype))
+marblmd2:
+@:maincpu,program,7f8156,64,01,01
+@:maincpu,program,0113fc,a0,00,00
+
+
 indytemp3:
 @:maincpu,program,401e56,32,01,16
 @:maincpu,program,401152,32,01,16
@@ -374,7 +389,8 @@ atetrisb3:
 atetrisb4:
 atetrisc:
 atetrisc2:
-@:maincpu,program,99d,6c,30,52
+@:maincpu,program,979,90,30,52
+;@:maincpu,program,99d,6c,30,52
 
 
 ;@s:atari/avalnche.cpp
@@ -671,6 +687,10 @@ sprint1:
 @:maincpu,program,57,3,30,30
 
 
+ssprint:
+@:maincpu,program,eca,96,00,00
+
+
 ;@s:atari/starwars.cpp
 
 ;esb fixed thanks to thomas busse
@@ -700,7 +720,7 @@ temptube:
 ;*******thunderjaws
 thunderj:
 thunderja:
-@:maincpu,program,3ffd9c,64,00,95
+@:maincpu,program,3ffd6a,96,00,95
 
 
 ;@s:atari/toobin.cpp
@@ -746,6 +766,11 @@ donpachikr:
 @:maincpu,program,101782,4,00,00
 @:maincpu,program,101846,5a,00,01
 
+
+; (Radiant Silvergun, Treasure/ESP 1998, Sega ST-V stv.cpp / Hitachi SH-2 big-endian) HIGH SCORE RANKING (top 100, rank N default = 1000000-(N-1)*10000) + STAGE AREA TOP SCORE (PRACTICE + stages). Scores live in volatile HWRAM, NOT in the backup eeprom (which holds only settings), so the plugin restores them on boot. Block @:maincpu program 0x06009ffc, 0x410 bytes = STAGE AREA 30x8 then RANKING 100x8; rec = [4B BE binary score][3B ASCII name][1B flag]. Gate 0x00 = hi byte of STAGE-AREA PRACTICE score 1000; 0xff = flag byte of ranking rank100.
+rsgun:
+@delay=3
+@:maincpu,program,6009ffc,410,00,ff
 
 ;(pretty soldier sailer moon)
 sailormn:
@@ -1411,6 +1436,25 @@ mswordu:
 @:maincpu,program,fffeca,02,04,00
 @:maincpu,program,ffa890,04,00,00
 
+;Area 51 (Atari) by Pipmick and inigomontoya @ CoinOPS
+area51:
+@:maincpu,:mainram/share,88c0,140,00,00
+@:maincpu,:mainram/share,88d3,1,01,01
+
+;Maximum Force (Atari) by Pipmick and inigomontoya @ CoinOPS
+maxforce:
+@:maincpu,:mainram/share,a588,f0,00,00
+@:maincpu,:mainram/share,a688,78,ff,00
+@:maincpu,:mainram/share,a59b,1,01,01
+
+;Jojo's Bizarre Adventure (Capcom,1999) by Pipmick and inigomontoya @ CoinOPS
+;Using the same 3-letter name just replaces your existing score in SCORE or JOJO tables - it does not add multiple scores using the same name entry
+jojoban:
+@:maincpu,program,204924e,78,55,00
+jojon:
+@:maincpu,program,20447ce,78,55,00
+
+
 
 ;unsquad:******u.n. squadren
 area88:
@@ -1482,7 +1526,7 @@ sfz2j:
 sfz2jd:
 sfz2jr1:
 sfz2n:
-@:maincpu,program,ffdf6a,ad,00,01
+@:maincpu,program,ffdf6a,b0,00,00
 
 
 ;mars matrix (usa/japan)(by tamphax)
@@ -1521,7 +1565,8 @@ vsavd:
 vsavh:
 vsavj:
 vsavu:
-@:maincpu,program,fff426,ad,00,02
+@:maincpu,program,fff426,b0,00,00
+;@:maincpu,program,fff426,ad,00,02
 
 
 ;19xxd:******19XX: The War Against Destiny (USA 951207 Phoenix Edition) (bootleg)
@@ -1656,7 +1701,7 @@ sfzhr1:
 sfzj:
 sfzjr1:
 sfzjr2:
-@:maincpu,program,ffaea0,9f,01,16
+@:maincpu,program,ffaea0,a0,01,00
 
 
 ;xmvsfu1d:******X-Men Vs. Street Fighter (USA 961004 Phoenix Edition) (bootleg)
@@ -1761,7 +1806,8 @@ ssf2xjr1r:
 ;*******(vampire savior 2: the lord of vampire (japan 970913)
 vsav2:
 vsav2d:
-@:maincpu,program,fff426,1bf,00,03
+@:maincpu,program,fff426,1c0,00,00
+;@:maincpu,program,fff426,1bf,00,03
 
 
 ;mvscud:******Marvel Vs. Capcom: Clash of Super Heroes (USA 980123 Phoenix Edition) (bootleg)  
@@ -2091,10 +2137,10 @@ trojanr:
 @:maincpu,program,ce97,3,00,60
 
 
-;(section z)
+;(Section Z)
 sectionz:
 sectionza:
-@:maincpu,program,ce00,51,00,00
+@:maincpu,program,ce00,5c,00,f5
 @:maincpu,program,ce97,3,00,00
 @:maincpu,program,ce4f,1,08,08
 
@@ -2291,7 +2337,7 @@ espgal2a:
 
 
 dfkbl:
-@:maincpu,program,ca02028,2fcb,08,56
+@:maincpu,program,c7d0808,1951,05,05
 
 
 deathsml:
@@ -2586,6 +2632,7 @@ ragtimea:
 
 ;forcebrk:******Force Break (Japan)
 brkthru:
+brkthrubl:
 brkthruj:
 forcebrk:
 @:maincpu,program,0531,27,00,32
@@ -2675,18 +2722,6 @@ sdtennis:
 @:maincpu,program,0200,3c,01,15
 @:maincpu,program,0250,3c,3b,43
 @:maincpu,program,002c,03,88,01
-
-
-;(dommy)
-dommy:
-@:maincpu,program,1a,3,00,05
-
-
-;(scrambled egg) and clones (by GeoMan)
-eggs:
-scregg:
-@:maincpu,program,400,1e,17,00
-@:maincpu,program,015,3,00,03
 
 
 ;@s:dataeast/bwing.cpp
@@ -2804,9 +2839,12 @@ dassault:
 dblewing:
 dblewinga:
 dblewingb:
-@:maincpu,program,ff3b01,f7,2d,00
+@:maincpu,program,ff3b01,f8,2d,00
 @:maincpu,program,ff3ac1,03,00,00
 @delay=2.5
+;@:maincpu,program,ff3b01,f7,2d,00
+;@:maincpu,program,ff3ac1,03,00,00
+
 
 
 ;@s:dataeast/dec0.cpp
@@ -2865,8 +2903,9 @@ hbarrel:
 ;(boulder dash/boulder dash part 2 (world))
 ; ** top score updates at start of first game **
 bouldash:
-@:maincpu,program,306d4d,44,00,52
-@:maincpu,program,306aa1,3,00,00
+@:maincpu,program,306d4d,46,00,00
+;@:maincpu,program,306d4d,44,00,52
+;@:maincpu,program,306aa1,3,00,00
 
 
 ;(sly spy (us revision 3))
@@ -3011,7 +3050,8 @@ nslasheru:
 ;*******dragon gun(us)(By Firebrand)
 dragngun:
 dragngunj:
-@:maincpu,program,011f384,13d,20,1b
+@:maincpu,program,11f384,140,20,00
+;@:maincpu,program,011f384,13d,20,1b
 
 
 ;captavenj:******captain america and the avengers (jap rev 0.2)
@@ -3469,6 +3509,20 @@ wizdfireu:
 @:maincpu,program,fdc059,1,01,01
 
 
+;@s:dataeast/scregg.cpp
+
+;(dommy)
+dommy:
+@:maincpu,program,1a,3,00,05
+
+
+;(scrambled egg) and clones (by GeoMan)
+eggs:
+scregg:
+@:maincpu,program,400,1e,17,00
+@:maincpu,program,015,3,00,03
+
+
 ;@s:dataeast/shootout.cpp
 
 ;(shoot out (us))
@@ -3706,6 +3760,10 @@ polluxn:
 gundl94:
 primella:
 @:maincpu,program,c322,3a,41,01
+
+;(primal rage) (by Pipmick)
+primrage:
+@:maincpu,program,ff8257,71,01,12
 
 
 ;******Flying Tiger
@@ -4064,7 +4122,6 @@ asurabld:
 @:maincpu,program,40368b,1,10,10
 @:maincpu,program,4036aa,4,00,00
 
-
 ;@s:gaelco/blmbycar.cpp
 
 ;watrball:******Water Balls
@@ -4123,8 +4180,8 @@ wrally2a:
 ;maniac square (unprotected)(by tamphax)
 maniacsq:
 maniacsqa:
-maniacsqb:
 maniacsqs:
+maniacsqu:
 @:maincpu,program,fe982c,48,50,00
 
 
@@ -4204,6 +4261,11 @@ boggy84b:
 redrobin:
 @:maincpu,program,c743,3b,1b,00
 @:maincpu,program,c6e6,3,01,00
+
+
+;********(red earth / warzard)
+redearth:
+@:maincpu,program,2067932,50,80,00
 
 
 fastfred:
@@ -5392,6 +5454,11 @@ ldruna:
 @:maincpu,program,e59a,3,04,40
 
 
+;(lode runner - the dig fight) (by Pipmick)
+loderndf:
+@:maincpu,program,6038bcc,50,00,00
+
+
 spelunk2:
 @:maincpu,program,e066,64,99,3f
 @:maincpu,program,e04f,2,99,11
@@ -5500,6 +5567,10 @@ cosmccop:
 kengo:
 @:maincpu,program,e09f2,82,10,20
 
+;(lightning swords) (same engine as ken-go)
+ltswords:
+@:maincpu,program,e09f2,82,10,20
+
 
 rtypejp:
 @:maincpu,program,42f4a,71,45,20
@@ -5531,7 +5602,9 @@ mrheli:
 
 
 hharry:
-@:maincpu,program,a09a0,9f,00,20
+;@:maincpu,program,a09a0,9f,00,20
+;@:maincpu,program,a09a0,a0,00,aa
+@:maincpu,program,a09a0,a0,00,00
 @:maincpu,program,a0a40,03,00,00
 
 
@@ -5731,7 +5804,8 @@ gunforceu:
 
 hook:
 hooku:
-@:maincpu,program,ea6ad,ec,00,4f
+@:maincpu,program,ea6ad,f0,00,ff
+;@:maincpu,program,ea6ad,ec,00,4f
 
 
 rtypeleo:
@@ -6165,8 +6239,10 @@ gametngk:
 
 psychic5:
 psychic5j:
-@:maincpu,program,fd00,30,00,59
+@:maincpu,program,fd00,31,00,01
 @:maincpu,program,fc84,3,00,53
+;@:maincpu,program,fd00,30,00,59
+;@:maincpu,program,fc84,3,00,53
 
 
 ;@s:jaleco/skyfox.cpp
@@ -6526,10 +6602,14 @@ puzzloopu:
 ;** the nvram in this game is about as reliable as the english cricket team, hence **
 ;** the top score is sometimes wrong.... but nevermine eh...?? **
 ;** the todays top ten hi table saves fine though... **
+;********(sengeki striker)
+;** fixed addresses - TODAY at 60b1f23, TOP 100 nvram at 800000 **
 sengekis:
 sengekisj:
-@:maincpu,program,60b1de8,78,53,00
-@:maincpu,program,60b1e47,1,01,01
+@:maincpu,program,60b1f23,79,00,00
+@:maincpu,program,800004,339,0e,00
+;@:maincpu,program,60b1de8,78,53,00
+;@:maincpu,program,60b1e47,1,01,01
 
 
 puzzloopa:
@@ -6903,7 +6983,8 @@ le2:
 
 ;*******salamader 2 (jaa)
 salmndr2:
-@:maincpu,program,c02033,136,0,14
+@:maincpu,program,c02033,140,00,00
+;@:maincpu,program,c02033,136,0,14
 
 
 ;******lethal enforcers II,gun fighters (ver uaa)
@@ -6962,6 +7043,12 @@ lethalenead:
 lethalenub:
 @:maincpu,program,3390,50,41,00
 @:maincpu,program,33de,1,70,70
+
+;Lord of Gun (IGS, 1994) by Pipmick @ CoinOPS - RANK board is copied to 68000 work RAM; 128B eeprom does not persist it
+lordgun:
+@:maincpu,program,203830,78,4c,46
+@delay=8
+
 
 
 ;@s:konami/mainevt.cpp
@@ -7077,7 +7164,9 @@ metamrpha:
 metamrphe:
 metamrphj:
 metamrphu:
-@:maincpu,program,203240,35,00,5a
+@:maincpu,program,203240,36,00,00
+;@:maincpu,program,203240,35,00,5a
+
 
 
 ;*******mystic warriors (world ver eaa)
@@ -7246,6 +7335,9 @@ rollergj:
 ;******run and gun(By Firebrand)
 rungun:
 @:maincpu,program,380c80,4b,4b,40
+
+rungun2:
+@:maincpu,program,c02f00,60,03,00
 
 
 ;@s:konami/sbasketb.cpp
@@ -8007,6 +8099,12 @@ moonbase:
 moonbasea:
 @:maincpu,program,2340,a,0d,14
 @:maincpu,program,20f4,2,00,05
+
+
+;Star Gladiator Episode:I (Capcom ZN-1) - rankings in volatile PSX work RAM (by Pipmick)
+starglad:
+@:maincpu,program,8021fc30,140,14,00
+@:maincpu,program,80267b14,140,14,00
 
 
 galxwars:
@@ -8801,12 +8899,6 @@ oigas:
 
 ;@s:misc/gumbo.cpp
 
-dblpoint:
-dblpointd:
-@:maincpu,program,80000,32,43,0 ; players names
-@:maincpu,program,824b2,1e,0,1 ; all other data
-
-
 ;******miss puzzle
 mspuzzle:
 mspuzzlea:
@@ -8913,6 +9005,13 @@ miraxa:
 @:maincpu,program,d021,6,00,00
 
 
+;@s:misc/mole.cpp
+
+mole:
+@:maincpu,program,02e1,0a,00,05
+@:maincpu,program,0375,50,19,00
+
+
 ;@s:misc/mosaic.cpp
 
 ;(mosaic)
@@ -9001,15 +9100,6 @@ skyarmy:
 @:maincpu,program,8131,ad,00,8a
 
 
-;@s:misc/spcforce.cpp
-
-;********spcforce (space force)
-meteor:
-spcforc2:
-spcforce:
-@:maincpu,program,4300,50,30,30
-
-
 ;@s:misc/sprcros2.cpp
 
 ;sprcros2a:******Super Cross 2 (Japan set 2)
@@ -9018,6 +9108,14 @@ sprcros2a:
 @:master_cpu,program,fa00,78,00,4a
 @:master_cpu,program,f012,6,00,00
 @:master_cpu,program,f013,1,03,03
+
+
+;@s:misc/sstrangr.cpp
+
+;(space stranger & space stranger 2)
+sstrangr:
+sstrangr2:
+@:maincpu,program,20f4,2,00,00
 
 
 ;@s:misc/statriv2.cpp
@@ -9047,24 +9145,6 @@ stuntair:
 @:maincpu,program,f9e1,01,b0,b0
 @:maincpu,program,f9c1,01,b0,b0
 @:maincpu,program,f9a1,01,b0,b0
-
-
-;@s:misc/timelimt.cpp
-
-;(time limit) (by GeoMan) 
-timelimt:
-@:maincpu,program,80ca,3,0,0
-@:maincpu,program,8981,1,27,27
-@:maincpu,program,89a1,1,00,00
-@:maincpu,program,89c1,1,27,27
-@:maincpu,program,89e1,1,27,27
-@:maincpu,program,8a01,1,27,27
-@:maincpu,program,8a21,1,27,27
-
-
-;*******progress(By Firebrand)(Hiscore does not seem to change during game)
-progress:
-@:maincpu,program,8711,e,00,01
 
 
 ;@s:misc/tugboat.cpp
@@ -9307,7 +9387,7 @@ cgangpzlj:
 ;**** thanks to Takasaki for this fix ****
 emeralda:
 emeraldaj:
-emeraldajb:
+emeraldaja:
 @:maincpu,program,9c9e,10e,4b,01
 
 
@@ -9506,7 +9586,8 @@ xevi3dgj:
 
 tekken:
 tekkenac:
-@:maincpu,program,1e0498,17f,04,4b
+;@:maincpu,program,1e0498,17f,04,4b
+@:maincpu,program,1e0498,180,04,00
 
 
 tekkenjb:
@@ -9765,6 +9846,7 @@ paclandm2:
 
 ;(pole position)
 grally:
+
 poleposa1:
 poleposa2:
 @:maincpu,program,3000,7f2,b0,95
@@ -9982,6 +10064,14 @@ gpilots:
 ;(money puzzle exchanger / money idol exchanger)
 miexchng:
 @:maincpu,program,100002,9e,00,0f
+
+
+;(cyberball 2072 - 2 player)
+cyberbal2p:
+cyberbal2p1:
+cyberbal2p2:
+cyberbal2p3:
+@:maincpu,program,ffad80,c8,00,20
 
 
 ;(cyber-lip)
@@ -10498,7 +10588,7 @@ gameboy,tetris:
 mario:
 mariobl:
 mariobla:
-mariog:
+marioe:
 mariof:
 marioj:
 masao:
@@ -10953,6 +11043,13 @@ piratesb:
 @:maincpu,program,10a5b0,1,4e,4e
 
 
+;@s:jaleco/megasys1.cpp
+
+;(super spacefortress macross)
+macross:
+@:maincpu,:mainram/share,9102,a0,32,00
+
+
 ;@s:nmk/macrossp.cpp
 
 ;********(macross plus)
@@ -11011,7 +11108,7 @@ mustangb:
 mustangb2:
 mustangb3:
 mustangs:
-@:maincpu,program,f9090,4,00,10
+@:maincpu,:mainram/share,9090,4,00,10
 
 
 strahljbl:
@@ -11026,11 +11123,13 @@ gunnailp:
 
 
 ;(gunnail)
-gunnail:
 gunnailb:
-@:maincpu,program,faf00,6e,00,49
-@:maincpu,program,fa800,78,00,55
-@:maincpu,program,fe004,f93,00,50
+gunnail:
+@:maincpu,program,faf00,107,00,00
+@:maincpu,program,fe004,20,10,50
+;@:maincpu,program,faf00,6e,00,49
+;@:maincpu,program,fa800,78,00,55
+;@:maincpu,program,fe004,f93,00,50
 
 
 ;(bubble 2000) (by GeoMan)
@@ -11047,9 +11146,13 @@ raphero:
 
 
 ;(koutetsu yousai strahl (japan set 1))
-strahl:
 strahlj:
 @:maincpu,program,f30d9,18f,55,88
+@:maincpu,program,f0d8a,4,00,50
+
+;(Koutetsu Yousai Strahl (World) by inigomontoya and Pipmick @ CoinOPS)
+strahl:
+@:maincpu,program,f30d9,ea,55,88
 @:maincpu,program,f0d8a,4,00,50
 
 
@@ -12318,15 +12421,6 @@ ssf2mdb:
 @:maincpu,program,fffcb3,29,00,20
 
 
-;@s:sega/megadriv_ybox.cpp
-
-;*******puckman pockimon
-jingling:
-puckpkmn:
-puckpkmnb:
-@:maincpu,program,ff0020,30,38,36
-
-
 ;@s:sega/megatech.cpp
 
 ;******megatech: e-swat
@@ -12357,6 +12451,15 @@ vr:
 ;*******Virtua Fighter 1
 vf:
 @:maincpu,program,40f800,b3,09,4d
+
+
+;@s:sega/puckpkmn.cpp
+
+;*******puckman pockimon
+jingling:
+puckpkmn:
+puckpkmnb:
+@:maincpu,program,ff0020,30,38,36
 
 
 ;@s:sega/segac2.cpp
@@ -12869,8 +12972,10 @@ cotton:
 cottonj:
 cottonja:
 cottonu:
-@:maincpu,program,200076,31,00,55
+@:maincpu,program,200076,32,00,00
 @:maincpu,program,2000b6,4,00,a0
+;@:maincpu,program,200076,31,00,55
+;@:maincpu,program,2000b6,4,00,a0
 
 
 ;bayrouteb1:******Bay Route (encrypted, protected bootleg)
@@ -12887,9 +12992,10 @@ bayroutej:
 ddux:
 dduxbl:
 dduxj:
-@:maincpu,program,fff880,98,00,20
+@:maincpu,program,fff880,a0,00,00
 @:maincpu,program,fff31b,1,03,03
-
+;@:maincpu,program,fff880,98,00,20
+;@:maincpu,program,fff31b,1,03,03
 
 ;eswatu:******e-swat - cyber police (us,fd1094 317-0129)
 ;eswatj:******E-Swat - Cyber Police (Japan, FD1094 317-0128)
@@ -12976,8 +13082,8 @@ bnzabrosj:
 crkdown:
 crkdownj:
 crkdownu:
+@:maincpu,program,fb076,1e,00,01
 @:maincpu,program,fb246,25,00,18
-
 
 ;@s:sega/segas32.cpp
 
@@ -13033,7 +13139,7 @@ brivalj:
 orunners:
 orunnersj:
 orunnersu:
-@:mainpcb:maincpu,program,20e301,3b,53,75
+@:mainpcb:maincpu,program,20e300,3c,00,75
 @:mainpcb:maincpu,program,20e212,1,78,78
 
 
@@ -13062,6 +13168,7 @@ aburner:
 loffire:
 loffirej:
 loffireu:
+@delay=2
 @:mainpcb:maincpu,program,a3800,18f,01,49
 
 
@@ -13086,14 +13193,19 @@ smgpu2:
 gprider:
 gpriderj:
 gprideru:
-@:mainpcb:maincpu,program,280192,aa,34,30
+@:mainpcb:maincpu,program,280192,b5,34,ff
 @:mainpcb:maincpu,program,9c708,8,01,20
+;@:mainpcb:maincpu,program,280192,aa,34,30
+;@:mainpcb:maincpu,program,280192,b4,34,30
+;@:mainpcb:maincpu,program,9c708,8,01,20
 
 
 ;******thunder blade (fd1094 317-0056)
 ;thndrbld1:******thunder blade (japan)
 thndrbld:
 thndrbld1:
+@delay=2
+;@:mainpcb:maincpu,program,a3b00,68,01,64
 @:mainpcb:maincpu,program,a3b00,64,01,01
 
 
@@ -13146,8 +13258,10 @@ stactics:
 ;@s:sega/stv.cpp
 
 sokyugrt:
-@:maincpu,program,608dc30,9d,82,47
+@:maincpu,program,608dc30,a0,82,00
 @:maincpu,program,60bda38,4,00,c0
+;@:maincpu,program,608dc30,9d,82,47
+;@:maincpu,program,60bda38,4,00,c0
 
 
 ;********shienryu
@@ -13262,6 +13376,12 @@ wbmlvc:
 @:maincpu,program,c17e,1,00,00
 @:maincpu,program,c17f,1,00,00
 @:maincpu,program,c180,1,00,00
+
+wbmlvcd:
+@:maincpu,program,c101,1,24,24
+@:maincpu,program,072f,1,03,03
+@:maincpu,program,c179,8,00,00
+
 
 
 starjacks:
@@ -13766,8 +13886,10 @@ heatbrl3:
 heatbrle:
 heatbrlo:
 heatbrlu:
-@:maincpu,program,108296,63,4b,01
+@:maincpu,program,108296,64,4b,00
 @:maincpu,program,108036,4,00,00
+;@:maincpu,program,108296,63,4b,01
+;@:maincpu,program,108036,4,00,00
 
 
 legionna:
@@ -13946,7 +14068,7 @@ rdftua:
 @:maincpu,program,29bc1,aa,40,4f
 
 
-;rfjet:******raiden fighters jet (all versions fixed)
+;rfjet:******raiden fighters jet (all versions fixed; extended down to 0x28cc8 to also capture the 16-ship MASTERS OF SHIPS chart below the ace charts)
 rfjet:
 rfjet2kc:
 rfjeta:
@@ -13955,7 +14077,7 @@ rfjets:
 rfjetsa:
 rfjett:
 rfjetu:
-@:maincpu,program,28dd4,98,2e,01
+@:maincpu,program,28cc8,1a4,2e,01
 
 
 ;viprp1oj:******Viper Phase 1 (japan)
@@ -14600,6 +14722,7 @@ hal21j:
 
 
 fsoccerb:
+fsoccer:
 @:maincpu,program,e349,14,48,01
 
 
@@ -15981,105 +16104,6 @@ rollace:
 @:maincpu,program,c026,3,00,00
 
 
-;@s:taito/roundup.cpp
-
-theportr:
-@:maincpu,program,40fd,3,00,00
-@:maincpu,program,9201,1,24,24
-@:maincpu,program,91e1,1,24,24
-@:maincpu,program,91c1,1,24,24
-@:maincpu,program,91a1,1,24,24
-@:maincpu,program,9181,1,00,00
-
-
-thehole:
-@:maincpu,program,8283,1a,19,00
-@:maincpu,program,8039,f,19,00
-
-
-;porter:******Port Man (bootleg on Moon Cresta hardware)
-dockman:
-dockmanb:
-dockmanc:
-porter:
-portera:
-portman:
-portmanj:
-@:maincpu,program,80fd,3,00,00
-@:maincpu,program,92c1,1,00,00
-@:maincpu,program,92e1,1,24,24
-@:maincpu,program,9301,1,24,24
-@:maincpu,program,9321,1,24,24
-@:maincpu,program,9341,1,24,24
-@:maincpu,program,9181,1,00,00
-@:maincpu,program,91a1,1,24,24
-@:maincpu,program,91c1,1,24,24
-@:maincpu,program,91e1,1,24,24
-@:maincpu,program,9201,1,24,24
-
-
-intrepid:
-intrepid2:
-intrepidb:
-intrepidb2:
-intrepidb3:
-@:maincpu,program,803c,3d,02,fd
-@:maincpu,program,8035,2,00,00
-
-
-;(funny mouse) parent
-funnymou:
-suprmous:
-@:maincpu,program,804a,03,00,00
-@:maincpu,program,9221,01,24,24
-@:maincpu,program,9201,01,24,24
-@:maincpu,program,91e1,01,24,24
-@:maincpu,program,91c1,01,24,24
-@:maincpu,program,91a1,01,24,24
-@:maincpu,program,9181,01,00,00
-
-
-machomou:
-@:maincpu,program,804a,3,00,00
-@:maincpu,program,9181,1,00,00
-@:maincpu,program,91a1,1,24,24
-@:maincpu,program,91c1,1,24,24
-@:maincpu,program,91e1,1,24,24
-@:maincpu,program,9201,1,24,24
-@:maincpu,program,9221,1,24,24
-
-
-fitter:
-fitterbl:
-roundup:
-ttfitter:
-@:maincpu,program,8050,03,00,00
-@:maincpu,program,9621,01,24,24
-@:maincpu,program,9601,01,24,24
-@:maincpu,program,95e1,01,24,24
-@:maincpu,program,95c1,01,24,24
-@:maincpu,program,95a1,01,24,24
-@:maincpu,program,9581,01,00,00
-
-
-thepitu2:
-@:maincpu,program,8283,17,10,00
-@:maincpu,program,8037,f,10,00
-
-
-;thepit:******The Pit (Bootleg)
-thepit:
-thepitj:
-thepitu1:
-@:maincpu,program,8283,17,10,0
-@:maincpu,program,8039,f,10,0
-
-
-desertdn:
-@:maincpu,program,82c7,3,00,00
-@:maincpu,program,82c8,1,50,50
-
-
 ;@s:taito/sbowling.cpp
 
 ;******strike bowling(By Firebrand)
@@ -16139,19 +16163,6 @@ perestro:
 perestrof:
 @:maincpu,program,f4c0,28,00,03
 @:maincpu,program,f8f1,4,00,00
-
-
-;@s:taito/suprridr.cpp
-
-;******super rider
-suprridr:
-@:maincpu,program,80ca,3,00,00
-@:maincpu,program,8a21,1,24,24
-@:maincpu,program,8a01,1,24,24
-@:maincpu,program,89e1,1,24,24
-@:maincpu,program,89c1,1,24,24
-@:maincpu,program,89a1,1,24,24
-@:maincpu,program,8981,1,00,00
 
 
 ;@s:taito/taito_b.cpp
@@ -17196,7 +17207,7 @@ wyvernf0a:
 @:maincpu,program,8800,190,00,26
 
 
-;@s:tatsumi/cyclwarr.cpp
+;@s:tatsumi/tatsumi.cpp
 
 bigfight:
 bigfightj:
@@ -17735,6 +17746,123 @@ twcup90t:
 @:maincpu,program,804d,01,11,11
 
 
+;@s:thepit/thepit.cpp
+
+theportr:
+@:maincpu,program,40fd,3,00,00
+@:maincpu,program,9201,1,24,24
+@:maincpu,program,91e1,1,24,24
+@:maincpu,program,91c1,1,24,24
+@:maincpu,program,91a1,1,24,24
+@:maincpu,program,9181,1,00,00
+
+
+thehole:
+@:maincpu,program,8283,1a,19,00
+@:maincpu,program,8039,f,19,00
+
+
+;porter:******Port Man (bootleg on Moon Cresta hardware)
+dockman:
+dockmanb:
+dockmanc:
+porter:
+portera:
+portman:
+portmanj:
+@:maincpu,program,80fd,3,00,00
+@:maincpu,program,92c1,1,00,00
+@:maincpu,program,92e1,1,24,24
+@:maincpu,program,9301,1,24,24
+@:maincpu,program,9321,1,24,24
+@:maincpu,program,9341,1,24,24
+@:maincpu,program,9181,1,00,00
+@:maincpu,program,91a1,1,24,24
+@:maincpu,program,91c1,1,24,24
+@:maincpu,program,91e1,1,24,24
+@:maincpu,program,9201,1,24,24
+
+
+intrepid:
+intrepid2:
+intrepidb:
+intrepidb2:
+intrepidb3:
+@:maincpu,program,803c,3d,02,fd
+@:maincpu,program,8035,2,00,00
+
+
+;(funny mouse) parent
+funnymou:
+suprmous:
+@:maincpu,program,804a,03,00,00
+@:maincpu,program,9221,01,24,24
+@:maincpu,program,9201,01,24,24
+@:maincpu,program,91e1,01,24,24
+@:maincpu,program,91c1,01,24,24
+@:maincpu,program,91a1,01,24,24
+@:maincpu,program,9181,01,00,00
+
+
+machomou:
+@:maincpu,program,804a,3,00,00
+@:maincpu,program,9181,1,00,00
+@:maincpu,program,91a1,1,24,24
+@:maincpu,program,91c1,1,24,24
+@:maincpu,program,91e1,1,24,24
+@:maincpu,program,9201,1,24,24
+@:maincpu,program,9221,1,24,24
+
+
+fitter:
+fitterbl:
+roundup:
+ttfitter:
+@:maincpu,program,8050,03,00,00
+@:maincpu,program,9621,01,24,24
+@:maincpu,program,9601,01,24,24
+@:maincpu,program,95e1,01,24,24
+@:maincpu,program,95c1,01,24,24
+@:maincpu,program,95a1,01,24,24
+@:maincpu,program,9581,01,00,00
+
+
+thepitu2:
+@:maincpu,program,8283,17,10,00
+@:maincpu,program,8037,f,10,00
+
+
+;thepit:******The Pit (Bootleg)
+thepit:
+thepitj:
+thepitu1:
+@:maincpu,program,8283,17,10,0
+@:maincpu,program,8039,f,10,0
+
+
+desertdn:
+@:maincpu,program,82c7,3,00,00
+@:maincpu,program,82c8,1,50,50
+
+
+;@s:thepit/timelimt.cpp
+
+;(time limit) (by GeoMan) 
+timelimt:
+@:maincpu,program,80ca,3,0,0
+@:maincpu,program,8981,1,27,27
+@:maincpu,program,89a1,1,00,00
+@:maincpu,program,89c1,1,27,27
+@:maincpu,program,89e1,1,27,27
+@:maincpu,program,8a01,1,27,27
+@:maincpu,program,8a21,1,27,27
+
+
+;*******progress(By Firebrand)(Hiscore does not seem to change during game)
+progress:
+@:maincpu,program,8711,e,00,01
+
+
 ;@s:toaplan/batsugun.cpp
 
 batsugun:
@@ -17760,33 +17888,6 @@ dogyuunt:
 dogyuun:
 dogyuuna:
 @:maincpu,program,10034a,7c,00,1b
-
-
-;@s:toaplan/fireshrk.cpp
-
-;fireshrkd:******Fire Shark (Korea, set 1, easier)
-;fireshrkdh:******Fire Shark (Korea, set 2, harder)
-fireshrk:
-fireshrka:
-fireshrkd:
-fireshrkdh:
-samesamecn:
-@:maincpu,program,c1ae8,194,00,01
-@:maincpu,program,c1c29,1,2d,2d
-@:maincpu,program,c1dc5,1d,2d,00
-
-
-samesame:
-samesamenh:
-@:maincpu,program,c1778,194,00,01
-@:maincpu,program,c18b9,1,26,26
-@:maincpu,program,c1a4f,21,2d,00
-
-
-samesame2:
-@:maincpu,program,c1ada,194,00,01
-@:maincpu,program,c1c25,1,26,26
-@:maincpu,program,c1dc1,21,2d,00
 
 
 ;@s:toaplan/fixeight.cpp
@@ -17901,18 +18002,6 @@ batrideru:
 @:maincpu,program,20fa20,310,00,30
 
 
-;@s:toaplan/rallybik.cpp
-
-rallybik:
-@:maincpu,program,801ac,324,00,40
-@:maincpu,program,8053d,1,17,17
-@:maincpu,program,80555,1,04,04
-@:maincpu,program,8056d,1,00,00
-@:maincpu,program,80585,1,00,00
-@:maincpu,program,8059d,1,00,00
-@:maincpu,program,805b5,1,00,00
-
-
 ;@s:toaplan/slapfght.cpp
 
 ;tigerhj:******tiger heli (japan)
@@ -17976,6 +18065,25 @@ whoopee:
 
 ;@s:toaplan/toaplan1.cpp
 
+;fireshrkd:******Fire Shark (Korea, set 1, easier)
+;fireshrkdh:******Fire Shark (Korea, set 2, harder)
+fireshrk:
+fireshrka:
+fireshrkd:
+fireshrkdh:
+samesamecn:
+@:maincpu,program,c1ae8,194,00,01
+@:maincpu,program,c1c29,1,2d,2d
+@:maincpu,program,c1dc5,1d,2d,00
+
+
+samesame:
+samesamenh:
+@:maincpu,program,c1778,194,00,01
+@:maincpu,program,c18b9,1,26,26
+@:maincpu,program,c1a4f,21,2d,00
+
+
 demonwld:
 demonwld1:
 demonwld2:
@@ -17996,6 +18104,22 @@ truxton:
 @:maincpu,program,81c67,1,00,00
 @:maincpu,program,81c6b,1,00,00
 @:maincpu,program,81c6f,1,00,00
+
+
+rallybik:
+@:maincpu,program,801ac,324,00,40
+@:maincpu,program,8053d,1,17,17
+@:maincpu,program,80555,1,04,04
+@:maincpu,program,8056d,1,00,00
+@:maincpu,program,80585,1,00,00
+@:maincpu,program,8059d,1,00,00
+@:maincpu,program,805b5,1,00,00
+
+
+samesame2:
+@:maincpu,program,c1ada,194,00,01
+@:maincpu,program,c1c25,1,26,26
+@:maincpu,program,c1dc1,21,2d,00
 
 
 hellfire:
@@ -18550,6 +18674,28 @@ tankbust:
 @:maincpu,program,f602,50,00,10
 
 
+;@s:venture/spcforce.cpp
+
+;********spcforce (space force)
+meteor:
+spcforc2:
+spcforce:
+@:maincpu,program,4300,50,30,30
+
+
+;@s:venture/suprridr.cpp
+
+;******super rider
+suprridr:
+@:maincpu,program,80ca,3,00,00
+@:maincpu,program,8a21,1,24,24
+@:maincpu,program,8a01,1,24,24
+@:maincpu,program,89e1,1,24,24
+@:maincpu,program,89c1,1,24,24
+@:maincpu,program,89a1,1,24,24
+@:maincpu,program,8981,1,00,00
+
+
 ;@s:vsystem/aerofgt.cpp
 
 aerofgt:
@@ -18575,7 +18721,8 @@ f1gpa:
 
 ;*******(F-1 grand prix part II)
 f1gp2:
-@:maincpu,program,ff91c2,2ee,14,50
+;@:maincpu,program,ff91c2,2ee,14,50 (old data range, produces incorrect data near end of .hi file)
+@:maincpu,program,ff91c2,300,14,50
 @:maincpu,program,ffa617,3f,59,49
 
 
@@ -18690,6 +18837,7 @@ rabiolep:
 
 rpunch:
 @:maincpu,program,ffe01,73,00,17
+@:maincpu,program,ffe74,5,80,00
 
 
 ;******super volley (japan)
@@ -18736,21 +18884,6 @@ welltrisj:
 
 superwng:
 @:maincpu,program,7920,c8,00,19
-
-
-;@s:yachiyo/mole.cpp
-
-mole:
-@:maincpu,program,02e1,0a,00,05
-@:maincpu,program,0375,50,19,00
-
-
-;@s:yachiyo/sstrangr.cpp
-
-;(space stranger & space stranger 2)
-sstrangr:
-sstrangr2:
-@:maincpu,program,20f4,2,00,00
 
 
 ;@s:yunsung/nmg5.cpp
@@ -18906,4 +19039,312 @@ jackrabts:
 @:maincpu,program,60de,1,ff,ff
 @:maincpu,program,60fe,1,ff,ff
 
+;A.B Cop (Sega) by Pipmick & inigomontoya @ CoinOPS
+abcop:
+@:mainpcb:maincpu,program,8010c,54,10,01
 
+;Batman Forever by Pipmick & inigomontoya @ CoinOPS
+batmanfr:
+@:maincpu,program,180000,10000,00,00
+
+;Task Force Harrier (UPL) by Pipmick & inigomontoya @ CoinOPS
+tharrier:
+@delay=1
+@:maincpu,:mainram/share,9100,80,00,4e
+
+;Cotton 2 by Pipmick and inigomontoya @ CoinOPS
+cotton2:
+@delay=2
+@:maincpu,program,604ec20,190,00,01
+
+;Liberator (Atari) by Pipmick and inigomontoya @ CoinOPS
+liberatr:
+@delay=3
+@:maincpu,program,100,3c,4d,00
+
+;Strike Fighter by Pipmick and inigomontoya @ CoinOPS
+strkfgtr:
+@:suby,program,1ffa00,50,00,00
+
+;Rack 'Em Up (Konami) by Pipmick and inigomontoya @ CoinOPS
+rackemup:
+@delay=2
+@:maincpu,program,10a2,50,20,00
+
+;Gauntlet 2 (Atari) (2-Player) by Pipmick & inigomontoya @ CoinOPS
+gaunt22p:
+gaunt2p:
+@:maincpu,program,904010,2,00,07
+@:maincpu,program,904de8,c8,00,50
+
+;Donkey Kong II - Jumpman Returns V1.1 by Pipmick and inigomontoya @ CoinOPS
+dkongx11:
+@delay=0
+
+; Rank 1
+@:maincpu,program,6109,5,00,00
+@:maincpu,program,6110,3,10,10
+@:maincpu,program,611d,3,65,00
+
+; Rank 2
+@:maincpu,program,612b,5,00,00
+@:maincpu,program,6132,3,10,10
+@:maincpu,program,613f,3,10,00
+
+; Rank 3
+@:maincpu,program,614d,5,00,00
+@:maincpu,program,6154,3,10,10
+@:maincpu,program,6161,3,95,00
+
+; Rank 4
+@:maincpu,program,616f,5,00,00
+@:maincpu,program,6176,3,10,10
+@:maincpu,program,6183,3,05,00
+
+; Rank 5
+@:maincpu,program,6191,5,00,00
+@:maincpu,program,6198,3,10,10
+@:maincpu,program,61a5,3,30,00
+
+; Separate HIGH SCORE value displayed at top of screen
+@:maincpu,program,60b8,3,65,00
+
+;Peter Pack Rat (Atari) by Pipmick and inigomontoya @ CoinOPS
+peterpak:
+@delay=1
+@:maincpu,program,401e7d,34,00,00
+
+;Pit-Fighter (Atari, 1990) by Pipmick and inigomontoya @ CoinOPS
+pitfight:
+@delay=1
+@:maincpu,program,ffc23e,0a,30,36
+@:maincpu,program,ffc248,0a,a0,48
+@:maincpu,program,ffc252,1e,d4,25
+
+driftout:
+@delay=10
+@:maincpu,program,300d74,7f,00,00
+@:maincpu,program,300df3,09,16,06
+@:maincpu,program,300dfc,04,00,00
+
+;Rampart (2P Version) (Atari) by Pipmick and inigomontoya @ CoinOPS (probable that clones will also work with this)
+rampart2p:
+@delay=1
+@:maincpu,program,3e3554,96,87,14
+
+;Rampage World Tour (Midway) by Pipmick and inigomontoya @ CoinOPS
+;rmpgwt
+;This game is supported with a different plugin: hiscore_spaceshift
+;This new plugin has its own 'hiscore_spaceshift.dat' file and 'init.lua' where this game's high score entry lives and its byte steps (1,2,4,8, etc) are listed instead of here.
+;This is due to the restoration of high scores needing to be placed a number of byte steps ahead of where they were originally saved from in order for high scores to be restored successfully on a reboot.
+;Do not list memory address ranges in both this file and 'hiscore_spaceshift.dat' or it will not work.  Only add memory address ranges to the 'hiscore_spaceshift.dat' file for games that require this specific type of high score restoration.  The normal hiscore plugin will work as normal for all other games.
+
+;Ghost Hunter by Pipmick and inigomontoya @ CoinOPS
+ghoshunt:
+;This game is supported with a different plugin: hiscore_spaceshift
+;This new plugin has its own 'hiscore_spaceshift.dat' file and 'init.lua' where this game's high score entry lives and its byte steps (1,2,4,8, etc) are listed instead of here.
+;This is due to the restoration of high scores needing to be placed a number of byte steps ahead of where they were originally saved from in order for high scores to be restored successfully on a reboot.
+;Do not list memory address ranges in both this file and 'hiscore_spaceshift.dat' or it will not work.  Only add memory address ranges to the 'hiscore_spaceshift.dat' file for games that require this specific type of high score restoration.  The normal hiscore plugin will work as normal for all other games.
+
+;Starblade (Namco, 1991) by Pipmick and inigomontoya @ CoinOPS
+starblad:
+@delay=20
+@:maincpu,program,1003d0,a0,00,ff
+@:maincpu,program,10ffb0,50,00,ff
+
+;Ace Driver (Namco, 1994) by Pipmick and inigomontoya @ CoinOPS
+acedrive:
+@delay=5
+@:maincpu,program,1000c33e,33,00,00
+@:maincpu,program,1000c3c0,40,2a,00
+@:maincpu,program,1000c400,40,29,00
+@:maincpu,program,1000c440,40,36,00
+
+;Uridium (Commodore 64) by Pipmick and inigomontoya @ CoinOPS
+c64,uridium:
+@:u7,program,35f3,ba,28,ff
+
+;Streets Of Rage 2 (Genesis/Megadrive) by Pipmick and inigomontoya @ CoinOPS
+genesis,sor2u:	; Streets of Rage 2 (USA)
+@:maincpu,program,fffd30,a0,10,00
+
+;Super Punch-Out!! (SNES) by Pipmick & inigomontoya @ CoinOPS
+snes,suppunch:	; Super Punch-Out!! (USA)
+@:maincpu,program,700000,2000,01,00
+;@s:nintendo/snes.cpp
+
+;Axelay (USA)(SNES) by Pipmick & inigomontoya @ CoinOPS
+snes,axelay:
+snes,axelayj:
+snes,axelayu:
+snes,axelayus:
+@:maincpu,program,1e4c,3,30,00
+
+;genesis, Shinobi III - Return of the Ninja Master (U) by Pipmick & inigomontoya @ CoinOPS
+genesis,shinobi3u:
+@:maincpu,program,ff0019,3,01,00
+
+;genesis, Revenge of Shinobi by Pipmick & inigomontoya @ CoinOPS
+genesis,supshin:
+@delay=1.5
+@:maincpu,program,ffff14,4,00,00
+
+;genesis, Comix Zone (USA) by Pipmick & inigomontoya @ CoinOPS (saves last play only)
+genesis,comixu:
+@delay=2
+@:maincpu,program,ffbef8,2,00,00
+@:maincpu,program,ffbf00,4,00,00
+@:maincpu,program,ffbf3c,2,00,00
+
+;snes, Zombies Ate My Neighbors (USA) by Pipmick & inigomontoya @ CoinOPS
+snes,zombiesu:
+@delay=2
+@:maincpu,program,7e2064,96,3d,00
+@:maincpu,program,7e20fa,28,56,00
+
+;snes, Super Turrican (USA) by Pipmick & inigomontoya @ CoinOPS (saves last play only)
+snes,sturricu:
+@delay=2
+@:maincpu,program,7e0581,06,00,00
+
+;snes, Super Turrican 2 (USA) by Pipmick & inigomontoya @ CoinOPS (saves last play only)
+snes,sturric2u:
+@delay=2
+@:maincpu,program,7e1016,06,00,00
+
+snes, Tetris & Dr. Mario (USA) by Pipmick & inigomontoya @ CoinOPS
+snes,tetrisdru:
+@delay=2
+@:maincpu,program,7e1e30,42,11,00
+@:maincpu,program,7e1e8a,04,10,00
+
+;snes, The Magical Quest Starring Mickey Mouse (USA) by Pipmick @ CoinOPS (HI=3 digit-bytes @7E0004-06 =D1D2D3*100; LAST=3 packed-BCD LE @7E0365-67)
+snes,mickeymqu:
+@delay=3
+@:maincpu,program,7e0004,03,01,00
+@:maincpu,program,7e0365,03,00,00
+
+;snes, The Ninja Warriors (USA) by Pipmick & inigomontoya @ CoinOPS (both scores live in WRAM as digit-per-16bit-LE-word arrays: HI @7EFF10, LAST-PLAYED @7EFF20; 24 bytes = HI[8]+pad[8]+IP[8])
+snes,ninjawaru:
+@delay=3
+@:maincpu,program,7eff10,18,00,00
+
+;snes, Batman Returns (USA) by Pipmick & inigomontoya @ CoinOPS (last played score only)
+;snes,batmanrnu:
+;@delay=3
+;@:maincpu,program,7e0081,2,00,00
+
+;snes, Batman Returns (USA) by Pipmick & inigomontoya @ CoinOPS
+snes,batmanrnu:
+@delay=1
+@:maincpu,program,7e3400,2e,a5,5a
+
+;snes, Wild Guns (USA) by Pipmick & inigomontoya @ CoinOPS
+snes,wildgunsu:
+@delay=3
+@:maincpu,program,7e1fcf,9,00,00
+@:maincpu,program,7efeff,2a,00,00
+
+;snes, Ghoul Patrol (USA) by Pipmick & inigomontoya @ CoinOPS
+snes,ghoulptru:
+@delay=1
+@:maincpu,program,7e2004,bc,41,10
+@:maincpu,program,7e20c0,2,00,00
+
+;snes, Final Fight 2 (USA) by Pipmick & inigomontoya @ CoinOPS
+snes,ffight2u:
+@delay=3
+@:maincpu,program,7e2000,19,01,10
+@:maincpu,program,7e2019,1,00,00
+
+;snes, F-Zero (USA) by Pipmick & inigomontoya @ CoinOPS
+snes,fzerou:
+@delay=3
+@:maincpu,program,700000,800,46,ff
+
+;snes, Super Mario Kart (USA) by Pipmick & inigomontoya @ CoinOPS
+snes,smkartu:
+@delay=5
+@:maincpu,program,30665f,192,ff,00
+
+;gba, International Karate Plus (E) by Pipmick & inigomontoya @ CoinOPS
+gba,ikplus:
+@delay=3
+@:maincpu,program,030009e0,32,49,42
+@:maincpu,program,03000b80,32,4a,47
+@:maincpu,program,03001b20,32,4d,41
+@:maincpu,program,030046c0,64,64,00
+
+;Hammer by Pipmick & inigomontoya @ CoinOPS -- 8-row RANKING (score only, no names); lives in volatile 68000 work RAM, never saved to the 128B eeprom natively, so the hiscore plugin provides persistence
+hammer:
+@delay=3
+@:maincpu,program,e0a058,20,00,00
+
+;Big Buck Hunter Call of the Wild by Pipmick @ CoinOPS -- two 10-row leaderboards
+;(LONGEST PERFECT STREAK @0xfa388, MOST PERFECT SITES @0xfa4c8), contiguous 0x280
+;block in VR4310 work RAM. iteagle disk game: scores live in RAM (loaded from CHD),
+;never in the tiny nvram, so the plugin snapshots the block to bbhcotw.hi for CoinOPS.
+bbhcotw:
+@delay=5
+@:maincpu,program,fa388,280,04,00
+
+; jedi (Return of the Jedi) all-time top-10, X2212 NOVRAM mapped at 6502 0x0800; 10x 8-byte recs [pad][3B LE BCD score/100][3B ASCII name][0xa0].
+jedi:
+@delay=5
+@:maincpu,program,800,50,00,a0
+
+; swatpolc (SWAT Police, ESD16 / M68000 BE) RANKING top-10 in work RAM @0x109390, 10x 16-byte recs: +8 score u32 BE, +12 3 ASCII initials, +15 pad.
+swatpolc:
+@delay=3
+@:maincpu,program,109390,a0,00,00
+
+; joemacr (Joe & Mac Returns, Data East Simpl156 / ARM LE) BEST PLAYERS top-10 in work RAM (:mainram) @program 0x200060, 10x 8-byte recs: +0 score u32 word-swapped [hi16 LE][lo16 LE], +4 3 name-index bytes (A=0), +7 pad. Stable attract buffer; display renders from here.
+joemacr:
+@delay=3
+@:maincpu,:mainram/share,60,50,01,00
+;
+; guardian (Guardians of the Hood, Atari atarig42 / 68EC020) HIGH SCORES top-10 in main RAM @program 0x00ff818f, 10x 5-byte recs: +0 score u16 BE, +2 NAMECODE u16 LE (3 initials x 5 bits, 0=space A=1..Z=26, first initial = low bits), +4 pad 00. Scores persist natively in nvram eeprom; game rebuilds this table on boot. Gate byte 0x0b = hi-byte of default #1 (3000).
+guardian:
+@delay=3
+@:maincpu,program,ff818f,32,0b,00
+; groundfx (Ground Effects / Super Ground Effects, Taito groundfx.cpp / 68EC020 BE 32-bit bus) DRIVERS RANKING fastest lap times, 4 courses in main RAM @program 0x0020b5a0, 0x60 bytes = 4 blocks of 0x18: each = 4-byte header (MNM 1:00, not shown) + 5x 4-byte recs [u16 BE time centiseconds][u16 BE NAMECODE 3 initials x 5 bits, 0=space A=1..Z=26, first initial = high bits]. Scores persist natively in nvram eeprom (mirrored LE 0x10-0x6f). Gate 0x17 = hi-byte of header time 0x1770; 0xae = low byte of last default name.
+; NOTE (Pipmick): entry COMMENTED OUT, not deleted - kept for future use.
+; The live high-score charts sit in the native nvram eeprom (nvram\groundfx\eeprom):
+; the game SAVES and READS them from there, and the hi2txt definition groundfx.xml
+; decodes that eeprom directly, so the MAME hiscore plugin is not needed here.
+; groundfx:
+; @delay=3
+; @:maincpu,program,20b5a0,60,17,ae
+
+gauntleg:
+@delay=3
+@:maincpu,program,173a0c,3c0,4c,00
+
+shadowld:
+@delay=1
+@:subcpu,program,4b80,2e,a5,5a
+
+xenophob:
+@delay=1
+@:maincpu,program,63a00,2e,a5,5a
+
+soulclbr:
+@:maincpu,program,803d04f9,167,a0,00
+
+trophyh:
+@:maincpu,program,000000,10000,00,00
+
+turkhunt:
+@:maincpu,program,000000,10000,ab,00
+
+wschamp:
+@:maincpu,program,000000,10000,a4,00
+
+tektagt:
+@delay=1
+@:maincpu,program,802fde5f,211,00,00
+@:maincpu,program,802fe3d3,112,00,01
+
+gaxeduel:
+@delay=2
+@:maincpu,program,2fa974,40,53,41

@@ -1,0 +1,15 @@
+<hi2txt>
+<table id="RANKING">
+<col>RANK</col><col>SCORE</col><col>NAME</col><col>CHARACTER</col>
+<row><cell>1</cell><cell>10000</cell><cell>K.W</cell><cell>BUCKY</cell></row>
+<row><cell>2</cell><cell>9000</cell><cell>MOM</cell><cell>DEAD-EYE</cell></row>
+<row><cell>3</cell><cell>8000</cell><cell>T.A</cell><cell>BLINKY</cell></row>
+<row><cell>4</cell><cell>7000</cell><cell>N.Y</cell><cell>JENNY</cell></row>
+<row><cell>5</cell><cell>6000</cell><cell>H.S</cell><cell>BUCKY</cell></row>
+<row><cell>6</cell><cell>5000</cell><cell>H.I</cell><cell>DEAD-EYE</cell></row>
+<row><cell>7</cell><cell>4000</cell><cell>T.K</cell><cell>BLINKY</cell></row>
+<row><cell>8</cell><cell>3000</cell><cell>N.H</cell><cell>JENNY</cell></row>
+<row><cell>9</cell><cell>2000</cell><cell>K.K</cell><cell>BUCKY</cell></row>
+<row><cell>10</cell><cell>1000</cell><cell>SAM</cell><cell>DEAD-EYE</cell></row>
+</table>
+</hi2txt>

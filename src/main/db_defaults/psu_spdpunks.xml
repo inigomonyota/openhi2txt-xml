@@ -1,0 +1,35 @@
+<hi2txt>
+  <table id="TIME ATTACK RECORDS - EASY COURSES">
+    <col>COURSE</col><col>BEST LAP TIME</col><col>LAP HOLDER</col><col>BEST TOTAL TIME</col><col>TOTAL HOLDER</col><col>CHARACTER</col>
+    <row><cell>SHIPWRECK SHORE</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>NEON CITY</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>MILLENNIUM PARK</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>THUNDER TRAIL</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>RACEWAY 1</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>CITY 1</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>STADIUM 1</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>ISLAND 1</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+  </table>
+  <table id="TIME ATTACK RECORDS - MEDIUM COURSES">
+    <col>COURSE</col><col>BEST LAP TIME</col><col>LAP HOLDER</col><col>BEST TOTAL TIME</col><col>TOTAL HOLDER</col><col>CHARACTER</col>
+    <row><cell>SILVER CITY</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>DRIFT ARENA</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>MOONLIGHT COVE</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>SUN VALLEY DRIVE</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>CITY 2</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>STADIUM 2</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>ISLAND 2</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>RACEWAY 2</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+  </table>
+  <table id="TIME ATTACK RECORDS - HARD COURSES">
+    <col>COURSE</col><col>BEST LAP TIME</col><col>LAP HOLDER</col><col>BEST TOTAL TIME</col><col>TOTAL HOLDER</col><col>CHARACTER</col>
+    <row><cell>SKATE PARK</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>GOLD CITY</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>GRAND RAPIDS</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>SUNSET ISLE</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>STADIUM 3</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>CITY 3</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>RACEWAY 3</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+    <row><cell>ISLAND 3</cell><cell>1:30:00</cell><cell>FUN</cell><cell>4:30:00</cell><cell>COM</cell><cell>-</cell></row>
+  </table>
+</hi2txt>

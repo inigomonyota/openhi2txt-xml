@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hi2txt>
+  <!--
+    ikari (.hi) definition for hi2txt
+
+    hiscore.dat ranges (reference):
+      @:maincpu,program,ff0b,50,00,49
+      @:maincpu,program,fc5f,3,00,00
+
+    .hi layout (ikari.hi, 83 bytes):
+      - 0x50 bytes: 10 entries x 8 bytes
+          SCORE10 : 3 bytes packed BCD, little-endian (score / 10)
+          NAME    : 5 bytes ASCII
+      - 0x03 bytes trailing: checksum/flags/dup (ignored)
+
+    Key detail:
+      Use base="16" WITH endianness="little_endian" (bcd-le is unreliable for 3-byte scores on some builds).
+  -->
+
+  <structure file=".hi">
+    <loop count="10">
+      <elt size="3" type="int"  id="SCORE10" base="16" endianness="little_endian"/>
+      <elt size="5" type="text" id="NAME"   charset="ikari"/>
+    </loop>
+
+    <elt size="3" type="raw" id="_TAIL"/>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="rank_plus1"/>
+      <column id="SCORE" src="SCORE10" format="times10"/>
+      <column id="NAME"  src="NAME" format="trimr"/>
+    </table>
+  </output>
+
+  <format id="rank_plus1"><add>1</add></format>
+  <format id="times10"><multiply>10</multiply></format>
+
+  <format id="trimr">
+    <trim direction="right"> </trim>
+  </format>
+
+  <charset id="ikari">
+    <char src="0x00" dst=" "/>
+  </charset>
+</hi2txt>

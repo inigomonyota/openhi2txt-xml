@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    The Ninja Warriors (USA) - SNES
+
+    Both scores ARE kept as numbers in WRAM (digit-per-16-bit-word), contiguous:
+
+      7EFF10  HI-SCORE          8 bytes
+      7EFF18  (padding, zeros)  8 bytes
+      7EFF20  LAST-PLAYED (IP)  8 bytes
+
+    Each 8-byte score is four 16-bit little-endian decimal digits D0..D3:
+
+      D0lo D0hi  D1lo D1hi  D2lo D2hi  D3lo D3hi
+
+      Score = D0*10 + D1*100 + D2*1000 + D3*10000
+
+    Example 17,500:  00 00 05 00 07 00 01 00  -> D0=0 D1=5 D2=7 D3=1 = 17500
+
+    Verified against save states 0/1/2: HI 0/17500/17500, IP 0/17500/10360,
+    matching screenshots 0011/0012.png. Both are in CPU-addressable WRAM, so the
+    MAME hiscore.dat plugin can read them (no VRAM/save-state dump needed).
+    (The score is drawn on-screen as BG digit-tiles, but these WRAM numeric
+    counters are the source and are what we decode.)
+  -->
+
+  <structure file=".hi">
+
+    <check>
+      <size>24</size>
+    </check>
+
+    <elt size="2" type="int" id="H0" endianness="little_endian"/>
+    <elt size="2" type="int" id="H1" endianness="little_endian"/>
+    <elt size="2" type="int" id="H2" endianness="little_endian"/>
+    <elt size="2" type="int" id="H3" endianness="little_endian"/>
+
+    <elt size="8" type="int" id="PAD"/>
+
+    <elt size="2" type="int" id="L0" endianness="little_endian"/>
+    <elt size="2" type="int" id="L1" endianness="little_endian"/>
+    <elt size="2" type="int" id="L2" endianness="little_endian"/>
+    <elt size="2" type="int" id="L3" endianness="little_endian"/>
+
+  </structure>
+
+  <output>
+    <table>
+      <column id="LAST PLAYED SCORE" format="last"/>
+      <column id="HI-SCORE" format="hi"/>
+    </table>
+  </output>
+
+  <format id="x10"><multiply>10</multiply></format>
+  <format id="x100"><multiply>100</multiply></format>
+  <format id="x1000"><multiply>1000</multiply></format>
+  <format id="x10000"><multiply>10000</multiply></format>
+
+  <format id="hi">
+    <sum>
+      <column id="H0" format="x10"/>
+      <column id="H1" format="x100"/>
+      <column id="H2" format="x1000"/>
+      <column id="H3" format="x10000"/>
+    </sum>
+  </format>
+
+  <format id="last">
+    <sum>
+      <column id="L0" format="x10"/>
+      <column id="L1" format="x100"/>
+      <column id="L2" format="x1000"/>
+      <column id="L3" format="x10000"/>
+    </sum>
+  </format>
+
+</hi2txt>

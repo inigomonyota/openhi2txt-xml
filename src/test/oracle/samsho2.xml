@@ -1,0 +1,22 @@
+<hi2txt>
+  <table id="PLAYER WITH THE HIGHEST SCORE">
+    <col>NAME</col><col>SCORE</col>
+    <row><cell>AAA</cell><cell>30000</cell></row>
+  </table>
+  <table id="PLAYER WITH THE MOST NUMEROUS WIN">
+    <col>NAME</col><col>WINS</col>
+    <row><cell>AAA</cell><cell>3</cell></row>
+  </table>
+  <table id="CLEAR TIME RANKING - VS COM">
+    <col>RANK</col><col>TIME</col>
+    <row><cell>1</cell><cell>70.00</cell></row>
+    <row><cell>2</cell><cell>60.00</cell></row>
+    <row><cell>3</cell><cell>50.00</cell></row>
+  </table>
+  <table id="CLEAR TIME RANKING - 1P VS 2P">
+    <col>RANK</col><col>TIME</col>
+    <row><cell>1</cell><cell>70.00</cell></row>
+    <row><cell>2</cell><cell>60.00</cell></row>
+    <row><cell>3</cell><cell>50.00</cell></row>
+  </table>
+</hi2txt>

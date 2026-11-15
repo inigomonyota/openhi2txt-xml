@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    Big Buck Hunter Call of the Wild (Incredible Technologies, iteagle.cpp /
+    NEC VR4310 little-endian MIPS, disk-based). The two leaderboards are NOT in
+    the tiny nvram (RTC/bram/eeprom only); they live in main RAM, loaded from the
+    CompactFlash CHD. The hiscore plugin persists a 0x280 block @:maincpu program
+    0x000fa388, saved as hiscore\bbhcotw.hi (so this definition reads a .hi).
+
+    Two contiguous charts of 10 records at physical 0x000fa388 (LONGEST PERFECT
+    STREAK) and 0x000fa4c8 (MOST PERFECT SITES), stride 0x20 (32 bytes). Each
+    record: [4-byte little-endian count][13-byte first name, NUL-padded][15-byte
+    last name, NUL-padded].
+      e.g. 04 00 00 00  "MARK".........  "MACY".......... -> MARK MACY = 4.
+    Proven against the attract-mode screenshots (both boards match byte-for-byte).
+    Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>0:fa388:280:04:00</definition>
+      <size>640</size>
+    </check>
+
+    <!-- LONGEST PERFECT STREAK @0x000fa388 -->
+    <loop count="10">
+      <elt size="4"  type="int"  id="ST_VAL"   table-index="loop_index"
+           endianness="little_endian"/>
+      <elt size="13" type="text" id="ST_FIRST" table-index="loop_index" charset="cs_nul"/>
+      <elt size="15" type="text" id="ST_LAST"  table-index="loop_index" charset="cs_nul"/>
+    </loop>
+
+    <!-- MOST PERFECT SITES @0x000fa4c8 -->
+    <loop count="10">
+      <elt size="4"  type="int"  id="SI_VAL"   table-index="loop_index"
+           endianness="little_endian"/>
+      <elt size="13" type="text" id="SI_FIRST" table-index="loop_index" charset="cs_nul"/>
+      <elt size="15" type="text" id="SI_LAST"  table-index="loop_index" charset="cs_nul"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="LONGEST PERFECT STREAK">
+      <column id="RANK"   src="index"   format="+1"/>
+      <column id="NAME"   src="ST_FIRST" format="st_name"/>
+      <column id="STREAK" src="ST_VAL"/>
+    </table>
+    <table id="MOST PERFECT SITES">
+      <column id="RANK"  src="index"   format="+1"/>
+      <column id="NAME"  src="SI_FIRST" format="si_name"/>
+      <column id="SITES" src="SI_VAL"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="st_name" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="ST_FIRST"/><txt> </txt><column src="ST_LAST"/>
+    </concat>
+  </format>
+
+  <format id="si_name" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="SI_FIRST"/><txt> </txt><column src="SI_LAST"/>
+    </concat>
+  </format>
+
+  <charset id="cs_nul">
+    <char src="0x00" dst=""/>
+  </charset>
+</hi2txt>

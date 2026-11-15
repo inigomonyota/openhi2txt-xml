@@ -1,0 +1,28 @@
+<hi2txt>
+  <table id="ACE PILOTS - SOLO PLAY">
+    <col>RANK</col><col>NAME</col><col>SCORE</col><col>SHIP</col><col>STAGE</col>
+    <row><cell>1</cell><cell>STU</cell><cell>1128830</cell><cell>CHASER</cell><cell>1-2</cell></row>
+    <row><cell>2</cell><cell>H.H</cell><cell>1000000</cell><cell>AEGIS</cell><cell>1-1</cell></row>
+    <row><cell>3</cell><cell>S.Y</cell><cell>900000</cell><cell>BEAST ARROW</cell><cell>1-1</cell></row>
+    <row><cell>4</cell><cell>Y.K</cell><cell>800000</cell><cell>CHASER</cell><cell>1-1</cell></row>
+    <row><cell>5</cell><cell>STU</cell><cell>700060</cell><cell>AEGIS</cell><cell>1-2</cell></row>
+    <row><cell>6</cell><cell>T.S</cell><cell>700000</cell><cell>DEVASTATOR</cell><cell>1-1</cell></row>
+    <row><cell>7</cell><cell>N.M</cell><cell>600000</cell><cell>ENDEAVOR</cell><cell>1-1</cell></row>
+  </table>
+  <table id="ACE PILOTS - DUAL PLAYER (1 PLAYER)">
+    <col>RANK</col><col>NAME</col><col>SCORE</col><col>SHIP</col><col>STAGE</col>
+    <row><cell>1</cell><cell>C.T</cell><cell>1000000</cell><cell>AEGIS</cell><cell>1-1</cell></row>
+    <row><cell>2</cell><cell>W.S</cell><cell>900000</cell><cell>BEAST ARROW</cell><cell>1-1</cell></row>
+    <row><cell>3</cell><cell>T.H</cell><cell>800000</cell><cell>CHASER</cell><cell>1-1</cell></row>
+    <row><cell>4</cell><cell>K.M</cell><cell>700000</cell><cell>DEVASTATOR</cell><cell>1-1</cell></row>
+    <row><cell>5</cell><cell>M.I</cell><cell>600000</cell><cell>ENDEAVOR</cell><cell>1-1</cell></row>
+  </table>
+  <table id="ACE PILOTS - DUAL PLAYER (2 PLAYER)">
+    <col>RANK</col><col>NAME</col><col>SCORE</col><col>SHIP</col><col>STAGE</col>
+    <row><cell>1</cell><cell>G.S</cell><cell>1000000</cell><cell>AEGIS</cell><cell>1-1</cell></row>
+    <row><cell>2</cell><cell>Y.Y</cell><cell>900000</cell><cell>BEAST ARROW</cell><cell>1-1</cell></row>
+    <row><cell>3</cell><cell>K.M</cell><cell>800000</cell><cell>CHASER</cell><cell>1-1</cell></row>
+    <row><cell>4</cell><cell>T.H</cell><cell>700000</cell><cell>DEVASTATOR</cell><cell>1-1</cell></row>
+    <row><cell>5</cell><cell>Y.O</cell><cell>600000</cell><cell>ENDEAVOR</cell><cell>1-1</cell></row>
+  </table>
+</hi2txt>

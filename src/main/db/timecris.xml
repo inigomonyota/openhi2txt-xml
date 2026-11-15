@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  hi2txt description for Time Crisis (timecris)  [Namco System 22]
+
+  Pass the real MAME path so hi2txt can resolve the rom name from the folder:
+      hi2txt -ra "...\mame\nvram\timecris\eeprom"
+
+  THE EEPROM IS INTERLEAVED. Two 4KB banks, with the game's logical data
+  alternating 16-byte blocks between them:
+      logical block 0 = file 0x000-0x00F
+      logical block 1 = file 0x1000-0x100F
+      logical block 2 = file 0x010-0x01F   ... and so on
+  In logical space every array is contiguous and in rank order; in the file
+  each one is split across the two banks. All offsets below are FILE offsets.
+
+  THIS VERSION RELIES ON loop @start BEING THE LOOP'S STARTING INDEX.
+  Each array is read by two or three loops sharing one element id, with
+  @start placing each fragment at the right index. Without @start a later
+  loop overwrites the earlier values from index 0, which loses rows.
+  If the output is wrong, @start is not an index and the fallback is to
+  emit each fragment as its own table.
+
+  ENCODINGS
+    NAME  one 16-bit big-endian word holds 3 characters, 5 bits each:
+          A=1..Z=26, 0=space, 27='.', 28='!', 29='?', 30='/'
+          0x2C2D=KAM, 0x437C="P.!", 0x43DD="P/?"
+          decoding-profile="base-32" yields chr(code+64); the charset below
+          remaps code 0 and codes 27-30.
+    TIME  one 16-bit big-endian FRAME COUNT at 60fps.
+          52356 = 872.6s = 14'32"60 ;  9348 = 155.8s = 2'35"80
+    STARS plain 16-bit integer (skill points).
+
+  ONLY 5 ENTRIES PER TABLE ARE STORED. The 6th row on the cabinet is a ROM
+  default, never written to the eeprom, so it cannot be read.
+
+  Note: a <format> must contain at least one child element, so a
+  formatter-only format needs a no-op such as <multiply>1</multiply>.
+//-->
+<hi2txt>
+
+  <structure file="eeprom">
+    <check>
+      <size>8192</size>
+    </check>
+
+      <elt size="240" type="raw" id="PA00"/>
+
+      <!-- 0x00F0 ST2 time rank 5   -> index 4 //-->
+    <loop count="1" start="4">
+      <elt size="2" type="int" id="ST2 TIME"/>
+    </loop>
+
+      <elt size="90" type="raw" id="PB00"/>
+
+      <!-- 0x014C ST3 times ranks 1-2 -> indices 0-1 //-->
+    <loop count="2">
+      <elt size="2" type="int" id="ST3 TIME"/>
+    </loop>
+
+      <!-- 0x0150 ST1 names ranks 1-5 //-->
+    <loop count="5">
+      <elt size="2" type="text" id="ST1 NAME" decoding-profile="base-32" charset="timecris"/>
+    </loop>
+
+      <!-- 0x015A ST2 names ranks 1-3 -> indices 0-2 //-->
+    <loop count="3">
+      <elt size="2" type="text" id="ST2 NAME" decoding-profile="base-32" charset="timecris"/>
+    </loop>
+
+      <!-- 0x0160 STORY times ranks 2-5 -> indices 1-4 //-->
+    <loop count="4" start="1">
+      <elt size="2" type="int" id="STORY TIME"/>
+    </loop>
+
+      <!-- 0x0168 STORY stars ranks 1-4 -> indices 0-3 //-->
+    <loop count="4">
+      <elt size="2" type="int" id="STORY STAR"/>
+    </loop>
+
+      <elt size="1024" type="raw" id="PC00"/>
+      <elt size="1024" type="raw" id="PC01"/>
+      <elt size="1024" type="raw" id="PC02"/>
+      <elt size="770" type="raw" id="PC03"/>
+
+      <!-- 0x1072 ST1 times ranks 1-5 //-->
+    <loop count="5">
+      <elt size="2" type="int" id="ST1 TIME"/>
+    </loop>
+
+      <elt size="108" type="raw" id="PD00"/>
+
+      <!-- 0x10E8 ST2 times ranks 1-4 -> indices 0-3 //-->
+    <loop count="4">
+      <elt size="2" type="int" id="ST2 TIME"/>
+    </loop>
+
+      <elt size="80" type="raw" id="PE00"/>
+
+      <!-- 0x1140 ST3 times ranks 3-5 -> indices 2-4 //-->
+    <loop count="3" start="2">
+      <elt size="2" type="int" id="ST3 TIME"/>
+    </loop>
+
+      <!-- 0x1146 STORY names ranks 1-5 //-->
+    <loop count="5">
+      <elt size="2" type="text" id="STORY NAME" decoding-profile="base-32" charset="timecris"/>
+    </loop>
+
+      <!-- 0x1150 ST2 names ranks 4-5 -> indices 3-4 //-->
+    <loop count="2" start="3">
+      <elt size="2" type="text" id="ST2 NAME" decoding-profile="base-32" charset="timecris"/>
+    </loop>
+
+      <!-- 0x1154 ST3 names ranks 1-5 //-->
+    <loop count="5">
+      <elt size="2" type="text" id="ST3 NAME" decoding-profile="base-32" charset="timecris"/>
+    </loop>
+
+      <!-- 0x115E STORY time rank 1 -> index 0 //-->
+    <loop count="1">
+      <elt size="2" type="int" id="STORY TIME"/>
+    </loop>
+
+      <!-- 0x1160 STORY star rank 5 -> index 4 //-->
+    <loop count="1" start="4">
+      <elt size="2" type="int" id="STORY STAR"/>
+    </loop>
+
+      <elt size="1024" type="raw" id="PF00"/>
+      <elt size="1024" type="raw" id="PF01"/>
+      <elt size="1024" type="raw" id="PF02"/>
+      <elt size="670" type="raw" id="PF03"/>
+  </structure>
+
+  <output>
+
+    <table id="RANKING - STORY GAME">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="STORY NAME"/>
+      <column id="TIME"  format="t_story"/>
+      <column id="STARS" src="STORY STAR" format="star"/>
+    </table>
+
+    <table id="RANKING - TIMED GAME - STAGE 1">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="ST1 NAME"/>
+      <column id="TIME"  format="t_st1"/>
+    </table>
+
+    <table id="RANKING - TIMED GAME - STAGE 2">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="ST2 NAME"/>
+      <column id="TIME"  format="t_st2"/>
+    </table>
+
+    <table id="RANKING - TIMED GAME - STAGE 3">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="ST3 NAME"/>
+      <column id="TIME"  format="t_st3"/>
+    </table>
+
+  </output>
+
+  <format id="rank">
+    <add>1</add>
+    <case src="1" dst="1ST"/>
+    <case src="2" dst="2ND"/>
+    <case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/>
+    <case src="5" dst="5TH"/>
+  </format>
+
+  <format id="star"><prefix>★</prefix></format>
+
+  <!-- frame count -> M'SS"HH //-->
+  <format id="t_story">
+    <concat>
+      <column id="STORY TIME" format="f_min;apos"/>
+      <column id="STORY TIME" format="f_sec;pad2;quot"/>
+      <column id="STORY TIME" format="f_hun;pad2"/>
+    </concat>
+  </format>
+
+  <format id="t_st1">
+    <concat>
+      <column id="ST1 TIME" format="f_min;apos"/>
+      <column id="ST1 TIME" format="f_sec;pad2;quot"/>
+      <column id="ST1 TIME" format="f_hun;pad2"/>
+    </concat>
+  </format>
+
+  <format id="t_st2">
+    <concat>
+      <column id="ST2 TIME" format="f_min;apos"/>
+      <column id="ST2 TIME" format="f_sec;pad2;quot"/>
+      <column id="ST2 TIME" format="f_hun;pad2"/>
+    </concat>
+  </format>
+
+  <format id="t_st3">
+    <concat>
+      <column id="ST3 TIME" format="f_min;apos"/>
+      <column id="ST3 TIME" format="f_sec;pad2;quot"/>
+      <column id="ST3 TIME" format="f_hun;pad2"/>
+    </concat>
+  </format>
+
+  <format id="f_min"><divide_trunc>3600</divide_trunc></format>
+  <format id="f_sec"><remainder>3600</remainder><divide_trunc>60</divide_trunc></format>
+  <format id="f_hun"><remainder>60</remainder><multiply>100</multiply><divide_trunc>60</divide_trunc></format>
+  <format id="apos"><suffix>'</suffix></format>
+  <format id="quot"><suffix>"</suffix></format>
+  <format id="pad2" formatter="%02d"><multiply>1</multiply></format>
+
+  <charset id="timecris">
+    <char src="0x00" dst=" "/>
+    <char src="0x1B" dst="."/>
+    <char src="0x1C" dst="!"/>
+    <char src="0x1D" dst="?"/>
+    <char src="0x1E" dst="/"/>
+  </charset>
+
+</hi2txt>

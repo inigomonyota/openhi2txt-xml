@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  cischeat: Cisco Heat
+
+  hiscore file: hiscore/cischeat.hi (632 bytes)
+
+  Verified offsets from supplied file:
+    0x000: 19 x 4-byte big-endian ints  SCORE_DIV10
+    0x04C: 19 x 4-byte big-endian ints  TIMEVAL
+    0x200: name block start
+           19 x 4 bytes: NAME (3 ASCII + NUL). First 3 are blank in this sample.
+-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>632</size>
+    </check>
+
+    <!-- SCORES (score/10) -->
+    <loop count="19">
+      <elt size="4" type="int" id="SCORE" table-index="loop_index"/>
+    </loop>
+
+    <!-- TIME VALUES -->
+    <loop count="19">
+      <elt size="4" type="int" id="TIMEVAL" table-index="loop_index"/>
+    </loop>
+
+    <!-- pad to 0x200 -->
+    <elt size="360" type="raw" id="PAD"/>
+
+    <!-- NAMES (3 letters + NUL) -->
+    <loop count="19">
+      <elt size="4" type="text" id="NAME" table-index="loop_index"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table sort="SCORE" sort-order="desc" line-ignore="SCORE:0">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" format="score_x10"/>
+      <column id="TIME" src="TIMEVAL" format="time_retire"/>
+      <column id="NAME" format="TrimR"/>
+    </table>
+  </output>
+
+  <format id="score_x10">
+    <multiply>10</multiply>
+  </format>
+
+  <!-- Observed TIME values in this sample render as "RETIRE" -->
+  <format id="time_retire">
+    <case src="400" dst="RETIRE"/>
+    <case src="490" dst="RETIRE" default="yes"/>
+  </format>
+
+</hi2txt>

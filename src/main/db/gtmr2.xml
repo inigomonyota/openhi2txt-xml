@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    gtmr2 - Great 1000 Miles Rally 2 (Kaneko, 1995)
+    .hi via hiscore.dat plugin, TWO ranges concatenated into a 1184-byte file:
+      block1 @:maincpu,program,103b1c,1a0  (416 bytes)  = record TIMES
+      block2 @:maincpu,program,103cfc,300  (768 bytes)  = record-holder NAMES
+    "Today's Records of N STAGE" shows 6 rows per stage; all 8 stages are the
+    same factory-default data, so one decoded cycle proves the format.
+
+    block1: 24-byte header, then a repeating 8-entry cycle of 4-byte records
+      [MIN 1 BCD][SEC 1 BCD][00][SLOT 1] -> 59'10"..59'80", slot index 08..01.
+      (only the first cycle is decoded; the rest are identical repeats.)
+    block2: 12 identical 64-byte groups; each = 8 name slots x 8 bytes, dot-padded:
+      slot0 Pluto, slot1/2 empty, slot3 Moon, slot4 Mercury, slot5 Mars,
+      slot6 Jupitor, slot7 Venus. (only the first group is decoded.)
+    The on-screen display cross-indexes a block1 record's SLOT byte into block2's
+    name slots; that two-array lookup is not expressed here - both stored arrays
+    are decoded faithfully and the screenshot table is transcribed in output\.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>0:103b1c:1a0:59:01
+                  0:103cfc:300:4d:2e</definition>
+      <size>1184</size>
+    </check>
+
+    <!-- block1: TIMES -->
+    <elt size="24" type="raw" id="HDR1"/>
+    <loop count="8">
+      <elt size="1" type="int"  id="MIN"  base="16"/>
+      <elt size="1" type="int"  id="SEC"  base="16"/>
+      <elt size="1" type="raw"  id="Z"/>
+      <elt size="1" type="int"  id="SLOT"/>
+    </loop>
+    <elt size="360" type="raw" id="PAD1"/>
+
+    <!-- block2: NAMES -->
+    <loop count="8">
+      <elt size="8" type="text" id="NAME"/>
+    </loop>
+    <elt size="704" type="raw" id="PAD2"/>
+  </structure>
+
+  <output>
+    <table id="RECORD TIMES">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="MIN"/>
+      <column id="SEC"/>
+      <column id="SLOT"/>
+    </table>
+    <table id="RECORD HOLDERS">
+      <column id="SLOT" src="index"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+</hi2txt>

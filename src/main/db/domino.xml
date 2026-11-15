@@ -26,12 +26,49 @@
   <output>
     <table line-ignore="SCORE:0">
       <column id="RANK" src="index" format="+1"/>
-      <column id="SCORE"/>
+      <column id="SCORE" format="comma_score"/>
       <column id="NAME"/>
     </table>
-    <field id="TOP SCORE"           display="extra"/>
+    <field id="TOP SCORE"           display="debug"/>
     <field id="TOP SCORE DUPLICATE" display="debug"/>
   </output>
     
   <format id="+1"><add>1</add></format>
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
 </hi2txt>

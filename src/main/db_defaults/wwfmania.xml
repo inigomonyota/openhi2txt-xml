@@ -1,0 +1,74 @@
+<hi2txt>
+<table id="INTERCONTINENTAL CHAMPS">
+<col>RANK</col><col>NAME</col>
+<row><cell>1</cell><cell>MARK</cell></row>
+<row><cell>2</cell><cell>SAL</cell></row>
+<row><cell>3</cell><cell>JASON</cell></row>
+<row><cell>4</cell><cell>LICK</cell></row>
+<row><cell>5</cell><cell>JAKE</cell></row>
+<row><cell>6</cell><cell>DIESL</cell></row>
+<row><cell>7</cell><cell>FUJI</cell></row>
+<row><cell>8</cell><cell>SHAWN</cell></row>
+<row><cell>9</cell><cell>BIFF</cell></row>
+<row><cell>10</cell><cell></cell></row>
+<row><cell>11</cell><cell></cell></row>
+<row><cell>12</cell><cell></cell></row>
+</table>
+<table id="WORLD CHAMPIONS">
+<col>RANK</col><col>NAME</col>
+<row><cell>1</cell><cell>MIKE</cell></row>
+<row><cell>2</cell><cell>JAMIT</cell></row>
+<row><cell>3</cell><cell>TEAL</cell></row>
+<row><cell>4</cell><cell>DINK</cell></row>
+<row><cell>5</cell><cell>JAKE</cell></row>
+<row><cell>6</cell><cell>DRJ</cell></row>
+<row><cell>7</cell><cell>CHICK</cell></row>
+<row><cell>8</cell><cell>SHAWN</cell></row>
+<row><cell>9</cell><cell></cell></row>
+</table>
+<table id="TAG TEAM CHAMPIONS">
+<col>RANK</col><col>NAME1</col><col>NAME2</col><col>TIME</col>
+<row><cell>1</cell><cell>BOON</cell><cell>SAL</cell><cell>90.0</cell></row>
+<row><cell>2</cell><cell>ERMAC</cell><cell>KANO</cell><cell>95.0</cell></row>
+<row><cell>3</cell><cell>SONYA</cell><cell>GENE</cell><cell>100.0</cell></row>
+<row><cell>4</cell><cell>MIKE</cell><cell>SHAWN</cell><cell>105.0</cell></row>
+<row><cell>5</cell><cell>JASON</cell><cell>JOSH</cell><cell>110.0</cell></row>
+<row><cell>6</cell><cell>JOHN</cell><cell>JAKE</cell><cell>115.0</cell></row>
+<row><cell>7</cell><cell>JOE</cell><cell>EDWIN</cell><cell>120.0</cell></row>
+<row><cell>8</cell><cell>BILL</cell><cell>MARKP</cell><cell>125.0</cell></row>
+<row><cell>9</cell><cell>STEVE</cell><cell>TONY</cell><cell>130.0</cell></row>
+</table>
+<table id="FASTEST PINDOWN TIMES">
+<col>RANK</col><col>NAME</col><col>TIME</col><col>OPPONENT</col>
+<row><cell>1</cell><cell>MJT</cell><cell>60.0</cell><cell>LEX LUGER</cell></row>
+<row><cell>2</cell><cell>SAL</cell><cell>61.0</cell><cell>LEX LUGER</cell></row>
+<row><cell>3</cell><cell>JMS</cell><cell>62.0</cell><cell>DOINK</cell></row>
+<row><cell>4</cell><cell>JYT</cell><cell>63.0</cell><cell>BAM BAM</cell></row>
+<row><cell>5</cell><cell>JAK</cell><cell>64.0</cell><cell>SHN. MICHAELS</cell></row>
+<row><cell>6</cell><cell>OEG</cell><cell>65.0</cell><cell>YOKOZUNA</cell></row>
+<row><cell>7</cell><cell>MJL</cell><cell>66.0</cell><cell>UNDERTAKER</cell></row>
+<row><cell>8</cell><cell>UTB</cell><cell>67.0</cell><cell>RAZOR RAMON</cell></row>
+<row><cell>9</cell><cell>ASB</cell><cell>68.0</cell><cell>BRET HART</cell></row>
+</table>
+<table id="LONGEST WINNING STREAKS">
+<col>RANK</col><col>NAME</col><col>WINS</col>
+<row><cell>1</cell><cell>MJT</cell><cell>11</cell></row>
+<row><cell>2</cell><cell>SAL</cell><cell>10</cell></row>
+<row><cell>3</cell><cell>JMS</cell><cell>9</cell></row>
+<row><cell>4</cell><cell>JYT</cell><cell>9</cell></row>
+<row><cell>5</cell><cell>MJL</cell><cell>8</cell></row>
+<row><cell>6</cell><cell>JAK</cell><cell>8</cell></row>
+<row><cell>7</cell><cell>OEG</cell><cell>7</cell></row>
+<row><cell>8</cell><cell>SL</cell><cell>7</cell></row>
+<row><cell>9</cell><cell>MDP</cell><cell>7</cell></row>
+<row><cell>10</cell><cell>GBS</cell><cell>6</cell></row>
+<row><cell>11</cell><cell>DJT</cell><cell>6</cell></row>
+<row><cell>12</cell><cell>EPJ</cell><cell>6</cell></row>
+<row><cell>13</cell><cell>BIF</cell><cell>5</cell></row>
+<row><cell>14</cell><cell>UNK</cell><cell>5</cell></row>
+<row><cell>15</cell><cell>UTB</cell><cell>5</cell></row>
+<row><cell>16</cell><cell>CRL</cell><cell>4</cell></row>
+<row><cell>17</cell><cell>TDG</cell><cell>4</cell></row>
+<row><cell>18</cell><cell>ASB</cell><cell>4</cell></row>
+</table>
+</hi2txt>

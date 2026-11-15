@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- ninjak by Taito, 1990 -->
+<!-- hiscore.dat: @:maincpu,program,102b80,48,00,20 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>72</size>
+    </check>
+
+    <!-- 16 bytes per record: 4 (Score) + 1 (Round) + 3 (Name) + 8 (Pad) -->
+    <!-- skip-last-bytes="8" handles the partial 5th record (Score, Round, Name only) -->
+    <loop count="5" skip-last-bytes="8">
+      <elt size="4" type="int"  id="SCORE" base="16"/>
+      <elt size="1" type="int"  id="ROUND" base="16"/>
+      <elt size="3" type="text" id="NAME"  charset="ninjak"/>
+      <elt size="8" type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST 5">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="SCORE" src="SCORE" format="comma_score"/>
+      <column id="ROUND" src="ROUND"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+  <!-- Translates 0-4 into 1ST-5TH -->
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <!-- CHARSETS MUST BE LAST TO SATISFY DTD -->
+  <charset id="ninjak">
+    <char src="0x40" dst="©"/>
+  </charset>
+</hi2txt>

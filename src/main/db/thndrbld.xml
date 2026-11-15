@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  hi2txt description for Thunder Blade (thndrbld) [Sega Y Board] — BEST 10 RANKING.
+
+  The ranking is VOLATILE work RAM at maincpu program 0xa3b00 (NOT the battery nvram,
+  which is zero there); it is regenerated from ROM defaults every boot. Persistence is
+  provided by the thndrbldhs MAME plugin, which saves/restores a 100-byte .hi in program
+  (memory) order — so NO byte-swap is needed here.
+
+  Record (10 bytes x 10 records = 100 bytes):
+      [0-3]  SCORE   4 bytes packed BCD, big-endian (01 00 00 00 = 1,000,000)
+      [4]    FLAG    always 0x01
+      [5-7]  NAME    3 ASCII chars
+      [8-9]  TRAILER always 00 01
+
+  Factory defaults:
+      1000000 DAI  900000 ASO  800000 YOK  700000 MAC  600000 OHT
+       500000 MIY  400000 AYA  328400 RYU  200000 DOY  100000 NAK
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>100</size>
+    </check>
+
+    <loop count="10">
+      <elt size="4" type="int"  id="SCORE" base="16"/>
+      <elt size="1" type="raw"  id="FLAG"/>
+      <elt size="3" type="text" id="NAME" charset="thndrbld"/>
+      <elt size="2" type="raw"  id="TRAILER"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST 10 RANKING">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME" format="trim"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <add>1</add>
+    <case src="1" dst="1ST"/>
+    <case src="2" dst="2ND"/>
+    <case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/>
+    <case src="5" dst="5TH"/>
+    <case src="6" dst="6TH"/>
+    <case src="7" dst="7TH"/>
+    <case src="8" dst="8TH"/>
+    <case src="9" dst="9TH"/>
+    <case src="10" dst="10TH"/>
+  </format>
+
+  <format id="trim"><trim/></format>
+
+  <charset id="thndrbld">
+    <char src="0x5B" dst="?"/>
+    <char src="0x5C" dst="."/>
+    <char src="0x5D" dst="[BEAR]"/>
+  </charset>
+
+</hi2txt>

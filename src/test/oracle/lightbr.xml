@@ -1,0 +1,12 @@
+<hi2txt>
+  <table id="HI SCORE">
+    <col>RANK</col><col>SCORE</col><col>CHARACTER</col><col>LEVEL</col><col>EXPERIENCE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell></cell></row>
+    <row><cell>2ND</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell></cell></row>
+    <row><cell>3RD</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell></cell></row>
+    <row><cell>4TH</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell></cell></row>
+    <row><cell>5TH</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell></cell></row>
+    <row><cell>6TH</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell></cell></row>
+    <row><cell>7TH</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell></cell></row>
+  </table>
+</hi2txt>

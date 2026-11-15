@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <check><size>101</size></check>
+    
+    <!-- 0x00: Skip the 6th place/default score -->
+    <elt size="4" type="raw" id="SKIP_SCORE_6"/>
+    
+    <!-- 0x04: Read Top 5 Scores -->
+    <!-- start="5" shifts these scores to table rows 5 through 9 so they align perfectly with the Top 5 pointers! -->
+    <loop count="5" start="5">
+      <elt size="4" type="int" id="SCORE" base="16" endianness="big_endian"/>
+    </loop>
+    
+    <!-- 0x18: Read ALL 10 Name Pointers -->
+    <!-- skip-last-bytes="1" prevents the parser from crashing on the 10th pointer's missing padding -->
+    <loop count="10" skip-last-bytes="1">
+      <elt size="1" type="int" id="NAME_PTR"/>
+      <elt size="1" type="raw" id="PTR_PAD"/>
+    </loop>
+    
+    <!-- 0x2B: Read ALL 10 Scattered Names -->
+    <!-- skip-last-bytes="2" handles the file cutting off right before the 10th name's padding -->
+    <loop count="10" skip-last-bytes="2">
+      <!-- index_from_value safely hunts down the matching pointer to sync the Name with the Score -->
+      <elt size="3" type="text" id="NAME" table-index="NAME_PTR:index_from_value"/>
+      <elt size="3" type="raw"  id="NAME_PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <!-- sort="SCORE" pulls the valid scores to the top, and lines-max="5" cleanly hides the 5 unused names! -->
+    <table id="BEST PLAYERS" sort="SCORE" sort-order="desc" lines-max="5">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NAME"/>
+      <!-- format strips out the hidden Level byte -->
+      <column id="SCORE" src="SCORE" format="strip_level"/>
+    </table>
+  </output>
+
+  <!-- Translates the visual row index to 1-5 -->
+  <format id="+1">
+    <add>1</add>
+  </format>
+  
+  <!-- Chops the hidden Level byte off the end of the BCD score -->
+  <format id="strip_level">
+    <divide_trunc>100</divide_trunc>
+  </format>
+</hi2txt>

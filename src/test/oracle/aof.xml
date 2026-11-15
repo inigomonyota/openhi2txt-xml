@@ -1,0 +1,34 @@
+<hi2txt>
+  <table id="STORY MODE TODAY'S RANKING">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>141400</cell><cell>SQ2</cell></row>
+    <row><cell>2ND</cell><cell>101010</cell><cell>42D</cell></row>
+    <row><cell>3RD</cell><cell>81880</cell><cell>NEO</cell></row>
+    <row><cell>4TH</cell><cell>68000</cell><cell>12M</cell></row>
+    <row><cell>5TH</cell><cell>40010</cell><cell>CPU</cell></row>
+  </table>
+  <table id="STORY MODE TOTAL RANKING">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>199200</cell><cell>AGT</cell></row>
+    <row><cell>2ND</cell><cell>173200</cell><cell>SQ3</cell></row>
+    <row><cell>3RD</cell><cell>141400</cell><cell>SQ2</cell></row>
+    <row><cell>4TH</cell><cell>101010</cell><cell>42D</cell></row>
+    <row><cell>5TH</cell><cell>81880</cell><cell>NEO</cell></row>
+  </table>
+  <table id="VS MODE TOTAL RANKING">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>BEAT BY 10</cell><cell>TEN</cell></row>
+    <row><cell>2ND</cell><cell>BEAT BY 9</cell><cell>NIN</cell></row>
+    <row><cell>3RD</cell><cell>BEAT BY 8</cell><cell>SNK</cell></row>
+    <row><cell>4TH</cell><cell>BEAT BY 7</cell><cell>E&#183;K</cell></row>
+    <row><cell>5TH</cell><cell>BEAT BY 6</cell><cell>GUS</cell></row>
+  </table>
+  <table id="VS MODE TODAY'S RANKING">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>BEAT BY 8</cell><cell>SNK</cell></row>
+    <row><cell>2ND</cell><cell>BEAT BY 7</cell><cell>E&#183;K</cell></row>
+    <row><cell>3RD</cell><cell>BEAT BY 6</cell><cell>GUS</cell></row>
+    <row><cell>4TH</cell><cell>BEAT BY 5</cell><cell>H&#183;M</cell></row>
+    <row><cell>5TH</cell><cell>BEAT BY 4</cell><cell>A&#183;G</cell></row>
+  </table>
+</hi2txt>

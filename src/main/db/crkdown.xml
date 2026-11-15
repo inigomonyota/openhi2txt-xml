@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  Crack Down (Sega System 24) - crkdown / crkdownj / crkdownu
+
+  hiscore.dat locations (in order):
+    1) Top 3 (30 bytes):  @:maincpu,program,fb076,1e,00,00
+    2) Ranks 4-7 (37 bytes): @:maincpu,program,fb246,25,00,18
+
+  Combined .hi size = 67 bytes.
+
+  Decoding verified from your .hi samples:
+  - SCORE stored as packed decimal digits in nibbles across 4 bytes:
+      00 10 00 00 => "00100000" => 100000
+      00 04 33 50 => "00043350" => 43350
+    Using: type=int + base=16.
+
+  - NAME stored as 3 bytes where ASCII = byte + 55 (0x37).
+-->
+
+<hi2txt>
+
+  <!-- =========================
+       STRUCTURE: Top 3 only
+       ========================= -->
+  <structure file=".hi" output="top3">
+    <check><size>30</size></check>
+
+    <!-- 3 entries × 10 bytes: SCORE(4) + NAME(3) + PAD(3) -->
+    <loop count="3">
+      <elt id="SCORE" size="4" type="int" base="16"/>
+      <elt id="NAME"  size="3" type="text" ascii-offset="55"/>
+      <elt id="PAD"   size="3" type="raw"/>
+    </loop>
+  </structure>
+
+  <!-- =========================
+       STRUCTURE: Ranks 4–7 only
+       ========================= -->
+  <structure file=".hi" output="ranks4to7">
+    <check><size>37</size></check>
+
+    <!-- This block is effectively 4 entries × 10 bytes, but the dump is truncated:
+         4×10 = 40 bytes, dumped size = 37 bytes -> last 3 bytes are missing.
+         Use skip-last-bytes="3" to keep correct alignment for entries 4–7.
+    -->
+    <loop count="4" skip-last-bytes="3">
+      <elt id="SCORE" size="4" type="int" base="16"/>
+      <elt id="NAME"  size="3" type="text" ascii-offset="55"/>
+      <elt id="PAD"   size="3" type="raw"/>
+    </loop>
+  </structure>
+
+  <!-- =========================
+       STRUCTURE: Full 1–7 (67 bytes)
+       ========================= -->
+  <structure file=".hi" output="full1to7">
+    <check><size>67</size></check>
+
+    <!-- Top 3 block -->
+    <loop count="3">
+      <elt id="SCORE" size="4" type="int" base="16"/>
+      <elt id="NAME"  size="3" type="text" ascii-offset="55"/>
+      <elt id="PAD"   size="3" type="raw"/>
+    </loop>
+
+    <!-- Ranks 4–7 block (same truncation behavior as the 37-byte file) -->
+    <loop count="4" skip-last-bytes="3">
+      <elt id="SCORE" size="4" type="int" base="16"
+           table-index="loop_index" table-index-format="+3"/>
+      <elt id="NAME"  size="3" type="text" ascii-offset="55"
+           table-index="loop_index" table-index-format="+3"/>
+      <elt id="PAD"   size="3" type="raw"/>
+    </loop>
+
+  </structure>
+
+  <!-- ===================== OUTPUTS ===================== -->
+
+  <output id="top3">
+    <table line-ignore="SCORE:0">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="SCORE"/>
+    </table>
+  </output>
+
+  <output id="ranks4to7">
+    <table line-ignore="SCORE:0">
+      <column id="RANK" src="index" format="+4"/>
+      <column id="NAME"/>
+      <column id="SCORE"/>
+    </table>
+  </output>
+
+  <output id="full1to7">
+    <table line-ignore="SCORE:0">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="SCORE"/>
+    </table>
+  </output>
+
+  <!-- ===================== FORMATS ===================== -->
+  <format id="+1"><add>1</add></format>
+  <format id="+3"><add>3</add></format>
+  <format id="+4"><add>4</add></format>
+
+</hi2txt>

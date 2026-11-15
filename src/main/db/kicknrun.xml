@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- kicknrun by Taito, 1986 -->
+<!-- hiscore.dat: @:maincpu,program,ee18,2d,17,49 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>45</size>
+    </check>
+
+    <!-- 5 records, 9 bytes each -->
+    <!-- Record: 1(Score BCD) + 3(Pad) + 1(Country) + 1(Win BCD) + 3(Name) -->
+    <loop count="5">
+      <elt size="1" type="int"  id="SCORE" base="16"/>
+      <elt size="3" type="raw"  id="PAD"/>
+      <elt size="1" type="int"  id="COUNTRY_ID"/>
+      <elt size="1" type="int"  id="WIN"   base="16"/>
+      <elt size="3" type="text" id="NAME"  charset="kicknrun_chars"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"    src="index"      format="ordinal"/>
+      <column id="SCORE"   src="SCORE"      format="comma_score"/>
+      <column id="COUNTRY" src="COUNTRY_ID" format="country_map"/>
+      <column id="WIN"     src="WIN"/>
+      <column id="NAME"    src="NAME"/>
+    </table>
+  </output>
+
+  <!-- Translates 0-4 into 1ST-5TH -->
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+
+  <!-- Country Mapping with "Argentina" correction -->
+  <format id="country_map">
+    <case src="0" dst="JAPAN"/>
+    <case src="1" dst="W.GERMANY"/>
+    <case src="2" dst="BRAZIL"/>
+    <case src="3" dst="ITALY"/>
+    <case src="4" dst="ENGLAND"/>
+    <case src="5" dst="USA"/>
+    <case src="6" dst="ARGENTINA"/>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/><txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <!-- Custom Charset for Taito Symbols -->
+  <charset id="kicknrun_chars">
+    <char src="0x5F" dst=" "/> <!-- Maps underscore/attribute to a space for "O &" -->
+  </charset>
+</hi2txt>

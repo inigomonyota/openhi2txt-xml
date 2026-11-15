@@ -1,6 +1,6 @@
 RANK|SCORE|NAME
-1|18900|FANCHOIS     
-2|17900|GASTOUNET    
-3|16000|PIERROT      
-4|15100|JOJO         
-5|14200|J B
+1|39880|BREAKER      
+2|38060|BR           
+3|36060|BR           
+4|33090|A            
+5|32610|B

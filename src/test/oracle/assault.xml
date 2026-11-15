@@ -7,5 +7,5 @@
     <row><cell>4</cell><cell>18000</cell><cell>PANTHER</cell><cell>01</cell><cell>0x00</cell><cell>0x000000</cell></row>
     <row><cell>5</cell><cell>15000</cell><cell>LYNX   </cell><cell>01</cell><cell>0x00</cell><cell></cell></row>
   </table>
-  <field id="TOP SCORE">30000</field>
+  <field id="TOP SCORE">0</field>
 </hi2txt>

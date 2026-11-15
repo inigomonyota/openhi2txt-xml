@@ -1,8 +1,13 @@
 <hi2txt>
   <table id="TOP SCORES">
-    <col>RANK</col><col>SCORE</col><col>STAGE</col>
-    <row><cell>1</cell><cell>0</cell><cell>BEGINNER - 0</cell></row>
+    <col>SCORE</col><col>STAGE</col>
+    <row><cell>0</cell><cell>-</cell></row>
+  </table>
+  <table id="TOP TIMES">
+    <col>COURSE</col><col>POINT E</col><col>POINT J</col><col>POINT O</col><col>POINT T</col><col>POINT Z</col>
+    <row><cell>BEGINNER</cell><cell>-</cell><cell>-</cell><cell>-</cell><cell>-</cell><cell>-</cell></row>
+    <row><cell>CHAMPION 1</cell><cell>-</cell><cell>-</cell><cell>-</cell><cell>-</cell><cell>-</cell></row>
+    <row><cell>CHAMPION 2</cell><cell>-</cell><cell>-</cell><cell>-</cell><cell>-</cell><cell>-</cell></row>
+    <row><cell>CHAMPION 3</cell><cell>-</cell><cell>-</cell><cell>-</cell><cell>-</cell><cell>-</cell></row>
   </table>
 </hi2txt>
-
-

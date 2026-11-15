@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE openhi2txt>
+<openhi2txt requires="0.3.0" label="Killer Instinct">
+  <structure file="dif" offset="0x1120" length="0x424">
+    <loop count="10">
+      <elt id="SPEED TIME" type="int" size="4" endianness="little_endian"/>
+      <elt id="SPEED NAME" type="text" size="4" endianness="little_endian" bitmask="INITIALS" ascii-offset="64"/>
+    </loop>
+    <loop count="10">
+      <elt id="STREAK" type="int" size="4" endianness="little_endian"/>
+      <elt id="STREAK NAME" type="text" size="4" endianness="little_endian" bitmask="INITIALS" ascii-offset="64"/>
+    </loop>
+    <elt id="UNUSED GLOBAL TABLES" type="raw" size="160"/>
+    <loop count="10">
+      <elt id="KILLER SCORE" type="int" size="4" endianness="little_endian"/>
+      <elt id="KILLER NAME" type="text" size="4" endianness="little_endian" bitmask="INITIALS" ascii-offset="64"/>
+    </loop>
+
+    <loop count="5">
+      <elt id="JAGO SCORE" type="int" size="4" endianness="little_endian"/>
+      <elt id="JAGO NAME" type="text" size="4" endianness="little_endian" bitmask="INITIALS" ascii-offset="64"/>
+      <elt id="JAGO HITS" type="int" size="4" endianness="little_endian"/>
+    </loop>
+    <loop count="5">
+      <elt id="T.J. COMBO SCORE" type="int" size="4" endianness="little_endian"/>
+      <elt id="T.J. COMBO NAME" type="text" size="4" endianness="little_endian" bitmask="INITIALS" ascii-offset="64"/>
+      <elt id="T.J. COMBO HITS" type="int" size="4" endianness="little_endian"/>
+    </loop>
+    <loop count="5">
+      <elt id="SPINAL SCORE" type="int" size="4" endianness="little_endian"/>
+      <elt id="SPINAL NAME" type="text" size="4" endianness="little_endian" bitmask="INITIALS" ascii-offset="64"/>
+      <elt id="SPINAL HITS" type="int" size="4" endianness="little_endian"/>
+    </loop>
+    <loop count="5">
+      <elt id="THUNDER SCORE" type="int" size="4" endianness="little_endian"/>
+      <elt id="THUNDER NAME" type="text" size="4" endianness="little_endian" bitmask="INITIALS" ascii-offset="64"/>
+      <elt id="THUNDER HITS" type="int" size="4" endianness="little_endian"/>
+    </loop>
+    <loop count="5">
+      <elt id="GLACIUS SCORE" type="int" size="4" endianness="little_endian"/>
+      <elt id="GLACIUS NAME" type="text" size="4" endianness="little_endian" bitmask="INITIALS" ascii-offset="64"/>
+      <elt id="GLACIUS HITS" type="int" size="4" endianness="little_endian"/>
+    </loop>
+    <loop count="5">
+      <elt id="FULGORE SCORE" type="int" size="4" endianness="little_endian"/>
+      <elt id="FULGORE NAME" type="text" size="4" endianness="little_endian" bitmask="INITIALS" ascii-offset="64"/>
+      <elt id="FULGORE HITS" type="int" size="4" endianness="little_endian"/>
+    </loop>
+    <loop count="5">
+      <elt id="CINDER SCORE" type="int" size="4" endianness="little_endian"/>
+      <elt id="CINDER NAME" type="text" size="4" endianness="little_endian" bitmask="INITIALS" ascii-offset="64"/>
+      <elt id="CINDER HITS" type="int" size="4" endianness="little_endian"/>
+    </loop>
+    <loop count="5">
+      <elt id="SABREWULF SCORE" type="int" size="4" endianness="little_endian"/>
+      <elt id="SABREWULF NAME" type="text" size="4" endianness="little_endian" bitmask="INITIALS" ascii-offset="64"/>
+      <elt id="SABREWULF HITS" type="int" size="4" endianness="little_endian"/>
+    </loop>
+    <loop count="5">
+      <elt id="ORCHID SCORE" type="int" size="4" endianness="little_endian"/>
+      <elt id="ORCHID NAME" type="text" size="4" endianness="little_endian" bitmask="INITIALS" ascii-offset="64"/>
+      <elt id="ORCHID HITS" type="int" size="4" endianness="little_endian"/>
+    </loop>
+    <loop count="5">
+      <elt id="RIPTOR SCORE" type="int" size="4" endianness="little_endian"/>
+      <elt id="RIPTOR NAME" type="text" size="4" endianness="little_endian" bitmask="INITIALS" ascii-offset="64"/>
+      <elt id="RIPTOR HITS" type="int" size="4" endianness="little_endian"/>
+    </loop>
+    <loop count="5">
+      <elt id="EYEDOL SCORE" type="int" size="4" endianness="little_endian"/>
+      <elt id="EYEDOL NAME" type="text" size="4" endianness="little_endian" bitmask="INITIALS" ascii-offset="64"/>
+      <elt id="EYEDOL HITS" type="int" size="4" endianness="little_endian"/>
+    </loop>
+  </structure>
+
+  <bitmask id="INITIALS">
+    <character mask="00000000 00000000 01111100 00000000"/>
+    <character mask="00000000 00001111 10000000 00000000"/>
+    <character mask="00000001 11110000 00000000 00000000"/>
+  </bitmask>
+
+  <format id="TIME" formatter="%.2f">
+    <divide>60</divide>
+    <replace src="." dst=":"/>
+  </format>
+  <format id="PAD2"><pad direction="left" max="2">0</pad></format>
+  <format id="PAD6"><pad direction="left" max="6">0</pad></format>
+
+  <output>
+    <table id="SPEED DEMONS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="SPEED NAME"/>
+      <column id="TIME" src="SPEED TIME" format="TIME"/>
+    </table>
+    <table id="WINNING STREAK">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="STREAK NAME"/>
+      <column id="STREAK" format="PAD6"/>
+    </table>
+    <table id="KILLER KINGS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="KILLER NAME"/>
+      <column id="SCORE" src="KILLER SCORE" format="PAD6"/>
+    </table>
+
+    <table id="JAGO">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="JAGO NAME"/>
+      <column id="HITS" src="JAGO HITS" format="PAD2"/>
+      <column id="SCORE" src="JAGO SCORE" format="PAD6"/>
+    </table>
+    <table id="T.J. COMBO">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T.J. COMBO NAME"/>
+      <column id="HITS" src="T.J. COMBO HITS" format="PAD2"/>
+      <column id="SCORE" src="T.J. COMBO SCORE" format="PAD6"/>
+    </table>
+    <table id="SPINAL">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="SPINAL NAME"/>
+      <column id="HITS" src="SPINAL HITS" format="PAD2"/>
+      <column id="SCORE" src="SPINAL SCORE" format="PAD6"/>
+    </table>
+    <table id="THUNDER">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="THUNDER NAME"/>
+      <column id="HITS" src="THUNDER HITS" format="PAD2"/>
+      <column id="SCORE" src="THUNDER SCORE" format="PAD6"/>
+    </table>
+    <table id="GLACIUS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="GLACIUS NAME"/>
+      <column id="HITS" src="GLACIUS HITS" format="PAD2"/>
+      <column id="SCORE" src="GLACIUS SCORE" format="PAD6"/>
+    </table>
+    <table id="FULGORE">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="FULGORE NAME"/>
+      <column id="HITS" src="FULGORE HITS" format="PAD2"/>
+      <column id="SCORE" src="FULGORE SCORE" format="PAD6"/>
+    </table>
+    <table id="CINDER">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="CINDER NAME"/>
+      <column id="HITS" src="CINDER HITS" format="PAD2"/>
+      <column id="SCORE" src="CINDER SCORE" format="PAD6"/>
+    </table>
+    <table id="SABREWULF">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="SABREWULF NAME"/>
+      <column id="HITS" src="SABREWULF HITS" format="PAD2"/>
+      <column id="SCORE" src="SABREWULF SCORE" format="PAD6"/>
+    </table>
+    <table id="ORCHID">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="ORCHID NAME"/>
+      <column id="HITS" src="ORCHID HITS" format="PAD2"/>
+      <column id="SCORE" src="ORCHID SCORE" format="PAD6"/>
+    </table>
+    <table id="RIPTOR">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="RIPTOR NAME"/>
+      <column id="HITS" src="RIPTOR HITS" format="PAD2"/>
+      <column id="SCORE" src="RIPTOR SCORE" format="PAD6"/>
+    </table>
+    <table id="EYEDOL">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="EYEDOL NAME"/>
+      <column id="HITS" src="EYEDOL HITS" format="PAD2"/>
+      <column id="SCORE" src="EYEDOL SCORE" format="PAD6"/>
+    </table>
+  </output>
+</openhi2txt>

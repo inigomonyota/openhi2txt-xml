@@ -1,0 +1,16 @@
+<hi2txt>
+  <table id="HIGH SCORES">
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>CHARACTER</col>
+    <row><cell>CHAMP</cell><cell>200000</cell><cell>CAP</cell><cell>VICTOR</cell></row>
+    <row><cell>1</cell><cell>185601</cell><cell>BEG</cell><cell>BIFF</cell></row>
+    <row><cell>2</cell><cell>180000</cell><cell>CAP</cell><cell>BIFF</cell></row>
+    <row><cell>3</cell><cell>170000</cell><cell>COM</cell><cell>GUNLOC</cell></row>
+    <row><cell>4</cell><cell>160000</cell><cell>C P</cell><cell>ONI</cell></row>
+    <row><cell>5</cell><cell>150000</cell><cell>SYS</cell><cell>TIM</cell></row>
+    <row><cell>6</cell><cell>140000</cell><cell>TEM</cell><cell>STINGRAY</cell></row>
+    <row><cell>7</cell><cell>130000</cell><cell>CAP</cell><cell>HAGGAR</cell></row>
+    <row><cell>8</cell><cell>120000</cell><cell>COM</cell><cell>ALEXANDER</cell></row>
+    <row><cell>9</cell><cell>110000</cell><cell>C P</cell><cell>RASTA MON</cell></row>
+    <row><cell>10</cell><cell>100000</cell><cell>SYS</cell><cell>JUMBO</cell></row>
+  </table>
+</hi2txt>

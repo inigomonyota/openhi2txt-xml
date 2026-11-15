@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 50 bytes -->
+    <check><size>50</size></check>
+    
+    <!-- Standalone Top Score tracker (3 bytes, Little-Endian Hex) -->
+    <elt size="3" type="int" id="TOP_SCORE" endianness="little_endian"/>
+    
+    <!-- 5 Visible Records * 8 Bytes = 40 Bytes -->
+    <loop count="5">
+      <!-- 4-byte Little-Endian Hex Score (Note: NO base="16" because this is true hex, not BCD!) -->
+      <elt size="4" type="int"  id="SCORE" endianness="little_endian"/>
+      
+      <!-- 3-byte Name. Since A=00, adding 65 natively converts them to standard A-Z ASCII -->
+      <elt size="3" type="text" id="NAME"  ascii-offset="65"/>
+      
+      <!-- 1 byte padding separator -->
+      <elt size="1" type="raw"  id="PAD"/>
+    </loop>
+    
+    <!-- The hidden 6th record (NAK - 100,000) truncated by hiscore.dat -->
+    <elt size="7" type="raw" id="TRAIL"/>
+  </structure>
+
+  <output>
+    <table id="TOP 5 SCORES">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+    
+    <!-- Extracted just in case you ever want to display it -->
+    <field id="TOP SCORE" src="TOP_SCORE" display="extra"/>
+  </output>
+
+  <!-- Translates the index from 0-4 to match the arcade screen's No.1 - No.5 -->
+  <format id="ordinal">
+    <case src="0" dst="No.1"/>
+    <case src="1" dst="No.2"/>
+    <case src="2" dst="No.3"/>
+    <case src="3" dst="No.4"/>
+    <case src="4" dst="No.5"/>
+  </format>
+</hi2txt>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- nightstr by Taito, 1989 -->
+<!-- hiscore.dat: @:maincpu,program,109b9a,4,00,40 | @:maincpu,program,10de48,1f3,00,41 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>503</size>
+    </check>
+
+    <!-- 4 bytes: The 'High Score' displayed at the top of the screen -->
+    <elt size="4" type="int" id="HI-SCORE"/>
+
+    <!-- 1 byte: The leading '00' byte of the first score to align the loop -->
+    <elt size="1" type="raw" id="ALIGN_PAD"/>
+
+    <!-- 45 records, 10 bytes each -->
+    <!-- Record: 3(Score) + 2(Scene) + 3(Name) + 2(Pad) -->
+    <loop count="45">
+      <elt size="3" type="int" id="SCORE"/>
+      <elt size="2" type="int" id="SCENE"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="2" type="raw" id="PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="20 HIGH SCORES" lines-max="20">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <!-- Multiplication by 10 handles Taito's implied zero -->
+      <column id="SCORE" src="SCORE" format="*10;comma_score"/>
+      <column id="SCENE" src="SCENE" format="scene_map"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="1ST"/><case src="1" dst="2ND"/><case src="2" dst="3RD"/><case src="3" dst="4TH"/><case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/><case src="6" dst="7TH"/><case src="7" dst="8TH"/><case src="8" dst="9TH"/><case src="9" dst="10TH"/>
+    <case src="10" dst="11TH"/><case src="11" dst="12TH"/><case src="12" dst="13TH"/><case src="13" dst="14TH"/><case src="14" dst="15TH"/>
+    <case src="15" dst="16TH"/><case src="16" dst="17TH"/><case src="17" dst="18TH"/><case src="18" dst="19TH"/><case src="19" dst="20TH"/>
+  </format>
+
+  <format id="scene_map">
+    <case src="0" dst="A"/><case src="1" dst="B"/><case src="2" dst="C"/><case src="3" dst="D"/>
+    <case src="4" dst="E"/><case src="5" dst="F"/><case src="6" dst="G"/><case src="7" dst="H"/>
+    <case src="8" dst="I"/><case src="9" dst="J"/><case src="10" dst="K"/><case src="11" dst="L"/>
+    <case src="12" dst="M"/><case src="13" dst="N"/><case src="14" dst="O"/><case src="15" dst="P"/>
+    <case src="16" dst="Q"/><case src="17" dst="R"/><case src="18" dst="S"/><case src="19" dst="T"/>
+    <case src="20" dst="U"/><case src="21" dst="V"/><case src="22" dst="W"/><case src="23" dst="X"/>
+    <case src="24" dst="Y"/><case src="25" dst="Z"/>
+  </format>
+
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+</hi2txt>

@@ -1,0 +1,34 @@
+<hi2txt>
+  <table id="PLAYER VS COM TODAY'S RANKING">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>141400</cell><cell>RAD</cell></row>
+    <row><cell>2ND</cell><cell>101010</cell><cell>KIM</cell></row>
+    <row><cell>3RD</cell><cell>81880</cell><cell>EZO</cell></row>
+    <row><cell>4TH</cell><cell>68000</cell><cell>SOE</cell></row>
+    <row><cell>5TH</cell><cell>40010</cell><cell>ELM</cell></row>
+  </table>
+  <table id="PLAYER VS COM TOTAL RANKING">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>199400</cell><cell>MOH</cell></row>
+    <row><cell>2ND</cell><cell>173200</cell><cell>IOS</cell></row>
+    <row><cell>3RD</cell><cell>141400</cell><cell>TAK</cell></row>
+    <row><cell>4TH</cell><cell>101010</cell><cell>OAW</cell></row>
+    <row><cell>5TH</cell><cell>81880</cell><cell>JOE</cell></row>
+  </table>
+  <table id="P1 VS P2 TODAY'S RANKING">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>BEAT BY 8</cell><cell>KIT</cell></row>
+    <row><cell>2ND</cell><cell>BEAT BY 7</cell><cell>BAK</cell></row>
+    <row><cell>3RD</cell><cell>BEAT BY 6</cell><cell>ROB</cell></row>
+    <row><cell>4TH</cell><cell>BEAT BY 5</cell><cell>RYO</cell></row>
+    <row><cell>5TH</cell><cell>BEAT BY 4</cell><cell>CHP</cell></row>
+  </table>
+  <table id="P1 VS P2 TOTAL RANKING">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>BEAT BY 10</cell><cell>YAJ</cell></row>
+    <row><cell>2ND</cell><cell>BEAT BY 9</cell><cell>RAO</cell></row>
+    <row><cell>3RD</cell><cell>BEAT BY 8</cell><cell>KAN</cell></row>
+    <row><cell>4TH</cell><cell>BEAT BY 7</cell><cell>I-N</cell></row>
+    <row><cell>5TH</cell><cell>BEAT BY 6</cell><cell>CHP</cell></row>
+  </table>
+</hi2txt>

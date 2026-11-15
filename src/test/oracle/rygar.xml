@@ -1,9 +1,9 @@
 <hi2txt>
   <table id="TOP SCORES">
     <col>RANK</col><col>SCORE</col><col>NAME</col><col>STAGE</col><col>GRADE</col>
-    <row><cell>1</cell><cell>88360</cell><cell>FDC</cell><cell>05</cell><cell>EAGLE RED IIII (3)</cell></row>
-    <row><cell>2</cell><cell>88110</cell><cell>EHD</cell><cell>04</cell><cell>CUP BLUE (4)</cell></row>
-    <row><cell>3</cell><cell>35550</cell><cell>PIE</cell><cell>02</cell><cell>EAGLE RED III (2)</cell></row>
+    <row><cell>1</cell><cell>30000</cell><cell>AAA</cell><cell>02</cell><cell>EAGLE RED II (65)</cell></row>
+    <row><cell>2</cell><cell>30000</cell><cell>AAA</cell><cell>02</cell><cell>EAGLE RED II (65)</cell></row>
+    <row><cell>3</cell><cell>30000</cell><cell>AAA</cell><cell>02</cell><cell>EAGLE RED II (65)</cell></row>
     <row><cell>4</cell><cell>30000</cell><cell>AAA</cell><cell>02</cell><cell>EAGLE RED II (65)</cell></row>
     <row><cell>5</cell><cell>30000</cell><cell>AAA</cell><cell>02</cell><cell>EAGLE RED II (65)</cell></row>
     <row><cell>6</cell><cell>30000</cell><cell>AAA</cell><cell>02</cell><cell>EAGLE RED II (65)</cell></row>
@@ -56,6 +56,6 @@
   <field id="UNKNOWN">00</field>
   <table id="TOP SCORE">
     <col>TOP SCORE</col><col>TOP SCORE LONG</col>
-    <row><cell>88360</cell><cell>88360</cell></row>
+    <row><cell>54130</cell><cell>54130</cell></row>
   </table>
 </hi2txt>

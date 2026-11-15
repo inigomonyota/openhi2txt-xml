@@ -24,14 +24,54 @@
   </structure>
   
   <output>
-    <table>
+    <table id="KBA RANKING">
       <column id="RANK" src="index" format="+1"/>
-      <column id="SCORE"/>
       <column id="NAME"/>
+	  <column id="SCORE" format="comma_score;dollar_prefix"/>
       <column id="STAGE" format="+1"/>
     </table>
-    <field id="TOP SCORE" display="extra"/>
+    <field id="TOP SCORE" display="extra" format="comma_score;dollar_prefix"/>
   </output>
+  
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Prefix score with $ symbol -->
+  <format id="dollar_prefix"><prefix>$</prefix></format>
   
   <charset id="hpuncher">
     <char src="0x5B" dst="."/>

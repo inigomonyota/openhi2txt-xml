@@ -1,0 +1,25 @@
+<hi2txt>
+  <table id="HIGH SCORES">
+    <col>RANK</col><col>NAME</col><col>SHIP</col><col>BOMB</col><col>SCORE</col>
+    <row><cell>1</cell><cell>IGS</cell><cell>TYPE-A (RED)</cell><cell>ENERGY</cell><cell>40000000</cell></row>
+    <row><cell>2</cell><cell>IGS</cell><cell>TYPE-B (GREEN)</cell><cell>BOMB</cell><cell>39700000</cell></row>
+    <row><cell>3</cell><cell>IGS</cell><cell>TYPE-C (BLUE)</cell><cell>ENERGY</cell><cell>39400000</cell></row>
+    <row><cell>4</cell><cell>IGS</cell><cell>TYPE-A (RED)</cell><cell>BOMB</cell><cell>39100000</cell></row>
+    <row><cell>5</cell><cell>IGS</cell><cell>TYPE-B (GREEN)</cell><cell>ENERGY</cell><cell>38800000</cell></row>
+    <row><cell>6</cell><cell>IGS</cell><cell>TYPE-C (BLUE)</cell><cell>BOMB</cell><cell>38500000</cell></row>
+    <row><cell>7</cell><cell>IGS</cell><cell>TYPE-A (RED)</cell><cell>ENERGY</cell><cell>38200000</cell></row>
+    <row><cell>8</cell><cell>IGS</cell><cell>TYPE-B (GREEN)</cell><cell>BOMB</cell><cell>37900000</cell></row>
+    <row><cell>9</cell><cell>IGS</cell><cell>TYPE-C (BLUE)</cell><cell>ENERGY</cell><cell>37600000</cell></row>
+    <row><cell>10</cell><cell>IGS</cell><cell>TYPE-A (RED)</cell><cell>BOMB</cell><cell>37300000</cell></row>
+    <row><cell>11</cell><cell>IGS</cell><cell>TYPE-B (GREEN)</cell><cell>ENERGY</cell><cell>37000000</cell></row>
+    <row><cell>12</cell><cell>IGS</cell><cell>TYPE-C (BLUE)</cell><cell>BOMB</cell><cell>36700000</cell></row>
+    <row><cell>13</cell><cell>IGS</cell><cell>TYPE-A (RED)</cell><cell>ENERGY</cell><cell>36400000</cell></row>
+    <row><cell>14</cell><cell>IGS</cell><cell>TYPE-B (GREEN)</cell><cell>BOMB</cell><cell>36100000</cell></row>
+    <row><cell>15</cell><cell>IGS</cell><cell>TYPE-C (BLUE)</cell><cell>ENERGY</cell><cell>35800000</cell></row>
+    <row><cell>16</cell><cell>IGS</cell><cell>TYPE-A (RED)</cell><cell>BOMB</cell><cell>35500000</cell></row>
+    <row><cell>17</cell><cell>IGS</cell><cell>TYPE-B (GREEN)</cell><cell>ENERGY</cell><cell>35200000</cell></row>
+    <row><cell>18</cell><cell>IGS</cell><cell>TYPE-C (BLUE)</cell><cell>BOMB</cell><cell>34900000</cell></row>
+    <row><cell>19</cell><cell>IGS</cell><cell>TYPE-A (RED)</cell><cell>ENERGY</cell><cell>34600000</cell></row>
+    <row><cell>20</cell><cell>IGS</cell><cell>TYPE-B (GREEN)</cell><cell>BOMB</cell><cell>34300000</cell></row>
+  </table>
+</hi2txt>

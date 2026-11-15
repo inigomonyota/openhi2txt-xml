@@ -107,6 +107,19 @@ def discover_cases(repo_root: Path, selected_games: set[str]) -> list[TestCase]:
 
 def run_case(executable: Path, repo_root: Path, case: TestCase) -> TestResult:
     input_root = repo_root / "src" / "test" / "input"
+    input_path = input_root / "hi" / f"{case.game}.hi"
+    conventional_dif = input_root / "diff" / f"{case.game}.dif"
+    if conventional_dif.is_file():
+        input_path = conventional_dif
+    else:
+        game_chd_dir = input_root / "roms" / case.game
+        if game_chd_dir.is_dir():
+            for chd in sorted(game_chd_dir.glob("*.chd")):
+                disk_named_dif = input_root / "diff" / f"{chd.stem}.dif"
+                if disk_named_dif.is_file():
+                    input_path = disk_named_dif
+                    break
+
     command = [str(executable)]
     if case.output_format == "xml":
         command.append("-xml")
@@ -116,9 +129,13 @@ def run_case(executable: Path, repo_root: Path, case: TestCase) -> TestResult:
             str(repo_root / "src" / "test" / "hiscore.dat"),
             "-descr",
             str(repo_root / "src" / "main" / "db"),
+            "--mame-root",
+            str(input_root),
+            "--game",
+            case.game,
             "-rd",
             "-notrace",
-            str(input_root / "hi" / f"{case.game}.hi"),
+            str(input_path),
         ]
     )
     completed = subprocess.run(

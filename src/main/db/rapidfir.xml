@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Rapid Fire">
+  <!--
+    Rapid Fire (rapidfir) - P&P Marketing, 1998 (policetr.cpp / MIPS R3000, LE).
+    The PLAYER HIGH SCORES board (10 entries: initials, score, difficulty) IS
+    persisted natively to the main NVRAM, saved by MAME as
+    nvram\rapidfir\nvram (4096 bytes). Proven byte-for-byte against the
+    on-screen board.
+
+    Table starts at offset 0x4b0, 10 records of 0x28 (40) bytes each. Every
+    logical field is a 32-bit little-endian word (data in the low byte, the
+    R3000 writes one value per 32-bit cell) and the words are spaced 8 bytes
+    apart (word + 4 pad):
+      +0x00  initial 1  (ASCII in low byte)
+      +0x08  initial 2
+      +0x10  initial 3
+      +0x18  difficulty (0=EASY, 1=MEDIUM, 2=HARD)
+      +0x20  score       (32-bit little-endian)
+    e.g. 53../43../54.. 02.. f4 7e 00 00 -> "SCT" HARD 0x7ef4 = 32500.
+
+    Verified against the HIGH SCORES screenshot:
+      1 SCT 32500 HARD   2 KNS 31100 HARD   3 PAT 28700 MEDIUM
+      4 JOE 16320 HARD   5 SJD 14300 MEDIUM 6 MAC 10300 MEDIUM
+      7 MTH  9500 EASY   8 PKE  8750 MEDIUM 9 SJD  5675 EASY
+     10 MTH  4250 EASY
+    Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file="nvram">
+    <check>
+      <size>4096</size>
+    </check>
+    <elt size="1200" type="raw" id="HEADER"/>
+    <loop count="10">
+      <elt size="1" type="text" id="C1"    table-index="loop_index"/>
+      <elt size="7" type="raw"  id="P1"    table-index="loop_index"/>
+      <elt size="1" type="text" id="C2"    table-index="loop_index"/>
+      <elt size="7" type="raw"  id="P2"    table-index="loop_index"/>
+      <elt size="1" type="text" id="C3"    table-index="loop_index"/>
+      <elt size="7" type="raw"  id="P3"    table-index="loop_index"/>
+      <elt size="1" type="int"  id="DIFF"  table-index="loop_index"/>
+      <elt size="7" type="raw"  id="PD"    table-index="loop_index"/>
+      <elt size="4" type="int"  id="SCORE" table-index="loop_index"
+           endianness="little_endian"/>
+      <elt size="4" type="raw"  id="PS"    table-index="loop_index"/>
+    </loop>
+    <elt size="2496" type="raw" id="REST"/>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORES">
+      <column id="RANK"       src="index" format="+1"/>
+      <column id="NAME"       src="C1"    format="namecat"/>
+      <column id="SCORE"      src="SCORE"/>
+      <column id="DIFFICULTY" src="DIFF"  format="diff"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="namecat" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="C1"/><column src="C2"/><column src="C3"/>
+    </concat>
+  </format>
+
+  <format id="diff">
+    <replace src="0" dst="EASY"/>
+    <replace src="1" dst="MEDIUM"/>
+    <replace src="2" dst="HARD"/>
+  </format>
+</hi2txt>

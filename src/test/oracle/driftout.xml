@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="POINT RANKING">
+    <col>RANK</col><col>NAME</col><col>POINTS</col><col>CAR TYPE</col><col>TIME</col>
+    <row><cell>1</cell><cell>PIP</cell><cell>22</cell><cell>LANCHA</cell><cell>12&apos;34&apos;&apos;56</cell></row>
+    <row><cell>2</cell><cell>NAD</cell><cell>20</cell><cell>LANCHA</cell><cell>-&apos;--&apos;&apos;--</cell></row>
+    <row><cell>3</cell><cell>ELP</cell><cell>19</cell><cell>MASUDA</cell><cell>-&apos;--&apos;&apos;--</cell></row>
+    <row><cell>4</cell><cell>KOI</cell><cell>18</cell><cell>BMW</cell><cell>-&apos;--&apos;&apos;--</cell></row>
+    <row><cell>5</cell><cell>TEL</cell><cell>17</cell><cell>MITBSI</cell><cell>-&apos;--&apos;&apos;--</cell></row>
+    <row><cell>6</cell><cell>GSX</cell><cell>16</cell><cell>MASUDA</cell><cell>-&apos;--&apos;&apos;--</cell></row>
+    <row><cell>7</cell><cell>AKI</cell><cell>15</cell><cell>TOYATA</cell><cell>-&apos;--&apos;&apos;--</cell></row>
+    <row><cell>8</cell><cell>USM</cell><cell>14</cell><cell>FORD</cell><cell>-&apos;--&apos;&apos;--</cell></row>
+    <row><cell>9</cell><cell>KRM</cell><cell>13</cell><cell>TOYATA</cell><cell>-&apos;--&apos;&apos;--</cell></row>
+    <row><cell>10</cell><cell>WRC</cell><cell>12</cell><cell>MITBSI</cell><cell>-&apos;--&apos;&apos;--</cell></row>
+  </table>
+</hi2txt>

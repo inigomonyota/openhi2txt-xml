@@ -1,0 +1,10 @@
+<hi2txt>
+  <table id="THE BEST ACE">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1TH</cell><cell>143600</cell><cell>OOO</cell></row>
+    <row><cell>2TH</cell><cell>5000</cell><cell>ABC</cell></row>
+    <row><cell>3TH</cell><cell>4000</cell><cell>DEF</cell></row>
+    <row><cell>4TH</cell><cell>3000</cell><cell>GHI</cell></row>
+    <row><cell>5TH</cell><cell>2000</cell><cell>JKL</cell></row>
+  </table>
+</hi2txt>

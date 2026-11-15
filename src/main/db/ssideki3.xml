@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Super Sidekicks 3">
+  <!--
+    Neo Geo saveram, byte-swap=2 ("BACKUP RAM OK !" confirmed). Values big-endian.
+
+    TOP SCORER @0x342, 10 x 4B: [COUNTRY:1][SLOT:1][00][GOALS:1].
+      Only COUNTRY and GOALS live in the save. The player NAME (SUMAROKOV, ...)
+      and jersey number / "FW" POSITION are ROM roster data (NOT in saveram),
+      so they cannot be decoded here. SLOT (0x08/0x09) is the roster slot index.
+
+    TEAM RANKING @0x396, 10 x 16B:
+      [NAME:3 ASCII][pad:2][COUNTRY:1][GAMES:2][WON:2][GOALS FOR:2]
+      [GOALS AGAINST:2][GOAL DIFFERENCE:2 signed BE].
+      GOAL DIFFERENCE two's-complement 16-bit: +8=0x0008, -1=0xffff.
+
+    COUNTRY id map (per-game, partial - only teams seen in defaults):
+      0=ITALY 2=HOLLAND 8=GERMANY 10=SPAIN 14=ROMANIA 18=BULGARIA
+      20=SWEDEN 22=RUSSIA 40=BRAZIL 42=ARGENTINA 56=SAUDI ARABIA
+  //-->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+    <elt size="834" type="raw" id="HEADER"/>
+    <loop count="10">
+      <elt size="1" type="int" id="TS_COUNTRY"/>
+      <elt size="1" type="int" id="TS_SLOT"/>
+      <elt size="1" type="raw" id="TS_PAD"/>
+      <elt size="1" type="int" id="TS_GOALS"/>
+    </loop>
+    <elt size="44" type="raw" id="GAP"/>
+    <loop count="10">
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="2" type="raw" id="TR_PAD"/>
+      <elt size="1" type="int" id="COUNTRY"/>
+      <elt size="2" type="int" id="GAMES"         endianness="big_endian"/>
+      <elt size="2" type="int" id="WON"           endianness="big_endian"/>
+      <elt size="2" type="int" id="GOALS FOR"     endianness="big_endian"/>
+      <elt size="2" type="int" id="GOALS AGAINST" endianness="big_endian"/>
+      <elt size="2" type="int" id="GD"            endianness="big_endian"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TEAM RANKING">
+      <column id="RANK"            src="index" format="+1;ordinal"/>
+      <column id="COUNTRY"         format="country"/>
+      <column id="NAME"/>
+      <column id="GAMES"/>
+      <column id="WON"/>
+      <column id="GOALS FOR"/>
+      <column id="GOALS AGAINST"/>
+      <column id="GOAL DIFFERENCE" src="GD" format="signed16"/>
+    </table>
+    <table id="TOP SCORER">
+      <column id="RANK"      src="index"      format="+1;ordinal"/>
+      <column id="COUNTRY"   src="TS_COUNTRY" format="country"/>
+      <column id="GOALS FOR" src="TS_GOALS"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="ordinal">
+    <case src="1"  dst="1ST"/><case src="2"  dst="2ND"/><case src="3"  dst="3RD"/>
+    <case src="4"  dst="4TH"/><case src="5"  dst="5TH"/><case src="6"  dst="6TH"/>
+    <case src="7"  dst="7TH"/><case src="8"  dst="8TH"/><case src="9"  dst="9TH"/>
+    <case src="10" dst="10TH"/>
+  </format>
+
+  <format id="country">
+    <case src="0"  dst="ITALY"/>
+    <case src="2"  dst="HOLLAND"/>
+    <case src="8"  dst="GERMANY"/>
+    <case src="10" dst="SPAIN"/>
+    <case src="14" dst="ROMANIA"/>
+    <case src="18" dst="BULGARIA"/>
+    <case src="20" dst="SWEDEN"/>
+    <case src="22" dst="RUSSIA"/>
+    <case src="40" dst="BRAZIL"/>
+    <case src="42" dst="ARGENTINA"/>
+    <case src="56" dst="SAUDI ARABIA"/>
+  </format>
+
+  <format id="pos"><prefix>+</prefix></format>
+  <format id="neg"><multiply>-1</multiply><add>65536</add><prefix>-</prefix></format>
+  <format id="signed16">
+    <case src="32768" operator="&lt;"  format="pos"/>
+    <case src="32768" operator="&gt;=" format="neg"/>
+  </format>
+
+</hi2txt>

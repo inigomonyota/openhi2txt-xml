@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Magician Lord">
+  <!-- [Magician Lord (Neo-Geo / Alpha Denshi). Native saveram (65536B) is 16-bit
+       byte-swapped (byte-swap="2" at structure level, like rbffspec/samsho). The
+       HIGH SCORE chart (5 entries, shown as "<score> <name>") is stored as TWO
+       parallel arrays starting at file offset 0x0e48 (post-swap):
+         - 5 SCORES, 4 bytes each = [3-byte packed-BCD score][1 pad]. The BCD value is
+           the score / 1000 (the trailing "000" is not stored), so x1000 = on screen.
+         - 5 NAMES, 4 bytes each = [1 pad][3 char-index bytes]. Names are NOT ASCII:
+           each byte is a letter index A=0..Z=0x19 (ascii-offset="65" -> 'A'..'Z'); the
+           default-initials glyph is index 0x1e (renders here as '_').
+       GROUND TRUTH (factory saveram, matches the attract HIGH SCORE screenshot):
+       50000 ___ / 40000 RYU / 30000 ___ / 20000 ___ / 10000 ___ (RYU = 0x11 0x18 0x14
+       post-swap = R Y U). base="16" = packed 2-digit-per-byte BCD. //-->
+  <structure file="saveram" byte-swap="2">
+    <check><size>65536</size></check>
+    <elt size="3656" type="raw" id="_PREFIX"/>
+    <loop count="5">
+      <elt size="3" type="int" id="SCORE" base="16"/>
+      <elt size="1" type="raw" id="_SPAD"/>
+    </loop>
+    <loop count="5">
+      <elt size="1" type="raw"  id="_NPAD"/>
+      <elt size="3" type="text" id="NAME" ascii-offset="65"/>
+    </loop>
+    <elt size="61840" type="raw" id="_SUFFIX"/>
+  </structure>
+  <output>
+    <table id="HIGH SCORE">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="SCORE" format="x1000"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+  <format id="rank">
+    <case src="0" dst="1"/>
+    <case src="1" dst="2"/>
+    <case src="2" dst="3"/>
+    <case src="3" dst="4"/>
+    <case src="4" dst="5"/>
+  </format>
+  <format id="x1000"><multiply>1000</multiply></format>
+</hi2txt>

@@ -1,0 +1,55 @@
+<hi2txt>
+  <table id="WARRIORS">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>8000</cell><cell>AWC</cell></row>
+    <row><cell>2</cell><cell>7600</cell><cell>CJS</cell></row>
+    <row><cell>3</cell><cell>7200</cell><cell>PAT</cell></row>
+    <row><cell>4</cell><cell>6800</cell><cell>GDC</cell></row>
+    <row><cell>5</cell><cell>6400</cell><cell>JDM</cell></row>
+    <row><cell>6</cell><cell>6000</cell><cell>JG </cell></row>
+    <row><cell>7</cell><cell>5600</cell><cell>RRC</cell></row>
+    <row><cell>8</cell><cell>5200</cell><cell>JLR</cell></row>
+    <row><cell>9</cell><cell>4800</cell><cell>TJK</cell></row>
+    <row><cell>10</cell><cell>4400</cell><cell>DP </cell></row>
+  </table>
+  <table id="VALKYRIES">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>8000</cell><cell>RPA</cell></row>
+    <row><cell>2</cell><cell>7600</cell><cell>JMR</cell></row>
+    <row><cell>3</cell><cell>7200</cell><cell>RSA</cell></row>
+    <row><cell>4</cell><cell>6800</cell><cell>MHW</cell></row>
+    <row><cell>5</cell><cell>6400</cell><cell>TDL</cell></row>
+    <row><cell>6</cell><cell>6000</cell><cell>BLK</cell></row>
+    <row><cell>7</cell><cell>5600</cell><cell>MWC</cell></row>
+    <row><cell>8</cell><cell>5200</cell><cell>SAK</cell></row>
+    <row><cell>9</cell><cell>4800</cell><cell>TJG</cell></row>
+    <row><cell>10</cell><cell>4400</cell><cell>GSF</cell></row>
+  </table>
+  <table id="WIZARDS">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>8000</cell><cell>GAT</cell></row>
+    <row><cell>2</cell><cell>7600</cell><cell>JRM</cell></row>
+    <row><cell>3</cell><cell>7200</cell><cell>LCH</cell></row>
+    <row><cell>4</cell><cell>6800</cell><cell>DSS</cell></row>
+    <row><cell>5</cell><cell>6400</cell><cell>MRJ</cell></row>
+    <row><cell>6</cell><cell>6000</cell><cell>DAY</cell></row>
+    <row><cell>7</cell><cell>5600</cell><cell>MTH</cell></row>
+    <row><cell>8</cell><cell>5200</cell><cell>SBH</cell></row>
+    <row><cell>9</cell><cell>4800</cell><cell>CMH</cell></row>
+    <row><cell>10</cell><cell>4400</cell><cell>SAL</cell></row>
+  </table>
+  <table id="ELVES">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>8000</cell><cell>T H</cell></row>
+    <row><cell>2</cell><cell>7600</cell><cell>APK</cell></row>
+    <row><cell>3</cell><cell>7200</cell><cell>BCG</cell></row>
+    <row><cell>4</cell><cell>6800</cell><cell>BWH</cell></row>
+    <row><cell>5</cell><cell>6400</cell><cell>BEA</cell></row>
+    <row><cell>6</cell><cell>6000</cell><cell>BEM</cell></row>
+    <row><cell>7</cell><cell>5600</cell><cell>MJS</cell></row>
+    <row><cell>8</cell><cell>5200</cell><cell>JBD</cell></row>
+    <row><cell>9</cell><cell>4800</cell><cell>SP </cell></row>
+    <row><cell>10</cell><cell>4400</cell><cell>TRS</cell></row>
+  </table>
+  <field id="LAST LEVEL PLAYED">5</field>
+</hi2txt>

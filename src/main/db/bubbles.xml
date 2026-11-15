@@ -35,17 +35,16 @@
   
   <output>
     <field id="WILLIAMS TEXT" display="debug"/>
-    <table id="TODAYS BUBBLES" lines-max="40">
+    	<table id="BEST BUBBLES">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="BEST SCORE"/>
+      <column id="BEST NAME"/>
+    </table>
+	<table id="TODAYS BUBBLES" lines-max="40">
       <column id="RANK" src="index" format="+1"/>
       <column id="SCORE"/>
       <column id="NAME"/>
 	  <column id="FULL NAME"/>
-    </table>
-	
-	<table id="BEST BUBBLES">
-      <column id="RANK" src="index" format="+1"/>
-      <column id="BEST SCORE"/>
-      <column id="BEST NAME"/>
     </table>
   </output>
   

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- zeropnt by Unico, 1998 -->
+<!-- hiscore.dat: @:maincpu,program,ef1eb4,24,00,10 | @:maincpu,program,ef1f58,23,55,53 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>71</size>
+    </check>
+
+    <!-- Block 1: Scores (9 records, 4 bytes each) -->
+    <loop count="9">
+      <elt size="4" type="int" id="SCORE"/>
+    </loop>
+
+    <!-- Block 2: Names (9 records, 4 bytes each) -->
+    <!-- skip-last-bytes="1" handles the file cutting off before the final padding byte -->
+    <loop count="9" skip-last-bytes="1">
+      <elt size="4" type="text" id="NAME" charset="zeropnt_chars"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TOTAL SCORE RANKING">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="SCORE" src="SCORE" format="PadL70;comma_score"/>
+    </table>
+  </output>
+
+  <!-- Translates 0-8 into 1ST-9TH -->
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/><txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <charset id="zeropnt_chars">
+    <char src="0x00" dst=""/>
+  </charset>
+</hi2txt>

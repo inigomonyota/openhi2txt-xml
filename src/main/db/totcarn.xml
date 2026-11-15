@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<hi2txt>
+  <!--
+    Total Carnage (totcarn)
+    NVRAM size: 32768 bytes
+
+    Each useful byte is stored at an even file offset, with 0x00 padding
+    at the following odd offset.
+
+    Record layout (16 raw bytes):
+      8 bytes  score: four packed-BCD bytes, interleaved with 0x00
+      6 bytes  initials: three ASCII bytes, interleaved with 0x00
+      2 bytes  validation/unknown word
+
+    Today's table:  0x0010, 10 records
+    All-time table: 0x4010, 10 records
+  -->
+
+  <structure file="nvram">
+    <check>
+      <size>32768</size>
+    </check>
+
+    <elt size="16" type="raw" id="TODAY HEADER"/>
+
+    <loop count="10">
+      <elt size="8"
+           type="text"
+           id="TODAY SCORE"
+           byte-skip="even"
+           src-unit-size="4"
+           dst-unit-size="1"
+           ascii-offset="48"/>
+
+      <elt size="6"
+           type="text"
+           id="TODAY NAME"
+           byte-skip="even"/>
+
+      <elt size="2" type="raw" id="TODAY CHECK"/>
+    </loop>
+
+    <elt size="16208" type="raw" id="MIDDLE PADDING"/>
+
+    <elt size="16" type="raw" id="ALL TIME HEADER"/>
+
+    <loop count="10">
+      <elt size="8"
+           type="text"
+           id="ALL TIME SCORE"
+           byte-skip="even"
+           src-unit-size="4"
+           dst-unit-size="1"
+           ascii-offset="48"/>
+
+      <elt size="6"
+           type="text"
+           id="ALL TIME NAME"
+           byte-skip="even"/>
+
+      <elt size="2" type="raw" id="ALL TIME CHECK"/>
+    </loop>
+
+    <elt size="16208" type="raw" id="FINAL PADDING"/>
+  </structure>
+
+<output>
+  <table id="ALL-TIME HIGH SCORES" line-ignore="SCORE:">
+    <column id="RANK" src="index" format="+1"/>
+    <column id="SCORE"
+            src="ALL TIME SCORE"
+            format="trim_score;group_score"/>
+    <column id="NAME" src="ALL TIME NAME"/>
+  </table>
+
+  <table id="TODAY'S HIGH SCORES" line-ignore="SCORE:">
+    <column id="RANK" src="index" format="+1"/>
+    <column id="SCORE"
+            src="TODAY SCORE"
+            format="trim_score;group_score"/>
+    <column id="NAME" src="TODAY NAME"/>
+  </table>
+</output>
+
+<format id="+1">
+  <add>1</add>
+</format>
+
+<format id="trim_score">
+  <trim direction="left">0</trim>
+</format>
+
+<format id="group_score">
+  <case src="1000000"
+        operator="&gt;="
+        format="score_millions"/>
+  <case src="1000"
+        operator="&gt;="
+        format="score_thousands"/>
+</format>
+
+<format id="score_millions"
+        input-as-subcolumns-input="yes">
+  <concat>
+    <column format="d1000000"/>
+    <txt>,</txt>
+    <column format="%1000000;d1000;PadL30"/>
+    <txt>,</txt>
+    <column format="%1000;PadL30"/>
+  </concat>
+</format>
+
+<format id="score_thousands"
+        input-as-subcolumns-input="yes">
+  <concat>
+    <column format="d1000"/>
+    <txt>,</txt>
+    <column format="%1000;PadL30"/>
+  </concat>
+</format>
+
+</hi2txt>

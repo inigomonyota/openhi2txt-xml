@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <check><size>89</size></check>
+    
+    <!-- BLOCK 1: Scores -->
+    <loop count="5">
+      <elt size="4" type="int" id="SCORE" endianness="big_endian"/>
+    </loop>
+    <elt size="4" type="raw" id="SKIP_SCORE_6"/>
+    
+    <!-- BLOCK 2: Redundant BCD Scores -->
+    <elt size="20" type="raw" id="SKIP_BCD_SCORES"/>
+    
+    <!-- BLOCK 3: Names -->
+    <loop count="5">
+      <elt size="4" type="text" id="NAME" charset="phelios_char"/>
+    </loop>
+    <elt size="4" type="raw" id="SKIP_NAME_6"/>
+    
+    <!-- BLOCK 4: Top Score -->
+    <elt size="4" type="int" id="TOP_SCORE" endianness="big_endian"/>
+    
+    <!-- BLOCK 5: Chapters -->
+    <loop count="5" skip-last-bytes="3">
+      <elt size="1" type="int" id="CHAP"/>
+      <elt size="3" type="raw" id="CHAP_PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORES">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="CHAP"  src="CHAP"  format="chap_fmt"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+  <!-- Translates the index to match the arcade's written-out text -->
+  <format id="ordinal">
+    <case src="0" dst="FIRST"/>
+    <case src="1" dst="SECOND"/>
+    <case src="2" dst="THIRD"/>
+    <case src="3" dst="FOURTH"/>
+    <case src="4" dst="FIFTH"/>
+  </format>
+
+  <!-- Re-appends the 'CHAP.' text to the raw number to match the screen -->
+  <format id="chap_fmt">
+    <prefix>CHAP.</prefix>
+  </format>
+
+  <!-- The game uses 0x3F (?) for a period (.) -->
+  <charset id="phelios_char">
+    <char src="0x3F" dst="."/>
+  </charset>
+</hi2txt>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    Continental Circus (Taito, 1988)
+    contcirc, contcircu
+
+    .hi file: 604 bytes (3 chunks from hiscore.dat)
+      Chunk 1 (599B @83064): 50-entry score table
+      Chunk 2 (  4B @84582): top score display
+      Chunk 3 (  1B @826ef): init flag
+
+    Entry format (12 bytes):
+      [SCORE:4 BE] [ROUND:2 BE] [RANK:2 BE] [NAME:3 ASCII] [NULL:1]
+      SCORE: 4-byte big-endian integer, display = raw x 10
+      ROUND: circuit reached (6=Mexico 5=Spain 4=Germany 3=Monaco 2=France 1=America)
+      RANK:  position number shown in-game (12-73)
+      NAME:  3 bytes plain ASCII (A-Z)
+
+    Entry 50 is 11 bytes (null terminator falls in chunk 2).
+
+    Default high scores range from 3,000,000 (HNO) to 550,000 (DDA).
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,83064,257,00,41
+                  @:maincpu,program,84582,4,00,e0
+                  @:maincpu,program,826ef,1,52,52</definition>
+      <size>604</size>
+    </check>
+    <!-- 50 entries x 12 bytes, last entry short by 1 (null terminator in chunk 2) -->
+    <loop count="50" skip-last-bytes="1">
+      <elt size="4" type="int" id="SCORE"/>
+      <elt size="2" type="int" id="ROUND"/>
+      <elt size="2" type="int" id="RANK"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw" id="NULL"/>
+    </loop>
+    <!-- Chunk 2: Top score (4-byte BE) -->
+    <elt size="4" type="int" id="TOP SCORE"/>
+    <!-- Chunk 3: Init flag -->
+    <elt size="1" type="raw" id="FLAG"/>
+  </structure>
+
+  <output>
+    <table>
+      <column id="POSITION" src="index" format="+1"/>
+      <column id="SCORE" format="*10"/>
+      <column id="ROUND" format="circuit"/>
+      <column id="RANK"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="*10"><multiply>10</multiply></format>
+  <format id="circuit">
+    <replace src="1" dst="AMERICA"/>
+    <replace src="2" dst="FRANCE"/>
+    <replace src="3" dst="MONACO"/>
+    <replace src="4" dst="GERMANY"/>
+    <replace src="5" dst="SPAIN"/>
+    <replace src="6" dst="MEXICO"/>
+  </format>
+</hi2txt>

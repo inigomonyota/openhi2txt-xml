@@ -1,0 +1,53 @@
+<hi2txt>
+  <table id="WAVE RIDERS WR-01R">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1st</cell><cell>HOK</cell><cell>140000</cell></row>
+    <row><cell>2nd</cell><cell>KYO</cell><cell>130000</cell></row>
+    <row><cell>3rd</cell><cell>KUT</cell><cell>120000</cell></row>
+    <row><cell>4th</cell><cell>ACH</cell><cell>110000</cell></row>
+    <row><cell>5th</cell><cell>INO</cell><cell>100000</cell></row>
+    <row><cell>6th</cell><cell>TSU</cell><cell>90000</cell></row>
+    <row><cell>7th</cell><cell>DOI</cell><cell>80000</cell></row>
+    <row><cell>8th</cell><cell>KUR</cell><cell>70000</cell></row>
+    <row><cell>9th</cell><cell>AGE</cell><cell>60000</cell></row>
+    <row><cell>10th</cell><cell>TAC</cell><cell>50000</cell></row>
+    <row><cell>11th</cell><cell>HIN</cell><cell>40000</cell></row>
+    <row><cell>12th</cell><cell>OTA</cell><cell>30000</cell></row>
+    <row><cell>13th</cell><cell>TAK</cell><cell>20000</cell></row>
+    <row><cell>14th</cell><cell>AI.</cell><cell>10000</cell></row>
+  </table>
+  <table id="WAVE RIDERS WR-02R">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1st</cell><cell>HOK</cell><cell>140000</cell></row>
+    <row><cell>2nd</cell><cell>KYO</cell><cell>130000</cell></row>
+    <row><cell>3rd</cell><cell>KUT</cell><cell>120000</cell></row>
+    <row><cell>4th</cell><cell>ACH</cell><cell>110000</cell></row>
+    <row><cell>5th</cell><cell>INO</cell><cell>100000</cell></row>
+    <row><cell>6th</cell><cell>TSU</cell><cell>90000</cell></row>
+    <row><cell>7th</cell><cell>DOI</cell><cell>80000</cell></row>
+    <row><cell>8th</cell><cell>KUR</cell><cell>70000</cell></row>
+    <row><cell>9th</cell><cell>AGE</cell><cell>60000</cell></row>
+    <row><cell>10th</cell><cell>TAC</cell><cell>50000</cell></row>
+    <row><cell>11th</cell><cell>HIN</cell><cell>40000</cell></row>
+    <row><cell>12th</cell><cell>OTA</cell><cell>30000</cell></row>
+    <row><cell>13th</cell><cell>TAK</cell><cell>20000</cell></row>
+    <row><cell>14th</cell><cell>AI.</cell><cell>10000</cell></row>
+  </table>
+  <table id="WAVE RIDERS WR-03">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1st</cell><cell>HOK</cell><cell>140000</cell></row>
+    <row><cell>2nd</cell><cell>KYO</cell><cell>130000</cell></row>
+    <row><cell>3rd</cell><cell>KUT</cell><cell>120000</cell></row>
+    <row><cell>4th</cell><cell>ACH</cell><cell>110000</cell></row>
+    <row><cell>5th</cell><cell>INO</cell><cell>100000</cell></row>
+    <row><cell>6th</cell><cell>TSU</cell><cell>90000</cell></row>
+    <row><cell>7th</cell><cell>DOI</cell><cell>80000</cell></row>
+    <row><cell>8th</cell><cell>KUR</cell><cell>70000</cell></row>
+    <row><cell>9th</cell><cell>AGE</cell><cell>60000</cell></row>
+    <row><cell>10th</cell><cell>TAC</cell><cell>50000</cell></row>
+    <row><cell>11th</cell><cell>HIN</cell><cell>40000</cell></row>
+    <row><cell>12th</cell><cell>OTA</cell><cell>30000</cell></row>
+    <row><cell>13th</cell><cell>TAK</cell><cell>20000</cell></row>
+    <row><cell>14th</cell><cell>AI.</cell><cell>10000</cell></row>
+  </table>
+</hi2txt>

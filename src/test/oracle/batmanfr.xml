@@ -1,0 +1,56 @@
+<hi2txt>
+  <table id="BATMAN HIGH SCORES">
+    <col>RANK</col><col>NAME</col><col>SCORE</col><col>CHARACTER</col><col>UNKNOWN</col>
+    <row><cell>1ST</cell><cell>CARL</cell><cell>200000</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>2ND</cell><cell>STE.</cell><cell>150000</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>3RD</cell><cell>NEIL</cell><cell>100000</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>4TH</cell><cell>COOK</cell><cell>50000</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>5TH</cell><cell>CCCC</cell><cell>10500</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>6TH</cell><cell>PIP </cell><cell>5840</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>7TH</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>8TH</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>9TH</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>10TH</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>11TH</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>12TH</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>13TH</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>14TH</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>15TH</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>16TH</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>17TH</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>18TH</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>19TH</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>20TH</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>21ST</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>22ND</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>23RD</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+    <row><cell>24TH</cell><cell>....</cell><cell>0</cell><cell>BATMAN</cell><cell>0x0000</cell></row>
+  </table>
+  <table id="ROBIN HIGH SCORES">
+    <col>RANK</col><col>NAME</col><col>SCORE</col><col>CHARACTER</col><col>UNKNOWN</col>
+    <row><cell>1ST</cell><cell>MICK</cell><cell>200000</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>2ND</cell><cell>SCOT</cell><cell>150000</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>3RD</cell><cell>MALC</cell><cell>50000</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>4TH</cell><cell>RICH</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>5TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>6TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>7TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>8TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>9TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>10TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>11TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>12TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>13TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>14TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>15TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>16TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>17TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>18TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>19TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>20TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>21ST</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>22ND</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>23RD</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+    <row><cell>24TH</cell><cell>....</cell><cell>0</cell><cell>ROBIN</cell><cell>0x0000</cell></row>
+  </table>
+</hi2txt>

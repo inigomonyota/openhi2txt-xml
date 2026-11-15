@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    Sunset Riders (4 Players ver ABD)
+    ROM: ssridersabd
+    tested with mame and embedded hiscore.dat
+      source: analysis of .hi file
+    .hi file: 84 bytes
+    10 entries x 8 bytes = 80 bytes + 4-byte top score
+    Each entry (8 bytes):
+      +0  3 bytes  NAME (ASCII, A=0x41)
+      +3  1 byte   separator (always 0x3F)
+      +4  4 bytes  SCORE (BCD big-endian, read as base 16)
+    Trailing 4 bytes: top score (BCD big-endian)
+  //-->
+  <structure file=".hi">
+    <check>
+      <definition>0:104400:50:4b:00
+                  0:104120:4:00:00</definition>
+      <size>84</size>
+    </check>
+    <loop count="10">
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="SEPARATOR"/>
+      <elt size="4" type="int"  id="SCORE" base="16"/>
+    </loop>
+    <elt size="4" type="int" id="TOP SCORE" base="16"/>
+  </structure>
+  <output>
+    <table id="TOP 10">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="SCORE" format="score_fmt"/>
+      <column id="NAME"/>
+      <column id="SEPARATOR" format="hexadecimal_string" display="debug"/>
+    </table>
+  </output>
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+  <!-- split score into $X,XXX,XXX -->
+  <format id="score_fmt" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="millions"/>
+      <column format="thousands"/>
+      <txt>,</txt>
+      <column format="units"/>
+    </concat>
+    <trim direction="left">0</trim>
+    <prefix>$</prefix>
+  </format>
+  <format id="millions">
+    <divide_trunc>1000000</divide_trunc>
+    <suffix empty="0" consume="yes">,</suffix>
+  </format>
+  <format id="thousands">
+    <remainder>1000000</remainder>
+    <divide_trunc>1000</divide_trunc>
+    <pad direction="left" max="3">0</pad>
+  </format>
+  <format id="units">
+    <remainder>1000</remainder>
+    <pad direction="left" max="3">0</pad>
+  </format>
+</hi2txt>

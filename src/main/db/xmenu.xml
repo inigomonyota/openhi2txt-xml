@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    xmenu - X-Men (Konami, 1992)
+    tested with mame 0.148 and related hiscore.dat
+    source: HiToText (restructured for per-character tables)
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>0:113300:168:00:10</definition>
+      <size>360</size>
+    </check>
+    <!-- CYCLOPS //-->
+    <loop count="10">
+      <elt size="1" type="int"  id="CYC_STAGE" table-index="loop_reverse_index"/>
+      <elt size="3" type="text" id="CYC_NAME" table-index="loop_reverse_index" charset="xmen" ascii-offset="65"/>
+      <elt size="2" type="int"  id="CYC_SCORE" table-index="loop_reverse_index" base="16"/>
+    </loop>
+    <!-- COLOSSUS //-->
+    <loop count="10">
+      <elt size="1" type="int"  id="COL_STAGE" table-index="loop_reverse_index"/>
+      <elt size="3" type="text" id="COL_NAME" table-index="loop_reverse_index" charset="xmen" ascii-offset="65"/>
+      <elt size="2" type="int"  id="COL_SCORE" table-index="loop_reverse_index" base="16"/>
+    </loop>
+    <!-- WOLVERINE //-->
+    <loop count="10">
+      <elt size="1" type="int"  id="WOL_STAGE" table-index="loop_reverse_index"/>
+      <elt size="3" type="text" id="WOL_NAME" table-index="loop_reverse_index" charset="xmen" ascii-offset="65"/>
+      <elt size="2" type="int"  id="WOL_SCORE" table-index="loop_reverse_index" base="16"/>
+    </loop>
+    <!-- STORM //-->
+    <loop count="10">
+      <elt size="1" type="int"  id="STO_STAGE" table-index="loop_reverse_index"/>
+      <elt size="3" type="text" id="STO_NAME" table-index="loop_reverse_index" charset="xmen" ascii-offset="65"/>
+      <elt size="2" type="int"  id="STO_SCORE" table-index="loop_reverse_index" base="16"/>
+    </loop>
+    <!-- NIGHTCRAWLER //-->
+    <loop count="10">
+      <elt size="1" type="int"  id="NIG_STAGE" table-index="loop_reverse_index"/>
+      <elt size="3" type="text" id="NIG_NAME" table-index="loop_reverse_index" charset="xmen" ascii-offset="65"/>
+      <elt size="2" type="int"  id="NIG_SCORE" table-index="loop_reverse_index" base="16"/>
+    </loop>
+    <!-- DAZZLER //-->
+    <loop count="10">
+      <elt size="1" type="int"  id="DAZ_STAGE" table-index="loop_reverse_index"/>
+      <elt size="3" type="text" id="DAZ_NAME" table-index="loop_reverse_index" charset="xmen" ascii-offset="65"/>
+      <elt size="2" type="int"  id="DAZ_SCORE" table-index="loop_reverse_index" base="16"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="THE BEST 10 PLAYERS OF CYCLOPS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="CYC_SCORE"/>
+      <column id="NAME" src="CYC_NAME"/>
+      <column id="STAGE" src="CYC_STAGE" format="+1"/>
+      <column id="CHARACTER" src="index" format="CYC_char"/>
+    </table>
+    <table id="THE BEST 10 PLAYERS OF COLOSSUS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="COL_SCORE"/>
+      <column id="NAME" src="COL_NAME"/>
+      <column id="STAGE" src="COL_STAGE" format="+1"/>
+      <column id="CHARACTER" src="index" format="COL_char"/>
+    </table>
+    <table id="THE BEST 10 PLAYERS OF WOLVERINE">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="WOL_SCORE"/>
+      <column id="NAME" src="WOL_NAME"/>
+      <column id="STAGE" src="WOL_STAGE" format="+1"/>
+      <column id="CHARACTER" src="index" format="WOL_char"/>
+    </table>
+    <table id="THE BEST 10 PLAYERS OF STORM">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="STO_SCORE"/>
+      <column id="NAME" src="STO_NAME"/>
+      <column id="STAGE" src="STO_STAGE" format="+1"/>
+      <column id="CHARACTER" src="index" format="STO_char"/>
+    </table>
+    <table id="THE BEST 10 PLAYERS OF NIGHTCRAWLER">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="NIG_SCORE"/>
+      <column id="NAME" src="NIG_NAME"/>
+      <column id="STAGE" src="NIG_STAGE" format="+1"/>
+      <column id="CHARACTER" src="index" format="NIG_char"/>
+    </table>
+    <table id="THE BEST 10 PLAYERS OF DAZZLER">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="DAZ_SCORE"/>
+      <column id="NAME" src="DAZ_NAME"/>
+      <column id="STAGE" src="DAZ_STAGE" format="+1"/>
+      <column id="CHARACTER" src="index" format="DAZ_char"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="CYC_char">
+    <multiply>0</multiply>
+    <replace src="0" dst="CYCLOPS"/>
+  </format>
+  <format id="COL_char">
+    <multiply>0</multiply>
+    <replace src="0" dst="COLOSSUS"/>
+  </format>
+  <format id="WOL_char">
+    <multiply>0</multiply>
+    <replace src="0" dst="WOLVERINE"/>
+  </format>
+  <format id="STO_char">
+    <multiply>0</multiply>
+    <replace src="0" dst="STORM"/>
+  </format>
+  <format id="NIG_char">
+    <multiply>0</multiply>
+    <replace src="0" dst="NIGHTCRAWLER"/>
+  </format>
+  <format id="DAZ_char">
+    <multiply>0</multiply>
+    <replace src="0" dst="DAZZLER"/>
+  </format>
+
+  <charset id="xmen">
+    <char src="0x1A" dst="0"/>
+    <char src="0x1B" dst="1"/>
+    <char src="0x1C" dst="2"/>
+    <char src="0x1D" dst="3"/>
+    <char src="0x1E" dst="4"/>
+    <char src="0x1F" dst="5"/>
+    <char src="0x20" dst="6"/>
+    <char src="0x21" dst="7"/>
+    <char src="0x22" dst="8"/>
+    <char src="0x23" dst="9"/>
+    <char src="0x24" dst="!"/>
+    <char src="0x25" dst="?"/>
+    <char src="0x26" dst=":"/>
+    <char src="0x27" dst=","/>
+    <char src="0x28" dst="."/>
+    <char src="0x29" dst="-"/>
+    <char src="0x2A" dst="·"/>
+  </charset>
+</hi2txt>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<table id="HIGH SCORE TABLE">
+<col>RANK</col><col>SCORE</col><col>INITIALS</col>
+<row><cell>1</cell><cell>750</cell><cell>TNK</cell></row>
+<row><cell>2</cell><cell>700</cell><cell>TNK</cell></row>
+<row><cell>3</cell><cell>650</cell><cell>TNK</cell></row>
+<row><cell>4</cell><cell>600</cell><cell>TNK</cell></row>
+<row><cell>5</cell><cell>550</cell><cell>KFT</cell></row>
+<row><cell>6</cell><cell>500</cell><cell>NLA</cell></row>
+<row><cell>7</cell><cell>450</cell><cell>SGM</cell></row>
+<row><cell>8</cell><cell>400</cell><cell>KEM</cell></row>
+<row><cell>9</cell><cell>350</cell><cell>DEW</cell></row>
+<row><cell>10</cell><cell>300</cell><cell>PMC</cell></row>
+<row><cell>11</cell><cell>250</cell><cell>HAL</cell></row>
+<row><cell>12</cell><cell>200</cell><cell>BAF</cell></row>
+<row><cell>13</cell><cell>150</cell><cell>REM</cell></row>
+<row><cell>14</cell><cell>100</cell><cell>RBD</cell></row>
+<row><cell>15</cell><cell>50</cell><cell>MEA</cell></row>
+</table>
+</hi2txt>

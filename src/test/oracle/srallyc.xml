@@ -1,0 +1,21 @@
+<hi2txt>
+  <table id="CHAMPIONSHIP TOP 16">
+    <col>RANK</col><col>NAME</col><col>TIME</col><col>CAR</col><col>TRANSMISSION</col>
+    <row><cell>1</cell><cell>POO</cell><cell>3&apos;30&quot;00</cell><cell>CELICA</cell><cell>AT</cell></row>
+    <row><cell>2</cell><cell>KAW</cell><cell>3&apos;33&quot;00</cell><cell>DELTA</cell><cell>AT</cell></row>
+    <row><cell>3</cell><cell>HAY</cell><cell>3&apos;36&quot;00</cell><cell>CELICA</cell><cell>MT</cell></row>
+    <row><cell>4</cell><cell>SAS</cell><cell>3&apos;39&quot;00</cell><cell>DELTA</cell><cell>MT</cell></row>
+    <row><cell>5</cell><cell>ARA</cell><cell>3&apos;42&quot;00</cell><cell>CELICA</cell><cell>AT</cell></row>
+    <row><cell>6</cell><cell>SHO</cell><cell>3&apos;45&quot;00</cell><cell>DELTA</cell><cell>AT</cell></row>
+    <row><cell>7</cell><cell>GAT</cell><cell>3&apos;48&quot;00</cell><cell>CELICA</cell><cell>MT</cell></row>
+    <row><cell>8</cell><cell>KEN</cell><cell>3&apos;51&quot;00</cell><cell>DELTA</cell><cell>MT</cell></row>
+    <row><cell>9</cell><cell>YEM</cell><cell>3&apos;54&quot;00</cell><cell>CELICA</cell><cell>AT</cell></row>
+    <row><cell>10</cell><cell>RIC</cell><cell>3&apos;57&quot;00</cell><cell>DELTA</cell><cell>AT</cell></row>
+    <row><cell>11</cell><cell>MAT</cell><cell>4&apos;00&quot;00</cell><cell>CELICA</cell><cell>MT</cell></row>
+    <row><cell>12</cell><cell>KAM</cell><cell>4&apos;03&quot;00</cell><cell>DELTA</cell><cell>MT</cell></row>
+    <row><cell>13</cell><cell>YAM</cell><cell>4&apos;06&quot;00</cell><cell>CELICA</cell><cell>AT</cell></row>
+    <row><cell>14</cell><cell>HIR</cell><cell>4&apos;09&quot;00</cell><cell>DELTA</cell><cell>AT</cell></row>
+    <row><cell>15</cell><cell>OHA</cell><cell>4&apos;12&quot;00</cell><cell>CELICA</cell><cell>MT</cell></row>
+    <row><cell>16</cell><cell>MIZ</cell><cell>7&apos;15&quot;00</cell><cell>DELTA</cell><cell>MT</cell></row>
+  </table>
+</hi2txt>

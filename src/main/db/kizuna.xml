@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Kizuna Encounter: Super Tag Battle">
+  <structure file="saveram" byte-swap="2">
+    <check><size>65536</size></check>
+    <elt size="816" type="raw" id="_PREFIX"/>
+    <loop count="5">
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="int" id="TEAM"/>
+      <elt size="4" type="int" id="SCORE" endianness="big_endian" base="16"/>
+    </loop>
+    <loop count="3">
+      <elt size="3" type="text" id="HAYATE_NAME"/>
+      <elt size="1" type="int" id="HAYATE_RUSH"/>
+    </loop>
+    <loop count="3">
+      <elt size="3" type="text" id="EAGLE_NAME"/>
+      <elt size="1" type="int" id="EAGLE_RUSH"/>
+    </loop>
+    <loop count="3">
+      <elt size="3" type="text" id="GOZU_NAME"/>
+      <elt size="1" type="int" id="GOZU_RUSH"/>
+    </loop>
+    <loop count="3">
+      <elt size="3" type="text" id="MEZU_NAME"/>
+      <elt size="1" type="int" id="MEZU_RUSH"/>
+    </loop>
+    <loop count="3">
+      <elt size="3" type="text" id="ROSA_NAME"/>
+      <elt size="1" type="int" id="ROSA_RUSH"/>
+    </loop>
+    <loop count="3">
+      <elt size="3" type="text" id="KIM_NAME"/>
+      <elt size="1" type="int" id="KIM_RUSH"/>
+    </loop>
+    <loop count="3">
+      <elt size="3" type="text" id="JOKER_NAME"/>
+      <elt size="1" type="int" id="JOKER_RUSH"/>
+    </loop>
+    <loop count="3">
+      <elt size="3" type="text" id="CHUNG_NAME"/>
+      <elt size="1" type="int" id="CHUNG_RUSH"/>
+    </loop>
+    <loop count="3">
+      <elt size="3" type="text" id="GORDON_NAME"/>
+      <elt size="1" type="int" id="GORDON_RUSH"/>
+    </loop>
+    <loop count="3">
+      <elt size="3" type="text" id="KINGLION_NAME"/>
+      <elt size="1" type="int" id="KINGLION_RUSH"/>
+    </loop>
+    <elt size="64560" type="raw" id="_SUFFIX"/>
+  </structure>
+  <output>
+    <table id="RANKING" lines-max="5">
+      <column id="RANK" src="index" format="rank5"/>
+      <column id="NAME" src="NAME"/>
+      <column id="FIGHTER 1" src="TEAM" format="d16;fighter"/>
+      <column id="FIGHTER 2" src="TEAM" format="%16;fighter"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+    <table id="RUSH RANK - HAYATE" lines-max="3">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="NAME" src="HAYATE_NAME"/>
+      <column id="RUSH" src="HAYATE_RUSH"/>
+    </table>
+    <table id="RUSH RANK - EAGLE" lines-max="3">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="NAME" src="EAGLE_NAME"/>
+      <column id="RUSH" src="EAGLE_RUSH"/>
+    </table>
+    <table id="RUSH RANK - GOZU" lines-max="3">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="NAME" src="GOZU_NAME"/>
+      <column id="RUSH" src="GOZU_RUSH"/>
+    </table>
+    <table id="RUSH RANK - MEZU" lines-max="3">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="NAME" src="MEZU_NAME"/>
+      <column id="RUSH" src="MEZU_RUSH"/>
+    </table>
+    <table id="RUSH RANK - ROSA" lines-max="3">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="NAME" src="ROSA_NAME"/>
+      <column id="RUSH" src="ROSA_RUSH"/>
+    </table>
+    <table id="RUSH RANK - KIM YOUNG-MOK" lines-max="3">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="NAME" src="KIM_NAME"/>
+      <column id="RUSH" src="KIM_RUSH"/>
+    </table>
+    <table id="RUSH RANK - JOKER" lines-max="3">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="NAME" src="JOKER_NAME"/>
+      <column id="RUSH" src="JOKER_RUSH"/>
+    </table>
+    <table id="RUSH RANK - CHUNG" lines-max="3">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="NAME" src="CHUNG_NAME"/>
+      <column id="RUSH" src="CHUNG_RUSH"/>
+    </table>
+    <table id="RUSH RANK - GORDON" lines-max="3">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="NAME" src="GORDON_NAME"/>
+      <column id="RUSH" src="GORDON_RUSH"/>
+    </table>
+    <table id="RUSH RANK - KING LION" lines-max="3">
+      <column id="RANK" src="index" format="rank3"/>
+      <column id="NAME" src="KINGLION_NAME"/>
+      <column id="RUSH" src="KINGLION_RUSH"/>
+    </table>
+  </output>
+  <format id="rank5">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+  <format id="rank3">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+  </format>
+  <format id="fighter">
+    <case src="0" dst="KIM YOUNG-MOK"/>
+    <case src="1" dst="JOKER"/>
+    <case src="2" dst="ROSA"/>
+    <case src="3" dst="GORDON"/>
+    <case src="4" dst="GOZU"/>
+    <case src="5" dst="HAYATE"/>
+    <case src="6" dst="EAGLE"/>
+    <case src="7" dst="KING LION"/>
+    <case src="8" dst="MEZU"/>
+    <case src="9" dst="CHUNG"/>
+  </format>
+</hi2txt>

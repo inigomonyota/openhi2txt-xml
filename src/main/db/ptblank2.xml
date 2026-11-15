@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file="at28c16">
+    <check>
+      <size>2080</size>
+    </check>
+    <elt size="192" type="raw" id="HEADER"/>
+    <loop count="10">
+      <elt size="4" type="int" endianness="little_endian" id="SCORE"/>
+      <elt size="3" type="text" ascii-offset="32" id="NAME" charset="chars"/>
+      <elt size="1" type="raw" id="LEVEL"/>
+      <elt size="2" type="int" id="PADDING"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="NAME"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="LEVEL" src="LEVEL" format="level_mapping"/>
+    </table>
+  </output>
+
+  <format id="level_mapping">
+    <case src="00" dst="PRACTICE"/>
+    <case src="01" dst="BEGINNER"/>
+    <case src="02" dst="ADVANCED"/>
+    <case src="03" dst="INSANE"/>
+  </format>
+
+  <charset id="chars">
+      <char src="0x4C" dst=" "/>
+      <char src="0x3C" dst="."/>
+  </charset>
+</hi2txt>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  Streets Of Rage II (Sega Genesis/Mega Drive) - "THE BEST 10 PLAYERS" board.
+
+  Source: the 68000 work-RAM region hiscore.dat targets,
+  maincpu,program,0xFD30,0xA0 = 160 bytes = 10 records x 16 bytes.
+  On a Genesis the 68000 work RAM lives at 0xFF0000-0xFFFFFF, so the
+  hiscore.dat offset 0xFD30 is really 0xFFFD30; the MAME hiscore plugin
+  writes exactly these 160 bytes to <game>.hi.
+
+  Per 16-byte record:
+    [0-2] SCORE  3-byte big-endian BCD (10 00 00 = 100000, 09 00 00 = 90000)
+    [3]   00     (high BCD byte, 0 for all default 6-digit scores)
+    [4]   CHARACTER index: 0=MAX, 2=AXEL, 4=BLAZE, 6=SKATE
+    [5-7] INITIALS, 3 ASCII chars ("Y.K")
+    [8]   04     constant
+    [9-15]       zero / display-bar scratch (byte 11 holds score/2000, a
+                 display value that is out of sync on two rows and is NOT used)
+
+  The displayed NAME is CHARACTER-INITIALS, e.g. "MAX-Y.K". RD and LEVEL are
+  constant on the default board (1 / NORMAL) and are not stored per entry.
+
+  Verified byte-for-byte against snap\genesis\0000.png: all 10 rows'
+  SCORE, CHARACTER and INITIALS match (100000 MAX-Y.K down to 10000 SKATE-K.T).
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>160</size>
+    </check>
+    <loop count="10">
+      <elt size="3" type="int"  id="SCORE" base="16"/>
+      <elt size="1" type="raw"  id="PAD0"/>
+      <elt size="1" type="int"  id="CHAR"/>
+      <elt size="3" type="text" id="INITIALS"/>
+      <elt size="1" type="raw"  id="PAD1"/>
+      <elt size="7" type="raw"  id="PAD2"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="THE BEST 10 PLAYERS">
+      <column id="RANK"  src="index" format="rank_ord"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="RD"    src="index" format="const_rd"/>
+      <column id="NAME"  format="full_name"/>
+      <column id="LEVEL" src="index" format="const_level"/>
+    </table>
+  </output>
+
+  <!-- character index -> character name -->
+  <format id="char_name">
+    <case src="0" operator="=" dst="MAX"/>
+    <case src="2" operator="=" dst="AXEL"/>
+    <case src="4" operator="=" dst="BLAZE"/>
+    <case src="6" operator="=" dst="SKATE"/>
+  </format>
+
+  <!-- CHARACTER-INITIALS, e.g. MAX-Y.K -->
+  <format id="full_name">
+    <concat>
+      <field id="CHAR" format="char_name"/>
+      <txt>-</txt>
+      <field id="INITIALS"/>
+    </concat>
+  </format>
+
+  <!-- row index (0..9) -> ordinal rank -->
+  <format id="rank_ord">
+    <case src="0" operator="=" dst="1ST"/>
+    <case src="1" operator="=" dst="2ND"/>
+    <case src="2" operator="=" dst="3RD"/>
+    <case src="3" operator="=" dst="4TH"/>
+    <case src="4" operator="=" dst="5TH"/>
+    <case src="5" operator="=" dst="6TH"/>
+    <case src="6" operator="=" dst="7TH"/>
+    <case src="7" operator="=" dst="8TH"/>
+    <case src="8" operator="=" dst="9TH"/>
+    <case src="9" operator="=" dst="10TH"/>
+  </format>
+
+  <!-- constant display columns on the default board -->
+  <format id="const_rd">
+    <case src="0" operator=">=" dst="1"/>
+  </format>
+  <format id="const_level">
+    <case src="0" operator=">=" dst="NORMAL"/>
+  </format>
+
+</hi2txt>

@@ -148,11 +148,81 @@ src/test/
 ├── hiscore.dat
 ├── input/
 │   ├── hi/
-│   └── nvram/
+│   ├── nvram/
+│   ├── diff/
+│   └── roms/
 └── oracle/
 ```
 
 There is one undated text/XML baseline per tested game. The bundled `hiscore.dat` is a snapshot of the current file from the official MAME repository.
+
+### Creating compact CHD regression fixtures
+
+`tests/create_chd_fixture.py` creates a compact parent-CHD/DIF pair for a
+DIF-backed definition. It reads the definition's real `offset` and `length`
+attributes, extracts only those logical byte ranges from the real parent and
+merged disks, preserves their absolute offsets in sparse synthetic raw images,
+and uses MAME's `chdman` to create the fixture pair.
+
+Set the two machine-specific tool paths once:
+
+```powershell
+$env:MAME_ROOT = "E:\path\to\mame"
+$env:CHDMAN = "C:\path\to\chdman.exe"
+```
+
+The game name is then the only required argument:
+
+```powershell
+python tests/create_chd_fixture.py kinst
+```
+
+The generated files are placed in the production-shaped test layout:
+
+```text
+src/test/input/roms/kinst/kinst.chd
+src/test/input/diff/kinst.dif
+```
+
+The complete real CHD, complete real DIF, and temporary raw images are never
+copied into the repository; only the XML-selected logical byte ranges are
+retained inside the compact fixture pair. Existing fixture files are preserved
+unless `--force` is supplied.
+
+### Adding normal `.hi` and NVRAM regression fixtures
+
+`tests/create_regression_fixture.py` copies the files referenced by a game's
+definition from a real MAME installation and creates both canonical oracle
+formats with OpenHi2txt. Configure the machine-specific paths once:
+
+```powershell
+$env:MAME_ROOT = "E:\path\to\mame"
+$env:OPENHI2TXT = "C:\path\to\openhi2txt.exe"
+```
+
+The game name is then the only required argument:
+
+```powershell
+python tests/create_regression_fixture.py hangon
+```
+
+The script follows `sameas` definitions, copies every available `.hi` or NVRAM
+file referenced by the effective structures, and writes:
+
+```text
+src/test/input/hi/hangon.hi
+src/test/oracle/hangon.txt
+src/test/oracle/hangon.xml
+```
+
+For NVRAM definitions, referenced files retain their path beneath
+`src/test/input/nvram/<game>/`. Existing fixtures and oracles are preserved
+unless `--force` is supplied. The command also checks for
+`src/main/db_defaults/<game>.xml`: an existing default must be well-formed and
+have the same table IDs and columns as the generated XML oracle, while a
+missing default produces a visible review reminder. Defaults remain
+repository-owned data and are never generated or interpreted by OpenHi2txt.
+Both generated oracle files should be reviewed before committing them.
 
 ## Technologies
 

@@ -1,0 +1,24 @@
+<hi2txt>
+  <table id="HIGH SCORE">
+    <col>POS.</col><col>NAME</col><col>SCORE</col><col>INIT1</col><col>INIT2</col><col>INIT3</col><col>POS</col><col>PAD1</col><col>PAD2</col><col>PAD3</col><col>ZERO</col>
+    <row><cell>1</cell><cell>PIP</cell><cell>200000</cell><cell>P</cell><cell>I</cell><cell>P</cell><cell>0x1</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0xFFFFFFFF</cell></row>
+    <row><cell>2</cell><cell>JIM</cell><cell>117250</cell><cell>J</cell><cell>I</cell><cell>M</cell><cell>0x2</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0xFFFFFFFF</cell></row>
+    <row><cell>3</cell><cell>JMZ</cell><cell>96450</cell><cell>J</cell><cell>M</cell><cell>Z</cell><cell>0x3</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0xFFFFFFFF</cell></row>
+    <row><cell>4</cell><cell>GUY</cell><cell>91875</cell><cell>G</cell><cell>U</cell><cell>Y</cell><cell>0x4</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0xFFFFFFFF</cell></row>
+    <row><cell>5</cell><cell>DAV</cell><cell>70125</cell><cell>D</cell><cell>A</cell><cell>V</cell><cell>0x5</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0xFFFFFFFF</cell></row>
+    <row><cell>6</cell><cell>TAZ</cell><cell>63500</cell><cell>T</cell><cell>A</cell><cell>Z</cell><cell>0x6</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0xFFFFFFFF</cell></row>
+    <row><cell>7</cell><cell>RW</cell><cell>55975</cell><cell>R</cell><cell>W</cell><cell> </cell><cell>0x7</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0xFFFFFF</cell><cell>0xFFFFFFFF</cell></row>
+    <row><cell>8</cell><cell>ROB</cell><cell>41350</cell><cell>R</cell><cell>O</cell><cell>B</cell><cell>0x8</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0xFFFFFFFF</cell></row>
+    <row><cell>9</cell><cell>CG</cell><cell>34625</cell><cell>C</cell><cell>G</cell><cell> </cell><cell>0x9</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0xFFFFFF</cell><cell>0xFFFFFFFF</cell></row>
+    <row><cell>10</cell><cell>DVE</cell><cell>27625</cell><cell>D</cell><cell>V</cell><cell>E</cell><cell>0xa</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0x000000</cell><cell>0xFFFFFFFF</cell></row>
+  </table>
+  <table id="TOURNAMENT">
+    <col>POS.</col><col>NAME</col><col>SCORE</col><col>TINIT1</col><col>TINIT2</col><col>TINIT3</col><col>TPOS</col><col>TPAD1</col><col>TPAD2</col><col>TPAD3</col><col>TZERO</col>
+    <row><cell>1</cell><cell>   </cell><cell>50000</cell><cell> </cell><cell> </cell><cell> </cell><cell>0xffffffff</cell><cell>0xFFFFFF</cell><cell>0xFFFFFF</cell><cell>0xFFFFFF</cell><cell>0x00000000</cell></row>
+    <row><cell>2</cell><cell>   </cell><cell>50000</cell><cell> </cell><cell> </cell><cell> </cell><cell>0x4</cell><cell>0xFFFFFF</cell><cell>0xFFFFFF</cell><cell>0xFFFFFF</cell><cell>0xFFFFFFFF</cell></row>
+    <row><cell>3</cell><cell>   </cell><cell>50000</cell><cell> </cell><cell> </cell><cell> </cell><cell>0x3</cell><cell>0xFFFFFF</cell><cell>0xFFFFFF</cell><cell>0xFFFFFF</cell><cell>0xFFFFFFFF</cell></row>
+    <row><cell>4</cell><cell>   </cell><cell>50000</cell><cell> </cell><cell> </cell><cell> </cell><cell>0x2</cell><cell>0xFFFFFF</cell><cell>0xFFFFFF</cell><cell>0xFFFFFF</cell><cell>0xFFFFFFFF</cell></row>
+    <row><cell>5</cell><cell>   </cell><cell>50000</cell><cell> </cell><cell> </cell><cell> </cell><cell>0x1</cell><cell>0xFFFFFF</cell><cell>0xFFFFFF</cell><cell>0xFFFFFF</cell><cell>0xFFFFFFFF</cell></row>
+  </table>
+  <field id="SENTINEL">0x01</field>
+</hi2txt>

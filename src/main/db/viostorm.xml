@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Violent Storm">
+  <!--
+    tested with mame 0.??? and related hiscore.dat
+    structure: 321 bytes total
+      [0:240]   15 per-character threshold entries (WA1-5, BO1-5, CA1-5), 16 bytes each (raw)
+      [240:320]  5 main ranking entries, 16 bytes each:
+                   [0]    character index (0=Wade, 1=Boris, 2=Kyle)
+                   [1:4]  name, 3 ASCII chars
+                   [4:8]  score, 4-byte BCD big-endian (base16)
+                   [8]    stage reached (1-7)
+                   [9:16] padding / top-score overlay (7 bytes raw)
+      [320]      1 trailing byte (top-score record overflow, raw)
+    stage format: "STAGE " prefix + value (e.g. STAGE 7)
+    character: case-mapped 0->WADE, 1->BORIS, 2->KYLE (matches portrait display)
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>321</size>
+    </check>
+    <elt size="240" type="raw" id="CHARACTER ENTRIES"/>
+    <loop count="5">
+      <elt size="1" type="int"  id="CHARACTER" table-index="loop_reverse_index"/>
+      <elt size="3" type="text" id="NAME"       table-index="loop_reverse_index"/>
+      <elt size="4" type="int"  id="SCORE"      table-index="loop_reverse_index" base="16"/>
+      <elt size="1" type="int"  id="STAGE"      table-index="loop_reverse_index"/>
+      <elt size="7" type="raw"  id="PADDING"    table-index="loop_reverse_index"/>
+    </loop>
+    <elt size="1" type="raw" id="TRAILING"/>
+  </structure>
+
+  <output>
+    <table id="THE BEST PLAYERS">
+      <column id="RANK"      src="index" format="ordinal"/>
+      <column id="NAME"/>
+      <column id="SCORE"/>
+      <column id="STAGE"     format="prefixSTAGE"/>
+      <column id="CHARACTER" format="character"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+
+  <format id="prefixSTAGE">
+    <prefix>STAGE </prefix>
+  </format>
+
+  <format id="character">
+    <case src="0" dst="KYLE"/>
+    <case src="1" dst="WADE"/>
+    <case src="2" dst="BORIS"/>
+  </format>
+
+</hi2txt>

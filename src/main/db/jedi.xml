@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!-- Return of the Jedi (jedi) - ALL-TIME JEDI KNIGHTS top-10.
+       Scores persist in a pair of X2212 256x4-bit NOVRAMs (nvram/jedi/novram12b +
+       novram12c); each on-disk file holds only one nibble per byte, so neither can
+       be decoded alone. In the 6502 program space the two chips combine into full
+       bytes at 0x0800. The hiscore plugin (hiscore.dat entry
+       @:maincpu,program,800,50,00,a0) captures that combined 80-byte region as jedi.hi.
+
+       Record = 8 bytes, stored LOWEST score first (file index 0 = rank 10):
+         +0  0x00 pad
+         +1  B1  packed BCD, low two digits of score/100  (high nibble = thousands,
+                 low nibble = hundreds)
+         +2  B2  score/100 hundreds digit (ten-thousands of the real score)
+         +3  0x00
+         +4  3 ASCII initials
+         +7  0xa0 terminator
+
+       score = B2 . (B1>>4) . (B1&0xf) . "00"   e.g. DDH: 2,9,0,00 -> 29000.
+       NOTE: this build's bcd/bcd-le decoding-profile only reads the LOW nibble of
+       each byte (unpacked-BCD), so packed high-nibble digits must be rebuilt by
+       digit concatenation as below.
+
+       The volatile "TODAY'S REBEL FORCES" table lives at 0x07b0 in RAM and resets
+       daily, so it is not persisted and not covered here. -->
+  <structure file=".hi">
+    <check>
+      <definition>0:800:50:00:a0</definition>
+      <size>80</size>
+    </check>
+    <loop count="10">
+      <elt size="1" type="raw"  id="PAD"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="B1"   table-index="loop_index"/>
+      <elt size="1" type="int"  id="B2"   table-index="loop_index"/>
+      <elt size="1" type="raw"  id="SKIP" table-index="loop_index"/>
+      <elt size="3" type="text" id="NAME" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="TERM" table-index="loop_index"/>
+    </loop>
+  </structure>
+  <output>
+    <table id="ALL-TIME JEDI KNIGHTS">
+      <column id="RANK"  src="index" format="rank10"/>
+      <column id="SCORE" src="B1"    format="score"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+  <format id="rank10"><multiply>-1</multiply><add>10</add></format>
+  <format id="score" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="B2"/>
+      <column src="B1" format="d16"/>
+      <column src="B1" format="%16"/>
+      <txt>00</txt>
+    </concat>
+  </format>
+</hi2txt>

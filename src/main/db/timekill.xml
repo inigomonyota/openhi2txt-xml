@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Time Killers">
+  <!--
+    timekill (Time Killers, Incredible Technologies / Strata, itech32, 68000
+    BIG-endian). Scores persist NATIVELY in nvram\timekill\nvram (16 KiB, the
+    file is named "nvram16" on disk). The whole battery RAM is stored with its
+    16-bit words BYTE-SWAPPED relative to the CPU's big-endian view, so the
+    structure is read with byte-swap="2" (swap each pair) and every integer as
+    big_endian; 3-char names (3 ASCII + null) sit in 4-byte fields and come out
+    correct once the pairs are un-swapped.
+
+    Two charts live back-to-back starting at raw offset 0x1764:
+      IMMORTALS  names 0x1764 (12x4) + scores 0x1794 (12x4 BE)      -> NAME/SCORE
+      SURVIVORS  names 0x17c4 (12x4) + scores 0x17f4 (12x4 BE)
+                 + three 16-bit stat arrays of 12 each:
+                   WINS  0x1824, ARMS 0x183c, HEADS 0x1854
+                 (note the middle array is ARMS, not HEADS; the on-screen
+                  column order is WINS HEADS ARMS)
+    Each chart holds 12 ranked entries. Proven byte-for-byte against the played
+    nvram and the attract screenshots: SURVIVORS rank1 JPC 5/6/5 100000,
+    IMMORTALS rank1 RAD 100000. No hiscore.dat entry is required.
+    Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file="nvram" byte-swap="2">
+    <check>
+      <size>16384</size>
+    </check>
+
+    <elt type="raw" size="5988" id="_PREFIX"/>
+    <loop count="12">
+      <elt size="4" type="text" id="I_NAME" byte-trunc="0x00"/>
+    </loop>
+    <loop count="12">
+      <elt size="4" type="int"  id="I_SCORE" endianness="big_endian"/>
+    </loop>
+    <loop count="12">
+      <elt size="4" type="text" id="S_NAME" byte-trunc="0x00"/>
+    </loop>
+    <loop count="12">
+      <elt size="4" type="int"  id="S_SCORE" endianness="big_endian"/>
+    </loop>
+    <loop count="12">
+      <elt size="2" type="int"  id="S_WINS"  endianness="big_endian"/>
+    </loop>
+    <loop count="12">
+      <elt size="2" type="int"  id="S_ARMS"  endianness="big_endian"/>
+    </loop>
+    <loop count="12">
+      <elt size="2" type="int"  id="S_HEADS" endianness="big_endian"/>
+    </loop>
+    <elt type="raw" size="10132" id="_REST"/>
+  </structure>
+
+  <output>
+    <table id="SURVIVORS">
+      <column id="RANK"  src="index"  format="+1"/>
+      <column id="NAME"  src="S_NAME"/>
+      <column id="WINS"  src="S_WINS"/>
+      <column id="HEADS" src="S_HEADS"/>
+      <column id="ARMS"  src="S_ARMS"/>
+      <column id="SCORE" src="S_SCORE"/>
+    </table>
+    <table id="IMMORTALS">
+      <column id="RANK"  src="index"  format="+1"/>
+      <column id="NAME"  src="I_NAME"/>
+      <column id="SCORE" src="I_SCORE"/>
+    </table>
+  </output>
+</hi2txt>

@@ -1,0 +1,10 @@
+<hi2txt>
+  <table>
+    <col>CATEGORY</col><col>SCORE</col><col>NAME</col>
+    <row><cell>BEST PLAYER</cell><cell>58470</cell><cell>PIP</cell></row>
+    <row><cell>BEST SHOOTER</cell><cell>4246</cell><cell>PIP</cell></row>
+    <row><cell>BEST KILLER</cell><cell>200</cell><cell>TAC</cell></row>
+    <row><cell>BEST PERCENTAGE (%)</cell><cell>89</cell><cell>Agg</cell></row>
+    <row><cell>BEST FRIEND</cell><cell>3800</cell><cell>Agg</cell></row>
+  </table>
+</hi2txt>

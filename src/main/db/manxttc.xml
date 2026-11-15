@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!-- manxttc (Manx TT Superbike, Sega Model 2). NVRAM backup, 16384 bytes.
+     All records live in backup1 (the 128-byte eeprom is machine settings only).
+     Verified against the game's BOOKKEEPING test-menu (4/5 Normal, 5/5 T.T Race Mode).
+
+     Two modes x two courses, each keeping a TOTAL-time and a LAP-time ranking of 10:
+       Normal : Laxey TOTAL 0x40C  LAP 0x484 ; T.T. TOTAL 0x900  LAP 0x978
+       TT mode: Laxey TOTAL 0xDF4  LAP 0xE6C ; T.T. TOTAL 0x12E8 LAP 0x1360
+     All 10 ranks are read; lines-max="6" emits the 6 the game shows and keeps 7-10
+     parsed-but-hidden. To match the on-screen boards, the LAP column is hidden
+     (display="debug") on the Normal tables and the TOTAL column is hidden on the
+     TT tables - Championship shows total race time, Time Attack shows lap time.
+     GREATEST LAP TIMES reads the best lap stored per course (Laxey 0x2E8, T.T. 0x7DC);
+     that value persists across reboot though the on-screen "Best Lap of the Day"
+     reverts to 3'00"00 on boot.
+     Entry (12 bytes): value(4) + name(3) + NUL(1) + transmission(1: 01=MT,00=AT) + tail(3).
+
+     TIME CONVERSION: race timer ticks at exactly 56.4/sec, NO offset on any board.
+     total_cs = (value * 250) / 141, split MM'SS"CC. -->
+<hi2txt>
+  <structure file="backup1">
+    <check>
+      <size>16384</size>
+    </check>
+
+    <elt size="744" type="text" id="SKIP0"/>
+    <elt size="4" type="int" id="BEST" endianness="little_endian" table-index="0"/>
+    <elt size="288" type="text" id="SKIP2"/>
+    <loop count="10">
+      <elt size="4" type="int"  id="VAL_nLT" endianness="little_endian"/>
+      <elt size="3" type="text" id="NAME_nLT"/>
+      <elt size="1" type="raw"  id="NUL_nLT"/>
+      <elt size="1" type="int"  id="TR_nLT"/>
+      <elt size="3" type="raw"  id="TL_nLT"/>
+    </loop>
+    <loop count="10">
+      <elt size="4" type="int"  id="VAL_nLP" endianness="little_endian"/>
+      <elt size="3" type="text" id="NAME_nLP"/>
+      <elt size="1" type="raw"  id="NUL_nLP"/>
+      <elt size="1" type="int"  id="TR_nLP"/>
+      <elt size="3" type="raw"  id="TL_nLP"/>
+    </loop>
+    <elt size="736" type="text" id="SKIP5"/>
+    <elt size="4" type="int" id="BEST" endianness="little_endian" table-index="1"/>
+    <elt size="288" type="text" id="SKIP7"/>
+    <loop count="10">
+      <elt size="4" type="int"  id="VAL_nCT" endianness="little_endian"/>
+      <elt size="3" type="text" id="NAME_nCT"/>
+      <elt size="1" type="raw"  id="NUL_nCT"/>
+      <elt size="1" type="int"  id="TR_nCT"/>
+      <elt size="3" type="raw"  id="TL_nCT"/>
+    </loop>
+    <loop count="10">
+      <elt size="4" type="int"  id="VAL_nCP" endianness="little_endian"/>
+      <elt size="3" type="text" id="NAME_nCP"/>
+      <elt size="1" type="raw"  id="NUL_nCP"/>
+      <elt size="1" type="int"  id="TR_nCP"/>
+      <elt size="3" type="raw"  id="TL_nCP"/>
+    </loop>
+    <elt size="1028" type="text" id="SKIP10"/>
+    <loop count="10">
+      <elt size="4" type="int"  id="VAL_tLT" endianness="little_endian"/>
+      <elt size="3" type="text" id="NAME_tLT"/>
+      <elt size="1" type="raw"  id="NUL_tLT"/>
+      <elt size="1" type="int"  id="TR_tLT"/>
+      <elt size="3" type="raw"  id="TL_tLT"/>
+    </loop>
+    <loop count="10">
+      <elt size="4" type="int"  id="VAL_tLP" endianness="little_endian"/>
+      <elt size="3" type="text" id="NAME_tLP"/>
+      <elt size="1" type="raw"  id="NUL_tLP"/>
+      <elt size="1" type="int"  id="TR_tLP"/>
+      <elt size="3" type="raw"  id="TL_tLP"/>
+    </loop>
+    <elt size="1028" type="text" id="SKIP13"/>
+    <loop count="10">
+      <elt size="4" type="int"  id="VAL_tCT" endianness="little_endian"/>
+      <elt size="3" type="text" id="NAME_tCT"/>
+      <elt size="1" type="raw"  id="NUL_tCT"/>
+      <elt size="1" type="int"  id="TR_tCT"/>
+      <elt size="3" type="raw"  id="TL_tCT"/>
+    </loop>
+    <loop count="10">
+      <elt size="4" type="int"  id="VAL_tCP" endianness="little_endian"/>
+      <elt size="3" type="text" id="NAME_tCP"/>
+      <elt size="1" type="raw"  id="NUL_tCP"/>
+      <elt size="1" type="int"  id="TR_tCP"/>
+      <elt size="3" type="raw"  id="TL_tCP"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="LEADERBOARD - LAXEY COAST" lines-max="6">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NAME_nLT"/>
+      <column id="TOTAL" src="VAL_nLT" format="time_n"/>
+      <column id="LAP"   src="VAL_nLP" format="time_n" display="debug"/>
+      <column id="TRANS" src="TR_nLT" format="transmap"/>
+    </table>
+    <table id="LEADERBOARD - T.T. COURSE" lines-max="6">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NAME_nCT"/>
+      <column id="TOTAL" src="VAL_nCT" format="time_n"/>
+      <column id="LAP"   src="VAL_nCP" format="time_n" display="debug"/>
+      <column id="TRANS" src="TR_nCT" format="transmap"/>
+    </table>
+    <table id="LEADERBOARD - LAXEY COAST (TT MODE)" lines-max="6">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NAME_tLT"/>
+      <column id="TOTAL" src="VAL_tLT" format="time_n" display="debug"/>
+      <column id="LAP"   src="VAL_tLP" format="time_n"/>
+      <column id="TRANS" src="TR_tLT" format="transmap"/>
+    </table>
+    <table id="LEADERBOARD - T.T. COURSE (TT MODE)" lines-max="6">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NAME_tCT"/>
+      <column id="TOTAL" src="VAL_tCT" format="time_n" display="debug"/>
+      <column id="LAP"   src="VAL_tCP" format="time_n"/>
+      <column id="TRANS" src="TR_tCT" format="transmap"/>
+    </table>
+    <table id="GREATEST LAP TIMES">
+      <column id="COURSE" src="index" format="course2map"/>
+      <column id="TIME" src="BEST" format="time_n"/>
+    </table>
+  </output>
+
+  <format id="time_n" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="min_n"/><txt>'</txt><column format="sec_n"/><txt>"</txt><column format="cs_n"/>
+    </concat>
+  </format>
+  <format id="min_n"><multiply>250</multiply><divide_trunc>141</divide_trunc><divide_trunc>6000</divide_trunc><pad direction="left" max="2">0</pad></format>
+  <format id="sec_n"><multiply>250</multiply><divide_trunc>141</divide_trunc><divide_trunc>100</divide_trunc><remainder>60</remainder><pad direction="left" max="2">0</pad></format>
+  <format id="cs_n"><multiply>250</multiply><divide_trunc>141</divide_trunc><remainder>100</remainder><pad direction="left" max="2">0</pad></format>
+
+  <format id="transmap">
+    <case src="1" dst="[MT]"/>
+    <case src="0" dst="[AT]"/>
+  </format>
+  <format id="course2map">
+    <case src="0" dst="LAXEY COAST"/>
+    <case src="1" dst="T.T. COURSE"/>
+  </format>
+</hi2txt>

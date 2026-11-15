@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    Virtua Racing (Sega, 1992)
+    ROM: vr, vformula
+
+    .hi file: 1727 bytes (1 chunk from hiscore.dat)
+      @:maincpu,program,40e000,6bf,01,20
+
+    3 track tables, 24 entries each, 24-byte records (little-endian):
+      [RANK:4 LE] [TIME:2 LE] [PAD:2] [UNK:4] [PAD:4] [TIME_DUP:2 LE] [PAD:2] [NAME:3 ASCII] [TERM:1]
+    Last entry of table 3 is short by 1 byte (no TERM).
+    TIME is in ticks at 32 ticks/second, displayed as M'SS"CC.
+    NAME is plain ASCII (uppercase + space + period).
+
+    Table 1: entries 1-24   (default top: 4'00"00)
+    Table 2: entries 25-48  (default top: 5'00"00)
+    Table 3: entries 49-72  (default top: 4'00"00)
+    Each table increments by 5 seconds (160 ticks) per place.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,40e000,6bf,01,20</definition>
+      <size>1727</size>
+    </check>
+    <!-- Table 1 - 24 entries MEDIUM -->
+    <loop count="24">
+      <elt size="4" type="raw"  id="T1RNK"/>
+      <elt size="2" type="int"  id="T1TIME" byte-swap="2"/>
+      <elt size="2" type="raw"  id="T1TH"/>
+      <elt size="4" type="raw"  id="T1UNK"/>
+      <elt size="4" type="raw"  id="T1PAD"/>
+      <elt size="2" type="raw"  id="T1DL"/>
+      <elt size="2" type="raw"  id="T1DH"/>
+      <elt size="3" type="text" id="T1NAME"/>
+      <elt size="1" type="raw"  id="T1TERM"/>
+    </loop>
+    <!-- Table 2 - 24 entries EXPERT -->
+    <loop count="24">
+      <elt size="4" type="raw"  id="T2RNK"/>
+      <elt size="2" type="int"  id="T2TIME" byte-swap="2"/>
+      <elt size="2" type="raw"  id="T2TH"/>
+      <elt size="4" type="raw"  id="T2UNK"/>
+      <elt size="4" type="raw"  id="T2PAD"/>
+      <elt size="2" type="raw"  id="T2DL"/>
+      <elt size="2" type="raw"  id="T2DH"/>
+      <elt size="3" type="text" id="T2NAME"/>
+      <elt size="1" type="raw"  id="T2TERM"/>
+    </loop>
+    <!-- Table 3 - 24 entries, last entry short by 1 BEGINNER -->
+    <loop count="24" skip-last-bytes="1">
+      <elt size="4" type="raw"  id="T3RNK"/>
+      <elt size="2" type="int"  id="T3TIME" byte-swap="2"/>
+      <elt size="2" type="raw"  id="T3TH"/>
+      <elt size="4" type="raw"  id="T3UNK"/>
+      <elt size="4" type="raw"  id="T3PAD"/>
+      <elt size="2" type="raw"  id="T3DL"/>
+      <elt size="2" type="raw"  id="T3DH"/>
+      <elt size="3" type="text" id="T3NAME"/>
+      <elt size="1" type="raw"  id="T3TERM"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEGINNER COURSE RANKING">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="TIME" src="T3TIME" format="time_fmt"/>
+      <column id="NAME" src="T3NAME"/>
+    </table>
+    <table id="MEDIUM COURSE RANKING">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="TIME" src="T1TIME" format="time_fmt"/>
+      <column id="NAME" src="T1NAME"/>
+    </table>
+    <table id="EXPERT COURSE RANKING">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="TIME" src="T2TIME" format="time_fmt"/>
+      <column id="NAME" src="T2NAME"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <!-- Time: ticks at 32/sec -> M'SS"CC
+       minutes = ticks / 1920  (60*32)
+       seconds = (ticks % 1920) / 32
+       centiseconds = (ticks % 32) * 100 / 32 -->
+  <format id="time_fmt" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="time_min"/>
+      <txt>'</txt>
+      <column format="time_sec"/>
+      <txt>"</txt>
+      <column format="time_cs"/>
+    </concat>
+  </format>
+  <format id="time_min">
+    <divide_trunc>1920</divide_trunc>
+  </format>
+  <format id="time_sec">
+    <remainder>1920</remainder>
+    <divide_trunc>32</divide_trunc>
+    <pad direction="left" max="2">0</pad>
+  </format>
+  <format id="time_cs">
+    <remainder>32</remainder>
+    <multiply>100</multiply>
+    <divide_trunc>32</divide_trunc>
+    <pad direction="left" max="2">0</pad>
+  </format>
+</hi2txt>

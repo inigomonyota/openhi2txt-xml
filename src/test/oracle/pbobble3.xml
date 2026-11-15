@@ -1,18 +1,18 @@
 <hi2txt>
-  <table id="VS CPU MODE">
-    <col>RANK</col><col>SCORE</col><col>NAME</col><col>ROUND</col><col>CHARACTER</col><col>EMPTY</col>
-    <row><cell>1</cell><cell>10000</cell><cell>ABC</cell><cell>5</cell><cell>Twinkle</cell><cell>00000000000000</cell></row>
-    <row><cell>2</cell><cell>5000</cell><cell>DEF</cell><cell>4</cell><cell>Priccio</cell><cell>00000000000000</cell></row>
-    <row><cell>3</cell><cell>1000</cell><cell>GHI</cell><cell>3</cell><cell>Marina</cell><cell>00000000000000</cell></row>
-    <row><cell>4</cell><cell>500</cell><cell>JKL</cell><cell>2</cell><cell>Musashi</cell><cell>00000000000000</cell></row>
-    <row><cell>5</cell><cell>100</cell><cell>MNO</cell><cell>1</cell><cell>Super Sonic Blast Man</cell><cell>00000000000000</cell></row>
+  <table id="RANKING - PUZZLE MODE">
+    <col>RANK</col><col>ROUND</col><col>CHARACTER</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>5</cell><cell>BUB / BOB</cell><cell>10,000</cell><cell>ABC</cell></row>
+    <row><cell>2ND</cell><cell>4</cell><cell>TWINKLE</cell><cell>5,000</cell><cell>DEF</cell></row>
+    <row><cell>3RD</cell><cell>3</cell><cell>PRICCIO</cell><cell>1,000</cell><cell>GHI</cell></row>
+    <row><cell>4TH</cell><cell>2</cell><cell>MARINA</cell><cell>500</cell><cell>JKL</cell></row>
+    <row><cell>5TH</cell><cell>1</cell><cell>MUSASHI</cell><cell>100</cell><cell>MNO</cell></row>
   </table>
-  <table id="PUZZLE MODE">
-    <col>RANK</col><col>SCORE</col><col>NAME</col><col>ROUND</col><col>CHARACTER</col><col>EMPTY</col>
-    <row><cell>1</cell><cell>241630</cell><cell>BBE</cell><cell>3</cell><cell>Priccio</cell><cell>00000000000000</cell></row>
-    <row><cell>2</cell><cell>10000</cell><cell>ABC</cell><cell>5</cell><cell>Bob</cell><cell>00000000000000</cell></row>
-    <row><cell>3</cell><cell>5000</cell><cell>DEF</cell><cell>4</cell><cell>Twinkle</cell><cell>00000000000000</cell></row>
-    <row><cell>4</cell><cell>3480</cell><cell>. 7</cell><cell>2</cell><cell>Priccio</cell><cell>00000000000000</cell></row>
-    <row><cell>5</cell><cell>1000</cell><cell>GHI</cell><cell>3</cell><cell>Priccio</cell><cell></cell></row>
+  <table id="RANKING - VS CPU MODE">
+    <col>RANK</col><col>ROUND</col><col>CHARACTER</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>5</cell><cell>BUB / BOB</cell><cell>10,000</cell><cell>ABC</cell></row>
+    <row><cell>2ND</cell><cell>4</cell><cell>TWINKLE</cell><cell>5,000</cell><cell>DEF</cell></row>
+    <row><cell>3RD</cell><cell>3</cell><cell>PRICCIO</cell><cell>1,000</cell><cell>GHI</cell></row>
+    <row><cell>4TH</cell><cell>2</cell><cell>MARINA</cell><cell>500</cell><cell>JKL</cell></row>
+    <row><cell>5TH</cell><cell>1</cell><cell>MUSASHI</cell><cell>100</cell><cell>MNO</cell></row>
   </table>
 </hi2txt>

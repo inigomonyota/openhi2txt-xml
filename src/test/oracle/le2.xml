@@ -1,0 +1,13 @@
+<hi2txt>
+  <table id="THE BEST IN THE WEST">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>1,000</cell><cell>PAT</cell></row>
+    <row><cell>2ND</cell><cell>900</cell><cell>DOC</cell></row>
+    <row><cell>3RD</cell><cell>800</cell><cell>BAT</cell></row>
+    <row><cell>4TH</cell><cell>700</cell><cell>KID</cell></row>
+    <row><cell>5TH</cell><cell>600</cell><cell>JIM</cell></row>
+    <row><cell>6TH</cell><cell>500</cell><cell>KAY</cell></row>
+    <row><cell>7TH</cell><cell>400</cell><cell>BEN</cell></row>
+    <row><cell>8TH</cell><cell>300</cell><cell>JOE</cell></row>
+  </table>
+</hi2txt>

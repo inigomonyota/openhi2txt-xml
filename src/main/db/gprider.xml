@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  gprider - GP Rider (Sega, 1990) - World 2-Player version
+  Sega System Multi32, V60 CPU.
+  hiscore.dat:
+    @:mainpcb:maincpu,program,280192,b5,34,ff
+    @:mainpcb:maincpu,program,9c708,8,01,20
+  189 bytes = 181B range1 + 8B range2
+
+  Note: original hiscore.dat range was 0xAA (170 bytes), which clipped
+  entry 7's lap field. Extended to 0xB5 (181 bytes) with end byte changed
+  from 0x30 to 0xff to match the trailing separator at the new endpoint.
+
+  Unusual format: high score data is stored as PRE-RENDERED ASCII text
+  with 0xFF byte separators between fields. The values are already
+  formatted for in-game display.
+
+  Range 1 layout (181 bytes):
+    Entry 1: 25 bytes (rank 1, no '#' prefix on points - max 99 pts)
+    Entries 2-7: 26 bytes each (with '#' prefix on points)
+    Total: 25 + 6 * 26 = 181
+
+    Per-entry fields (text, separated by 0xFF):
+      points (#XX or XX), name (3B), min (1B), sec (2B), hun (2B),
+      time delimiter "'\"", lap (6B '!'-padded "!!GOAL" or "!!!!!N")
+
+  Range 2 (8 bytes): SEGA INTERNATIONAL course record
+    [0]   BCD minutes
+    [1]   BCD seconds
+    [2]   BCD hundredths
+    [3]   0x22 = literal '"' delimiter
+    [4-7] 4-byte ASCII name
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>189</size>
+    </check>
+
+    <!-- ====== ENTRY 1 (25 bytes, special) ====== -->
+    <!-- Use shared IDs with table-index="0" so column references hit row 0 -->
+    <elt size="2" type="text" id="POINTS" table-index="0"/>
+    <elt size="1" type="raw"  id="E1S1"/>
+    <elt size="3" type="text" id="NAME" table-index="0"/>
+    <elt size="1" type="raw"  id="E1S2"/>
+    <elt size="1" type="text" id="MIN" table-index="0"/>
+    <elt size="1" type="raw"  id="E1S3"/>
+    <elt size="2" type="text" id="SEC" table-index="0"/>
+    <elt size="1" type="raw"  id="E1S4"/>
+    <elt size="2" type="text" id="HUN" table-index="0"/>
+    <elt size="1" type="raw"  id="E1S5"/>
+    <elt size="2" type="raw"  id="E1DELIM"/>
+    <elt size="1" type="raw"  id="E1S6"/>
+    <elt size="6" type="text" id="LAP" table-index="0"/>
+    <elt size="1" type="raw"  id="E1S7"/>
+
+    <!-- ====== ENTRIES 2-7 (6 x 26 bytes, with '#' prefix on points) ====== -->
+    <loop count="6">
+      <elt size="3" type="text" id="POINTS" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw"  id="ES1"/>
+      <elt size="3" type="text" id="NAME" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw"  id="ES2"/>
+      <elt size="1" type="text" id="MIN" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw"  id="ES3"/>
+      <elt size="2" type="text" id="SEC" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw"  id="ES4"/>
+      <elt size="2" type="text" id="HUN" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw"  id="ES5"/>
+      <elt size="2" type="raw"  id="EDELIM"/>
+      <elt size="1" type="raw"  id="ES6"/>
+      <elt size="6" type="text" id="LAP" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw"  id="ES7"/>
+    </loop>
+
+    <!-- ====== RANGE 2: COURSE RECORD (8 bytes) ====== -->
+    <elt size="1" type="int" id="CR_MIN" base="16"/>
+    <elt size="1" type="int" id="CR_SEC" base="16"/>
+    <elt size="1" type="int" id="CR_HUN" base="16"/>
+    <elt size="1" type="raw" id="CR_DELIM"/>
+    <elt size="4" type="text" id="CR_NAME"/>
+  </structure>
+
+  <output>
+    <table id="GP RIDER POINTS RANKING">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="POINTS" format="strip_hash"/>
+      <column id="BEST LAP" src="MIN" format="time_fmt"/>
+      <column id="LAP" format="strip_excl"/>
+    </table>
+
+    <table id="SEGA INTERNATIONAL COURSE RECORD">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="CR_NAME"/>
+      <column id="TIME" src="CR_MIN" format="cr_time"/>
+    </table>
+  </output>
+
+  <!-- Rank +1 -->
+  <format id="+1"><add>1</add></format>
+
+  <!-- Strip leading '#' from points field -->
+  <format id="strip_hash">
+    <replace src="#" dst=""/>
+  </format>
+
+  <!-- Strip leading '!' padding from lap field -->
+  <format id="strip_excl">
+    <replace src="!" dst=""/>
+  </format>
+
+  <!-- BEST LAP: concat MIN'SEC''HUN from text fields -->
+  <format id="time_fmt" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="MIN"/>
+      <txt>'</txt>
+      <column src="SEC"/>
+      <txt>''</txt>
+      <column src="HUN"/>
+    </concat>
+  </format>
+
+  <!-- Course record time: BCD bytes -> M'SS''HH (minutes single digit) -->
+  <format id="cr_time" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="CR_MIN"/>
+      <txt>'</txt>
+      <column src="CR_SEC" format="d10"/>
+      <column src="CR_SEC" format="%10"/>
+      <txt>''</txt>
+      <column src="CR_HUN" format="d10"/>
+      <column src="CR_HUN" format="%10"/>
+    </concat>
+  </format>
+
+</hi2txt>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    jojoban  (JoJo's Bizarre Adventure, Capcom CPS-3, 1999).
+    CPS-3 runs an SH-2 which is BIG-ENDIAN. Scores live in :maincpu program
+    space work RAM at 0x0204924E (found by dumping RAM from a save state).
+    The board holds TWO rankings back-to-back, both using the SAME 12-byte
+    record, 5 records each = 120 bytes total:
+      SCORE RANKING @ +0x00 : 5 records (name + score)
+      JOJO  RANKING @ +0x3C : 5 records (name + points + level)
+    Record layout (12 bytes):
+      +00 name  : 3 bytes, plain ASCII (e.g. 0x55 0x45 0x4E = "UEN")
+      +03 pad   : 3 bytes (00 00 00)
+      +06 value : 4 bytes packed BCD, big-endian (00 05 00 00 = 50000).
+                  Decoded with base="16" (the deployed hi2txt/openhi2txt read
+                  packed 2-digit-per-byte BCD via base 16; decoding-profile="bcd"
+                  is UNPACKED 1-digit-per-byte and would wrongly give 500).
+      +0A byteA : 1 byte  character LEVEL, but STAGGERED: byteA of record i holds
+                  the level for the row displayed BELOW it (row i+1). The 1st row's
+                  level is stored in the byteA slot of the record ABOVE the table
+                  (i.e. the SCORE table's 5th record byteA, file 0x3A). Verified in
+                  real play: PIP scored 16343 with on-screen LEVEL 32, and 0x20(32)
+                  sits at 0x3A while PIP's own byteA holds 25 (the next row's level).
+      +0B byteB : 1 byte  character id (name-aligned, NOT staggered).
+    Because level (byteA of the previous record) and character (byteB of this
+    record) sit 13 bytes apart within a 12-byte stride, the JOJO records are
+    unrolled below so each byteA can be assigned to the next output row via
+    table-index, keeping LEVEL and CHARACTER both correctly aligned.
+    Authored by the HI2TXT project (jojoban support). Big-endian, ASCII names,
+    BCD scores.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>120</size>
+    </check>
+
+    <!-- SCORE RANKING records 1-4 (byteA here is a misc counter, discarded) -->
+    <loop count="4">
+      <elt size="3" type="text" id="S_NAME"  charset="csJJ" table-index="loop_index"/>
+      <elt size="3" type="raw"  id="S_PAD"   table-index="loop_index"/>
+      <elt size="4" type="int"  id="S_SCORE" base="16" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="S_MISC"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="S_CHAR"  table-index="loop_index"/>
+    </loop>
+    <!-- SCORE RANKING 5th record: its byteA (file 0x3A) is JOJO row 0's LEVEL -->
+    <elt size="3" type="text" id="S_NAME"  charset="csJJ" table-index="4"/>
+    <elt size="3" type="raw"  id="S_PAD"   table-index="4"/>
+    <elt size="4" type="int"  id="S_SCORE" base="16" table-index="4"/>
+    <elt size="1" type="int"  id="J_LEVEL" table-index="0"/>
+    <elt size="1" type="int"  id="S_CHAR"  table-index="4"/>
+
+    <!-- JOJO RANKING: unrolled. In each record byteA = the NEXT row's LEVEL, so
+         it is assigned to table-index+1; byteB = this row's CHARACTER. -->
+    <!-- JOJO row 0 -->
+    <elt size="3" type="text" id="J_NAME"  charset="csJJ" table-index="0"/>
+    <elt size="3" type="raw"  id="J_PAD"   table-index="0"/>
+    <elt size="4" type="int"  id="J_PTS"   base="16" table-index="0"/>
+    <elt size="1" type="int"  id="J_LEVEL" table-index="1"/>
+    <elt size="1" type="int"  id="J_CHAR"  table-index="0"/>
+    <!-- JOJO row 1 -->
+    <elt size="3" type="text" id="J_NAME"  charset="csJJ" table-index="1"/>
+    <elt size="3" type="raw"  id="J_PAD"   table-index="1"/>
+    <elt size="4" type="int"  id="J_PTS"   base="16" table-index="1"/>
+    <elt size="1" type="int"  id="J_LEVEL" table-index="2"/>
+    <elt size="1" type="int"  id="J_CHAR"  table-index="1"/>
+    <!-- JOJO row 2 -->
+    <elt size="3" type="text" id="J_NAME"  charset="csJJ" table-index="2"/>
+    <elt size="3" type="raw"  id="J_PAD"   table-index="2"/>
+    <elt size="4" type="int"  id="J_PTS"   base="16" table-index="2"/>
+    <elt size="1" type="int"  id="J_LEVEL" table-index="3"/>
+    <elt size="1" type="int"  id="J_CHAR"  table-index="2"/>
+    <!-- JOJO row 3 -->
+    <elt size="3" type="text" id="J_NAME"  charset="csJJ" table-index="3"/>
+    <elt size="3" type="raw"  id="J_PAD"   table-index="3"/>
+    <elt size="4" type="int"  id="J_PTS"   base="16" table-index="3"/>
+    <elt size="1" type="int"  id="J_LEVEL" table-index="4"/>
+    <elt size="1" type="int"  id="J_CHAR"  table-index="3"/>
+    <!-- JOJO row 4: its byteA would be row 5's level (does not exist) -> discard -->
+    <elt size="3" type="text" id="J_NAME"  charset="csJJ" table-index="4"/>
+    <elt size="3" type="raw"  id="J_PAD"   table-index="4"/>
+    <elt size="4" type="int"  id="J_PTS"   base="16" table-index="4"/>
+    <elt size="1" type="raw"  id="J_LVLX"  table-index="4"/>
+    <elt size="1" type="int"  id="J_CHAR"  table-index="4"/>
+  </structure>
+
+  <output>
+    <table id="SCORE RANKING" sort="S_SCORE" sort-order="desc">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="NAME"  src="S_NAME"/>
+      <column id="SCORE" src="S_SCORE"/>
+      <column id="CHARACTER" src="S_CHAR" format="jj_char"/>
+      <column id="S_CHAR" format="0x" display="debug"/>
+      <column id="S_PAD"  format="0x" display="debug"/>
+    </table>
+
+    <table id="JOJO RANKING" sort="J_PTS" sort-order="desc">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="NAME"  src="J_NAME"/>
+      <column id="LEVEL" src="J_LEVEL"/>
+      <column id="POINTS" src="J_PTS"/>
+      <column id="CHARACTER" src="J_CHAR" format="jj_char"/>
+      <column id="J_CHAR" format="0x" display="debug"/>
+      <column id="J_PAD"  format="0x" display="debug"/>
+    </table>
+  </output>
+
+  <!-- 1st..5th ranking labels (index is 0-based) -->
+  <format id="ordinal">
+    <case src="0" dst="1st"/>
+    <case src="1" dst="2nd"/>
+    <case src="2" dst="3rd"/>
+    <case src="3" dst="4th"/>
+    <case src="4" dst="5th"/>
+  </format>
+
+  <!-- Avatar/character id lives in record byte +0x0B (name-aligned, not staggered).
+       Confirmed ids:
+         0  = Dio                    (default JOJO rank 5)
+         1  = Noriaki Kakyoin        (real JOJO play: AAA 18078/LVL36)
+         3  = Hol Horse              (default JOJO rank 1; also JOJO 1st ARK splash)
+         4  = Jean Pierre Polnareff  (default JOJO rank 2)
+         5  = Joseph Joestar         (default JOJO rank 3)
+         11 = Iggy                   (default JOJO rank 4)
+         16 = Jotaro Kujo            (user's PIP play; char-select + ranking splash)
+         19 = Vanilla Ice            (SCORE 1st UEN splash)
+       Rank->fighter for the default JOJO table supplied by the user; the stored
+       byteB at each rank (3,4,5,11,0) gives the id.
+       NOTE: these 8 were inferred from the attract SPLASH which is FIXED (proven
+       NOT record-driven), so they are UNVERIFIED and INTENTIONALLY NOT shipped as
+       names. The CHARACTER column passes the RAW id so end-user high-score support
+       is complete; the full roster can be named later from the captured portrait
+       contact sheet (_knowledge/jojo-chars/jojoban_CONTACT_SHEET.png). -->
+  <format id="jj_char">
+    <case src="-1" default="true" format="jj_idnum"/>
+  </format>
+  <format id="jj_idnum"><add>0</add></format>
+
+  <charset id="csJJ">
+    <char src="0x20" dst=" "/>
+    <char src="0x30" dst="0"/>
+    <char src="0x31" dst="1"/>
+    <char src="0x32" dst="2"/>
+    <char src="0x33" dst="3"/>
+    <char src="0x34" dst="4"/>
+    <char src="0x35" dst="5"/>
+    <char src="0x36" dst="6"/>
+    <char src="0x37" dst="7"/>
+    <char src="0x38" dst="8"/>
+    <char src="0x39" dst="9"/>
+    <char src="0x41" dst="A"/>
+    <char src="0x42" dst="B"/>
+    <char src="0x43" dst="C"/>
+    <char src="0x44" dst="D"/>
+    <char src="0x45" dst="E"/>
+    <char src="0x46" dst="F"/>
+    <char src="0x47" dst="G"/>
+    <char src="0x48" dst="H"/>
+    <char src="0x49" dst="I"/>
+    <char src="0x4a" dst="J"/>
+    <char src="0x4b" dst="K"/>
+    <char src="0x4c" dst="L"/>
+    <char src="0x4d" dst="M"/>
+    <char src="0x4e" dst="N"/>
+    <char src="0x4f" dst="O"/>
+    <char src="0x50" dst="P"/>
+    <char src="0x51" dst="Q"/>
+    <char src="0x52" dst="R"/>
+    <char src="0x53" dst="S"/>
+    <char src="0x54" dst="T"/>
+    <char src="0x55" dst="U"/>
+    <char src="0x56" dst="V"/>
+    <char src="0x57" dst="W"/>
+    <char src="0x58" dst="X"/>
+    <char src="0x59" dst="Y"/>
+    <char src="0x5a" dst="Z"/>
+  </charset>
+</hi2txt>

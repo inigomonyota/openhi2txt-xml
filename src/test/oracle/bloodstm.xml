@@ -1,0 +1,13 @@
+<hi2txt>
+  <table id="TOP STORMERS">
+    <col>RANK</col><col>NAME</col><col>WINS</col><col>HEADS</col><col>ARMS</col><col>WIN_HEAD_SORT</col>
+    <row><cell>1</cell><cell>LPM</cell><cell>81</cell><cell>79</cell><cell>158</cell><cell>5308495</cell></row>
+    <row><cell>2</cell><cell>RAD</cell><cell>80</cell><cell>10</cell><cell>56</cell><cell>5242890</cell></row>
+    <row><cell>3</cell><cell>RWM</cell><cell>76</cell><cell>69</cell><cell>121</cell><cell>4980805</cell></row>
+    <row><cell>4</cell><cell>BHN</cell><cell>75</cell><cell>51</cell><cell>102</cell><cell>4915251</cell></row>
+    <row><cell>5</cell><cell>RSM</cell><cell>75</cell><cell>42</cell><cell>84</cell><cell>4915242</cell></row>
+    <row><cell>6</cell><cell>AVN</cell><cell>73</cell><cell>71</cell><cell>136</cell><cell>4784199</cell></row>
+    <row><cell>7</cell><cell>LM</cell><cell>72</cell><cell>70</cell><cell>129</cell><cell>4718662</cell></row>
+    <row><cell>8</cell><cell>KJ</cell><cell>70</cell><cell>65</cell><cell>117</cell><cell>4587585</cell></row>
+  </table>
+</hi2txt>

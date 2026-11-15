@@ -1,8 +1,8 @@
 <hi2txt>
   <table>
     <col>RANK</col><col>SCORE</col><col>NAME</col>
-    <row><cell>1</cell><cell>4450</cell><cell>A  </cell></row>
+    <row><cell>1</cell><cell>550</cell><cell>PIP</cell></row>
   </table>
-  <field id="TOP SCORE">4450</field>
-  <field id="TOP SCORE DUPLICATE">4450</field>
+  <field id="TOP SCORE">550</field>
+  <field id="TOP SCORE DUPLICATE">550</field>
 </hi2txt>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+
+  <!--
+    Wild Guns (USA) - SNES
+
+    Combined:
+      - SCORE FROM LAST PLAY - P1
+      - SCORE FROM LAST PLAY - P2
+      - 5-entry RANKING table
+
+    Confirmed from the supplied two-player save states:
+
+      $7E1FD0-$7E1FD3 = P1 live/last-played score
+      $7E1FD4-$7E1FD7 = P2 live/last-played score
+
+    Both are 32-bit little-endian integers stored as displayed score / 10.
+
+    Two-player state:
+      P1 = 0
+      P2 bytes = F1 06 00 00
+      $000006F1 = 1777
+      1777 * 10 = 17770
+
+    Zero-score state:
+      P1 = 0
+      P2 = 0
+
+    hiscore.dat first range:
+      $7E1FCF-$7E1FD7 = 9 bytes
+      byte 0     = stable zero guard
+      bytes 1-4 = P1
+      bytes 5-8 = P2
+
+    Ranking range:
+      $7EFEFF-$7EFF28 = 42 bytes
+      guard + five 8-byte records + guard
+
+    Total .hi size:
+      9 + 42 = 51 bytes
+  -->
+
+  <structure file=".hi">
+    <check>
+      <size>51</size>
+    </check>
+
+    <!-- P1 / P2 LAST-PLAYED SCORE RANGE -->
+    <elt size="1" type="raw" id="SCORE_GUARD"/>
+    <elt size="4" type="int" id="P1SCORE" endianness="little_endian"/>
+    <elt size="4" type="int" id="P2SCORE" endianness="little_endian"/>
+
+    <!-- RANKING TABLE RANGE -->
+    <elt size="1" type="raw" id="TABLE_GUARD1"/>
+
+    <loop count="5">
+      <elt size="4" type="int" id="HSCORE" endianness="little_endian"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="int" id="CHAR"/>
+    </loop>
+
+    <elt size="1" type="raw" id="TABLE_GUARD2"/>
+  </structure>
+
+  <output>
+
+    <table>
+      <column id="SCORE FROM LAST PLAY - P1" src="P1SCORE" format="x10"/>
+      <column id="SCORE FROM LAST PLAY - P2" src="P2SCORE" format="x10"/>
+    </table>
+
+    <table id="RANKING">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="HSCORE" format="x10"/>
+      <column id="NAME" src="NAME"/>
+      <column id="CHARACTER" src="CHAR" format="character"/>
+    </table>
+
+  </output>
+
+  <format id="x10">
+    <multiply>10</multiply>
+  </format>
+
+  <format id="character">
+    <case src="0" dst="CLINT"/>
+    <case src="4" dst="CLINT"/>
+	<case src="3" dst="ANNIE"/>
+    <case src="2" dst="ANNIE"/>
+    <case src="6" dst="ANNIE"/>
+    <case src="10" dst="ANNIE"/>
+  </format>
+
+</hi2txt>

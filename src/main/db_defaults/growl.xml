@@ -1,0 +1,10 @@
+<hi2txt>
+  <table id="BEST 5">
+    <col>RANK</col><col>SCORE</col><col>ROUND</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>015000</cell><cell>03</cell><cell>T.S</cell></row>
+    <row><cell>2ND</cell><cell>014600</cell><cell>03</cell><cell>AAA</cell></row>
+    <row><cell>3RD</cell><cell>009000</cell><cell>02</cell><cell>H.F</cell></row>
+    <row><cell>4TH</cell><cell>008100</cell><cell>01</cell><cell>???</cell></row>
+    <row><cell>5TH</cell><cell>005300</cell><cell>01</cell><cell>TAC</cell></row>
+  </table>
+</hi2txt>

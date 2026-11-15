@@ -1,0 +1,41 @@
+<hi2txt>
+  <table id="1-PLAYER GAME">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1</cell><cell>PCR</cell><cell>4999</cell></row>
+    <row><cell>2</cell><cell>ROE</cell><cell>4998</cell></row>
+    <row><cell>3</cell><cell>ENC</cell><cell>4997</cell></row>
+    <row><cell>4</cell><cell>SSY</cell><cell>4996</cell></row>
+    <row><cell>5</cell><cell>EEC</cell><cell>4995</cell></row>
+    <row><cell>6</cell><cell>RRL</cell><cell>4994</cell></row>
+    <row><cell>7</cell><cell>VVE</cell><cell>4993</cell></row>
+    <row><cell>8</cell><cell>EE </cell><cell>4992</cell></row>
+    <row><cell>9</cell><cell>   </cell><cell>4991</cell></row>
+    <row><cell>10</cell><cell>NOW</cell><cell>4990</cell></row>
+  </table>
+  <table id="2-PLAYER GAME">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1</cell><cell>PSC</cell><cell>2999</cell></row>
+    <row><cell>2</cell><cell>NEW</cell><cell>2998</cell></row>
+    <row><cell>3</cell><cell>PVB</cell><cell>2997</cell></row>
+    <row><cell>4</cell><cell>ENE</cell><cell>2996</cell></row>
+    <row><cell>5</cell><cell>RTR</cell><cell>2995</cell></row>
+    <row><cell>6</cell><cell>BWB</cell><cell>2994</cell></row>
+    <row><cell>7</cell><cell>DEH</cell><cell>2993</cell></row>
+    <row><cell>8</cell><cell>VNL</cell><cell>2992</cell></row>
+    <row><cell>9</cell><cell> TL</cell><cell>2991</cell></row>
+    <row><cell>10</cell><cell>  V</cell><cell>2990</cell></row>
+  </table>
+  <table id="3-PLAYER GAME">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1</cell><cell>PTR</cell><cell>1999</cell></row>
+    <row><cell>2</cell><cell>MSP</cell><cell>1998</cell></row>
+    <row><cell>3</cell><cell>RBD</cell><cell>1997</cell></row>
+    <row><cell>4</cell><cell>NLA</cell><cell>1996</cell></row>
+    <row><cell>5</cell><cell>VIC</cell><cell>1995</cell></row>
+    <row><cell>6</cell><cell>TOR</cell><cell>1994</cell></row>
+    <row><cell>7</cell><cell>MOM</cell><cell>1993</cell></row>
+    <row><cell>8</cell><cell>SAM</cell><cell>1992</cell></row>
+    <row><cell>9</cell><cell>HFT</cell><cell>1991</cell></row>
+    <row><cell>10</cell><cell>EDL</cell><cell>1990</cell></row>
+  </table>
+</hi2txt>

@@ -1,0 +1,15 @@
+<hi2txt>
+<table id="RANKING">
+<col>RANK</col><col>SCORE</col><col>NAME</col><col>FIGHTER 1</col><col>FIGHTER 2</col>
+<row><cell>1ST</cell><cell>0500000</cell><cell>EVO</cell><cell>BILLY</cell><cell>LYNN</cell></row>
+<row><cell>2ND</cell><cell>0450000</cell><cell>P-M</cell><cell>RADEL</cell><cell>ANNIE</cell></row>
+<row><cell>3RD</cell><cell>0400000</cell><cell>NEO</cell><cell>CASSANDRA</cell><cell>ONI</cell></row>
+<row><cell>4TH</cell><cell>0350000</cell><cell>GEO</cell><cell>PEPE</cell><cell>PUPA</cell></row>
+<row><cell>5TH</cell><cell>0300000</cell><cell>ROD</cell><cell>ALICE</cell><cell>ELIAS</cell></row>
+<row><cell>6TH</cell><cell>0250000</cell><cell>JIM</cell><cell>JONES</cell><cell>ABUBO</cell></row>
+<row><cell>7TH</cell><cell>0200000</cell><cell>LYN</cell><cell>SONIA</cell><cell>JIMMY</cell></row>
+<row><cell>8TH</cell><cell>0150000</cell><cell>KAN</cell><cell>RADEL</cell><cell>ABUBO</cell></row>
+<row><cell>9TH</cell><cell>0100000</cell><cell>JON</cell><cell>LYNN</cell><cell>JIMMY</cell></row>
+<row><cell>10TH</cell><cell>0050000</cell><cell>MIK</cell><cell>PUPA</cell><cell>CASSANDRA</cell></row>
+</table>
+</hi2txt>

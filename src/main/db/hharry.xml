@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  hharry - Hammerin' Harry / Daiku no Gen-san (Irem, 1990)
+  .hi file format (via hiscore.dat plugin)
+  hiscore.dat:
+    @:maincpu,program,a09a0,a0,00,00
+    @:maincpu,program,a0a40,03,00,00
+  163 bytes = 160B main (10 x 16B) + 3B top score
+  Record (16B): 2B score (BCD LE x10) + 1B pad + 12B name (ASCII) + 1B pad
+  Special chars: 0xE9=heart 0x22=" 0x23=" 0x27=' 0xA5=. 0x2E=. 0x21=! 0x3F=? 0x2D=-
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>163</size>
+    </check>
+    <!-- 10 entries x 16B -->
+    <loop count="10">
+      <elt size="2" type="int" id="SCORE" base="16" endianness="little_endian"/>
+      <elt size="1" type="raw" id="PAD1"/>
+      <elt size="12" type="text" id="NAME" charset="chars"/>
+      <elt size="1" type="raw" id="PAD2"/>
+    </loop>
+    <!-- Top score (3B BCD LE) -->
+    <elt size="3" type="raw" id="TOPSCORE"/>
+  </structure>
+
+  <output>
+    <table id="BEST 10 RANKING">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="SCORE" format="score_x10"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" operator="=" dst="NO. 1"/>
+    <case src="1" operator="=" dst="NO. 2"/>
+    <case src="2" operator="=" dst="NO. 3"/>
+    <case src="3" operator="=" dst="NO. 4"/>
+    <case src="4" operator="=" dst="NO. 5"/>
+    <case src="5" operator="=" dst="NO. 6"/>
+    <case src="6" operator="=" dst="NO. 7"/>
+    <case src="7" operator="=" dst="NO. 8"/>
+    <case src="8" operator="=" dst="NO. 9"/>
+    <case src="9" operator="=" dst="NO. 10"/>
+  </format>
+
+  <format id="score_x10"><multiply>10</multiply><case src="0" operator="&gt;=" format="comma_score"/></format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <!-- If score is >= 1,000,000,000 (Billions) -->
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    
+    <!-- If score is >= 1,000,000 (Millions) -->
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    
+    <!-- If score is >= 1,000 (Thousands) -->
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    
+    <!-- Fallback for scores under 1,000 (Passes the number through as-is) -->
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <!-- Formats like: 1,234,567,890 -->
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234,567 -->
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234 -->
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <charset id="chars">
+    <char src="0x20" dst=" "/>
+    <char src="0x21" dst="!"/>
+    <char src="0x22" dst="&quot;"/>
+    <char src="0x23" dst="&quot;"/>
+    <char src="0x27" dst="'"/>
+    <char src="0x2D" dst="-"/>
+    <char src="0x2E" dst="."/>
+    <char src="0x3F" dst="?"/>
+    <char src="0x41" dst="A"/>
+    <char src="0x42" dst="B"/>
+    <char src="0x43" dst="C"/>
+    <char src="0x44" dst="D"/>
+    <char src="0x45" dst="E"/>
+    <char src="0x46" dst="F"/>
+    <char src="0x47" dst="G"/>
+    <char src="0x48" dst="H"/>
+    <char src="0x49" dst="I"/>
+    <char src="0x4A" dst="J"/>
+    <char src="0x4B" dst="K"/>
+    <char src="0x4C" dst="L"/>
+    <char src="0x4D" dst="M"/>
+    <char src="0x4E" dst="N"/>
+    <char src="0x4F" dst="O"/>
+    <char src="0x50" dst="P"/>
+    <char src="0x51" dst="Q"/>
+    <char src="0x52" dst="R"/>
+    <char src="0x53" dst="S"/>
+    <char src="0x54" dst="T"/>
+    <char src="0x55" dst="U"/>
+    <char src="0x56" dst="V"/>
+    <char src="0x57" dst="W"/>
+    <char src="0x58" dst="X"/>
+    <char src="0x59" dst="Y"/>
+    <char src="0x5A" dst="Z"/>
+    <char src="0xA5" dst="."/>
+    <char src="0xE9" dst="&lt;3"/>
+  </charset>
+
+</hi2txt>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Shinobi III">
+  <!--
+    Genesis (softlist: shinobi3u / parent shinobi3)
+    hiscore.dat: @:maincpu,program,ff0019,3,01,00
+    Score lives in Genesis work RAM at $FF0018 (offset 0x18 into WRAM);
+    the raw offset "18" is NOT program $000018 (that is 68000 ROM vectors).
+    We monitor 3 bytes at $FF0019 (skipping the always-zero top byte at
+    $FF0018) so the sentinel first-byte 0x01 avoids matching cold-boot
+    zeroed RAM (the 00,00 sentinel on the 4-byte region injected too early
+    and got overwritten by the game's default-table init).
+    The .hi file is exactly 3 bytes = the single high score, 3-byte
+    big-endian BCD. e.g. 01 00 00 = 10000, 01 22 70 = 12270 (direct BCD).
+    Default/power-on score is 10000.
+  //-->
+  <structure file=".hi">
+    <check>
+      <size>3</size>
+    </check>
+    <elt size="3" type="int" id="SCORE" base="16" endianness="big_endian"/>
+  </structure>
+
+  <output>
+    <table>
+      <column id="HI" src="SCORE"/>
+    </table>
+  </output>
+</hi2txt>

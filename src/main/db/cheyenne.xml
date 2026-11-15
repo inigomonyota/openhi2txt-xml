@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE openhi2txt>
+<openhi2txt requires="0.2.0" label="Cheyenne">
+  <structure file="nvram">
+    <check>
+      <size>8192</size>
+    </check>
+
+    <!-- 0x0000-0x0009: unrelated NVRAM state. -->
+    <elt id="HEADER" type="raw" size="10"/>
+
+    <!-- 0x000A: ten initials already arranged in final display order. -->
+    <loop count="10">
+      <elt id="NAME"
+           type="text"
+           size="3"
+           table-index="loop_index"/>
+    </loop>
+
+    <!-- 0x0028-0x0031: unrelated NVRAM state. -->
+    <elt id="SKIP TO SCORES" type="raw" size="10"/>
+
+    <!-- 0x0032: ten baseline packed-BCD score candidates. -->
+    <loop count="10">
+      <elt id="SCORE"
+           type="int"
+           size="4"
+           base="16"
+           table-index="loop_index"/>
+    </loop>
+
+    <!-- 0x005A: appended candidates, ending at the first zero record. -->
+    <loop count="2025"
+          start="10"
+          stop-when="SCORE:0">
+      <elt id="SCORE"
+           type="int"
+           size="4"
+           base="16"
+           table-index="loop_index"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TABLE OF GUNSLINGERS"
+           sort="SCORE"
+           sort-order="desc"
+           lines-max="10">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" source-row="output_index"/>
+      <column id="SCORE"/>
+    </table>
+  </output>
+</openhi2txt>

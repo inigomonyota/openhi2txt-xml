@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+
+  <!-- International Karate Plus (GBA)
+       MAME hiscore .hi = 250 bytes
+
+       .hi layout:
+         0x000-0x031 : 50 x middle initial
+         0x032-0x063 : 50 x first initial
+         0x064-0x095 : 50 x third initial
+         0x096-0x0F9 : 50 x 16-bit little-endian score, stored in units of 100
+
+       Belt rank is derived entirely from SCORE_RAW using the exact
+       threshold table recovered from the GBA ROM.
+  -->
+
+  <structure file=".hi">
+    <check>
+      <size>250</size>
+    </check>
+
+    <loop count="50">
+      <elt size="1" type="text" id="NAME_MIDDLE"/>
+    </loop>
+
+    <loop count="50">
+      <elt size="1" type="text" id="NAME_FIRST"/>
+    </loop>
+
+    <loop count="50">
+      <elt size="1" type="text" id="NAME_THIRD"/>
+    </loop>
+
+    <loop count="50">
+      <elt size="2" type="int" id="SCORE_RAW" endianness="little_endian"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TOP 50 SCORES">
+      <column id="POS" src="index" format="+1"/>
+      <column id="NAME" src="NAME_FIRST" format="name"/>
+      <column id="BELT" src="SCORE_RAW" format="belt"/>
+      <column id="SCORE" src="SCORE_RAW" format="x100"/>
+    </table>
+  </output>
+
+  <!-- NAME_FIRST is already the format input, so append middle + third only. -->
+  <format id="name">
+    <concat>
+      <column src="NAME_MIDDLE"/>
+      <column src="NAME_THIRD"/>
+    </concat>
+  </format>
+
+  <format id="x100">
+    <multiply>100</multiply>
+  </format>
+
+  <!-- Exact GBA ROM belt thresholds. SCORE_RAW is score / 100. -->
+  <format id="belt">
+    <case src="1250" operator="&gt;=" dst="HERO"/>
+    <case src="1000" operator="&gt;=" dst="BLACK 8"/>
+    <case src="925" operator="&gt;=" dst="BLACK 7"/>
+    <case src="850" operator="&gt;=" dst="BLACK 6"/>
+    <case src="750" operator="&gt;=" dst="BLACK 5"/>
+    <case src="675" operator="&gt;=" dst="BLACK 4"/>
+    <case src="600" operator="&gt;=" dst="BLACK 3"/>
+    <case src="550" operator="&gt;=" dst="BLACK 2"/>
+    <case src="500" operator="&gt;=" dst="BLACK 1"/>
+    <case src="470" operator="&gt;=" dst="BROWN 3"/>
+    <case src="430" operator="&gt;=" dst="BROWN 2"/>
+    <case src="380" operator="&gt;=" dst="BROWN 1"/>
+    <case src="340" operator="&gt;=" dst="PURPLE 3"/>
+    <case src="300" operator="&gt;=" dst="PURPLE 2"/>
+    <case src="260" operator="&gt;=" dst="PURPLE 1"/>
+    <case src="240" operator="&gt;=" dst="GREEN 3"/>
+    <case src="200" operator="&gt;=" dst="GREEN 2"/>
+    <case src="180" operator="&gt;=" dst="GREEN 1"/>
+    <case src="150" operator="&gt;=" dst="YELLOW 3"/>
+    <case src="120" operator="&gt;=" dst="YELLOW 2"/>
+    <case src="100" operator="&gt;=" dst="YELLOW 1"/>
+    <case src="75" operator="&gt;=" dst="WHITE 3"/>
+    <case src="60" operator="&gt;=" dst="WHITE 2"/>
+    <case src="0" operator="&gt;=" dst="WHITE 1"/>
+  </format>
+
+</hi2txt>

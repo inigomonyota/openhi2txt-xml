@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Samurai Shodown V Special">
+
+  <!--
+    Neo Geo 64KB saveram.
+    byte-swap="2" is applied before element decoding.
+
+    CLEAR-TIME TABLE
+      logical 0x041E-0x04FD
+      28 records x 8 bytes
+
+      +0..+3 : TIME, packed BCD-style digits
+      +4..+6 : NAME, ASCII
+      +7     : CONTINUES, packed BCD-style
+
+    VS TOTAL WINS TABLE
+      logical 0x04FE-0x0509
+      3 records x 4 bytes
+
+      +0..+1 : CHARACTER / AVATAR INDEX
+      +2..+3 : WINS
+
+    VS avatar index matches the 28-row fighter index.
+    Tam Tam was live-confirmed as index 0x0F (15).
+  -->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+
+    <elt size="1054" type="raw" id="_PREFIX"/>
+
+    <loop count="28">
+      <elt size="4" type="int" id="TIME" base="16"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="int" id="CONTINUES" base="16"/>
+    </loop>
+
+    <loop count="3">
+      <elt size="2" type="raw" id="_VS_CHARACTER"/>
+      <elt size="2" type="int" id="VS_WINS" endianness="big_endian"/>
+    </loop>
+
+    <elt size="64246" type="raw" id="_SUFFIX"/>
+  </structure>
+
+  <output>
+
+    <table id="LIGHTNING FAST SWORD MASTER" lines-max="28">
+      <column id="CHARACTER" src="index" format="fighter"/>
+      <column id="NAME"/>
+      <column id="TIME" format="clear_time"/>
+      <column id="CONTINUES"/>
+      <column id="RANK" src="index" format="+1" display="debug"/>
+    </table>
+
+    <!-- VS character/avatar (_VS_CHARACTER byte) is an UNVERIFIED stored-index
+         lookup; kept as non-displayed raw for later identification. -->
+    <table id="PERFECT COMPLETE VICTORY" lines-max="3">
+      <column id="WINS" src="VS_WINS"/>
+      <column id="RANK" src="index" format="+1" display="debug"/>
+    </table>
+
+  </output>
+
+  <format id="fighter">
+    <case src="0" dst="HAOHMARU"/>
+    <case src="1" dst="NAKORURU"/>
+    <case src="2" dst="RIMURURU"/>
+    <case src="3" dst="HANZO"/>
+    <case src="4" dst="GALFORD"/>
+    <case src="5" dst="KYOSHIRO"/>
+    <case src="6" dst="UKYO"/>
+    <case src="7" dst="GENJURO"/>
+    <case src="8" dst="BASARA"/>
+    <case src="9" dst="SHIZUMARU"/>
+    <case src="10" dst="GAIRA"/>
+    <case src="11" dst="SHIRO TOKISADA AMAKUSA"/>
+    <case src="12" dst="JUBEI"/>
+    <case src="13" dst="ZANKURO MINAZUKI"/>
+    <case src="14" dst="CHARLOTTE"/>
+    <case src="15" dst="TAM TAM"/>
+    <case src="16" dst="KAZUKI"/>
+    <case src="17" dst="SOGETSU"/>
+    <case src="18" dst="RASETSUMARU"/>
+    <case src="19" dst="RERA"/>
+    <case src="20" dst="ENJA"/>
+    <case src="21" dst="SUIJA"/>
+    <case src="22" dst="YOSHITORA TOKUGAWA"/>
+    <case src="23" dst="LIU YUNFEI"/>
+    <case src="24" dst="MINA MAJIKINA"/>
+    <case src="25" dst="YOUKAI KUSAREGEDO"/>
+    <case src="26" dst="KYOUGOKU HINOWANOKAMI GAOH"/>
+    <case src="27" dst="RASHOUJIN MIZUKI"/>
+  </format>
+
+  <format id="clear_time" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d10000;PadL20"/>
+      <txt>'</txt>
+      <column format="%10000;d100;PadL20"/>
+      <txt>''</txt>
+      <column format="%100;PadL20"/>
+    </concat>
+  </format>
+
+</hi2txt>

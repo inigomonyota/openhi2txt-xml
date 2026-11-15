@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hi2txt>
+
+  <!-- cosmogng: .hi (307 bytes)
+       hiscore.dat:
+         @:maincpu,program,10a003,f7,01,0d
+         @:maincpu,program,10080e,3c,00,70
+  -->
+
+  <format id="rank_plus1"><add>1</add></format>
+
+  <!-- 1P score and 2P score are stored as int3B BE = score/10 -->
+  <format id="score_x10"><multiply>10</multiply></format>
+
+  <!-- GANG decoding:
+       raw value 0 => 1
+       raw value 8 => (1P) 7 or (2P) 9
+  -->
+  <format id="gang_1p">
+    <case src="0" dst="1"/>
+    <case src="8" dst="7"/>
+    <case src="1" dst="1" default="yes"/>
+  </format>
+
+  <format id="gang_2p">
+    <case src="0" dst="1"/>
+    <case src="8" dst="9"/>
+    <case src="1" dst="1" default="yes"/>
+  </format>
+
+  <!-- Initials: decode as (value+65) for A-Z via ascii-offset,
+       then patch special chars stored using other codes:
+         0x27 -> '  (becomes 'h' after +65)
+         0x23 -> 8  (becomes 'd' after +65)
+       and patch NLS -> NILS (as per on-screen partner name)
+  -->
+  <format id="ini_fix">
+    <!-- after ascii-offset=65: 0x27 -> 'h' and 0x23 -> 'd' -->
+    <replace src="h" dst="'"/>
+    <replace src="d" dst="8"/>
+  </format>
+
+  <format id="ini_2p_join">
+    <concat>
+      <column src="INI1_2P"/>
+      <txt> &amp; </txt>
+      <column src="INI2_2P"/>
+    </concat>
+  </format>
+
+  <structure file=".hi">
+    <check>
+      <definition>0:10a003:f7:01:0d 0:10080e:3c:00:70</definition>
+      <size>307</size>
+    </check>
+
+    <!-- Skip to GANG blocks @ 0x26 -->
+    <elt size="38" type="raw" id="_SKIP_TO_GANG"/>
+
+    <!-- 1P GANG RAW (5 x u16 LE) @ 0x26 -->
+    <loop count="5">
+      <elt size="2" type="int" id="GANG_1P_RAW" endianness="little_endian" base="10"/>
+    </loop>
+
+    <!-- 2P GANG RAW (5 x u16 LE) @ 0x30 -->
+    <loop count="5">
+      <elt size="2" type="int" id="GANG_2P_RAW" endianness="little_endian" base="10"/>
+    </loop>
+
+    <!-- 1P CRE (5 x u16 LE) @ 0x3A -->
+    <loop count="5">
+      <elt size="2" type="int" id="CRE_1P" endianness="little_endian" base="10"/>
+    </loop>
+
+    <!-- Skip to 2P CRE @ 0x4E -->
+    <elt size="10" type="raw" id="_SKIP_TO_CRE2P"/>
+
+    <!-- 2P CRE (5 x u16 LE) @ 0x4E -->
+    <loop count="5">
+      <elt size="2" type="int" id="CRE_2P" endianness="little_endian" base="10"/>
+    </loop>
+
+    <!-- Skip to 1P initials @ 0x62 -->
+    <elt size="10" type="raw" id="_SKIP_TO_1P_INI"/>
+
+    <!-- 1P initials (5 x 3 chars) @ 0x62 -->
+    <loop count="5">
+      <elt size="6" type="text" id="INI_1P" byte-skip="even" ascii-offset="65" format="ini_fix"/>
+    </loop>
+
+    <!-- Skip to 2P initials 1 @ 0x9E -->
+    <elt size="30" type="raw" id="_SKIP_TO_2P_INI1"/>
+
+    <!-- 2P initials part 1 (5 x 3 chars) @ 0x9E -->
+    <loop count="5">
+      <elt size="6" type="text" id="INI1_2P" byte-skip="even" ascii-offset="65" format="ini_fix"/>
+    </loop>
+
+    <!-- Skip to 2P initials part 2 @ 0xDA -->
+    <elt size="30" type="raw" id="_SKIP_TO_2P_INI2"/>
+
+    <!-- 2P initials part 2 (5 x 3 chars) @ 0xDA -->
+    <loop count="5">
+      <elt size="6" type="text" id="INI2_2P" byte-skip="even" ascii-offset="65" format="ini_fix"/>
+    </loop>
+
+    <!-- 1P scores start exactly here @ 0xF8 -->
+    <loop count="5">
+      <elt size="3" type="int" id="SCORE1P_DIV10" endianness="big_endian" base="10"/>
+      <elt size="1" type="raw" id="_S1_PAD"/>
+    </loop>
+
+    <!-- Skip to 2P scores @ 0x120 -->
+    <elt size="20" type="raw" id="_SKIP_TO_2P_SCORE"/>
+
+    <loop count="5">
+      <elt size="3" type="int" id="SCORE2P_DIV10" endianness="big_endian" base="10"/>
+      <elt size="1" type="raw" id="_S2_PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="COSMIC RECORDS! 1P GAME">
+      <column id="RANK"  src="index"          format="rank_plus1"/>
+      <column id="SCORE" src="SCORE1P_DIV10"  format="score_x10"/>
+      <column id="GANG"  src="GANG_1P_RAW"    format="gang_1p"/>
+      <column id="INI."  src="INI_1P"/>
+      <column id="CRE."  src="CRE_1P"/>
+    </table>
+    <table id="COSMIC RECORDS! 2P TOTAL">
+      <column id="RANK"  src="index"          format="rank_plus1"/>
+      <column id="SCORE" src="SCORE2P_DIV10"  format="score_x10"/>
+      <column id="GANG"  src="GANG_2P_RAW"    format="gang_2p"/>
+      <column id="INI."  format="ini_2p_join"/>
+      <column id="CRE."  src="CRE_2P"/>
+    </table>
+  </output>
+</hi2txt>

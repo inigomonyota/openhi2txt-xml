@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Cruis'n USA">
+  <!--
+    Cruis'n USA (crusnusa) - Midway, 1994 (midvunit.cpp / V-Unit hardware).
+    The HOT TIMES best-times boards are persisted natively to CMOS, which MAME
+    saves as nvram\crusnusa\nvram (32768 bytes). There is one board PER COURSE
+    plus a final overall cross-country ("SF TO WASHINGTON DC") board: 15 boards
+    in all. Proven by matching the stored values to the on-screen boards
+    (e.g. course #1 TVG 02:03:20; overall #1 TVG 28:30:54, #10 BDP 35:07:63).
+
+    Boards begin at offset 0x0fe0, stored back-to-back, each 10 records x 0x20
+    (32) bytes => 320 bytes per board, 15 boards = 4800 bytes (ends at 0x22a0,
+    where the 0xff fill begins). Each 32-byte record is two 16-byte blocks:
+      [0..2]   best time: 24-bit little-endian tick count @ ~55 Hz (value is
+               repeated across the block; only the first LE word is read).
+               Course boards fit in 2 bytes; the overall board needs 3.
+      [3..15]  redundant copies of the tick -> skipped
+      [16..27] 3 initials, each a 32-bit BIG-endian word with the ASCII char in
+               the LOW byte, i.e. 00 00 00 <char>  (e.g. 00 00 00 54 = 'T')
+      [28..31] char-count word (0x00000003) -> skipped
+
+    Displayed time = trunc(tick * 20 / 11) centiseconds, shown as MM:SS:CC
+    (verified against every board). All 14 course boards hold identical factory
+    defaults, so board->course title order follows the game's attract/course
+    sequence (SF -> Washington DC); the 15th board is the overall run.
+
+    Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file="nvram">
+    <check>
+      <size>32768</size>
+    </check>
+
+    <elt size="4064" type="raw" id="HEADER"/>
+
+    <loop count="10">
+      <elt size="3"  type="int"  id="TICK0" endianness="little_endian"/>
+      <elt size="13" type="raw"  id="TPAD0"/>
+      <elt size="3"  type="raw"  id="PA0"/>
+      <elt size="1"  type="text" id="C1_0"/>
+      <elt size="3"  type="raw"  id="PB0"/>
+      <elt size="1"  type="text" id="C2_0"/>
+      <elt size="3"  type="raw"  id="PC0"/>
+      <elt size="1"  type="text" id="C3_0"/>
+      <elt size="4"  type="raw"  id="NLEN0"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="3"  type="int"  id="TICK1" endianness="little_endian"/>
+      <elt size="13" type="raw"  id="TPAD1"/>
+      <elt size="3"  type="raw"  id="PA1"/>
+      <elt size="1"  type="text" id="C1_1"/>
+      <elt size="3"  type="raw"  id="PB1"/>
+      <elt size="1"  type="text" id="C2_1"/>
+      <elt size="3"  type="raw"  id="PC1"/>
+      <elt size="1"  type="text" id="C3_1"/>
+      <elt size="4"  type="raw"  id="NLEN1"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="3"  type="int"  id="TICK2" endianness="little_endian"/>
+      <elt size="13" type="raw"  id="TPAD2"/>
+      <elt size="3"  type="raw"  id="PA2"/>
+      <elt size="1"  type="text" id="C1_2"/>
+      <elt size="3"  type="raw"  id="PB2"/>
+      <elt size="1"  type="text" id="C2_2"/>
+      <elt size="3"  type="raw"  id="PC2"/>
+      <elt size="1"  type="text" id="C3_2"/>
+      <elt size="4"  type="raw"  id="NLEN2"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="3"  type="int"  id="TICK3" endianness="little_endian"/>
+      <elt size="13" type="raw"  id="TPAD3"/>
+      <elt size="3"  type="raw"  id="PA3"/>
+      <elt size="1"  type="text" id="C1_3"/>
+      <elt size="3"  type="raw"  id="PB3"/>
+      <elt size="1"  type="text" id="C2_3"/>
+      <elt size="3"  type="raw"  id="PC3"/>
+      <elt size="1"  type="text" id="C3_3"/>
+      <elt size="4"  type="raw"  id="NLEN3"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="3"  type="int"  id="TICK4" endianness="little_endian"/>
+      <elt size="13" type="raw"  id="TPAD4"/>
+      <elt size="3"  type="raw"  id="PA4"/>
+      <elt size="1"  type="text" id="C1_4"/>
+      <elt size="3"  type="raw"  id="PB4"/>
+      <elt size="1"  type="text" id="C2_4"/>
+      <elt size="3"  type="raw"  id="PC4"/>
+      <elt size="1"  type="text" id="C3_4"/>
+      <elt size="4"  type="raw"  id="NLEN4"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="3"  type="int"  id="TICK5" endianness="little_endian"/>
+      <elt size="13" type="raw"  id="TPAD5"/>
+      <elt size="3"  type="raw"  id="PA5"/>
+      <elt size="1"  type="text" id="C1_5"/>
+      <elt size="3"  type="raw"  id="PB5"/>
+      <elt size="1"  type="text" id="C2_5"/>
+      <elt size="3"  type="raw"  id="PC5"/>
+      <elt size="1"  type="text" id="C3_5"/>
+      <elt size="4"  type="raw"  id="NLEN5"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="3"  type="int"  id="TICK6" endianness="little_endian"/>
+      <elt size="13" type="raw"  id="TPAD6"/>
+      <elt size="3"  type="raw"  id="PA6"/>
+      <elt size="1"  type="text" id="C1_6"/>
+      <elt size="3"  type="raw"  id="PB6"/>
+      <elt size="1"  type="text" id="C2_6"/>
+      <elt size="3"  type="raw"  id="PC6"/>
+      <elt size="1"  type="text" id="C3_6"/>
+      <elt size="4"  type="raw"  id="NLEN6"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="3"  type="int"  id="TICK7" endianness="little_endian"/>
+      <elt size="13" type="raw"  id="TPAD7"/>
+      <elt size="3"  type="raw"  id="PA7"/>
+      <elt size="1"  type="text" id="C1_7"/>
+      <elt size="3"  type="raw"  id="PB7"/>
+      <elt size="1"  type="text" id="C2_7"/>
+      <elt size="3"  type="raw"  id="PC7"/>
+      <elt size="1"  type="text" id="C3_7"/>
+      <elt size="4"  type="raw"  id="NLEN7"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="3"  type="int"  id="TICK8" endianness="little_endian"/>
+      <elt size="13" type="raw"  id="TPAD8"/>
+      <elt size="3"  type="raw"  id="PA8"/>
+      <elt size="1"  type="text" id="C1_8"/>
+      <elt size="3"  type="raw"  id="PB8"/>
+      <elt size="1"  type="text" id="C2_8"/>
+      <elt size="3"  type="raw"  id="PC8"/>
+      <elt size="1"  type="text" id="C3_8"/>
+      <elt size="4"  type="raw"  id="NLEN8"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="3"  type="int"  id="TICK9" endianness="little_endian"/>
+      <elt size="13" type="raw"  id="TPAD9"/>
+      <elt size="3"  type="raw"  id="PA9"/>
+      <elt size="1"  type="text" id="C1_9"/>
+      <elt size="3"  type="raw"  id="PB9"/>
+      <elt size="1"  type="text" id="C2_9"/>
+      <elt size="3"  type="raw"  id="PC9"/>
+      <elt size="1"  type="text" id="C3_9"/>
+      <elt size="4"  type="raw"  id="NLEN9"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="3"  type="int"  id="TICK10" endianness="little_endian"/>
+      <elt size="13" type="raw"  id="TPAD10"/>
+      <elt size="3"  type="raw"  id="PA10"/>
+      <elt size="1"  type="text" id="C1_10"/>
+      <elt size="3"  type="raw"  id="PB10"/>
+      <elt size="1"  type="text" id="C2_10"/>
+      <elt size="3"  type="raw"  id="PC10"/>
+      <elt size="1"  type="text" id="C3_10"/>
+      <elt size="4"  type="raw"  id="NLEN10"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="3"  type="int"  id="TICK11" endianness="little_endian"/>
+      <elt size="13" type="raw"  id="TPAD11"/>
+      <elt size="3"  type="raw"  id="PA11"/>
+      <elt size="1"  type="text" id="C1_11"/>
+      <elt size="3"  type="raw"  id="PB11"/>
+      <elt size="1"  type="text" id="C2_11"/>
+      <elt size="3"  type="raw"  id="PC11"/>
+      <elt size="1"  type="text" id="C3_11"/>
+      <elt size="4"  type="raw"  id="NLEN11"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="3"  type="int"  id="TICK12" endianness="little_endian"/>
+      <elt size="13" type="raw"  id="TPAD12"/>
+      <elt size="3"  type="raw"  id="PA12"/>
+      <elt size="1"  type="text" id="C1_12"/>
+      <elt size="3"  type="raw"  id="PB12"/>
+      <elt size="1"  type="text" id="C2_12"/>
+      <elt size="3"  type="raw"  id="PC12"/>
+      <elt size="1"  type="text" id="C3_12"/>
+      <elt size="4"  type="raw"  id="NLEN12"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="3"  type="int"  id="TICK13" endianness="little_endian"/>
+      <elt size="13" type="raw"  id="TPAD13"/>
+      <elt size="3"  type="raw"  id="PA13"/>
+      <elt size="1"  type="text" id="C1_13"/>
+      <elt size="3"  type="raw"  id="PB13"/>
+      <elt size="1"  type="text" id="C2_13"/>
+      <elt size="3"  type="raw"  id="PC13"/>
+      <elt size="1"  type="text" id="C3_13"/>
+      <elt size="4"  type="raw"  id="NLEN13"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="3"  type="int"  id="TICK14" endianness="little_endian"/>
+      <elt size="13" type="raw"  id="TPAD14"/>
+      <elt size="3"  type="raw"  id="PA14"/>
+      <elt size="1"  type="text" id="C1_14"/>
+      <elt size="3"  type="raw"  id="PB14"/>
+      <elt size="1"  type="text" id="C2_14"/>
+      <elt size="3"  type="raw"  id="PC14"/>
+      <elt size="1"  type="text" id="C3_14"/>
+      <elt size="4"  type="raw"  id="NLEN14"/>
+    </loop>
+
+    <elt size="23904" type="raw" id="REST"/>
+  </structure>
+
+  <output>
+    <table id="GOLDEN GATE PARK">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_0" format="namecat0"/>
+      <column id="TIME" src="TICK0" format="besttime"/>
+    </table>
+    <table id="SAN FRANCISCO">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_1" format="namecat1"/>
+      <column id="TIME" src="TICK1" format="besttime"/>
+    </table>
+    <table id="US 101">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_2" format="namecat2"/>
+      <column id="TIME" src="TICK2" format="besttime"/>
+    </table>
+    <table id="REDWOOD FOREST">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_3" format="namecat3"/>
+      <column id="TIME" src="TICK3" format="besttime"/>
+    </table>
+    <table id="BEVERLY HILLS">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_4" format="namecat4"/>
+      <column id="TIME" src="TICK4" format="besttime"/>
+    </table>
+    <table id="LA FREEWAY">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_5" format="namecat5"/>
+      <column id="TIME" src="TICK5" format="besttime"/>
+    </table>
+    <table id="DEATH VALLEY">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_6" format="namecat6"/>
+      <column id="TIME" src="TICK6" format="besttime"/>
+    </table>
+    <table id="ARIZONA">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_7" format="namecat7"/>
+      <column id="TIME" src="TICK7" format="besttime"/>
+    </table>
+    <table id="GRAND CANYON">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_8" format="namecat8"/>
+      <column id="TIME" src="TICK8" format="besttime"/>
+    </table>
+    <table id="IOWA">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_9" format="namecat9"/>
+      <column id="TIME" src="TICK9" format="besttime"/>
+    </table>
+    <table id="CHICAGO">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_10" format="namecat10"/>
+      <column id="TIME" src="TICK10" format="besttime"/>
+    </table>
+    <table id="INDIANA">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_11" format="namecat11"/>
+      <column id="TIME" src="TICK11" format="besttime"/>
+    </table>
+    <table id="APPALACHIA">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_12" format="namecat12"/>
+      <column id="TIME" src="TICK12" format="besttime"/>
+    </table>
+    <table id="WASHINGTON DC">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_13" format="namecat13"/>
+      <column id="TIME" src="TICK13" format="besttime"/>
+    </table>
+    <table id="SF TO WASHINGTON DC">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_14" format="namecat14"/>
+      <column id="TIME" src="TICK14" format="besttime"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="namecat0" input-as-subcolumns-input="yes">
+    <concat><column src="C1_0"/><column src="C2_0"/><column src="C3_0"/></concat>
+  </format>
+  <format id="namecat1" input-as-subcolumns-input="yes">
+    <concat><column src="C1_1"/><column src="C2_1"/><column src="C3_1"/></concat>
+  </format>
+  <format id="namecat2" input-as-subcolumns-input="yes">
+    <concat><column src="C1_2"/><column src="C2_2"/><column src="C3_2"/></concat>
+  </format>
+  <format id="namecat3" input-as-subcolumns-input="yes">
+    <concat><column src="C1_3"/><column src="C2_3"/><column src="C3_3"/></concat>
+  </format>
+  <format id="namecat4" input-as-subcolumns-input="yes">
+    <concat><column src="C1_4"/><column src="C2_4"/><column src="C3_4"/></concat>
+  </format>
+  <format id="namecat5" input-as-subcolumns-input="yes">
+    <concat><column src="C1_5"/><column src="C2_5"/><column src="C3_5"/></concat>
+  </format>
+  <format id="namecat6" input-as-subcolumns-input="yes">
+    <concat><column src="C1_6"/><column src="C2_6"/><column src="C3_6"/></concat>
+  </format>
+  <format id="namecat7" input-as-subcolumns-input="yes">
+    <concat><column src="C1_7"/><column src="C2_7"/><column src="C3_7"/></concat>
+  </format>
+  <format id="namecat8" input-as-subcolumns-input="yes">
+    <concat><column src="C1_8"/><column src="C2_8"/><column src="C3_8"/></concat>
+  </format>
+  <format id="namecat9" input-as-subcolumns-input="yes">
+    <concat><column src="C1_9"/><column src="C2_9"/><column src="C3_9"/></concat>
+  </format>
+  <format id="namecat10" input-as-subcolumns-input="yes">
+    <concat><column src="C1_10"/><column src="C2_10"/><column src="C3_10"/></concat>
+  </format>
+  <format id="namecat11" input-as-subcolumns-input="yes">
+    <concat><column src="C1_11"/><column src="C2_11"/><column src="C3_11"/></concat>
+  </format>
+  <format id="namecat12" input-as-subcolumns-input="yes">
+    <concat><column src="C1_12"/><column src="C2_12"/><column src="C3_12"/></concat>
+  </format>
+  <format id="namecat13" input-as-subcolumns-input="yes">
+    <concat><column src="C1_13"/><column src="C2_13"/><column src="C3_13"/></concat>
+  </format>
+  <format id="namecat14" input-as-subcolumns-input="yes">
+    <concat><column src="C1_14"/><column src="C2_14"/><column src="C3_14"/></concat>
+  </format>
+
+  <!-- trunc(tick*20/11) centiseconds, split into MM:SS:CC, each 2 digits -->
+  <format id="besttime" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="*20;d11;d6000;d10"/>
+      <column format="*20;d11;d6000;%10"/>
+      <txt>:</txt>
+      <column format="*20;d11;%6000;d100;d10"/>
+      <column format="*20;d11;%6000;d100;%10"/>
+      <txt>:</txt>
+      <column format="*20;d11;%100;d10"/>
+      <column format="*20;d11;%100;%10"/>
+    </concat>
+  </format>
+
+</hi2txt>

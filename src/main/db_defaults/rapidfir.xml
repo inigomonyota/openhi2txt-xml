@@ -1,0 +1,15 @@
+<hi2txt>
+<table id="HIGH SCORES">
+<col>RANK</col><col>NAME</col><col>SCORE</col><col>DIFFICULTY</col>
+<row><cell>1</cell><cell>SCT</cell><cell>32500</cell><cell>HARD</cell></row>
+<row><cell>2</cell><cell>KNS</cell><cell>31100</cell><cell>HARD</cell></row>
+<row><cell>3</cell><cell>PAT</cell><cell>28700</cell><cell>MEDIUM</cell></row>
+<row><cell>4</cell><cell>JOE</cell><cell>16320</cell><cell>HARD</cell></row>
+<row><cell>5</cell><cell>SJD</cell><cell>14300</cell><cell>MEDIUM</cell></row>
+<row><cell>6</cell><cell>MAC</cell><cell>10300</cell><cell>MEDIUM</cell></row>
+<row><cell>7</cell><cell>MTH</cell><cell>9500</cell><cell>EASY</cell></row>
+<row><cell>8</cell><cell>PKE</cell><cell>8750</cell><cell>MEDIUM</cell></row>
+<row><cell>9</cell><cell>SJD</cell><cell>5675</cell><cell>EASY</cell></row>
+<row><cell>10</cell><cell>MTH</cell><cell>4250</cell><cell>EASY</cell></row>
+</table>
+</hi2txt>

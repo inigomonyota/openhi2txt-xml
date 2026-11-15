@@ -1,0 +1,10 @@
+<hi2txt>
+<table id="RANKING">
+<col>RANK</col><col>NAME</col><col>TITLE</col><col>EXP</col><col>LEVEL</col><col>WINS</col>
+<row><cell>1ST</cell><cell>DNA</cell><cell>B-HEART</cell><cell>8000EXP</cell><cell>LV 4</cell><cell>3WINS</cell></row>
+<row><cell>2ND</cell><cell>YAN</cell><cell></cell><cell>4000EXP</cell><cell>LV 3</cell><cell>2WINS</cell></row>
+<row><cell>3RD</cell><cell>ARI</cell><cell></cell><cell>3000EXP</cell><cell>LV 3</cell><cell>2WINS</cell></row>
+<row><cell>4TH</cell><cell>NOT</cell><cell></cell><cell>2000EXP</cell><cell>LV 2</cell><cell>1WIN</cell></row>
+<row><cell>5TH</cell><cell>FRK</cell><cell></cell><cell>1000EXP</cell><cell>LV 2</cell><cell>1WIN</cell></row>
+</table>
+</hi2txt>

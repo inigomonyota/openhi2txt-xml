@@ -1,0 +1,12 @@
+<hi2txt>
+  <table>
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>PADDING</col>
+    <row><cell>1</cell><cell>224040</cell><cell>RTR</cell><cell>     </cell></row>
+    <row><cell>2</cell><cell>200000</cell><cell>TAE</cell><cell>     </cell></row>
+    <row><cell>3</cell><cell>150000</cell><cell>YAM</cell><cell>     </cell></row>
+    <row><cell>4</cell><cell>100000</cell><cell>POO</cell><cell>     </cell></row>
+    <row><cell>5</cell><cell>70000</cell><cell>MR.</cell><cell>     </cell></row>
+  </table>
+  <field id="TOP SCORE">224040</field>
+  <field id="TOP SCORE STRING"> 224040</field>
+</hi2txt>

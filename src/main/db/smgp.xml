@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Super Monaco Grand Prix">
+<!--
+  hi2txt description for Super Monaco GP (smgp)  [DRIVER'S POINT RANKING]
+  Place inside hi2txt.zip as db/smgp.xml
+
+  .hi layout: fff500 = 0x7e (126) = 9 entries x 14 bytes, + 1 byte at fffe85
+    [0-1]  D.POINT  packed BCD
+    [2-5]  race 1   = pos(1) + min(1) + sec(1) + cs(1)   pos 0-based; 0xFE=RETIRED
+    [6-9]  race 2   = pos(1) + min(1) + sec(1) + cs(1)
+    [10-12] driver  ASCII (may include digits: O2K,45T,TO3)
+    [13]   bits1-0 = T.M. (0=AT,1=4S,2=7S); bits7-2 = grid slot 0-based (+1; 1=pole)
+
+  Each race is read as ONE 4-byte int and everything is derived from that single
+  value (no cross-element references, no base=16 on the RETIRED sentinel), which
+  is what hi2txt's input-as-subcolumns formatting supports.
+    pos    = value / 0x1000000
+    minute = (value % 0x1000000) / 0x10000  -> low BCD nibble
+    second = (value % 0x10000)  / 0x100     -> two BCD nibbles
+    centis =  value % 0x100                 -> two BCD nibbles
+-->
+  <structure file=".hi">
+    <check>
+      <definition>0:fff500:7e:21:02
+0:fffe85:1:08:08</definition>
+      <size>127</size>
+    </check>
+
+    <loop count="9">
+      <elt size="2" type="int"  id="DPOINT" base="16"/>
+      <elt size="4" type="int"  id="R1RACE"/>
+      <elt size="4" type="int"  id="R2RACE"/>
+      <elt size="3" type="text" id="DRIVER"/>
+      <elt size="1" type="int"  id="TMGRID"/>
+    </loop>
+
+    <elt size="1" type="raw" id="TAILFLAG"/>
+  </structure>
+
+  <output>
+    <table id="DRIVER'S POINT RANKING">
+      <column id="RANK"     src="index"  format="rank"/>
+      <column id="D.POINT"  src="DPOINT"/>
+      <column id="GRID"     src="TMGRID" format="grid"/>
+      <column id="1ST RACE" src="R1RACE" format="race"/>
+      <column id="2ND RACE" src="R2RACE" format="race"/>
+      <column id="DRIVER"   src="DRIVER"/>
+      <column id="T.M."     src="TMGRID" format="tm"/>
+      <column id="TAILFLAG" src="TAILFLAG" display="debug"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <add>1</add>
+    <case src="1" dst="1ST" default="yes"/>
+    <case src="2" dst="2ND"/>
+    <case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/>
+    <case src="5" dst="5TH"/>
+    <case src="6" dst="6TH"/>
+    <case src="7" dst="7TH"/>
+    <case src="8" dst="8TH"/>
+    <case src="9" dst="9TH"/>
+  </format>
+
+  <!-- 4-byte race value: exact sentinel 4278128512 (0xFEFF0F80) = RETIRED,
+       every other value is a real result -> racebuild -->
+  <format id="race">
+    <case src="4278128512" dst="RETIRED"/>
+    <case src="4278128512" operator="!=" format="racebuild"/>
+  </format>
+  <format id="racebuild" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d16777216;+1"/>
+      <txt>-</txt>
+      <column format="%16777216;d65536;%16"/>
+      <txt>'</txt>
+      <column format="%65536;d256;d16"/>
+      <column format="%65536;d256;%16"/>
+      <txt>"</txt>
+      <column format="%256;d16"/>
+      <column format="%256;%16"/>
+    </concat>
+  </format>
+
+  <!-- grid slot number: 1 -> PP, every other value passes through unchanged -->
+  <format id="grid">
+    <divide_trunc>4</divide_trunc>
+    <add>1</add>
+    <case src="1" dst="PP"/>
+    <case src="1" operator="!=" format="identity"/>
+  </format>
+  <format id="identity">
+    <add>0</add>
+  </format>
+
+  <!-- transmission -->
+  <format id="tm">
+    <remainder>4</remainder>
+    <case src="0" dst="AT" default="yes"/>
+    <case src="1" dst="4S"/>
+    <case src="2" dst="7S"/>
+  </format>
+
+</hi2txt>

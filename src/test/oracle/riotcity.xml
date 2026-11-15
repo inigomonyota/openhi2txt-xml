@@ -1,0 +1,13 @@
+<hi2txt>
+  <table id="HIGH SCORES">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>90000</cell><cell>SUN</cell></row>
+    <row><cell>2</cell><cell>80000</cell><cell>EAU</cell></row>
+    <row><cell>3</cell><cell>75000</cell><cell>GOD</cell></row>
+    <row><cell>4</cell><cell>70000</cell><cell>ACE</cell></row>
+    <row><cell>5</cell><cell>65000</cell><cell>SKY</cell></row>
+    <row><cell>6</cell><cell>60000</cell><cell>EYE</cell></row>
+    <row><cell>7</cell><cell>55000</cell><cell>GEM</cell></row>
+    <row><cell>8</cell><cell>50000</cell><cell>AGE</cell></row>
+  </table>
+</hi2txt>

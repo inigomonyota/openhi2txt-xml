@@ -1,0 +1,11 @@
+<hi2txt>
+<table id="Today's Records">
+<col>RANK</col><col>TIME</col><col>NAME</col><col>CAR</col>
+<row><cell>1st</cell><cell>59'10"</cell><cell>Moon</cell><cell>Jaguar D-type</cell></row>
+<row><cell>2nd</cell><cell>59'20"</cell><cell>Mercury</cell><cell>Ferrari 250GTO</cell></row>
+<row><cell>3rd</cell><cell>59'30"</cell><cell>Mars</cell><cell>Bugatti Type59</cell></row>
+<row><cell>4th</cell><cell>59'40"</cell><cell>Jupitor</cell><cell>Ferrari 250TR</cell></row>
+<row><cell>5th</cell><cell>59'50"</cell><cell>Venus</cell><cell>Porsche 550d</cell></row>
+<row><cell>6th</cell><cell>59'60"</cell><cell>Pluto</cell><cell>Mercedes Benz 300SLR</cell></row>
+</table>
+</hi2txt>

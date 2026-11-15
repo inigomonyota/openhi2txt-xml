@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  hi2txt description for Batman Forever (batmanfr)  [Sega ST-V]
+
+  hiscore.dat entry:
+      batmanfr:
+      @:maincpu,program,180000,10000,00,00
+
+  Full 64KB backup RAM dump. Backup RAM is a byte-wide chip on a 16-bit bus,
+  so every 2nd byte is 0x00 padding - hence byte-skip="odd" on the table
+  elements. The 768 leading bytes are consumed as twelve PAD elements.
+
+  NOTE: 'display' is an output field/table/column attribute only - it is NOT
+  valid on <elt>. Do not add it to the structure section.
+
+  48 entries of 24 raw bytes (12 real bytes):
+      entries  1-24 = BATMAN,  entries 25-48 = ROBIN
+      [0-3]  NAME       4 x ASCII, unused slots are "...."
+      [4-5]  CHARACTER  16-bit, 0 = Batman, 1 = Robin
+      [6-7]  UNKNOWN    16-bit
+      [8-11] SCORE      32-bit big-endian binary, 0x00030D40 = 200000
+
+  A second copy of the table exists at file offset 0x9C0.
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>65536</size>
+    </check>
+
+      <!-- 768 leading bytes before the tables //-->
+      <elt size="64" type="raw" id="PAD00"/>
+      <elt size="64" type="raw" id="PAD01"/>
+      <elt size="64" type="raw" id="PAD02"/>
+      <elt size="64" type="raw" id="PAD03"/>
+      <elt size="64" type="raw" id="PAD04"/>
+      <elt size="64" type="raw" id="PAD05"/>
+      <elt size="64" type="raw" id="PAD06"/>
+      <elt size="64" type="raw" id="PAD07"/>
+      <elt size="64" type="raw" id="PAD08"/>
+      <elt size="64" type="raw" id="PAD09"/>
+      <elt size="64" type="raw" id="PAD10"/>
+      <elt size="64" type="raw" id="PAD11"/>
+
+    <!-- BATMAN : entries 1-24 //-->
+    <loop count="24">
+      <elt size="8" type="text" id="BAT NAME"      byte-skip="odd"/>
+      <elt size="4" type="int"  id="BAT CHARACTER" byte-skip="odd"/>
+      <elt size="4" type="raw"  id="BAT UNKNOWN"   byte-skip="odd"/>
+      <elt size="8" type="int"  id="BAT SCORE"     byte-skip="odd"/>
+    </loop>
+
+    <!-- ROBIN : entries 25-48 //-->
+    <loop count="24">
+      <elt size="8" type="text" id="ROB NAME"      byte-skip="odd"/>
+      <elt size="4" type="int"  id="ROB CHARACTER" byte-skip="odd"/>
+      <elt size="4" type="raw"  id="ROB UNKNOWN"   byte-skip="odd"/>
+      <elt size="8" type="int"  id="ROB SCORE"     byte-skip="odd"/>
+    </loop>
+  </structure>
+
+  <output>
+
+    <table id="BATMAN HIGH SCORES">
+      <column id="RANK"      src="index" format="rank"/>
+      <column id="NAME"      src="BAT NAME"/>
+      <column id="SCORE"     src="BAT SCORE"/>
+      <column id="CHARACTER" src="BAT CHARACTER" format="character" display="debug"/>
+      <column id="UNKNOWN"   src="BAT UNKNOWN"   format="0x"        display="debug"/>
+    </table>
+
+    <table id="ROBIN HIGH SCORES">
+      <column id="RANK"      src="index" format="rank"/>
+      <column id="NAME"      src="ROB NAME"/>
+      <column id="SCORE"     src="ROB SCORE"/>
+      <column id="CHARACTER" src="ROB CHARACTER" format="character" display="debug"/>
+      <column id="UNKNOWN"   src="ROB UNKNOWN"   format="0x"        display="debug"/>
+    </table>
+
+  </output>
+
+  <format id="rank">
+    <add>1</add>
+    <case src="1" dst="1ST"/>
+    <case src="2" dst="2ND"/>
+    <case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/>
+    <case src="5" dst="5TH"/>
+    <case src="6" dst="6TH"/>
+    <case src="7" dst="7TH"/>
+    <case src="8" dst="8TH"/>
+    <case src="9" dst="9TH"/>
+    <case src="10" dst="10TH"/>
+    <case src="11" dst="11TH"/>
+    <case src="12" dst="12TH"/>
+    <case src="13" dst="13TH"/>
+    <case src="14" dst="14TH"/>
+    <case src="15" dst="15TH"/>
+    <case src="16" dst="16TH"/>
+    <case src="17" dst="17TH"/>
+    <case src="18" dst="18TH"/>
+    <case src="19" dst="19TH"/>
+    <case src="20" dst="20TH"/>
+    <case src="21" dst="21ST"/>
+    <case src="22" dst="22ND"/>
+    <case src="23" dst="23RD"/>
+    <case src="24" dst="24TH"/>
+  </format>
+
+  <format id="character">
+    <case src="0" dst="BATMAN" default="yes"/>
+    <case src="1" dst="ROBIN"/>
+  </format>
+
+</hi2txt>

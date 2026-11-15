@@ -2,32 +2,72 @@
 <!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
 <hi2txt>
   <!--
-    tested with mame 0.148 and related hiscore.dat
-      source: HiToText
+    Zoo Keeper (zookeep)
+    nvram holds two 10-entry tables:
+      BEST KEEPERS EVER (entries 1-10) then TODAY'S KEEPERS (entries 11-20)
+    each entry = 4-byte BCD score + 3-byte ASCII name + 1-byte separator
+      source: HiToText (reworked to split into two tables + comma scores)
   //-->
-  
+
   <structure file="nvram">
     <check>
-      <!-- optional: if defined, it allows to select the good structure versus the provided file
-                     useful if multiple structures are defined but hiscore.dat not provided //-->
       <size>1024</size>
     </check>
-    <elt size="608" type="raw"  id="UNKNOWN"/>
-    <loop count="20">
-      <elt size="4" type="int"  id="SCORE" base="16"/>
-      <elt size="3" type="text" id="NAME"/>
-      <elt size="1" type="raw"  id="SEPARATOR"/>
+    <elt size="608" type="raw" id="HEADER"/>
+    <loop count="10">
+      <elt size="4" type="int"  id="SCORE_EVER" base="16"/>
+      <elt size="3" type="text" id="NAME_EVER"/>
+      <elt size="1" type="raw"  id="SEP_EVER"/>
     </loop>
-    <elt size="256" type="raw"  id="UNKNOWN"/> <!-- settings //-->
+    <loop count="10">
+      <elt size="4" type="int"  id="SCORE_TODAY" base="16"/>
+      <elt size="3" type="text" id="NAME_TODAY"/>
+      <elt size="1" type="raw"  id="SEP_TODAY"/>
+    </loop>
+    <elt size="256" type="raw" id="SETTINGS"/>
   </structure>
-  
+
   <output>
-    <table>
-      <column id="RANK" src="index" format="+1"/>
-      <column id="SCORE"/>
-      <column id="NAME"/>
+    <table id="BEST KEEPERS EVER" line-ignore="SCORE_EVER:0">
+      <column id="RANK"  src="index"      format="+1"/>
+      <column id="NAME"  src="NAME_EVER"/>
+      <column id="SCORE" src="SCORE_EVER" format="comma_score"/>
+    </table>
+    <table id="TODAY'S KEEPERS" line-ignore="SCORE_TODAY:0">
+      <column id="RANK"  src="index"       format="+1"/>
+      <column id="NAME"  src="NAME_TODAY"/>
+      <column id="SCORE" src="SCORE_TODAY" format="comma_score"/>
     </table>
   </output>
-  
-  <format id="+1"><add>1</add></format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/><txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
 </hi2txt>

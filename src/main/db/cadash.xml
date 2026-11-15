@@ -47,7 +47,7 @@
   </structure>
   
   <output>
-    <table id="FIGTHER">
+    <table id="FIGHTER">
       <column id="RANK"  src="index"  format="+1"/>
       <column id="NAME"  src="F_NAME" format="TrimR "/>
 	  <column id="EXP"   src="F_EXP"/>

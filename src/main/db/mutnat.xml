@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    mutnat - Mutation Nation (SNK, Neo Geo)
+    Reads the MAME saveram file (nvram/mutnat/saveram), 65536 bytes.
+
+    Neo Geo 68000: saveram is word-swapped, so structure uses byte-swap 2.
+    BEST PLAYERS = 10 records of 16 bytes from 0x0320 (post-swap):
+      [0:2]   padding
+      [2:6]   SCORE 4-byte BCD (00 30 00 00 gives 300000)
+      [6:9]   NAME  3 chars, charset A=1..Z=26 (SNK = 19,14,11)
+      [9]     0x20 separator
+      [10]    STAGE world, [11] STAGE level -> "world-level"
+      [12:16] padding
+    RANK is positional, shown as the number then a dot.
+  -->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+
+    <!-- skip to table at 0x0320 (800 bytes) -->
+    <elt size="800" type="raw" id="PRE"/>
+    <loop count="10">
+      <elt size="2" type="raw"  id="P0"/>
+      <elt size="4" type="int"  base="16" id="SCORE"/>
+      <elt size="3" type="text" charset="a1" id="NAME"/>
+      <elt size="1" type="raw"  id="SEP"/>
+      <elt size="2" type="int"  id="STAGE"/>
+      <elt size="4" type="raw"  id="P1"/>
+    </loop>
+  </structure>
+
+  <format id="rank">
+    <add>1</add>
+    <suffix>.</suffix>
+  </format>
+
+  <!-- 2-byte STAGE (world,level) -> "world-level" -->
+  <format id="sworld"><divide_trunc>256</divide_trunc></format>
+  <format id="slevel"><remainder>256</remainder></format>
+  <format id="stage" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="sworld"/>
+      <txt>-</txt>
+      <column format="slevel"/>
+    </concat>
+  </format>
+
+  <output>
+    <table id="BEST PLAYERS">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="STAGE" src="STAGE" format="stage"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+  <!-- name font: A=1..Z=26 -->
+  <charset id="a1">
+    <char src="0x01" dst="A"/>
+    <char src="0x02" dst="B"/>
+    <char src="0x03" dst="C"/>
+    <char src="0x04" dst="D"/>
+    <char src="0x05" dst="E"/>
+    <char src="0x06" dst="F"/>
+    <char src="0x07" dst="G"/>
+    <char src="0x08" dst="H"/>
+    <char src="0x09" dst="I"/>
+    <char src="0x0A" dst="J"/>
+    <char src="0x0B" dst="K"/>
+    <char src="0x0C" dst="L"/>
+    <char src="0x0D" dst="M"/>
+    <char src="0x0E" dst="N"/>
+    <char src="0x0F" dst="O"/>
+    <char src="0x10" dst="P"/>
+    <char src="0x11" dst="Q"/>
+    <char src="0x12" dst="R"/>
+    <char src="0x13" dst="S"/>
+    <char src="0x14" dst="T"/>
+    <char src="0x15" dst="U"/>
+    <char src="0x16" dst="V"/>
+    <char src="0x17" dst="W"/>
+    <char src="0x18" dst="X"/>
+    <char src="0x19" dst="Y"/>
+    <char src="0x1A" dst="Z"/>
+  </charset>
+
+</hi2txt>

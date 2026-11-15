@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    ncombat - Ninja Combat (SNK, Neo Geo)
+    Reads the MAME saveram file (nvram/ncombat/saveram), 65536 bytes.
+
+    Neo Geo 68000: saveram is word-swapped, so structure uses byte-swap 2.
+    NINJA BEST 8 = 8 records of 16 bytes from 0x0940 (post-swap). Records are
+    not stored in rank order, so each carries its RANK; the table is sorted by it.
+    Record:
+      [0:2]  padding
+      [2:4]  SCORE 2-byte BCD (07 50 gives 750)
+      [4:7]  NAME  3 chars, charset A=0..Z=25 (ABC = 0,1,2)
+      [7]    AREA stage, [8] AREA scene -> "{stage}ST {scene}SC"
+      [9]    RANK (1..8)
+      [10:16] padding
+  -->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+
+    <!-- skip to table at 0x0940 (2368 bytes) -->
+    <elt size="2368" type="raw" id="PRE"/>
+    <loop count="8">
+      <elt size="2" type="raw"  id="P0"/>
+      <elt size="2" type="int"  base="16" id="SCORE"/>
+      <elt size="3" type="text" charset="a0" id="NAME"/>
+      <elt size="2" type="int"  id="AREA"/>
+      <elt size="1" type="int"  id="RANK"/>
+      <elt size="6" type="raw"  id="P1"/>
+    </loop>
+  </structure>
+
+  <!-- 2-byte AREA (stage,scene) -> "{stage}ST {scene}SC" -->
+  <format id="a_st"><divide_trunc>256</divide_trunc><suffix>ST </suffix></format>
+  <format id="a_sc"><remainder>256</remainder><suffix>SC</suffix></format>
+  <format id="area" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="a_st"/>
+      <column format="a_sc"/>
+    </concat>
+  </format>
+
+  <output>
+    <table id="NINJA BEST 8" sort="RANK" sort-order="asc">
+      <column id="RANK"  src="RANK"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="AREA"  src="AREA" format="area"/>
+    </table>
+  </output>
+
+  <charset id="a0">
+    <char src="0x00" dst="A"/>
+    <char src="0x01" dst="B"/>
+    <char src="0x02" dst="C"/>
+    <char src="0x03" dst="D"/>
+    <char src="0x04" dst="E"/>
+    <char src="0x05" dst="F"/>
+    <char src="0x06" dst="G"/>
+    <char src="0x07" dst="H"/>
+    <char src="0x08" dst="I"/>
+    <char src="0x09" dst="J"/>
+    <char src="0x0A" dst="K"/>
+    <char src="0x0B" dst="L"/>
+    <char src="0x0C" dst="M"/>
+    <char src="0x0D" dst="N"/>
+    <char src="0x0E" dst="O"/>
+    <char src="0x0F" dst="P"/>
+    <char src="0x10" dst="Q"/>
+    <char src="0x11" dst="R"/>
+    <char src="0x12" dst="S"/>
+    <char src="0x13" dst="T"/>
+    <char src="0x14" dst="U"/>
+    <char src="0x15" dst="V"/>
+    <char src="0x16" dst="W"/>
+    <char src="0x17" dst="X"/>
+    <char src="0x18" dst="Y"/>
+    <char src="0x19" dst="Z"/>
+  </charset>
+
+</hi2txt>

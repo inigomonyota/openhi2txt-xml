@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 136 bytes -->
+    <check><size>136</size></check>
+    
+    <!-- ARRAY 1: All 10 Scores (4 bytes each) -->
+    <loop count="10">
+      <!-- Standard Little-Endian BCD -->
+      <elt size="4" type="int" id="SCORE" base="16" endianness="little_endian"/>
+    </loop>
+    
+    <!-- ARRAY 2: All 10 Names (10 bytes each) -->
+    <!-- The file ends 4 bytes early during the 10th record's padding, so we skip them -->
+    <loop count="10" skip-last-bytes="4">
+      <!-- 3-character string utilizing our custom punctuation charset -->
+      <elt size="3" type="text" id="NAME" charset="lkage_char"/>
+      <!-- 7 bytes of padding (0x00 or 0x20) following each name -->
+      <elt size="7" type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST 10">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+  <!-- Translates the index from 0-9 to 1-10 -->
+  <format id="+1">
+    <add>1</add>
+  </format>
+
+  <!-- Fixes the swapped punctuation marks -->
+  <charset id="lkage_char">
+    <char src="0x21" dst="."/>
+    <!-- &quot; is the XML escape entity for a Double Quote -->
+    <char src="0x2E" dst="&quot;"/>
+  </charset>
+</hi2txt>

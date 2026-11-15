@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  sexyparo - Sexy Parodius (Konami, 1996)
+  hiscore.dat:
+    @:maincpu,program,c10752,4,00,00
+    @:maincpu,program,c1075e,78,00,06
+    @:maincpu,program,c10754,1,73,73
+  125 bytes total = 4B + 120B + 1B (ranges are written in order to .hi file)
+
+  File layout:
+    [0-3]:   Range 1 - 4B top score backup (BCD BE, same as rank 1 score)
+    [4-123]: Range 2 - 10 entries x 12 bytes each:
+      [0-3]  4B BCD BE score (e.g. 0x00057300 = 57300)
+      [4-5]  2B BE char1 (character code, custom charset)
+      [6-7]  2B BE char2
+      [8-9]  2B BE char3
+      [10-11] 2B BE unknown (stage? level? varies per entry, not displayed)
+    [124]:   Range 3 - 1B flag (always 0x73)
+
+  Custom Konami charset (character values are 2-byte BE integers):
+    0x00       = ' ' (space)
+    0x01-0x1A  = 'A'-'Z'
+    0x25       = '?'
+    0x26       = '!'
+    0x27       = '-'
+    0x28       = '.'
+
+  Note: Each entry has an extra 2B field after the name (the "unknown"
+  value above) that varies per entry (seen values 1-13). This is likely
+  stage/level reached but is not displayed in the RANKING screen, so
+  it's captured as a raw byte and not output.
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>125</size>
+    </check>
+
+    <!-- Range 1: 4B top score backup (duplicate of rank 1, skip) -->
+    <elt size="4" type="raw" id="TOP_BACKUP"/>
+
+    <!-- Range 2: 10 entries x 12 bytes -->
+    <loop count="10">
+      <elt size="4" type="int" id="SCORE" base="16" endianness="big_endian" table-index="loop_index"/>
+      <elt size="1" type="raw" id="C1_HI"/>
+      <elt size="1" type="text" id="NAME_C1" charset="sexyparo_chr" table-index="loop_index"/>
+      <elt size="1" type="raw" id="C2_HI"/>
+      <elt size="1" type="text" id="NAME_C2" charset="sexyparo_chr" table-index="loop_index"/>
+      <elt size="1" type="raw" id="C3_HI"/>
+      <elt size="1" type="text" id="NAME_C3" charset="sexyparo_chr" table-index="loop_index"/>
+      <elt size="2" type="raw" id="STAGE_UNK"/>
+    </loop>
+
+    <!-- Range 3: 1B flag -->
+    <elt size="1" type="raw" id="FLAG"/>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="NAME_C1" format="name_fmt"/>
+      <column id="SCORE" src="SCORE" format="comma_score"/>
+    </table>
+  </output>
+
+  <!-- Name formatter: concat the 3 character elements -->
+  <format id="name_fmt" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="NAME_C1"/>
+      <column src="NAME_C2"/>
+      <column src="NAME_C3"/>
+    </concat>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <charset id="sexyparo_chr">
+    <char src="0x00" dst=" "/>
+    <char src="0x01" dst="A"/>
+    <char src="0x02" dst="B"/>
+    <char src="0x03" dst="C"/>
+    <char src="0x04" dst="D"/>
+    <char src="0x05" dst="E"/>
+    <char src="0x06" dst="F"/>
+    <char src="0x07" dst="G"/>
+    <char src="0x08" dst="H"/>
+    <char src="0x09" dst="I"/>
+    <char src="0x0A" dst="J"/>
+    <char src="0x0B" dst="K"/>
+    <char src="0x0C" dst="L"/>
+    <char src="0x0D" dst="M"/>
+    <char src="0x0E" dst="N"/>
+    <char src="0x0F" dst="O"/>
+    <char src="0x10" dst="P"/>
+    <char src="0x11" dst="Q"/>
+    <char src="0x12" dst="R"/>
+    <char src="0x13" dst="S"/>
+    <char src="0x14" dst="T"/>
+    <char src="0x15" dst="U"/>
+    <char src="0x16" dst="V"/>
+    <char src="0x17" dst="W"/>
+    <char src="0x18" dst="X"/>
+    <char src="0x19" dst="Y"/>
+    <char src="0x1A" dst="Z"/>
+    <char src="0x25" dst="?"/>
+    <char src="0x26" dst="!"/>
+    <char src="0x27" dst="-"/>
+    <char src="0x28" dst="."/>
+  </charset>
+
+</hi2txt>

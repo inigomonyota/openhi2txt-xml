@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Wild West C.O.W.-Boys of Moo Mesa">
+  <!--
+    hiscore.dat: @:maincpu,program,1801e0,97,00,1a
+    10 entries x 16 bytes = 160 bytes table
+    hiscore.dat saves 151 bytes (9 full records + 7 bytes of last - padding not saved)
+    Score: 4 bytes big-endian int
+    Name:  3 bytes tile-indexed (A=0x11, offset=48)
+    Pad:   9 bytes zeros
+    Special chars: 0x0f=arrow (player-entered marker), 0x10=space
+  //-->
+
+  <structure file="hi">
+    <check>
+      <size>151</size>
+    </check>
+    <loop count="10">
+      <elt size="4"  type="int"  id="SCORE"/>
+      <elt size="3"  type="text" id="NAME"  charset="moomesa"/>
+      <elt size="9"  type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TOP 10">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+
+  <charset id="moomesa">
+    <char src="0x0F" dst="*"/>
+    <char src="0x10" dst=" "/>
+    <char src="0x11" dst="A"/>
+    <char src="0x12" dst="B"/>
+    <char src="0x13" dst="C"/>
+    <char src="0x14" dst="D"/>
+    <char src="0x15" dst="E"/>
+    <char src="0x16" dst="F"/>
+    <char src="0x17" dst="G"/>
+    <char src="0x18" dst="H"/>
+    <char src="0x19" dst="I"/>
+    <char src="0x1A" dst="J"/>
+    <char src="0x1B" dst="K"/>
+    <char src="0x1C" dst="L"/>
+    <char src="0x1D" dst="M"/>
+    <char src="0x1E" dst="N"/>
+    <char src="0x1F" dst="O"/>
+    <char src="0x20" dst="P"/>
+    <char src="0x21" dst="Q"/>
+    <char src="0x22" dst="R"/>
+    <char src="0x23" dst="S"/>
+    <char src="0x24" dst="T"/>
+    <char src="0x25" dst="U"/>
+    <char src="0x26" dst="V"/>
+    <char src="0x27" dst="W"/>
+    <char src="0x28" dst="X"/>
+    <char src="0x29" dst="Y"/>
+    <char src="0x2A" dst="Z"/>
+  </charset>
+
+</hi2txt>

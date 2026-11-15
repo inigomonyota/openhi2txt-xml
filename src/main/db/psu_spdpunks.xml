@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  Speed Punks (USA) - PlayStation - softlist short name: spdpunks
+  Product code: SCUS-94563   Save block: SP_MAIN ("Speed Punks Game Data")
+
+  The card holds SEVERAL saves under this code: SP_MAIN (the records table) plus
+  SP_000/SP_100/SP_200 ghost-replay files. save="SP_MAIN" makes the plugin pick
+  the right block (otherwise it matches the code and grabs SP_000 first).
+
+  Time-trial table at 0x0200 in SP_MAIN. Raw = 48 12-byte records = 24 courses x
+  2 (lap then total). The loop reads them TWO-AT-A-TIME so each iteration = ONE
+  COURSE (24 bytes): [u32 _IDL][u32 LAP cs][3c HOLDER][1 pad] then
+  [u32 _IDT][u32 TOTAL cs][3c HOLDERT][1 pad]. Times are centiseconds (M:SS:CC).
+
+  PHYSICAL LAYOUT (confirmed by player saves 2026-08-31): courses are stored in
+  4-wide difficulty regions, TWO rounds -> [E0-3][M0-3][H0-3][E4-7][M4-7][H4-7]:
+    ordinal  0- 3 = EASY   courses 1-4      ordinal 12-15 = EASY   courses 5-8
+    ordinal  4- 7 = MEDIUM courses 1-4      ordinal 16-19 = MEDIUM courses 5-8
+    ordinal  8-11 = HARD   courses 1-4      ordinal 20-23 = HARD   courses 5-8
+  So each table selects two non-contiguous ordinal bands (ordinal-ranges).
+  CONFIRMED slots (from player saves 2026-08-31):
+    EASY   0=Shipwreck Shore(AAA) 1=Neon City(DDD) 2=Millennium Park(GGG)
+    MEDIUM 4=Silver City(BBB,char TETSUO) 5=Drift Arena(EEE) 6=Moonlight Cove(HHH)
+    HARD   8=Skate Park(CCC,char COSWORTH) 9=Gold City(FFF) 10=Grand Rapids(III)
+  All 24 course names CONFIRMED 2026-08-31 from a fully-populated card:
+  holders AAA-XXX map 1:1 to ordinals 0-23 (A=0,B=4,C=8,D=1... per region). CHARACTER column is
+  a "-" placeholder (racer isn't stored per record we can read yet; known so far:
+  Silver City=TETSUO, Skate Park=COSWORTH).
+-->
+<hi2txt label="Speed Punks" code="SCUS-94563" save="SP_MAIN">
+
+  <structure file="SCUS-94563">
+    <check>
+      <size>8192</size>
+    </check>
+
+    <elt size="512" type="raw" id="_HDR"/>
+
+    <loop count="24">
+      <elt size="4" type="int"  id="_IDL"    endianness="little_endian"/>
+      <elt size="4" type="int"  id="LAP"     endianness="little_endian"/>
+      <elt size="3" type="text" id="HOLDER"/>
+      <elt size="1" type="raw"  id="_PADL"/>
+      <elt size="4" type="int"  id="_IDT"    endianness="little_endian"/>
+      <elt size="4" type="int"  id="TOTAL"   endianness="little_endian"/>
+      <elt size="3" type="text" id="HOLDERT"/>
+      <elt size="1" type="raw"  id="_PADT"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TIME ATTACK RECORDS - EASY COURSES" ordinal-ranges="0-3,12-15">
+      <column id="COURSE"          src="ordinal" format="course"/>
+      <column id="BEST LAP TIME"   src="LAP"     format="pstime"/>
+      <column id="LAP HOLDER"      src="HOLDER"/>
+      <column id="BEST TOTAL TIME" src="TOTAL"   format="pstime"/>
+      <column id="TOTAL HOLDER"    src="HOLDERT"/>
+      <column id="CHARACTER"       src="ordinal" format="tbd"/>
+    </table>
+    <table id="TIME ATTACK RECORDS - MEDIUM COURSES" ordinal-ranges="4-7,16-19">
+      <column id="COURSE"          src="ordinal" format="course"/>
+      <column id="BEST LAP TIME"   src="LAP"     format="pstime"/>
+      <column id="LAP HOLDER"      src="HOLDER"/>
+      <column id="BEST TOTAL TIME" src="TOTAL"   format="pstime"/>
+      <column id="TOTAL HOLDER"    src="HOLDERT"/>
+      <column id="CHARACTER"       src="ordinal" format="tbd"/>
+    </table>
+    <table id="TIME ATTACK RECORDS - HARD COURSES" ordinal-ranges="8-11,20-23">
+      <column id="COURSE"          src="ordinal" format="course"/>
+      <column id="BEST LAP TIME"   src="LAP"     format="pstime"/>
+      <column id="LAP HOLDER"      src="HOLDER"/>
+      <column id="BEST TOTAL TIME" src="TOTAL"   format="pstime"/>
+      <column id="TOTAL HOLDER"    src="HOLDERT"/>
+      <column id="CHARACTER"       src="ordinal" format="tbd"/>
+    </table>
+  </output>
+
+  <!-- ordinal -> course name (physical slot). Per region: 4 named courses then
+       4 generic. Confirmed: 0 Shipwreck, 4 Silver City, 8 Skate Park. -->
+  <format id="course">
+    <!-- EASY round 1 (0-3) -->
+    <case src="0" dst="SHIPWRECK SHORE"/>
+    <case src="1" dst="NEON CITY"/>
+    <case src="2" dst="MILLENNIUM PARK"/>
+    <case src="3" dst="THUNDER TRAIL"/>
+    <!-- MEDIUM round 1 (4-7) -->
+    <case src="4" dst="SILVER CITY"/>
+    <case src="5" dst="DRIFT ARENA"/>
+    <case src="6" dst="MOONLIGHT COVE"/>
+    <case src="7" dst="SUN VALLEY DRIVE"/>
+    <!-- HARD round 1 (8-11) -->
+    <case src="8" dst="SKATE PARK"/>
+    <case src="9" dst="GOLD CITY"/>
+    <case src="10" dst="GRAND RAPIDS"/>
+    <case src="11" dst="SUNSET ISLE"/>
+    <!-- EASY round 2 (12-15) -->
+    <case src="12" dst="RACEWAY 1"/>
+    <case src="13" dst="CITY 1"/>
+    <case src="14" dst="STADIUM 1"/>
+    <case src="15" dst="ISLAND 1"/>
+    <!-- MEDIUM round 2 (16-19) -->
+    <case src="16" dst="CITY 2"/>
+    <case src="17" dst="STADIUM 2"/>
+    <case src="18" dst="ISLAND 2"/>
+    <case src="19" dst="RACEWAY 2"/>
+    <!-- HARD round 2 (20-23) -->
+    <case src="20" dst="STADIUM 3"/>
+    <case src="21" dst="CITY 3"/>
+    <case src="22" dst="RACEWAY 3"/>
+    <case src="23" dst="ISLAND 3" default="yes"/>
+  </format>
+
+  <!-- placeholder for the racer/character (filled once records are mapped) -->
+  <format id="tbd">
+    <concat><txt>-</txt></concat>
+  </format>
+
+  <!-- centiseconds -> M:SS:CC ; sub-columns all read the same time value -->
+  <format id="pstime" input-as-subcolumns-input="true">
+    <concat>
+      <column format="d6000"/>
+      <txt>:</txt>
+      <column format="d100;%60;PadL20"/>
+      <txt>:</txt>
+      <column format="%100;PadL20"/>
+    </concat>
+  </format>
+
+</hi2txt>

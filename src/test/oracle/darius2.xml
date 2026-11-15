@@ -26,30 +26,30 @@
     <row><cell>23</cell><cell>240000</cell><cell>SAK</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
     <row><cell>24</cell><cell>235000</cell><cell>IGA</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
     <row><cell>25</cell><cell>230000</cell><cell>ONO</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>26</cell><cell>227300</cell><cell> .Z</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>27</cell><cell>225000</cell><cell>TAN</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>28</cell><cell>220000</cell><cell>MUR</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>29</cell><cell>215000</cell><cell>FUK</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>30</cell><cell>210000</cell><cell>TOM</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>31</cell><cell>205000</cell><cell>NUM</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>32</cell><cell>200000</cell><cell>YAB</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>33</cell><cell>195000</cell><cell>TKA</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>34</cell><cell>190000</cell><cell>IMA</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>35</cell><cell>185000</cell><cell>FRK</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>36</cell><cell>180000</cell><cell>YAG</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>37</cell><cell>175000</cell><cell>ONU</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>38</cell><cell>170000</cell><cell>SMI</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>39</cell><cell>165000</cell><cell>OGA</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>40</cell><cell>160000</cell><cell>ISI</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>41</cell><cell>155000</cell><cell>YOS</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>42</cell><cell>150000</cell><cell>MRI</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>43</cell><cell>145000</cell><cell>TZA</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>44</cell><cell>140000</cell><cell>NAD</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>45</cell><cell>135000</cell><cell>ATA</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>46</cell><cell>130000</cell><cell>NAG</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>47</cell><cell>125000</cell><cell>PAN</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>48</cell><cell>120000</cell><cell>TGS</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>49</cell><cell>115000</cell><cell>RYO</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
-    <row><cell>50</cell><cell>110000</cell><cell>KBA</cell><cell>0x00</cell><cell>A.  SUN</cell><cell></cell></row>
+    <row><cell>26</cell><cell>225000</cell><cell>TAN</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>27</cell><cell>220000</cell><cell>MUR</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>28</cell><cell>215000</cell><cell>FUK</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>29</cell><cell>210000</cell><cell>TOM</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>30</cell><cell>205000</cell><cell>NUM</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>31</cell><cell>200000</cell><cell>YAB</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>32</cell><cell>195000</cell><cell>TKA</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>33</cell><cell>190000</cell><cell>IMA</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>34</cell><cell>185000</cell><cell>FRK</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>35</cell><cell>180000</cell><cell>YAG</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>36</cell><cell>175000</cell><cell>ONU</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>37</cell><cell>170000</cell><cell>SMI</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>38</cell><cell>165000</cell><cell>OGA</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>39</cell><cell>160000</cell><cell>ISI</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>40</cell><cell>155000</cell><cell>YOS</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>41</cell><cell>150000</cell><cell>MRI</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>42</cell><cell>145000</cell><cell>TZA</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>43</cell><cell>140000</cell><cell>NAD</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>44</cell><cell>135000</cell><cell>ATA</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>45</cell><cell>130000</cell><cell>NAG</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>46</cell><cell>125000</cell><cell>PAN</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>47</cell><cell>120000</cell><cell>TGS</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>48</cell><cell>115000</cell><cell>RYO</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>49</cell><cell>110000</cell><cell>KBA</cell><cell>0x00</cell><cell>A.  SUN</cell><cell>0x00</cell></row>
+    <row><cell>50</cell><cell>105000</cell><cell>UEN</cell><cell>0x00</cell><cell>A.  SUN</cell><cell></cell></row>
   </table>
 </hi2txt>

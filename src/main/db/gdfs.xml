@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Mobile Suit Gundam Final Shooting (Japan)">
+
+  <!--
+    Native 128-byte EEPROM definition for gdfs.
+    No hiscore.dat or .hi file is required.
+
+    High-score table begins at EEPROM offset 0x0E.
+
+    Five records, 8 bytes each:
+      +0..+3  SCORE  32-bit little-endian integer
+      +4..+6  NAME   ASCII
+      +7      FLAG   retained but not displayed
+
+    Verified from supplied EEPROM:
+      F0 30 02 00 4F 4F 4F 00 = 143600 OOO
+      88 13 00 00 41 42 43 00 =   5000 ABC
+      A0 0F 00 00 44 45 46 01 =   4000 DEF
+      B8 0B 00 00 47 48 49 00 =   3000 GHI
+      D0 07 00 00 4A 4B 4C 01 =   2000 JKL
+  -->
+
+  <structure file="eeprom">
+    <check>
+      <size>128</size>
+    </check>
+
+    <!-- Skip bytes 0x00-0x0D -->
+    <elt size="14" type="raw" id="_HEADER"/>
+
+    <loop count="5">
+      <elt size="4" type="int" id="SCORE" endianness="little_endian"/>
+      <elt size="3" type="text" id="NAME" charset="gdfs_name"/>
+      <elt size="1" type="raw" id="_FLAG"/>
+    </loop>
+
+    <!-- Remaining EEPROM bytes are not needed for high-score output. -->
+    <elt size="74" type="raw" id="_TAIL"/>
+  </structure>
+
+  <output>
+    <table id="THE BEST ACE">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <case src="0" dst="1TH"/>
+    <case src="1" dst="2TH"/>
+    <case src="2" dst="3TH"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+
+  <charset id="gdfs_name">
+    <char src="0x20" dst=" "/>
+    <char src="0x2D" dst="-"/>
+    <char src="0x2E" dst="."/>
+    <char src="0x30" dst="0"/>
+    <char src="0x31" dst="1"/>
+    <char src="0x32" dst="2"/>
+    <char src="0x33" dst="3"/>
+    <char src="0x34" dst="4"/>
+    <char src="0x35" dst="5"/>
+    <char src="0x36" dst="6"/>
+    <char src="0x37" dst="7"/>
+    <char src="0x38" dst="8"/>
+    <char src="0x39" dst="9"/>
+    <char src="0x41" dst="A"/>
+    <char src="0x42" dst="B"/>
+    <char src="0x43" dst="C"/>
+    <char src="0x44" dst="D"/>
+    <char src="0x45" dst="E"/>
+    <char src="0x46" dst="F"/>
+    <char src="0x47" dst="G"/>
+    <char src="0x48" dst="H"/>
+    <char src="0x49" dst="I"/>
+    <char src="0x4A" dst="J"/>
+    <char src="0x4B" dst="K"/>
+    <char src="0x4C" dst="L"/>
+    <char src="0x4D" dst="M"/>
+    <char src="0x4E" dst="N"/>
+    <char src="0x4F" dst="O"/>
+    <char src="0x50" dst="P"/>
+    <char src="0x51" dst="Q"/>
+    <char src="0x52" dst="R"/>
+    <char src="0x53" dst="S"/>
+    <char src="0x54" dst="T"/>
+    <char src="0x55" dst="U"/>
+    <char src="0x56" dst="V"/>
+    <char src="0x57" dst="W"/>
+    <char src="0x58" dst="X"/>
+    <char src="0x59" dst="Y"/>
+    <char src="0x5A" dst="Z"/>
+  </charset>
+
+</hi2txt>

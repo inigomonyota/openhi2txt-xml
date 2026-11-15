@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- gbusters by Konami, 1988 -->
+<!-- hiscore.dat: @:maincpu,program,4100,38,19,00 | @:maincpu,program,4050,4,00,00 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>60</size>
+    </check>
+
+    <!-- 8 records, 7 bytes each: 3(Name) + 1(Pad) + 3(Score BCD) -->
+    <loop count="8">
+      <elt size="3" type="text" id="NAME"  ascii-offset="48" charset="gbusters_chars"/>
+      <elt size="1" type="raw"  id="PAD"/>
+      <elt size="3" type="int"  id="SCORE" base="16"/>
+    </loop>
+
+    <!-- Global High Score (Last 4 bytes) -->
+    <elt size="4" type="int" id="HI-SCORE" base="16"/>
+  </structure>
+
+  <output>
+    <!--field id="HI-SCORE" format="comma_score" display="extra"/-->
+
+    <table id="SCORE RANKING">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="SCORE" src="SCORE" format="comma_score"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+  <!-- Translates 0-7 into 1-8 -->
+  <format id="ordinal">
+    <case src="0" dst="1"/><case src="1" dst="2"/><case src="2" dst="3"/>
+    <case src="3" dst="4"/><case src="4" dst="5"/><case src="5" dst="6"/>
+    <case src="6" dst="7"/><case src="7" dst="8"/>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat><column format="d1000000000"/><txt>,</txt><column format="%1000000000;d1000000;PadL30"/><txt>,</txt><column format="%1000000;d1000;PadL30"/><txt>,</txt><column format="%1000;PadL30"/></concat>
+  </format>
+
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat><column format="d1000000"/><txt>,</txt><column format="%1000000;d1000;PadL30"/><txt>,</txt><column format="%1000;PadL30"/></concat>
+  </format>
+
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat><column format="d1000"/><txt>,</txt><column format="%1000;PadL30"/></concat>
+  </format>
+
+  <!-- Character set for non-alphabetic symbols -->
+  <charset id="gbusters_chars">
+    <char src="0x2B" dst="!"/><char src="0x2C" dst="."/><char src="0x2D" dst=" "/>
+    <char src="0x00" dst=""/>
+  </charset>
+</hi2txt>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Joe &amp; Mac Returns">
+  <!-- Joe & Mac Returns (joemacr) - Data East Simple 156 (ARM, little-endian).
+       The BEST PLAYERS screen renders the full top-10 straight from a work-RAM
+       buffer at :mainram +0x60 (program 0x200060), 10 records x 8 bytes. The MAME
+       hiscore plugin captures/restores this 0x50-byte region, so the whole top-10
+       (champion included) now persists across cold boots in a <game>.hi file.
+       (Natively only the champion survives, via the 93C46 EEPROM; ranks 2-10 are
+       ROM defaults - but the plugin restore makes every rank stick, proven on the
+       attract BEST PLAYERS screen.)
+
+       Record layout (8 bytes):
+         +0x00  4 bytes  score, 32-bit WORD-SWAPPED [hi16 LE][lo16 LE]
+                         e.g. 01 00 a0 86 = 100000 (0x000186A0). Decoded with
+                         byte-swap="2" + big_endian: 01 00 a0 86 -> 00 01 86 a0 BE.
+         +0x04  3 bytes  name, one index byte per char (A=0x00 .. Z=0x19, '.'=0x1c)
+         +0x07  1 byte   pad (0x00)
+       Decodes to the 10-row BEST PLAYERS table (default: JMR 100000 .. YAJ 5000). -->
+  <structure file=".hi">
+    <check>
+      <size>80</size>
+    </check>
+    <loop count="10">
+      <elt size="4" type="int"  id="SCORE" byte-swap="2" endianness="big_endian" table-index="loop_index"/>
+      <elt size="3" type="text" id="NAME"  charset="csJMR" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="PAD"   table-index="loop_index"/>
+    </loop>
+  </structure>
+  <output>
+    <table id="BEST PLAYERS">
+      <column id="RANK"  src="index" format="rank1"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="PAD"   format="0x" display="debug"/>
+    </table>
+  </output>
+  <format id="rank1"><add>1</add></format>
+  <charset id="csJMR">
+    <char src="0x00" dst="A"/>
+    <char src="0x01" dst="B"/>
+    <char src="0x02" dst="C"/>
+    <char src="0x03" dst="D"/>
+    <char src="0x04" dst="E"/>
+    <char src="0x05" dst="F"/>
+    <char src="0x06" dst="G"/>
+    <char src="0x07" dst="H"/>
+    <char src="0x08" dst="I"/>
+    <char src="0x09" dst="J"/>
+    <char src="0x0a" dst="K"/>
+    <char src="0x0b" dst="L"/>
+    <char src="0x0c" dst="M"/>
+    <char src="0x0d" dst="N"/>
+    <char src="0x0e" dst="O"/>
+    <char src="0x0f" dst="P"/>
+    <char src="0x10" dst="Q"/>
+    <char src="0x11" dst="R"/>
+    <char src="0x12" dst="S"/>
+    <char src="0x13" dst="T"/>
+    <char src="0x14" dst="U"/>
+    <char src="0x15" dst="V"/>
+    <char src="0x16" dst="W"/>
+    <char src="0x17" dst="X"/>
+    <char src="0x18" dst="Y"/>
+    <char src="0x19" dst="Z"/>
+    <char src="0x1c" dst="."/>
+  </charset>
+</hi2txt>

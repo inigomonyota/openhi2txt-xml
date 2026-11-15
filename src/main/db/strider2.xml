@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    strider2 - Strider 2 (Capcom, 1999)
+    .hi file format (via hiscore.dat plugin)
+    hiscore.dat: @:maincpu,program,4dfe08,a8,01,24
+    10 entries x 12 bytes = 120 bytes + 48 bytes tail = 168 bytes
+    Record: 1B position + 1B rank + 1B time_min + 1B time_sec + 4B score (int32 LE) + 3B name (A=0) + 1B terminator
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>0:4dfe08:a8:01:24</definition>
+      <size>168</size>
+    </check>
+    <loop count="10">
+      <elt size="1" type="raw" id="POS"/>
+      <elt size="1" type="text" id="RANK" charset="strider2rank"/>
+      <elt size="1" type="int" id="TIME MIN"/>
+      <elt size="1" type="int" id="TIME SEC"/>
+      <elt size="4" type="int" id="SCORE" endianness="little_endian"/>
+      <elt size="3" type="text" id="NAME" charset="strider2name"/>
+      <elt size="1" type="raw" id="TERM"/>
+    </loop>
+    <elt size="48" type="raw" id="TAIL"/>
+  </structure>
+
+  <output>
+    <table id="SCORE RANKING" sort="SCORE" sort-order="desc">
+      <column id="POSITION" src="index" format="+1"/>
+      <column id="RANK"/>
+      <column id="SCORE"/>
+      <column id="TIME MIN" display="debug"/>
+      <column id="TIME SEC" display="debug"/>
+      <column id="TIME" format="time_fmt"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="pad2"><pad direction="left" max="2">0</pad></format>
+  <format id="time_fmt">
+    <concat>
+      <column id="TIME MIN" format="pad2"/>
+      <txt>:</txt>
+      <column id="TIME SEC" format="pad2"/>
+    </concat>
+  </format>
+
+<charset id="strider2name">
+    <char src="00" dst="A"/>
+    <char src="01" dst="B"/>
+    <char src="02" dst="C"/>
+    <char src="03" dst="D"/>
+    <char src="04" dst="E"/>
+    <char src="05" dst="F"/>
+    <char src="06" dst="G"/>
+    <char src="07" dst="H"/>
+    <char src="08" dst="I"/>
+    <char src="09" dst="J"/>
+    <char src="0A" dst="K"/>
+    <char src="0B" dst="L"/>
+    <char src="0C" dst="M"/>
+    <char src="0D" dst="N"/>
+    <char src="0E" dst="O"/>
+    <char src="0F" dst="P"/>
+    <char src="10" dst="Q"/>
+    <char src="11" dst="R"/>
+    <char src="12" dst="S"/>
+    <char src="13" dst="T"/>
+    <char src="14" dst="U"/>
+    <char src="15" dst="V"/>
+    <char src="16" dst="W"/>
+    <char src="17" dst="X"/>
+    <char src="18" dst="Y"/>
+    <char src="19" dst="Z"/>
+  </charset>
+
+  <charset id="strider2rank">
+    <char src="02" dst="SS"/>
+    <char src="03" dst="S"/>
+    <char src="04" dst="A"/>
+    <char src="05" dst="B"/>
+    <char src="06" dst="C"/>
+    <char src="07" dst="D"/>
+    <char src="08" dst="E"/>
+  </charset>
+
+</hi2txt>

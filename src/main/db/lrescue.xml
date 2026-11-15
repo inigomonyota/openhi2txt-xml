@@ -32,10 +32,10 @@
     
   <output>
     <table>
-      <column id="RANK" src="index" format="+1"/>
+      <column id="RANK" src="index" format="+1" display="debug"/>
       <column id="SCORE"            format="*10"/>
       <column id="NAME" format="Trim "/>
-      <column id="NAME LENGTH"      display="extra"/>
+      <column id="NAME LENGTH"      display="debug"/>
     </table>
   </output>
 

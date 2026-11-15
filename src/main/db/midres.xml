@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Midnight Resistance">
+  <!--
+    tested with:
+      mame 0.283 and hiscore.dat 2026-02-22
+    structure:
+      10 x 4-byte BCD scores (offset 0x00)
+      10 x 4-byte names: 0x00 separator + 3 ASCII chars (offset 0x28)
+      1 byte checksum (offset 0x50)
+    source: custom
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>81</size>
+    </check>
+    <loop count="10">
+      <elt size="4" type="int" id="SCORE" base="16" table-index="loop_index"/>
+    </loop>
+    <loop count="10">
+      <elt size="1" type="raw"  id="SEP"  table-index="loop_index"/>
+      <elt size="3" type="text" id="NAME" table-index="loop_index" ascii-offset="0"/>
+    </loop>
+    <elt size="1" type="raw" id="CHECKSUM"/>
+  </structure>
+
+  <output>
+    <table id="BEST PLAYERS">
+      <column id="RANK" src="index" format="ordinal10"/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+      <column id="SEP" display="debug"/>
+    </table>
+    <field id="CHECKSUM" format="0x" display="debug"/>
+  </output>
+
+  <format id="ordinal10">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+</hi2txt>

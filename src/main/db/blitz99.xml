@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openhi2txt label="NFL Blitz '99" requires="0.3.0">
+  <!--
+    Player profiles begin at byte offset 0x2980 in the 128 KiB NVRAM.
+    The Seattle hardware stores each meaningful 8-bit value in the first
+    byte of a 32-bit little-endian word, hence byte-skip="1000".
+
+    Fifteen factory profiles are present in a 350-profile array. Each record
+    consumes 0x10C raw bytes (67 meaningful bytes). Names occupy six characters
+    and PINs four. Empty records must remain present for Midway's chained sorts.
+  -->
+  <structure file="nvram">
+    <check><size>131072</size></check>
+    <elt id="PREFIX" type="raw" size="2432"/>
+
+    <!-- Each team audit is a 32-byte value/checksum record. -->
+    <loop count="30">
+      <elt id="TEAM USES" type="int" size="16" byte-skip="1000" endianness="little_endian"/>
+      <elt id="TEAM AUDIT CHECKSUM" type="raw" size="16"/>
+    </loop>
+
+    <elt id="PADDING TO PROFILES" type="raw" size="7232"/>
+
+    <loop count="350">
+      <elt id="CHECKSUM" type="raw" size="16" byte-skip="1000"/>
+      <elt id="NAME" type="text" size="24" byte-skip="1000"/>
+      <elt id="PIN" type="text" size="16" byte-skip="1000"/>
+      <elt id="RESERVED 1" type="raw" size="8"/>
+      <elt id="GAMES" type="int" size="4" byte-skip="1000"/>
+      <elt id="RESERVED 2" type="raw" size="4"/>
+      <elt id="WINS" type="int" size="4" byte-skip="1000"/>
+      <elt id="RESERVED 3" type="raw" size="4"/>
+      <elt id="STREAK" type="int" size="4" byte-skip="1000"/>
+      <elt id="POINTS SCORED" type="int" size="8" byte-skip="1000" endianness="little_endian"/>
+      <elt id="POINTS ALLOWED" type="int" size="8" byte-skip="1000" endianness="little_endian"/>
+      <elt id="TEAMS DEFEATED" type="int" size="16" byte-skip="1000" endianness="little_endian"/>
+      <elt id="RESERVED 4" type="raw" size="16"/>
+      <elt id="PASSING YARDS" type="int" size="8" byte-skip="1000" endianness="little_endian"/>
+      <elt id="RESERVED 5" type="raw" size="8"/>
+      <elt id="RUSHING YARDS" type="int" size="8" byte-skip="1000" endianness="little_endian"/>
+      <elt id="RESERVED 6" type="raw" size="16"/>
+      <elt id="PASS ATTEMPTS" type="int" size="8" byte-skip="1000" endianness="little_endian"/>
+      <elt id="RESERVED 7" type="raw" size="8"/>
+      <elt id="PASS COMPLETIONS" type="int" size="8" byte-skip="1000" endianness="little_endian"/>
+      <elt id="RESERVED 8" type="raw" size="8"/>
+      <elt id="PASS TOUCHDOWNS" type="int" size="8" byte-skip="1000" endianness="little_endian"/>
+      <elt id="RESERVED 9" type="raw" size="8"/>
+      <elt id="INTERCEPTIONS" type="int" size="8" byte-skip="1000" endianness="little_endian"/>
+      <elt id="RESERVED 10" type="raw" size="32"/>
+      <elt id="TRIVIA POINTS" type="int" size="8" byte-skip="1000" endianness="little_endian"/>
+    </loop>
+
+    <!-- The world-record block follows a 16-byte gap after the profile array. -->
+
+    <!-- Six 0x40-byte records: checksum, name, PIN, value, reserved. -->
+    <elt id="WORLD NAME" type="text" size="24" byte-skip="1000" offset="0x197F8" table-index="0"/>
+    <elt id="WORLD VALUE" type="int" size="4" byte-skip="1000" offset="0x19820" table-index="0"/>
+    <elt id="WORLD NAME" type="text" size="24" byte-skip="1000" offset="0x19838" table-index="1"/>
+    <elt id="WORLD VALUE" type="int" size="4" byte-skip="1000" offset="0x19860" table-index="1"/>
+    <elt id="WORLD NAME" type="text" size="24" byte-skip="1000" offset="0x19878" table-index="2"/>
+    <elt id="WORLD VALUE" type="int" size="4" byte-skip="1000" offset="0x198A0" table-index="2"/>
+    <elt id="WORLD NAME" type="text" size="24" byte-skip="1000" offset="0x198B8" table-index="3"/>
+    <elt id="WORLD VALUE" type="int" size="4" byte-skip="1000" offset="0x198E0" table-index="3"/>
+    <elt id="WORLD NAME" type="text" size="24" byte-skip="1000" offset="0x198F8" table-index="4"/>
+    <elt id="WORLD VALUE" type="int" size="4" byte-skip="1000" offset="0x19920" table-index="4"/>
+    <elt id="WORLD NAME" type="text" size="24" byte-skip="1000" offset="0x19938" table-index="5"/>
+    <elt id="WORLD VALUE" type="int" size="4" byte-skip="1000" offset="0x19960" table-index="5"/>
+  </structure>
+
+  <output sort-method="midway">
+    <!-- The Grand Champion sort feeds every later Midway leaderboard. -->
+    <table display="sort" sort="TEAMS DEFEATED" sort-format="TEAM COUNT" sort-order="desc" line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="WINS" order="desc"/>
+      <sort src="STREAK" order="desc"/>
+      <column id="NAME"/>
+    </table>
+    <table id="GRAND CHAMPION (DEFEATED ALL 30 NFL TEAMS)" lines-max="3" show-empty="false" line-ignore="TEAM COUNT:30" line-ignore-operator="&lt;">
+      <column id="NAME" format="Trim "/>
+      <column id="TEAM COUNT" src="TEAMS DEFEATED" format="TEAM COUNT" display="debug"/>
+    </table>
+    <table id="GREATEST PLAYERS (BEST WIN PERCENTAGE)" sort="WINS" sort-format="WIN PERCENTAGE SORT" sort-order="desc" lines-max="10" line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="GAMES" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" format="Trim "/>
+      <column id="PERCENTAGE" src="WINS" format="WIN PERCENTAGE"/>
+    </table>
+
+    <table id="BIGGEST WINNERS (MOST GAMES WON)" sort="WINS" sort-order="desc" lines-max="10" line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="GAMES" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" format="Trim "/>
+      <column id="WINS"/>
+    </table>
+
+    <table id="BEST OFFENSIVE PLAYERS (POINTS SCORED PER GAME)" sort="POINTS SCORED" sort-format="PER GAME SORT" sort-order="desc" lines-max="10" line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="WINS" order="desc"/>
+      <sort src="STREAK" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" format="Trim "/>
+      <column id="POINTS" src="POINTS SCORED" format="PER GAME"/>
+    </table>
+
+    <table id="BEST DEFENSIVE PLAYERS (POINTS ALLOWED PER GAME)" sort="POINTS ALLOWED" sort-format="PER GAME SORT" sort-order="asc" lines-max="10" line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="WINS" order="asc"/>
+      <sort src="STREAK" order="asc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" format="Trim "/>
+      <column id="POINTS" src="POINTS ALLOWED" format="PER GAME"/>
+    </table>
+
+    <table id="BEST RUSHERS (YARDS PER GAME)" sort="RUSHING YARDS" sort-format="PER GAME SORT" sort-order="desc" lines-max="10" line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="WINS" order="desc"/>
+      <sort src="STREAK" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" format="Trim "/>
+      <column id="YARDS" src="RUSHING YARDS" format="PER GAME"/>
+    </table>
+
+    <table id="BEST PASSERS (YARDS PER GAME)" sort="PASSING YARDS" sort-format="PER GAME SORT" sort-order="desc" lines-max="10" line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="WINS" order="desc"/>
+      <sort src="STREAK" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" format="Trim "/>
+      <column id="YARDS" src="PASSING YARDS" format="PER GAME"/>
+    </table>
+
+    <table id="CURRENT WINNING STREAK (CONSECUTIVE WINS)" sort="STREAK" sort-order="desc" lines-max="10" line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="GAMES" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" format="Trim "/>
+      <column id="WINS" src="STREAK"/>
+    </table>
+
+    <table id="EXPERIENCED PLAYERS (MOST GAMES PLAYED)" sort="GAMES" sort-order="desc" lines-max="10" line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="WINS" order="desc"/>
+      <sort src="STREAK" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" format="Trim "/>
+      <column id="GAMES"/>
+    </table>
+
+    <table id="QB RATING (BEST OVERALL QUARTERBACK)" sort="RATING" sort-format="QB RATING SORT" sort-order="desc" lines-max="10" line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="GAMES" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" format="Trim "/>
+      <column id="RATING" src="PASS ATTEMPTS" format="QB RATING"/>
+    </table>
+
+    <table id="BLITZ TRIVIA MASTERS (MOST TRIVIA POINTS)" sort="TRIVIA POINTS" sort-order="desc" lines-max="10" line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="GAMES" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" format="Trim "/>
+      <column id="POINTS" src="TRIVIA POINTS"/>
+    </table>
+
+    <table id="WORLD RECORDS (BEST SINGLE GAME RECORDS)">
+      <column id="RECORD" src="index" format="WORLD RECORD NAME"/>
+      <column id="NAME" src="WORLD NAME" format="Trim "/>
+      <column id="VALUE" src="WORLD VALUE"/>
+    </table>
+
+    <table id="MOST POPULAR TEAMS (BASED ON THIS LOCATION)" sort="TEAM_USES" sort-order="desc" lines-max="10">
+      <sort src="TEAM INDEX" order="asc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="TEAM" src="unsorted_index" format="TEAM NAME"/>
+      <column id="TEAM INDEX" src="unsorted_index" display="debug"/>
+      <column id="TEAM_USES" src="TEAM USES" display="debug"/>
+    </table>
+  </output>
+
+  <format id="WIN PERCENTAGE" formatter="%.3f">
+    <divide><column id="GAMES"/></divide>
+  </format>
+
+  <format id="PER GAME" formatter="%.2f">
+    <divide><column id="GAMES"/></divide>
+  </format>
+
+  <!-- Preserve two decimal places as an integer so sorting remains numeric. -->
+  <format id="PER GAME SORT">
+    <multiply>100</multiply>
+    <divide_trunc><column id="GAMES"/></divide_trunc>
+  </format>
+
+  <format id="WIN PERCENTAGE SORT">
+    <multiply>1000</multiply>
+    <divide_trunc><column id="GAMES"/></divide_trunc>
+  </format>
+
+  <format id="QB COMPLETION NUMERATOR">
+    <multiply>40</multiply>
+  </format>
+
+  <format id="QB YARDS NUMERATOR">
+    <multiply>2</multiply>
+  </format>
+
+  <format id="QB TOUCHDOWN NUMERATOR">
+    <multiply>160</multiply>
+  </format>
+
+  <format id="QB INTERCEPTION NUMERATOR">
+    <multiply>-200</multiply>
+  </format>
+
+  <format id="QB RATING" formatter="%.1f">
+    <add><column id="PASS COMPLETIONS" format="QB COMPLETION NUMERATOR"/></add>
+    <add><column id="PASSING YARDS" format="QB YARDS NUMERATOR"/></add>
+    <add><column id="PASS TOUCHDOWNS" format="QB TOUCHDOWN NUMERATOR"/></add>
+    <add><column id="INTERCEPTIONS" format="QB INTERCEPTION NUMERATOR"/></add>
+    <multiply>25</multiply>
+    <divide>12</divide>
+    <divide><column id="PASS ATTEMPTS"/></divide>
+  </format>
+
+  <format id="QB RATING SORT">
+    <add><column id="PASS COMPLETIONS" format="QB COMPLETION NUMERATOR"/></add>
+    <add><column id="PASSING YARDS" format="QB YARDS NUMERATOR"/></add>
+    <add><column id="PASS TOUCHDOWNS" format="QB TOUCHDOWN NUMERATOR"/></add>
+    <add><column id="INTERCEPTIONS" format="QB INTERCEPTION NUMERATOR"/></add>
+    <multiply>1000</multiply>
+    <divide_trunc><column id="PASS ATTEMPTS"/></divide_trunc>
+  </format>
+
+  <format id="TEAM COUNT">
+    <bit-count/>
+  </format>
+
+  <format id="WORLD RECORD NAME">
+    <case src="0" dst="MOST SACKS"/>
+    <case src="1" dst="MOST TOUCHDOWNS"/>
+    <case src="2" dst="MOST TACKLES"/>
+    <case src="3" dst="MOST INTERCEPTIONS"/>
+    <case src="4" dst="MOST POINTS"/>
+    <case src="5" dst="LARGEST VICTORY MARGIN"/>
+  </format>
+
+  <format id="TEAM NAME">
+    <case src="0" dst="ARIZONA CARDINALS"/>
+    <case src="1" dst="ATLANTA FALCONS"/>
+    <case src="2" dst="BALTIMORE RAVENS"/>
+    <case src="3" dst="BUFFALO BILLS"/>
+    <case src="4" dst="CAROLINA PANTHERS"/>
+    <case src="5" dst="CHICAGO BEARS"/>
+    <case src="6" dst="CINCINNATI BENGALS"/>
+    <case src="7" dst="DALLAS COWBOYS"/>
+    <case src="8" dst="DENVER BRONCOS"/>
+    <case src="9" dst="DETROIT LIONS"/>
+    <case src="10" dst="GREEN BAY PACKERS"/>
+    <case src="11" dst="INDIANAPOLIS COLTS"/>
+    <case src="12" dst="JACKSONVILLE JAGUARS"/>
+    <case src="13" dst="KANSAS CITY CHIEFS"/>
+    <case src="14" dst="MIAMI DOLPHINS"/>
+    <case src="15" dst="MINNESOTA VIKINGS"/>
+    <case src="16" dst="NEW ENGLAND PATRIOTS"/>
+    <case src="17" dst="NEW ORLEANS SAINTS"/>
+    <case src="18" dst="NEW YORK GIANTS"/>
+    <case src="19" dst="NEW YORK JETS"/>
+    <case src="20" dst="OAKLAND RAIDERS"/>
+    <case src="21" dst="PHILADELPHIA EAGLES"/>
+    <case src="22" dst="PITTSBURGH STEELERS"/>
+    <case src="23" dst="SAN DIEGO CHARGERS"/>
+    <case src="24" dst="SAN FRANCISCO 49ERS"/>
+    <case src="25" dst="SEATTLE SEAHAWKS"/>
+    <case src="26" dst="ST. LOUIS RAMS"/>
+    <case src="27" dst="TAMPA BAY BUCCANEERS"/>
+    <case src="28" dst="TENNESSEE OILERS"/>
+    <case src="29" dst="WASHINGTON REDSKINS"/>
+  </format>
+</openhi2txt>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hi2txt>
+  <!-- bigkarnk (.hi) definition for hi2txt
+       Note: the last two records are stored swapped in the .hi, but we simply read all 10
+       and let hi2txt SORT the output by SCORE (descending). Rank is generated from the
+       sorted order, so the chart is always correct and unified in one table.
+  -->
+
+  <structure file=".hi">
+    <check><size>164</size></check>
+
+    <!-- 10 records x 16 bytes = 160 -->
+    <loop count="10">
+      <elt size="4" type="int"  id="SCORE" base="10" endianness="big_endian"/>
+      <elt size="7" type="text" id="NAME"  charset="bigkarnk"/>
+      <elt size="4" type="raw"  id="_PAD"/>
+      <elt size="1" type="raw"  id="_RANKBYTE"/>
+    </loop>
+
+    <!-- trailing 4 bytes from hiscore.dat second range -->
+    <elt size="4" type="raw" id="_TAIL"/>
+  </structure>
+
+  <output>
+    <!-- Single unified, score-sorted table -->
+    <table sort="SCORE" sort-order="desc">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NAME"  format="trim_ff_r"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="trim_ff_r">
+    <trim direction="right"> </trim>
+    <trim direction="right">ÿ</trim>
+  </format>
+
+  <charset id="bigkarnk">
+    <char src="0x20" dst=" "/>
+    <char src="0x2e" dst="."/>
+    <char src="0xff" dst=" "/>
+
+    <!-- A-Z -->
+    <char src="0x41" dst="A"/><char src="0x42" dst="B"/><char src="0x43" dst="C"/><char src="0x44" dst="D"/>
+    <char src="0x45" dst="E"/><char src="0x46" dst="F"/><char src="0x47" dst="G"/><char src="0x48" dst="H"/>
+    <char src="0x49" dst="I"/><char src="0x4a" dst="J"/><char src="0x4b" dst="K"/><char src="0x4c" dst="L"/>
+    <char src="0x4d" dst="M"/><char src="0x4e" dst="N"/><char src="0x4f" dst="O"/><char src="0x50" dst="P"/>
+    <char src="0x51" dst="Q"/><char src="0x52" dst="R"/><char src="0x53" dst="S"/><char src="0x54" dst="T"/>
+    <char src="0x55" dst="U"/><char src="0x56" dst="V"/><char src="0x57" dst="W"/><char src="0x58" dst="X"/>
+    <char src="0x59" dst="Y"/><char src="0x5a" dst="Z"/>
+  </charset>
+</hi2txt>

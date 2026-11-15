@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  tehkanwc - Tehkan World Cup (Tehkan, 1985)
+  .hi file format (via hiscore.dat plugin)
+  hiscore.dat:
+    @:maincpu,program,c600,60,03,17
+  96 bytes = 12 entries x 8B
+  Record (8B): 1B game_number (stored-1) + 3B name (ASCII) +
+               1B goals_for + 1B goals_against + 2B pad
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>96</size>
+    </check>
+    <loop count="12">
+      <elt size="1" type="int" id="GAME"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="int" id="GF"/>
+      <elt size="1" type="int" id="GA"/>
+      <elt size="2" type="raw" id="PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST PLAYERS">
+      <column id="GAME NUMBER" src="GAME" format="gamename"/>
+      <column id="NAME"/>
+      <column id="SCORE" src="GF" format="score_fmt"/>
+    </table>
+  </output>
+
+  <format id="gamename">
+    <case src="1" operator="=" dst="2ND GAME WINNER"/>
+    <case src="2" operator="=" dst="3RD GAME WINNER"/>
+    <case src="3" operator="=" dst="4TH GAME WINNER"/>
+    <case src="4" operator="=" dst="5TH GAME WINNER"/>
+  </format>
+
+  <!-- Score: concat goals_for:goals_against -->
+  <format id="score_fmt" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="GF"/>
+      <txt>:</txt>
+      <column src="GA"/>
+    </concat>
+  </format>
+
+</hi2txt>

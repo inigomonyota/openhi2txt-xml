@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  higemaru - Pirate Ship Higemaru (Capcom, 1984)
+  .hi file format (via hiscore.dat plugin)
+  hiscore.dat:
+    @:maincpu,program,ee00,82,00,4f
+    @:maincpu,program,ee97,3,00,00
+    @:maincpu,program,d04e,7,20,30
+  140 bytes = 130B main (10 x 13B) + 3B top score + 7B display
+  Record (13B): 3B score (BCD x10) + 10B name (ASCII + symbols)
+  Top 3 = "BEST PLAYERS", 4-10 = "GOOD PLAYERS"
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>140</size>
+    </check>
+    <!-- BEST PLAYERS: 3 entries x 13B -->
+    <loop count="3">
+      <elt size="3" type="int" id="BSCORE" base="16"/>
+      <elt size="10" type="text" id="BNAME" charset="chars"/>
+    </loop>
+    <!-- GOOD PLAYERS: 7 entries x 13B -->
+    <loop count="7">
+      <elt size="3" type="int" id="GSCORE" base="16"/>
+      <elt size="10" type="text" id="GNAME" charset="chars"/>
+    </loop>
+    <!-- Top score (3B BCD) -->
+    <elt size="3" type="raw" id="TOPSCORE"/>
+    <!-- Display score (7B ASCII) -->
+    <elt size="7" type="raw" id="DISPLAY"/>
+  </structure>
+
+  <output>
+    <table id="HIGEMARU BEST PLAYERS">
+      <column id="RANK" src="index" format="best_rank"/>
+      <column id="NAME" src="BNAME"/>
+      <column id="SCORE" src="BSCORE" format="score_x10"/>
+    </table>
+    <table id="HIGEMARU GOOD PLAYERS">
+      <column id="RANK" src="index" format="good_rank"/>
+      <column id="NAME" src="GNAME"/>
+      <column id="SCORE" src="GSCORE" format="score_x10"/>
+    </table>
+  </output>
+
+  <format id="best_rank">
+    <case src="0" operator="=" dst="TOP"/>
+    <case src="1" operator="=" dst="2ND"/>
+    <case src="2" operator="=" dst="3RD"/>
+  </format>
+
+  <format id="good_rank">
+    <case src="0" operator="=" dst="4TH"/>
+    <case src="1" operator="=" dst="5TH"/>
+    <case src="2" operator="=" dst="6TH"/>
+    <case src="3" operator="=" dst="7TH"/>
+    <case src="4" operator="=" dst="8TH"/>
+    <case src="5" operator="=" dst="9TH"/>
+    <case src="6" operator="=" dst="10TH"/>
+  </format>
+
+  <format id="score_x10"><multiply>10</multiply><case src="0" operator="&gt;=" format="comma_score"/></format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <!-- If score is >= 1,000,000,000 (Billions) -->
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    
+    <!-- If score is >= 1,000,000 (Millions) -->
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    
+    <!-- If score is >= 1,000 (Thousands) -->
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    
+    <!-- Fallback for scores under 1,000 (Passes the number through as-is) -->
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <!-- Formats like: 1,234,567,890 -->
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234,567 -->
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234 -->
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <charset id="chars">
+    <char src="0x20" dst=" "/>
+    <char src="0x2E" dst="."/>
+    <char src="0x3E" dst="*"/>
+    <char src="0x3F" dst="&lt;3"/>
+    <char src="0x41" dst="A"/>
+    <char src="0x42" dst="B"/>
+    <char src="0x43" dst="C"/>
+    <char src="0x44" dst="D"/>
+    <char src="0x45" dst="E"/>
+    <char src="0x46" dst="F"/>
+    <char src="0x47" dst="G"/>
+    <char src="0x48" dst="H"/>
+    <char src="0x49" dst="I"/>
+    <char src="0x4A" dst="J"/>
+    <char src="0x4B" dst="K"/>
+    <char src="0x4C" dst="L"/>
+    <char src="0x4D" dst="M"/>
+    <char src="0x4E" dst="N"/>
+    <char src="0x4F" dst="O"/>
+    <char src="0x50" dst="P"/>
+    <char src="0x51" dst="Q"/>
+    <char src="0x52" dst="R"/>
+    <char src="0x53" dst="S"/>
+    <char src="0x54" dst="T"/>
+    <char src="0x55" dst="U"/>
+    <char src="0x56" dst="V"/>
+    <char src="0x57" dst="W"/>
+    <char src="0x58" dst="X"/>
+    <char src="0x59" dst="Y"/>
+    <char src="0x5A" dst="Z"/>
+    <char src="0x61" dst="(m)"/>
+    <char src="0x62" dst="(f)"/>
+    <char src="0x63" dst="(?)"/>
+    <char src="0x64" dst="(snow)"/>
+    <char src="0x65" dst="(umb)"/>
+    <char src="0x66" dst="(?)"/>
+  </charset>
+
+</hi2txt>

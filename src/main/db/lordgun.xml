@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    Lord of Gun (IGS, 1994) RANK board.
+    The 128-byte eeprom cannot hold the chart, so the game copies a 10-entry RANK
+    table into 68000 work RAM at program 0x203830. The MAME hiscore plugin saves
+    that region to lordgun.hi (see hiscore.dat). Layout: 10 records * 12 bytes = 120.
+      +00 name        8 bytes ASCII, null-padded
+      +08 score       16-bit big-endian (68000), e.g. 0x2710 = 10000
+      +0A row Y-offset 2 bytes (per-row display offset, not score data)
+    Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>120</size>
+    </check>
+    <loop count="10">
+      <elt size="8" type="text" id="NAME"  table-index="loop_index"/>
+      <elt size="2" type="int"  id="SCORE" endianness="big_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="YOFF"  table-index="loop_index"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANK" sort="SCORE" sort-order="desc">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="YOFF"  format="0x" display="debug"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+</hi2txt>

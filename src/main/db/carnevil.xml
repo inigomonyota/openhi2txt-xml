@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    carnevil - CarnEvil (Midway, 1998, Seattle hardware)
+    Reads the MAME nvram file (nvram/carnevil/nvram), 131072 bytes.
+
+    Midway Seattle NVRAM stores every LOGICAL byte as a 4-byte little-endian
+    word (1 real byte + 3 zero pad). byte-skip="1000" keeps the 1st byte of
+    every 4, collapsing each 16-byte row (3 data words + 1 pad word) to 3 bytes.
+
+    HIGH SCORES table = two contiguous 10-entry regions, 16 bytes per entry:
+      0x1AA0  SCORES : 3-byte value, little-endian (e.g. 04 93 E0 -> 300000)
+      0x1B40  NAMES  : 3 ASCII chars
+
+    NOTE: the NVRAM stores 3-char initials (e.g. KCJ, MAS, OID), NOT the full
+    default display names (JACK, SAMMY Z, ...). Those full names live in ROM
+    and are never written to NVRAM, so this reader shows the 3-char initials
+    that the file actually holds (which is what real player entries contain).
+  -->
+
+  <structure file="nvram">
+    <check>
+      <size>131072</size>
+    </check>
+
+    <!-- skip to score region at 0x1AA0 (6816 bytes) -->
+    <elt size="6816" type="raw" id="PRE"/>
+
+    <!-- 10 scores: 3 dwords (byte-skip keeps low byte of each) + 1 pad dword -->
+    <loop count="10">
+      <elt size="12" type="int" byte-skip="1000" endianness="little_endian" id="SCORE"/>
+      <elt size="4"  type="raw" id="SPAD"/>
+    </loop>
+
+    <!-- 10 names: 3 char dwords (byte-skip keeps the ASCII byte) + 1 pad dword -->
+    <loop count="10">
+      <elt size="12" type="text" byte-skip="1000" id="NAME"/>
+      <elt size="4"  type="raw" id="NPAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORES">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+</hi2txt>

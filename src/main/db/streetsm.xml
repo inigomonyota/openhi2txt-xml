@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 164 bytes -->
+    <check><size>164</size></check>
+    
+    <!-- 10 Records * 16 Bytes = 160 Bytes -->
+    <loop count="10">
+      <!-- 3-byte Rank string (" 1 ", " 2 ", etc.). We skip this and let hi2txt generate the rank natively -->
+      <elt size="3" type="raw"  id="SKIP_RANK"/>
+      
+      <!-- 3-letter ASCII Name -->
+      <elt size="3" type="text" id="NAME"/>
+      
+      <!-- 2 bytes of space padding (0x20 0x20) -->
+      <elt size="2" type="raw"  id="SKIP_PAD1"/>
+      
+      <!-- 4-byte Big Endian BCD Score -->
+      <elt size="4" type="int"  id="SCORE" base="16" endianness="big_endian"/>
+      
+      <!-- 4 bytes of space padding -->
+      <elt size="4" type="raw"  id="SKIP_PAD2"/>
+    </loop>
+    
+    <!-- Remaining 4 bytes is the standalone Top Score tracker -->
+    <elt size="4" type="raw" id="TOP_SCORE"/>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORES">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+  <!-- Translates the index from 0-9 to 1-10 -->
+  <format id="+1">
+    <add>1</add>
+  </format>
+</hi2txt>

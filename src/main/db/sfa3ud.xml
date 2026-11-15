@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  sfa3ud - Street Fighter Alpha 3 (USA 980904 Phoenix Edition) (bootleg)
+  .hi file format (via hiscore.dat plugin)
+  hiscore.dat: @:maincpu,program,ff23be,ae0,00,05
+  2784 bytes = 6 tables x 29 entries x 16 bytes
+  Record (16B), verified against factory-default .hi dump:
+    +0  CHAR   1B character index (0x00-0x1f)
+    +1  pad    2B 00
+    +3  GRADE  1B (05/04/03/02 by score band)
+    +4  pad    3B 00
+    +7  TID    1B table id (0..5)
+    +8  pad    1B 00
+    +9  VALUE  3B BCD  (SCORE for X/A/V SCORE tables, WINS for VS tables)
+    +12 NAME   3B charset A=0
+    +15 CONST  1B 0x2d
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <definition>0:ff23be:ae0:00:05</definition>
+      <size>2784</size>
+    </check>
+    <!-- X-ISM SCORE RANKING: 29 entries //-->
+    <loop count="29">
+      <elt size="1" type="int"  id="XS_CHAR"/>
+      <elt size="2" type="raw"  id="XS_P0"/>
+      <elt size="1" type="raw"  id="XS_GRADE"/>
+      <elt size="3" type="raw"  id="XS_P1"/>
+      <elt size="1" type="raw"  id="XS_TID"/>
+      <elt size="1" type="raw"  id="XS_P2"/>
+      <elt size="3" type="int"  id="XS_SCORE" base="16"/>
+      <elt size="3" type="text" id="XS_NAME"  charset="sfa3"/>
+      <elt size="1" type="raw"  id="XS_CONST"/>
+    </loop>
+    <!-- A-ISM SCORE RANKING: 29 entries //-->
+    <loop count="29">
+      <elt size="1" type="int"  id="AS_CHAR"/>
+      <elt size="2" type="raw"  id="AS_P0"/>
+      <elt size="1" type="raw"  id="AS_GRADE"/>
+      <elt size="3" type="raw"  id="AS_P1"/>
+      <elt size="1" type="raw"  id="AS_TID"/>
+      <elt size="1" type="raw"  id="AS_P2"/>
+      <elt size="3" type="int"  id="AS_SCORE" base="16"/>
+      <elt size="3" type="text" id="AS_NAME"  charset="sfa3"/>
+      <elt size="1" type="raw"  id="AS_CONST"/>
+    </loop>
+    <!-- V-ISM SCORE RANKING: 29 entries //-->
+    <loop count="29">
+      <elt size="1" type="int"  id="VS_CHAR"/>
+      <elt size="2" type="raw"  id="VS_P0"/>
+      <elt size="1" type="raw"  id="VS_GRADE"/>
+      <elt size="3" type="raw"  id="VS_P1"/>
+      <elt size="1" type="raw"  id="VS_TID"/>
+      <elt size="1" type="raw"  id="VS_P2"/>
+      <elt size="3" type="int"  id="VS_SCORE" base="16"/>
+      <elt size="3" type="text" id="VS_NAME"  charset="sfa3"/>
+      <elt size="1" type="raw"  id="VS_CONST"/>
+    </loop>
+    <!-- X-ISM VS RANKING: 29 entries //-->
+    <loop count="29">
+      <elt size="1" type="int"  id="XV_CHAR"/>
+      <elt size="2" type="raw"  id="XV_P0"/>
+      <elt size="1" type="raw"  id="XV_GRADE"/>
+      <elt size="3" type="raw"  id="XV_P1"/>
+      <elt size="1" type="raw"  id="XV_TID"/>
+      <elt size="1" type="raw"  id="XV_P2"/>
+      <elt size="3" type="int"  id="XV_WINS" base="16"/>
+      <elt size="3" type="text" id="XV_NAME"  charset="sfa3"/>
+      <elt size="1" type="raw"  id="XV_CONST"/>
+    </loop>
+    <!-- A-ISM VS RANKING: 29 entries //-->
+    <loop count="29">
+      <elt size="1" type="int"  id="AV_CHAR"/>
+      <elt size="2" type="raw"  id="AV_P0"/>
+      <elt size="1" type="raw"  id="AV_GRADE"/>
+      <elt size="3" type="raw"  id="AV_P1"/>
+      <elt size="1" type="raw"  id="AV_TID"/>
+      <elt size="1" type="raw"  id="AV_P2"/>
+      <elt size="3" type="int"  id="AV_WINS" base="16"/>
+      <elt size="3" type="text" id="AV_NAME"  charset="sfa3"/>
+      <elt size="1" type="raw"  id="AV_CONST"/>
+    </loop>
+    <!-- V-ISM VS RANKING: 29 entries //-->
+    <loop count="29">
+      <elt size="1" type="int"  id="VV_CHAR"/>
+      <elt size="2" type="raw"  id="VV_P0"/>
+      <elt size="1" type="raw"  id="VV_GRADE"/>
+      <elt size="3" type="raw"  id="VV_P1"/>
+      <elt size="1" type="raw"  id="VV_TID"/>
+      <elt size="1" type="raw"  id="VV_P2"/>
+      <elt size="3" type="int"  id="VV_WINS" base="16"/>
+      <elt size="3" type="text" id="VV_NAME"  charset="sfa3"/>
+      <elt size="1" type="raw"  id="VV_CONST"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="X-ISM SCORE RANKING" sort="XS_SCORE" sort-order="desc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="XS_NAME"/>
+      <column id="SCORE" src="XS_SCORE"/>
+      <column id="CHARACTER" src="XS_CHAR" format="charname"/>
+    </table>
+    <table id="A-ISM SCORE RANKING" sort="AS_SCORE" sort-order="desc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="AS_NAME"/>
+      <column id="SCORE" src="AS_SCORE"/>
+      <column id="CHARACTER" src="AS_CHAR" format="charname"/>
+    </table>
+    <table id="V-ISM SCORE RANKING" sort="VS_SCORE" sort-order="desc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="VS_NAME"/>
+      <column id="SCORE" src="VS_SCORE"/>
+      <column id="CHARACTER" src="VS_CHAR" format="charname"/>
+    </table>
+    <table id="X-ISM VS RANKING" sort="XV_WINS" sort-order="desc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="XV_NAME"/>
+      <column id="WINS" src="XV_WINS"/>
+      <column id="CHARACTER" src="XV_CHAR" format="charname"/>
+    </table>
+    <table id="A-ISM VS RANKING" sort="AV_WINS" sort-order="desc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="AV_NAME"/>
+      <column id="WINS" src="AV_WINS"/>
+      <column id="CHARACTER" src="AV_CHAR" format="charname"/>
+    </table>
+    <table id="V-ISM VS RANKING" sort="VV_WINS" sort-order="desc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="VV_NAME"/>
+      <column id="WINS" src="VV_WINS"/>
+      <column id="CHARACTER" src="VV_CHAR" format="charname"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="charname">
+    <case src="1" operator="&lt;" dst="RYU"/>
+    <case src="2" operator="&lt;" dst="KEN"/>
+    <case src="3" operator="&lt;" dst="AKUMA"/>
+    <case src="4" operator="&lt;" dst="CHARLIE"/>
+    <case src="5" operator="&lt;" dst="CHUN-LI"/>
+    <case src="6" operator="&lt;" dst="ADON"/>
+    <case src="7" operator="&lt;" dst="SODOM"/>
+    <case src="8" operator="&lt;" dst="GUY"/>
+    <case src="9" operator="&lt;" dst="BIRDIE"/>
+    <case src="10" operator="&lt;" dst="ROSE"/>
+    <case src="11" operator="&lt;" dst="M.BISON"/>
+    <case src="12" operator="&lt;" dst="SAGAT"/>
+    <case src="13" operator="&lt;" dst="DAN"/>
+    <case src="14" operator="&lt;" dst="SAKURA"/>
+    <case src="15" operator="&lt;" dst="ROLENTO"/>
+    <case src="16" operator="&lt;" dst="DHALSIM"/>
+    <case src="17" operator="&lt;" dst="ZANGIEF"/>
+    <case src="18" operator="&lt;" dst="GEN"/>
+    <case src="19" operator="&lt;" dst="EVIL RYU"/>
+    <case src="20" operator="&lt;" dst="SHIN AKUMA"/>
+    <case src="21" operator="&lt;" dst="FINAL BISON"/>
+    <case src="22" operator="&lt;" dst="BALROG"/>
+    <case src="23" operator="&lt;" dst="CAMMY"/>
+    <case src="24" operator="&lt;" dst="JULI(B)"/>
+    <case src="25" operator="&lt;" dst="E.HONDA"/>
+    <case src="26" operator="&lt;" dst="BLANKA"/>
+    <case src="27" operator="&lt;" dst="R.MIKA"/>
+    <case src="28" operator="&lt;" dst="CODY"/>
+    <case src="29" operator="&lt;" dst="VEGA"/>
+    <case src="30" operator="&lt;" dst="KARIN"/>
+    <case src="31" operator="&lt;" dst="JULI"/>
+    <case src="32" operator="&lt;" dst="JUNI"/>
+  </format>
+
+  <charset id="sfa3">
+    <char src="0x00" dst="A"/>
+    <char src="0x01" dst="B"/>
+    <char src="0x02" dst="C"/>
+    <char src="0x03" dst="D"/>
+    <char src="0x04" dst="E"/>
+    <char src="0x05" dst="F"/>
+    <char src="0x06" dst="G"/>
+    <char src="0x07" dst="H"/>
+    <char src="0x08" dst="I"/>
+    <char src="0x09" dst="J"/>
+    <char src="0x0A" dst="K"/>
+    <char src="0x0B" dst="L"/>
+    <char src="0x0C" dst="M"/>
+    <char src="0x0D" dst="N"/>
+    <char src="0x0E" dst="O"/>
+    <char src="0x0F" dst="P"/>
+    <char src="0x10" dst="Q"/>
+    <char src="0x11" dst="R"/>
+    <char src="0x12" dst="S"/>
+    <char src="0x13" dst="T"/>
+    <char src="0x14" dst="U"/>
+    <char src="0x15" dst="V"/>
+    <char src="0x16" dst="W"/>
+    <char src="0x17" dst="X"/>
+    <char src="0x18" dst="Y"/>
+    <char src="0x19" dst="Z"/>
+  </charset>
+
+</hi2txt>

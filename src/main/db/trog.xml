@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  Trog (Williams WPC, 1990)
+  ROM: trog  |  NVRAM size: 32768 bytes
+  Data is interleaved: real bytes at even file offsets, 0x00 padding at odd offsets.
+
+  Score encoding: 4-byte nibble-packed BCD.
+  Read as type="text" with src-unit-size="4" dst-unit-size="1" ascii-offset="48":
+  each nibble becomes a decimal digit character, giving e.g. "01100865" = 1,100,865.
+  Lexicographic descending sort of zero-padded 8-char strings = correct numeric order.
+  Leading zero stripped via trim format for display.
+
+  Name encoding: 3-byte direct ASCII, space = 0x20.
+
+  Entry layout (10 real bytes = 20 raw bytes):
+    +0..+2   name  (3 bytes) = 6 raw
+    +3       unknown byte    = 2 raw
+    +4..+7   score (4 bytes) = 8 raw
+    +8..+9   padding zeros   = 4 raw
+
+  NAME/SCORE OFFSET QUIRK: name[i] belongs to score[i-1].
+  Requires two structure passes per table.
+
+  Table locations (raw offsets):
+    DAILY DINOS:  raw 0x0000  (10 scores, 11 entries total)
+    TOP TROGS:    raw 0x4000  (16 scores, 17 entries total)
+
+  Pass offsets:
+    DD scores:  lead=12, loop: skip 8, read score 8, skip 4  (stride=20)
+    DD names:   lead=32, loop: read name 6, skip 14          (stride=20)
+    TT scores:  lead=16404, loop: read score 8, skip 12      (stride=20)
+    TT names:   lead=16416, loop: read name 6, skip 14       (stride=20)
+-->
+<hi2txt>
+
+  <!-- ============================================================ -->
+  <!-- Pass 1: DAILY DINOS scores                                   -->
+  <!-- ============================================================ -->
+  <structure file="nvram">
+    <check><size>32768</size></check>
+    <elt id="dd_hdr"      size="12" type="raw"/>
+    <loop count="10">
+      <elt id="dd_nskip"  size="8"  type="raw"/>
+      <elt id="dd_score"  size="8"  type="text" byte-skip="even" src-unit-size="4" dst-unit-size="1" ascii-offset="48"/>
+      <elt id="dd_pskip"  size="4"  type="raw"/>
+    </loop>
+  </structure>
+
+  <!-- ============================================================ -->
+  <!-- Pass 2: DAILY DINOS names                                    -->
+  <!-- ============================================================ -->
+  <structure file="nvram">
+    <elt id="dd_nlead"    size="32" type="raw"/>
+    <loop count="10">
+      <elt id="dd_name"   size="6"  type="text" byte-skip="even"/>
+      <elt id="dd_nskip2" size="14" type="raw"/>
+    </loop>
+  </structure>
+
+  <!-- ============================================================ -->
+  <!-- Pass 3: TOP TROGS scores                                     -->
+  <!-- ============================================================ -->
+  <structure file="nvram">
+    <elt id="tt_slead"    size="16404" type="raw"/>
+    <loop count="16">
+      <elt id="tt_score"  size="8"  type="text" byte-skip="even" src-unit-size="4" dst-unit-size="1" ascii-offset="48"/>
+      <elt id="tt_sskip"  size="12" type="raw"/>
+    </loop>
+  </structure>
+
+  <!-- ============================================================ -->
+  <!-- Pass 4: TOP TROGS names                                      -->
+  <!-- ============================================================ -->
+  <structure file="nvram">
+    <elt id="tt_nlead"    size="16416" type="raw"/>
+    <loop count="16">
+      <elt id="tt_name"   size="6"  type="text" byte-skip="even"/>
+      <elt id="tt_nskip2" size="14" type="raw"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TOP TROGS" sort="SCORE" sort-order="desc" line-ignore="SCORE:00000000">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="tt_name"/>
+      <column id="SCORE" src="tt_score" format="score_fmt;comma_score"/>
+    </table>
+	<table id="DAILY DINOS" sort="SCORE" sort-order="desc" line-ignore="SCORE:00000000">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="dd_name"/>
+      <column id="SCORE" src="dd_score" format="score_fmt;comma_score"/>
+    </table>
+  </output>
+
+  <format id="score_fmt">
+    <trim direction="left">0</trim>
+  </format>
+  
+<!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  
+</hi2txt>

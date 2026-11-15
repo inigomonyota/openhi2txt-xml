@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    gladiatr - Gladiator / Ohgon no Shiro (Taito, 1986)
+    Reads the MAME nvram file (nvram/gladiatr/nvram), 2048 bytes.
+
+    "HI-SCORE" = 10 records of 8 bytes starting at 0x0020:
+      [0:4] SCORE 4-byte BCD little-endian, stored as score/10 (x10 for display)
+            e.g. 00 50 00 00 -> BCD 5000 -> x10 -> 50000
+      [4:7] NAME  3 ASCII chars (may include & or .)
+      [7]   0xFF terminator
+    RANK is positional, shown as "NO 1." .. "NO 10.".
+  -->
+
+  <structure file="nvram">
+    <check>
+      <size>2048</size>
+    </check>
+
+    <!-- skip to table at 0x0020 (32 bytes) -->
+    <elt size="32" type="raw" id="PRE"/>
+    <loop count="10">
+      <elt size="4" type="int" base="16" endianness="little_endian" id="SCORE"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw" id="TERM"/>
+    </loop>
+  </structure>
+
+  <!-- rank index -> "NO N." -->
+  <format id="rank">
+    <add>1</add>
+    <prefix>NO </prefix>
+    <suffix>.</suffix>
+  </format>
+
+  <!-- stored score is /10 -->
+  <format id="scorex10">
+    <multiply>10</multiply>
+  </format>
+
+  <output>
+    <table id="HI-SCORE">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="SCORE" src="SCORE" format="scorex10"/>
+    </table>
+  </output>
+
+</hi2txt>

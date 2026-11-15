@@ -1,56 +1,65 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  hi2txt description for The Astyanax (astyanax)
+
+  Column names match the default high score table (astyanax.xml):
+      GREAT WARRIORS : RANK | SCORE | STAGE | NAME
+
+  This is for a 174-byte hiscore dump. The published HiToText definition is
+  for a 167-byte dump: its range starts 7 bytes later, which truncates the
+  first score AND flips the byte parity, so it uses byte-skip="odd" where
+  this one needs byte-skip="even". The two are not interchangeable.
+
+  SCORE is one decimal digit per byte, not packed bcd:
+      00 00 01 02 00 00 00 00   ->  120000
+  byte-skip="even" keeps the digit bytes, nibble-skip="odd" drops each
+  always-zero high nibble to leave packed bcd, base="16" converts it.
+
+  5 entries of 32 raw bytes:
+      [0x00-0x0F]  SCORE      8 digits, one per byte, even offsets
+      [0x10-0x11]  STAGE      1 ascii digit
+      [0x12-0x17]  NAME       3 ascii chars
+      [0x18-0x1F]  RANK TEXT  the NEXT entry's rank label ("2ND", "3RD", ...)
+
+  Trailing 14 bytes: 8 unknown, then the top score as plain ascii "120000".
+//-->
 <hi2txt>
-  <!--
-    tested with mame 0.148 and related hiscore.dat
-      source: HiToText
-  //-->
-  
+
   <structure file=".hi">
     <check>
-      <!-- optional: if defined and hiscore.dat provided, it allows to select the good structure version the provided file //-->
-      <definition>0:f8909:97:00:4e
-                  0:f885d:f:00:00
-                  0:f8863:1:02:02</definition>
-      <definition>0:f8921:97:00:4e
-                  0:f8875:f:00:00
-                  0:f887b:1:02:02</definition>
-      <!-- optional: if defined, it allows to select the good structure version the provided file
-                     useful if multiple structures are defined, but hiscore.dat not provided //-->
-      <size>167</size>
+      <size>174</size>
     </check>
-  	<loop count="1"> <!-- hiscore.dat: 1st entry is only partially dumped into the hiscore: no UNKNOWN, no RANK TEXT. //-->
-  	  <elt size="15" type="int"  id="SCORE"     byte-skip="even" nibble-skip="odd" base="16"/>
-        <!-- hiscore.dat: only 15 bytes: 1st score is truncated.
-  	         the 1st byte is missing, which is not too annoying
-  	         as only 1 byte per 2 bytes is significant //-->
-  	  <elt size="2"  type="text" id="STAGE"     byte-skip="odd"/>
-  	  <elt size="6"  type="text" id="NAME"      byte-skip="odd"/>
-  	</loop>
-  	<loop count="4" start="1">
-  		<elt size="2"  type="raw"  id="UNKNOWN"/> <!-- What is that? //-->
-  		<elt size="6"  type="text" id="RANK TEXT" byte-skip="odd"/>
-  	  <elt size="16" type="int"  id="SCORE"     byte-skip="odd" nibble-skip="odd" base="16"/>
-  	  <elt size="2"  type="text" id="STAGE"     byte-skip="odd"/>
-  	  <elt size="6"  type="text" id="NAME"      byte-skip="odd"/>
+
+    <loop count="5">
+      <elt size="16" type="int"  id="SCORE" base="16" byte-skip="even" nibble-skip="odd"/>
+      <elt size="2"  type="text" id="STAGE"           byte-skip="even"/>
+      <elt size="6"  type="text" id="NAME"            byte-skip="even"/>
+      <elt size="8"  type="raw"  id="RANK TEXT"/>
     </loop>
-  	<elt size="15" type="int" id="TOP SCORE"    byte-skip="even" nibble-skip="odd" base="16"/>
-  	<elt size="1"  type="raw" id="UNKNOWN 2"/>
+
+    <elt size="8" type="raw"  id="UNKNOWN"/>
+    <elt size="6" type="text" id="TOP SCORE"/>
   </structure>
-  
+
   <output>
-    <table>
-    	<column id="RANK" src="index" format="+1"/>
-      <column id="RANK TEXT" format="first_rank_missing"/>
-      <column id="SCORE"/>
-      <column id="NAME"/>
-      <column id="STAGE"/>
+    <table id="GREAT WARRIORS - TOP 5">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="STAGE" src="STAGE"/>
+      <column id="NAME"  src="NAME"/>
     </table>
+
     <field id="TOP SCORE" display="extra"/>
   </output>
-  
-  <format id="+1"><add>1</add></format>
-  <format id="first_rank_missing">
-  	<case src="" dst="1ST"/>
+
+  <format id="rank">
+    <add>1</add>
+    <case src="1" dst="1ST"/>
+    <case src="2" dst="2ND"/>
+    <case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/>
+    <case src="5" dst="5TH"/>
   </format>
+
 </hi2txt>

@@ -1,3 +1,52 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
-<hi2txt><sameas id="outrun"/></hi2txt>
+<hi2txt>
+  <!--
+    toutrun3 - Turbo Out Run (Sega, 1989)
+    .hi file format (via hiscore.dat plugin)
+    hiscore.dat: @:maincpu,program,6046e,118,05,20
+    20 entries x 14 bytes = 280 bytes
+    Record: 4B score (BCD) + 3B name + 3B pad + 2B record + 2B stage
+  //-->
+
+  <!-- Canonical 280B capture (current hiscore.dat 6046e,118: start gate 0x05 .. end gate 0x20) -->
+  <structure file=".hi">
+    <check>
+      <definition>0:6046e:118:05:20</definition>
+      <size>280</size>
+    </check>
+    <loop count="20">
+      <elt size="4" type="int" id="SCORE" base="16"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="3" type="raw" id="PAD"/>
+      <elt size="2" type="text" id="RECORD" byte-trunc="0x20"/>
+      <elt size="2" type="text" id="STAGE" byte-trunc="0x20"/>
+    </loop>
+  </structure>
+
+  <!-- Legacy 281B capture (older dat summed to 0x119): identical table + 1 stray trailing byte -->
+  <structure file=".hi">
+    <check>
+      <size>281</size>
+    </check>
+    <loop count="20">
+      <elt size="4" type="int" id="SCORE" base="16"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="3" type="raw" id="PAD"/>
+      <elt size="2" type="text" id="RECORD" byte-trunc="0x20"/>
+      <elt size="2" type="text" id="STAGE" byte-trunc="0x20"/>
+    </loop>
+    <elt size="1" type="raw" id="TAIL"/>
+  </structure>
+
+  <output>
+    <table id="BEST OUTRUNNERS" sort="SCORE" sort-order="desc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+      <column id="STAGE"/>
+      <column id="RECORD"/>
+    </table>
+  </output>
+
+</hi2txt>

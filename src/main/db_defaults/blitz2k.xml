@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+	<table id="GRAND CHAMPION (DEFEATED ALL 31 NFL TEAMS)">
+		<row><cell>......</cell></row>
+		<row><cell>......</cell></row>
+		<row><cell>......</cell></row>
+	</table>
+	<table id="GREATEST PLAYERS (BEST WIN PERCENTAGE)">
+		<col>RANK</col><col>NAME</col><col>SCORE</col>
+		<row><cell>#1</cell><cell>JAPPLE</cell><cell>.800</cell></row>
+		<row><cell>#2</cell><cell>TURMEL</cell><cell>.800</cell></row>
+		<row><cell>#3</cell><cell>JT</cell><cell>.800</cell></row>
+		<row><cell>#4</cell><cell>MXV</cell><cell>.800</cell></row>
+		<row><cell>#5</cell><cell>DANIEL</cell><cell>.600</cell></row>
+		<row><cell>#6</cell><cell>LUIS</cell><cell>.600</cell></row>
+		<row><cell>#7</cell><cell>JENIFR</cell><cell>.600</cell></row>
+		<row><cell>#8</cell><cell>MIKE</cell><cell>.600</cell></row>
+		<row><cell>#9</cell><cell>ROOT</cell><cell>.600</cell></row>
+		<row><cell>#10</cell><cell>PAULO</cell><cell>.600</cell></row>
+	</table>
+	<table id="BIGGEST WINNERS (MOST GAMES WON)">
+		<col>RANK</col><col>NAME</col><col>SCORE</col>
+		<row><cell>#1</cell><cell>JAPPLE</cell><cell>4 WINS</cell></row>
+		<row><cell>#2</cell><cell>TURMEL</cell><cell>4 WINS</cell></row>
+		<row><cell>#3</cell><cell>JT</cell><cell>4 WINS</cell></row>
+		<row><cell>#4</cell><cell>MXV</cell><cell>4 WINS</cell></row>
+		<row><cell>#5</cell><cell>DANIEL</cell><cell>3 WINS</cell></row>
+		<row><cell>#6</cell><cell>LUIS</cell><cell>3 WINS</cell></row>
+		<row><cell>#7</cell><cell>JENIFR</cell><cell>3 WINS</cell></row>
+		<row><cell>#8</cell><cell>MIKE</cell><cell>3 WINS</cell></row>
+		<row><cell>#9</cell><cell>ROOT</cell><cell>3 WINS</cell></row>
+		<row><cell>#10</cell><cell>PAULO</cell><cell>3 WINS</cell></row>
+	</table>
+	<table id="BEST OFFENSIVE PLAYERS (POINTS SCORED PER GAME)">
+		<col>RANK</col><col>NAME</col><col>SCORE</col>
+		<row><cell>#1</cell><cell>JAPPLE</cell><cell>25.20 PTS</cell></row>
+		<row><cell>#2</cell><cell>JENIFR</cell><cell>24.80 PTS</cell></row>
+		<row><cell>#3</cell><cell>DANIEL</cell><cell>24.40 PTS</cell></row>
+		<row><cell>#4</cell><cell>TURMEL</cell><cell>24.20 PTS</cell></row>
+		<row><cell>#5</cell><cell>ROOT</cell><cell>24.20 PTS</cell></row>
+		<row><cell>#6</cell><cell>SAL</cell><cell>24.20 PTS</cell></row>
+		<row><cell>#7</cell><cell>MXV</cell><cell>24.00 PTS</cell></row>
+		<row><cell>#8</cell><cell>EDDIE</cell><cell>23.80 PTS</cell></row>
+		<row><cell>#9</cell><cell>MIKE</cell><cell>23.60 PTS</cell></row>
+		<row><cell>#10</cell><cell>JASON</cell><cell>23.60 PTS</cell></row>
+	</table>
+	<table id="BEST DEFENSIVE PLAYERS (POINTS ALLOWED PER GAME)">
+		<col>RANK</col><col>NAME</col><col>SCORE</col>
+		<row><cell>#1</cell><cell>SAL</cell><cell>37.40 PTS</cell></row>
+		<row><cell>#2</cell><cell>TURMEL</cell><cell>38.80 PTS</cell></row>
+		<row><cell>#3</cell><cell>DANIEL</cell><cell>40.00 PTS</cell></row>
+		<row><cell>#4</cell><cell>JASON</cell><cell>40.20 PTS</cell></row>
+		<row><cell>#5</cell><cell>EDDIE</cell><cell>40.20 PTS</cell></row>
+		<row><cell>#6</cell><cell>MIKE</cell><cell>40.20 PTS</cell></row>
+		<row><cell>#7</cell><cell>MXV</cell><cell>40.20 PTS</cell></row>
+		<row><cell>#8</cell><cell>JAPPLE</cell><cell>40.20 PTS</cell></row>
+		<row><cell>#9</cell><cell>ROOT</cell><cell>40.80 PTS</cell></row>
+		<row><cell>#10</cell><cell>JT</cell><cell>40.80 PTS</cell></row>
+	</table>
+	<table id="BEST RUSHERS (YARDS PER GAME)">
+		<col>RANK</col><col>NAME</col><col>SCORE</col>
+		<row><cell>#1</cell><cell>JENIFR</cell><cell>52.80 YDS</cell></row>
+		<row><cell>#2</cell><cell>DANIEL</cell><cell>50.60 YDS</cell></row>
+		<row><cell>#3</cell><cell>JAPPLE</cell><cell>50.00 YDS</cell></row>
+		<row><cell>#4</cell><cell>MXV</cell><cell>45.40 YDS</cell></row>
+		<row><cell>#5</cell><cell>EDDIE</cell><cell>45.00 YDS</cell></row>
+		<row><cell>#6</cell><cell>JASON</cell><cell>45.00 YDS</cell></row>
+		<row><cell>#7</cell><cell>MIKE</cell><cell>44.60 YDS</cell></row>
+		<row><cell>#8</cell><cell>SAL</cell><cell>44.20 YDS</cell></row>
+		<row><cell>#9</cell><cell>JT</cell><cell>43.80 YDS</cell></row>
+		<row><cell>#10</cell><cell>TURMEL</cell><cell>43.00 YDS</cell></row>
+	</table>
+	<table id="BEST PASSERS (YARDS PER GAME)">
+		<col>RANK</col><col>NAME</col><col>SCORE</col>
+		<row><cell>#1</cell><cell>JT</cell><cell>73.00 YDS</cell></row>
+		<row><cell>#2</cell><cell>ROOT</cell><cell>72.00 YDS</cell></row>
+		<row><cell>#3</cell><cell>PAULO</cell><cell>69.00 YDS</cell></row>
+		<row><cell>#4</cell><cell>GRINCH</cell><cell>69.00 YDS</cell></row>
+		<row><cell>#5</cell><cell>DANIEL</cell><cell>65.00 YDS</cell></row>
+		<row><cell>#6</cell><cell>TURMEL</cell><cell>60.00 YDS</cell></row>
+		<row><cell>#7</cell><cell>GUIDO</cell><cell>60.00 YDS</cell></row>
+		<row><cell>#8</cell><cell>SAL</cell><cell>60.00 YDS</cell></row>
+		<row><cell>#9</cell><cell>LUIS</cell><cell>59.00 YDS</cell></row>
+		<row><cell>#10</cell><cell>JENIFR</cell><cell>55.00 YDS</cell></row>
+	</table>
+	<table id="CURRENT WINNING STREAK (CONSECUTIVE WINS)">
+		<col>RANK</col><col>NAME</col><col>SCORE</col>
+		<row><cell>#1</cell><cell>JAPPLE</cell><cell>4 WINS</cell></row>
+		<row><cell>#2</cell><cell>TURMEL</cell><cell>3 WINS</cell></row>
+		<row><cell>#3</cell><cell>MXV</cell><cell>2 WINS</cell></row>
+		<row><cell>#4</cell><cell>DANIEL</cell><cell>2 WINS</cell></row>
+		<row><cell>#5</cell><cell>PAULO</cell><cell>1 WIN</cell></row>
+		<row><cell>#6</cell><cell>ROOT</cell><cell>1 WIN</cell></row>
+		<row><cell>#7</cell><cell>GRINCH</cell><cell>1 WIN</cell></row>
+		<row><cell>#8</cell><cell>JT</cell><cell>1 WIN</cell></row>
+		<row><cell>#9</cell><cell>LUIS</cell><cell>1 WIN</cell></row>
+		<row><cell>#10</cell><cell>JENIFR</cell><cell>1 WIN</cell></row>
+	</table>
+	<table id="EXPERIENCED PLAYERS (MOST GAMES PLAYED)">
+		<col>RANK</col><col>NAME</col><col>SCORE</col>
+		<row><cell>#1</cell><cell>JAPPLE</cell><cell>5 GAMES</cell></row>
+		<row><cell>#2</cell><cell>TURMEL</cell><cell>5 GAMES</cell></row>
+		<row><cell>#3</cell><cell>MXV</cell><cell>5 GAMES</cell></row>
+		<row><cell>#4</cell><cell>JT</cell><cell>5 GAMES</cell></row>
+		<row><cell>#5</cell><cell>DANIEL</cell><cell>5 GAMES</cell></row>
+		<row><cell>#6</cell><cell>PAULO</cell><cell>5 GAMES</cell></row>
+		<row><cell>#7</cell><cell>GRINCH</cell><cell>5 GAMES</cell></row>
+		<row><cell>#8</cell><cell>ROOT</cell><cell>5 GAMES</cell></row>
+		<row><cell>#9</cell><cell>LUIS</cell><cell>5 GAMES</cell></row>
+		<row><cell>#10</cell><cell>JENIFR</cell><cell>5 GAMES</cell></row>
+	</table>
+	<table id="QB RATING (BEST OVERALL QUARTERBACK)">
+		<col>RANK</col><col>NAME</col><col>SCORE</col>
+		<row><cell>#1</cell><cell>JT</cell><cell>121.4</cell></row>
+		<row><cell>#2</cell><cell>SAL</cell><cell>104.4</cell></row>
+		<row><cell>#3</cell><cell>LUIS</cell><cell>103.5</cell></row>
+		<row><cell>#4</cell><cell>EDDIE</cell><cell>102.9</cell></row>
+		<row><cell>#5</cell><cell>DANIEL</cell><cell>102.5</cell></row>
+		<row><cell>#6</cell><cell>JENIFR</cell><cell>101.0</cell></row>
+		<row><cell>#7</cell><cell>MXV</cell><cell>93.2</cell></row>
+		<row><cell>#8</cell><cell>JASON</cell><cell>93.2</cell></row>
+		<row><cell>#9</cell><cell>MIKE</cell><cell>93.2</cell></row>
+		<row><cell>#10</cell><cell>ROOT</cell><cell>92.7</cell></row>
+	</table>
+	<table id="WORLD RECORDS - MOST SACKS">
+		<col>NAME</col><col>SCORE</col>
+		<row><cell>TURMEL</cell><cell>2</cell></row>
+	</table>
+	<table id="WORLD RECORDS - MOST INTERCEPTIONS">
+		<col>NAME</col><col>SCORE</col>
+		<row><cell>DANIEL</cell><cell>2</cell></row>
+	</table>
+	<table id="WORLD RECORDS - MOST TOUCHDOWNS">
+		<col>NAME</col><col>SCORE</col>
+		<row><cell>SAL</cell><cell>5</cell></row>
+	</table>
+	<table id="WORLD RECORDS - MOST POINTS">
+		<col>NAME</col><col>SCORE</col>
+		<row><cell>JENIFR</cell><cell>21</cell></row>
+	</table>
+	<table id="WORLD RECORDS - MOST TACKLES">
+		<col>NAME</col><col>SCORE</col>
+		<row><cell>JAPPLE</cell><cell>10</cell></row>
+	</table>
+	<table id="WORLD RECORDS - LARGEST VICTORY MARGIN">
+		<col>NAME</col><col>SCORE</col>
+		<row><cell>JT</cell><cell>10</cell></row>
+	</table>
+	<table id="BLITZ TRIVIA MASTERS (MOST TRIVIA POINTS)">
+		<col>RANK</col><col>NAME</col><col>SCORE</col>
+		<row><cell>#1</cell><cell>DANIEL</cell><cell>3 PTS</cell></row>
+		<row><cell>#2</cell><cell>JT</cell><cell>2 PTS</cell></row>
+		<row><cell>#3</cell><cell>TURMEL</cell><cell>2 PTS</cell></row>
+		<row><cell>#4</cell><cell>GUIDO</cell><cell>2 PTS</cell></row>
+		<row><cell>#5</cell><cell>MIKE</cell><cell>2 PTS</cell></row>
+		<row><cell>#6</cell><cell>JENIFR</cell><cell>2 PTS</cell></row>
+		<row><cell>#7</cell><cell>PAULO</cell><cell>2 PTS</cell></row>
+		<row><cell>#8</cell><cell>JAPPLE</cell><cell>2 PTS</cell></row>
+		<row><cell>#9</cell><cell>JASON</cell><cell>1 PT</cell></row>
+		<row><cell>#10</cell><cell>ROOT</cell><cell>1 PT</cell></row>
+	</table>
+	<table id="MOST POPULAR TEAMS (BASED ON THIS LOCATION)">
+		<col>RANK</col><col>NAME</col>
+		<row><cell>#1</cell><cell>ARIZONA CARDINALS</cell></row>
+		<row><cell>#2</cell><cell>ATLANTA FALCONS</cell></row>
+		<row><cell>#3</cell><cell>BALTIMORE RAVENS</cell></row>
+		<row><cell>#4</cell><cell>BUFFALO BILLS</cell></row>
+		<row><cell>#5</cell><cell>CAROLINA PANTHERS</cell></row>
+		<row><cell>#6</cell><cell>CHICAGO BEARS</cell></row>
+		<row><cell>#7</cell><cell>CINCINNATI BENGALS</cell></row>
+		<row><cell>#8</cell><cell>CLEVELAND BROWNS</cell></row>
+		<row><cell>#9</cell><cell>DALLAS COWBOYS</cell></row>
+		<row><cell>#10</cell><cell>DENVER BRONCOS</cell></row>
+	</table>
+</hi2txt>

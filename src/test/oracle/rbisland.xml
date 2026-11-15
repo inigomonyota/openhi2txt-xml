@@ -1,10 +1,10 @@
 <hi2txt>
   <table>
     <col>RANK</col><col>SCORE</col><col>NAME</col><col>ROUND</col>
-    <row><cell>1</cell><cell>100000</cell><cell>MTJ</cell><cell>1</cell></row>
-    <row><cell>2</cell><cell>100000</cell><cell>I.F</cell><cell>1</cell></row>
-    <row><cell>3</cell><cell>100000</cell><cell>K.M</cell><cell>1</cell></row>
-    <row><cell>4</cell><cell>100000</cell><cell>T.S</cell><cell>1</cell></row>
-    <row><cell>5</cell><cell>100000</cell><cell>BB2</cell><cell>1</cell></row>
+    <row><cell>1</cell><cell>460730</cell><cell>FAA</cell><cell>8</cell></row>
+    <row><cell>2</cell><cell>358600</cell><cell>EMZ</cell><cell>8</cell></row>
+    <row><cell>3</cell><cell>354760</cell><cell>EAB</cell><cell>8</cell></row>
+    <row><cell>4</cell><cell>241190</cell><cell>CNT</cell><cell>8</cell></row>
+    <row><cell>5</cell><cell>148480</cell><cell>CNT</cell><cell>9</cell></row>
   </table>
 </hi2txt>

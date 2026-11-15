@@ -21,15 +21,20 @@
   </structure>
   
   <output>
-    <table>
+    <table id="TOP 5 PLAYERS">
       <column id="RANK" src="index" format="+1"/>
-      <column id="SCORE" format="score"/>
       <column id="NAME"/>
+	  <column id="SCORE" format="score;ordinal"/>
     </table>
     <field id="TOP SCORE" display="extra"/>
   </output>
   
   <format id="score">
     <case src="3" operator="&gt;" dst="CHAMPION"/>
+  </format>
+  
+  <!-- Translates 1-4 into 1ST MATCH WIN - 4TH MATCH WIN -->
+  <format id="ordinal">
+    <case src="1" dst="1ST MATCH WIN"/><case src="2" dst="2ND MATCH WIN"/><case src="3" dst="3RD MATCH WIN"/>
   </format>
 </hi2txt>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Ground Effects / Super Ground Effects">
+  <!--
+    Ground Effects (Taito, groundfx.cpp / 68EC020, big-endian 32-bit bus).
+    DRIVERS RANKING = fastest lap times per course. This definition reads the
+    native NVRAM file (nvram\groundfx\eeprom, 128 bytes) directly: the live
+    high-score charts sit in that eeprom and the game both SAVES and READS them
+    from there, so no MAME hiscore plugin / .hi file is required.
+    eeprom layout: 0x00-0x0f = settings; 0x10-0x6f = the 96-byte score table;
+    0x70-0x7f = 0xff terminator. In the eeprom the 16-bit values are stored
+    LITTLE-endian (the live work-RAM copy at :maincpu program 0x0020b5a0 is the
+    same table but big-endian).
+    The table is four 24-byte course blocks. Each block = one 4-byte HEADER
+    record (a fixed "MNM 1'00"00" entry NOT shown on the ranking screen) followed
+    by five 4-byte ranking records. Record = [2-byte LITTLE-endian TIME in
+    centiseconds][2-byte LITTLE-endian NAMECODE]. NAMECODE packs 3 initials at
+    5 bits each (0=space, 1..26 = A..Z); FIRST initial is the HIGH 5 bits
+    (Pit-Fighter order). e.g. TIME 0x7530 = 30000cs = 5'00"00; NAMECODE 0x24aa
+    -> 9/5/10 = I E J. Proven byte-for-byte against the native eeprom: all four
+    courses decode to the attract default chart (IEJ 5'00"00 .. TEN, snaps
+    0000-0003). Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file="eeprom">
+    <check>
+      <size>128</size>
+    </check>
+
+    <!-- 0x00-0x0f: settings (not scores) -->
+    <elt size="16" type="raw" id="_SETTINGS"/>
+
+    <!-- TRAINING COURSE -->
+    <elt size="4" type="raw" id="_TRN_HDR"/>
+    <loop count="5">
+      <elt size="2" type="int" id="TRN_TIME" endianness="little_endian"/>
+      <elt size="2" type="int" id="TRN_NAME" endianness="little_endian"/>
+    </loop>
+
+    <!-- SAN MARINO GP -->
+    <elt size="4" type="raw" id="_SAN_HDR"/>
+    <loop count="5">
+      <elt size="2" type="int" id="SAN_TIME" endianness="little_endian"/>
+      <elt size="2" type="int" id="SAN_NAME" endianness="little_endian"/>
+    </loop>
+
+    <!-- BRAZILIAN GP -->
+    <elt size="4" type="raw" id="_BRA_HDR"/>
+    <loop count="5">
+      <elt size="2" type="int" id="BRA_TIME" endianness="little_endian"/>
+      <elt size="2" type="int" id="BRA_NAME" endianness="little_endian"/>
+    </loop>
+
+    <!-- SPANISH GP -->
+    <elt size="4" type="raw" id="_SPA_HDR"/>
+    <loop count="5">
+      <elt size="2" type="int" id="SPA_TIME" endianness="little_endian"/>
+      <elt size="2" type="int" id="SPA_NAME" endianness="little_endian"/>
+    </loop>
+
+    <!-- 0x70-0x7f: 0xff terminator -->
+    <elt size="16" type="raw" id="_TERM"/>
+  </structure>
+
+  <output>
+    <table id="TRAINING COURCE" lines-max="5">
+      <column id="RANK" src="index"    format="rank"/>
+      <column id="TIME" src="TRN_TIME" format="gtime"/>
+      <column id="NAME" src="TRN_NAME" format="name"/>
+    </table>
+    <table id="SAN MARINO GP" lines-max="5">
+      <column id="RANK" src="index"    format="rank"/>
+      <column id="TIME" src="SAN_TIME" format="gtime"/>
+      <column id="NAME" src="SAN_NAME" format="name"/>
+    </table>
+    <table id="BRAZILIAN GP" lines-max="5">
+      <column id="RANK" src="index"    format="rank"/>
+      <column id="TIME" src="BRA_TIME" format="gtime"/>
+      <column id="NAME" src="BRA_NAME" format="name"/>
+    </table>
+    <table id="SPANISH GP" lines-max="5">
+      <column id="RANK" src="index"    format="rank"/>
+      <column id="TIME" src="SPA_TIME" format="gtime"/>
+      <column id="NAME" src="SPA_NAME" format="name"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+
+  <!-- TIME stored in centiseconds -> M'SS"CC -->
+  <format id="t_min"><divide_trunc>6000</divide_trunc></format>
+  <format id="t_sec"><divide_trunc>100</divide_trunc><remainder>60</remainder><pad direction="left" max="2">0</pad></format>
+  <format id="t_cs"><remainder>100</remainder><pad direction="left" max="2">0</pad></format>
+  <format id="gtime" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="t_min"/>
+      <txt>'</txt>
+      <column format="t_sec"/>
+      <txt>"</txt>
+      <column format="t_cs"/>
+    </concat>
+  </format>
+
+  <!-- NAMECODE: 3 initials x 5 bits, first initial in the HIGH bits -->
+  <format id="name" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1024;char32"/>
+      <column format="d32;%32;char32"/>
+      <column format="%32;char32"/>
+    </concat>
+  </format>
+
+  <format id="char32">
+    <case src="0" dst=" "/>
+    <case src="1" dst="A"/><case src="2" dst="B"/><case src="3" dst="C"/>
+    <case src="4" dst="D"/><case src="5" dst="E"/><case src="6" dst="F"/>
+    <case src="7" dst="G"/><case src="8" dst="H"/><case src="9" dst="I"/>
+    <case src="10" dst="J"/><case src="11" dst="K"/><case src="12" dst="L"/>
+    <case src="13" dst="M"/><case src="14" dst="N"/><case src="15" dst="O"/>
+    <case src="16" dst="P"/><case src="17" dst="Q"/><case src="18" dst="R"/>
+    <case src="19" dst="S"/><case src="20" dst="T"/><case src="21" dst="U"/>
+    <case src="22" dst="V"/><case src="23" dst="W"/><case src="24" dst="X"/>
+    <case src="25" dst="Y"/><case src="26" dst="Z"/>
+  </format>
+
+</hi2txt>

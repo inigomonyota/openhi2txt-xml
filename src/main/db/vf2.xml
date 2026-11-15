@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Virtua Fighter 2">
+  <!--
+    Sega Model 2, file=backup1, NO byte-swap, little-endian.
+    (128B ioboard_eeprom is settings only. NB: earlier vf2 *nvram* dump held only
+     physics/replay data - the ranking lives in backup1.)
+    RANKING @ 0x3100, 18 x 16B ("VIRTUA FIGHTER 2" label follows):
+      [TIME:4 int LE centiseconds][NAME:3 ASCII incl '.'][pad:3][CHARACTER:1 idx][pad:5].
+    TIME cs -> M'SS"CC (300000 = 50'00"00). CHARACTER = roster index (case map).
+  //-->
+
+  <structure file="backup1">
+    <check>
+      <size>16384</size>
+    </check>
+    <elt size="12544" type="raw" id="HEADER"/>
+    <loop count="18">
+      <elt size="4" type="int"  id="TIME" endianness="little_endian"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="3" type="raw"  id="PAD1"/>
+      <elt size="1" type="int"  id="CHAR"/>
+      <elt size="5" type="raw"  id="PAD2"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK"      src="index" format="+1"/>
+      <column id="TIME"      format="time"/>
+      <column id="NAME"/>
+      <column id="CHARACTER" src="CHAR" format="char"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="char">
+    <case src="0" dst="AKIRA"/><case src="1" dst="JACKY"/><case src="2" dst="SARAH"/>
+    <case src="3" dst="KAGE"/><case src="4" dst="LAU"/><case src="5" dst="JEFFRY"/>
+    <case src="6" dst="PAI"/><case src="7" dst="WOLF"/><case src="8" dst="SHUN"/>
+    <case src="10" dst="LION"/>
+  </format>
+
+  <format id="time">
+    <concat>
+      <column id="TIME" format="cs_min;apos"/>
+      <column id="TIME" format="cs_sec;pad2;quot"/>
+      <column id="TIME" format="cs_hun;pad2"/>
+    </concat>
+  </format>
+  <format id="cs_min"><divide_trunc>6000</divide_trunc></format>
+  <format id="cs_sec"><remainder>6000</remainder><divide_trunc>100</divide_trunc></format>
+  <format id="cs_hun"><remainder>100</remainder></format>
+  <format id="apos"><suffix>'</suffix></format>
+  <format id="quot"><suffix>"</suffix></format>
+  <format id="pad2" formatter="%02d"><multiply>1</multiply></format>
+</hi2txt>

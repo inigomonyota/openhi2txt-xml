@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- drgnbstr by Namco, 1984 -->
+<!-- hiscore.dat: @:maincpu,program,485a,3,00,00 | @:maincpu,program,485b,1,10,10 | @:maincpu,program,406c,7,2f,00 | @:maincpu,program,406e,1,01,01 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>12</size>
+    </check>
+
+    <!-- Dragon Buster only tracks a single High Score -->
+    <!-- Byte 0-2: Score (BCD). 00 12 84 represents 1284. -->
+    <elt size="3" type="int" id="HISCORE_RAW" base="16"/>
+    
+    <!-- Remaining 9 bytes cover the other memory ranges in hiscore.dat -->
+    <elt size="9" type="raw" id="UNKNOWN"/>
+  </structure>
+
+  <output>
+    <!-- Display the high score as a single field -->
+    <!-- Multiplied by 10 to restore the trailing zero seen in the game (12,840) -->
+    <field id="HIGH SCORE" src="HISCORE_RAW" format="*10"/>
+  </output>
+
+  <!-- Translates 0-9 into 1ST-10TH -->
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+</hi2txt>

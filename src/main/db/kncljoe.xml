@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 45 bytes -->
+    <check><size>45</size></check>
+    
+    <!-- 5 records * 9 bytes = 45 bytes -->
+    <loop count="5">
+      <!-- 3-byte Big-Endian BCD Score (Multiply by 10) -->
+      <elt size="3" type="int"  id="SCORE" base="16" endianness="big_endian"/>
+      
+      <!-- 6-character ASCII Name (We leave the spaces intact for the cascade effect) -->
+      <elt size="6" type="text" id="NAME"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST 5 PLAYERS">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="SCORE" src="SCORE" format="*10"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+  <!-- Format to match the arcade's "NO. X" layout -->
+  <format id="ordinal">
+    <case src="0" dst="NO. 1"/>
+    <case src="1" dst="NO. 2"/>
+    <case src="2" dst="NO. 3"/>
+    <case src="3" dst="NO. 4"/>
+    <case src="4" dst="NO. 5"/>
+  </format>
+</hi2txt>

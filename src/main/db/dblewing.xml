@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  dblewing - Double Wings (Mitchell Corp, 1993)
+  .hi file format (via hiscore.dat plugin)
+  hiscore.dat:
+    @:maincpu,program,ff3b01,f8,2d,00
+    @:maincpu,program,ff3ac1,03,00,00
+  251 bytes = 120B solo (10 x 12B) + 8B pad + 120B dual (10 x 12B) + 3B top score
+  Record (12B): 3B name (ASCII) + 2B pad + 2B score (BE int x100) +
+                3B pad + 1B stage (0-indexed) + 1B char_id
+  Character IDs stored but not displayed (decorative cycling on screen).
+  Stage: stored 0-indexed. Stages go 1-1, 1-2, 1-3, 2-1, etc.
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>251</size>
+    </check>
+    <!-- Solo: 10 x 12B -->
+    <loop count="10">
+      <elt size="3" type="text" id="SNAME"/>
+      <elt size="2" type="raw" id="SP1"/>
+      <elt size="2" type="int" id="SSCORE"/>
+      <elt size="3" type="raw" id="SP2"/>
+      <elt size="1" type="int" id="SSTAGE"/>
+      <elt size="1" type="int" id="SCHAR"/>
+    </loop>
+    <!-- Gap (8B) -->
+    <elt size="8" type="raw" id="GAP"/>
+    <!-- Dual: 10 x 12B -->
+    <loop count="10">
+      <elt size="3" type="text" id="DNAME"/>
+      <elt size="2" type="raw" id="DP1"/>
+      <elt size="2" type="int" id="DSCORE"/>
+      <elt size="3" type="raw" id="DP2"/>
+      <elt size="1" type="int" id="DSTAGE"/>
+      <elt size="1" type="int" id="DCHAR"/>
+    </loop>
+    <!-- Top score (3B) -->
+    <elt size="3" type="raw" id="TOPSCORE"/>
+  </structure>
+
+  <output>
+    <table id="SOLO FIGHTER">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="NAME" src="SNAME"/>
+      <column id="SCORE" src="SSCORE" format="score_x100"/>
+      <column id="STAGE" src="SSTAGE" format="stage_fmt"/>
+    </table>
+    <table id="DUAL FIGHTER">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="NAME" src="DNAME"/>
+      <column id="SCORE" src="DSCORE" format="score_x100"/>
+      <column id="STAGE" src="DSTAGE" format="stage_fmt"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" operator="=" dst="1ST"/>
+    <case src="1" operator="=" dst="2ND"/>
+    <case src="2" operator="=" dst="3RD"/>
+    <case src="3" operator="=" dst="4TH"/>
+    <case src="4" operator="=" dst="5TH"/>
+    <case src="5" operator="=" dst="6TH"/>
+    <case src="6" operator="=" dst="7TH"/>
+    <case src="7" operator="=" dst="8TH"/>
+    <case src="8" operator="=" dst="9TH"/>
+    <case src="9" operator="=" dst="10TH"/>
+  </format>
+
+  <format id="score_x100"><multiply>100</multiply><case src="0" operator="&gt;=" format="comma_score"/></format>
+
+  <format id="stage_fmt">
+    <case src="0" operator="=" dst="1-1"/>
+    <case src="1" operator="=" dst="1-2"/>
+    <case src="2" operator="=" dst="1-3"/>
+    <case src="3" operator="=" dst="2-1"/>
+    <case src="4" operator="=" dst="2-2"/>
+    <case src="5" operator="=" dst="2-3"/>
+    <case src="6" operator="=" dst="3-1"/>
+    <case src="7" operator="=" dst="3-2"/>
+    <case src="8" operator="=" dst="3-3"/>
+    <case src="9" operator="=" dst="4-1"/>
+    <case src="10" operator="=" dst="4-2"/>
+    <case src="11" operator="=" dst="4-3"/>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <!-- If score is >= 1,000,000,000 (Billions) -->
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    
+    <!-- If score is >= 1,000,000 (Millions) -->
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    
+    <!-- If score is >= 1,000 (Thousands) -->
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    
+    <!-- Fallback for scores under 1,000 (Passes the number through as-is) -->
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <!-- Formats like: 1,234,567,890 -->
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234,567 -->
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234 -->
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+</hi2txt>

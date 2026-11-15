@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Strike Force">
+  <!--
+    Strike Force (Midway, 1991). Midway Y-unit hardware.
+    Scores live in the game's own nvram (32768 bytes) - NO hiscore.dat
+    entry is needed. Classic Y-unit layout: every byte is stored as the LOW
+    byte of a 16-bit word (data at even file offsets, 0x00 at odd), so each
+    field uses byte-skip="even". Scores are 4-byte packed BCD, big-endian
+    (base=16 decodes hex digits as decimal). Names are 3 plain ASCII chars.
+    Two charts:
+      TODAY'S VICTORS @ 0x0000 : 16-byte header + 10 records (16 file bytes each)
+      HALL OF FAME    @ 0x4000 : 16-byte header + 25 records (16 file bytes each)
+    Each record (16 file bytes = 8 words): [score 8][name 6][checksum 2].
+    Verified byte-for-byte against the live HALL OF FAME / TODAY'S VICTORS
+    attract screens. Authored by the HI2TXT project (modeled on smashtv).
+  //-->
+
+  <structure file="nvram">
+    <check>
+      <size>32768</size>
+    </check>
+
+    <!-- TODAY'S VICTORS @ 0x0000 -->
+    <elt size="16" type="raw" id="TV_HEADER"/>
+    <loop count="10">
+      <elt size="8" type="int"  id="TV_SCORE" byte-skip="even" base="16"/>
+      <elt size="6" type="text" id="TV_NAME"  byte-skip="even"/>
+      <elt size="2" type="raw"  id="TV_CKSUM"/>
+    </loop>
+    <elt size="16208" type="raw" id="TV_FOOTER"/>
+
+    <!-- HALL OF FAME @ 0x4000 -->
+    <elt size="16" type="raw" id="HOF_HEADER"/>
+    <loop count="25">
+      <elt size="8" type="int"  id="HOF_SCORE" byte-skip="even" base="16"/>
+      <elt size="6" type="text" id="HOF_NAME"  byte-skip="even"/>
+      <elt size="2" type="raw"  id="HOF_CKSUM"/>
+    </loop>
+    <elt size="15968" type="raw" id="HOF_FOOTER"/>
+  </structure>
+
+  <output>
+    <table id="HALL OF FAME">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="HOF_NAME"/>
+      <column id="SCORE" src="HOF_SCORE"/>
+      <column id="CKSUM" src="HOF_CKSUM" format="hexadecimal_string" display="debug"/>
+    </table>
+    <table id="TODAY'S VICTORS">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="TV_NAME"/>
+      <column id="SCORE" src="TV_SCORE"/>
+      <column id="CKSUM" src="TV_CKSUM" format="hexadecimal_string" display="debug"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+</hi2txt>

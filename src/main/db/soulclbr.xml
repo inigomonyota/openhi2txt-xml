@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Soul Calibur">
+  <!--
+    soulclbr - Soul Calibur (Namco System 12; PSX R3000 based hardware).
+    Scores are NOT in the at28c16 eeprom (config only); the live charts sit in
+    PSX work RAM. Decoded from a save-state blob @0x651280.
+    .hi capture = 216 (TIME ATTACK) + 23 (zero gap) + 120 (VS BATTLE) = 359 bytes.
+
+    TIME ATTACK (18 records x 12 bytes):
+      [TIME 3B little-endian][CHAR_IDX 1B][3B zero][NAME 3B ASCII][2B zero]
+      TIME is raw; value/32 = centiseconds. Shown MM'SS"CC.
+    VS BATTLE (10 records x 12 bytes):
+      [WINS 4B little-endian][CHAR_IDX 4B little-endian][NAME 3B ASCII][1B sep]
+
+    CHARACTER index -> real name (abbrev + full-name pools in the same blob):
+      1 MITSURUGI 2 SEUNG MINA 3 TAKI 4 MAXI 5 VOLDO 6 SOPHITIA 7 SIEGFRIED
+      8 ROCK 9 HWANG 10 ARTHUR 11 IVY 12 KILIK 13 XIANGHUA 14 LIZARD MAN
+      15 YOSHIMITSU 16 EDGE MASTER 17 NIGHTMARE 18 ASTAROTH 19 INFERNO.
+    The third attract chart, CHARACTER RATE, has no stored table (all 0%,
+    runtime-computed) so it is not decoded here.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>359</size>
+    </check>
+
+    <loop count="18">
+      <elt size="3" type="int"  id="TATIME" endianness="little_endian"/>
+      <elt size="1" type="int"  id="TACHAR"/>
+      <elt size="3" type="raw"  id="TAZ"/>
+      <elt size="3" type="text" id="TANAME"/>
+      <elt size="2" type="raw"  id="TAPAD"/>
+    </loop>
+
+    <elt size="23" type="raw" id="GAP"/>
+
+    <loop count="10">
+      <elt size="4" type="int"  id="VSWINS" endianness="little_endian"/>
+      <elt size="4" type="int"  id="VSCHAR" endianness="little_endian"/>
+      <elt size="3" type="text" id="VSNAME"/>
+      <elt size="1" type="raw"  id="VSSEP"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TIME ATTACK">
+      <column id="RANK"      src="index"  format="ordinal"/>
+      <column id="CHARACTER" src="TACHAR" format="fchar"/>
+      <column id="NAME"      src="TANAME"/>
+      <column id="TIME"      src="TATIME" format="gtime"/>
+    </table>
+    <table id="VS BATTLE">
+      <column id="RANK"      src="index"  format="ordinal"/>
+      <column id="CHARACTER" src="VSCHAR" format="fchar"/>
+      <column id="NAME"      src="VSNAME"/>
+      <column id="WINS"      src="VSWINS"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="1st"/>   <case src="1" dst="2nd"/>   <case src="2" dst="3rd"/>
+    <case src="3" dst="4th"/>   <case src="4" dst="5th"/>   <case src="5" dst="6th"/>
+    <case src="6" dst="7th"/>   <case src="7" dst="8th"/>   <case src="8" dst="9th"/>
+    <case src="9" dst="10th"/>  <case src="10" dst="11th"/> <case src="11" dst="12th"/>
+    <case src="12" dst="13th"/> <case src="13" dst="14th"/> <case src="14" dst="15th"/>
+    <case src="15" dst="16th"/> <case src="16" dst="17th"/> <case src="17" dst="18th"/>
+  </format>
+
+  <format id="fchar">
+    <case src="0" dst="---"/>
+    <case src="1" dst="MITSURUGI"/>
+    <case src="2" dst="SEUNG MINA"/>
+    <case src="3" dst="TAKI"/>
+    <case src="4" dst="MAXI"/>
+    <case src="5" dst="VOLDO"/>
+    <case src="6" dst="SOPHITIA"/>
+    <case src="7" dst="SIEGFRIED"/>
+    <case src="8" dst="ROCK"/>
+    <case src="9" dst="HWANG"/>
+    <case src="10" dst="ARTHUR"/>
+    <case src="11" dst="IVY"/>
+    <case src="12" dst="KILIK"/>
+    <case src="13" dst="XIANGHUA"/>
+    <case src="14" dst="LIZARD MAN"/>
+    <case src="15" dst="YOSHIMITSU"/>
+    <case src="16" dst="EDGE MASTER"/>
+    <case src="17" dst="NIGHTMARE"/>
+    <case src="18" dst="ASTAROTH"/>
+    <case src="19" dst="INFERNO"/>
+  </format>
+
+  <format id="t_min"><divide_trunc>192000</divide_trunc><pad direction="left" max="2">0</pad></format>
+  <format id="t_sec"><divide_trunc>3200</divide_trunc><remainder>60</remainder><pad direction="left" max="2">0</pad></format>
+  <format id="t_cs"><divide_trunc>32</divide_trunc><remainder>100</remainder><pad direction="left" max="2">0</pad></format>
+  <format id="gtime" input-as-subcolumns-input="yes">
+    <concat><column format="t_min"/><txt>'</txt><column format="t_sec"/><txt>"</txt><column format="t_cs"/></concat>
+  </format>
+
+</hi2txt>

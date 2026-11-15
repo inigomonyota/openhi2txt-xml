@@ -1,0 +1,14 @@
+<hi2txt>
+  <table id="SCORE TOP 3">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1ST</cell><cell>AAA</cell><cell>30,000</cell></row>
+    <row><cell>2ND</cell><cell>BBB</cell><cell>20,000</cell></row>
+    <row><cell>3RD</cell><cell>CCC</cell><cell>10,000</cell></row>
+  </table>
+  <table id="BLOCK TOP 3">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1ST</cell><cell>DDD</cell><cell>80</cell></row>
+    <row><cell>2ND</cell><cell>EEE</cell><cell>60</cell></row>
+    <row><cell>3RD</cell><cell>FFF</cell><cell>40</cell></row>
+  </table>
+</hi2txt>

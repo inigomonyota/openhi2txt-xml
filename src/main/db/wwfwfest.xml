@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    wwfwfest - WWF WrestleFest (Technos, 1991)
+    .hi via hiscore.dat plugin: @:maincpu,program,1c00c2,84,08,01 (132 bytes).
+    TWO ranking screens, 66 bytes each, 11 rows (CHAMPION + RANKING 1..10):
+      1) WWF TOP RANKING TAG TEAMS  2) WWF ROYAL RUMBLE
+    Record 6 bytes: [COUNT 1][NAME 3 text][WRESTLER1 1][WRESTLER2 1]
+      TAG TEAMS : STAGE displayed = stored COUNT + 1; shows both wrestlers "A & B".
+      ROYAL RUMBLE: BEAT displayed = stored COUNT (raw); shows only wrestler1 (opponent).
+      Tag teams are fixed even/odd wrestler pairs (0/1,2/3,4/5,6/7,8/9).
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>0:1c00c2:84:08:01</definition>
+      <size>132</size>
+    </check>
+    <loop count="11">
+      <elt size="1" type="int"  id="STAGE"/>
+      <elt size="3" type="text" id="TNAME"/>
+      <elt size="1" type="int"  id="TEAM1"/>
+      <elt size="1" type="int"  id="TEAM2"/>
+    </loop>
+    <loop count="11">
+      <elt size="1" type="int"  id="BEAT"/>
+      <elt size="3" type="text" id="RNAME"/>
+      <elt size="1" type="int"  id="OPP"/>
+      <elt size="1" type="int"  id="OPP2"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="WWF TOP RANKING TAG TEAMS">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="TNAME"/>
+      <column id="STAGE" src="STAGE" format="+1"/>
+      <column id="TEAM1" format="wrestler"/>
+      <column id="TEAM2" format="wrestler"/>
+    </table>
+    <table id="WWF ROYAL RUMBLE">
+      <column id="RANK"     src="index" format="rank"/>
+      <column id="NAME"     src="RNAME"/>
+      <column id="BEAT"     src="BEAT"/>
+      <column id="OPPONENT" src="OPP" format="opponent"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="rank">
+    <case src="0" dst="CHAMPION"/>
+  </format>
+
+  <format id="wrestler">
+    <case src="0" dst="HOGAN"/>
+    <case src="1" dst="WARRIOR"/>
+    <case src="2" dst="ROBERTS"/>
+    <case src="3" dst="BOSS MAN"/>
+    <case src="6" dst="SLAUGHTER"/>
+    <case src="7" dst="PERFECT"/>
+    <case src="8" dst="EARTHQUAKE"/>
+    <case src="9" dst="DIBIASE"/>
+  </format>
+
+  <format id="opponent">
+    <case src="0" dst="HULK HOGAN"/>
+    <case src="1" dst="ULTIMATE WARRIOR"/>
+    <case src="2" dst="JAKE ROBERTS"/>
+    <case src="3" dst="BIG BOSS MAN"/>
+    <case src="6" dst="SGT. SLAUGHTER"/>
+    <case src="7" dst="MR. PERFECT"/>
+    <case src="8" dst="EARTHQUAKE"/>
+    <case src="9" dst="TED DIBIASE"/>
+  </format>
+
+</hi2txt>

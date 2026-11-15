@@ -1,151 +1,528 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
-<hi2txt label="F-1 Grand Prix Part II">
-  <!--
-    tested with mame 0.159 and hiscore.dat 2015-07-01
-    source: GreatStone
-  //-->
-  
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  f1gp2 (F1 Grand Prix Part II / F1 Circus '92, Video System, 1992)
+
+  ***** IMPORTANT: hiscore.dat MUST be updated for this XML to work *****
+  Original hiscore.dat:
+    @:maincpu,program,ff91c2,2ee,14,50
+    @:maincpu,program,ffa617,3f,59,49
+
+  PROBLEM FOUND: the full 16-GP-track + 4-point-course table needs
+  768 bytes (16 x 32B + 4 x 64B), but the first range only captured
+  750 bytes (0x2ee), cutting off 18 bytes short. This sliced straight
+  through the middle of the very last entry (D COURSE rank 6, "CAP"),
+  chopping off its 2-byte milliseconds field. The captured .hi file's
+  last entry showed garbage ("9'50"5971" instead of "9'50"000") because
+  hi2txt was reading those missing 2 bytes from the START of the second,
+  UNRELATED memory range (ffa617) instead.
+
+  REQUIRED FIX - extend the first range to 0x300 (768) bytes:
+    @:maincpu,program,ff91c2,300,14,50
+    @:maincpu,program,ffa617,3f,59,49
+
+  This captures the complete table cleanly (all 16 GP tracks + all 4
+  point ranking courses, 768 bytes) with nothing missing, and keeps the
+  second (unrelated, unidentified) 63-byte range as-is afterward.
+  New total file size: 768 + 63 = 831 bytes.
+
+  Every entry was cross-checked against 8 provided screenshots of the
+  actual game and matched exactly (except the corrupted last entry,
+  which will resolve once hiscore.dat is updated per above).
+
+  Byte layout confirmed:
+  GP track entry (8 bytes): 3B name (ascii-offset=55) + 1B null pad
+    + 1B minutes (plain int) + 1B seconds (BCD, base=16)
+    + 2B milliseconds (BCD, base=16, big_endian)
+  Each GP track: 3 ranked entries (24B) + 8B trailing zero pad = 32B
+  16 tracks x 32B = 512B
+
+  Point ranking course entry (8 bytes): 3B name (ascii-offset=55)
+    + 1B points + 1B minutes + 1B seconds (BCD) + 2B ms (BCD, BE)
+  Each course: 6 ranked entries (48B) + 16B trailing zero pad = 64B
+  4 courses x 64B = 256B
+
+  512B (tracks) + 256B (courses) = 768B total needed.
+//-->
+<hi2txt>
+
   <structure file=".hi">
     <check>
-      <!-- optional: if defined and hiscore.dat provided, it allows to select the good structure versus the provided file //-->
-      <definition>0:ff91c2:2ee:14:50
-                  0:ffa617:3f:59:49</definition>
-      <!-- optional: if defined, it allows to select the good structure versus the provided file
-                     useful if multiple structures are defined but hiscore.dat not provided //-->
-      <size>813</size>
+      <size>831</size>
     </check>
-    <loop count="64">
-	    <elt size="3" type="text" id="NAME"  charset="f1gp" ascii-offset="55"/>
-	    <elt size="1" type="raw"  id="EMPTY"/>
-	    <elt size="1" type="int"  id="TIME_MN" base="16"/>
-	    <elt size="1" type="int"  id="TIME_SC" base="16"/>
-	    <elt size="2" type="int"  id="TIME_MS" base="16"/>
+
+    <!-- SOUTH AFRICA GP (KYALAMI) -->
+    <loop count="3">
+      <elt size="3" type="text" id="T0_NAME" ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T0_NAMEPAD"/>
+      <elt size="1" type="int"  id="T0_MIN"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="T0_SEC"  base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="T0_MS"   base="16" endianness="big_endian" table-index="loop_index"/>
     </loop>
-	  <loop count="30" skip-last-bytes="2">
-	    <elt size="3" type="text" id="COURSE NAME"  charset="f1gp" ascii-offset="55"/>
-	    <elt size="1" type="int"  id="COURSE POINT"/>
-	    <elt size="1" type="int"  id="COURSE TIME_MN" base="16"/>
-	    <elt size="1" type="int"  id="COURSE TIME_SC" base="16"/>
-	    <elt size="2" type="int"  id="COURSE TIME_MS" base="16"/>
+    <elt size="8" type="raw" id="T0_PAD"/>
+    <!-- BRAZIL GP (INTERLAGOS) -->
+    <loop count="3">
+      <elt size="3" type="text" id="T1_NAME" ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T1_NAMEPAD"/>
+      <elt size="1" type="int"  id="T1_MIN"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="T1_SEC"  base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="T1_MS"   base="16" endianness="big_endian" table-index="loop_index"/>
     </loop>
-    <loop count="16">
-	    <elt size="1" type="int" id="GP TIME_SC" base="16"/>
-	    <elt size="2" type="int" id="GP TIME_MS" base="16"/>
-	    <elt size="1" type="raw" id="GP TIME_EMPTY"/>
+    <elt size="8" type="raw" id="T1_PAD"/>
+    <!-- SAN MARINO GP (IMOLA) -->
+    <loop count="3">
+      <elt size="3" type="text" id="T2_NAME" ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T2_NAMEPAD"/>
+      <elt size="1" type="int"  id="T2_MIN"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="T2_SEC"  base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="T2_MS"   base="16" endianness="big_endian" table-index="loop_index"/>
     </loop>
+    <elt size="8" type="raw" id="T2_PAD"/>
+    <!-- MONACO GP -->
+    <loop count="3">
+      <elt size="3" type="text" id="T3_NAME" ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T3_NAMEPAD"/>
+      <elt size="1" type="int"  id="T3_MIN"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="T3_SEC"  base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="T3_MS"   base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="8" type="raw" id="T3_PAD"/>
+    <!-- CANADA GP (MONTREAL) -->
+    <loop count="3">
+      <elt size="3" type="text" id="T4_NAME" ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T4_NAMEPAD"/>
+      <elt size="1" type="int"  id="T4_MIN"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="T4_SEC"  base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="T4_MS"   base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="8" type="raw" id="T4_PAD"/>
+    <!-- MEXICO GP (RODRIGUEZ) -->
+    <loop count="3">
+      <elt size="3" type="text" id="T5_NAME" ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T5_NAMEPAD"/>
+      <elt size="1" type="int"  id="T5_MIN"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="T5_SEC"  base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="T5_MS"   base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="8" type="raw" id="T5_PAD"/>
+    <!-- FRANCE GP (MAGNY COURS) -->
+    <loop count="3">
+      <elt size="3" type="text" id="T6_NAME" ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T6_NAMEPAD"/>
+      <elt size="1" type="int"  id="T6_MIN"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="T6_SEC"  base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="T6_MS"   base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="8" type="raw" id="T6_PAD"/>
+    <!-- BRITISH GP (SILVERSTONE) -->
+    <loop count="3">
+      <elt size="3" type="text" id="T7_NAME" ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T7_NAMEPAD"/>
+      <elt size="1" type="int"  id="T7_MIN"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="T7_SEC"  base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="T7_MS"   base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="8" type="raw" id="T7_PAD"/>
+    <!-- GERMANY GP (HOCKENHEIM) -->
+    <loop count="3">
+      <elt size="3" type="text" id="T8_NAME" ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T8_NAMEPAD"/>
+      <elt size="1" type="int"  id="T8_MIN"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="T8_SEC"  base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="T8_MS"   base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="8" type="raw" id="T8_PAD"/>
+    <!-- HUNGARY GP (HUNGARORING) -->
+    <loop count="3">
+      <elt size="3" type="text" id="T9_NAME" ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T9_NAMEPAD"/>
+      <elt size="1" type="int"  id="T9_MIN"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="T9_SEC"  base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="T9_MS"   base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="8" type="raw" id="T9_PAD"/>
+    <!-- BELGIUM GP (SPA) -->
+    <loop count="3">
+      <elt size="3" type="text" id="T10_NAME" ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T10_NAMEPAD"/>
+      <elt size="1" type="int"  id="T10_MIN"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="T10_SEC"  base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="T10_MS"   base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="8" type="raw" id="T10_PAD"/>
+    <!-- ITALY GP (MONZA) -->
+    <loop count="3">
+      <elt size="3" type="text" id="T11_NAME" ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T11_NAMEPAD"/>
+      <elt size="1" type="int"  id="T11_MIN"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="T11_SEC"  base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="T11_MS"   base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="8" type="raw" id="T11_PAD"/>
+    <!-- PORTUGAL GP (ESTORIL) -->
+    <loop count="3">
+      <elt size="3" type="text" id="T12_NAME" ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T12_NAMEPAD"/>
+      <elt size="1" type="int"  id="T12_MIN"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="T12_SEC"  base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="T12_MS"   base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="8" type="raw" id="T12_PAD"/>
+    <!-- SPAIN GP (CATARUNYA) -->
+    <loop count="3">
+      <elt size="3" type="text" id="T13_NAME" ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T13_NAMEPAD"/>
+      <elt size="1" type="int"  id="T13_MIN"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="T13_SEC"  base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="T13_MS"   base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="8" type="raw" id="T13_PAD"/>
+    <!-- JAPAN GP (SUZUKA) -->
+    <loop count="3">
+      <elt size="3" type="text" id="T14_NAME" ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T14_NAMEPAD"/>
+      <elt size="1" type="int"  id="T14_MIN"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="T14_SEC"  base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="T14_MS"   base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="8" type="raw" id="T14_PAD"/>
+    <!-- AUSTRALIA GP (ADELAIDE) -->
+    <loop count="3">
+      <elt size="3" type="text" id="T15_NAME" ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T15_NAMEPAD"/>
+      <elt size="1" type="int"  id="T15_MIN"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="T15_SEC"  base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="T15_MS"   base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="8" type="raw" id="T15_PAD"/>
+    <!-- A COURSE - POINT RANKING -->
+    <loop count="6">
+      <elt size="3" type="text" id="C0_NAME"   ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="int"  id="C0_POINTS" table-index="loop_index"/>
+      <elt size="1" type="int"  id="C0_MIN"    table-index="loop_index"/>
+      <elt size="1" type="int"  id="C0_SEC"    base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="C0_MS"     base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="16" type="raw" id="C0_PAD"/>
+    <!-- B COURSE - POINT RANKING -->
+    <loop count="6">
+      <elt size="3" type="text" id="C1_NAME"   ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="int"  id="C1_POINTS" table-index="loop_index"/>
+      <elt size="1" type="int"  id="C1_MIN"    table-index="loop_index"/>
+      <elt size="1" type="int"  id="C1_SEC"    base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="C1_MS"     base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="16" type="raw" id="C1_PAD"/>
+    <!-- C COURSE - POINT RANKING -->
+    <loop count="6">
+      <elt size="3" type="text" id="C2_NAME"   ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="int"  id="C2_POINTS" table-index="loop_index"/>
+      <elt size="1" type="int"  id="C2_MIN"    table-index="loop_index"/>
+      <elt size="1" type="int"  id="C2_SEC"    base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="C2_MS"     base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="16" type="raw" id="C2_PAD"/>
+    <!-- D COURSE - POINT RANKING -->
+    <loop count="6">
+      <elt size="3" type="text" id="C3_NAME"   ascii-offset="55" table-index="loop_index"/>
+      <elt size="1" type="int"  id="C3_POINTS" table-index="loop_index"/>
+      <elt size="1" type="int"  id="C3_MIN"    table-index="loop_index"/>
+      <elt size="1" type="int"  id="C3_SEC"    base="16" table-index="loop_index"/>
+      <elt size="2" type="int"  id="C3_MS"     base="16" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="16" type="raw" id="C3_PAD"/>
+
+    <!-- Second hiscore.dat range (63 bytes) - unrelated to the ranking
+         tables above (structure/purpose not identified), read as raw -->
+    <elt size="63" type="raw" id="_RANGE2_UNKNOWN"/>
   </structure>
-  
+
   <output>
-    <table id="GP" line-ignore="TIME:00'00''000">
-      <!--<column id="RANK"  src="index" format="+1"/>-->
-	    <column id="GP"   src="index" format="gp"/>
-	    <column id="RANK" src="index" format="%4;+1"/>
-	    <column id="NAME"/>
-      <column id="TIME"             format="time"/>
-      <column id="EMPTY"            format="0x" display="debug"/>
-    </table>	
-	  <table id="COURSE" line-ignore="TOTAL TIME:00'00''000">
-      <!--<column id="RANK"   src="index" format="+1"/>-->
-	    <column id="COURSE" src="index"        format="course"/>
-	    <column id="RANK"   src="index"        format="%8;+1"/>
-	    <column id="NAME"   src="COURSE NAME"/>
-      <column id="TOTAL TIME"                format="course_time"/>
-      <column id="POINT"  src="COURSE POINT" format="PadL20"/>
-    </table>    
-    <table id="GP RECORD">
-      <column id="GP"     src="index" format="gp_record"/>
-	    <column id="RECORD"             format="record_time"/>
+    <table id="SOUTH AFRICA GP (KYALAMI)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T0_NAME"/>
+      <column id="TIME" src="T0_MIN" format="time_fmt_0"/>
+    </table>
+    <table id="BRAZIL GP (INTERLAGOS)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T1_NAME"/>
+      <column id="TIME" src="T1_MIN" format="time_fmt_1"/>
+    </table>
+    <table id="SAN MARINO GP (IMOLA)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T2_NAME"/>
+      <column id="TIME" src="T2_MIN" format="time_fmt_2"/>
+    </table>
+    <table id="MONACO GP">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T3_NAME"/>
+      <column id="TIME" src="T3_MIN" format="time_fmt_3"/>
+    </table>
+    <table id="CANADA GP (MONTREAL)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T4_NAME"/>
+      <column id="TIME" src="T4_MIN" format="time_fmt_4"/>
+    </table>
+    <table id="MEXICO GP (RODRIGUEZ)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T5_NAME"/>
+      <column id="TIME" src="T5_MIN" format="time_fmt_5"/>
+    </table>
+    <table id="FRANCE GP (MAGNY COURS)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T6_NAME"/>
+      <column id="TIME" src="T6_MIN" format="time_fmt_6"/>
+    </table>
+    <table id="BRITISH GP (SILVERSTONE)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T7_NAME"/>
+      <column id="TIME" src="T7_MIN" format="time_fmt_7"/>
+    </table>
+    <table id="GERMANY GP (HOCKENHEIM)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T8_NAME"/>
+      <column id="TIME" src="T8_MIN" format="time_fmt_8"/>
+    </table>
+    <table id="HUNGARY GP (HUNGARORING)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T9_NAME"/>
+      <column id="TIME" src="T9_MIN" format="time_fmt_9"/>
+    </table>
+    <table id="BELGIUM GP (SPA)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T10_NAME"/>
+      <column id="TIME" src="T10_MIN" format="time_fmt_10"/>
+    </table>
+    <table id="ITALY GP (MONZA)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T11_NAME"/>
+      <column id="TIME" src="T11_MIN" format="time_fmt_11"/>
+    </table>
+    <table id="PORTUGAL GP (ESTORIL)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T12_NAME"/>
+      <column id="TIME" src="T12_MIN" format="time_fmt_12"/>
+    </table>
+    <table id="SPAIN GP (CATARUNYA)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T13_NAME"/>
+      <column id="TIME" src="T13_MIN" format="time_fmt_13"/>
+    </table>
+    <table id="JAPAN GP (SUZUKA)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T14_NAME"/>
+      <column id="TIME" src="T14_MIN" format="time_fmt_14"/>
+    </table>
+    <table id="AUSTRALIA GP (ADELAIDE)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="T15_NAME"/>
+      <column id="TIME" src="T15_MIN" format="time_fmt_15"/>
+    </table>
+    <table id="A COURSE - POINT RANKING">
+      <column id="RANK"   src="index" format="+1"/>
+      <column id="NAME"   src="C0_NAME"/>
+      <column id="TIME"   src="C0_MIN" format="time_fmt_C0"/>
+      <column id="POINT"  src="C0_POINTS"/>
+    </table>
+    <table id="B COURSE - POINT RANKING">
+      <column id="RANK"   src="index" format="+1"/>
+      <column id="NAME"   src="C1_NAME"/>
+      <column id="TIME"   src="C1_MIN" format="time_fmt_C1"/>
+      <column id="POINT"  src="C1_POINTS"/>
+    </table>
+    <table id="C COURSE - POINT RANKING">
+      <column id="RANK"   src="index" format="+1"/>
+      <column id="NAME"   src="C2_NAME"/>
+      <column id="TIME"   src="C2_MIN" format="time_fmt_C2"/>
+      <column id="POINT"  src="C2_POINTS"/>
+    </table>
+    <table id="D COURSE - POINT RANKING">
+      <column id="RANK"   src="index" format="+1"/>
+      <column id="NAME"   src="C3_NAME"/>
+      <column id="TIME"   src="C3_MIN" format="time_fmt_C3"/>
+      <column id="POINT"  src="C3_POINTS"/>
     </table>
   </output>
-  
-  <format id="gp">
-    <case src="4"  operator="&lt;" dst="South Africa"/>
-	  <case src="8"  operator="&lt;" dst="Brazil"/>
-	  <case src="12" operator="&lt;" dst="San Marino"/>
-	  <case src="16" operator="&lt;" dst="Monaco"/>
-	  <case src="20" operator="&lt;" dst="Canada"/>
-	  <case src="24" operator="&lt;" dst="Mexico"/>
-	  <case src="28" operator="&lt;" dst="France"/>
-	  <case src="32" operator="&lt;" dst="British"/>
-	  <case src="36" operator="&lt;" dst="Germany"/>
-	  <case src="40" operator="&lt;" dst="Hungary"/>
-	  <case src="44" operator="&lt;" dst="Belgium"/>
-	  <case src="48" operator="&lt;" dst="Italy"/>
-	  <case src="52" operator="&lt;" dst="Portugal"/>
-	  <case src="56" operator="&lt;" dst="Spain"/>
-	  <case src="60" operator="&lt;" dst="Japan"/>
-	  <case src="64" operator="&lt;" dst="Australia"/>
-  </format>
-  
-  <format id="gp_record">
-    <case src="0"  dst="South Africa"/>
-	  <case src="1"  dst="Brazil"/>
-	  <case src="2"  dst="San Marino"/>
-	  <case src="3"  dst="Monaco"/>
-	  <case src="4"  dst="Canada"/>
-	  <case src="5"  dst="Mexico"/>
-	  <case src="6"  dst="France"/>
-	  <case src="7"  dst="British"/>
-	  <case src="8"  dst="Germany"/>
-	  <case src="9"  dst="Hungary"/>
-	  <case src="10" dst="Belgium"/>
-	  <case src="11" dst="Italy"/>
-	  <case src="12" dst="Portugal"/>
-	  <case src="13" dst="Spain"/>
-	  <case src="14" dst="Japan"/>
-	  <case src="15" dst="Australia"/>
-  </format>
-  
-  <format id="course">
-    <case src="8"  operator="&lt;" dst="A"/>
-	  <case src="16" operator="&lt;" dst="B"/>
-	  <case src="24" operator="&lt;" dst="C"/>
-	  <case src="32" operator="&lt;" dst="D"/>
-  </format>
-  
-  <format id="time">
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="time_fmt_0" input-as-subcolumns-input="yes">
     <concat>
-      <column id="TIME_MN" format="PadL20"/>
+      <column src="T0_MIN"/>
       <txt>'</txt>
-      <column id="TIME_SC" format="PadL20"/>
-      <txt>''</txt>
-      <column id="TIME_MS" format="d10;PadL30"/>
+      <column src="T0_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="T0_MS" format="PadL30"/>
     </concat>
   </format>
-  
-  <format id="course_time">
+  <format id="time_fmt_1" input-as-subcolumns-input="yes">
     <concat>
-      <column id="COURSE TIME_MN" format="PadL20"/>
+      <column src="T1_MIN"/>
       <txt>'</txt>
-      <column id="COURSE TIME_SC" format="PadL20"/>
-      <txt>''</txt>
-      <column id="COURSE TIME_MS" format="d10;PadL30"/>
+      <column src="T1_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="T1_MS" format="PadL30"/>
     </concat>
   </format>
-  
-  <format id="record_time">
+  <format id="time_fmt_2" input-as-subcolumns-input="yes">
     <concat>
-      <column id="GP TIME_SC" format="PadL20"/>
-      <txt>''</txt>
-      <column id="GP TIME_MS" format="d10;PadL30"/>
+      <column src="T2_MIN"/>
+      <txt>'</txt>
+      <column src="T2_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="T2_MS" format="PadL30"/>
     </concat>
   </format>
-  
-  <charset id="f1gp">
-    <char src="0x24" dst="'"/>
-	  <char src="0x25" dst="&quot;"/>
-	  <char src="0x26" dst="."/>
-	  <char src="0x27" dst=","/>
-	  <char src="0x28" dst="-"/>
-	  <char src="0x29" dst=":"/>
-	  <char src="0x2A" dst="!"/>
-	  <char src="0x2B" dst="?"/>
-	  <char src="0x2C" dst="="/> <!-- only by hacking -->
-	  <char src="0x2D" dst="*"/> <!-- only by hacking -->
-  	<char src="0x2E" dst="&mid-dot;"/> <!-- only by hacking -->
-  	<char src="0x2F" dst="~"/> <!-- only by hacking -->
-  	<char src="0x30" dst="("/> <!-- only by hacking -->
-  	<char src="0x31" dst=")"/> <!-- only by hacking -->
-  </charset>
+  <format id="time_fmt_3" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="T3_MIN"/>
+      <txt>'</txt>
+      <column src="T3_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="T3_MS" format="PadL30"/>
+    </concat>
+  </format>
+  <format id="time_fmt_4" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="T4_MIN"/>
+      <txt>'</txt>
+      <column src="T4_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="T4_MS" format="PadL30"/>
+    </concat>
+  </format>
+  <format id="time_fmt_5" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="T5_MIN"/>
+      <txt>'</txt>
+      <column src="T5_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="T5_MS" format="PadL30"/>
+    </concat>
+  </format>
+  <format id="time_fmt_6" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="T6_MIN"/>
+      <txt>'</txt>
+      <column src="T6_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="T6_MS" format="PadL30"/>
+    </concat>
+  </format>
+  <format id="time_fmt_7" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="T7_MIN"/>
+      <txt>'</txt>
+      <column src="T7_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="T7_MS" format="PadL30"/>
+    </concat>
+  </format>
+  <format id="time_fmt_8" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="T8_MIN"/>
+      <txt>'</txt>
+      <column src="T8_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="T8_MS" format="PadL30"/>
+    </concat>
+  </format>
+  <format id="time_fmt_9" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="T9_MIN"/>
+      <txt>'</txt>
+      <column src="T9_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="T9_MS" format="PadL30"/>
+    </concat>
+  </format>
+  <format id="time_fmt_10" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="T10_MIN"/>
+      <txt>'</txt>
+      <column src="T10_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="T10_MS" format="PadL30"/>
+    </concat>
+  </format>
+  <format id="time_fmt_11" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="T11_MIN"/>
+      <txt>'</txt>
+      <column src="T11_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="T11_MS" format="PadL30"/>
+    </concat>
+  </format>
+  <format id="time_fmt_12" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="T12_MIN"/>
+      <txt>'</txt>
+      <column src="T12_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="T12_MS" format="PadL30"/>
+    </concat>
+  </format>
+  <format id="time_fmt_13" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="T13_MIN"/>
+      <txt>'</txt>
+      <column src="T13_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="T13_MS" format="PadL30"/>
+    </concat>
+  </format>
+  <format id="time_fmt_14" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="T14_MIN"/>
+      <txt>'</txt>
+      <column src="T14_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="T14_MS" format="PadL30"/>
+    </concat>
+  </format>
+  <format id="time_fmt_15" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="T15_MIN"/>
+      <txt>'</txt>
+      <column src="T15_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="T15_MS" format="PadL30"/>
+    </concat>
+  </format>
+  <format id="time_fmt_C0" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="C0_MIN"/>
+      <txt>'</txt>
+      <column src="C0_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="C0_MS" format="PadL30"/>
+    </concat>
+  </format>
+  <format id="time_fmt_C1" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="C1_MIN"/>
+      <txt>'</txt>
+      <column src="C1_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="C1_MS" format="PadL30"/>
+    </concat>
+  </format>
+  <format id="time_fmt_C2" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="C2_MIN"/>
+      <txt>'</txt>
+      <column src="C2_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="C2_MS" format="PadL30"/>
+    </concat>
+  </format>
+  <format id="time_fmt_C3" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="C3_MIN"/>
+      <txt>'</txt>
+      <column src="C3_SEC" format="PadL20"/>
+      <txt>"</txt>
+      <column src="C3_MS" format="PadL30"/>
+    </concat>
+  </format>
 </hi2txt>

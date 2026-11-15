@@ -1,0 +1,34 @@
+<hi2txt>
+<table id="KICK STARS">
+<col>RANK</col><col>NAME</col><col>SCORE</col>
+<row><cell>1ST</cell><cell>008</cell><cell>$15000</cell></row>
+<row><cell>2ND</cell><cell>JUN</cell><cell>$14000</cell></row>
+<row><cell>3RD</cell><cell>FKS</cell><cell>$13000</cell></row>
+<row><cell>4TH</cell><cell>YND</cell><cell>$12000</cell></row>
+<row><cell>5TH</cell><cell>IKN</cell><cell>$11000</cell></row>
+</table>
+<table id="SMASH STARS">
+<col>RANK</col><col>NAME</col><col>SCORE</col>
+<row><cell>1ST</cell><cell>BAT</cell><cell>$15000</cell></row>
+<row><cell>2ND</cell><cell>FKD</cell><cell>$14000</cell></row>
+<row><cell>3RD</cell><cell>KKT</cell><cell>$13000</cell></row>
+<row><cell>4TH</cell><cell>OKG</cell><cell>$12000</cell></row>
+<row><cell>5TH</cell><cell>MAE</cell><cell>$11000</cell></row>
+</table>
+<table id="DUNK STARS">
+<col>RANK</col><col>NAME</col><col>SCORE</col>
+<row><cell>1ST</cell><cell>INE</cell><cell>$15000</cell></row>
+<row><cell>2ND</cell><cell>SKS</cell><cell>$14000</cell></row>
+<row><cell>3RD</cell><cell>KTM</cell><cell>$13000</cell></row>
+<row><cell>4TH</cell><cell>TRM</cell><cell>$12000</cell></row>
+<row><cell>5TH</cell><cell>YKY</cell><cell>$11000</cell></row>
+</table>
+<table id="YOUR WINNINGS">
+<col>RANK</col><col>NAME</col><col>SCORE</col>
+<row><cell>1ST</cell><cell>YOU</cell><cell>$20000</cell></row>
+<row><cell>2ND</cell><cell>BAT</cell><cell>$19000</cell></row>
+<row><cell>3RD</cell><cell>INE</cell><cell>$18000</cell></row>
+<row><cell>4TH</cell><cell>008</cell><cell>$17000</cell></row>
+<row><cell>5TH</cell><cell>FKD</cell><cell>$16000</cell></row>
+</table>
+</hi2txt>

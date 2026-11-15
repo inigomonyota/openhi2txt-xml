@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- lightbr by Taito, 1994 -->
+<!-- hiscore.dat: @:maincpu,program,40a312,70,00,01 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>112</size>
+    </check>
+
+    <!-- 7 records, 16 bytes each -->
+    <loop count="7">
+      <elt size="4" type="int"  id="SCORE" base="16"/>
+      <elt size="1" type="raw"  id="PAD1"/>
+      <elt size="1" type="int"  id="CHAR_ID"/>
+      <!-- Taito F3 Name: [0F][Char][0F][Char][00][Char] -->
+      <!-- byte-skip="odd" removes the 0F/00 attribute bytes -->
+      <elt size="6" type="text" id="NAME"  byte-skip="odd" charset="lightbr_chars"/>
+      <elt size="2" type="raw"  id="PAD2"/>
+      <elt size="1" type="int"  id="LEVEL"/>
+      <elt size="1" type="int"  id="EXP"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="HI SCORE">
+      <column id="RANK"       src="index"     format="ordinal"/>
+      <column id="SCORE"      src="SCORE"     format="comma_score"/>
+      <column id="CHARACTER"  src="CHAR_ID"   format="char_map"/>
+      <column id="LEVEL"      src="LEVEL"/>
+      <column id="EXPERIENCE" src="EXP"/>
+      <column id="NAME"       src="NAME"      format="trim_right"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="1ST"/><case src="1" dst="2ND"/><case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/><case src="4" dst="5TH"/><case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+  </format>
+
+  <format id="char_map">
+    <case src="1" dst="ASH"/>
+    <case src="2" dst="GREN"/>
+    <case src="3" dst="CISTY"/>
+    <case src="4" dst="VOLD"/>
+  </format>
+
+  <format id="trim_right">
+    <trim direction="right"> </trim>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/><txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <!-- Custom Charset to convert Taito's internal Japanese-mapped codes to English letters -->
+  <charset id="lightbr_chars">
+    <!-- Mapping based on D3=A sequence identified from NAT and KPL initials -->
+    <char src="0xD3" dst="A"/><char src="0xD4" dst="B"/><char src="0xD5" dst="C"/>
+    <char src="0xD6" dst="D"/><char src="0xD7" dst="E"/><char src="0xD8" dst="F"/>
+    <char src="0xD9" dst="G"/><char src="0xDA" dst="H"/><char src="0xDB" dst="I"/>
+    <char src="0xDC" dst="J"/><char src="0xDD" dst="K"/><char src="0xDE" dst="L"/>
+    <char src="0xDF" dst="M"/><char src="0xE0" dst="N"/><char src="0xE1" dst="O"/>
+    <char src="0xE2" dst="P"/><char src="0xE3" dst="Q"/><char src="0xE4" dst="R"/>
+    <char src="0xE5" dst="S"/><char src="0xE6" dst="T"/><char src="0xE7" dst="U"/>
+    <char src="0xE8" dst="V"/><char src="0xE9" dst="W"/><char src="0xEA" dst="X"/>
+    <char src="0xEB" dst="Y"/><char src="0xEC" dst="Z"/>
+    <char src="0x00" dst=" "/> <!-- Standard space/padding -->
+  </charset>
+</hi2txt>

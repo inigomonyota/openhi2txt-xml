@@ -1,0 +1,28 @@
+<hi2txt>
+<table id="ALL TIME BEST">
+<col>RANK</col><col>NAME</col><col>SCORE</col>
+<row><cell>1</cell><cell>JRC</cell><cell>1,000,000</cell></row>
+<row><cell>2</cell><cell>ALS</cell><cell>950,000</cell></row>
+<row><cell>3</cell><cell>REP</cell><cell>900,000</cell></row>
+<row><cell>4</cell><cell>EZF</cell><cell>850,000</cell></row>
+<row><cell>5</cell><cell>VIL</cell><cell>800,000</cell></row>
+<row><cell>6</cell><cell>SNO</cell><cell>750,000</cell></row>
+<row><cell>7</cell><cell>RAY</cell><cell>700,000</cell></row>
+<row><cell>8</cell><cell>ROG</cell><cell>650,000</cell></row>
+<row><cell>9</cell><cell>DAS</cell><cell>600,000</cell></row>
+<row><cell>10</cell><cell>EDM</cell><cell>550,000</cell></row>
+</table>
+<table id="TODAY'S BEST">
+<col>RANK</col><col>NAME</col><col>SCORE</col>
+<row><cell>1</cell><cell>GNP</cell><cell>310,865</cell></row>
+<row><cell>2</cell><cell>JEH</cell><cell>300,000</cell></row>
+<row><cell>3</cell><cell>WBD</cell><cell>280,000</cell></row>
+<row><cell>4</cell><cell>JCV</cell><cell>260,000</cell></row>
+<row><cell>5</cell><cell>TJC</cell><cell>240,000</cell></row>
+<row><cell>6</cell><cell>CPG</cell><cell>220,000</cell></row>
+<row><cell>7</cell><cell>DOZ</cell><cell>200,000</cell></row>
+<row><cell>8</cell><cell>CMM</cell><cell>180,000</cell></row>
+<row><cell>9</cell><cell>RJC</cell><cell>160,000</cell></row>
+<row><cell>10</cell><cell>P C</cell><cell>140,000</cell></row>
+</table>
+</hi2txt>

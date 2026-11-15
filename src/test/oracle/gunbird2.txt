@@ -1,11 +1,11 @@
 RANK|SCORE|NAME|STAGE|CHARACTER
-1|220800|: 9|1-3|Tavia
-2|156300|WXY|1-2|Valpiro
-3|135800|(),|1-2|Alucard
-4|98600|./0|1-2|Marion
-5|15000|---|1-1|Alucard
-6|14000|---|1-1|Marion
-7|13000|---|1-1|Valpiro
-8|12000|---|1-1|Tavia
-9|11000|---|1-1|Hei-Cob
-10|10000|---|1-1|Alucard
+1|359100|MOT|1-5|Valpiro
+2|339800|MOT|1-4|Tavia
+3|307600|MOT|1-4|Tavia
+4|281000|MOT|1-4|Tavia
+5|204900|MOT|1-3|Tavia
+6|190500|MOT|1-3|Tavia
+7|148200|MOT|1-2|Tavia
+8|145300|MOT|1-2|Tavia
+9|142300|MOT|1-2|Alucard
+10|140700|MOT|1-2|Tavia

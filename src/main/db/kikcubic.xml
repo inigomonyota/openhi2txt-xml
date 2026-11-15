@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- kikcubic by Meikyu Jima (Japan), Irem, 1988 -->
+<!-- hiscore.dat: @:maincpu,program,fe30,c8,07,04 | @:maincpu,program,fef8,3,07,35 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>203</size>
+    </check>
+
+    <!-- 10 records, 20 bytes each: 3 (Score) + 16 (Name) + 1 (Round) -->
+    <loop count="10">
+      <elt size="3" type="int"  id="SCORE_RAW" base="16"/>
+      <elt size="16" type="text" id="NAME" charset="kikcubic"/>
+      <elt size="1" type="int"  id="ROUND"/>
+    </loop>
+
+    <!-- Global High Score (Final 3 bytes of the 203-byte file) -->
+    <elt size="3" type="int" id="HI-SCORE_RAW" base="16"/>
+  </structure>
+
+  <output>
+    <table id="BEST 10 PLAYERS">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="SCORE" src="SCORE_RAW" format="*10;comma_score"/>
+      <!-- Apply trim_right to keep internal spaces but remove trailing ones -->
+      <column id="NAME"  src="NAME" format="trim_right"/>
+      <column id="ROUND" src="ROUND"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+
+  <!-- This removes spaces from the right side of the name only -->
+  <format id="trim_right">
+    <trim direction="right"> </trim>
+  </format>
+
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <charset id="kikcubic">
+    <char src="0x5B" dst="❤"/> <!-- heart -->
+    <char src="0x61" dst="♂"/> <!-- male symbol -->
+    <char src="0x62" dst="♀"/> <!-- female symbol -->
+    <char src="0x60" dst="⚠"/> <!-- yellow warning symbol -->
+    <char src="0x5C" dst="🚫"/> <!-- no entry symbol -->
+    <char src="0x5D" dst="⬇"/> <!-- green down arrow -->
+    <char src="0x64" dst="☺"/> <!-- smiley face -->
+    <!-- 0x5A is kept as default 'Z' instead of 🅿 -->
+  </charset>
+
+</hi2txt>

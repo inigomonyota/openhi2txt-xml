@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 197 bytes -->
+    <check><size>197</size></check>
+    
+    <!-- 12 Records * 16 Bytes = 192 Bytes -->
+    <loop count="12">
+      <!-- Reads 5 bytes, strips the 1 FF byte, leaving a clean 4-byte BCD Score -->
+      <elt size="5" type="int"  id="SCORE" byte-skip="0xFF" base="16" endianness="big_endian"/>
+      
+      <elt size="4" type="raw"  id="PAD_1"/>
+      
+      <!-- Reads 4 bytes, strips the 1 FF byte, leaving a clean 3-character ASCII Name -->
+      <elt size="4" type="text" id="NAME"  byte-skip="0xFF"/>
+      
+      <!-- Contains the Internal Rank Pointer and trailing padding -->
+      <elt size="3" type="raw"  id="PAD_2"/>
+    </loop>
+    
+    <!-- The remaining 5 bytes of unused RAM -->
+    <elt size="5" type="raw" id="TRAIL"/>
+  </structure>
+
+  <output>
+    <!-- We read 12 records, but the game only displays 10. 
+         Sorting descending automatically pushes the 0 scores to the bottom, 
+         and lines-max="10" perfectly snips them off! -->
+    <table id="RANKING" sort="SCORE" sort-order="desc" lines-max="10">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SCORE" format="*10"/>
+      <column id="NAME"  src="NAME"  format="add_period"/>
+    </table>
+  </output>
+
+  <!-- Translates the visual row index to 1-10 -->
+  <format id="+1">
+    <add>1</add>
+  </format>
+
+  <!-- Appends the hardcoded trailing period from the arcade tilemap -->
+  <format id="add_period">
+    <suffix>.</suffix>
+  </format>
+</hi2txt>

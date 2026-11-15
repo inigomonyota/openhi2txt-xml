@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    mk4 - Mortal Kombat 4 (Midway, 1997)
+    Reads the MAME nvram file (nvram/mk4/nvram), 131072 bytes.
+    (The ioasic file is unrelated/blank here.)
+
+    All values are 32-bit little-endian; names are ASCII stored one character
+    per 4-byte word (byte-skip 1000 keeps the low byte of each word).
+    "BEST KOMBATANTS" = 15 records of 16 bytes from 0x0014:
+      [0:12]  NAME  3 ASCII chars (one per 4-byte word)
+      [12:16] WINS  4-byte little-endian
+    RANK is positional, shown as the number then a dot.
+  -->
+
+  <structure file="nvram">
+    <check>
+      <size>131072</size>
+    </check>
+
+    <!-- skip header to table at 0x0014 (20 bytes) -->
+    <elt size="20" type="raw" id="PRE"/>
+    <loop count="15">
+      <elt size="12" type="text" byte-skip="1000" id="NAME"/>
+      <elt size="4"  type="int"  endianness="little_endian" id="WINS"/>
+    </loop>
+  </structure>
+
+  <format id="rank">
+    <add>1</add>
+    <suffix>.</suffix>
+  </format>
+
+  <format id="wins"><suffix> WINS IN A ROW</suffix></format>
+
+  <output>
+    <table id="BEST KOMBATANTS">
+      <column id="RANK"          src="index" format="rank"/>
+      <column id="NAME"          src="NAME"/>
+      <column id="WINS IN A ROW" src="WINS" format="wins"/>
+    </table>
+  </output>
+
+</hi2txt>

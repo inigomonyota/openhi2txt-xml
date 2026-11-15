@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  oscar - Psycho-Nics Oscar / The Real Ghostbusters (Data East, 1987)
+  .hi file format (via hiscore.dat plugin)
+  hiscore.dat:
+    @:maincpu,program,075a,46,00,33
+    @:maincpu,program,0006,3,00,09
+  73 bytes = range 1 (70B) + range 2 (3B)
+  Block layout: 10 x 3B scores (BCD x10) + 10 x 3B names + 10 x 1B areas
+  Charset: plain ASCII (game font makes D/O look swapped but data is correct)
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>73</size>
+    </check>
+    <!-- Scores: 10 x 3B BCD -->
+    <loop count="10">
+      <elt size="3" type="int" id="SCORE" base="16"/>
+    </loop>
+    <!-- Names: 10 x 3B text -->
+    <loop count="10">
+      <elt size="3" type="text" id="NAME"/>
+    </loop>
+    <!-- Areas: 10 x 1B text -->
+    <loop count="10">
+      <elt size="1" type="text" id="AREA"/>
+    </loop>
+    <!-- Range 2: top score (3B) -->
+    <elt size="3" type="raw" id="TOPSCORE"/>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORES" sort="SCORE" sort-order="desc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="SCORE" format="x10"/>
+      <column id="AREA"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="x10"><multiply>10</multiply></format>
+
+</hi2txt>

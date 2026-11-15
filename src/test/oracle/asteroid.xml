@@ -1,7 +1,7 @@
 <hi2txt>
-  <table>
+  <table id="IMPORTANT: LET SCORES DISPLAY BEFORE PLAYING">
     <col>RANK</col><col>SCORE</col><col>NAME</col>
-    <row><cell>1</cell><cell>5300</cell><cell>AA </cell></row>
+    <row><cell>1.</cell><cell>1830</cell><cell>PIP</cell></row>
   </table>
   <field id="SEPARATOR">0x00FFFF</field>
 </hi2txt>

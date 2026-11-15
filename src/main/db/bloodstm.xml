@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="BloodStorm">
+
+  <!--
+    nvram16 is a 64KB file and requires byte-swap="2".
+
+    Player-stat database:
+      logical 0x6E08 onward
+      26 records x 24 bytes
+
+    Record layout after byte swap:
+      +0..+1   internal/status value
+      +2..+3   WINS
+      +4..+5   HEADS
+      +6..+7   ARMS
+      +8..+10  NAME (3 ASCII chars, space padded)
+      +11      name terminator/padding
+      +12..+23 additional player data
+
+    TOP STORMERS is generated from this player database rather than being
+    stored as a contiguous top-8 table.
+
+    Ordering confirmed from the default screen:
+      WINS descending, then HEADS descending as the tie-breaker.
+      (BHN 75/51 appears above RSM 75/42.)
+
+    WIN_HEAD_SORT combines the two 16-bit fields so a single descending
+    numeric sort reproduces that ordering:
+      SORT = (WINS << 16) | HEADS
+  -->
+
+  <structure file="nvram16" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+
+    <elt size="28168" type="raw" id="_PREFIX"/>
+
+    <loop count="26">
+      <elt size="2" type="raw" id="_STATUS"/>
+
+      <!-- 4 bytes = WINS (high 16) + HEADS (low 16) -->
+      <elt size="4" type="int" id="WIN_HEAD_SORT"
+           endianness="big_endian"/>
+
+      <elt size="2" type="int" id="ARMS"
+           endianness="big_endian"/>
+
+      <elt size="3" type="text" id="NAME"
+           byte-trunc="0x20"/>
+      <elt size="1" type="raw" id="_NAME_PAD"/>
+
+      <elt size="12" type="raw" id="_PLAYER_DATA"/>
+    </loop>
+
+    <elt size="36744" type="raw" id="_SUFFIX"/>
+  </structure>
+
+  <output>
+    <table id="TOP STORMERS"
+           sort="WIN_HEAD_SORT"
+           sort-order="desc"
+           lines-max="8">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="WINS" src="WIN_HEAD_SORT" format="wins"/>
+      <column id="HEADS" src="WIN_HEAD_SORT" format="heads"/>
+      <column id="ARMS"/>
+      <column id="WIN_HEAD_SORT" display="debug"/>
+    </table>
+  </output>
+
+  <format id="wins">
+    <divide_trunc>65536</divide_trunc>
+  </format>
+
+  <format id="heads">
+    <remainder>65536</remainder>
+  </format>
+
+</hi2txt>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    tested with mame 0.??? and related hiscore.dat
+    structure: 164 bytes = 10 entries x 16 bytes + 4-byte top-score trailer
+    per entry (16 bytes):
+      [0:3]  name, 3 bytes, sequential charset A=0x00..Z=0x19
+             split into 3 x 1-byte fields to avoid null-termination on 0x00='A'
+      [3]    1 byte raw (null pad after name)
+      [4:6]  score, 2-byte BCD (base16), multiply by 100 for display
+      [6:8]  2 bytes raw (zeros)
+      [8]    stage reached, 1-byte integer
+      [9:15] 6 bytes raw (zeros)
+      [15]   rank index byte (1-9, then 0 for 10th)
+    trailer [160:164]: 00 + 2-byte top score BCD + 00
+    note: game font renders C (0x02) with closed ends, may appear as O on screen
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>164</size>
+    </check>
+    <loop count="10">
+      <elt size="1"  type="text" id="NAME1" ascii-offset="65" charset="ecofghtr"/>
+      <elt size="1"  type="text" id="NAME2" ascii-offset="65" charset="ecofghtr"/>
+      <elt size="1"  type="text" id="NAME3" ascii-offset="65" charset="ecofghtr"/>
+      <elt size="1"  type="raw"  id="PAD1"/>
+      <elt size="2"  type="int"  id="SCORE" base="16"/>
+      <elt size="2"  type="raw"  id="PAD2"/>
+      <elt size="1"  type="int"  id="STAGE"/>
+      <elt size="6"  type="raw"  id="PAD3"/>
+      <elt size="1"  type="raw"  id="IDX"/>
+    </loop>
+    <elt size="4" type="raw" id="TOP SCORE"/>
+  </structure>
+
+  <output>
+    <table id="HI-SCORES">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  format="name"/>
+      <column id="SCORE" format="*100"/>
+      <column id="STAGE" format="stage"/>
+    </table>
+  </output>
+
+  <format id="+1">
+    <case src="0" dst="1st"/>
+    <case src="1" dst="2nd"/>
+    <case src="2" dst="3rd"/>
+    <case src="3" dst="4th"/>
+    <case src="4" dst="5th"/>
+    <case src="5" dst="6th"/>
+    <case src="6" dst="7th"/>
+    <case src="7" dst="8th"/>
+    <case src="8" dst="9th"/>
+    <case src="9" dst="10th"/>
+  </format>
+  <format id="*100"><multiply>100</multiply></format>
+
+  <format id="name">
+    <concat>
+      <column id="NAME1"/>
+      <column id="NAME2"/>
+      <column id="NAME3"/>
+    </concat>
+  </format>
+
+  <format id="stage">
+    <case src="1" dst="STAGE 1"/>
+    <case src="2" dst="STAGE 2"/>
+    <case src="3" dst="STAGE 3"/>
+    <case src="4" dst="STAGE 4"/>
+    <case src="5" dst="STAGE 5"/>
+    <case src="6" dst="STAGE 6"/>
+    <case src="7" dst="STAGE 7"/>
+    <case src="8" dst="STAGE 8"/>
+  </format>
+
+  <charset id="ecofghtr">
+    <char src="0x1B" dst="."/>
+  </charset>
+
+</hi2txt>

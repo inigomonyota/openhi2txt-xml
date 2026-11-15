@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <loop count="5">
+      <elt size="1" type="raw" id="PAD"/>
+      <elt size="2" type="int" id="SCORE" endianness="big_endian" base="16"/>
+    </loop>
+    <loop count="5">
+      <elt size="3" type="text" id="NAME"/>
+    </loop>
+    <elt size="3" type="raw" id="TRAIL"/>
+  </structure>
+  <output>
+    <table id="HEROES" sort="SCORE" sort-order="desc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="SCORE" format="*10"/>
+      <column id="NAME" src="NAME"/>
+    </table>
+  </output>
+  <format id="+1">
+    <add>1</add>
+  </format>
+</hi2txt>

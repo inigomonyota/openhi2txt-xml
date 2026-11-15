@@ -1,53 +1,109 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
-<hi2txt label="Galaga 88">
-    <!--
-      history:
-        2022-02-09: minor: fix top score
-      tested with:
-        mame 0.239 and embedded hiscore.dat
-        mame 0.229 and embedded hiscore.dat
-      source: GreatStone, https://github.com/stt
-    //-->
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  galaga88 (nvram/.hi) for hi2txt
 
-    <structure file=".hi">
-        <check>
-          <!-- optional: if defined and hiscore.dat provided, it allows to select the good structure versus the provided file //-->
-          <definition>@:maincpu,program,4a0d,6,00,00
-                      @:maincpu,program,4b75,60,00,01</definition>
-          <!-- optional: if defined, it allows to select the good structure versus the provided file
-                       useful if multiple structures are defined but hiscore.dat not provided //-->
-          <size>102</size>
-        </check>
-        <elt size="6" type="int"  id="TOP SCORE" base="256"/>
-        <loop count="8">
-          <elt size="6" type="int" id="SCORE" base="256"/>
-          <elt size="1" type="int"  id="STAGE_1"/>
-          <elt size="2" type="int"  id="STAGE_2" base="256"/>
-          <elt size="3" type="text" id="NAME" ascii-offset="64" charset="chars"/>
-        </loop>
-    </structure>
+  hiscore.dat ranges:
+    @:maincpu,program,4a0d,6,00,00
+    @:maincpu,program,4b75,60,00,01
+  102 bytes total = 6B aux + 8 entries x 12 bytes (0x60)
 
-    <output>
-        <table>
-          <column id="RANK" src="index" format="+1"/>
-          <column id="SCORE" format="*10"/>
-          <column id="NAME"/>
-          <column id="STAGE" format="stage"/>
-        </table>
-        <field id="TOP SCORE" format="*10"/>
-    </output>
+  Score encoding (confirmed against an in-game screenshot):
+  NOT packed BCD (2 digits/byte). This is classic 1980s Namco-style
+  encoding: ONE decimal digit per byte (low nibble only, high nibble
+  always 0x0), 6 bytes = 6 digits, followed by an implied trailing
+  zero (the game always displays a "0" units digit). Confirmed via
+  screenshot: rank 3 = 42950 (digit bytes 00 00 04 02 09 05 -> "004295"+"0"),
+  rank 6 = 30240 (digit bytes 00 00 03 00 02 04 -> "003024"+"0").
 
-    <format id="stage">
-      <concat>
-        <column id="STAGE_1"/>
-        <txt>-</txt>
-        <column id="STAGE_2"/>
-      </concat>
-    </format>
+  This differs from the "base=16 packed BCD" convention used elsewhere
+  in this project (e.g. sexyparo, poundfor) where each byte holds 2
+  real digits. Here each byte holds exactly 1 real digit (0-9) with a
+  wasted zero high nibble, so it's decoded via a 10-case digit lookup
+  and text concatenation instead.
 
-    <charset id="chars">
-      <char src="0x00" dst=" "/>
-      <char src="0x1B" dst="."/>
-    </charset>
+  Note: the reference galaga88defaulttable.xml (RANK 5=30000/1-4,
+  RANK 7-8=20000/1-2) does NOT match this game's real default table.
+  A screenshot of the actual game confirms ranks 4 and 5 both default
+  to 40000/1-5, and ranks 7 and 8 both default to 30000/1-4. The
+  reference default table file should be considered unreliable.
+//-->
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>102</size>
+    </check>
+
+    <!-- 6 bytes auxiliary block (usually copy/check/flags) -->
+    <elt size="6" type="raw" id="_AUX"/>
+
+    <!-- 8 entries * 12 bytes = 0x60 -->
+    <loop count="8">
+      <!-- Score: 6 individual BCD digit bytes (low nibble only, 0-9 each) -->
+      <elt size="1" type="int" id="D1" table-index="loop_index"/>
+      <elt size="1" type="int" id="D2" table-index="loop_index"/>
+      <elt size="1" type="int" id="D3" table-index="loop_index"/>
+      <elt size="1" type="int" id="D4" table-index="loop_index"/>
+      <elt size="1" type="int" id="D5" table-index="loop_index"/>
+      <elt size="1" type="int" id="D6" table-index="loop_index"/>
+
+      <!-- Stage shown as X-Y in the game: X, separator(0), Y -->
+      <elt size="1" type="int" id="STAGE_MAJOR" table-index="loop_index"/>
+      <elt size="1" type="raw" id="_SEP0"/>
+      <elt size="1" type="int" id="STAGE_MINOR" table-index="loop_index"/>
+
+      <!-- Initials (3 bytes); 0x01->A via ascii-offset=64 -->
+      <elt size="3" type="text" id="INI" ascii-offset="64" table-index="loop_index"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="D1" format="score_digits"/>
+      <column id="STAGE" format="stage_xy"/>
+      <column id="INI"   src="INI" format="trimr"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <!-- Combine the 6 digit bytes + an implied trailing zero into the
+       final score string, then strip the leading zero padding -->
+  <format id="score_digits" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="D1" format="digit_char"/>
+      <column src="D2" format="digit_char"/>
+      <column src="D3" format="digit_char"/>
+      <column src="D4" format="digit_char"/>
+      <column src="D5" format="digit_char"/>
+      <column src="D6" format="digit_char"/>
+      <txt>0</txt>
+    </concat>
+    <trim direction="left">0</trim>
+  </format>
+
+  <format id="digit_char">
+    <case src="0" operator="=" dst="0"/>
+    <case src="1" operator="=" dst="1"/>
+    <case src="2" operator="=" dst="2"/>
+    <case src="3" operator="=" dst="3"/>
+    <case src="4" operator="=" dst="4"/>
+    <case src="5" operator="=" dst="5"/>
+    <case src="6" operator="=" dst="6"/>
+    <case src="7" operator="=" dst="7"/>
+    <case src="8" operator="=" dst="8"/>
+    <case src="9" operator="=" dst="9"/>
+  </format>
+
+  <format id="stage_xy" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="STAGE_MAJOR"/>
+      <txt>-</txt>
+      <column src="STAGE_MINOR"/>
+    </concat>
+  </format>
+
+  <format id="trimr">
+    <trim direction="right"> </trim>
+  </format>
 </hi2txt>

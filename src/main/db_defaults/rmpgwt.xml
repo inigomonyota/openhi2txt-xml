@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<hi2txt>
+  <table id="GEORGE">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1st</cell><cell>BFC</cell><cell>704600</cell></row>
+    <row><cell>2nd</cell><cell>MS*</cell><cell>692500</cell></row>
+    <row><cell>3rd</cell><cell>TOM</cell><cell>486200</cell></row>
+    <row><cell>4th</cell><cell>ROB</cell><cell>225600</cell></row>
+    <row><cell>5th</cell><cell>JBC</cell><cell>125100</cell></row>
+  </table>
+
+  <table id="LIZZIE">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1st</cell><cell>JOE</cell><cell>743400</cell></row>
+    <row><cell>2nd</cell><cell>JLN</cell><cell>596700</cell></row>
+    <row><cell>3rd</cell><cell>LZ*</cell><cell>438600</cell></row>
+    <row><cell>4th</cell><cell>BD*</cell><cell>218200</cell></row>
+    <row><cell>5th</cell><cell>ARN</cell><cell>106400</cell></row>
+  </table>
+
+  <table id="RALPH">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1st</cell><cell>MN*</cell><cell>758400</cell></row>
+    <row><cell>2nd</cell><cell>JLN</cell><cell>592900</cell></row>
+    <row><cell>3rd</cell><cell>DAN</cell><cell>326000</cell></row>
+    <row><cell>4th</cell><cell>M*C</cell><cell>132900</cell></row>
+    <row><cell>5th</cell><cell>KEY</cell><cell>102300</cell></row>
+  </table>
+</hi2txt>

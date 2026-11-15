@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hi2txt>
+  <!--
+    Rod-Land (.hi) for hi2txt — SINGLE table output (one header line only)
+
+    Important:
+    - hi2txt prints the column header row at the start of EACH <table>.
+      So to avoid the duplicated "RANK|SCORE|NAME|SCENE" line, you must output ONE table.
+    - This means the first row will be rank "1" (instead of literal "TOP") because hi2txt
+      doesn't provide a clean built-in way to conditionally print "TOP" only for row 1
+      without splitting into two tables (which causes the duplicate header).
+
+    .hi layout (rodland.hi, 570 bytes):
+      25 entries, each:
+        SCORE (4 packed BCD), NAME (16 bytes), SCENE (2 bytes)
+      then 20 trailing bytes ignored.
+  -->
+
+  <structure file=".hi">
+    <loop count="25">
+      <elt size="4"  type="int"  id="SCORE" base="16"/>
+      <elt size="16" type="text" id="NAME"  charset="rodland"/>
+      <elt size="2"  type="int"  id="SCENE"/>
+    </loop>
+
+    <elt size="20" type="raw" id="_TAIL"/>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="rank_plus1"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME"  format="trimr"/>
+      <column id="SCENE" src="SCENE"/>
+    </table>
+  </output>
+
+  <format id="rank_plus1"><add>1</add></format>
+
+  <format id="trimr">
+    <trim direction="right"> </trim>
+  </format>
+
+  <charset id="rodland">
+    <char src="0x0000" dst=""/>
+    <char src="0x0020" dst=""/>
+
+    <char src="0x00E1" dst="A"/><char src="0x00E2" dst="B"/><char src="0x00E3" dst="C"/><char src="0x00E4" dst="D"/>
+    <char src="0x00E5" dst="E"/><char src="0x00E6" dst="F"/><char src="0x00E7" dst="G"/><char src="0x00E8" dst="H"/>
+    <char src="0x00E9" dst="I"/><char src="0x00EA" dst="J"/><char src="0x00EB" dst="K"/><char src="0x00EC" dst="L"/>
+    <char src="0x00ED" dst="M"/><char src="0x00EE" dst="N"/><char src="0x00EF" dst="O"/><char src="0x00F0" dst="P"/>
+    <char src="0x00F1" dst="Q"/><char src="0x00F2" dst="R"/><char src="0x00F3" dst="S"/><char src="0x00F4" dst="T"/>
+    <char src="0x00F5" dst="U"/><char src="0x00F6" dst="V"/><char src="0x00F7" dst="W"/><char src="0x00F8" dst="X"/>
+    <char src="0x00F9" dst="Y"/><char src="0x00FA" dst="Z"/>
+
+    <char src="0xB1DE" dst="♀"/>
+    <char src="0xB1DF" dst="♂"/>
+    <char src="0x00B1" dst=" "/>
+    <char src="0x00DE" dst=""/>
+    <char src="0x00DF" dst=""/>
+
+  </charset>
+
+</hi2txt>

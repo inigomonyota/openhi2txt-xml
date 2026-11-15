@@ -1,0 +1,30 @@
+<hi2txt>
+  <table id="TODAY'S RANKING - TIMES">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1ST</cell><cell>AB*</cell><cell>2&apos;00&quot;03</cell></row>
+    <row><cell>2ND</cell><cell>PIP</cell><cell>2&apos;00&quot;03</cell></row>
+    <row><cell>3RD</cell><cell>KIM</cell><cell>14&apos;00&quot;00</cell></row>
+    <row><cell>4TH</cell><cell>RAD</cell><cell>15&apos;00&quot;00</cell></row>
+    <row><cell>5TH</cell><cell>SOS</cell><cell>16&apos;00&quot;00</cell></row>
+  </table>
+  <table id="TODAY'S RANKING - SCORES">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1ST</cell><cell>OH!</cell><cell>INETERMEDIATE</cell></row>
+    <row><cell>2ND</cell><cell>MC!</cell><cell>NOVICE</cell></row>
+    <row><cell>3RD</cell><cell>SRO</cell><cell>8 VICTORIES</cell></row>
+    <row><cell>4TH</cell><cell>OAT</cell><cell>5 VICTORIES</cell></row>
+    <row><cell>5TH</cell><cell>CMF</cell><cell>3 VICTORIES</cell></row>
+  </table>
+  <table id="WEEKLY TOP 3 - TIMES">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1ST</cell><cell>AB*</cell><cell>2&apos;00&quot;03</cell></row>
+    <row><cell>2ND</cell><cell>PIP</cell><cell>2&apos;00&quot;03</cell></row>
+    <row><cell>3RD</cell><cell>ROB</cell><cell>14&apos;00&quot;00</cell></row>
+  </table>
+  <table id="WEEKLY TOP 3 - SCORES">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1ST</cell><cell>KAS</cell><cell>INETERMEDIATE</cell></row>
+    <row><cell>2ND</cell><cell>RDY</cell><cell>NOVICE</cell></row>
+    <row><cell>3RD</cell><cell>LEN</cell><cell>8 VICTORIES</cell></row>
+  </table>
+</hi2txt>

@@ -1,0 +1,34 @@
+<hi2txt>
+  <table id="RANKING SCORE">
+    <col>RANK</col><col>NAME</col><col>CHARACTER</col><col>SCORE</col><col>GRADE</col>
+    <row><cell>1st</cell><cell>PIP</cell><cell>RYU</cell><cell>492800</cell><cell>G+</cell></row>
+    <row><cell>2nd</cell><cell>SDM</cell><cell>CHUN-LI</cell><cell>100000</cell><cell>D+</cell></row>
+    <row><cell>3rd</cell><cell>MOO</cell><cell>MAKOTO</cell><cell>90000</cell><cell>D</cell></row>
+    <row><cell>4th</cell><cell>NEO</cell><cell>Q</cell><cell>80000</cell><cell>E++</cell></row>
+    <row><cell>5th</cell><cell>ONU</cell><cell>TWELVE</cell><cell>70000</cell><cell>E+</cell></row>
+  </table>
+  <table id="RANKING WINS">
+    <col>RANK</col><col>NAME</col><col>CHARACTER</col><col>WINS</col><col>GRADE</col>
+    <row><cell>1st</cell><cell>KAI</cell><cell>CHUN-LI</cell><cell>10</cell><cell>D+</cell></row>
+    <row><cell>2nd</cell><cell>LT1</cell><cell>MAKOTO</cell><cell>9</cell><cell>D</cell></row>
+    <row><cell>3rd</cell><cell>YUK</cell><cell>Q</cell><cell>8</cell><cell>E++</cell></row>
+    <row><cell>4th</cell><cell>RAO</cell><cell>TWELVE</cell><cell>7</cell><cell>E+</cell></row>
+    <row><cell>5th</cell><cell>008</cell><cell>REMY</cell><cell>6</cell><cell>E</cell></row>
+  </table>
+  <table id="TOP GRADE (CPU FINAL)">
+    <col>RANK</col><col>NAME</col><col>CHARACTER</col><col>SCORE</col><col>GRADE</col>
+    <row><cell>1st</cell><cell>ICH</cell><cell>CHUN-LI</cell><cell>100000</cell><cell>D++</cell></row>
+    <row><cell>2nd</cell><cell>SET</cell><cell>NECRO</cell><cell>90000</cell><cell>D</cell></row>
+    <row><cell>3rd</cell><cell>NEO</cell><cell>DUDLEY</cell><cell>80000</cell><cell>E++</cell></row>
+    <row><cell>4th</cell><cell>ONU</cell><cell>YANG</cell><cell>70000</cell><cell>E+</cell></row>
+    <row><cell>5th</cell><cell>YOK</cell><cell>ELENA</cell><cell>60000</cell><cell>E</cell></row>
+  </table>
+  <table id="TOP GRADE (V.S.)">
+    <col>RANK</col><col>NAME</col><col>CHARACTER</col><col>WINS</col><col>GRADE</col>
+    <row><cell>1st</cell><cell>INE</cell><cell>REMY</cell><cell>10</cell><cell>D++</cell></row>
+    <row><cell>2nd</cell><cell>LT1</cell><cell>ALEX</cell><cell>9</cell><cell>D</cell></row>
+    <row><cell>3rd</cell><cell>YUK</cell><cell>DUDLEY</cell><cell>8</cell><cell>E++</cell></row>
+    <row><cell>4th</cell><cell>RAO</cell><cell>YANG</cell><cell>7</cell><cell>E+</cell></row>
+    <row><cell>5th</cell><cell>INE</cell><cell>ELENA</cell><cell>6</cell><cell>E</cell></row>
+  </table>
+</hi2txt>

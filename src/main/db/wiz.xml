@@ -23,8 +23,10 @@
   <output>
     <table>
       <column id="RANK" src="index" format="+1"/>
-      <column id="SCORE"/>
+      <column id="SCORE" format="*10"/>
       <column id="NAME"/>
     </table>
   </output>
+
+  <format id="*10"><multiply>10</multiply></format>
 </hi2txt>

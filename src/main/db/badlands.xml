@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>79</size>
+    </check>
+    <elt size="4" type="raw" id="HEADER"/>
+    <loop count="15">
+      <elt size="3" type="int" id="SCORE"/>
+      <elt size="2" type="raw" id="PAD"/>
+    </loop>
+  </structure>
+  <output>
+    <table id="HIGH SCORES" line-ignore="SCORE:0">
+      <column src="index" format="+1" id="RANK"/>
+      <column src="SCORE" id="SCORE"/>
+    </table>
+  </output>
+</hi2txt>

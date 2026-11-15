@@ -11,13 +11,13 @@
   <structure file=".hi">
     <check>
       <!-- optional: if defined and hiscore.dat provided, it allows to select the good structure versus the provided file //-->
-      <definition>0:001d:35:00:00</definition> <!-- 0.148 -->
-	  <definition>@:maincpu,program,001d,35,00,00
-                  @:maincpu,program,4030,01,01,01</definition> <!-- 0.204 -->
+      <!-- <definition>0:001d:35:00:00</definition> --> <!-- 0.148 -->
+	  <!-- <definition>@:maincpu,program,001d,35,00,00
+                  @:maincpu,program,4030,01,01,01</definition> --> <!-- 0.204 -->
       
       <!-- optional: if defined, it allows to select the good structure versus the provided file
                      useful if multiple structures are defined but hiscore.dat not provided //-->
-      <size>53</size> <!-- 0.148 -->
+      <!-- <size>53</size> --> <!-- 0.148 -->
       <size>54</size> <!-- 0.204 -->
     </check>
     <loop count="10">
@@ -30,13 +30,26 @@
   </structure>
   
   <output>
-    <table line-ignore="SCORE:0">
-      <column id="RANK" src="index" format="+1"/>
+    <table id="IMPORTANT: LET SCORES DISPLAY BEFORE PLAYING" line-ignore="SCORE:0">
+      <column id="RANK" src="index" format="rank"/>
       <column id="SCORE" format="*10"/>
       <column id="NAME"/>
     </table>
     <field id="SEPARATOR" format="0x" display="debug"/>
   </output>
+
+  <format id="rank">
+    <case src="0" dst="1."/>
+    <case src="1" dst="2."/>
+    <case src="2" dst="3."/>
+    <case src="3" dst="4."/>
+    <case src="4" dst="5."/>
+    <case src="5" dst="6."/>
+    <case src="6" dst="7."/>
+    <case src="7" dst="8."/>
+    <case src="8" dst="9."/>
+    <case src="9" dst="10."/>
+  </format>
   
   <charset id="asteroid">
     <char src="0x00" dst=" "/>

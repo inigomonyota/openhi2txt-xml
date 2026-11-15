@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Radiant Silvergun">
+  <!--
+    Radiant Silvergun (Treasure / ESP, 1998, Sega ST-V, stv.cpp).
+    Main CPU = Hitachi SH-2, big-endian. Scores live in volatile ST-V work
+    RAM (HWRAM @0x06000000) and are NOT written to the 128-byte backup eeprom
+    (nvram\rsgun\eeprom holds only settings: "ESAG" magic). The MAME hiscore
+    plugin provides persistence by restoring a 0x410-byte block at
+    :maincpu program 0x0600a0ec-... (see hiscore.dat "rsgun:" entry). The .hi
+    file is that block and contains BOTH on-screen charts back-to-back:
+
+      0x0600a0ec-... offset 0x000 : STAGE AREA TOP SCORE  (30 slots x 8 bytes)
+      offset 0x0f0               : HIGH SCORE RANKING    (100 recs x 8 bytes)
+
+    (block actually starts at 0x06009ffc = STAGE AREA slot 0.)
+
+    Record (both charts) = 8 bytes:
+      [4-byte BIG-endian binary SCORE][3-byte ASCII NAME][1-byte flag/stage].
+    Default NAME = 0x2d2d2d (three dashes); default flag = 0xff.
+
+    STAGE AREA is a fixed 6-group x 5-route grid (30 slots). Group order in
+    RAM matches the screen: PRACTICE, stage3, stage2, stage4, stage5, stage6.
+    Invalid routes read 0xffffffff and are skipped here. Valid slots:
+      slot 0        = PRACTICE                 (default 1000)
+      slots 5..9    = stage 3 routes 3A..3E    (default 10000)
+      slots 10..14  = stage 2 routes 2A..2E
+      slots 15..19  = stage 4 routes 4A..4E
+      slot 20       = stage 5 route 5A
+      slot 25       = stage 6 route 6A
+
+    HIGH SCORE RANKING = 100 descending entries. Factory default rank N score
+    = 1000000 - (N-1)*10000 (rank1 1000000 .. rank100 10000). The ranking
+    flag byte encodes the stage/route reached (shown as a STAGE column);
+    0xff = none, rendered as dashes. Proven byte-for-byte against a live HWRAM
+    capture (rank1 1000000, rank81 200000 matching snapshot 0014).
+    Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>0:6009ffc:410:00:ff</definition>
+      <size>1040</size>
+    </check>
+
+    <!-- ===== STAGE AREA TOP SCORE (30 slots x 8 bytes) ===== -->
+    <!-- PRACTICE: slot 0 valid, slots 1-4 = ffffffff (skip) -->
+    <elt size="4" type="int"  id="PR_VAL" endianness="big_endian"/>
+    <elt size="3" type="text" id="PR_NAME"/>
+    <elt size="1" type="raw"  id="_PR_FL"/>
+    <elt size="32" type="raw" id="_PR_PAD"/>
+
+    <!-- STAGE 3: routes 3A..3E (slots 5-9) -->
+    <loop count="5">
+      <elt size="4" type="int"  id="S3_VAL"  table-index="loop_index" endianness="big_endian"/>
+      <elt size="3" type="text" id="S3_NAME" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="_S3_FL"  table-index="loop_index"/>
+    </loop>
+
+    <!-- STAGE 2: routes 2A..2E (slots 10-14) -->
+    <loop count="5">
+      <elt size="4" type="int"  id="S2_VAL"  table-index="loop_index" endianness="big_endian"/>
+      <elt size="3" type="text" id="S2_NAME" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="_S2_FL"  table-index="loop_index"/>
+    </loop>
+
+    <!-- STAGE 4: routes 4A..4E (slots 15-19) -->
+    <loop count="5">
+      <elt size="4" type="int"  id="S4_VAL"  table-index="loop_index" endianness="big_endian"/>
+      <elt size="3" type="text" id="S4_NAME" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="_S4_FL"  table-index="loop_index"/>
+    </loop>
+
+    <!-- STAGE 5: route 5A (slot 20), slots 21-24 = ffffffff (skip) -->
+    <elt size="4" type="int"  id="S5_VAL" endianness="big_endian"/>
+    <elt size="3" type="text" id="S5_NAME"/>
+    <elt size="1" type="raw"  id="_S5_FL"/>
+    <elt size="32" type="raw" id="_S5_PAD"/>
+
+    <!-- STAGE 6: route 6A (slot 25), slots 26-29 = ffffffff (skip) -->
+    <elt size="4" type="int"  id="S6_VAL" endianness="big_endian"/>
+    <elt size="3" type="text" id="S6_NAME"/>
+    <elt size="1" type="raw"  id="_S6_FL"/>
+    <elt size="32" type="raw" id="_S6_PAD"/>
+
+    <!-- ===== HIGH SCORE RANKING (100 recs x 8 bytes) ===== -->
+    <loop count="100">
+      <elt size="4" type="int"  id="HR_VAL"  table-index="loop_index" endianness="big_endian"/>
+      <elt size="3" type="text" id="HR_NAME" table-index="loop_index"/>
+      <elt size="1" type="int"  id="HR_STG"  table-index="loop_index" endianness="big_endian"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORE RANKING">
+      <column id="RANK"  src="index"   format="+1"/>
+      <column id="NAME"  src="HR_NAME"/>
+      <column id="SCORE" src="HR_VAL"/>
+      <column id="STAGE" src="HR_STG"  format="stage"/>
+    </table>
+
+    <table id="STAGE AREA TOP SCORE: PRACTICE">
+      <column id="NAME"  src="PR_NAME"/>
+      <column id="SCORE" src="PR_VAL"/>
+    </table>
+    <table id="STAGE AREA TOP SCORE: STAGE 3">
+      <column id="ROUTE" src="index" format="route"/>
+      <column id="NAME"  src="S3_NAME"/>
+      <column id="SCORE" src="S3_VAL"/>
+    </table>
+    <table id="STAGE AREA TOP SCORE: STAGE 2">
+      <column id="ROUTE" src="index" format="route"/>
+      <column id="NAME"  src="S2_NAME"/>
+      <column id="SCORE" src="S2_VAL"/>
+    </table>
+    <table id="STAGE AREA TOP SCORE: STAGE 4">
+      <column id="ROUTE" src="index" format="route"/>
+      <column id="NAME"  src="S4_NAME"/>
+      <column id="SCORE" src="S4_VAL"/>
+    </table>
+    <table id="STAGE AREA TOP SCORE: STAGE 5">
+      <column id="ROUTE" src="S5_NAME" format="route5a"/>
+      <column id="NAME"  src="S5_NAME"/>
+      <column id="SCORE" src="S5_VAL"/>
+    </table>
+    <table id="STAGE AREA TOP SCORE: STAGE 6">
+      <column id="ROUTE" src="S6_NAME" format="route6a"/>
+      <column id="NAME"  src="S6_NAME"/>
+      <column id="SCORE" src="S6_VAL"/>
+    </table>
+  </output>
+
+  <format id="route">
+    <case src="0" dst="A"/><case src="1" dst="B"/><case src="2" dst="C"/>
+    <case src="3" dst="D"/><case src="4" dst="E"/>
+  </format>
+  <format id="route5a"><case src="---" dst="5A"/></format>
+  <format id="route6a"><case src="---" dst="6A"/></format>
+
+  <!-- ranking stage/route reached; 0xff (255) = none -->
+  <format id="stage"><case src="255" dst="--"/></format>
+</hi2txt>

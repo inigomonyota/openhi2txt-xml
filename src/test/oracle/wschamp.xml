@@ -1,0 +1,25 @@
+<hi2txt>
+  <table id="TOP 20 RANKING">
+    <col>RANK</col><col>NAME</col><col>BIRD</col><col>GUN</col><col>HIT</col><col>MISS</col><col>GRADE</col>
+    <row><cell>1</cell><cell>PIP</cell><cell>Ring-Necked Pheasant</cell><cell>Pump Action</cell><cell>99</cell><cell>0</cell><cell>A</cell></row>
+    <row><cell>2</cell><cell>BBB</cell><cell>Great Plains Quail</cell><cell>Semi-Auto</cell><cell>24</cell><cell>99</cell><cell>A</cell></row>
+    <row><cell>3</cell><cell>CCC</cell><cell>Eastern Bobwhite</cell><cell>Side by Side</cell><cell>23</cell><cell>99</cell><cell>A</cell></row>
+    <row><cell>4</cell><cell>DDD</cell><cell>Ring-Necked Pheasant</cell><cell>Over &amp; Under</cell><cell>22</cell><cell>99</cell><cell>A</cell></row>
+    <row><cell>5</cell><cell>EEE</cell><cell>Great Plains Quail</cell><cell>Single Shot</cell><cell>21</cell><cell>99</cell><cell>A</cell></row>
+    <row><cell>6</cell><cell>FFF</cell><cell>Ring-Necked Pheasant</cell><cell>Pump Action</cell><cell>20</cell><cell>99</cell><cell>A</cell></row>
+    <row><cell>7</cell><cell>GGG</cell><cell>Great Plains Quail</cell><cell>Semi-Auto</cell><cell>19</cell><cell>99</cell><cell>B</cell></row>
+    <row><cell>8</cell><cell>HHH</cell><cell>Eastern Bobwhite</cell><cell>Side by Side</cell><cell>19</cell><cell>99</cell><cell>B</cell></row>
+    <row><cell>9</cell><cell>III</cell><cell>Ring-Necked Pheasant</cell><cell>Over &amp; Under</cell><cell>18</cell><cell>99</cell><cell>B</cell></row>
+    <row><cell>10</cell><cell>PPP</cell><cell>Eastern Bobwhite</cell><cell>Single Shot</cell><cell>18</cell><cell>99</cell><cell>B</cell></row>
+    <row><cell>11</cell><cell>QQQ</cell><cell>Ring-Necked Pheasant</cell><cell>Pump Action</cell><cell>17</cell><cell>99</cell><cell>B</cell></row>
+    <row><cell>12</cell><cell>RRR</cell><cell>Great Plains Quail</cell><cell>Semi-Auto</cell><cell>16</cell><cell>99</cell><cell>B</cell></row>
+    <row><cell>13</cell><cell>SSS</cell><cell>Eastern Bobwhite</cell><cell>Side by Side</cell><cell>16</cell><cell>99</cell><cell>B</cell></row>
+    <row><cell>14</cell><cell>TTT</cell><cell>Ring-Necked Pheasant</cell><cell>Over &amp; Under</cell><cell>15</cell><cell>99</cell><cell>B</cell></row>
+    <row><cell>15</cell><cell>UUU</cell><cell>Great Plains Quail</cell><cell>Single Shot</cell><cell>15</cell><cell>99</cell><cell>B</cell></row>
+    <row><cell>16</cell><cell>VVV</cell><cell>Ring-Necked Pheasant</cell><cell>Pump Action</cell><cell>14</cell><cell>99</cell><cell>C</cell></row>
+    <row><cell>17</cell><cell>WWW</cell><cell>Great Plains Quail</cell><cell>Semi-Auto</cell><cell>13</cell><cell>99</cell><cell>C</cell></row>
+    <row><cell>18</cell><cell>XXX</cell><cell>Eastern Bobwhite</cell><cell>Side by Side</cell><cell>12</cell><cell>99</cell><cell>C</cell></row>
+    <row><cell>19</cell><cell>YYY</cell><cell>Ring-Necked Pheasant</cell><cell>Over &amp; Under</cell><cell>11</cell><cell>99</cell><cell>C</cell></row>
+    <row><cell>20</cell><cell>ZZZ</cell><cell>Eastern Bobwhite</cell><cell>Single Shot</cell><cell>10</cell><cell>99</cell><cell>C</cell></row>
+  </table>
+</hi2txt>

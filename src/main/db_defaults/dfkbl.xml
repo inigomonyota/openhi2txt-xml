@@ -1,0 +1,41 @@
+<hi2txt>
+<table id="RANKING - TYPE-A (RED)">
+<col>RANK</col><col>NAME</col><col>SHOT TYPE</col><col>SCORE</col><col>AREA</col><col>AUTO BOMB</col><col>CONTINUE</col>
+<row><cell>1ST</cell><cell>ISO</cell><cell>TYPE-A (RED)</cell><cell>1021616255</cell><cell>AREA 3</cell><cell>ON</cell><cell>CONTINUE 0</cell></row>
+<row><cell>2ND</cell><cell>ATO</cell><cell>TYPE-A (RED)</cell><cell>900000000</cell><cell>AREA 3</cell><cell>ON</cell><cell>CONTINUE 0</cell></row>
+<row><cell>3RD</cell><cell>SAS</cell><cell>TYPE-A (RED)</cell><cell>800000000</cell><cell>AREA 3</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+<row><cell>4TH</cell><cell>TAK</cell><cell>TYPE-A (RED)</cell><cell>700000000</cell><cell>AREA 3</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+<row><cell>5TH</cell><cell>AKO</cell><cell>TYPE-A (RED)</cell><cell>600000000</cell><cell>AREA 2</cell><cell>ON</cell><cell>CONTINUE 0</cell></row>
+<row><cell>6TH</cell><cell>MAT</cell><cell>TYPE-A (RED)</cell><cell>500000000</cell><cell>AREA 2</cell><cell>ON</cell><cell>CONTINUE 0</cell></row>
+<row><cell>7TH</cell><cell>KIT</cell><cell>TYPE-A (RED)</cell><cell>400000000</cell><cell>AREA 2</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+<row><cell>8TH</cell><cell>IND</cell><cell>TYPE-A (RED)</cell><cell>300000000</cell><cell>AREA 1</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+<row><cell>9TH</cell><cell>MAS</cell><cell>TYPE-A (RED)</cell><cell>200000000</cell><cell>AREA 1</cell><cell>ON</cell><cell>CONTINUE 0</cell></row>
+<row><cell>10TH</cell><cell>ITO</cell><cell>TYPE-A (RED)</cell><cell>100000000</cell><cell>AREA 1</cell><cell>ON</cell><cell>CONTINUE 0</cell></row>
+</table>
+<table id="RANKING - TYPE-B (GREEN)">
+<col>RANK</col><col>NAME</col><col>SHOT TYPE</col><col>SCORE</col><col>AREA</col><col>AUTO BOMB</col><col>CONTINUE</col>
+<row><cell>1ST</cell><cell>ISO</cell><cell>TYPE-B (GREEN)</cell><cell>1090270316</cell><cell>AREA 3</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+<row><cell>2ND</cell><cell>SHI</cell><cell>TYPE-B (GREEN)</cell><cell>900000000</cell><cell>AREA 3</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+<row><cell>3RD</cell><cell>SAI</cell><cell>TYPE-B (GREEN)</cell><cell>800000000</cell><cell>AREA 3</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+<row><cell>4TH</cell><cell>NOD</cell><cell>TYPE-B (GREEN)</cell><cell>700000000</cell><cell>AREA 3</cell><cell>ON</cell><cell>CONTINUE 0</cell></row>
+<row><cell>5TH</cell><cell>ARA</cell><cell>TYPE-B (GREEN)</cell><cell>600000000</cell><cell>AREA 2</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+<row><cell>6TH</cell><cell>TER</cell><cell>TYPE-B (GREEN)</cell><cell>500000000</cell><cell>AREA 2</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+<row><cell>7TH</cell><cell>TAN</cell><cell>TYPE-B (GREEN)</cell><cell>400000000</cell><cell>AREA 2</cell><cell>ON</cell><cell>CONTINUE 0</cell></row>
+<row><cell>8TH</cell><cell>YAM</cell><cell>TYPE-B (GREEN)</cell><cell>300000000</cell><cell>AREA 1</cell><cell>ON</cell><cell>CONTINUE 0</cell></row>
+<row><cell>9TH</cell><cell>KUR</cell><cell>TYPE-B (GREEN)</cell><cell>200000000</cell><cell>AREA 1</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+<row><cell>10TH</cell><cell>TSU</cell><cell>TYPE-B (GREEN)</cell><cell>100000000</cell><cell>AREA 1</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+</table>
+<table id="RANKING - TYPE-C (BLUE)">
+<col>RANK</col><col>NAME</col><col>SHOT TYPE</col><col>SCORE</col><col>AREA</col><col>AUTO BOMB</col><col>CONTINUE</col>
+<row><cell>1ST</cell><cell>ISO</cell><cell>TYPE-C (BLUE)</cell><cell>963503015</cell><cell>AREA 3</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+<row><cell>2ND</cell><cell>MAN</cell><cell>TYPE-C (BLUE)</cell><cell>900000000</cell><cell>AREA 3</cell><cell>ON</cell><cell>CONTINUE 0</cell></row>
+<row><cell>3RD</cell><cell>YAG</cell><cell>TYPE-C (BLUE)</cell><cell>800000000</cell><cell>AREA 3</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+<row><cell>4TH</cell><cell>MAT</cell><cell>TYPE-C (BLUE)</cell><cell>700000000</cell><cell>AREA 3</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+<row><cell>5TH</cell><cell>HUR</cell><cell>TYPE-C (BLUE)</cell><cell>600000000</cell><cell>AREA 2</cell><cell>ON</cell><cell>CONTINUE 0</cell></row>
+<row><cell>6TH</cell><cell>YAM</cell><cell>TYPE-C (BLUE)</cell><cell>500000000</cell><cell>AREA 2</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+<row><cell>7TH</cell><cell>UCH</cell><cell>TYPE-C (BLUE)</cell><cell>400000000</cell><cell>AREA 2</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+<row><cell>8TH</cell><cell>HUC</cell><cell>TYPE-C (BLUE)</cell><cell>300000000</cell><cell>AREA 1</cell><cell>ON</cell><cell>CONTINUE 0</cell></row>
+<row><cell>9TH</cell><cell>OOK</cell><cell>TYPE-C (BLUE)</cell><cell>200000000</cell><cell>AREA 1</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+<row><cell>10TH</cell><cell>MAT</cell><cell>TYPE-C (BLUE)</cell><cell>100000000</cell><cell>AREA 1</cell><cell>OFF</cell><cell>CONTINUE 0</cell></row>
+</table>
+</hi2txt>

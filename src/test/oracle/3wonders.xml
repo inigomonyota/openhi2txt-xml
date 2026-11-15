@@ -1,0 +1,26 @@
+<hi2txt>
+  <table id="MIDNIGHT WANDERERS">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>164700</cell><cell>BRE</cell></row>
+    <row><cell>2ND</cell><cell>49600</cell><cell>BQ</cell></row>
+    <row><cell>3RD</cell><cell>30000</cell><cell>CAP</cell></row>
+    <row><cell>4TH</cell><cell>29000</cell><cell>COM</cell></row>
+    <row><cell>5TH</cell><cell>28000</cell><cell>C P</cell></row>
+  </table>
+  <table id="CHARIOT">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>30000</cell><cell>CAP</cell></row>
+    <row><cell>2ND</cell><cell>29000</cell><cell>COM</cell></row>
+    <row><cell>3RD</cell><cell>28000</cell><cell>C P</cell></row>
+    <row><cell>4TH</cell><cell>27000</cell><cell>SYS</cell></row>
+    <row><cell>5TH</cell><cell>26000</cell><cell>TEM</cell></row>
+  </table>
+  <table id="DON'T PULL">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>30000</cell><cell>CAP</cell></row>
+    <row><cell>2ND</cell><cell>29000</cell><cell>COM</cell></row>
+    <row><cell>3RD</cell><cell>28000</cell><cell>C P</cell></row>
+    <row><cell>4TH</cell><cell>27000</cell><cell>SYS</cell></row>
+    <row><cell>5TH</cell><cell>26000</cell><cell>TEM</cell></row>
+  </table>
+</hi2txt>

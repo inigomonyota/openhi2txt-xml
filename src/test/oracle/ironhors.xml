@@ -1,0 +1,14 @@
+<hi2txt>
+  <table id="SCORE RANKING">
+    <col>RANK</col><col>NAME</col><col>SCORE</col><col>PAD</col>
+    <row><cell>1ST</cell><cell>S.O</cell><cell>25800</cell><cell>0x0100</cell></row>
+    <row><cell>2ND</cell><cell>Y.Y</cell><cell>22200</cell><cell>0x0100</cell></row>
+    <row><cell>3RD</cell><cell>A.T</cell><cell>19500</cell><cell>0x0000</cell></row>
+    <row><cell>4TH</cell><cell>K.A</cell><cell>13800</cell><cell>0x0000</cell></row>
+    <row><cell>5TH</cell><cell>I.U</cell><cell>13000</cell><cell>0x0000</cell></row>
+    <row><cell>6TH</cell><cell>S.S</cell><cell>12000</cell><cell>0x0000</cell></row>
+    <row><cell>7TH</cell><cell>N.M</cell><cell>11000</cell><cell>0x0000</cell></row>
+    <row><cell>8TH</cell><cell>S.I</cell><cell>10000</cell><cell>0x0000</cell></row>
+  </table>
+  <field id="TOP SCORE">25800</field>
+</hi2txt>

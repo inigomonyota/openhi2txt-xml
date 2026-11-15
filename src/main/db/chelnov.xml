@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Chelnov - Atomic Runner">
+  <!--
+    hiscore.dat: three memory blocks concatenated in .hi file (92 bytes total)
+      @:maincpu,program,060048,04  -> bytes 0x00-0x03: CHAMP score (standalone, skipped)
+      @:maincpu,program,060080,2c  -> bytes 0x04-0x2F: 11 scores (CHAMP + 10 ranked)
+      @:maincpu,program,0600c0,2c  -> bytes 0x30-0x5B: 11 names (CHAMP + 10 ranked)
+    Score: 4 bytes BCD (base=16)
+    Name:  3 bytes ASCII + 0x00 separator
+  //-->
+
+  <structure file="hi">
+    <check>
+      <size>92</size>
+    </check>
+    <elt size="4"  type="raw"  id="CHAMP_SCORE_STANDALONE"/>
+    <loop count="11">
+      <elt size="4"  type="int"  id="SCORE" base="16" table-index="loop_index"/>
+    </loop>
+    <loop count="11">
+      <elt size="3"  type="text" id="NAME"  ascii-offset="0" table-index="loop_index"/>
+      <elt size="1"  type="raw"  id="SEP"   table-index="loop_index"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <case src="0"  dst="CHAMP"/>
+    <case src="1"  dst="1"/>
+    <case src="2"  dst="2"/>
+    <case src="3"  dst="3"/>
+    <case src="4"  dst="4"/>
+    <case src="5"  dst="5"/>
+    <case src="6"  dst="6"/>
+    <case src="7"  dst="7"/>
+    <case src="8"  dst="8"/>
+    <case src="9"  dst="9"/>
+    <case src="10" dst="10"/>
+  </format>
+
+</hi2txt>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  wecleman - WEC Le Mans 24 (Konami, 1986)
+  .hi file format (via hiscore.dat plugin)
+  hiscore.dat:
+    @:maincpu,program,41110,64,00,20
+    @:maincpu,program,40006,4,00,00
+  104 bytes = 100B main (10 x 10B) + 4B top score
+  Record (10B): 4B score (BCD x10) + 2B distance (BCD /10 for km) +
+                3B name (ASCII) + 1B space pad
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>104</size>
+    </check>
+    <loop count="10">
+      <elt size="4" type="int" id="SCORE" base="16"/>
+      <elt size="2" type="int" id="DIST" base="16"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw" id="PAD"/>
+    </loop>
+    <!-- Top score (4B BCD) -->
+    <elt size="4" type="raw" id="TOPSCORE"/>
+  </structure>
+
+  <output>
+    <table id="FAR OUT PLAYERS">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="SCORE" format="score_x10"/>
+      <column id="DISTANCE (KM)" src="DIST" format="dist_fmt"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" operator="=" dst="1ST"/>
+    <case src="1" operator="=" dst="2ND"/>
+    <case src="2" operator="=" dst="3RD"/>
+    <case src="3" operator="=" dst="4TH"/>
+    <case src="4" operator="=" dst="5TH"/>
+    <case src="5" operator="=" dst="6TH"/>
+    <case src="6" operator="=" dst="7TH"/>
+    <case src="7" operator="=" dst="8TH"/>
+    <case src="8" operator="=" dst="9TH"/>
+    <case src="9" operator="=" dst="10TH"/>
+  </format>
+
+  <format id="score_x10"><multiply>10</multiply><case src="0" operator="&gt;=" format="comma_score"/></format>
+
+  <!-- Distance: stored as BCD integer (544 = 54.4 km) -->
+  <format id="dist_fmt" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d10"/>
+      <txt>.</txt>
+      <column format="%10"/>
+	  <txt> KM</txt>
+    </concat>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <!-- If score is >= 1,000,000,000 (Billions) -->
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    
+    <!-- If score is >= 1,000,000 (Millions) -->
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    
+    <!-- If score is >= 1,000 (Thousands) -->
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    
+    <!-- Fallback for scores under 1,000 (Passes the number through as-is) -->
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <!-- Formats like: 1,234,567,890 -->
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234,567 -->
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234 -->
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+</hi2txt>

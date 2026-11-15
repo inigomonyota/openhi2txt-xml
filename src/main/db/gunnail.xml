@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- gunnail by NMK Co. Ltd, 1993 -->
+<!-- hiscore.dat: faf00, 4217 bytes (0x1079) -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>4217</size>
+    </check>
+
+    <!-- BLOCK 1: TOTAL HIGH SCORES (112 bytes) -->
+    <loop count="7">
+      <elt size="4" type="int"  id="T_SCORE" base="16"/>
+      <elt size="2" type="int"  id="T_STAGE"/>
+      <elt size="2" type="raw"  id="T_PAD"/>
+      <elt size="8" type="text" id="T_NAME"  byte-skip="odd" charset="nmk_chars"/>
+    </loop>
+
+    <!-- BLOCK 2: STAGE HIGH SCORE NAMES (118 bytes: 8x16 - 10) -->
+    <loop count="8" skip-last-bytes="10">
+      <elt size="6"  type="text" id="S_NAME" byte-skip="odd" charset="nmk_chars"/>
+      <elt size="10" type="raw"  id="S_PAD"/>
+    </loop>
+
+    <!-- BLOCK 3: STAGE HIGH SCORE VALUES (8 blocks x 512 bytes stride) -->
+    <loop count="8" skip-last-bytes="508">
+      <elt size="4"   type="int" id="S_SCORE" base="16"/>
+      <elt size="508" type="raw" id="S_STAGE_TABLE_REST"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TOTAL HIGH SCORES">
+      <column id="RANK"  src="index"   format="ordinal"/>
+      <column id="STAGE" src="T_STAGE" format="PrefixSTAGE"/>
+      <column id="SCORE" src="T_SCORE" format="comma_score"/>
+      <column id="NAME"  src="T_NAME"  format="trim_right"/>
+    </table>
+
+    <table id="STAGE HIGH SCORES">
+      <!-- Logic for the second table labels -->
+      <column id="RANK"  src="index"   format="ordinal_2"/>
+      <column id="STAGE" src="index"   format="index_to_stage"/>
+      <column id="SCORE" src="S_SCORE" format="comma_score"/>
+      <column id="NAME"  src="S_NAME"  format="trim_right"/>
+    </table>
+  </output>
+
+  <!-- Translates 0-6 to 1-7 for Table 1 -->
+  <format id="ordinal">
+    <case src="0" dst="1ST"/><case src="1" dst="2ND"/><case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/><case src="4" dst="5TH"/><case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+  </format>
+
+  <!-- Translates 0-7 to 1-8 for Table 2 -->
+  <format id="ordinal_2">
+    <case src="0" dst="1ST"/><case src="1" dst="2ND"/><case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/><case src="4" dst="5TH"/><case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/><case src="7" dst="8TH"/>
+  </format>
+
+  <format id="index_to_stage">
+    <case src="0" dst="STAGE1"/><case src="1" dst="STAGE2"/><case src="2" dst="STAGE3"/>
+    <case src="3" dst="STAGE4"/><case src="4" dst="STAGE5"/><case src="5" dst="STAGE6"/>
+    <case src="6" dst="STAGE7"/><case src="7" dst="STAGE8"/>
+  </format>
+
+  <format id="trim_right">
+    <trim direction="right"> </trim>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/><txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <charset id="nmk_chars">
+    <char src="0x2B" dst="+"/><char src="0x2F" dst="/"/><char src="0x20" dst=" "/>
+    <char src="0x2E" dst="·"/><char src="0x21" dst="!"/><char src="0x00" dst=""/>
+  </charset>
+</hi2txt>

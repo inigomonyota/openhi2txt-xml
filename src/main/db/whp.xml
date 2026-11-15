@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="World Heroes Perfect">
+  <!--
+    Neo Geo saveram, byte-swap=2 ("BACKUP RAM OK !" confirmed).
+    BEST HEROES @0x330, 5 x 16B: [SCORE:4 BCD][NAME:8 ASCII 3+spaces][index:4].
+    SCORE 4-byte BCD -> int, shown with thousands separators via formatter "%,d" (Java).
+    NAME 8-byte field, trailing spaces trimmed (TrimR). RANK 1ST-5TH ordinals.
+  //-->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+    <elt size="816" type="raw" id="HEADER"/>
+    <loop count="5">
+      <elt size="4" type="int"  id="SCORE" base="16"/>
+      <elt size="8" type="text" id="NAME"/>
+      <elt size="4" type="raw"  id="INDEX"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST HEROES">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  format="TrimR "/>
+      <column id="SCORE" format="comma"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <add>1</add>
+    <case src="1" dst="1ST"/><case src="2" dst="2ND"/><case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/><case src="5" dst="5TH"/>
+  </format>
+  <format id="comma" formatter="%,d"><multiply>1</multiply></format>
+</hi2txt>

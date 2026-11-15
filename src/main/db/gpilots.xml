@@ -22,14 +22,27 @@
   </structure>
   
   <output>
-    <table>
-      <column id="RANK" src="index" format="+1"/>
+    <table id="TOP 10 RANKING">
+      <column id="RANK" src="index" format="rank"/>
       <column id="SCORE" format="*100"/>
       <column id="NAME"/>	  
 	  <column id="END" display="debug"/>
     </table>
-	<field id="TOP_SCORE" format="*100" display="extra"/>
+	<field id="TOP_SCORE" format="*100" display="debug"/>
   </output>
+  
+  <format id="rank">
+    <case src="0" dst="1."/>
+    <case src="1" dst="2."/>
+    <case src="2" dst="3."/>
+    <case src="3" dst="4."/>
+    <case src="4" dst="5."/>
+    <case src="5" dst="6."/>
+    <case src="6" dst="7."/>
+    <case src="7" dst="8."/>
+    <case src="8" dst="9."/>
+    <case src="9" dst="10."/>
+  </format>
   
   <charset id="charconv">
     <char src="0x1A" dst="!"/>

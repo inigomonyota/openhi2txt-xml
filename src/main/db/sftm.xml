@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<!-- Street Fighter: The Movie (Incredible Technologies itech32, nvram32).
+     32-bit little-endian; each field is a 32-bit LE word, so text is byte-reversed.
+     STREET FIGHTERS table @ raw 0x2fc, 5 records x 8 bytes:
+       [0:4] SCORE 4-byte little-endian binary
+       [4:8] NAME  4-byte word, little-endian => reverses bytes (e.g. 00 4e 41 4a -> "JAN\0");
+             byte-trunc 0x00 drops the null. -->
+<structure file="nvram32">
+  <check>
+    <size>131072</size>
+  </check>
+  <elt size="764" type="raw" id="HEADER"/>
+  <loop count="5">
+    <elt size="4" type="int"  id="SCORE" endianness="little_endian"/>
+    <elt size="4" type="text" id="NAME"  endianness="little_endian" byte-trunc="0x00"/>
+  </loop>
+</structure>
+
+<output>
+  <table id="STREET FIGHTERS">
+    <column id="RANK"  src="index" format="+1"/>
+    <column id="NAME"/>
+    <column id="SCORE"/>
+  </table>
+</output>
+</hi2txt>

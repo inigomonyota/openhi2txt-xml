@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  heatbrl - Heated Barrel (TAD Corporation, 1992)
+  .hi file format (via hiscore.dat plugin)
+  hiscore.dat:
+    @:maincpu,program,108296,64,4b,00
+    @:maincpu,program,108036,4,00,00
+  104 bytes = 100B main (10 x 10B) + 4B top score
+  Record (10B): 3B name (ASCII) + 1B space pad + 4B score (BE int) + 1B stage + 1B pad
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>104</size>
+    </check>
+    <loop count="10">
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw" id="NPAD"/>
+      <elt size="4" type="int" id="SCORE"/>
+      <elt size="1" type="int" id="STAGE"/>
+      <elt size="1" type="raw" id="PAD"/>
+    </loop>
+    <!-- Top score (4B BE int) -->
+    <elt size="4" type="raw" id="TOPSCORE"/>
+  </structure>
+
+  <output>
+    <table id="BEST 10 PLAYERS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="SCORE" format="comma_score"/>
+      <column id="STAGE"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <!-- If score is >= 1,000,000,000 (Billions) -->
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    
+    <!-- If score is >= 1,000,000 (Millions) -->
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    
+    <!-- If score is >= 1,000 (Thousands) -->
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    
+    <!-- Fallback for scores under 1,000 (Passes the number through as-is) -->
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <!-- Formats like: 1,234,567,890 -->
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234,567 -->
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234 -->
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+</hi2txt>

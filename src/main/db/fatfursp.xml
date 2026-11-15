@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    fatfursp - Fatal Fury Special (SNK, Neo Geo)
+    Reads the MAME saveram file (nvram/fatfursp/saveram), 65536 bytes.
+
+    Neo Geo 68000: saveram is word-swapped, so structure uses byte-swap="2".
+    "BEST PLAYERS" = 5 records of 8 bytes starting at 0x0334 (post-swap):
+      [0:4] SCORE 4-byte BCD big-endian (00 16 00 00 -> 160000)
+      [4:7] NAME  3 ASCII chars
+      [7]   0xFF terminator
+    RANK is positional, shown as "1." "2." ...
+  -->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+
+    <!-- skip to table at 0x0334 (820 bytes) -->
+    <elt size="820" type="raw" id="PRE"/>
+
+    <loop count="5">
+      <elt size="4" type="int"  base="16" id="SCORE"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="TERM"/>
+    </loop>
+  </structure>
+
+  <!-- rank index -> "N." -->
+  <format id="rankdot">
+    <add>1</add>
+    <suffix>.</suffix>
+  </format>
+
+  <output>
+    <table id="BEST PLAYERS">
+      <column id="RANK"  src="index" format="rankdot"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+</hi2txt>

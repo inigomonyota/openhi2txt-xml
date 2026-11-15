@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<!-- Ninja Master's - haoh ninpo cho (Neo Geo, saveram).
+     68000 => byte-swap="2".
+     BEST TIME table @ raw 0xb20, 10 records x 8 bytes (a second identical copy sits at 0xba0):
+       [0] MM   minutes    (BCD)
+       [1] SS   seconds    (BCD)
+       [2] CC   centiseconds (BCD)
+       [3] 00   padding
+       [4:7] NAME 3 ASCII
+       [7]  00   null terminator
+     Rank 1 is labelled "TOP", then 2ND..10TH.
+     NOTE: the reference XML lists every row as "15M 00S 00", but the save file stores a
+     real descending default ladder 15M/20M/25M/30M/40M/50M/60M/70M/80M/90M (file is authoritative). -->
+<structure file="saveram" byte-swap="2">
+  <check>
+    <size>65536</size>
+  </check>
+  <elt size="2848" type="raw" id="HEADER"/>
+  <loop count="10">
+    <elt size="1" type="int"  id="MM" base="16"/>
+    <elt size="1" type="int"  id="SS" base="16"/>
+    <elt size="1" type="int"  id="CC" base="16"/>
+    <elt size="1" type="raw"  id="PAD"/>
+    <elt size="3" type="text" id="NAME" byte-trunc="0x00"/>
+    <elt size="1" type="raw"  id="NULL"/>
+  </loop>
+</structure>
+
+<format id="rank">
+  <case src="0" dst="TOP"/>
+  <case src="1" dst="2ND"/>
+  <case src="2" dst="3RD"/>
+  <case src="3" dst="4TH"/>
+  <case src="4" dst="5TH"/>
+  <case src="5" dst="6TH"/>
+  <case src="6" dst="7TH"/>
+  <case src="7" dst="8TH"/>
+  <case src="8" dst="9TH"/>
+  <case src="9" dst="10TH"/>
+</format>
+
+<format id="time">
+  <concat>
+    <column id="MM" format="PadL20"/>
+    <txt>M </txt>
+    <column id="SS" format="PadL20"/>
+    <txt>S </txt>
+    <column id="CC" format="PadL20"/>
+  </concat>
+</format>
+
+<output>
+  <table id="NINJA MASTER'S BEST TIME">
+    <column id="RANK" src="index" format="rank"/>
+    <column id="TIME" format="time"/>
+    <column id="NAME"/>
+  </table>
+</output>
+</hi2txt>

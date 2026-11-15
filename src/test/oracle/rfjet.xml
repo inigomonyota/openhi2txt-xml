@@ -1,0 +1,41 @@
+<hi2txt>
+  <table id="MASTERS OF SHIPS">
+    <col>SHIP TYPE</col><col>TOP SCORE</col><col>NAME</col>
+    <row><cell>AEGIS IV</cell><cell>10000</cell><cell>...</cell></row>
+    <row><cell>BEAST WING</cell><cell>10000</cell><cell>...</cell></row>
+    <row><cell>CHASER 2000</cell><cell>10000</cell><cell>...</cell></row>
+    <row><cell>DEATH HEADER</cell><cell>10000</cell><cell>...</cell></row>
+    <row><cell>ERASER</cell><cell>10000</cell><cell>...</cell></row>
+    <row><cell>FLYING RAY</cell><cell>10000</cell><cell>...</cell></row>
+    <row><cell>GRIFFIN</cell><cell>10000</cell><cell>...</cell></row>
+    <row><cell>HELL DIVER</cell><cell>10000</cell><cell>...</cell></row>
+    <row><cell>RAIDEN MK-II</cell><cell>10000</cell><cell>...</cell></row>
+    <row><cell>JUDGE SPEAR</cell><cell>10000</cell><cell>...</cell></row>
+    <row><cell>RAIDEN MK-IIB</cell><cell>10000</cell><cell>...</cell></row>
+    <row><cell>BLUE JAVELIN</cell><cell>10000</cell><cell>...</cell></row>
+    <row><cell>MICLUS</cell><cell>10000</cell><cell>...</cell></row>
+    <row><cell>IXION</cell><cell>10000</cell><cell>...</cell></row>
+    <row><cell>FAIRY</cell><cell>10000</cell><cell>...</cell></row>
+    <row><cell>SLAVE</cell><cell>10000</cell><cell>...</cell></row>
+  </table>
+  <table id="HI-SCORE RANK - SOLO PLAY">
+    <col>RANK</col><col>NAME</col><col>SCORE</col><col>SHIP</col><col>STAGE</col>
+    <row><cell>1</cell><cell>PIP</cell><cell>1000000</cell><cell>GRIFFIN</cell><cell>1-1</cell></row>
+    <row><cell>2</cell><cell>...</cell><cell>900000</cell><cell>FLYING RAY</cell><cell>1-1</cell></row>
+    <row><cell>3</cell><cell>...</cell><cell>800000</cell><cell>ERASER</cell><cell>1-1</cell></row>
+    <row><cell>4</cell><cell>...</cell><cell>700000</cell><cell>DEATH HEADER</cell><cell>1-1</cell></row>
+    <row><cell>5</cell><cell>...</cell><cell>600000</cell><cell>CHASER 2000</cell><cell>1-1</cell></row>
+    <row><cell>6</cell><cell>...</cell><cell>500000</cell><cell>BEAST WING</cell><cell>1-1</cell></row>
+    <row><cell>7</cell><cell>...</cell><cell>400000</cell><cell>AEGIS IV</cell><cell>1-1</cell></row>
+  </table>
+  <table id="HI-SCORE RANK - DUAL PLAY">
+    <col>RANK</col><col>NAME</col><col>SCORE</col><col>SHIP</col><col>STAGE</col>
+    <row><cell>1</cell><cell>...</cell><cell>1000000</cell><cell>GRIFFIN</cell><cell>1-1</cell></row>
+    <row><cell>2</cell><cell>...</cell><cell>900000</cell><cell>FLYING RAY</cell><cell>1-1</cell></row>
+    <row><cell>3</cell><cell>...</cell><cell>800000</cell><cell>ERASER</cell><cell>1-1</cell></row>
+    <row><cell>4</cell><cell>...</cell><cell>700000</cell><cell>DEATH HEADER</cell><cell>1-1</cell></row>
+    <row><cell>5</cell><cell>...</cell><cell>600000</cell><cell>CHASER 2000</cell><cell>1-1</cell></row>
+    <row><cell>6</cell><cell>...</cell><cell>500000</cell><cell>BEAST WING</cell><cell>1-1</cell></row>
+    <row><cell>7</cell><cell>...</cell><cell>400000</cell><cell></cell><cell>1-1</cell></row>
+  </table>
+</hi2txt>

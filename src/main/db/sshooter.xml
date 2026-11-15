@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    Sharpshooter (P&P Marketing, 1998 - policetr.cpp / ATTILA video system).
+    The "SHARP SHOOTERS" board (5 entries) IS persisted natively to the on-board
+    ATMEL 93C66 serial EEPROM, which MAME saves as nvram\sshooter\eeprom (512 bytes).
+    Proven empirically: editing the name words in the eeprom changes the on-screen board.
+
+    Each name is a 3-letter initial packed into a 16-bit little-endian word as three
+    5-bit fields (A=0 .. Z=25), MSB-first: word = (c1<<10)|(c2<<5)|c3.
+      e.g. bytes 58 49 -> 0x4958 -> S(18) K(10) Y(24) = "SKY".
+    Table: 5 records of 10 bytes starting at 0x44; the name word sits at record+8,
+    so the five name words are at 0x4c/0x56/0x60/0x6a/0x74 (rank 1..5, as displayed).
+    (The per-entry star rating shown on the board is NOT stored in this table.)
+    Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file="eeprom">
+    <check>
+      <size>512</size>
+    </check>
+    <elt size="68" type="raw" id="HEADER"/>
+    <loop count="5">
+      <elt size="8" type="raw"  id="PAD"  table-index="loop_index"/>
+      <elt size="2" type="text" id="NAME" table-index="loop_index"
+           src-unit-size="16" base="32" dst-unit-size="3" ascii-offset="65"
+           endianness="little_endian"/>
+    </loop>
+    <elt size="394" type="raw" id="REST"/>
+  </structure>
+
+  <output>
+    <table id="SHARP SHOOTERS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="NAME"/>
+      <column id="PAD"    format="0x" display="debug"/>
+      <column id="HEADER" format="0x" display="debug"/>
+      <column id="REST"   format="0x" display="debug"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+</hi2txt>

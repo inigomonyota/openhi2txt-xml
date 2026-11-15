@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!-- Football Champ / Euro Football Champ (Taito, 1990)
+       Reads the hiscore-plugin .hi dump: 80 bytes = 10 records x 8 bytes.
+       hiscore.dat: @:maincpu,program,10a920,50,0a,00
+       Record (8 bytes):
+         [ score : 1 byte int ] [ stats : 3 bytes ] [ name : 3 ascii ] [ 00 ]
+       Records are stored rank 1 -> rank 10 (highest score first). -->
+
+  <structure file=".hi">
+    <check>
+      <definition>0:10a920:50:0a:00</definition>
+      <size>80</size>
+    </check>
+
+    <loop count="10">
+      <elt size="1" type="int"  id="SCORE"/>
+      <elt size="3" type="raw"  id="STATS"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="TERM"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="STATS" src="STATS" format="0x" display="debug"/>
+      <column id="TERM"  src="TERM"  format="0x" display="debug"/>
+    </table>
+  </output>
+
+</hi2txt>

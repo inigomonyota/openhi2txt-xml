@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+
+  <!-- Synthetic 46-byte high-score block for Batman Returns (USA), SNES -->
+  <structure file=".hi">
+    <check>
+      <size>46</size>
+    </check>
+
+    <elt size="1" type="raw" id="START GUARD"/>
+    <elt size="4" type="int" id="LAST" endianness="little_endian"/>
+
+    <loop count="10">
+      <elt size="4" type="int" id="SCORE" endianness="little_endian"/>
+    </loop>
+
+    <elt size="1" type="raw" id="END GUARD"/>
+  </structure>
+
+  <output>
+    <field id="SCORE FROM LAST PLAY" src="LAST"/>
+
+    <table id="TOP 10">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+
+</hi2txt>

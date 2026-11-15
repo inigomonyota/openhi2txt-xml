@@ -1,0 +1,83 @@
+<hi2txt>
+  <table id="BEGINNER COURSE RANKING">
+    <col>RANK</col><col>TIME</col><col>NAME</col>
+    <row><cell>1</cell><cell>3&apos;23&quot;34</cell><cell>KPP</cell></row>
+    <row><cell>2</cell><cell>3&apos;23&quot;71</cell><cell>DJK</cell></row>
+    <row><cell>3</cell><cell>3&apos;28&quot;21</cell><cell>PPP</cell></row>
+    <row><cell>4</cell><cell>3&apos;29&quot;03</cell><cell>   </cell></row>
+    <row><cell>5</cell><cell>4&apos;00&quot;00</cell><cell>YU.</cell></row>
+    <row><cell>6</cell><cell>4&apos;05&quot;00</cell><cell>RNS</cell></row>
+    <row><cell>7</cell><cell>4&apos;10&quot;00</cell><cell>TKG</cell></row>
+    <row><cell>8</cell><cell>4&apos;15&quot;00</cell><cell>NAG</cell></row>
+    <row><cell>9</cell><cell>4&apos;20&quot;00</cell><cell>ISI</cell></row>
+    <row><cell>10</cell><cell>4&apos;25&quot;00</cell><cell>MAS</cell></row>
+    <row><cell>11</cell><cell>4&apos;30&quot;00</cell><cell>MIT</cell></row>
+    <row><cell>12</cell><cell>4&apos;35&quot;00</cell><cell>SHO</cell></row>
+    <row><cell>13</cell><cell>4&apos;40&quot;00</cell><cell>KUN</cell></row>
+    <row><cell>14</cell><cell>4&apos;45&quot;00</cell><cell>HOS</cell></row>
+    <row><cell>15</cell><cell>4&apos;50&quot;00</cell><cell>SIN</cell></row>
+    <row><cell>16</cell><cell>4&apos;55&quot;00</cell><cell>GOS</cell></row>
+    <row><cell>17</cell><cell>5&apos;00&quot;00</cell><cell>DEK</cell></row>
+    <row><cell>18</cell><cell>5&apos;05&quot;00</cell><cell>KEN</cell></row>
+    <row><cell>19</cell><cell>5&apos;10&quot;00</cell><cell>IKE</cell></row>
+    <row><cell>20</cell><cell>5&apos;15&quot;00</cell><cell>YAC</cell></row>
+    <row><cell>21</cell><cell>5&apos;20&quot;00</cell><cell>NAO</cell></row>
+    <row><cell>22</cell><cell>5&apos;25&quot;00</cell><cell>KAW</cell></row>
+    <row><cell>23</cell><cell>5&apos;30&quot;00</cell><cell>TAN</cell></row>
+    <row><cell>24</cell><cell>5&apos;35&quot;00</cell><cell>INO</cell></row>
+  </table>
+  <table id="MEDIUM COURSE RANKING">
+    <col>RANK</col><col>TIME</col><col>NAME</col>
+    <row><cell>1</cell><cell>4&apos;00&quot;00</cell><cell>YU.</cell></row>
+    <row><cell>2</cell><cell>4&apos;05&quot;00</cell><cell>RNS</cell></row>
+    <row><cell>3</cell><cell>4&apos;10&quot;00</cell><cell>TKG</cell></row>
+    <row><cell>4</cell><cell>4&apos;15&quot;00</cell><cell>NAG</cell></row>
+    <row><cell>5</cell><cell>4&apos;20&quot;00</cell><cell>ISI</cell></row>
+    <row><cell>6</cell><cell>4&apos;25&quot;00</cell><cell>MAS</cell></row>
+    <row><cell>7</cell><cell>4&apos;30&quot;00</cell><cell>MIT</cell></row>
+    <row><cell>8</cell><cell>4&apos;35&quot;00</cell><cell>SHO</cell></row>
+    <row><cell>9</cell><cell>4&apos;40&quot;00</cell><cell>KUN</cell></row>
+    <row><cell>10</cell><cell>4&apos;45&quot;00</cell><cell>HOS</cell></row>
+    <row><cell>11</cell><cell>4&apos;50&quot;00</cell><cell>SIN</cell></row>
+    <row><cell>12</cell><cell>4&apos;55&quot;00</cell><cell>GOS</cell></row>
+    <row><cell>13</cell><cell>5&apos;00&quot;00</cell><cell>DEK</cell></row>
+    <row><cell>14</cell><cell>5&apos;05&quot;00</cell><cell>KEN</cell></row>
+    <row><cell>15</cell><cell>5&apos;10&quot;00</cell><cell>IKE</cell></row>
+    <row><cell>16</cell><cell>5&apos;15&quot;00</cell><cell>YAC</cell></row>
+    <row><cell>17</cell><cell>5&apos;20&quot;00</cell><cell>NAO</cell></row>
+    <row><cell>18</cell><cell>5&apos;25&quot;00</cell><cell>KAW</cell></row>
+    <row><cell>19</cell><cell>5&apos;30&quot;00</cell><cell>TAN</cell></row>
+    <row><cell>20</cell><cell>5&apos;35&quot;00</cell><cell>INO</cell></row>
+    <row><cell>21</cell><cell>5&apos;40&quot;00</cell><cell>YAM</cell></row>
+    <row><cell>22</cell><cell>5&apos;45&quot;00</cell><cell>   </cell></row>
+    <row><cell>23</cell><cell>5&apos;50&quot;00</cell><cell>   </cell></row>
+    <row><cell>24</cell><cell>5&apos;55&quot;00</cell><cell>   </cell></row>
+  </table>
+  <table id="EXPERT COURSE RANKING">
+    <col>RANK</col><col>TIME</col><col>NAME</col>
+    <row><cell>1</cell><cell>5&apos;00&quot;00</cell><cell>YU.</cell></row>
+    <row><cell>2</cell><cell>5&apos;05&quot;00</cell><cell>RNS</cell></row>
+    <row><cell>3</cell><cell>5&apos;10&quot;00</cell><cell>TKG</cell></row>
+    <row><cell>4</cell><cell>5&apos;15&quot;00</cell><cell>NAG</cell></row>
+    <row><cell>5</cell><cell>5&apos;20&quot;00</cell><cell>ISI</cell></row>
+    <row><cell>6</cell><cell>5&apos;25&quot;00</cell><cell>MAS</cell></row>
+    <row><cell>7</cell><cell>5&apos;30&quot;00</cell><cell>MIT</cell></row>
+    <row><cell>8</cell><cell>5&apos;35&quot;00</cell><cell>SHO</cell></row>
+    <row><cell>9</cell><cell>5&apos;40&quot;00</cell><cell>KUN</cell></row>
+    <row><cell>10</cell><cell>5&apos;45&quot;00</cell><cell>HOS</cell></row>
+    <row><cell>11</cell><cell>5&apos;50&quot;00</cell><cell>SIN</cell></row>
+    <row><cell>12</cell><cell>5&apos;55&quot;00</cell><cell>GOS</cell></row>
+    <row><cell>13</cell><cell>6&apos;00&quot;00</cell><cell>DEK</cell></row>
+    <row><cell>14</cell><cell>6&apos;05&quot;00</cell><cell>KEN</cell></row>
+    <row><cell>15</cell><cell>6&apos;10&quot;00</cell><cell>IKE</cell></row>
+    <row><cell>16</cell><cell>6&apos;15&quot;00</cell><cell>YAC</cell></row>
+    <row><cell>17</cell><cell>6&apos;20&quot;00</cell><cell>NAO</cell></row>
+    <row><cell>18</cell><cell>6&apos;25&quot;00</cell><cell>KAW</cell></row>
+    <row><cell>19</cell><cell>6&apos;30&quot;00</cell><cell>TAN</cell></row>
+    <row><cell>20</cell><cell>6&apos;35&quot;00</cell><cell>INO</cell></row>
+    <row><cell>21</cell><cell>6&apos;40&quot;00</cell><cell>YAM</cell></row>
+    <row><cell>22</cell><cell>6&apos;45&quot;00</cell><cell>   </cell></row>
+    <row><cell>23</cell><cell>6&apos;50&quot;00</cell><cell>   </cell></row>
+    <row><cell>24</cell><cell>6&apos;55&quot;00</cell><cell>   </cell></row>
+  </table>
+</hi2txt>

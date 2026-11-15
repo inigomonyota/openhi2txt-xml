@@ -1,0 +1,66 @@
+<hi2txt>
+  <table id="TYRONE'S BEST">
+    <col>COACH&apos;S INITIALS</col><col>POINTS</col><col>SHOT %</col><col>STEALS</col><col>REBOUNDS</col>
+    <row><cell>JLN</cell><cell>35</cell><cell>60%</cell><cell>13</cell><cell>11</cell></row>
+    <row><cell>TIN</cell><cell>30</cell><cell>56%</cell><cell>11</cell><cell>10</cell></row>
+    <row><cell>DLN</cell><cell>26</cell><cell>48%</cell><cell>10</cell><cell>13</cell></row>
+    <row><cell>MIN</cell><cell>22</cell><cell>53%</cell><cell>12</cell><cell>12</cell></row>
+    <row><cell>TIG</cell><cell>15</cell><cell>52%</cell><cell>11</cell><cell>14</cell></row>
+  </table>
+  <table id="VINNIE'S BEST">
+    <col>COACH&apos;S INITIALS</col><col>POINTS</col><col>SHOT %</col><col>STEALS</col><col>REBOUNDS</col>
+    <row><cell>BFC</cell><cell>31</cell><cell>67%</cell><cell>10</cell><cell>3</cell></row>
+    <row><cell>RAE</cell><cell>30</cell><cell>48%</cell><cell>3</cell><cell>6</cell></row>
+    <row><cell>JBC</cell><cell>23</cell><cell>70%</cell><cell>6</cell><cell>4</cell></row>
+    <row><cell>NEW</cell><cell>20</cell><cell>35%</cell><cell>4</cell><cell>2</cell></row>
+    <row><cell>BAB</cell><cell>15</cell><cell>19%</cell><cell>2</cell><cell>9</cell></row>
+  </table>
+  <table id="HAMMER'S BEST">
+    <col>COACH&apos;S INITIALS</col><col>POINTS</col><col>SHOT %</col><col>STEALS</col><col>REBOUNDS</col>
+    <row><cell>AJM</cell><cell>34</cell><cell>43%</cell><cell>3</cell><cell>25</cell></row>
+    <row><cell>ADM</cell><cell>26</cell><cell>45%</cell><cell>4</cell><cell>21</cell></row>
+    <row><cell>RM@</cell><cell>24</cell><cell>39%</cell><cell>1</cell><cell>16</cell></row>
+    <row><cell>KMM</cell><cell>21</cell><cell>53%</cell><cell>7</cell><cell>19</cell></row>
+    <row><cell>AJ*</cell><cell>14</cell><cell>58%</cell><cell>5</cell><cell>15</cell></row>
+  </table>
+  <table id="MOOSE'S BEST">
+    <col>COACH&apos;S INITIALS</col><col>POINTS</col><col>SHOT %</col><col>STEALS</col><col>REBOUNDS</col>
+    <row><cell>BJR</cell><cell>32</cell><cell>53%</cell><cell>6</cell><cell>4</cell></row>
+    <row><cell>REA</cell><cell>30</cell><cell>75%</cell><cell>2</cell><cell>6</cell></row>
+    <row><cell>IFE</cell><cell>28</cell><cell>65%</cell><cell>6</cell><cell>9</cell></row>
+    <row><cell>AF.</cell><cell>21</cell><cell>44%</cell><cell>4</cell><cell>6</cell></row>
+    <row><cell>N* </cell><cell>17</cell><cell>66%</cell><cell>3</cell><cell>5</cell></row>
+  </table>
+  <table id="LEWIS'S BEST">
+    <col>COACH&apos;S INITIALS</col><col>POINTS</col><col>SHOT %</col><col>STEALS</col><col>REBOUNDS</col>
+    <row><cell>SMP</cell><cell>34</cell><cell>81%</cell><cell>6</cell><cell>4</cell></row>
+    <row><cell>RC!</cell><cell>30</cell><cell>70%</cell><cell>3</cell><cell>2</cell></row>
+    <row><cell>  I</cell><cell>26</cell><cell>75%</cell><cell>4</cell><cell>5</cell></row>
+    <row><cell>L.C</cell><cell>24</cell><cell>68%</cell><cell>2</cell><cell>3</cell></row>
+    <row><cell>PWE</cell><cell>17</cell><cell>72%</cell><cell>4</cell><cell>7</cell></row>
+  </table>
+  <table id="BLADE'S BEST">
+    <col>COACH&apos;S INITIALS</col><col>POINTS</col><col>SHOT %</col><col>STEALS</col><col>REBOUNDS</col>
+    <row><cell>WBG</cell><cell>32</cell><cell>52%</cell><cell>8</cell><cell>8</cell></row>
+    <row><cell>KWC</cell><cell>26</cell><cell>78%</cell><cell>11</cell><cell>4</cell></row>
+    <row><cell>JBC</cell><cell>23</cell><cell>74%</cell><cell>6</cell><cell>7</cell></row>
+    <row><cell>JC@</cell><cell>19</cell><cell>37%</cell><cell>4</cell><cell>6</cell></row>
+    <row><cell>LRD</cell><cell>18</cell><cell>45%</cell><cell>3</cell><cell>4</cell></row>
+  </table>
+  <table id="MOHAWK'S BEST">
+    <col>COACH&apos;S INITIALS</col><col>POINTS</col><col>SHOT %</col><col>STEALS</col><col>REBOUNDS</col>
+    <row><cell>AOK</cell><cell>34</cell><cell>58%</cell><cell>21</cell><cell>8</cell></row>
+    <row><cell>LEO</cell><cell>30</cell><cell>75%</cell><cell>18</cell><cell>6</cell></row>
+    <row><cell>DAN</cell><cell>26</cell><cell>48%</cell><cell>17</cell><cell>13</cell></row>
+    <row><cell>D*W</cell><cell>24</cell><cell>63%</cell><cell>12</cell><cell>5</cell></row>
+    <row><cell>JC*</cell><cell>18</cell><cell>52%</cell><cell>18</cell><cell>7</cell></row>
+  </table>
+  <table id="REGGIE'S BEST">
+    <col>COACH&apos;S INITIALS</col><col>POINTS</col><col>SHOT %</col><col>STEALS</col><col>REBOUNDS</col>
+    <row><cell>LEO</cell><cell>32</cell><cell>40%</cell><cell>5</cell><cell>10</cell></row>
+    <row><cell>MA@</cell><cell>30</cell><cell>63%</cell><cell>3</cell><cell>6</cell></row>
+    <row><cell>MMN</cell><cell>26</cell><cell>53%</cell><cell>6</cell><cell>4</cell></row>
+    <row><cell>LMB</cell><cell>25</cell><cell>56%</cell><cell>4</cell><cell>2</cell></row>
+    <row><cell>CJB</cell><cell>17</cell><cell>46%</cell><cell>4</cell><cell>5</cell></row>
+  </table>
+</hi2txt>

@@ -1,0 +1,12 @@
+# SCORE RANKING
+RANK|RATE|STAGE|NAME
+1ST|30 %|| ? 
+2ND|20 %||M.O
+3RD|15 %||T.M
+4TH|14 %||T.O
+5TH|13 %||M.K
+6TH|12 %||T.H
+7TH|11 %||A.I
+8TH|9 %||H.S
+9TH|8 %||M.I
+10TH|7 %||M.O

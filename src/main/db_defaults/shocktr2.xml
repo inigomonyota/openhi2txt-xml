@@ -1,0 +1,52 @@
+<hi2txt>
+  <table id="RANKING -ALL-">
+    <col>RANK</col><col>SCORE</col><col>HERO</col><col>NAME</col><col>CLASS</col><col>STAGE</col>
+    <row><cell>1ST</cell><cell>1000000</cell><cell>LEON</cell><cell>LEO</cell><cell>PLATOON SERGEANT</cell><cell>1</cell></row>
+    <row><cell>2ND</cell><cell>1000000</cell><cell>ANGEL</cell><cell>ANG</cell><cell>PLATOON SERGEANT</cell><cell>1</cell></row>
+    <row><cell>3RD</cell><cell>1000000</cell><cell>LULU</cell><cell>L.L</cell><cell>PLATOON SERGEANT</cell><cell>1</cell></row>
+    <row><cell>4TH</cell><cell>1000000</cell><cell>TOY</cell><cell>TOY</cell><cell>PLATOON SERGEANT</cell><cell>1</cell></row>
+    <row><cell>5TH</cell><cell>800000</cell><cell>LEON</cell><cell>JAC</cell><cell>STAFF SERGEANT</cell><cell>1</cell></row>
+    <row><cell>6TH</cell><cell>800000</cell><cell>ANGEL</cell><cell>MLK</cell><cell>STAFF SERGEANT</cell><cell>1</cell></row>
+    <row><cell>7TH</cell><cell>800000</cell><cell>LULU</cell><cell>MRB</cell><cell>STAFF SERGEANT</cell><cell>1</cell></row>
+  </table>
+  <table id="RANKING -LEON-">
+    <col>RANK</col><col>SCORE</col><col>HERO</col><col>NAME</col><col>CLASS</col><col>STAGE</col>
+    <row><cell>1ST</cell><cell>1000000</cell><cell>LEON</cell><cell>LEO</cell><cell>PLATOON SERGEANT</cell><cell>1</cell></row>
+    <row><cell>2ND</cell><cell>800000</cell><cell>LEON</cell><cell>JAC</cell><cell>STAFF SERGEANT</cell><cell>1</cell></row>
+    <row><cell>3RD</cell><cell>600000</cell><cell>LEON</cell><cell>SCL</cell><cell>SERGEANT</cell><cell>1</cell></row>
+    <row><cell>4TH</cell><cell>500000</cell><cell>LEON</cell><cell>DMD</cell><cell>CORPORAL</cell><cell>1</cell></row>
+    <row><cell>5TH</cell><cell>400000</cell><cell>LEON</cell><cell>DIO</cell><cell>PRIVATE FIRST CLASS</cell><cell>1</cell></row>
+    <row><cell>6TH</cell><cell>300000</cell><cell>LEON</cell><cell>DLT</cell><cell>PRIVATE E-2</cell><cell>1</cell></row>
+    <row><cell>7TH</cell><cell>200000</cell><cell>LEON</cell><cell>STM</cell><cell>PRIVATE</cell><cell>1</cell></row>
+  </table>
+  <table id="RANKING -ANGEL-">
+    <col>RANK</col><col>SCORE</col><col>HERO</col><col>NAME</col><col>CLASS</col><col>STAGE</col>
+    <row><cell>1ST</cell><cell>1000000</cell><cell>ANGEL</cell><cell>ANG</cell><cell>PLATOON SERGEANT</cell><cell>1</cell></row>
+    <row><cell>2ND</cell><cell>800000</cell><cell>ANGEL</cell><cell>MLK</cell><cell>STAFF SERGEANT</cell><cell>1</cell></row>
+    <row><cell>3RD</cell><cell>600000</cell><cell>ANGEL</cell><cell>STN</cell><cell>SERGEANT</cell><cell>1</cell></row>
+    <row><cell>4TH</cell><cell>500000</cell><cell>ANGEL</cell><cell>CRS</cell><cell>CORPORAL</cell><cell>1</cell></row>
+    <row><cell>5TH</cell><cell>400000</cell><cell>ANGEL</cell><cell>BSG</cell><cell>PRIVATE FIRST CLASS</cell><cell>1</cell></row>
+    <row><cell>6TH</cell><cell>300000</cell><cell>ANGEL</cell><cell>DON</cell><cell>PRIVATE E-2</cell><cell>1</cell></row>
+    <row><cell>7TH</cell><cell>200000</cell><cell>ANGEL</cell><cell>301</cell><cell>PRIVATE</cell><cell>1</cell></row>
+  </table>
+  <table id="RANKING -LULU-">
+    <col>RANK</col><col>SCORE</col><col>HERO</col><col>NAME</col><col>CLASS</col><col>STAGE</col>
+    <row><cell>1ST</cell><cell>1000000</cell><cell>LULU</cell><cell>L.L</cell><cell>PLATOON SERGEANT</cell><cell>1</cell></row>
+    <row><cell>2ND</cell><cell>800000</cell><cell>LULU</cell><cell>MRB</cell><cell>STAFF SERGEANT</cell><cell>1</cell></row>
+    <row><cell>3RD</cell><cell>600000</cell><cell>LULU</cell><cell>RIO</cell><cell>SERGEANT</cell><cell>1</cell></row>
+    <row><cell>4TH</cell><cell>500000</cell><cell>LULU</cell><cell>LOK</cell><cell>CORPORAL</cell><cell>1</cell></row>
+    <row><cell>5TH</cell><cell>400000</cell><cell>LULU</cell><cell>DIC</cell><cell>PRIVATE FIRST CLASS</cell><cell>1</cell></row>
+    <row><cell>6TH</cell><cell>300000</cell><cell>LULU</cell><cell>NAK</cell><cell>PRIVATE E-2</cell><cell>1</cell></row>
+    <row><cell>7TH</cell><cell>200000</cell><cell>LULU</cell><cell>TOM</cell><cell>PRIVATE</cell><cell>1</cell></row>
+  </table>
+  <table id="RANKING -TOY-">
+    <col>RANK</col><col>SCORE</col><col>HERO</col><col>NAME</col><col>CLASS</col><col>STAGE</col>
+    <row><cell>1ST</cell><cell>1000000</cell><cell>TOY</cell><cell>TOY</cell><cell>PLATOON SERGEANT</cell><cell>1</cell></row>
+    <row><cell>2ND</cell><cell>800000</cell><cell>TOY</cell><cell>MAR</cell><cell>STAFF SERGEANT</cell><cell>1</cell></row>
+    <row><cell>3RD</cell><cell>600000</cell><cell>TOY</cell><cell>BIG</cell><cell>SERGEANT</cell><cell>1</cell></row>
+    <row><cell>4TH</cell><cell>500000</cell><cell>TOY</cell><cell>MAM</cell><cell>CORPORAL</cell><cell>1</cell></row>
+    <row><cell>5TH</cell><cell>400000</cell><cell>TOY</cell><cell>AND</cell><cell>PRIVATE FIRST CLASS</cell><cell>1</cell></row>
+    <row><cell>6TH</cell><cell>300000</cell><cell>TOY</cell><cell>SON</cell><cell>PRIVATE E-2</cell><cell>1</cell></row>
+    <row><cell>7TH</cell><cell>200000</cell><cell>TOY</cell><cell>SRS</cell><cell>PRIVATE</cell><cell>1</cell></row>
+  </table>
+</hi2txt>

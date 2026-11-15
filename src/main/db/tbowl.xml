@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- tbowl by Tecmo, 1987 -->
+<!-- hiscore.dat: @:maincpu,program,8015,b4,41,01 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>180</size>
+    </check>
+
+    <!-- BLOCK 1: TOP 10 RUNNERS (50 bytes) -->
+    <!-- Record: 3(Name) + 1(Pad) + 1(Distance BCD) -->
+    <loop count="10">
+      <elt size="3" type="text" id="R_NAME" charset="tecmo_bowl"/>
+      <elt size="1" type="raw"  id="R_PAD"/>
+      <elt size="1" type="int"  id="R_YARDS" base="16"/>
+    </loop>
+
+    <!-- BLOCK 2: TOP 10 PASSERS (50 bytes) -->
+    <loop count="10">
+      <elt size="3" type="text" id="P_NAME" charset="tecmo_bowl"/>
+      <elt size="1" type="raw"  id="P_PAD"/>
+      <elt size="1" type="int"  id="P_YARDS" base="16"/>
+    </loop>
+
+    <!-- BLOCK 3: TOP 10 INTERCEPTERS (40 bytes) -->
+    <!-- Note: Padding is missing in the score/defender tables -->
+    <loop count="10">
+      <elt size="3" type="text" id="I_NAME" charset="tecmo_bowl"/>
+      <elt size="1" type="int"  id="I_SCORE" base="16"/>
+    </loop>
+
+    <!-- BLOCK 4: TOP 10 DEFENDERS (40 bytes) -->
+    <loop count="10">
+      <elt size="3" type="text" id="D_NAME" charset="tecmo_bowl"/>
+      <elt size="1" type="int"  id="D_SCORE" base="16"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TOP 10 RUNNERS">
+      <column id="RANK"     src="index"   format="ordinal"/>
+      <column id="NAME"     src="R_NAME"/>
+      <column id="DISTANCE" src="R_YARDS" format="Suffix YARDS"/>
+    </table>
+
+    <table id="TOP 10 PASSERS">
+      <column id="RANK"     src="index"   format="ordinal"/>
+      <column id="NAME"     src="P_NAME"/>
+      <column id="DISTANCE" src="P_YARDS" format="Suffix YARDS"/>
+    </table>
+
+    <table id="TOP 10 INTERCEPTERS">
+      <column id="RANK"  src="index"   format="ordinal"/>
+      <column id="NAME"  src="I_NAME"/>
+      <column id="SCORE" src="I_SCORE"/>
+    </table>
+
+    <table id="TOP 10 DEFENDERS">
+      <column id="RANK"  src="index"   format="ordinal"/>
+      <column id="NAME"  src="D_NAME"/>
+      <column id="SCORE" src="D_SCORE"/>
+    </table>
+  </output>
+
+  <!-- Translates 0-9 into 1ST-10TH -->
+  <format id="ordinal">
+    <case src="0" dst="1ST"/><case src="1" dst="2ND"/><case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/><case src="4" dst="5TH"/><case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/><case src="7" dst="8TH"/><case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+
+  <!-- Special Charset for Tecmo Bowl Symbols -->
+  <charset id="tecmo_bowl">
+    <char src="0x40" dst="&amp;"/>
+    <char src="0x5B" dst="."/>
+  </charset>
+
+</hi2txt>

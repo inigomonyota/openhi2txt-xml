@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Bio-ship Paladin">
+  <!--
+    hiscore.dat: three blocks (172 raw bytes total)
+      @:maincpu,program,f0150,8   -> 8 bytes flags (skip)
+      @:maincpu,program,f0169,a3  -> 163 bytes table (16-bit interleaved, byte-skip="even")
+      @:maincpu,program,f0207,1   -> 1 byte sentinel (skip)
+    16-bit interleaved: meaningful data in even (low) bytes.
+    Record (8 meaningful bytes each):
+      bytes 0-2: score, 3-byte BCD, displayed value = stored * 10
+      bytes 3-5: name, 3-byte ASCII
+      byte  6:   round (raw - encoding unclear, 0x00=1R, 0x04=2R)
+      byte  7:   time (plain int)
+    2-byte header before entries, last raw byte of block 2 missing (163 is odd).
+  //-->
+
+  <structure file="hi">
+    <check>
+      <size>172</size>
+    </check>
+    <elt size="8"   type="int" id="HIGH" byte-skip="odd" base="16"/>
+    <elt size="4"   type="raw" id="HEADER"/>
+    <loop count="10">
+      <elt size="6"  type="int"  id="SCORE"  byte-skip="even" base="16" table-index="loop_index"/>
+      <elt size="6"  type="text" id="NAME"   byte-skip="even" ascii-offset="0" table-index="loop_index"/>
+      <elt size="2"  type="int"  id="ROUND"  byte-skip="even" table-index="loop_index"/>
+      <elt size="2"  type="raw"  id="TIME"   byte-skip="even" table-index="loop_index"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORE">
+      <column id="SCORE" src="HIGH" format="*10"/>
+    </table>
+    <table id="TODAY'S TOP 10">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" format="*10"/>
+      <column id="NAME"/>
+      <column id="ROUND" format="round"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <case src="0"  dst="1."/>
+    <case src="1"  dst="2."/>
+    <case src="2"  dst="3."/>
+    <case src="3"  dst="4."/>
+    <case src="4"  dst="5."/>
+    <case src="5"  dst="6."/>
+    <case src="6"  dst="7."/>
+    <case src="7"  dst="8."/>
+    <case src="8"  dst="9."/>
+    <case src="9"  dst="10"/>
+  </format>
+  <format id="round">
+    <case src="0"  dst="1R"/>
+    <case src="4"  dst="2R"/>
+    <case src="8"  dst="3R"/>
+    <case src="12" dst="4R"/>
+    <case src="16" dst="5R"/>
+    <case src="20" dst="6R"/>
+    <case src="24" dst="7R"/>
+    <case src="28" dst="8R"/>
+  </format>
+  <format id="*10"><multiply>10</multiply></format>
+
+</hi2txt>

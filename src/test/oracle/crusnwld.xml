@@ -1,0 +1,197 @@
+<hi2txt>
+  <table id="JAPAN">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>ELP</cell><cell>01:54:70</cell></row>
+    <row><cell>2</cell><cell>DRJ</cell><cell>01:55:38</cell></row>
+    <row><cell>3</cell><cell>SRP</cell><cell>01:56:05</cell></row>
+    <row><cell>4</cell><cell>SXC</cell><cell>01:56:72</cell></row>
+    <row><cell>5</cell><cell>TED</cell><cell>01:57:40</cell></row>
+    <row><cell>6</cell><cell>MAT</cell><cell>01:58:07</cell></row>
+    <row><cell>7</cell><cell>V P</cell><cell>01:58:74</cell></row>
+    <row><cell>8</cell><cell>RAY</cell><cell>01:59:41</cell></row>
+    <row><cell>9</cell><cell>NIK</cell><cell>02:00:09</cell></row>
+    <row><cell>10</cell><cell>YOU</cell><cell>02:00:76</cell></row>
+  </table>
+  <table id="ENGLAND">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>ELP</cell><cell>02:00:81</cell></row>
+    <row><cell>2</cell><cell>DRJ</cell><cell>02:01:49</cell></row>
+    <row><cell>3</cell><cell>SRP</cell><cell>02:02:16</cell></row>
+    <row><cell>4</cell><cell>SXC</cell><cell>02:02:83</cell></row>
+    <row><cell>5</cell><cell>TED</cell><cell>02:03:50</cell></row>
+    <row><cell>6</cell><cell>MAT</cell><cell>02:04:18</cell></row>
+    <row><cell>7</cell><cell>V P</cell><cell>02:04:85</cell></row>
+    <row><cell>8</cell><cell>RAY</cell><cell>02:05:52</cell></row>
+    <row><cell>9</cell><cell>NIK</cell><cell>02:06:20</cell></row>
+    <row><cell>10</cell><cell>YOU</cell><cell>02:06:87</cell></row>
+  </table>
+  <table id="AFRICA">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>ELP</cell><cell>01:57:76</cell></row>
+    <row><cell>2</cell><cell>DRJ</cell><cell>01:58:43</cell></row>
+    <row><cell>3</cell><cell>SRP</cell><cell>01:59:10</cell></row>
+    <row><cell>4</cell><cell>SXC</cell><cell>01:59:78</cell></row>
+    <row><cell>5</cell><cell>TED</cell><cell>02:00:45</cell></row>
+    <row><cell>6</cell><cell>MAT</cell><cell>02:01:12</cell></row>
+    <row><cell>7</cell><cell>V P</cell><cell>02:01:80</cell></row>
+    <row><cell>8</cell><cell>RAY</cell><cell>02:02:47</cell></row>
+    <row><cell>9</cell><cell>NIK</cell><cell>02:03:14</cell></row>
+    <row><cell>10</cell><cell>YOU</cell><cell>02:03:81</cell></row>
+  </table>
+  <table id="ITALY">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>ELP</cell><cell>01:52:67</cell></row>
+    <row><cell>2</cell><cell>DRJ</cell><cell>01:53:34</cell></row>
+    <row><cell>3</cell><cell>SRP</cell><cell>01:54:01</cell></row>
+    <row><cell>4</cell><cell>SXC</cell><cell>01:54:69</cell></row>
+    <row><cell>5</cell><cell>TED</cell><cell>01:55:36</cell></row>
+    <row><cell>6</cell><cell>MAT</cell><cell>01:56:03</cell></row>
+    <row><cell>7</cell><cell>V P</cell><cell>01:56:70</cell></row>
+    <row><cell>8</cell><cell>RAY</cell><cell>01:57:38</cell></row>
+    <row><cell>9</cell><cell>NIK</cell><cell>01:58:05</cell></row>
+    <row><cell>10</cell><cell>YOU</cell><cell>01:58:72</cell></row>
+  </table>
+  <table id="FLORIDA">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>ELP</cell><cell>01:48:60</cell></row>
+    <row><cell>2</cell><cell>DRJ</cell><cell>01:49:27</cell></row>
+    <row><cell>3</cell><cell>SRP</cell><cell>01:49:94</cell></row>
+    <row><cell>4</cell><cell>SXC</cell><cell>01:50:61</cell></row>
+    <row><cell>5</cell><cell>TED</cell><cell>01:51:29</cell></row>
+    <row><cell>6</cell><cell>MAT</cell><cell>01:51:96</cell></row>
+    <row><cell>7</cell><cell>V P</cell><cell>01:52:63</cell></row>
+    <row><cell>8</cell><cell>RAY</cell><cell>01:53:30</cell></row>
+    <row><cell>9</cell><cell>NIK</cell><cell>01:53:98</cell></row>
+    <row><cell>10</cell><cell>YOU</cell><cell>01:54:65</cell></row>
+  </table>
+  <table id="MOSCOW">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>ELP</cell><cell>01:50:63</cell></row>
+    <row><cell>2</cell><cell>DRJ</cell><cell>01:51:30</cell></row>
+    <row><cell>3</cell><cell>SRP</cell><cell>01:51:98</cell></row>
+    <row><cell>4</cell><cell>SXC</cell><cell>01:52:65</cell></row>
+    <row><cell>5</cell><cell>TED</cell><cell>01:53:32</cell></row>
+    <row><cell>6</cell><cell>MAT</cell><cell>01:54:00</cell></row>
+    <row><cell>7</cell><cell>V P</cell><cell>01:54:67</cell></row>
+    <row><cell>8</cell><cell>RAY</cell><cell>01:55:34</cell></row>
+    <row><cell>9</cell><cell>NIK</cell><cell>01:56:01</cell></row>
+    <row><cell>10</cell><cell>YOU</cell><cell>01:56:69</cell></row>
+  </table>
+  <table id="CHINA">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>ELP</cell><cell>02:03:87</cell></row>
+    <row><cell>2</cell><cell>DRJ</cell><cell>02:04:54</cell></row>
+    <row><cell>3</cell><cell>SRP</cell><cell>02:05:21</cell></row>
+    <row><cell>4</cell><cell>SXC</cell><cell>02:05:89</cell></row>
+    <row><cell>5</cell><cell>TED</cell><cell>02:06:56</cell></row>
+    <row><cell>6</cell><cell>MAT</cell><cell>02:07:23</cell></row>
+    <row><cell>7</cell><cell>V P</cell><cell>02:07:90</cell></row>
+    <row><cell>8</cell><cell>RAY</cell><cell>02:08:58</cell></row>
+    <row><cell>9</cell><cell>NIK</cell><cell>02:09:25</cell></row>
+    <row><cell>10</cell><cell>YOU</cell><cell>02:09:92</cell></row>
+  </table>
+  <table id="MEXICO">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>ELP</cell><cell>02:00:81</cell></row>
+    <row><cell>2</cell><cell>DRJ</cell><cell>02:01:49</cell></row>
+    <row><cell>3</cell><cell>SRP</cell><cell>02:02:16</cell></row>
+    <row><cell>4</cell><cell>SXC</cell><cell>02:02:83</cell></row>
+    <row><cell>5</cell><cell>TED</cell><cell>02:03:50</cell></row>
+    <row><cell>6</cell><cell>MAT</cell><cell>02:04:18</cell></row>
+    <row><cell>7</cell><cell>V P</cell><cell>02:04:85</cell></row>
+    <row><cell>8</cell><cell>RAY</cell><cell>02:05:52</cell></row>
+    <row><cell>9</cell><cell>NIK</cell><cell>02:06:20</cell></row>
+    <row><cell>10</cell><cell>YOU</cell><cell>02:06:87</cell></row>
+  </table>
+  <table id="GERMANY">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>ELP</cell><cell>01:54:70</cell></row>
+    <row><cell>2</cell><cell>DRJ</cell><cell>01:55:38</cell></row>
+    <row><cell>3</cell><cell>SRP</cell><cell>01:56:05</cell></row>
+    <row><cell>4</cell><cell>SXC</cell><cell>01:56:72</cell></row>
+    <row><cell>5</cell><cell>TED</cell><cell>01:57:40</cell></row>
+    <row><cell>6</cell><cell>MAT</cell><cell>01:58:07</cell></row>
+    <row><cell>7</cell><cell>V P</cell><cell>01:58:74</cell></row>
+    <row><cell>8</cell><cell>RAY</cell><cell>01:59:41</cell></row>
+    <row><cell>9</cell><cell>NIK</cell><cell>02:00:09</cell></row>
+    <row><cell>10</cell><cell>YOU</cell><cell>02:00:76</cell></row>
+  </table>
+  <table id="NEW YORK">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>ELP</cell><cell>01:44:52</cell></row>
+    <row><cell>2</cell><cell>DRJ</cell><cell>01:45:20</cell></row>
+    <row><cell>3</cell><cell>SRP</cell><cell>01:45:87</cell></row>
+    <row><cell>4</cell><cell>SXC</cell><cell>01:46:54</cell></row>
+    <row><cell>5</cell><cell>TED</cell><cell>01:47:21</cell></row>
+    <row><cell>6</cell><cell>MAT</cell><cell>01:47:89</cell></row>
+    <row><cell>7</cell><cell>V P</cell><cell>01:48:56</cell></row>
+    <row><cell>8</cell><cell>RAY</cell><cell>01:49:23</cell></row>
+    <row><cell>9</cell><cell>NIK</cell><cell>01:49:90</cell></row>
+    <row><cell>10</cell><cell>YOU</cell><cell>01:50:58</cell></row>
+  </table>
+  <table id="HAWAII">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>ELP</cell><cell>01:59:80</cell></row>
+    <row><cell>2</cell><cell>DRJ</cell><cell>02:00:47</cell></row>
+    <row><cell>3</cell><cell>SRP</cell><cell>02:01:14</cell></row>
+    <row><cell>4</cell><cell>SXC</cell><cell>02:01:81</cell></row>
+    <row><cell>5</cell><cell>TED</cell><cell>02:02:49</cell></row>
+    <row><cell>6</cell><cell>MAT</cell><cell>02:03:16</cell></row>
+    <row><cell>7</cell><cell>V P</cell><cell>02:03:83</cell></row>
+    <row><cell>8</cell><cell>RAY</cell><cell>02:04:50</cell></row>
+    <row><cell>9</cell><cell>NIK</cell><cell>02:05:18</cell></row>
+    <row><cell>10</cell><cell>YOU</cell><cell>02:05:85</cell></row>
+  </table>
+  <table id="EGYPT">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>ELP</cell><cell>02:01:83</cell></row>
+    <row><cell>2</cell><cell>DRJ</cell><cell>02:02:50</cell></row>
+    <row><cell>3</cell><cell>SRP</cell><cell>02:03:18</cell></row>
+    <row><cell>4</cell><cell>SXC</cell><cell>02:03:85</cell></row>
+    <row><cell>5</cell><cell>TED</cell><cell>02:04:52</cell></row>
+    <row><cell>6</cell><cell>MAT</cell><cell>02:05:20</cell></row>
+    <row><cell>7</cell><cell>V P</cell><cell>02:05:87</cell></row>
+    <row><cell>8</cell><cell>RAY</cell><cell>02:06:54</cell></row>
+    <row><cell>9</cell><cell>NIK</cell><cell>02:07:21</cell></row>
+    <row><cell>10</cell><cell>YOU</cell><cell>02:07:89</cell></row>
+  </table>
+  <table id="FRANCE">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>ELP</cell><cell>01:57:76</cell></row>
+    <row><cell>2</cell><cell>DRJ</cell><cell>01:58:43</cell></row>
+    <row><cell>3</cell><cell>SRP</cell><cell>01:59:10</cell></row>
+    <row><cell>4</cell><cell>SXC</cell><cell>01:59:78</cell></row>
+    <row><cell>5</cell><cell>TED</cell><cell>02:00:45</cell></row>
+    <row><cell>6</cell><cell>MAT</cell><cell>02:01:12</cell></row>
+    <row><cell>7</cell><cell>V P</cell><cell>02:01:80</cell></row>
+    <row><cell>8</cell><cell>RAY</cell><cell>02:02:47</cell></row>
+    <row><cell>9</cell><cell>NIK</cell><cell>02:03:14</cell></row>
+    <row><cell>10</cell><cell>YOU</cell><cell>02:03:81</cell></row>
+  </table>
+  <table id="AUSTRALIA">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>ELP</cell><cell>01:37:40</cell></row>
+    <row><cell>2</cell><cell>DRJ</cell><cell>01:38:07</cell></row>
+    <row><cell>3</cell><cell>SRP</cell><cell>01:38:74</cell></row>
+    <row><cell>4</cell><cell>SXC</cell><cell>01:39:41</cell></row>
+    <row><cell>5</cell><cell>TED</cell><cell>01:40:09</cell></row>
+    <row><cell>6</cell><cell>MAT</cell><cell>01:40:76</cell></row>
+    <row><cell>7</cell><cell>V P</cell><cell>01:41:43</cell></row>
+    <row><cell>8</cell><cell>RAY</cell><cell>01:42:10</cell></row>
+    <row><cell>9</cell><cell>NIK</cell><cell>01:42:78</cell></row>
+    <row><cell>10</cell><cell>YOU</cell><cell>01:43:45</cell></row>
+  </table>
+  <table id="OVERALL">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>DRJ</cell><cell>30:33:40</cell></row>
+    <row><cell>2</cell><cell>ELP</cell><cell>31:45:34</cell></row>
+    <row><cell>3</cell><cell>SRP</cell><cell>32:57:29</cell></row>
+    <row><cell>4</cell><cell>SXC</cell><cell>34:09:23</cell></row>
+    <row><cell>5</cell><cell>TED</cell><cell>35:21:18</cell></row>
+    <row><cell>6</cell><cell>MAT</cell><cell>36:33:12</cell></row>
+    <row><cell>7</cell><cell>V P</cell><cell>36:43:98</cell></row>
+    <row><cell>8</cell><cell>RAY</cell><cell>37:55:92</cell></row>
+    <row><cell>9</cell><cell>NIK</cell><cell>39:07:87</cell></row>
+    <row><cell>10</cell><cell>YOU</cell><cell>40:19:81</cell></row>
+  </table>
+</hi2txt>

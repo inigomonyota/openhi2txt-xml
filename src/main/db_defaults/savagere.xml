@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <table id="BEST FIGHTERS">
+    <col>RANK</col><col>SCORE</col><col>CHARACTER</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>24480</cell><cell>HAYATE</cell><cell>S.H</cell></row>
+    <row><cell>2ND</cell><cell>18190</cell><cell>EAGLE</cell><cell>M.E</cell></row>
+    <row><cell>3RD</cell><cell>16450</cell><cell>GOZU</cell><cell>GOZ</cell></row>
+    <row><cell>4TH</cell><cell>16200</cell><cell>MEZU</cell><cell>MEZ</cell></row>
+    <row><cell>5TH</cell><cell>14650</cell><cell>CAROL</cell><cell>C.S</cell></row>
+  </table>
+</hi2txt>

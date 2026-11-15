@@ -1,0 +1,41 @@
+<hi2txt>
+  <table id="CHARACTER TIME RECORD">
+    <col>RANK</col><col>CHARACTER</col><col>TIME</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>PAUL</cell><cell>50&apos;00&quot;00</cell><cell>PAU</cell></row>
+    <row><cell>2ND</cell><cell>LAW</cell><cell>51&apos;00&quot;00</cell><cell>LAW</cell></row>
+    <row><cell>3RD</cell><cell>LEI</cell><cell>52&apos;00&quot;00</cell><cell>LEI</cell></row>
+    <row><cell>4TH</cell><cell>KING</cell><cell>53&apos;00&quot;00</cell><cell>KIN</cell></row>
+    <row><cell>5TH</cell><cell>YOSHIMITSU</cell><cell>54&apos;00&quot;00</cell><cell>YOS</cell></row>
+    <row><cell>6TH</cell><cell>NINA</cell><cell>55&apos;00&quot;00</cell><cell>NIN</cell></row>
+    <row><cell>7TH</cell><cell>HWOARANG</cell><cell>56&apos;00&quot;00</cell><cell>HWO</cell></row>
+    <row><cell>8TH</cell><cell>XIAOYU</cell><cell>57&apos;00&quot;00</cell><cell>XIA</cell></row>
+    <row><cell>9TH</cell><cell>EDDY</cell><cell>58&apos;00&quot;00</cell><cell>EDD</cell></row>
+    <row><cell>10TH</cell><cell>JIN</cell><cell>59&apos;00&quot;00</cell><cell>JIN</cell></row>
+  </table>
+  <table id="VS GAME WINS RECORD">
+    <col>RANK</col><col>CHARACTER</col><col>WINS</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>PAUL</cell><cell>5 WINS</cell><cell>PAU</cell></row>
+    <row><cell>2ND</cell><cell>LAW</cell><cell>5 WINS</cell><cell>LAW</cell></row>
+    <row><cell>3RD</cell><cell>LEI</cell><cell>4 WINS</cell><cell>LEI</cell></row>
+    <row><cell>4TH</cell><cell>KING</cell><cell>4 WINS</cell><cell>KIN</cell></row>
+    <row><cell>5TH</cell><cell>YOSHIMITSU</cell><cell>3 WINS</cell><cell>YOS</cell></row>
+    <row><cell>6TH</cell><cell>NINA</cell><cell>3 WINS</cell><cell>NIN</cell></row>
+    <row><cell>7TH</cell><cell>HWOARANG</cell><cell>2 WINS</cell><cell>HWO</cell></row>
+    <row><cell>8TH</cell><cell>XIAOYU</cell><cell>2 WINS</cell><cell>XIA</cell></row>
+    <row><cell>9TH</cell><cell>EDDY</cell><cell>1 WIN</cell><cell>EDD</cell></row>
+    <row><cell>10TH</cell><cell>JIN</cell><cell>1 WIN</cell><cell>JIN</cell></row>
+  </table>
+  <table id="CHARACTERS">
+    <col>RANK</col><col>CHARACTER</col><col>PERCENTAGE</col><col>PACOL</col><col>PLAYS</col><col>DENOM</col><col>KEEP</col>
+    <row><cell>1ST</cell><cell>EDDY</cell><cell>100.0%</cell><cell>1</cell><cell>1</cell><cell>1</cell><cell>1208800</cell></row>
+    <row><cell>2ND</cell><cell>PAUL</cell><cell>0%</cell><cell>0</cell><cell>0</cell><cell>1</cell><cell>180000</cell></row>
+    <row><cell>3RD</cell><cell>LAW</cell><cell>0%</cell><cell>0</cell><cell>0</cell><cell>1</cell><cell>183600</cell></row>
+    <row><cell>4TH</cell><cell>LEI</cell><cell>0%</cell><cell>0</cell><cell>0</cell><cell>1</cell><cell>187200</cell></row>
+    <row><cell>5TH</cell><cell>KING</cell><cell>0%</cell><cell>0</cell><cell>0</cell><cell>1</cell><cell>190800</cell></row>
+    <row><cell>6TH</cell><cell>YOSHIMITSU</cell><cell>0%</cell><cell>0</cell><cell>0</cell><cell>1</cell><cell>194400</cell></row>
+    <row><cell>7TH</cell><cell>NINA</cell><cell>0%</cell><cell>0</cell><cell>0</cell><cell>1</cell><cell>198000</cell></row>
+    <row><cell>8TH</cell><cell>HWOARANG</cell><cell>0%</cell><cell>0</cell><cell>0</cell><cell>1</cell><cell>201600</cell></row>
+    <row><cell>9TH</cell><cell>XIAOYU</cell><cell>0%</cell><cell>0</cell><cell>0</cell><cell>1</cell><cell>205200</cell></row>
+    <row><cell>10TH</cell><cell>JIN</cell><cell>0%</cell><cell>0</cell><cell>0</cell><cell>1</cell><cell>212400</cell></row>
+  </table>
+</hi2txt>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    wizdfire / wizdfireu  (Wizard Fire / Dark Seal II, Data East, 1992).
+
+    No native nvram. The MAME hiscore plugin captures the LEGENDARY HEROES
+    board from :maincpu program RAM via two ranges that concatenate into a
+    41-byte .hi:
+      @:maincpu,program,fdc034,28,0b,00   -> 40 bytes (5 x 8-byte records)
+      @:maincpu,program,fdc059,1,01,01    -> 1 byte  (a gate byte that is the
+                                             6th byte of record #4; appended
+                                             by the plugin, otherwise unused)
+
+    The board has exactly one entry per playable hero (no RANK), in this fixed
+    record order:
+      0 KNIGHT   1 WIZARD   2 BARD   3 DWARF   4 ELF
+
+    8-byte record:
+      +0 name   3 bytes. Each byte is a glyph index: 0x01..0x1A = A..Z
+                (ascii-offset 64), 0x27 = "." (the initials separator),
+                0x2D = dash (a blank/un-entered initial). Default names are the
+                hero initials K.G / F.E / R.H / J.G / E.J; a blank entry is
+                three dashes.
+      +3 level  1 byte. Title achieved, byte-driven. The full ladder was
+                EMPIRICALLY CONFIRMED by injecting each byte value into the
+                live record and reading the title the game renders on the
+                LEGENDARY HEROES attract board (score held constant, so the
+                title tracks this byte, not the score):
+                  0x00 = SQUIRE   0x01 = LORD   0x02 = BARON
+                  0x03 = COUNT    0x04 = DUKE   0x05 = KING
+                Values 0x06 and up render NO title (the ladder ends at KING).
+                NOTE there is no KNIGHT level - KNIGHT is only a hero/character
+                name - and there is no PRINCE; COUNT sits between BARON and
+                DUKE.
+      +4 score  4-byte packed BCD, big-endian (base 16). 00 01 00 00 = 10000
+                (default); 00 05 15 00 = 51500 (KNIGHT/LORD capture).
+
+    Proven against the real hiscore\wizdfire.hi: decodes KNIGHT (blank) LORD
+    51500, and WIZARD F.E / BARD R.H / DWARF J.G / ELF E.J all SQUIRE 10000,
+    matching snapshots 0002 (default) and 0004 (51500/LORD). Authored by the
+    HI2TXT project (wizdfire support).
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>41</size>
+    </check>
+    <loop count="5">
+      <elt size="3" type="text" id="NAME"  charset="cswizname" ascii-offset="64" table-index="loop_index"/>
+      <elt size="1" type="int"  id="LEVEL" table-index="loop_index"/>
+      <elt size="4" type="int"  id="SCORE" base="16" table-index="loop_index"/>
+    </loop>
+    <elt size="1" type="raw" id="GATE059"/>
+  </structure>
+
+  <output>
+    <table id="LEGENDARY HEROES">
+      <column id="HERO"  src="index" format="hero"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="LEVEL" src="LEVEL" format="level"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="GATE059" format="0x" display="debug"/>
+    </table>
+  </output>
+
+  <format id="hero">
+    <case src="0" dst="KNIGHT"/>
+    <case src="1" dst="WIZARD"/>
+    <case src="2" dst="BARD"/>
+    <case src="3" dst="DWARF"/>
+    <case src="4" dst="ELF"/>
+  </format>
+
+  <format id="level">
+    <case src="0" dst="SQUIRE"/>
+    <case src="1" dst="LORD"/>
+    <case src="2" dst="BARON"/>
+    <case src="3" dst="COUNT"/>
+    <case src="4" dst="DUKE"/>
+    <case src="5" dst="KING"/>
+  </format>
+
+  <charset id="cswizname">
+    <char src="0x27" dst="."/>
+    <char src="0x2D" dst="-"/>
+  </charset>
+</hi2txt>

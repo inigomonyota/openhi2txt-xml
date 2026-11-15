@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 80 bytes -->
+    <check><size>80</size></check>
+    
+    <!-- 10 Records * 8 Bytes = 80 Bytes -->
+    <loop count="10">
+      <!-- 4-byte Big-Endian BCD Score -->
+      <elt size="4" type="int"  id="SCORE" base="16" endianness="big_endian"/>
+      
+      <!-- 3-character ASCII Name -->
+      <elt size="3" type="text" id="NAME"/>
+      
+      <!-- 1 byte padding (Internal Rank Index) -->
+      <elt size="1" type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="GREATEST KNIGHTS">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+  <!-- Translates the index from 0-9 to 1-10 -->
+  <format id="+1">
+    <add>1</add>
+  </format>
+</hi2txt>

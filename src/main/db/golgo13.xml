@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+
+  <structure file="at28c16">
+    <check>
+      <size>2080</size>
+    </check>
+
+    <!-- Bytes before ranking data -->
+    <elt size="744" type="raw" id="_HEADER"/>
+
+    <!-- SCORE RANKING names: 10 x 3 glyphs, each glyph stored as XX 00 01 00 -->
+    <loop count="10">
+      <elt size="12" type="text" id="SCORE_NAME" byte-skip="1000" charset="golgo13"/>
+    </loop>
+
+    <!-- ACCURACY RANKING names -->
+    <loop count="10">
+      <elt size="12" type="text" id="ACCURACY_NAME" byte-skip="1000" charset="golgo13"/>
+    </loop>
+
+    <!-- SCORE RANKING values: 10 x 32-bit little-endian -->
+    <loop count="10">
+      <elt size="4" type="int" id="REWARD" endianness="little_endian"/>
+    </loop>
+
+    <!-- ACCURACY RANKING values: 10 x 32-bit little-endian hundredths -->
+    <loop count="10">
+      <elt size="4" type="int" id="POINT" endianness="little_endian"/>
+    </loop>
+
+    <!-- Remaining EEPROM bytes -->
+    <elt size="1016" type="raw" id="_TAIL"/>
+  </structure>
+
+  <output>
+    <table id="SCORE RANKING" lines-max="10">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="NAME" src="SCORE_NAME"/>
+      <column id="REWARD" format="money_score"/>
+    </table>
+
+    <table id="ACCURACY RANKING" lines-max="10">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="NAME" src="ACCURACY_NAME"/>
+      <column id="POINT" format="point"/>
+    </table>
+  </output>
+
+  <!-- Ordinal rank -->
+  <format id="ordinal">
+    <case src="0" dst="1st"/>
+    <case src="1" dst="2nd"/>
+    <case src="2" dst="3rd"/>
+    <case src="3" dst="4th"/>
+    <case src="4" dst="5th"/>
+    <case src="5" dst="6th"/>
+    <case src="6" dst="7th"/>
+    <case src="7" dst="8th"/>
+    <case src="8" dst="9th"/>
+    <case src="9" dst="10th"/>
+  </format>
+
+  <!-- Currency wrapper -->
+  <format id="money_score" input-as-subcolumns-input="yes">
+    <concat>
+      <txt>$</txt>
+      <column format="comma_score"/>
+    </concat>
+  </format>
+
+  <!-- Universal comma formatter -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000" operator="&gt;=" format="two_commas"/>
+    <case src="1000" operator="&gt;=" format="one_comma"/>
+    <case src="1000" operator="&lt;" format="*1" default="yes"/>
+  </format>
+
+  <!-- 1,234,567,890 -->
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <!-- 1,234,567 -->
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <!-- 1,234 -->
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <!-- POINT values are stored as hundredths -->
+  <format id="point" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d100"/>
+      <txt>.</txt>
+      <column format="%100;PadL20"/>
+    </concat>
+  </format>
+
+  <!-- Golgo 13 glyph mapping -->
+  <charset id="golgo13">
+    <char src="0x3B" dst="0"/>
+    <char src="0x3C" dst="1"/>
+    <char src="0x3D" dst="2"/>
+    <char src="0x3E" dst="3"/>
+    <char src="0x3F" dst="4"/>
+    <char src="0x40" dst="5"/>
+    <char src="0x41" dst="6"/>
+    <char src="0x42" dst="7"/>
+    <char src="0x43" dst="8"/>
+    <char src="0x44" dst="9"/>
+
+    <char src="0x45" dst="A"/>
+    <char src="0x46" dst="B"/>
+    <char src="0x47" dst="C"/>
+    <char src="0x48" dst="D"/>
+    <char src="0x49" dst="E"/>
+    <char src="0x4A" dst="F"/>
+    <char src="0x4B" dst="G"/>
+    <char src="0x4C" dst="H"/>
+    <char src="0x4D" dst="I"/>
+    <char src="0x4E" dst="J"/>
+    <char src="0x4F" dst="K"/>
+    <char src="0x50" dst="L"/>
+    <char src="0x51" dst="M"/>
+    <char src="0x52" dst="N"/>
+    <char src="0x53" dst="O"/>
+    <char src="0x54" dst="P"/>
+    <char src="0x55" dst="Q"/>
+    <char src="0x56" dst="R"/>
+    <char src="0x57" dst="S"/>
+    <char src="0x58" dst="T"/>
+    <char src="0x59" dst="U"/>
+    <char src="0x5A" dst="V"/>
+    <char src="0x5B" dst="W"/>
+    <char src="0x5C" dst="X"/>
+    <char src="0x5D" dst="Y"/>
+    <char src="0x5E" dst="Z"/>
+  </charset>
+
+</hi2txt>

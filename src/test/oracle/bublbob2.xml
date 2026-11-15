@@ -1,0 +1,14 @@
+<hi2txt>
+  <table>
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>STAGE</col><col>CHARACTER</col>
+    <row><cell>1</cell><cell>0</cell><cell>        </cell><cell>0-00</cell><cell>BUBBLUN (GREEN)</cell></row>
+    <row><cell>2</cell><cell>0</cell><cell>        </cell><cell>0-00</cell><cell>BUBBLUN (GREEN)</cell></row>
+    <row><cell>3</cell><cell>0</cell><cell>        </cell><cell>0-00</cell><cell>BUBBLUN (GREEN)</cell></row>
+    <row><cell>4</cell><cell>0</cell><cell>        </cell><cell>0-00</cell><cell>BUBBLUN (GREEN)</cell></row>
+    <row><cell>5</cell><cell>0</cell><cell>        </cell><cell>0-00</cell><cell>BUBBLUN (GREEN)</cell></row>
+    <row><cell>6</cell><cell>0</cell><cell>        </cell><cell>0-00</cell><cell>BUBBLUN (GREEN)</cell></row>
+  </table>
+  <field id="UNKNOWN1">0x00000000000000000000000000000000000000000000000000000000000000000000000000000000</field>
+  <field id="UNKNOWN2">0x00</field>
+  <field id="UNKNOWN3">0x0000000000000000000000000004000300404948004049C800404948004049C80103002300000000000517900000000000FB0000000000000000000000000000000000000000FF000739000800080211170806000F000003000001000001000200000000010210000F000000000000000000000000000000000000000000000000000000</field>
+</hi2txt>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    Section Z (Capcom, 1985)
+    sectionz, sectionza
+
+    hiscore.dat (fixed):
+      @maincpu,program,ce00,5c,00,f5   ; 92 bytes: 7 entries (91) + 1 trailing constant byte (CE5B = F5) :contentReference[oaicite:0]{index=0}
+      @maincpu,program,ce97,3,00,00    ; 3 bytes: top score display
+      @maincpu,program,ce4f,1,08,08    ; 1 byte: init flag
+
+    .hi file size = 0x5C + 3 + 1 = 96 bytes
+    Entry format (13 bytes): [PAD:1][SCORE:2 BCD][NAME:10]
+    SCORE is BCD (base 16), display = BCD * 10
+    NAME is ASCII with 0x2E '.' rendered as space
+  -->
+
+  <structure file=".hi">
+    <check>
+      <size>96</size>
+    </check>
+
+    <!-- Chunk 1: 7 full entries (7 * 13 = 91) -->
+    <loop count="7">
+      <elt size="1"  type="raw"  id="PAD"/>
+      <elt size="2"  type="int"  id="SCORE" base="16"/>
+      <elt size="10" type="text" id="NAME"  format="dot2space"/>
+    </loop>
+
+    <!-- Extra trailing byte at CE5B (constant F5 in RAM dumps) -->
+    <elt size="1" type="raw" id="_TAIL"/>
+
+    <!-- Chunk 2: Top score (pad + 2-byte BCD) -->
+    <elt size="1" type="raw" id="TOP_PAD"/>
+    <elt size="2" type="int" id="TOP_SCORE" base="16"/>
+
+    <!-- Chunk 3: Init flag -->
+    <elt size="1" type="raw" id="FLAG"/>
+  </structure>
+
+  <output>
+    <table id="RANKING BEST 7">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" format="*10"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="*10"><multiply>10</multiply></format>
+
+  <format id="dot2space" apply-to="char">
+    <case src="0x2E" dst=" "/>
+  </format>
+</hi2txt>

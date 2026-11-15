@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    svg  (S.V.G. - Spectral vs Generation, IGS PGM, 2005). Scores persist in the
+    native 128 KB battery SRAM (nvram\svg\sram). Three ranking tables sit
+    CONTIGUOUSLY, plain little-endian (NOT word-swapped), starting at FILE offset
+    0xA15C (= 41308 decimal). Each record is 12 bytes:
+
+      TIME ATTACK RANKING @ 0xA15C : 20 records
+        +00 avatar  u16 LE (fighter/avatar id 0..9)
+        +02 name    3 x u16 LE, char = index + 0x20 (0x29 0x27 0x33 = "IGS")
+        +08 MM      1 byte  (minutes, default 0x63 = 99)
+        +09 SS      1 byte  (seconds, default 0x3B = 59)
+        +0A CC      1 byte  (centiseconds, default 0x63 = 99)  -> "99:59:99"
+        +0B pad     1 byte
+      WINNING RANKING     @ 0xA24C : 20 records
+        +00 avatar  u16 LE ;  +02 name 3xu16 ;  +08 WINS u32 LE
+      USAGE RANKING       @ 0xA33C : 10 records (one per fighter, pre-sorted desc)
+        +00 avatar  u16 LE ;  +02 six zero bytes ;  +08 COUNT u32 LE
+        (on-screen % = COUNT / sum(COUNT) * 100, to 2 dp; the raw play-count is
+         what the board stores, so that is what we decode.)
+
+    Names use a 16-bit-per-char index where char = index + 0x20; the high byte of
+    each char is always 0x00, so charset csSVG maps 0x00 -> "" to drop it (same
+    technique as dmnfrnt). Verified against a real played SRAM: USAGE rank 1 =
+    avatar 6, count 1 (the fighter that was used), all others 0.
+  //-->
+
+  <structure file="sram">
+    <check>
+      <size>131072</size>
+    </check>
+
+    <!-- skip to 0xA15C = 41308 bytes (DECIMAL; hi2txt rejects hex sizes) -->
+    <elt size="41308" type="raw" id="HEAD"/>
+
+    <!-- TIME ATTACK RANKING: 20 records (ints little-endian) -->
+    <loop count="20">
+      <elt size="2" type="int"  id="T_AV"   endianness="little_endian" table-index="loop_index"/>
+      <elt size="6" type="text" id="T_NAME" charset="csSVG" table-index="loop_index"/>
+      <elt size="1" type="int"  id="T_MM"   table-index="loop_index"/>
+      <elt size="1" type="int"  id="T_SS"   table-index="loop_index"/>
+      <elt size="1" type="int"  id="T_CC"   table-index="loop_index"/>
+      <elt size="1" type="raw"  id="T_PAD"  table-index="loop_index"/>
+    </loop>
+
+    <!-- WINNING RANKING: 20 records -->
+    <loop count="20">
+      <elt size="2" type="int"  id="W_AV"   endianness="little_endian" table-index="loop_index"/>
+      <elt size="6" type="text" id="W_NAME" charset="csSVG" table-index="loop_index"/>
+      <elt size="4" type="int"  id="W_WINS" endianness="little_endian" table-index="loop_index"/>
+    </loop>
+
+    <!-- USAGE RANKING: 10 records (one per fighter) -->
+    <loop count="10">
+      <elt size="2" type="int"  id="U_AV"    endianness="little_endian" table-index="loop_index"/>
+      <elt size="6" type="raw"  id="U_PAD"   table-index="loop_index"/>
+      <elt size="4" type="int"  id="U_COUNT" endianness="little_endian" table-index="loop_index"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TIME ATTACK RANKING">
+      <column id="RANK"      src="index" format="ordinal"/>
+      <column id="NAME"      src="T_NAME"/>
+      <column id="MIN"       src="T_MM"/>
+      <column id="SEC"       src="T_SS"/>
+      <column id="CS"        src="T_CC"/>
+      <column id="CHARACTER" src="T_AV"/>
+    </table>
+
+    <table id="WINNING RANKING">
+      <column id="RANK"      src="index" format="ordinal"/>
+      <column id="NAME"      src="W_NAME"/>
+      <column id="WINS"      src="W_WINS"/>
+      <column id="CHARACTER" src="W_AV"/>
+    </table>
+
+    <table id="USAGE RANKING">
+      <column id="RANK"      src="index" format="ordinal"/>
+      <column id="COUNT"     src="U_COUNT"/>
+      <column id="CHARACTER" src="U_AV"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0"  dst="1st"/>  <case src="1"  dst="2nd"/>  <case src="2"  dst="3rd"/>
+    <case src="3"  dst="4th"/>  <case src="4"  dst="5th"/>  <case src="5"  dst="6th"/>
+    <case src="6"  dst="7th"/>  <case src="7"  dst="8th"/>  <case src="8"  dst="9th"/>
+    <case src="9"  dst="10th"/> <case src="10" dst="11th"/> <case src="11" dst="12th"/>
+    <case src="12" dst="13th"/> <case src="13" dst="14th"/> <case src="14" dst="15th"/>
+    <case src="15" dst="16th"/> <case src="16" dst="17th"/> <case src="17" dst="18th"/>
+    <case src="18" dst="19th"/> <case src="19" dst="20th"/>
+  </format>
+
+  <charset id="csSVG">
+    <char src="0x00" dst=""/>
+    <char src="0x10" dst="0"/> <char src="0x11" dst="1"/> <char src="0x12" dst="2"/>
+    <char src="0x13" dst="3"/> <char src="0x14" dst="4"/> <char src="0x15" dst="5"/>
+    <char src="0x16" dst="6"/> <char src="0x17" dst="7"/> <char src="0x18" dst="8"/>
+    <char src="0x19" dst="9"/>
+    <char src="0x21" dst="A"/> <char src="0x22" dst="B"/> <char src="0x23" dst="C"/>
+    <char src="0x24" dst="D"/> <char src="0x25" dst="E"/> <char src="0x26" dst="F"/>
+    <char src="0x27" dst="G"/> <char src="0x28" dst="H"/> <char src="0x29" dst="I"/>
+    <char src="0x2a" dst="J"/> <char src="0x2b" dst="K"/> <char src="0x2c" dst="L"/>
+    <char src="0x2d" dst="M"/> <char src="0x2e" dst="N"/> <char src="0x2f" dst="O"/>
+    <char src="0x30" dst="P"/> <char src="0x31" dst="Q"/> <char src="0x32" dst="R"/>
+    <char src="0x33" dst="S"/> <char src="0x34" dst="T"/> <char src="0x35" dst="U"/>
+    <char src="0x36" dst="V"/> <char src="0x37" dst="W"/> <char src="0x38" dst="X"/>
+    <char src="0x39" dst="Y"/> <char src="0x3a" dst="Z"/>
+  </charset>
+</hi2txt>

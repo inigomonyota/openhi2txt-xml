@@ -1,0 +1,12 @@
+<hi2txt>
+  <table id="PLAYER'S LIST">
+    <col>RANK</col><col>NAME</col><col>SCORE</col><col>DIAMONDS</col>
+    <row><cell>1ST</cell><cell>UUU</cell><cell>399,000</cell><cell>0900</cell></row>
+    <row><cell>2ND</cell><cell>DDD</cell><cell>90,300</cell><cell>0567</cell></row>
+    <row><cell>3RD</cell><cell>BBB</cell><cell>70,700</cell><cell>0099</cell></row>
+    <row><cell>4TH</cell><cell>LLL</cell><cell>35,700</cell><cell>0119</cell></row>
+    <row><cell>5TH</cell><cell>PIP</cell><cell>28,710</cell><cell>0151</cell></row>
+    <row><cell>6TH</cell><cell>OOO</cell><cell>19,900</cell><cell>0025</cell></row>
+    <row><cell>7TH</cell><cell>EEE</cell><cell>10,000</cell><cell>0100</cell></row>
+  </table>
+</hi2txt>

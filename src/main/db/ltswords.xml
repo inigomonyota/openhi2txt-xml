@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    ltswords  (Lightning Swords, Irem, 1991; irem/m72.cpp, NEC V35 maincpu).
+    No hi2txt definition existed and the game had no hiscore.dat entry, so this
+    is new (Case B) work. The sibling "kengo" (Ken-Go, the same game) carries a
+    hiscore.dat entry @:maincpu,program,e09f2,82,10,20 but no hi2txt def; the
+    ltswords table lives at the SAME live program address 0xe09f2 (verified with
+    a MAME-Lua memory scan: the "BEST 10" block is mirrored at 0x769 and 0xe09f2,
+    both byte-identical). We reuse kengo's proven address for ltswords.
+
+    "BEST 10" screen = 10 records x 13 bytes = 130 bytes:
+      +00 score : 3-byte packed BCD, LITTLE-endian, stored score/10
+      +03 name  : 10 ASCII bytes, space-padded (0x20)
+
+    Score display: the game shows a 7-digit zero-padded number (e.g. 0084100).
+    The 3 BCD bytes hold score/10, so decode the BCD (base=16, little_endian)
+    then multiply by 10 and pad-left to 7 with zeros: format="*10;PadL70".
+    Leading zeros are preserved by PadL70 (user requirement).
+
+    Factory defaults (0.sta, matches the 0000.png snapshot):
+      1  0084100 HIRORON   2 0063350 MIEKUN     3 0050900 SAKOTAN
+      4  0028800 KIMICHAN  5 0022400 KAZUKUN    6 0016000 NANAO CORP
+      7  0012800 O R S     8 0011200 YORIKO     9 0009600 OKAMI
+      10 0008000 X CHAN
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>130</size>
+    </check>
+    <loop count="10">
+      <elt size="3"  type="int"  id="SCORE" endianness="little_endian" base="16"/>
+      <elt size="10" type="text" id="NAME"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST 10">
+      <column id="NO"    src="index" format="+1"/>
+      <column id="SCORE" src="SCORE" format="*10;PadL70"/>
+      <column id="NAME"  src="NAME"  format="trim_space"/>
+    </table>
+  </output>
+
+  <format id="+1">
+    <add>1</add>
+  </format>
+
+  <format id="trim_space">
+    <trim direction="both"> </trim>
+  </format>
+</hi2txt>

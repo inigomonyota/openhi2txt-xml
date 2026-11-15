@@ -1,0 +1,23 @@
+# TOP 20 RANKING
+RANK|NAME|BIRD|GUN|HIT|MISS|GRADE
+1|PIP|Ring-Necked Pheasant|Pump Action|99|0|A
+2|BBB|Great Plains Quail|Semi-Auto|24|99|A
+3|CCC|Eastern Bobwhite|Side by Side|23|99|A
+4|DDD|Ring-Necked Pheasant|Over & Under|22|99|A
+5|EEE|Great Plains Quail|Single Shot|21|99|A
+6|FFF|Ring-Necked Pheasant|Pump Action|20|99|A
+7|GGG|Great Plains Quail|Semi-Auto|19|99|B
+8|HHH|Eastern Bobwhite|Side by Side|19|99|B
+9|III|Ring-Necked Pheasant|Over & Under|18|99|B
+10|PPP|Eastern Bobwhite|Single Shot|18|99|B
+11|QQQ|Ring-Necked Pheasant|Pump Action|17|99|B
+12|RRR|Great Plains Quail|Semi-Auto|16|99|B
+13|SSS|Eastern Bobwhite|Side by Side|16|99|B
+14|TTT|Ring-Necked Pheasant|Over & Under|15|99|B
+15|UUU|Great Plains Quail|Single Shot|15|99|B
+16|VVV|Ring-Necked Pheasant|Pump Action|14|99|C
+17|WWW|Great Plains Quail|Semi-Auto|13|99|C
+18|XXX|Eastern Bobwhite|Side by Side|12|99|C
+19|YYY|Ring-Necked Pheasant|Over & Under|11|99|C
+20|ZZZ|Eastern Bobwhite|Single Shot|10|99|C
+

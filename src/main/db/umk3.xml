@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Ultimate Mortal Kombat 3">
+  <!--
+    No hiscore.dat entry needed - MAME saves nvram automatically.
+    nvram file size: 49152 bytes (0xC000)
+    Table at offset 0x1800: 15 entries x 18 bytes (9 x 16-bit words, low byte used)
+    Record: [char1][char2][char3][wins][padding x5] - all as 16-bit words
+    Character encoding: A-Z = 0x00-0x19, digits 1-4 = 0xF0-0xF3
+    byte-skip="odd" keeps even-positioned bytes (the meaningful low bytes)
+  //-->
+
+  <structure file="nvram">
+    <check>
+      <size>49152</size>
+    </check>
+    <elt size="6144" type="raw" id="UNKNOWN"/>
+    <loop count="15">
+      <elt size="6"  type="text" id="NAME"    byte-skip="even" charset="umk3"/>
+      <elt size="2"  type="int"  id="WINS"    byte-skip="even"/>
+      <elt size="10" type="raw"  id="PADDING"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="WINNING STREAKS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="WINS"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <charset id="umk3">
+    <char src="0x00" dst="A"/>
+    <char src="0x01" dst="B"/>
+    <char src="0x02" dst="C"/>
+    <char src="0x03" dst="D"/>
+    <char src="0x04" dst="E"/>
+    <char src="0x05" dst="F"/>
+    <char src="0x06" dst="G"/>
+    <char src="0x07" dst="H"/>
+    <char src="0x08" dst="I"/>
+    <char src="0x09" dst="J"/>
+    <char src="0x0A" dst="K"/>
+    <char src="0x0B" dst="L"/>
+    <char src="0x0C" dst="M"/>
+    <char src="0x0D" dst="N"/>
+    <char src="0x0E" dst="O"/>
+    <char src="0x0F" dst="P"/>
+    <char src="0x10" dst="Q"/>
+    <char src="0x11" dst="R"/>
+    <char src="0x12" dst="S"/>
+    <char src="0x13" dst="T"/>
+    <char src="0x14" dst="U"/>
+    <char src="0x15" dst="V"/>
+    <char src="0x16" dst="W"/>
+    <char src="0x17" dst="X"/>
+    <char src="0x18" dst="Y"/>
+    <char src="0x19" dst="Z"/>
+    <char src="0x1A" dst=" "/>
+    <char src="0x1B" dst="."/>
+    <char src="0x1C" dst="-"/>
+    <char src="0x1D" dst="_"/>
+    <char src="0xEF" dst="0"/>
+    <char src="0xF0" dst="1"/>
+    <char src="0xF1" dst="2"/>
+    <char src="0xF2" dst="3"/>
+    <char src="0xF3" dst="4"/>
+    <char src="0xF4" dst="5"/>
+    <char src="0xF5" dst="6"/>
+    <char src="0xF6" dst="7"/>
+    <char src="0xF7" dst="8"/>
+    <char src="0xF8" dst="9"/>
+  </charset>
+
+</hi2txt>

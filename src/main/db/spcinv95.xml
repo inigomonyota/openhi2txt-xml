@@ -31,17 +31,18 @@
   </structure>
   
   <output>
-    <table line-ignore="SCORE:0">
+    <table id="BEST PLAYERS" lines-max="5">
       <column id="RANK" src="index" format="+1"/>
-      <column id="SCORE"/>
+	  <column id="CHARACTER" format="character"/>
+      <column id="SCORE" format="comma_score"/>
       <column id="NAME"/>
       <column id="STAGE"/>
-      <column id="CHARACTER" format="character"/>
+      
       <column id="PLAYER"    format="player"/>
     </table>
     <field id="UNKNOWN"   format="0x" display="debug"/>
     <field id="CHECK"                 display="debug"/>
-    <field id="TOP SCORE"             display="extra"/>
+    <field id="TOP SCORE"             display="debug"/>
   </output>
   
   <format id="character">
@@ -57,6 +58,44 @@
     <case src="1" dst="P2"/>
   </format>
   
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+    
   <charset id="spcinv95">
     <char src="0x3A" dst="."/>
     <char src="0x3B" dst=" "/>

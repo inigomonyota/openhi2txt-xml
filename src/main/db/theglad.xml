@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="The Gladiator">
+  <!--
+    IGS PGM sram (131072B), NO byte-swap (table reads in raw stream, scores little-endian).
+    Six contiguous per-character tables @ 0xa150, each 10 x 12B:
+      [NAME:3 A=0 ascii-offset=65][pad:5 ff 00 ff 00 00][SCORE:4 int little-endian].
+    NAME IGS = 08 06 12 (I=8,G=6,S=18 with A=0). Tables 0x78 apart.
+  //-->
+
+  <structure file="sram">
+    <check>
+      <size>131072</size>
+    </check>
+    <elt size="41296" type="raw" id="HEADER"/>
+    <loop count="10">
+      <elt size="3" type="text" id="N1" ascii-offset="65"/>
+      <elt size="5" type="raw"  id="P1"/>
+      <elt size="4" type="int"  id="S1" endianness="little_endian"/>
+    </loop>
+    <loop count="10">
+      <elt size="3" type="text" id="N2" ascii-offset="65"/>
+      <elt size="5" type="raw"  id="P2"/>
+      <elt size="4" type="int"  id="S2" endianness="little_endian"/>
+    </loop>
+    <loop count="10">
+      <elt size="3" type="text" id="N3" ascii-offset="65"/>
+      <elt size="5" type="raw"  id="P3"/>
+      <elt size="4" type="int"  id="S3" endianness="little_endian"/>
+    </loop>
+    <loop count="10">
+      <elt size="3" type="text" id="N4" ascii-offset="65"/>
+      <elt size="5" type="raw"  id="P4"/>
+      <elt size="4" type="int"  id="S4" endianness="little_endian"/>
+    </loop>
+    <loop count="10">
+      <elt size="3" type="text" id="N5" ascii-offset="65"/>
+      <elt size="5" type="raw"  id="P5"/>
+      <elt size="4" type="int"  id="S5" endianness="little_endian"/>
+    </loop>
+    <loop count="10">
+      <elt size="3" type="text" id="N6" ascii-offset="65"/>
+      <elt size="5" type="raw"  id="P6"/>
+      <elt size="4" type="int"  id="S6" endianness="little_endian"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="MR WU">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="S1"/>
+      <column id="NAME"  src="N1"/>
+    </table>
+    <table id="CHIN">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="S2"/>
+      <column id="NAME"  src="N2"/>
+    </table>
+    <table id="HSIUNG">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="S3"/>
+      <column id="NAME"  src="N3"/>
+    </table>
+    <table id="HUANG">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="S4"/>
+      <column id="NAME"  src="N4"/>
+    </table>
+    <table id="CHU">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="S5"/>
+      <column id="NAME"  src="N5"/>
+    </table>
+    <table id="KO">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="S6"/>
+      <column id="NAME"  src="N6"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+</hi2txt>

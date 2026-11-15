@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<hi2txt>
+  <table id="SCORE RANKING">
+    <col>RANK</col><col>CHARACTER</col><col>SCORE</col><col>NAME</col><col>VS</col>
+    <row><cell>1ST</cell><cell>SHO</cell><cell>30000</cell><cell>SHO</cell><cell>1</cell></row>
+    <row><cell>2ND</cell><cell>DAO-LONG</cell><cell>25000</cell><cell>DAO</cell><cell>1</cell></row>
+    <row><cell>3RD</cell><cell>CONDOR</cell><cell>20000</cell><cell>CON</cell><cell>1</cell></row>
+    <row><cell>4TH</cell><cell>TIA</cell><cell>15000</cell><cell>TIA</cell><cell>0</cell></row>
+    <row><cell>5TH</cell><cell>RILA</cell><cell>12000</cell><cell>RIL</cell><cell>0</cell></row>
+    <row><cell>6TH</cell><cell>ALSION III</cell><cell>10000</cell><cell>ALS</cell><cell>0</cell></row>
+  </table>
+</hi2txt>

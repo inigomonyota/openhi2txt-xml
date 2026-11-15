@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- undrfire by Taito, 1993 -->
+<!-- hiscore.dat: @:maincpu,program,20dfaf,75,08,53 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>117</size>
+    </check>
+
+    <!-- 10 records. Records 1-9 are 12 bytes. Record 10 is 9 bytes. -->
+    <!-- skip-last-bytes="3" ignores the trailing padding missing from the final entry. -->
+    <loop count="10" skip-last-bytes="3">
+      <!-- Score is 3-byte Binary (Hex), not BCD -->
+      <elt size="3" type="int"  id="SCORE"/>
+      <elt size="1" type="raw"  id="PAD_1"/>
+      <!-- Hit Ratio is 1-byte integer (0-100) -->
+      <elt size="1" type="int"  id="RATIO"/>
+      <!-- Round is 1-byte integer (0=1-1, 1=1-2, 2=2-1, ... 9=5-2) -->
+      <elt size="1" type="int"  id="ROUND"/>
+      <elt size="3" type="text" id="NAME"/>
+      <!-- Trailing 3-byte padding on entries 1-9 -->
+      <elt size="3" type="raw"  id="PAD_2"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST 10">
+      <column id="RANK"      src="index" format="ordinal"/>
+      <column id="SCORE"     src="SCORE" format="comma_score"/>
+      <column id="NAME"      src="NAME"/>
+      <column id="ROUND"     src="ROUND" format="round_map"/>
+      <column id="HIT RATIO" src="RATIO" format="Suffix%"/>
+    </table>
+  </output>
+
+  <!-- Translates the internal Round counter to "Course-Stage" format -->
+  <format id="round_map" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d2;+1"/>
+      <txt>-</txt>
+      <column format="%2;+1"/>
+    </concat>
+  </format>
+
+  <!-- Comprehensive Ordinal Formatter -->
+  <format id="ordinal">
+    <case src="0"  dst="1ST"/>
+    <case src="1"  dst="2ND"/>
+    <case src="2"  dst="3RD"/>
+    <case src="3"  dst="4TH"/>
+    <case src="4"  dst="5TH"/>
+    <case src="5"  dst="6TH"/>
+    <case src="6"  dst="7TH"/>
+    <case src="7"  dst="8TH"/>
+    <case src="8"  dst="9TH"/>
+    <case src="9"  dst="10TH"/>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+</hi2txt>

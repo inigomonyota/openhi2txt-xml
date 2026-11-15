@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="BEST 10 PLAYERS">
+    <col>RANK</col><col>NAME</col><col>SCORE</col><col>STAGE</col>
+    <row><cell>1</cell><cell>PIP</cell><cell>1,000,000</cell><cell>8</cell></row>
+    <row><cell>2</cell><cell>AAA</cell><cell>850,000</cell><cell>7</cell></row>
+    <row><cell>3</cell><cell>BBB</cell><cell>720,000</cell><cell>7</cell></row>
+    <row><cell>4</cell><cell>CCC</cell><cell>600,000</cell><cell>6</cell></row>
+    <row><cell>5</cell><cell>DDD</cell><cell>500,000</cell><cell>5</cell></row>
+    <row><cell>6</cell><cell>EEE</cell><cell>420,000</cell><cell>5</cell></row>
+    <row><cell>7</cell><cell>FFF</cell><cell>350,000</cell><cell>4</cell></row>
+    <row><cell>8</cell><cell>GGG</cell><cell>280,000</cell><cell>3</cell></row>
+    <row><cell>9</cell><cell>HHH</cell><cell>200,000</cell><cell>2</cell></row>
+    <row><cell>10</cell><cell>III</cell><cell>120,000</cell><cell>1</cell></row>
+  </table>
+</hi2txt>

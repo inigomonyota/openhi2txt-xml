@@ -1,0 +1,11 @@
+<hi2txt>
+  <table id="TOP 5 SCORES">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>No.1</cell><cell>1000000</cell><cell>HAR</cell></row>
+    <row><cell>No.2</cell><cell>700000</cell><cell>IGA</cell></row>
+    <row><cell>No.3</cell><cell>400000</cell><cell>YAS</cell></row>
+    <row><cell>No.4</cell><cell>300000</cell><cell>KIT</cell></row>
+    <row><cell>No.5</cell><cell>246200</cell><cell>STU</cell></row>
+  </table>
+  <field id="TOP SCORE">1000000</field>
+</hi2txt>

@@ -1,0 +1,28 @@
+<hi2txt>
+  <table id="BEST 10 PLAYERS - LABRYNA">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>57,300</cell><cell>H.M</cell></row>
+    <row><cell>2ND</cell><cell>40,000</cell><cell>M.T</cell></row>
+    <row><cell>3RD</cell><cell>35,000</cell><cell>J.S</cell></row>
+    <row><cell>4TH</cell><cell>30,000</cell><cell>T.T</cell></row>
+    <row><cell>5TH</cell><cell>27,000</cell><cell>K.T</cell></row>
+    <row><cell>6TH</cell><cell>20,000</cell><cell>M.Y</cell></row>
+    <row><cell>7TH</cell><cell>18,000</cell><cell>I.M</cell></row>
+    <row><cell>8TH</cell><cell>15,000</cell><cell>H.S</cell></row>
+    <row><cell>9TH</cell><cell>13,000</cell><cell>K.H</cell></row>
+    <row><cell>10TH</cell><cell>10,000</cell><cell>T.J</cell></row>
+  </table>
+  <table id="BEST 10 PLAYERS - CONDOR">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>57,300</cell><cell>H.M</cell></row>
+    <row><cell>2ND</cell><cell>40,000</cell><cell>M.T</cell></row>
+    <row><cell>3RD</cell><cell>35,000</cell><cell>J.S</cell></row>
+    <row><cell>4TH</cell><cell>30,000</cell><cell>T.T</cell></row>
+    <row><cell>5TH</cell><cell>27,000</cell><cell>K.T</cell></row>
+    <row><cell>6TH</cell><cell>20,000</cell><cell>M.Y</cell></row>
+    <row><cell>7TH</cell><cell>18,000</cell><cell>I.M</cell></row>
+    <row><cell>8TH</cell><cell>15,000</cell><cell>H.S</cell></row>
+    <row><cell>9TH</cell><cell>13,000</cell><cell>K.H</cell></row>
+    <row><cell>10TH</cell><cell>10,000</cell><cell>T.J</cell></row>
+  </table>
+</hi2txt>

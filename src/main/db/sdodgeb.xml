@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Super Dodge Ball">
+  <!--
+    Neo Geo saveram, byte-swap=2 ("BACKUP RAM OK !" confirmed at 0x10).
+    RANKING table @0x420, 10 x 16B:
+      [SCORE:3 BCD][pad:1][CHARACTER:1][pad:1][NAME:3 ASCII][pad:7].
+    SCORE = BCD value x100 (000100 -> 10000).
+    CHARACTER = avatar index, confirmed via repeat pairs + pixel match of the
+    on-screen faces: 0 KUNIO,1 RIKI,2 SHINJI,3 MISUZU,4 KENJI,5 MIYUKI,6 SABU.
+    NOTE: the factory rank-8 entry ("MAO" initials) stores index 0, so the game
+    draws KUNIO's avatar there - D.B MAOU is NOT a distinct index in this table.
+    Boss index 7 = D.B MAOU (confirmed via a live score). Higher indices unknown.
+  //-->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+    <elt size="1056" type="raw" id="HEADER"/>
+    <loop count="10">
+      <elt size="3" type="int"  id="SCORE" base="16"/>
+      <elt size="1" type="raw"  id="PADA"/>
+      <elt size="1" type="int"  id="CHARACTER"/>
+      <elt size="1" type="raw"  id="PADB"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="7" type="raw"  id="PAD2"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK"      src="index"     format="rank"/>
+      <column id="NAME"      src="NAME"/>
+      <column id="CHARACTER" src="CHARACTER" format="fighter"/>
+      <column id="SCORE"     src="SCORE"     format="x100"/>
+    </table>
+  </output>
+
+  <format id="rank"><add>1</add></format>
+  <format id="x100"><multiply>100</multiply></format>
+  <format id="fighter">
+    <case src="0" dst="KUNIO"/><case src="1" dst="RIKI"/><case src="2" dst="SHINJI"/>
+    <case src="3" dst="MISUZU"/><case src="4" dst="KENJI"/><case src="5" dst="MIYUKI"/>
+    <case src="6" dst="SABU"/><case src="7" dst="D.B MAOU"/>
+  </format>
+</hi2txt>

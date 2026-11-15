@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    btoads - Battletoads (Rare / Electronic Arts, 1994)
+    Reads the MAME nvram file (nvram/btoads/nvram), 8192 bytes.
+
+    Two tables are stored back-to-back starting at offset 0x0503,
+    each as 3 player columns x 10 rows in physical order PIMPLE,RASH,ZITZ
+    (the game DISPLAYS them ZITZ,RASH,PIMPLE, which is the output order below).
+
+    Record = 3 bytes lowercase-ASCII initials + 2 bytes value (little-endian).
+      0x0503  MASTERS OF MISSION TIME : value = time in SECONDS
+      0x0599  GREATEST GRAVE FILLERS  : value = score
+    A 2nd identical mirror copy sits at 0x1000; we only read the first.
+    charset "btname" is defined at the bottom (after <output>).
+  -->
+
+  <structure file="nvram">
+    <check>
+      <size>8192</size>
+    </check>
+
+    <!-- skip to first record at 0x0503 (1283 bytes) -->
+    <elt size="1283" type="raw" id="PRE"/>
+
+    <!-- ===== MASTERS OF MISSION TIME (seconds) : PIMPLE, RASH, ZITZ ===== -->
+    <loop count="10">
+      <elt size="3" type="text" charset="btname" id="MT_PIMPLE_INI"/>
+      <elt size="2" type="int" endianness="little_endian" id="MT_PIMPLE_SEC"/>
+    </loop>
+    <loop count="10">
+      <elt size="3" type="text" charset="btname" id="MT_RASH_INI"/>
+      <elt size="2" type="int" endianness="little_endian" id="MT_RASH_SEC"/>
+    </loop>
+    <loop count="10">
+      <elt size="3" type="text" charset="btname" id="MT_ZITZ_INI"/>
+      <elt size="2" type="int" endianness="little_endian" id="MT_ZITZ_SEC"/>
+    </loop>
+
+    <!-- ===== GREATEST GRAVE FILLERS (score) : PIMPLE, RASH, ZITZ ===== -->
+    <loop count="10">
+      <elt size="3" type="text" charset="btname" id="SC_PIMPLE_INI"/>
+      <elt size="2" type="int" endianness="little_endian" id="SC_PIMPLE_SCORE"/>
+    </loop>
+    <loop count="10">
+      <elt size="3" type="text" charset="btname" id="SC_RASH_INI"/>
+      <elt size="2" type="int" endianness="little_endian" id="SC_RASH_SCORE"/>
+    </loop>
+    <loop count="10">
+      <elt size="3" type="text" charset="btname" id="SC_ZITZ_INI"/>
+      <elt size="2" type="int" endianness="little_endian" id="SC_ZITZ_SCORE"/>
+    </loop>
+  </structure>
+
+  <!-- seconds -> H / MM / SS -->
+  <format id="hrs">
+    <divide_trunc>3600</divide_trunc>
+  </format>
+  <format id="min">
+    <divide_trunc>60</divide_trunc>
+    <remainder>60</remainder>
+    <pad direction="left" max="2">0</pad>
+  </format>
+  <format id="sec">
+    <remainder>60</remainder>
+    <pad direction="left" max="2">0</pad>
+  </format>
+
+  <output>
+    <table id="GREATEST GRAVE FILLERS">
+      <column id="ZITZ"  src="SC_ZITZ_INI"/>
+      <column id="SCORE" src="SC_ZITZ_SCORE"/>
+      <column id="RASH"  src="SC_RASH_INI"/>
+      <column id="SCORE" src="SC_RASH_SCORE"/>
+      <column id="PIMPLE"  src="SC_PIMPLE_INI"/>
+      <column id="SCORE" src="SC_PIMPLE_SCORE"/>
+    </table>
+    <table id="MASTERS OF MISSION TIME">
+      <column id="ZITZ" src="MT_ZITZ_INI"/>
+      <column id="H"    src="MT_ZITZ_SEC" format="hrs"/>
+      <column id="M"    src="MT_ZITZ_SEC" format="min"/>
+      <column id="S"    src="MT_ZITZ_SEC" format="sec"/>
+      <column id="RASH" src="MT_RASH_INI"/>
+      <column id="H"    src="MT_RASH_SEC" format="hrs"/>
+      <column id="M"    src="MT_RASH_SEC" format="min"/>
+      <column id="S"    src="MT_RASH_SEC" format="sec"/>
+      <column id="PIMPLE" src="MT_PIMPLE_INI"/>
+      <column id="H"    src="MT_PIMPLE_SEC" format="hrs"/>
+      <column id="M"    src="MT_PIMPLE_SEC" format="min"/>
+      <column id="S"    src="MT_PIMPLE_SEC" format="sec"/>
+    </table>
+  </output>
+
+  <!-- charset placed after <output>, before </hi2txt> -->
+  <charset id="btname">
+    <char src="0x61" dst="A"/>
+    <char src="0x62" dst="B"/>
+    <char src="0x63" dst="C"/>
+    <char src="0x64" dst="D"/>
+    <char src="0x65" dst="E"/>
+    <char src="0x66" dst="F"/>
+    <char src="0x67" dst="G"/>
+    <char src="0x68" dst="H"/>
+    <char src="0x69" dst="I"/>
+    <char src="0x6A" dst="J"/>
+    <char src="0x6B" dst="K"/>
+    <char src="0x6C" dst="L"/>
+    <char src="0x6D" dst="M"/>
+    <char src="0x6E" dst="N"/>
+    <char src="0x6F" dst="O"/>
+    <char src="0x70" dst="P"/>
+    <char src="0x71" dst="Q"/>
+    <char src="0x72" dst="R"/>
+    <char src="0x73" dst="S"/>
+    <char src="0x74" dst="T"/>
+    <char src="0x75" dst="U"/>
+    <char src="0x76" dst="V"/>
+    <char src="0x77" dst="W"/>
+    <char src="0x78" dst="X"/>
+    <char src="0x79" dst="Y"/>
+    <char src="0x7A" dst="Z"/>
+    <char src="0x2E" dst="."/>
+  </charset>
+
+</hi2txt>

@@ -1,5 +1,5 @@
 <hi2txt>
-  <table>
+  <table id="CO PILOT LIST">
     <col>RANK</col><col>SCORE</col><col>NAME</col>
     <row><cell>1</cell><cell>9900</cell><cell>ACE</cell></row>
     <row><cell>2</cell><cell>9250</cell><cell>SDM</cell></row>

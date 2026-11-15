@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE openhi2txt>
+<openhi2txt requires="0.2.0" label="Tekken 3">
+  <!--
+    Tekken 3 [Namco System 12] - at28c16 EEPROM (2080 bytes). Records VALUE-FIRST.
+    Same record layouts as Tekken 2 (System 11); different base offsets + roster.
+    Roster idx (0-16,18-20 confirmed on screen/records; 17 & 21 UNCONFIRMED - default tags only):
+      0 PAUL 1 LAW 2 LEI 3 KING 4 YOSHIMITSU 5 NINA 6 HWOARANG 7 XIAOYU 8 EDDY 9 JIN
+      10 JULIA 11 KUMA 12 BRYAN 13 HEIHACHI 14 OGRE 15 MOKUJIN 16 GUN JACK
+      17 ?(tag JUN) 18 ANNA 19 TIGER 20 TRUE OGRE 21 ?(tag SAK)
+
+    CHARACTERS (usage %)  @0x124: 22x 8B per-char record = [A:2 LE][B:2 LE][C:2 LE][D:2 LE].
+      plays = A + C  (1P-side + 2P-side selections; B is NOT counted - e.g. YOSHIMITSU had B=3
+      yet showed 0%). % = plays / DENOM, truncated to 1 dp, shown 2-digit zero-padded ("05.5%",
+      "22.2%"); exactly 0 shows "0%". Sort: % desc, roster-index asc.
+      DENOM = total character-selections = SUM over all chars of (A+C). It is NOT stored as one
+      value and hi2txt cannot sum a column across rows, so it is reconstructed from the stored
+      per-mode selection totals:  DENOM = [0x11a] + [0x11e] + [0x120].
+      ([0x11a] is the confirmed total of the A column = 7; 0x11e=6, 0x120=5; 7+6+5 = 18 here,
+      which reproduces the live CHARACTERS screen exactly.)  ** VERIFY denominator with hi2txt;
+      if off, it is the one value to re-pin from a 2nd live dump. Debug cols expose PLAYS/DENOM. **
+      Visible chars = those with a real time record OR plays>0 (KEEP != 359999), same as Tekken 2.
+    CHARACTER TIME RECORD @0x400: 22x8B [TIME:3 LE frames@60fps][0x20][NAME:3][0x00]; slot i = char i;
+      top 10 by time asc; empty slot = 359999 (99'59"99). Format MM'SS"FF.
+    VS GAME WINS RECORD   @0x4b0: 10x8B [CHAR:2 LE][WINS:2 LE][NAME:3][0x00]; pre-sorted desc.
+      Game prints "1 WIN" (singular) vs "N WINS" (plural).
+  //-->
+  <structure file="at28c16">
+    <check><size>2080</size></check>
+    <elt size="276" type="raw" id="HDR1"/>                              <!-- 0x000-0x113 -->
+    <elt size="2" type="int" id="T114" endianness="little_endian"/>     <!-- 0x114 total games -->
+    <elt size="2" type="int" id="T116" endianness="little_endian"/>     <!-- 0x116 -->
+    <elt size="2" type="raw" id="H118"/>                                <!-- 0x118 -->
+    <elt size="2" type="int" id="S1P"  endianness="little_endian"/>     <!-- 0x11a = SUM(A) = 7 -->
+    <elt size="2" type="raw" id="H11C"/>                                <!-- 0x11c -->
+    <elt size="2" type="int" id="S2A"  endianness="little_endian"/>     <!-- 0x11e = 6 -->
+    <elt size="2" type="int" id="S2B"  endianness="little_endian"/>     <!-- 0x120 = 5 -->
+    <elt size="2" type="raw" id="H122"/>                                <!-- 0x122 -->
+    <loop count="22">                                                   <!-- CHARACTERS play recs @0x124 -->
+      <elt size="2" type="int" id="PA"   endianness="little_endian"/>   <!-- A: 1P-side plays -->
+      <elt size="2" type="raw" id="PB"/>                               <!-- B: NOT counted -->
+      <elt size="2" type="int" id="PC"   endianness="little_endian"/>   <!-- C: 2P-side plays -->
+      <elt size="2" type="raw" id="PD"/>
+    </loop>
+    <elt size="556" type="raw" id="HDR3"/>                              <!-- 0x1d4-0x3ff -->
+    <loop count="22">                                                   <!-- CHARACTER TIME RECORD @0x400 -->
+      <elt size="3" type="int"  id="TIME" endianness="little_endian"/>
+      <elt size="1" type="raw"  id="TSP"/>
+      <elt size="3" type="text" id="TNAME"/>
+      <elt size="1" type="raw"  id="TNUL"/>
+    </loop>
+    <loop count="10">                                                   <!-- VS GAME WINS RECORD @0x4b0 -->
+      <elt size="2" type="int"  id="WCHAR"  endianness="little_endian"/>
+      <elt size="2" type="int"  id="WINCNT" endianness="little_endian"/>
+      <elt size="3" type="text" id="WNAME"/>
+      <elt size="1" type="raw"  id="WNUL"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="CHARACTER TIME RECORD" sort="TIME" sort-order="asc" lines-max="10">
+      <column id="RANK"      src="index"          format="rank"/>
+      <column id="CHARACTER" src="unsorted_index" format="character"/>
+      <column id="TIME"      src="TIME"           format="time_fmt"/>
+      <column id="NAME"      src="TNAME"/>
+    </table>
+
+    <table id="VS GAME WINS RECORD" line-ignore="NAME:" lines-max="10">   <!-- unused slots have empty NAME; record holds 10 -->
+      <column id="RANK"      src="index" format="rank"/>
+      <column id="CHARACTER" src="WCHAR" format="character"/>
+      <column id="WINS"      format="wins"/>
+      <column id="NAME"      src="WNAME"/>
+    </table>
+
+    <table id="CHARACTERS" sort="PACOL" sort-order="asc"
+           sort-format="sortkey" line-ignore="KEEP:359999">
+      <column id="RANK"       src="index"          format="rank"/>
+      <column id="CHARACTER"  src="unsorted_index" format="character"/>
+      <column id="PERCENTAGE" format="playsum;pct;Suffix%"/>
+      <column id="PACOL"      src="PA"             display="debug"/>
+      <column id="PLAYS"      format="playsum"     display="debug"/>
+      <column id="DENOM"      src="S1P" format="denomsum" display="debug"/>
+      <column id="KEEP"       format="keep"        display="debug"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <case src="0" dst="1ST"/><case src="1" dst="2ND"/><case src="2" dst="3RD"/><case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/><case src="5" dst="6TH"/><case src="6" dst="7TH"/><case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/><case src="9" dst="10TH"/><case src="10" dst="11TH"/><case src="11" dst="12TH"/>
+    <case src="12" dst="13TH"/><case src="13" dst="14TH"/><case src="14" dst="15TH"/><case src="15" dst="16TH"/>
+    <case src="16" dst="17TH"/><case src="17" dst="18TH"/><case src="18" dst="19TH"/><case src="19" dst="20TH"/>
+    <case src="20" dst="21ST"/><case src="21" dst="22ND"/>
+  </format>
+
+  <format id="character">
+    <case src="0"  dst="PAUL"/>       <case src="1"  dst="LAW"/>        <case src="2"  dst="LEI"/>
+    <case src="3"  dst="KING"/>       <case src="4"  dst="YOSHIMITSU"/> <case src="5"  dst="NINA"/>
+    <case src="6"  dst="HWOARANG"/>   <case src="7"  dst="XIAOYU"/>     <case src="8"  dst="EDDY"/>
+    <case src="9"  dst="JIN"/>        <case src="10" dst="JULIA"/>      <case src="11" dst="KUMA"/>
+    <case src="12" dst="BRYAN"/>      <case src="13" dst="HEIHACHI"/>   <case src="14" dst="OGRE"/>
+    <case src="15" dst="MOKUJIN"/>    <case src="16" dst="GUN JACK"/>   <case src="17" dst="JUN"/>
+    <case src="18" dst="ANNA"/>       <case src="19" dst="TIGER"/>      <case src="20" dst="TRUE OGRE"/>
+    <case src="21" dst="SAK"/>        <case default="true" dst="-"/>
+  </format>
+
+  <!-- TIME frames@60fps -> MM'SS"FF (verbatim from Tekken 2, proven on this build) -->
+  <format id="tf_mm"><divide_trunc>3600</divide_trunc><pad direction="left" max="2" value="0"/></format>
+  <format id="tf_ss"><remainder>3600</remainder><divide_trunc>60</divide_trunc><pad direction="left" max="2" value="0"/></format>
+  <format id="tf_ff"><remainder>60</remainder><pad direction="left" max="2" value="0"/></format>
+  <format id="time_fmt" input-as-subcolumns-input="true">
+    <concat><column format="tf_mm"/><txt>'</txt><column format="tf_ss"/><txt>"</txt><column format="tf_ff"/></concat>
+  </format>
+
+  <!-- WINS: singular "1 WIN" vs plural "N WINS" -->
+  <format id="plural_s"><case src="1" dst=""/><case default="true" dst="S"/></format>
+  <format id="wins">
+    <concat><column id="WINCNT"/><txt> WIN</txt><column id="WINCNT" format="plural_s"/></concat>
+  </format>
+
+  <!-- CHARACTERS % : plays = A + C ; DENOM = [0x11a]+[0x11e]+[0x120] ; % = plays/DENOM truncated 1dp -->
+  <format id="playsum"><sum><column id="PA"/><column id="PC"/></sum></format>
+  <format id="denomsum"><sum><column id="S1P"/><column id="S2A"/><column id="S2B"/></sum></format>
+  <format id="pctnum" formatter="%04.1f">
+    <multiply>1000</multiply>
+    <divide_trunc><column id="S1P" format="denomsum"/></divide_trunc>
+    <divide>10</divide>
+  </format>
+  <format id="pct">
+    <case src="0" dst="0"/>
+    <case src="1" operator="&gt;=" format="pctnum"/>
+  </format>
+
+  <!-- sort key = (99 - plays)*100 + roster-index, padded, sorted ASC => % desc then index asc.
+       plays is inverted via a <case> map (the only value-inversion this build honors in a key). -->
+  <format id="sortkey">
+    <add><column id="PC"/></add>
+    <case src="0" dst="9900"/><case src="1" dst="9800"/><case src="2" dst="9700"/><case src="3" dst="9600"/>
+    <case src="4" dst="9500"/><case src="5" dst="9400"/><case src="6" dst="9300"/><case src="7" dst="9200"/>
+    <case src="8" dst="9100"/><case src="9" dst="9000"/><case src="10" dst="8900"/><case src="11" dst="8800"/>
+    <case src="12" dst="8700"/><case src="13" dst="8600"/><case src="14" dst="8500"/><case src="15" dst="8400"/>
+    <case src="16" dst="8300"/><case src="17" dst="8200"/><case src="18" dst="8100"/><case src="19" dst="8000"/>
+    <case src="20" dst="7900"/><case src="21" dst="7800"/><case src="22" dst="7700"/><case src="23" dst="7600"/>
+    <case src="24" dst="7500"/><case src="25" dst="7400"/><case default="true" dst="7000"/>
+    <add><column src="unsorted_index"/></add>
+    <pad direction="left" max="8" value="0"/>
+  </format>
+
+  <!-- filter: show a char only if it has a real time record OR plays>0.
+       KEEP = TIME + plays*1000000 ; ignore rows where KEEP == 359999 (empty time 99'59"99 AND 0 plays) -->
+  <format id="mul1M"><multiply>1000000</multiply></format>
+  <format id="keep"><sum><column id="TIME"/><column id="PA" format="playsum;mul1M"/></sum></format>
+</openhi2txt>

@@ -1,0 +1,41 @@
+<hi2txt>
+  <table id="SHOOTING RANGE">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1</cell><cell>UNO</cell><cell>2500000</cell></row>
+    <row><cell>2</cell><cell>BFG</cell><cell>2350000</cell></row>
+    <row><cell>3</cell><cell>CVG</cell><cell>2175000</cell></row>
+    <row><cell>4</cell><cell>DKX</cell><cell>2025000</cell></row>
+    <row><cell>5</cell><cell>EAI</cell><cell>1875000</cell></row>
+    <row><cell>6</cell><cell>FUW</cell><cell>1725000</cell></row>
+    <row><cell>7</cell><cell>GJN</cell><cell>1600000</cell></row>
+    <row><cell>8</cell><cell>HHL</cell><cell>1500000</cell></row>
+    <row><cell>9</cell><cell>IOP</cell><cell>1400000</cell></row>
+    <row><cell>10</cell><cell>JWF</cell><cell>1300000</cell></row>
+  </table>
+  <table id="DESERT CHARIOTS">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1</cell><cell>DOS</cell><cell>2500000</cell></row>
+    <row><cell>2</cell><cell>BFG</cell><cell>2350000</cell></row>
+    <row><cell>3</cell><cell>CVG</cell><cell>2175000</cell></row>
+    <row><cell>4</cell><cell>DKX</cell><cell>2025000</cell></row>
+    <row><cell>5</cell><cell>EAI</cell><cell>1875000</cell></row>
+    <row><cell>6</cell><cell>FUW</cell><cell>1725000</cell></row>
+    <row><cell>7</cell><cell>GJN</cell><cell>1600000</cell></row>
+    <row><cell>8</cell><cell>HHL</cell><cell>1500000</cell></row>
+    <row><cell>9</cell><cell>IOP</cell><cell>1400000</cell></row>
+    <row><cell>10</cell><cell>JWF</cell><cell>1300000</cell></row>
+  </table>
+  <table id="FOREST WAGONS">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1</cell><cell>TRE</cell><cell>2500000</cell></row>
+    <row><cell>2</cell><cell>BFG</cell><cell>2350000</cell></row>
+    <row><cell>3</cell><cell>CVG</cell><cell>2175000</cell></row>
+    <row><cell>4</cell><cell>DKX</cell><cell>2025000</cell></row>
+    <row><cell>5</cell><cell>EAI</cell><cell>1875000</cell></row>
+    <row><cell>6</cell><cell>FUW</cell><cell>1725000</cell></row>
+    <row><cell>7</cell><cell>GJN</cell><cell>1600000</cell></row>
+    <row><cell>8</cell><cell>HHL</cell><cell>1500000</cell></row>
+    <row><cell>9</cell><cell>IOP</cell><cell>1400000</cell></row>
+    <row><cell>10</cell><cell>JWF</cell><cell>1300000</cell></row>
+  </table>
+</hi2txt>

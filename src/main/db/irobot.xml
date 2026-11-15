@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  I, Robot (Atari, 1984)
+  ROM: irobot  |  Save: nvram  |  Size: 256 bytes (X2212 256x4 NOVRAM)
+
+  STORAGE FORMAT
+  The X2212 is a nibble-wide (256 x 4) NOVRAM. MAME stores ONE 4-bit nibble per
+  file byte (data in the low nibble, high nibble 0). A real data byte therefore
+  spans TWO file bytes, low nibble first:
+        real = file[2k] | (file[2k+1] << 4)
+  This is a "true nibble" layout (every byte <= 0x0f), unlike the Williams
+  byte+padding layout (robotron) where nibble-skip alone recovers whole bytes.
+
+  The persisted high-score list begins at real byte 0x1d (file offset 0x3a) and
+  is column-wise: all scores, then all names, then a trailing checksum byte.
+  VARIABLE length - the hardware keeps only the game's TOP N (observed holding
+  3 entries). A later live save held:
+        scores:  13 03 51 | 10 43 28 | 07 52 54   (6-nibble BCD -> 130351 / 104328 / 75254)
+        names:   0b 0c 0d | 10 11 12 | 0e 0f 0a   (A=1..Z=26 -> KLM PQR NOJ)
+  On screen the game pads the table to 10 rows using ROM-default initials at
+  maincpu ROM 0x8477 (DAV DAV RUS PAU BAR MAR LIN ...) which are NOT stored in
+  the save, so a decode of the save legitimately returns only the persisted
+  rows. The NOVRAM is CPU-mapped at maincpu program 0x1200 (file offset = prog
+  addr - 0x1200); it is the ONLY high-score storage in the machine - there is
+  no larger RAM table, so scores below the kept top-N are not recoverable.
+
+  DECODE
+  nibble-skip="odd" keeps the data (low) nibbles; byte-swap="2" restores the
+  real within-byte nibble order.
+    - SCORE: base="16" concatenates the 6 BCD nibbles -> the score value.
+    - NAME : each character is one real byte holding A=1..Z=26 (0x01..0x1a).
+             The text element must have NO base attribute. With base="16" the C#
+             build combined the two kept nibbles as a DECIMAL concatenation (e.g.
+             real 0x1a -> "1"||"10" = 110 -> 'n', and P..U 0x10..0x15 collided
+             with J..O). WITHOUT base the engine combines the nibbles as a true
+             hex byte, so the charset keyed 0x01..0x1a = A..Z decodes every
+             initial correctly (verified by a full A..Z sweep). Score keeps
+             base="16"; only the name element drops it.
+-->
+<hi2txt>
+
+  <structure file="nvram">
+    <check><size>256</size></check>
+
+    <!-- skip header: file bytes 0x00..0x39 -> real byte 0x1d -->
+    <elt id="header" size="58" type="raw"/>
+
+    <loop count="3">
+      <elt id="score" size="6" type="int"  nibble-skip="odd" byte-swap="2" base="16"/>
+    </loop>
+    <loop count="3">
+      <elt id="name"  size="6" type="text" nibble-skip="odd" byte-swap="2" charset="irobot_init"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORES (ONLY TOP 3 ARE SAVED IN NVRAM)">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="name"/>
+      <column id="SCORE" src="score"/>
+    </table>
+  </output>
+
+  <!-- True hex-byte code -> initial letter. Real byte 0x01..0x1a = A..Z
+       (0x00 = space). Correct for ALL letters because the name element has no
+       base attribute (hex nibble-combine). -->
+  <charset id="irobot_init">
+    <char src="0x00" dst=" "/>
+    <char src="0x01" dst="A"/><char src="0x02" dst="B"/><char src="0x03" dst="C"/>
+    <char src="0x04" dst="D"/><char src="0x05" dst="E"/><char src="0x06" dst="F"/>
+    <char src="0x07" dst="G"/><char src="0x08" dst="H"/><char src="0x09" dst="I"/>
+    <char src="0x0a" dst="J"/><char src="0x0b" dst="K"/><char src="0x0c" dst="L"/>
+    <char src="0x0d" dst="M"/><char src="0x0e" dst="N"/><char src="0x0f" dst="O"/>
+    <char src="0x10" dst="P"/><char src="0x11" dst="Q"/><char src="0x12" dst="R"/>
+    <char src="0x13" dst="S"/><char src="0x14" dst="T"/><char src="0x15" dst="U"/>
+    <char src="0x16" dst="V"/><char src="0x17" dst="W"/><char src="0x18" dst="X"/>
+    <char src="0x19" dst="Y"/><char src="0x1a" dst="Z"/>
+  </charset>
+
+</hi2txt>

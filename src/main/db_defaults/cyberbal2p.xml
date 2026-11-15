@@ -1,0 +1,28 @@
+<hi2txt>
+<table id="1-PLAYER TEAMS">
+<col>RANK</col><col>NAME</col><col>SCORE</col>
+<row><cell>1</cell><cell>EBC</cell><cell>100000</cell></row>
+<row><cell>2</cell><cell>VIY</cell><cell>95000</cell></row>
+<row><cell>3</cell><cell>RRB</cell><cell>90000</cell></row>
+<row><cell>4</cell><cell>YDE</cell><cell>85000</cell></row>
+<row><cell>5</cell><cell>SYR</cell><cell>80000</cell></row>
+<row><cell>6</cell><cell>PSB</cell><cell>75000</cell></row>
+<row><cell>7</cell><cell>RSA</cell><cell>70000</cell></row>
+<row><cell>8</cell><cell>IIL</cell><cell>65000</cell></row>
+<row><cell>9</cell><cell>NNL</cell><cell>60000</cell></row>
+<row><cell>10</cell><cell>GG</cell><cell>55000</cell></row>
+</table>
+<table id="2-PLAYER TEAMS">
+<col>RANK</col><col>NAME</col><col>SCORE</col>
+<row><cell>1</cell><cell>PAPERBOY</cell><cell>100000</cell></row>
+<row><cell>2</cell><cell>ASTEROID</cell><cell>95000</cell></row>
+<row><cell>3</cell><cell>GAUNTLET</cell><cell>90000</cell></row>
+<row><cell>4</cell><cell>GRAVITAR</cell><cell>85000</cell></row>
+<row><cell>5</cell><cell>TEMPEST</cell><cell>80000</cell></row>
+<row><cell>6</cell><cell>CENTIPED</cell><cell>75000</cell></row>
+<row><cell>7</cell><cell>STARWARS</cell><cell>70000</cell></row>
+<row><cell>8</cell><cell>AKKAARRH</cell><cell>65000</cell></row>
+<row><cell>9</cell><cell>TOOBIN</cell><cell>60000</cell></row>
+<row><cell>10</cell><cell>ESCAPE</cell><cell>55000</cell></row>
+</table>
+</hi2txt>

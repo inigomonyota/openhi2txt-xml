@@ -1,0 +1,16 @@
+<hi2txt>
+  <field id="SCORE FROM LAST PLAY">8200</field>
+  <table id="TOP 10">
+    <col>RANK</col><col>SCORE</col>
+    <row><cell>1ST</cell><cell>14500</cell></row>
+    <row><cell>2ND</cell><cell>8200</cell></row>
+    <row><cell>3RD</cell><cell>4200</cell></row>
+    <row><cell>4TH</cell><cell>3900</cell></row>
+    <row><cell>5TH</cell><cell>900</cell></row>
+    <row><cell>6TH</cell><cell>600</cell></row>
+    <row><cell>7TH</cell><cell>0</cell></row>
+    <row><cell>8TH</cell><cell>0</cell></row>
+    <row><cell>9TH</cell><cell>0</cell></row>
+    <row><cell>10TH</cell><cell>0</cell></row>
+  </table>
+</hi2txt>

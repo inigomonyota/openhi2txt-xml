@@ -1,4 +1,6 @@
 <hi2txt>
+  <table>
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell></cell><cell></cell><cell></cell></row>
+  </table>
 </hi2txt>
-
-

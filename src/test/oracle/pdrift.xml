@@ -1,0 +1,25 @@
+<hi2txt>
+  <table id="RANKING">
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>COURSE</col><col>TIME</col><col>UNKNOWN</col><col>PRIZE</col>
+    <row><cell>1</cell><cell>2500000</cell><cell>YU.</cell><cell>A</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x04000000010100</cell></row>
+    <row><cell>2</cell><cell>1800000</cell><cell>SAD</cell><cell>B</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x04000102030300</cell></row>
+    <row><cell>3</cell><cell>1700000</cell><cell>KOM</cell><cell>C</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x04000102040200</cell></row>
+    <row><cell>4</cell><cell>1600000</cell><cell>OTA</cell><cell>D</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x04000102050300</cell></row>
+    <row><cell>5</cell><cell>1500000</cell><cell>REE</cell><cell>E</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x04010203020400</cell></row>
+    <row><cell>6</cell><cell>1400000</cell><cell>MAT</cell><cell>A</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x04010204020500</cell></row>
+    <row><cell>7</cell><cell>1350000</cell><cell>LCY</cell><cell>B</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x04010205020600</cell></row>
+    <row><cell>8</cell><cell>1300000</cell><cell>HRO</cell><cell>C</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x04010206020700</cell></row>
+    <row><cell>9</cell><cell>1250000</cell><cell>GDN</cell><cell>D</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x04010207020800</cell></row>
+    <row><cell>10</cell><cell>1200000</cell><cell>MTU</cell><cell>E</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x04010208020900</cell></row>
+    <row><cell>11</cell><cell>1150000</cell><cell>TKG</cell><cell>A</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x04010209020A00</cell></row>
+    <row><cell>12</cell><cell>1100000</cell><cell>M.K</cell><cell>B</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x03010302030800</cell></row>
+    <row><cell>13</cell><cell>1050000</cell><cell>ITO</cell><cell>C</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x03020402040800</cell></row>
+    <row><cell>14</cell><cell>1000000</cell><cell>HMA</cell><cell>D</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x03020502050800</cell></row>
+    <row><cell>15</cell><cell>950000</cell><cell>YAG</cell><cell>E</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x03020602060800</cell></row>
+    <row><cell>16</cell><cell>900000</cell><cell>...</cell><cell>A</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x03020702070800</cell></row>
+    <row><cell>17</cell><cell>850000</cell><cell>...</cell><cell>B</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x03020802080800</cell></row>
+    <row><cell>18</cell><cell>800000</cell><cell>...</cell><cell>C</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x03020902090800</cell></row>
+    <row><cell>19</cell><cell>750000</cell><cell>...</cell><cell>D</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x02030203080800</cell></row>
+    <row><cell>20</cell><cell>700000</cell><cell>...</cell><cell>E</cell><cell>1&apos;10&quot;00</cell><cell>0x00</cell><cell>0x020402030808</cell></row>
+  </table>
+</hi2txt>

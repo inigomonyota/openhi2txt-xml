@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="SCORE RANKING">
+    <col>POSITION</col><col>RANK</col><col>SCORE</col><col>TIME MIN</col><col>TIME SEC</col><col>TIME</col><col>NAME</col>
+    <row><cell>1</cell><cell>SS</cell><cell>2000000</cell><cell>40</cell><cell>0</cell><cell>40:00</cell><cell>NOU</cell></row>
+    <row><cell>2</cell><cell>S</cell><cell>1800000</cell><cell>35</cell><cell>30</cell><cell>35:30</cell><cell>DNA</cell></row>
+    <row><cell>3</cell><cell>A</cell><cell>1600000</cell><cell>32</cell><cell>10</cell><cell>32:10</cell><cell>BAT</cell></row>
+    <row><cell>4</cell><cell>A</cell><cell>1400000</cell><cell>30</cell><cell>45</cell><cell>30:45</cell><cell>ARI</cell></row>
+    <row><cell>5</cell><cell>B</cell><cell>1200000</cell><cell>28</cell><cell>20</cell><cell>28:20</cell><cell>KAT</cell></row>
+    <row><cell>6</cell><cell>C</cell><cell>1000000</cell><cell>25</cell><cell>8</cell><cell>25:08</cell><cell>HER</cell></row>
+    <row><cell>7</cell><cell>D</cell><cell>800000</cell><cell>22</cell><cell>37</cell><cell>22:37</cell><cell>TOM</cell></row>
+    <row><cell>8</cell><cell>E</cell><cell>600000</cell><cell>20</cell><cell>19</cell><cell>20:19</cell><cell>HIG</cell></row>
+    <row><cell>9</cell><cell>E</cell><cell>400000</cell><cell>18</cell><cell>1</cell><cell>18:01</cell><cell>CAP</cell></row>
+    <row><cell>10</cell><cell>E</cell><cell>338200</cell><cell>8</cell><cell>24</cell><cell>08:24</cell><cell>MOT</cell></row>
+  </table>
+</hi2txt>

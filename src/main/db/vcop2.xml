@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Virtua Cop 2">
+  <!--
+    Sega Model 2, file=backup1, NO byte-swap, little-endian.
+    (The 128B eeprom is empty/settings only.)
+    RANKING @ 0x400, 10 x 8B (block label "SEGA VIRTUA COP2" follows @0x450):
+      [SCORE:3 int LE][RANK:1 int, +1][NAME:3 ASCII][pad:1].
+    POSITION = row index (+1). RANK = stored byte + 1 (03->4 ... 07->8). NAME plain ASCII.
+    NB: vcop2 stores names as plain ASCII + SCORE LE3 (unlike vcop, which packed each
+    name char as a 4-byte LE index and used SCORE LE4).
+  //-->
+
+  <structure file="backup1">
+    <check>
+      <size>16384</size>
+    </check>
+    <elt size="1024" type="raw" id="HEADER"/>
+    <loop count="10">
+      <elt size="3" type="int"  id="SCORE" endianness="little_endian"/>
+      <elt size="1" type="int"  id="RANK"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="POSITION" src="index" format="+1"/>
+      <column id="RANK"     src="RANK"  format="+1"/>
+      <column id="NAME"/>
+      <column id="SCORE"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+</hi2txt>

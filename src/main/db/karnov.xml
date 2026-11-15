@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hi2txt>
+  <!--
+    karnov (.hi) definition for hi2txt
+    Based on the actual karnov.hi you uploaded (84 bytes).
+
+    Observed layout:
+      - 11 x 4-byte packed-BCD score blocks (44 bytes total)
+        The first 4 bytes are a duplicate/aux copy of the top score.
+        The next 10 x 4 bytes are the 10 ranked scores.
+      - 10 name entries (40 bytes total)
+        Each is 4 bytes: 1 pad byte (0x00) + 3 ASCII initials.
+
+    Output: unified BEST 10 PLAYERS table (RANK|NAME|SCORE).
+  -->
+
+  <structure file=".hi">
+    <check>
+      <size>84</size>
+    </check>
+
+    <!-- duplicate/aux top score -->
+    <elt size="4" type="raw" id="_TOP_DUP"/>
+
+    <!-- 10 scores -->
+    <loop count="10">
+      <elt size="4" type="int" id="SCORE" base="16"/>
+    </loop>
+
+    <!-- 10 names (pad + 3 letters) -->
+    <loop count="10">
+      <elt size="1" type="raw"  id="_NPAD"/>
+      <elt size="3" type="text" id="NAME" charset="karnov"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NAME" format="trimr"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="trimr">
+    <trim direction="right"> </trim>
+  </format>
+
+  <charset id="karnov">
+    <char src="0x00" dst=" "/>
+  </charset>
+</hi2txt>

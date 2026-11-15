@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openhi2txt label="NBA Jam Tournament Edition" requires="0.3.0">
+  <!-- Tournament Edition uses the same 16 KiB CMOS layout as NBA Jam. -->
+  <sameas id="nbajam"/>
+</openhi2txt>

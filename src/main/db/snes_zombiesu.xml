@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Zombies Ate My Neighbors">
+  <!--
+    SNES / Zombies Ate My Neighbors (softlist: zombiesu, "Zombies Ate My
+    Neighbors (USA)"). Launch: mame64.exe snes zombiesu. The TOP SCORES table
+    lives in 5A22 work RAM (0x7e0000-0x7fffff, read via maincpu/program). It is
+    NOT battery-backed - it only exists in WRAM after a game, so the hiscore.dat
+    entry uses the boot-zero @delay trick (same as genesis_comixu/supshin).
+
+    Two parallel regions, verified against snap/snes/0027.png:
+      NAME  : ASCII display buffer at 0x7e2064, 10 records x 15 bytes
+              (14 visible tiles + 0x00 terminator). Tiles are plain ASCII plus
+              four specials:  0x2f '/' = space, 0x3d '=' = "MR.",
+              0x3e '>' = "MRS.", 0x3f '?' = "!". The name field ALSO contains
+              the score digits right-justified after '/' padding, so the
+              "cleanname" format strips every digit then trims the trailing
+              spaces, leaving just the name (e.g. "PIP=>?/9008320" -> "PIPMR.MRS.!",
+              "=EBERT///23456" -> "MR.EBERT", "P/MICA///15448" -> "P MICA").
+      SCORE : binary table at 0x7e20fa, 10 records x 4 bytes. Each score is
+              packed BCD stored little-endian (e.g. 20 83 00 09, 56 34 02 00).
+              Read as a 4-byte little_endian int shown in base 16: the hex
+              digits ARE the decimal score, so 0x09008320 -> 9008320 and
+              0x00023456 -> 23456 (the trackfld base-16-on-BCD trick). Note the
+              tool's own bcd/bcd-le profiles mis-decode these bytes; base 16 on a
+              little-endian int is the reliable path.
+
+    hiscore.dat captures the two regions as two contiguous blocks (names block
+    then scores block); a two-loop structure pairs NAME[i] with SCORE[i] by row.
+
+    .hi layout (190 bytes):
+      0x00-0x95 : 10 name records x 15 bytes (14 tiles + 0x00 term)
+      0x96-0xbd : 10 scores x 4 bytes (little-endian packed BCD)
+  //-->
+  <structure file=".hi">
+    <check>
+      <size>190</size>
+    </check>
+    <loop count="10">
+      <elt size="14" type="text" charset="zname" id="NAME"/>
+      <elt size="1" type="raw" id="NT"/>
+    </loop>
+    <loop count="10">
+      <elt size="4" type="int" endianness="little_endian" base="16" id="SCORE"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TOP SCORES">
+      <column id="NAME" src="NAME" format="cleanname"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+  <!-- the name tile field carries the right-justified score digits too; strip
+       every digit, then trim the '/'-padding (now spaces) off the right -->
+  <format id="cleanname">
+    <replace src="0" dst=""/>
+    <replace src="1" dst=""/>
+    <replace src="2" dst=""/>
+    <replace src="3" dst=""/>
+    <replace src="4" dst=""/>
+    <replace src="5" dst=""/>
+    <replace src="6" dst=""/>
+    <replace src="7" dst=""/>
+    <replace src="8" dst=""/>
+    <replace src="9" dst=""/>
+    <trim direction="right"> </trim>
+  </format>
+
+  <charset id="zname">
+    <char src="0x2f" dst=" "/>
+    <char src="0x3d" dst="MR."/>
+    <char src="0x3e" dst="MRS."/>
+    <char src="0x3f" dst="!"/>
+    <char src="0x00" dst=""/>
+  </charset>
+</hi2txt>

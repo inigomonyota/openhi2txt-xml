@@ -1,0 +1,10 @@
+<hi2txt>
+  <table id="BEST SCORE">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1</cell><cell>GLF</cell><cell>50000</cell></row>
+    <row><cell>2</cell><cell>PRM</cell><cell>40000</cell></row>
+    <row><cell>3</cell><cell>LDS</cell><cell>30000</cell></row>
+    <row><cell>4</cell><cell>JJM</cell><cell>20000</cell></row>
+    <row><cell>5</cell><cell>TJL</cell><cell>10000</cell></row>
+  </table>
+</hi2txt>

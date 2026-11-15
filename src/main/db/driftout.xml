@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Drift Out">
+
+  <structure file=".hi">
+    <check>
+      <size>140</size>
+    </check>
+
+    <loop count="10">
+      <elt size="2" type="int" id="NAME1" endianness="big_endian"/>
+      <elt size="2" type="int" id="NAME2" endianness="big_endian"/>
+      <elt size="2" type="int" id="NAME3" endianness="big_endian"/>
+      <elt size="2" type="int" id="POINTS" endianness="big_endian"/>
+      <elt size="2" type="int" id="CAR" endianness="big_endian"/>
+      <elt size="4" type="int" id="TIME_RAW" endianness="big_endian"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="POINT RANKING" lines-max="10">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="NAME" format="name"/>
+      <column id="POINTS"/>
+      <column id="CAR TYPE" src="CAR" format="car"/>
+      <column id="TIME" format="time"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <add>1</add>
+  </format>
+
+  <format id="name">
+    <concat>
+      <column id="NAME1" format="char"/>
+      <column id="NAME2" format="char"/>
+      <column id="NAME3" format="char"/>
+    </concat>
+  </format>
+
+  <format id="char">
+    <case src="0" dst=" "/>
+    <case src="1" dst="A"/>
+    <case src="2" dst="B"/>
+    <case src="3" dst="C"/>
+    <case src="4" dst="D"/>
+    <case src="5" dst="E"/>
+    <case src="6" dst="F"/>
+    <case src="7" dst="G"/>
+    <case src="8" dst="H"/>
+    <case src="9" dst="I"/>
+    <case src="10" dst="J"/>
+    <case src="11" dst="K"/>
+    <case src="12" dst="L"/>
+    <case src="13" dst="M"/>
+    <case src="14" dst="N"/>
+    <case src="15" dst="O"/>
+    <case src="16" dst="P"/>
+    <case src="17" dst="Q"/>
+    <case src="18" dst="R"/>
+    <case src="19" dst="S"/>
+    <case src="20" dst="T"/>
+    <case src="21" dst="U"/>
+    <case src="22" dst="V"/>
+    <case src="23" dst="W"/>
+    <case src="24" dst="X"/>
+    <case src="25" dst="Y"/>
+    <case src="26" dst="Z"/>
+    <case src="28" dst=","/>
+    <case src="31" dst="."/>
+    <case src="33" dst="?"/>
+    <case src="36" dst="!"/>
+  </format>
+
+  <format id="car">
+    <case src="0" dst="MASUDA"/>
+    <case src="1" dst="LANCHA"/>
+    <case src="2" dst="TOYATA"/>
+    <case src="3" dst="FORD"/>
+    <case src="4" dst="MITBSI"/>
+    <case src="5" dst="BMW"/>
+    <case src="6" dst="SUBARO"/>
+  </format>
+
+  <format id="time">
+    <concat>
+      <column id="TIME_RAW" format="time_minutes"/>
+      <txt>'</txt>
+      <column id="TIME_RAW" format="time_seconds"/>
+      <txt>''</txt>
+      <column id="TIME_RAW" format="time_centiseconds"/>
+    </concat>
+    <replace src="0'00''00" dst="-'--''--"/>
+  </format>
+
+  <format id="time_minutes">
+    <divide_trunc>6000</divide_trunc>
+  </format>
+
+  <format id="time_seconds">
+    <remainder>6000</remainder>
+    <divide_trunc>100</divide_trunc>
+    <pad direction="left" max="2">0</pad>
+  </format>
+
+  <format id="time_centiseconds">
+    <remainder>100</remainder>
+    <pad direction="left" max="2">0</pad>
+  </format>
+
+</hi2txt>

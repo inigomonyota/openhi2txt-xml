@@ -36,11 +36,11 @@
   </output>
   
   <format id="character">
-    <case src="0" dst="?HELLHOUND"/>
+    <case src="0" dst="HELLHOUND"/>
     <case src="1" dst="WINDINA"/>
-    <case src="2" dst="?ARYUSTAILM"/>
-    <case src="3" dst="?PEPLOS"/>
-    <case src="4" dst="?DINO135"/>
+    <case src="2" dst="ARYUSTAILM"/>
+    <case src="3" dst="PEPLOS"/>
+    <case src="4" dst="DINO135"/>
     <case src="5" dst="DINO246"/>
   </format>
   

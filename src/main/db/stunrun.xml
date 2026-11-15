@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="S.T.U.N. Runner">
+  <!--
+    Atari (Hard Drivin'-family) mainpcb NVRAM = two 2Kx8 chips forming a 2Kx16 NVRAM,
+    dumped as separate byte lanes: mainpcb_200e (EVEN/high) + mainpcb_210e (ODD/low).
+    hi2txt reads ONE file and cannot merge, so INTERLEAVE the lanes first into a single
+    2Kx16 file named 'stunrun', then run this definition on it:
+        # e[0],o[0],e[1],o[1],...  (python)
+        e=open('mainpcb_200e','rb').read(); o=open('mainpcb_210e','rb').read()
+        m=bytearray(len(e)+len(o)); m[0::2]=e; m[1::2]=o; open('stunrun','wb').write(m)
+
+    In the interleaved stream, WORLD CLASS STUN RUNNERS @ 0x410, 10 x 24B:
+      [SCORE:2 int big-endian][NAME:22 ASCII null-padded].
+    SCORE plain binary (0x3A98 = 15000). NAME plain ASCII, byte-trunc 0x00.
+  //-->
+
+  <structure file="stunrun" byte-swap="0">
+    <check>
+      <size>4096</size>
+    </check>
+    <elt size="1040" type="raw" id="HEADER"/>
+    <loop count="10">
+      <elt size="2"  type="int"  id="SCORE" endianness="big_endian"/>
+      <elt size="22" type="text" id="NAME"  byte-trunc="0x00"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="WORLD CLASS STUN RUNNERS">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="SCORE"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+</hi2txt>

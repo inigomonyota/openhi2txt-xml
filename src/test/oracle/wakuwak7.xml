@@ -1,0 +1,22 @@
+<hi2txt>
+  <table id="BEST-7 SCORE">
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>CHARA</col>
+    <row><cell>NO. 1</cell><cell>500000</cell><cell>SUN</cell><cell>RAI</cell></row>
+    <row><cell>NO. 2</cell><cell>400000</cell><cell>SOF</cell><cell>MAURU</cell></row>
+    <row><cell>NO. 3</cell><cell>300000</cell><cell>TAM</cell><cell>DANDY-J</cell></row>
+    <row><cell>NO. 4</cell><cell>200000</cell><cell>NEO</cell><cell>ARINA</cell></row>
+    <row><cell>NO. 5</cell><cell>100000</cell><cell>GEO</cell><cell>POLITANK-Z</cell></row>
+    <row><cell>NO. 6</cell><cell>70000</cell><cell>WAK</cell><cell>TESSE</cell></row>
+    <row><cell>NO. 7</cell><cell>50000</cell><cell>UWA</cell><cell>SLASH</cell></row>
+  </table>
+  <table id="BEST-7 WINS">
+    <col>RANK</col><col>BEAT</col><col>NAME</col><col>CHARA</col>
+    <row><cell>NO. 1</cell><cell>BEAT = 10</cell><cell>SUN</cell><cell>POLITANK-Z</cell></row>
+    <row><cell>NO. 2</cell><cell>BEAT = 8</cell><cell>SOF</cell><cell>MAURU</cell></row>
+    <row><cell>NO. 3</cell><cell>BEAT = 6</cell><cell>TAM</cell><cell>TESSE</cell></row>
+    <row><cell>NO. 4</cell><cell>BEAT = 5</cell><cell>NEO</cell><cell>DANDY-J</cell></row>
+    <row><cell>NO. 5</cell><cell>BEAT = 4</cell><cell>GEO</cell><cell>SLASH</cell></row>
+    <row><cell>NO. 6</cell><cell>BEAT = 3</cell><cell>WAK</cell><cell>ARINA</cell></row>
+    <row><cell>NO. 7</cell><cell>BEAT = 2</cell><cell>UWA</cell><cell>RAI</cell></row>
+  </table>
+</hi2txt>

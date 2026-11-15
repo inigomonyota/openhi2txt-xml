@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    DoDonPachi Dai-Fukkatsu Black Label (dfkbl) - Cave CV1000 (SH3), 2010.
+    Authored by Pipmick @ CoinOPS.
+
+    VERIFIED LIVE. The installed dfkbl ROM on this cabinet is a MISMATCHED set
+    (boots as SaiDaiOuJou 2012; MAME logs u2/u4/u23/u24 length+checksum
+    warnings), so the canonical dfkbl hiscore.dat window 0x0ca02028 never holds
+    the board here and always captured 12235 bytes of zeros. The real ranking
+    board lives in low SH3 work-RAM. hiscore.dat was repointed to:
+        @:maincpu,program,c7d0808,1951,05,05
+    i.e. maincpu "program" space, address 0x0c7d0808, length 0x1951 (6481),
+    start-match 0x05, end-match 0x05 -> check definition "0:c7d0808:1951:05:05",
+    file size 6481 bytes. A populated dfkbl.hi captured from that address decodes
+    cleanly through this definition (rec0/30/60 = the proven TYPE-A/B/C chart-1
+    scores 1021616255 / 1090270316 / 963503015, name ISO).
+
+    Record layout (0x48 = 72 bytes), mapped from the live board:
+      +0x00  SCORE     14 bytes, nibble-skip=odd, base=16, little-endian
+      +0x0e  (raw 25)
+      +0x27  CHARACTER 1 byte  (0=A 1=B 2=C) -> SHOT TYPE
+      +0x28  (raw 7)
+      +0x2f  STAGE     1 byte  (+1) -> AREA n
+      +0x30  (raw 7)
+      +0x37  AUTOBOMB  1 byte  (0=OFF / non-zero=ON)
+      +0x38  (raw 8)
+      +0x40  NAME      3 bytes text (ASCII; 0x2E='.')
+      +0x43  (raw 5)
+    The board is a single array of 90 entries (9 category charts x 10 ranks);
+    the three SHOT-TYPE charts (A/B/C) are entries 0-9, 30-39, 60-69. A second
+    identical board copy begins one record later (0x0c7d2158) and is outside the
+    captured window. CONTINUE is 0 for every default entry and has no locatable
+    nonzero field in the record, so it is not decoded here.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>0:c7d0808:1951:05:05</definition>
+      <size>6481</size>
+    </check>
+    <loop count="90">
+      <elt size="14" type="int"  id="SCORE" nibble-skip="odd" base="16" endianness="little_endian"/>
+      <elt size="25" type="raw"  id="EMPTY"/>
+      <elt size="1"  type="int"  id="CHARACTER"/>
+      <elt size="7"  type="raw"  id="EMPTY2"/>
+      <elt size="1"  type="int"  id="STAGE"/>
+      <elt size="7"  type="raw"  id="EMPTY3"/>
+      <elt size="1"  type="int"  id="AUTOBOMB"/>
+      <elt size="8"  type="raw"  id="EMPTY4"/>
+      <elt size="3"  type="text" id="NAME" charset="ddpdfk"/>
+      <elt size="5"  type="raw"  id="EMPTY5"/>
+    </loop>
+    <elt size="1" type="raw" id="TAIL"/>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORES">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="SHOT TYPE" src="CHARACTER" format="shottype"/>
+      <column id="SCORE"/>
+      <column id="AREA" src="STAGE" format="area"/>
+      <column id="AUTO BOMB" src="AUTOBOMB" format="autobomb"/>
+      <column id="EMPTY"  format="0x" display="debug"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="shottype">
+    <case src="0" dst="TYPE-A (RED)"/>
+    <case src="1" dst="TYPE-B (GREEN)"/>
+    <case src="2" dst="TYPE-C (BLUE)"/>
+  </format>
+  <format id="area"><add>1</add><prefix>AREA </prefix></format>
+  <format id="autobomb">
+    <case src="0" dst="OFF"/>
+    <case src="0" operator="&gt;" dst="ON"/>
+  </format>
+
+  <charset id="ddpdfk">
+    <char src="0x00" dst=""/>
+    <char src="0x2E" dst="."/>
+    <char src="0xFE" dst=""/>
+  </charset>
+</hi2txt>

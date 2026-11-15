@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE openhi2txt SYSTEM "hi2txt.dtd">
+
+<openhi2txt label="World Class Bowling Deluxe" requires="0.3.0">
+  <!--
+    The 128 KiB nvram32 file is a raw dump of the 68EC020 board's
+    host-native 32-bit RAM share. Reverse every four-byte word before
+    decoding CPU-order fields.
+
+    High-score records contain three game-font character codes followed by
+    three decimal digits. Character A is 0x0B; bit 7 of a character may be
+    used as an entry flag. Each decimal digit is stored as digit + 1.
+
+    0x2068  High Score Kingpins, ten 6-byte records
+    0x20AA  Flash Highscores, ten 6-byte records
+
+    0x20EC  7-10 Split Club, ten packed 3-character membership slots
+    0x210A  300 Club, ten packed 3-character membership slots
+
+    The six bytes at 0x20E6 are the unused tail of the Flash table's
+    70-byte allocation. The two club arrays that follow are display grids,
+    not linked records or scored high-score entries.
+  -->
+
+  <structure file="nvram32" byte-swap="4">
+    <check>
+      <size>131072</size>
+    </check>
+
+    <elt id="LEADING PADDING" type="raw" size="8296"/>
+
+    <loop count="10">
+      <elt id="KINGPINS NAME" type="text" size="3"
+           charset="WCB_FLAGS" ascii-offset="54"/>
+      <elt id="KINGPINS SCORE" type="text" size="3" ascii-offset="47"/>
+    </loop>
+
+    <elt id="KINGPINS GAP" type="raw" size="6"/>
+
+    <loop count="10">
+      <elt id="FLASH NAME" type="text" size="3"
+           charset="WCB_FLAGS" ascii-offset="54"/>
+      <elt id="FLASH SCORE" type="text" size="3" ascii-offset="47"/>
+    </loop>
+
+    <elt id="FLASH TRAILER" type="raw" size="6"/>
+
+    <loop count="10">
+      <elt id="7-10 SPLIT NAME" type="text" size="3"
+           byte-trunc="0x00" charset="WCB_FLAGS" ascii-offset="54"/>
+    </loop>
+
+    <loop count="10">
+      <elt id="300 CLUB NAME" type="text" size="3"
+           byte-trunc="0x00" charset="WCB_FLAGS" ascii-offset="54"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORE KINGPINS" line-ignore="NAME:" lines-max="8">
+      <column id="NAME" src="KINGPINS NAME"/>
+      <column id="SCORE" src="KINGPINS SCORE"/>
+    </table>
+
+    <table id="FLASH HIGHSCORES" line-ignore="NAME:" lines-max="8">
+      <column id="NAME" src="FLASH NAME"/>
+      <column id="SCORE" src="FLASH SCORE"/>
+    </table>
+
+    <table id="7-10 SPLIT CLUB" line-ignore="NAME:" show-empty="true">
+      <column id="NAME" src="7-10 SPLIT NAME"/>
+    </table>
+
+    <table id="300 CLUB" line-ignore="NAME:" show-empty="true">
+      <column id="NAME" src="300 CLUB NAME"/>
+    </table>
+  </output>
+
+  <charset id="WCB_FLAGS">
+    <char src="0x8B" dst="A"/><char src="0x8C" dst="B"/>
+    <char src="0x8D" dst="C"/><char src="0x8E" dst="D"/>
+    <char src="0x8F" dst="E"/><char src="0x90" dst="F"/>
+    <char src="0x91" dst="G"/><char src="0x92" dst="H"/>
+    <char src="0x93" dst="I"/><char src="0x94" dst="J"/>
+    <char src="0x95" dst="K"/><char src="0x96" dst="L"/>
+    <char src="0x97" dst="M"/><char src="0x98" dst="N"/>
+    <char src="0x99" dst="O"/><char src="0x9A" dst="P"/>
+    <char src="0x9B" dst="Q"/><char src="0x9C" dst="R"/>
+    <char src="0x9D" dst="S"/><char src="0x9E" dst="T"/>
+    <char src="0x9F" dst="U"/><char src="0xA0" dst="V"/>
+    <char src="0xA1" dst="W"/><char src="0xA2" dst="X"/>
+    <char src="0xA3" dst="Y"/><char src="0xA4" dst="Z"/>
+  </charset>
+</openhi2txt>

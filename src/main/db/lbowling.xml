@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    lbowling - League Bowling (SNK, Neo Geo)
+    Reads the MAME saveram file (nvram/lbowling/saveram), 65536 bytes.
+
+    Neo Geo 68000: saveram is word-swapped, so structure uses byte-swap 2.
+    Three 10-entry tables of 8-byte records (post-swap):
+      REGULATION @ 0x0320   FLASH @ 0x0420   STRIKE 90 @ 0x0520
+    Record:
+      [0:4] SCORE 4-byte BCD (00 00 06 00 gives 600)
+      [4:7] NAME  3 ASCII chars
+      [7]   0xFF terminator
+    RANK is positional, shown as the number then a dot.
+  -->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+
+    <!-- skip to REGULATION at 0x0320 (800 bytes) -->
+    <elt size="800" type="raw" id="PRE"/>
+    <loop count="10">
+      <elt size="4" type="int"  base="16" id="REG_SCORE"/>
+      <elt size="3" type="text" id="REG_NAME"/>
+      <elt size="1" type="raw"  id="REG_TERM"/>
+    </loop>
+    <elt size="176" type="raw" id="GAP0"/>
+    <loop count="10">
+      <elt size="4" type="int"  base="16" id="FLA_SCORE"/>
+      <elt size="3" type="text" id="FLA_NAME"/>
+      <elt size="1" type="raw"  id="FLA_TERM"/>
+    </loop>
+    <elt size="176" type="raw" id="GAP1"/>
+    <loop count="10">
+      <elt size="4" type="int"  base="16" id="STR_SCORE"/>
+      <elt size="3" type="text" id="STR_NAME"/>
+      <elt size="1" type="raw"  id="STR_TERM"/>
+    </loop>
+  </structure>
+
+  <format id="rank">
+    <add>1</add>
+    <suffix>.</suffix>
+  </format>
+
+  <output>
+    <table id="TOP 10 RANKING - STRIKE 90">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="STR_SCORE"/>
+      <column id="NAME"  src="STR_NAME"/>
+    </table>
+    <table id="TOP 10 RANKING - REGULATION">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="REG_SCORE"/>
+      <column id="NAME"  src="REG_NAME"/>
+    </table>
+    <table id="TOP 10 RANKING - FLASH">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="FLA_SCORE"/>
+      <column id="NAME"  src="FLA_NAME"/>
+    </table>
+  </output>
+
+</hi2txt>

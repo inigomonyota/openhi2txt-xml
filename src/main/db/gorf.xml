@@ -17,19 +17,22 @@
       <size>34</size>
     </check>
     <loop count="5">
-      <elt size="3" type="int"  id="SCORE" endianness="little_endian" base="16"/>
+      <elt size="3" type="int"  id="SCORE 3 SHIPS" endianness="little_endian" base="16"/>
     </loop>
 	<elt size="4" type="raw"  id="EMPTY"/>
 	<loop count="5">
-      <elt size="3" type="int"  id="SCORE 6C" endianness="little_endian" base="16"/>
+      <elt size="3" type="int"  id="SCORE 6 SHIPS" endianness="little_endian" base="16"/>
     </loop>
   </structure>
   
   <output>
-    <table>
+    <table id="3 SHIPS">
       <column id="RANK" src="index" format="+1"/>
-      <column id="SCORE"/>
-	  <column id="SCORE 6C"/>
+      <column id="SCORE 3 SHIPS"/>
+	  </table>
+	  <table id="6 SHIPS">
+	  <column id="RANK" src="index" format="+1"/>
+	  <column id="SCORE 6 SHIPS"/>
     </table>
     <field id="EMPTY" display="debug"/>
   </output>

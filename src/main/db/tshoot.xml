@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Turkey Shoot">
+  <!--
+    Exidy tshoot nvram is a 4-bit novram (1024 bytes): each LOGICAL byte is split
+    across two nvram bytes, one nibble each (high nibble reads 0xf). hi2txt can't
+    combine nibbles for text, so PRE-COMBINE into a 512-byte logical file first:
+        nv=open('nvram','rb').read()
+        L=bytes(((nv[2*i]&0xf)<<4)|(nv[2*i+1]&0xf) for i in range(len(nv)//2))
+        open('nvram','wb').write(L)
+    then run this on the combined file.
+
+    CHIEF LUDZIA'S ELITE TURKEY TERMINATORS @ logical 0xaa, 37 x 6B (pre-sorted desc):
+      [NAME:3 ASCII incl spaces][pad:1][SCORE:2 BCD].  SCORE stored /10 -> *10.
+    RANK shown "N)".
+
+    NOTE: this dump does NOT contain "HEROES FOR THE DAY" (10-row daily table) -
+    no matching names/scores present; needs a dump where that table is populated.
+  //-->
+
+  <structure file="nvram">
+    <check>
+      <size>1024</size>
+    </check>
+    <elt size="340" type="raw" id="HEADER"/>
+    <loop count="37">
+      <elt size="6" type="text" id="NAME" nibble-skip="odd"/>
+      <elt size="2" type="raw"  id="PAD"/>
+      <elt size="4" type="int"  id="SCORE" base="16" nibble-skip="odd"/>
+    </loop>
+  </structure>
+
+  <structure file="nvram" byte-swap="0">
+    <check>
+      <size>512</size>
+    </check>
+    <elt size="170" type="raw" id="HEADER"/>
+    <loop count="37">
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="PAD"/>
+      <elt size="2" type="int"  id="SCORE" base="16"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="CHIEF LUDZIA'S ELITE TURKEY TERMINATORS">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"/>
+      <column id="SCORE" format="x10"/>
+    </table>
+  </output>
+
+  <format id="rank"><add>1</add><suffix>)</suffix></format>
+  <format id="x10"><multiply>10</multiply></format>
+</hi2txt>

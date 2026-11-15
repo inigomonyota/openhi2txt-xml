@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<table id="RANKING - SCORE">
+<col>RANK</col><col>SCORE</col><col>NAME</col><col>CHARACTER</col>
+<row><cell>1ST</cell><cell>200000</cell><cell>RYU</cell><cell>RYU</cell></row>
+<row><cell>2ND</cell><cell>190000</cell><cell>SHA</cell><cell>SHARON</cell></row>
+<row><cell>3RD</cell><cell>180000</cell><cell>BLA</cell><cell>BLANKA</cell></row>
+<row><cell>4TH</cell><cell>170000</cell><cell>HAY</cell><cell>HAYATE</cell></row>
+<row><cell>5TH</cell><cell>160000</cell><cell>VEG</cell><cell>VEGA</cell></row>
+<row><cell>6TH</cell><cell>150000</cell><cell>DAL</cell><cell>DHALSIM</cell></row>
+<row><cell>7TH</cell><cell>140000</cell><cell>CHN</cell><cell>CHUN-LI</cell></row>
+<row><cell>8TH</cell><cell>130000</cell><cell>SKL</cell><cell>SKULLO</cell></row>
+<row><cell>9TH</cell><cell>120000</cell><cell>KEN</cell><cell>KEN</cell></row>
+<row><cell>10TH</cell><cell>110000</cell><cell>DOC</cell><cell>D.DARK</cell></row>
+<row><cell>11TH</cell><cell>100000</cell><cell>ZAN</cell><cell>ZANGIEF</cell></row>
+<row><cell>12TH</cell><cell>90000</cell><cell>HOK</cell><cell>HOKUTO</cell></row>
+<row><cell>13TH</cell><cell>80000</cell><cell>C.J</cell><cell>C.JACK</cell></row>
+<row><cell>14TH</cell><cell>70000</cell><cell>GIL</cell><cell>GUILE</cell></row>
+<row><cell>15TH</cell><cell>60000</cell><cell>KAI</cell><cell>KAIRI</cell></row>
+<row><cell>16TH</cell><cell>50000</cell><cell>SDW</cell><cell>SHADOW</cell></row>
+<row><cell>17TH</cell><cell>40000</cell><cell>GRD</cell><cell>GARUDA</cell></row>
+<row><cell>18TH</cell><cell>30000</cell><cell>NNS</cell><cell>NANASE</cell></row>
+</table>
+<table id="RANKING - WINS">
+<col>RANK</col><col>WINS</col><col>NAME</col><col>CHARACTER</col>
+<row><cell>1ST</cell><cell>3 WINS</cell><cell>EX2</cell><cell>SKULLO</cell></row>
+</table>
+</hi2txt>

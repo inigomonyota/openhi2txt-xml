@@ -1,0 +1,18 @@
+<hi2txt>
+<table id="SCORE RANKING">
+<col>RANK</col><col>SCORE</col><col>NAME</col>
+<row><cell>1</cell><cell>50000</cell><cell>RYU</cell></row>
+<row><cell>2</cell><cell>40000</cell><cell>KEN</cell></row>
+<row><cell>3</cell><cell>30000</cell><cell>NSH</cell></row>
+<row><cell>4</cell><cell>20000</cell><cell>CHL</cell></row>
+<row><cell>5</cell><cell>10000</cell><cell>ADN</cell></row>
+</table>
+<table id="VS RANKING">
+<col>RANK</col><col>SCORE</col><col>NAME</col>
+<row><cell>1</cell><cell>5000</cell><cell>SDM</cell></row>
+<row><cell>2</cell><cell>4000</cell><cell>GUY</cell></row>
+<row><cell>3</cell><cell>3000</cell><cell>BDI</cell></row>
+<row><cell>4</cell><cell>2000</cell><cell>ROS</cell></row>
+<row><cell>5</cell><cell>1000</cell><cell>SGT</cell></row>
+</table>
+</hi2txt>

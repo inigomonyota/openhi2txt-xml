@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Aggressors of Dark Kombat">
+  <!--
+    Neo Geo backup RAM (saveram), byte-swap="2".
+    BEST PLAYERS table starts at 0xC60 (3168): 5 x 16-byte entries:
+      [0-3]  score (big-endian binary, shown as-is)
+      [4]    initial 1  (letter code, A=0  -> ascii-offset 65)
+      [5]    0x1A       (the '.' separator, fixed)
+      [6]    initial 2  (letter code, A=0)
+      [7-11] unused
+      [12]   rank (1..5)
+      [13-15] flags/unused
+    NOTE: the character NAME shown on-screen (KISARAH/FUMA/GO/LEONHALT/SHEEN) is
+    NOT stored in the entry, so it is omitted here. A variant xml that maps it
+    from RANK is provided separately.
+  -->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+    <elt size="3168" type="raw" id="DATA"/>
+    <loop count="5">
+      <elt size="4" type="int"  id="SCORE" base="10"/>
+      <elt size="1" type="text" id="INIT1" ascii-offset="65"/>
+      <elt size="1" type="raw"  id="DOT"/>
+      <elt size="1" type="text" id="INIT2" ascii-offset="65"/>
+      <elt size="5" type="raw"  id="PAD1"/>
+      <elt size="1" type="int"  id="RANK"/>
+      <elt size="3" type="raw"  id="PAD2"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST PLAYERS">
+      <column id="RANK"     src="RANK"/>
+      <column id="SCORE"    src="SCORE"/>
+      <column id="INITIALS" format="initials"/>
+    </table>
+  </output>
+
+  <format id="initials">
+    <concat>
+      <column id="INIT1"/>
+      <txt>.</txt>
+      <column id="INIT2"/>
+    </concat>
+  </format>
+
+
+</hi2txt>

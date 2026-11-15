@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="The Punisher">
+  <!--
+    hiscore.dat:
+      @:maincpu,program,ff7896,258 -> 604 bytes (200 ptrs + 400 data + 4 trailing)
+      @:maincpu,program,ff5b92,004 -> 4 bytes (skip, separate top score ref)
+    50 entries x 8 bytes each (after 200-byte pointer block):
+      bytes 0-3: score, 4-byte BCD
+      bytes 4-6: name, 3-byte ASCII
+      byte    7: flag (0x00=P1, 0x01=P2)
+    Trailing 4 bytes skipped.
+  //-->
+
+  <structure file="hi">
+    <check>
+      <size>604</size>
+    </check>
+    <elt size="200" type="raw" id="PTRS"/>
+    <loop count="50">
+      <elt size="4" type="int"  id="SCORE" base="16"/>
+      <elt size="3" type="text" id="NAME"  ascii-offset="0"/>
+      <elt size="1" type="raw"  id="PLAYER"/>
+    </loop>
+    <elt size="4" type="raw" id="TAIL"/>
+  </structure>
+
+  <output>
+    <table id="TOP 50 PLAYERS" sort="SCORE" sort-order="desc">
+      <column id="RANK"   src="index" format="+1"/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+</hi2txt>

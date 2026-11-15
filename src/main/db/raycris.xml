@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    raycris - Ray Crisis (Taito, 1998; ZN/PSX-based hardware).
+    WAVE RIDERS ranking. Scores are NOT in the at28c16 eeprom (plaintext absent);
+    the live table sits in PSX work RAM. There is one table per playable ship
+    (WR-01R, WR-02R, WR-03) and the three sit CONTIGUOUSLY, 14 records each.
+    .hi capture = 3 x 14 x 8 = 336 bytes.
+    Record (8 bytes): [SCORE 4B little-endian binary][NAME 3B ASCII][0x5e '^' separator].
+    Default table (all three identical): HOK 140000 .. AI. 10000, step 10000.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>336</size>
+    </check>
+
+    <loop count="14">
+      <elt size="4" type="int"  id="S1_SCORE" endianness="little_endian" table-index="loop_index"/>
+      <elt size="3" type="text" id="S1_NAME"  table-index="loop_index"/>
+      <elt size="1" type="raw"  id="S1_SEP"   table-index="loop_index"/>
+    </loop>
+
+    <loop count="14">
+      <elt size="4" type="int"  id="S2_SCORE" endianness="little_endian" table-index="loop_index"/>
+      <elt size="3" type="text" id="S2_NAME"  table-index="loop_index"/>
+      <elt size="1" type="raw"  id="S2_SEP"   table-index="loop_index"/>
+    </loop>
+
+    <loop count="14">
+      <elt size="4" type="int"  id="S3_SCORE" endianness="little_endian" table-index="loop_index"/>
+      <elt size="3" type="text" id="S3_NAME"  table-index="loop_index"/>
+      <elt size="1" type="raw"  id="S3_SEP"   table-index="loop_index"/>
+    </loop>
+  </structure>
+
+  <structure file=".hi">
+    <check>
+      <size>112</size>
+    </check>
+
+    <loop count="14">
+      <elt size="4" type="int"  id="S1_SCORE" endianness="little_endian" table-index="loop_index"/>
+      <elt size="3" type="text" id="S1_NAME"  table-index="loop_index"/>
+      <elt size="1" type="raw"  id="S1_SEP"   table-index="loop_index"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="WAVE RIDERS WR-01R">
+      <column id="RANK"  src="index"    format="ordinal"/>
+      <column id="NAME"  src="S1_NAME"/>
+      <column id="SCORE" src="S1_SCORE"/>
+    </table>
+
+    <table id="WAVE RIDERS WR-02R">
+      <column id="RANK"  src="index"    format="ordinal"/>
+      <column id="NAME"  src="S2_NAME"/>
+      <column id="SCORE" src="S2_SCORE"/>
+    </table>
+
+    <table id="WAVE RIDERS WR-03">
+      <column id="RANK"  src="index"    format="ordinal"/>
+      <column id="NAME"  src="S3_NAME"/>
+      <column id="SCORE" src="S3_SCORE"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0"  dst="1st"/>  <case src="1"  dst="2nd"/>  <case src="2"  dst="3rd"/>
+    <case src="3"  dst="4th"/>  <case src="4"  dst="5th"/>  <case src="5"  dst="6th"/>
+    <case src="6"  dst="7th"/>  <case src="7"  dst="8th"/>  <case src="8"  dst="9th"/>
+    <case src="9"  dst="10th"/> <case src="10" dst="11th"/> <case src="11" dst="12th"/>
+    <case src="12" dst="13th"/> <case src="13" dst="14th"/>
+  </format>
+
+</hi2txt>

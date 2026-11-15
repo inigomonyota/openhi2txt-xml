@@ -1,0 +1,16 @@
+<hi2txt>
+  <table id="MARKS OF DISTINCTION">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>TOP</cell><cell>JEK</cell><cell>25</cell></row>
+    <row><cell>1:</cell><cell>NLK</cell><cell>20</cell></row>
+    <row><cell>2:</cell><cell>KJM</cell><cell>15</cell></row>
+    <row><cell>3:</cell><cell>BLS</cell><cell>12</cell></row>
+    <row><cell>4:</cell><cell>JWC</cell><cell>10</cell></row>
+    <row><cell>5:</cell><cell>ADQ</cell><cell>10</cell></row>
+    <row><cell>6:</cell><cell>JAK</cell><cell>09</cell></row>
+    <row><cell>7:</cell><cell>KRT</cell><cell>08</cell></row>
+    <row><cell>8:</cell><cell>LON</cell><cell>08</cell></row>
+    <row><cell>9:</cell><cell>LFS</cell><cell>07</cell></row>
+    <row><cell>10:</cell><cell>SLS</cell><cell>05</cell></row>
+  </table>
+</hi2txt>

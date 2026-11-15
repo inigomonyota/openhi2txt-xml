@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Metal Hawk">
+  <!--
+    EXPERIMENTAL - reads metalhwk nvram (8192 bytes). No hiscore.dat range exists.
+    Table = top 5 entries at offset 4108, each 8 bytes:
+       [score 2B BCD][name 2B: 3 letters x 5 bits][00][badge 1B][00 00]
+    Names are bit-packed, so they're decoded with divide/modulo + a letter table.
+    Ordered by the game's stored RANK order (Marshal->Sergeant), not by score:
+    entries are read in reverse offset order so the top rank = POSITION 1.
+    UNCERTAIN: (a) named format inside a chain ("d1024;letter") for names;
+    (b) loop_reverse_index on a multi-element loop. If either is unsupported,
+    use the reader script instead.
+  //-->
+
+  <structure file="nvram">
+    <check>
+      <size>8192</size>
+    </check>
+    <elt size="4108" type="raw" id="PAD"/>
+    <loop count="5">
+      <elt size="2" type="int"  id="SCORE" base="16"                          table-index="loop_reverse_index"/>
+      <elt size="2" type="int"  id="NAME_PACKED" endianness="big_endian"      table-index="loop_reverse_index"/>
+      <elt size="1" type="raw"  id="P1"                                       table-index="loop_reverse_index"/>
+      <elt size="1" type="int"  id="BADGE"                                    table-index="loop_reverse_index"/>
+      <elt size="2" type="raw"  id="P2"                                       table-index="loop_reverse_index"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="POSITION" src="index"       format="+1"/>
+      <column id="RANK"     src="BADGE"        format="rank"/>
+      <column id="INI'T"    src="NAME_PACKED"  format="name"/>
+      <column id="SCORE"/>
+    </table>
+    <field id="PAD" display="debug"/>
+    <field id="P1"  display="debug"/>
+    <field id="P2"  display="debug"/>
+  </output>
+
+  <!-- 3 letters x 5 bits packed big-endian into NAME_PACKED -->
+  <format id="name" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1024;letter"/>
+      <column format="%1024;d32;letter"/>
+      <column format="%32;letter"/>
+    </concat>
+  </format>
+
+  <format id="letter">
+    <case src="0" dst="A"/>
+    <case src="1" dst="B"/>
+    <case src="2" dst="C"/>
+    <case src="3" dst="D"/>
+    <case src="4" dst="E"/>
+    <case src="5" dst="F"/>
+    <case src="6" dst="G"/>
+    <case src="7" dst="H"/>
+    <case src="8" dst="I"/>
+    <case src="9" dst="J"/>
+    <case src="10" dst="K"/>
+    <case src="11" dst="L"/>
+    <case src="12" dst="M"/>
+    <case src="13" dst="N"/>
+    <case src="14" dst="O"/>
+    <case src="15" dst="P"/>
+    <case src="16" dst="Q"/>
+    <case src="17" dst="R"/>
+    <case src="18" dst="S"/>
+    <case src="19" dst="T"/>
+    <case src="20" dst="U"/>
+    <case src="21" dst="V"/>
+    <case src="22" dst="W"/>
+    <case src="23" dst="X"/>
+    <case src="24" dst="Y"/>
+    <case src="25" dst="Z"/>
+  </format>
+
+  <format id="rank">
+    <case src="0" dst="MARSHAL"/>
+    <case src="7" dst="COLONEL"/>
+    <case src="6" dst="CAPTAIN"/>
+    <case src="5" dst="WARRANT OFFICER"/>
+    <case src="4" dst="MASTER SERGEANT"/>
+    <case src="3" dst="SERGEANT"/>
+  </format>
+</hi2txt>

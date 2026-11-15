@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    rungun - Run and Gun / Slam Dunk (Konami, 1993)
+    .hi via hiscore.dat plugin, maincpu work RAM.
+    75-byte capture = 5 RANKING records x 16 bytes (last record pad truncated at EOF).
+    Record: [NAME1 3][0x01][NAME2 3][0x02][flag 1][SCORE 2B BCD big-endian][pad 5]
+    0x5B renders as "." in-game (J.B, K.T).
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>75</size>
+    </check>
+    <loop count="5">
+      <elt size="3" type="text" id="NAME1" charset="csRG"/>
+      <elt size="1" type="raw"  id="C1"/>
+      <elt size="3" type="text" id="NAME2" charset="csRG"/>
+      <elt size="1" type="raw"  id="C2"/>
+      <elt size="1" type="raw"  id="FLAG"/>
+      <elt size="2" type="int"  id="SCORE" base="16" endianness="big_endian"/>
+      <elt size="5" type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING" sort="SCORE" sort-order="desc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE"/>
+      <column id="NAME1"/>
+      <column id="NAME2"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <charset id="csRG">
+    <char src="0x5B" dst="."/>
+  </charset>
+
+</hi2txt>

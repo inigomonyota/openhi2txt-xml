@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  mainevt - The Main Event (Konami, 1988)
+  hiscore.dat: @:maincpu,program,415d,45,ae,77
+  69 bytes total
+
+  Layout: 10 entries of 6 bytes each separated by 0xFF bytes:
+    10 × 6B records + 9 × 0xFF separators = 60 + 9 = 69 ✓
+
+  6-byte entry record:
+    [0-2] Name (3 bytes, custom Konami charset)
+    [3]   Null separator (0x00)
+    [4-5] Score (2 bytes packed BCD big-endian, stored as score/10)
+
+  Custom Konami charset (derived from known entries):
+    0x9F       = '?' (single)
+    0xA0       = '!?' (ligature)
+    0xA1       = '!!' (ligature)
+    0xA8       = 'W/' (ligature)
+    0xAC-0xB5  = '0'-'9'
+    0xB6-0xCF  = 'A'-'Z'
+	0xA6       = 'Mr' (ligature)
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>69</size>
+    </check>
+
+    <!-- 10 entries × 7B each (3 name + 1 null + 2 score + 1 separator)
+         The last entry is missing its trailing separator, hence skip-last-bytes="1" -->
+    <loop count="10" skip-last-bytes="1">
+      <elt size="3" type="text" id="NAME" charset="mainevt_chr" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="ESEP"/>
+      <elt size="2" type="int"  id="SCORE" base="16" endianness="big_endian" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="ETRIG"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="OFFICIAL RATINGS">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="NAME"/>
+      <column id="SCORE" format="score_x10"/>
+    </table>
+  </output>
+
+  <!-- Ordinal rank -->
+  <format id="ordinal">
+    <case src="0" operator="=" dst="1ST"/>
+    <case src="1" operator="=" dst="2ND"/>
+    <case src="2" operator="=" dst="3RD"/>
+    <case src="3" operator="=" dst="4TH"/>
+    <case src="4" operator="=" dst="5TH"/>
+    <case src="5" operator="=" dst="6TH"/>
+    <case src="6" operator="=" dst="7TH"/>
+    <case src="7" operator="=" dst="8TH"/>
+    <case src="8" operator="=" dst="9TH"/>
+    <case src="9" operator="=" dst="10TH"/>
+  </format>
+
+  <!-- Score stored as score/10 -->
+  <format id="score_x10"><multiply>10</multiply></format>
+
+  <charset id="mainevt_chr">
+    <char src="0xAC" dst="0"/>
+    <char src="0xAD" dst="1"/>
+    <char src="0xAE" dst="2"/>
+    <char src="0xAF" dst="3"/>
+    <char src="0xB0" dst="4"/>
+    <char src="0xB1" dst="5"/>
+    <char src="0xB2" dst="6"/>
+    <char src="0xB3" dst="7"/>
+    <char src="0xB4" dst="8"/>
+    <char src="0xB5" dst="9"/>
+    <char src="0xB6" dst="A"/>
+    <char src="0xB7" dst="B"/>
+    <char src="0xB8" dst="C"/>
+    <char src="0xB9" dst="D"/>
+    <char src="0xBA" dst="E"/>
+    <char src="0xBB" dst="F"/>
+    <char src="0xBC" dst="G"/>
+    <char src="0xBD" dst="H"/>
+    <char src="0xBE" dst="I"/>
+    <char src="0xBF" dst="J"/>
+    <char src="0xC0" dst="K"/>
+    <char src="0xC1" dst="L"/>
+    <char src="0xC2" dst="M"/>
+    <char src="0xC3" dst="N"/>
+    <char src="0xC4" dst="O"/>
+    <char src="0xC5" dst="P"/>
+    <char src="0xC6" dst="Q"/>
+    <char src="0xC7" dst="R"/>
+    <char src="0xC8" dst="S"/>
+    <char src="0xC9" dst="T"/>
+    <char src="0xCA" dst="U"/>
+    <char src="0xCB" dst="V"/>
+    <char src="0xCC" dst="W"/>
+    <char src="0xCD" dst="X"/>
+    <char src="0xCE" dst="Y"/>
+    <char src="0xCF" dst="Z"/>
+    <char src="0x9F" dst="?"/>
+    <char src="0xA0" dst="!?"/>
+    <char src="0xA1" dst="!!"/>
+	<char src="0xA6" dst="Mr"/>
+	<char src="0xA5" dst="Jr"/>
+    <char src="0xA7" dst="&amp;"/>
+    <char src="0xA8" dst="W/"/>
+    <char src="0xA9" dst="&lt;HEART&gt;"/>
+    <char src="0xAB" dst="#"/>
+	<char src="0xA3" dst="Mc"/>
+	<char src="0xA4" dst="Dr"/>
+	<char src="0xAA" dst="&gt;"/>
+  </charset>
+
+</hi2txt>

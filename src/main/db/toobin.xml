@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>50</size>
+    </check>
+    <loop count="10">
+      <elt size="3" type="int" id="SCORE"/>
+      <elt size="2" type="text" decoding-profile="base-40" ascii-offset="64" charset="toobin_chr" id="NAME"/>
+    </loop>
+  </structure>
+  <output>
+    <table id="TUBE DUDE GREATS">
+      <column src="index" format="+1" id="RANK"/>
+      <column src="NAME" id="NAME"/>
+      <column src="SCORE" id="SCORE"/>
+    </table>
+  </output>
+  <charset id="toobin_chr">
+    <char src="0x1B" dst="*"/>
+  </charset>
+</hi2txt>

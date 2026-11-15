@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="San Francisco Rush">
+  <!--
+    sfrush (San Francisco Rush, seattle.cpp, MIPS R5000, LITTLE-endian).
+    Scores persist NATIVELY in nvram\sfrush\nvram (128 KiB). Seattle hardware
+    stores each meaningful 8-bit value in the first byte of a 32-bit
+    little-endian word, so every field is de-interleaved with byte-skip="1000"
+    (keep 1 raw byte, skip 3). The FAST TIMES table is at raw offset 0x2000:
+    100 records of 0x40 raw bytes each = 16 meaningful bytes:
+      +0  TIME u32 LE milliseconds      (4 meaningful bytes, 16 raw)
+      +4  NAME 8 ASCII, null-padded     (8 meaningful bytes, 32 raw)
+      +12 FLAGS 3 bytes (empty=ff..)    (3 meaningful bytes, 12 raw)
+      +15 CAR  1 byte car/avatar index  (1 meaningful byte, 4 raw)
+    Default rows store TIME = 600000 ms (= 10:00.00) which the game caps on
+    screen as "9:99.99"; that sentinel is mapped here. The CAR is the car the
+    player drove, shown in-game as a coloured glyph on the top 10 of each chart.
+    Confirmed from the attract screenshots: default/seed rows store CAR index 0
+    and display the GREEN car = "BEGINNER" tier. Higher tiers ("ADVANCED",
+    "EXPERT", "EXTREME") take higher indices; a real played nvram showed STU
+    using index 6 on BEGINNER and index 5 on ADVANCED.
+    There are three FAST TIMES charts, one per difficulty, each 100 records of
+    0x40 raw bytes, spaced 0x6400 raw apart; the gaps between them are 0x4B00
+    raw of 0xFF:
+      BEGINNER raw 0x2000, ADVANCED raw 0x8400, EXTREME raw 0xE800.
+    Proven byte-for-byte against a played nvram (BEGINNER rank 1 = STU /
+    2:45.60, ADVANCED rank 1 = STU / 5:51.04). A chart is only materialised in
+    nvram once a race is completed on that difficulty: every slot then stores
+    the literal ASCII name "DEFAULT" + TIME 600000 until beaten. EXTREME has
+    NOT been raced in the captured nvram, so its region (raw 0xE800) is still
+    blank 0xFF and is partly overlapped by an unrelated zero-filled block at
+    raw 0x10000; the DEFAULT / empty-name / 0-time fallbacks below render that
+    unwritten table cleanly as DEFAULT / 9:99.99 until a real EXTREME time is
+    set (which will then decode exactly like the other two charts).
+    Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file="nvram">
+    <check>
+      <size>131072</size>
+    </check>
+
+    <elt type="raw" size="8192" id="_PREFIX"/>
+    <loop count="100">
+      <elt size="16" type="int"  id="B_TIME" byte-skip="1000" endianness="little_endian"/>
+      <elt size="32" type="text" id="B_NAME" byte-skip="1000" byte-trunc="0x00"/>
+      <elt size="12" type="raw"  id="_B_FLAGS"/>
+      <elt size="4"  type="int"  id="B_CAR"  byte-skip="1000"/>
+    </loop>
+    <elt type="raw" size="19200" id="_GAP1"/>
+    <loop count="100">
+      <elt size="16" type="int"  id="A_TIME" byte-skip="1000" endianness="little_endian"/>
+      <elt size="32" type="text" id="A_NAME" byte-skip="1000" byte-trunc="0x00"/>
+      <elt size="12" type="raw"  id="_A_FLAGS"/>
+      <elt size="4"  type="int"  id="A_CAR"  byte-skip="1000"/>
+    </loop>
+    <elt type="raw" size="19200" id="_GAP2"/>
+    <loop count="100">
+      <elt size="16" type="int"  id="E_TIME" byte-skip="1000" endianness="little_endian"/>
+      <elt size="32" type="text" id="E_NAME" byte-skip="1000" byte-trunc="0x00"/>
+      <elt size="12" type="raw"  id="_E_FLAGS"/>
+      <elt size="4"  type="int"  id="E_CAR"  byte-skip="1000"/>
+    </loop>
+    <elt type="raw" size="58368" id="_REST"/>
+  </structure>
+
+  <output>
+    <table id="FAST TIMES BEGINNER TRACK">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="NAME" src="B_NAME" format="fname"/>
+      <column id="TIME" src="B_TIME" format="ftime"/>
+      <column id="CAR"  src="B_CAR"  format="carname"/>
+    </table>
+    <table id="FAST TIMES ADVANCED TRACK">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="NAME" src="A_NAME" format="fname"/>
+      <column id="TIME" src="A_TIME" format="ftime"/>
+      <column id="CAR"  src="A_CAR"  format="carname"/>
+    </table>
+    <table id="FAST TIMES EXTREME TRACK">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="NAME" src="E_NAME" format="fname"/>
+      <column id="TIME" src="E_TIME" format="ftime"/>
+      <column id="CAR"  src="E_CAR"  format="carname"/>
+    </table>
+  </output>
+
+  <format id="rank"><increment>1</increment></format>
+
+  <format id="identity"><uppercase/></format>
+  <format id="fname">
+    <case src="ÿÿÿÿÿÿÿÿ" dst="DEFAULT"/>
+    <case src="" dst="DEFAULT"/>
+    <case src="-1" default="true" format="identity"/>
+  </format>
+
+  <!-- Car index -> difficulty tier. San Francisco Rush: Extreme Racing has 11
+       cars (byte IDs 0x00-0x0A); the first 8 are TWO cars per tier, then three
+       untiered bonus cars. Tier names match the coloured glyph shown in-game.
+       Verified end-to-end: user drove each tier's first car on the BEGINNER
+       track (0/1/2/3) and real STU entries use the second car of a tier
+       (5=Dodge Viper=ADVANCED on advanced chart, 6=VW Beetle=EXPERT on
+       beginner chart). Full table (byte : real car : tier):
+         0 BMW M5 / 4 VW Type 2            -> BEGINNER
+         1 Chevrolet Camaro / 5 Dodge Viper-> ADVANCED
+         2 Toyota Supra / 6 VW Beetle      -> EXPERT
+         3 Bugatti EB110 / 7 "Made for Game"-> EXTREME
+         8 Checker Marathon Taxi           -> TAXI       (bonus, no tier)
+         9 1932 Ford                       -> 1932 FORD  (bonus)
+        10 Formula 1                       -> FORMULA 1  (bonus)
+       255 (0xFF unwritten rows) -> default green BMW M5 (BEGINNER). Any other
+       value -> raw number. The CAR column shows the real car name with its
+       tier in parentheses, e.g. "CHEVROLET CAMARO (ADVANCED)".
+       Source: leopardyiu.fandom.com San Francisco Rush Cars Guide. -->
+  <format id="carname">
+    <case src="0" dst="BMW M5 (BEGINNER)"/>
+    <case src="4" dst="VW TYPE 2 (BEGINNER)"/>
+    <case src="255" dst="BMW M5 (BEGINNER)"/>
+    <case src="1" dst="CHEVROLET CAMARO (ADVANCED)"/>
+    <case src="5" dst="DODGE VIPER (ADVANCED)"/>
+    <case src="2" dst="TOYOTA SUPRA (EXPERT)"/>
+    <case src="6" dst="VW BEETLE (EXPERT)"/>
+    <case src="3" dst="BUGATTI EB110 (EXTREME)"/>
+    <case src="7" dst="MADE FOR GAME (EXTREME)"/>
+    <case src="8" dst="CHECKER MARATHON TAXI (BONUS)"/>
+    <case src="9" dst="1932 FORD (BONUS)"/>
+    <case src="10" dst="FORMULA 1 (BONUS)"/>
+    <case src="-1" default="true" format="carnum"/>
+  </format>
+  <format id="carnum"><add>0</add></format>
+
+  <format id="t_min"><divide_trunc>60000</divide_trunc></format>
+  <format id="t_sec"><divide_trunc>1000</divide_trunc><remainder>60</remainder><pad direction="left" max="2">0</pad></format>
+  <format id="t_cs"><divide_trunc>10</divide_trunc><remainder>100</remainder><pad direction="left" max="2">0</pad></format>
+  <format id="gtime" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="t_min"/>
+      <txt>:</txt>
+      <column format="t_sec"/>
+      <txt>.</txt>
+      <column format="t_cs"/>
+    </concat>
+  </format>
+  <format id="ftime">
+    <case src="4294967295" dst="9:99.99"/>
+    <case src="600000" dst="9:99.99"/>
+    <case src="0" dst="9:99.99"/>
+    <case src="-1" default="true" format="gtime"/>
+  </format>
+</hi2txt>

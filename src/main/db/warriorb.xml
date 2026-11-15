@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 240 bytes -->
+    <check><size>240</size></check>
+    
+    <!-- 10 Records * 24 Bytes = 240 Bytes -->
+    <loop count="10">
+      <!-- 8-character ASCII Name -->
+      <elt size="8" type="text" id="NAME"/>
+      
+      <!-- 8 bytes of unused name padding -->
+      <elt size="8" type="raw"  id="PAD_NAME"/>
+      
+      <!-- 4-byte standard Hex Score -->
+      <elt size="4" type="int"  id="SCORE" endianness="big_endian"/>
+      
+      <!-- 2-byte Round integer -->
+      <elt size="2" type="int"  id="ROUND" endianness="big_endian"/>
+      
+      <!-- 1-byte Character ID -->
+      <elt size="1" type="int"  id="KIND"/>
+      
+      <!-- 1 byte padding / duplicate ID -->
+      <elt size="1" type="raw"  id="PAD_KIND"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="GREATEST KNIGHTS">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="ROUND" src="ROUND"/>
+      <column id="CHARACTER"  src="KIND"  format="kind_map"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+  <!-- Translates the visual row index to 1ST-10TH -->
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+  
+  <!-- Maps the internal character ID to the display name -->
+  <format id="kind_map">
+    <case src="0" dst="RASTAN"/>
+    <case src="1" dst="DEWEY"/>
+    <case src="2" dst="SOPHIA"/>
+    
+    <!-- Fallback just in case -->
+    <case src="0" operator="!=" format="*1" default="yes"/> 
+  </format>
+  </hi2txt>

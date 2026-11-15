@@ -20,10 +20,62 @@
   </structure>
   
   <output>
-    <table lines-max="3" line-ignore="SCORE:0">
-      <column id="RANK" src="index" format="+1"/>
-      <column id="SCORE" format="*10"/>
+    <table lines-max="30" line-ignore="SCORE:0">
+      <column id="RANK" src="index" format="+1;ordinal"/>
+      <column id="SCORE" src="SCORE" format="*10;comma_score"/>
       <column id="NAME"/>
     </table>
   </output>
+  
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  
+  <!-- Translates 1-30 into 1ST-30TH -->
+  <format id="ordinal">
+    <case src="1" dst="1ST"/><case src="2" dst="2ND"/><case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/><case src="5" dst="5TH"/><case src="6" dst="6TH"/>
+	<case src="7" dst="7TH"/><case src="8" dst="8TH"/><case src="9" dst="9TH"/>
+	<case src="10" dst="10TH"/><case src="11" dst="11TH"/><case src="12" dst="12TH"/>
+	<case src="13" dst="13TH"/><case src="14" dst="14TH"/><case src="15" dst="15TH"/>
+	<case src="16" dst="16TH"/><case src="17" dst="17TH"/><case src="18" dst="18TH"/>
+	<case src="19" dst="19TH"/><case src="20" dst="20TH"/><case src="21" dst="21ST"/>
+	<case src="22" dst="22ND"/><case src="23" dst="23RD"/><case src="24" dst="24TH"/>
+	<case src="25" dst="25TH"/><case src="26" dst="26TH"/><case src="27" dst="27TH"/>
+	<case src="28" dst="28TH"/><case src="29" dst="29TH"/><case src="30" dst="30TH"/>
+  </format>
 </hi2txt>

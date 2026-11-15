@@ -1,0 +1,10 @@
+<hi2txt>
+<table id="TOP 5">
+<col>RANK</col><col>SCORE</col><col>NAME</col><col>CHARACTER</col><col>RATING</col>
+<row><cell>1</cell><cell>55,010</cell><cell>CAT</cell><cell>MIKE</cell><cell>A</cell></row>
+<row><cell>2</cell><cell>49,190</cell><cell>ZAX</cell><cell>JACKIE</cell><cell>B</cell></row>
+<row><cell>3</cell><cell>25,260</cell><cell>TWO</cell><cell>JACKIE</cell><cell>C</cell></row>
+<row><cell>4</cell><cell>12,470</cell><cell>STB</cell><cell>MIKE</cell><cell>D</cell></row>
+<row><cell>5</cell><cell>9,820</cell><cell>BRA</cell><cell>MIKE</cell><cell>E</cell></row>
+</table>
+</hi2txt>

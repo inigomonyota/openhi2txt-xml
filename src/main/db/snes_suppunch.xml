@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Super Punch-Out!!">
+<!-- Auto-generated definition for SNES Super Punch-Out!! (suppunch.nv, 8192 bytes).
+     Decodes the 16 BEST TIME boards, 4 BEST SCORE tables and the personal-record
+     player names directly from the emulator nvram. Ghost/boxer NAMES are stored in
+     the nvram only as ROM name-table IDs (0x80..0xFF); the id->name map (read from
+     ROM spal-4q-0.u1 @0x77BFF) is baked into the <charset id="spo_names"> below so
+     the definition is self-contained and needs no ROM at runtime.
+     Time tiles are stored units-first [CCu CCt SSu SSt M] -> M'SS"CC.
+     Score tiles are 6 decimal digits units-first. -->
+  <structure file=".hi">
+    <check><definition>0:700000:2000:01:00</definition><size>8192</size></check>
+    <elt size="256" type="raw" id="HEADER"/>
+    <!-- profile block at 0x100: 8-byte header, global player name (8 tiles,
+         0xEF pads), 4-byte gap, then 16 per-boxer PERSONAL BEST times stored
+         units-first [CCu CCt SSu SSt M] (an unset boxer has M=0xff), then
+         padding out to the score boards at 0x600. -->
+    <elt size="8"  type="raw"  id="PR_HDR"/>
+    <!-- LIVE personal-record profiles at 0x108 (stride 0x80): name(8), gap(4),
+         16x5 per-boxer personal-best times [CCu CCt SSu SSt M], tail w/ count@+0x76.
+         Read here from the PRIMARY copy so newly-added players are included. -->
+    <loop count="9">
+      <elt size="8" type="text" id="PP_NAME" charset="spo_tiles" table-index="loop_index"/>
+      <elt size="4" type="raw" id="PP_GAP"/>
+      <elt size="1" type="int" id="PB0_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB0_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int" id="PB1_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB1_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int" id="PB2_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB2_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int" id="PB3_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB3_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int" id="PB4_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB4_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int" id="PB5_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB5_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int" id="PB6_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB6_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int" id="PB7_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB7_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int" id="PB8_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB8_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int" id="PB9_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB9_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int" id="PB10_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB10_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int" id="PB11_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB11_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int" id="PB12_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB12_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int" id="PB13_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB13_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int" id="PB14_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB14_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int" id="PB15_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB15_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="26" type="raw" id="PP_T1"/>
+      <elt size="1" type="int" id="PP_COUNT" table-index="loop_index"/>
+      <elt size="9" type="raw" id="PP_T2"/>
+    </loop>
+    <elt size="120" type="raw" id="PR_TEND"/>
+    <!-- board 0: Gabby Jay -->
+    <elt size="16" type="raw" id="B0_H"/>
+    <elt size="1" type="raw" id="B0_LEAD"/>
+    <loop count="8" start="9">
+      <elt size="1" type="text" id="B0_ID" charset="spo_names" table-index="loop_index"/>
+      <elt size="1" type="int"  id="PB0_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB0_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="B0_PAD"/>
+    </loop>
+    <elt size="47" type="raw" id="B0_T"/>
+    <!-- board 1: Bear Hugger -->
+    <elt size="16" type="raw" id="B1_H"/>
+    <elt size="1" type="raw" id="B1_LEAD"/>
+    <loop count="8" start="9">
+      <elt size="1" type="text" id="B1_ID" charset="spo_names" table-index="loop_index"/>
+      <elt size="1" type="int"  id="PB1_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB1_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="B1_PAD"/>
+    </loop>
+    <elt size="47" type="raw" id="B1_T"/>
+    <!-- board 2: Piston Hurricane -->
+    <elt size="16" type="raw" id="B2_H"/>
+    <elt size="1" type="raw" id="B2_LEAD"/>
+    <loop count="8" start="9">
+      <elt size="1" type="text" id="B2_ID" charset="spo_names" table-index="loop_index"/>
+      <elt size="1" type="int"  id="PB2_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB2_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="B2_PAD"/>
+    </loop>
+    <elt size="47" type="raw" id="B2_T"/>
+    <!-- board 3: Bald Bull -->
+    <elt size="16" type="raw" id="B3_H"/>
+    <elt size="1" type="raw" id="B3_LEAD"/>
+    <loop count="8" start="9">
+      <elt size="1" type="text" id="B3_ID" charset="spo_names" table-index="loop_index"/>
+      <elt size="1" type="int"  id="PB3_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB3_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="B3_PAD"/>
+    </loop>
+    <elt size="47" type="raw" id="B3_T"/>
+    <!-- board 4: Bob Charlie -->
+    <elt size="16" type="raw" id="B4_H"/>
+    <elt size="1" type="raw" id="B4_LEAD"/>
+    <loop count="8" start="9">
+      <elt size="1" type="text" id="B4_ID" charset="spo_names" table-index="loop_index"/>
+      <elt size="1" type="int"  id="PB4_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB4_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="B4_PAD"/>
+    </loop>
+    <elt size="47" type="raw" id="B4_T"/>
+    <!-- board 5: Dragon Chan -->
+    <elt size="16" type="raw" id="B5_H"/>
+    <elt size="1" type="raw" id="B5_LEAD"/>
+    <loop count="8" start="9">
+      <elt size="1" type="text" id="B5_ID" charset="spo_names" table-index="loop_index"/>
+      <elt size="1" type="int"  id="PB5_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB5_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="B5_PAD"/>
+    </loop>
+    <elt size="47" type="raw" id="B5_T"/>
+    <!-- board 6: Masked Muscle -->
+    <elt size="16" type="raw" id="B6_H"/>
+    <elt size="1" type="raw" id="B6_LEAD"/>
+    <loop count="8" start="9">
+      <elt size="1" type="text" id="B6_ID" charset="spo_names" table-index="loop_index"/>
+      <elt size="1" type="int"  id="PB6_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB6_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="B6_PAD"/>
+    </loop>
+    <elt size="47" type="raw" id="B6_T"/>
+    <!-- board 7: Mr. Sandman -->
+    <elt size="16" type="raw" id="B7_H"/>
+    <elt size="1" type="raw" id="B7_LEAD"/>
+    <loop count="8" start="9">
+      <elt size="1" type="text" id="B7_ID" charset="spo_names" table-index="loop_index"/>
+      <elt size="1" type="int"  id="PB7_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB7_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="B7_PAD"/>
+    </loop>
+    <elt size="47" type="raw" id="B7_T"/>
+    <!-- board 8: Aran Ryan -->
+    <elt size="16" type="raw" id="B8_H"/>
+    <elt size="1" type="raw" id="B8_LEAD"/>
+    <loop count="8" start="9">
+      <elt size="1" type="text" id="B8_ID" charset="spo_names" table-index="loop_index"/>
+      <elt size="1" type="int"  id="PB8_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB8_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="B8_PAD"/>
+    </loop>
+    <elt size="47" type="raw" id="B8_T"/>
+    <!-- board 9: Heike Kagero -->
+    <elt size="16" type="raw" id="B9_H"/>
+    <elt size="1" type="raw" id="B9_LEAD"/>
+    <loop count="8" start="9">
+      <elt size="1" type="text" id="B9_ID" charset="spo_names" table-index="loop_index"/>
+      <elt size="1" type="int"  id="PB9_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB9_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="B9_PAD"/>
+    </loop>
+    <elt size="47" type="raw" id="B9_T"/>
+    <!-- board 10: Mad Clown -->
+    <elt size="16" type="raw" id="B10_H"/>
+    <elt size="1" type="raw" id="B10_LEAD"/>
+    <loop count="8" start="9">
+      <elt size="1" type="text" id="B10_ID" charset="spo_names" table-index="loop_index"/>
+      <elt size="1" type="int"  id="PB10_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB10_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="B10_PAD"/>
+    </loop>
+    <elt size="47" type="raw" id="B10_T"/>
+    <!-- board 11: Super Macho Man -->
+    <elt size="16" type="raw" id="B11_H"/>
+    <elt size="1" type="raw" id="B11_LEAD"/>
+    <loop count="8" start="9">
+      <elt size="1" type="text" id="B11_ID" charset="spo_names" table-index="loop_index"/>
+      <elt size="1" type="int"  id="PB11_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB11_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="B11_PAD"/>
+    </loop>
+    <elt size="47" type="raw" id="B11_T"/>
+    <!-- board 12: Narcis Prince -->
+    <elt size="16" type="raw" id="B12_H"/>
+    <elt size="1" type="raw" id="B12_LEAD"/>
+    <loop count="8" start="9">
+      <elt size="1" type="text" id="B12_ID" charset="spo_names" table-index="loop_index"/>
+      <elt size="1" type="int"  id="PB12_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB12_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="B12_PAD"/>
+    </loop>
+    <elt size="47" type="raw" id="B12_T"/>
+    <!-- board 13: Hoy Quarlow -->
+    <elt size="16" type="raw" id="B13_H"/>
+    <elt size="1" type="raw" id="B13_LEAD"/>
+    <loop count="8" start="9">
+      <elt size="1" type="text" id="B13_ID" charset="spo_names" table-index="loop_index"/>
+      <elt size="1" type="int"  id="PB13_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB13_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="B13_PAD"/>
+    </loop>
+    <elt size="47" type="raw" id="B13_T"/>
+    <!-- board 14: Rick Bruiser -->
+    <elt size="16" type="raw" id="B14_H"/>
+    <elt size="1" type="raw" id="B14_LEAD"/>
+    <loop count="8" start="9">
+      <elt size="1" type="text" id="B14_ID" charset="spo_names" table-index="loop_index"/>
+      <elt size="1" type="int"  id="PB14_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB14_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="B14_PAD"/>
+    </loop>
+    <elt size="47" type="raw" id="B14_T"/>
+    <!-- board 15: Nick Bruiser -->
+    <elt size="16" type="raw" id="B15_H"/>
+    <elt size="1" type="raw" id="B15_LEAD"/>
+    <loop count="8" start="9">
+      <elt size="1" type="text" id="B15_ID" charset="spo_names" table-index="loop_index"/>
+      <elt size="1" type="int"  id="PB15_CCu" table-index="loop_index"/>
+      <elt size="4" type="int" id="PB15_KV" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw"  id="B15_PAD"/>
+    </loop>
+    <elt size="47" type="raw" id="B15_T"/>
+    <!-- score block 0: Minor -->
+    <elt size="17" type="raw" id="S0_H"/>
+    <loop count="8">
+      <elt size="1" type="text" id="S0_ID" charset="spo_names"/>
+      <elt size="1" type="int" id="S0_D0"/>
+      <elt size="1" type="int" id="S0_D1"/>
+      <elt size="1" type="int" id="S0_D2"/>
+      <elt size="1" type="int" id="S0_D3"/>
+      <elt size="1" type="int" id="S0_D4"/>
+      <elt size="1" type="int" id="S0_D5"/>
+      <elt size="1" type="raw" id="S0_FLAG"/>
+    </loop>
+    <elt size="47" type="raw" id="S0_T"/>
+    <!-- score block 1: Major -->
+    <elt size="17" type="raw" id="S1_H"/>
+    <loop count="8">
+      <elt size="1" type="text" id="S1_ID" charset="spo_names"/>
+      <elt size="1" type="int" id="S1_D0"/>
+      <elt size="1" type="int" id="S1_D1"/>
+      <elt size="1" type="int" id="S1_D2"/>
+      <elt size="1" type="int" id="S1_D3"/>
+      <elt size="1" type="int" id="S1_D4"/>
+      <elt size="1" type="int" id="S1_D5"/>
+      <elt size="1" type="raw" id="S1_FLAG"/>
+    </loop>
+    <elt size="47" type="raw" id="S1_T"/>
+    <!-- score block 2: World -->
+    <elt size="17" type="raw" id="S2_H"/>
+    <loop count="8">
+      <elt size="1" type="text" id="S2_ID" charset="spo_names"/>
+      <elt size="1" type="int" id="S2_D0"/>
+      <elt size="1" type="int" id="S2_D1"/>
+      <elt size="1" type="int" id="S2_D2"/>
+      <elt size="1" type="int" id="S2_D3"/>
+      <elt size="1" type="int" id="S2_D4"/>
+      <elt size="1" type="int" id="S2_D5"/>
+      <elt size="1" type="raw" id="S2_FLAG"/>
+    </loop>
+    <elt size="47" type="raw" id="S2_T"/>
+    <!-- score block 3: Special -->
+    <elt size="17" type="raw" id="S3_H"/>
+    <loop count="8">
+      <elt size="1" type="text" id="S3_ID" charset="spo_names"/>
+      <elt size="1" type="int" id="S3_D0"/>
+      <elt size="1" type="int" id="S3_D1"/>
+      <elt size="1" type="int" id="S3_D2"/>
+      <elt size="1" type="int" id="S3_D3"/>
+      <elt size="1" type="int" id="S3_D4"/>
+      <elt size="1" type="int" id="S3_D5"/>
+      <elt size="1" type="raw" id="S3_FLAG"/>
+    </loop>
+    <elt size="47" type="raw" id="S3_T"/>
+    <!-- MIRROR (0x1000): re-read up to 8 profiles from the SRAM shadow in a
+         BOXER-indexed layout for the transposed PERSONAL RECORDS table. Each
+         player name lands at data-index 0 (the name row); each per-boxer
+         personal-best time lands at data-index 1..16 (one row per boxer). The
+         mirror read leaves the primary 0x108 reads (which feed the boards) intact. -->
+    <elt size="264" type="raw" id="MIR_H"/>
+    <!-- player 0 -->
+    <elt size="8" type="text" id="P0_NAME" charset="spo_tiles" table-index="0"/>
+    <elt size="4" type="raw" id="P0_GAP"/>
+    <loop count="16" start="1">
+      <elt size="1" type="int" id="P0_CCu" table-index="loop_index"/>
+      <elt size="1" type="int" id="P0_CCt" table-index="loop_index"/>
+      <elt size="1" type="int" id="P0_SSu" table-index="loop_index"/>
+      <elt size="1" type="int" id="P0_SSt" table-index="loop_index"/>
+      <elt size="1" type="int" id="P0_M" table-index="loop_index"/>
+    </loop>
+    <elt size="36" type="raw" id="P0_TAIL"/>
+    <!-- player 1 -->
+    <elt size="8" type="text" id="P1_NAME" charset="spo_tiles" table-index="0"/>
+    <elt size="4" type="raw" id="P1_GAP"/>
+    <loop count="16" start="1">
+      <elt size="1" type="int" id="P1_CCu" table-index="loop_index"/>
+      <elt size="1" type="int" id="P1_CCt" table-index="loop_index"/>
+      <elt size="1" type="int" id="P1_SSu" table-index="loop_index"/>
+      <elt size="1" type="int" id="P1_SSt" table-index="loop_index"/>
+      <elt size="1" type="int" id="P1_M" table-index="loop_index"/>
+    </loop>
+    <elt size="36" type="raw" id="P1_TAIL"/>
+    <!-- player 2 -->
+    <elt size="8" type="text" id="P2_NAME" charset="spo_tiles" table-index="0"/>
+    <elt size="4" type="raw" id="P2_GAP"/>
+    <loop count="16" start="1">
+      <elt size="1" type="int" id="P2_CCu" table-index="loop_index"/>
+      <elt size="1" type="int" id="P2_CCt" table-index="loop_index"/>
+      <elt size="1" type="int" id="P2_SSu" table-index="loop_index"/>
+      <elt size="1" type="int" id="P2_SSt" table-index="loop_index"/>
+      <elt size="1" type="int" id="P2_M" table-index="loop_index"/>
+    </loop>
+    <elt size="36" type="raw" id="P2_TAIL"/>
+    <!-- player 3 -->
+    <elt size="8" type="text" id="P3_NAME" charset="spo_tiles" table-index="0"/>
+    <elt size="4" type="raw" id="P3_GAP"/>
+    <loop count="16" start="1">
+      <elt size="1" type="int" id="P3_CCu" table-index="loop_index"/>
+      <elt size="1" type="int" id="P3_CCt" table-index="loop_index"/>
+      <elt size="1" type="int" id="P3_SSu" table-index="loop_index"/>
+      <elt size="1" type="int" id="P3_SSt" table-index="loop_index"/>
+      <elt size="1" type="int" id="P3_M" table-index="loop_index"/>
+    </loop>
+    <elt size="36" type="raw" id="P3_TAIL"/>
+    <!-- player 4 -->
+    <elt size="8" type="text" id="P4_NAME" charset="spo_tiles" table-index="0"/>
+    <elt size="4" type="raw" id="P4_GAP"/>
+    <loop count="16" start="1">
+      <elt size="1" type="int" id="P4_CCu" table-index="loop_index"/>
+      <elt size="1" type="int" id="P4_CCt" table-index="loop_index"/>
+      <elt size="1" type="int" id="P4_SSu" table-index="loop_index"/>
+      <elt size="1" type="int" id="P4_SSt" table-index="loop_index"/>
+      <elt size="1" type="int" id="P4_M" table-index="loop_index"/>
+    </loop>
+    <elt size="36" type="raw" id="P4_TAIL"/>
+    <!-- player 5 -->
+    <elt size="8" type="text" id="P5_NAME" charset="spo_tiles" table-index="0"/>
+    <elt size="4" type="raw" id="P5_GAP"/>
+    <loop count="16" start="1">
+      <elt size="1" type="int" id="P5_CCu" table-index="loop_index"/>
+      <elt size="1" type="int" id="P5_CCt" table-index="loop_index"/>
+      <elt size="1" type="int" id="P5_SSu" table-index="loop_index"/>
+      <elt size="1" type="int" id="P5_SSt" table-index="loop_index"/>
+      <elt size="1" type="int" id="P5_M" table-index="loop_index"/>
+    </loop>
+    <elt size="36" type="raw" id="P5_TAIL"/>
+    <!-- player 6 -->
+    <elt size="8" type="text" id="P6_NAME" charset="spo_tiles" table-index="0"/>
+    <elt size="4" type="raw" id="P6_GAP"/>
+    <loop count="16" start="1">
+      <elt size="1" type="int" id="P6_CCu" table-index="loop_index"/>
+      <elt size="1" type="int" id="P6_CCt" table-index="loop_index"/>
+      <elt size="1" type="int" id="P6_SSu" table-index="loop_index"/>
+      <elt size="1" type="int" id="P6_SSt" table-index="loop_index"/>
+      <elt size="1" type="int" id="P6_M" table-index="loop_index"/>
+    </loop>
+    <elt size="36" type="raw" id="P6_TAIL"/>
+    <!-- player 7 -->
+    <elt size="8" type="text" id="P7_NAME" charset="spo_tiles" table-index="0"/>
+    <elt size="4" type="raw" id="P7_GAP"/>
+    <loop count="16" start="1">
+      <elt size="1" type="int" id="P7_CCu" table-index="loop_index"/>
+      <elt size="1" type="int" id="P7_CCt" table-index="loop_index"/>
+      <elt size="1" type="int" id="P7_SSu" table-index="loop_index"/>
+      <elt size="1" type="int" id="P7_SSt" table-index="loop_index"/>
+      <elt size="1" type="int" id="P7_M" table-index="loop_index"/>
+    </loop>
+    <elt size="36" type="raw" id="P7_TAIL"/>
+    <elt size="2808" type="raw" id="MIR_T"/>
+  </structure>
+  <!-- Reads the MAME hiscore-plugin dump snes_suppunch.hi (byte-identical to
+       the nvram). Only the .hi structure is defined so it is always used. -->
+  <output>
+    <table id="BEST TIME - Gabby Jay" sort="KEY" sort-order="asc" lines-max="8">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="TIME" format="mktime0"/>
+      <column id="NAME" format="nm0"/>
+      <column id="KEY"  src="PB0_KV" display="debug"/>
+    </table>
+    <table id="BEST TIME - Bear Hugger" sort="KEY" sort-order="asc" lines-max="8">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="TIME" format="mktime1"/>
+      <column id="NAME" format="nm1"/>
+      <column id="KEY"  src="PB1_KV" display="debug"/>
+    </table>
+    <table id="BEST TIME - Piston Hurricane" sort="KEY" sort-order="asc" lines-max="8">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="TIME" format="mktime2"/>
+      <column id="NAME" format="nm2"/>
+      <column id="KEY"  src="PB2_KV" display="debug"/>
+    </table>
+    <table id="BEST TIME - Bald Bull" sort="KEY" sort-order="asc" lines-max="8">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="TIME" format="mktime3"/>
+      <column id="NAME" format="nm3"/>
+      <column id="KEY"  src="PB3_KV" display="debug"/>
+    </table>
+    <table id="BEST TIME - Bob Charlie" sort="KEY" sort-order="asc" lines-max="8">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="TIME" format="mktime4"/>
+      <column id="NAME" format="nm4"/>
+      <column id="KEY"  src="PB4_KV" display="debug"/>
+    </table>
+    <table id="BEST TIME - Dragon Chan" sort="KEY" sort-order="asc" lines-max="8">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="TIME" format="mktime5"/>
+      <column id="NAME" format="nm5"/>
+      <column id="KEY"  src="PB5_KV" display="debug"/>
+    </table>
+    <table id="BEST TIME - Masked Muscle" sort="KEY" sort-order="asc" lines-max="8">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="TIME" format="mktime6"/>
+      <column id="NAME" format="nm6"/>
+      <column id="KEY"  src="PB6_KV" display="debug"/>
+    </table>
+    <table id="BEST TIME - Mr. Sandman" sort="KEY" sort-order="asc" lines-max="8">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="TIME" format="mktime7"/>
+      <column id="NAME" format="nm7"/>
+      <column id="KEY"  src="PB7_KV" display="debug"/>
+    </table>
+    <table id="BEST TIME - Aran Ryan" sort="KEY" sort-order="asc" lines-max="8">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="TIME" format="mktime8"/>
+      <column id="NAME" format="nm8"/>
+      <column id="KEY"  src="PB8_KV" display="debug"/>
+    </table>
+    <table id="BEST TIME - Heike Kagero" sort="KEY" sort-order="asc" lines-max="8">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="TIME" format="mktime9"/>
+      <column id="NAME" format="nm9"/>
+      <column id="KEY"  src="PB9_KV" display="debug"/>
+    </table>
+    <table id="BEST TIME - Mad Clown" sort="KEY" sort-order="asc" lines-max="8">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="TIME" format="mktime10"/>
+      <column id="NAME" format="nm10"/>
+      <column id="KEY"  src="PB10_KV" display="debug"/>
+    </table>
+    <table id="BEST TIME - Super Macho Man" sort="KEY" sort-order="asc" lines-max="8">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="TIME" format="mktime11"/>
+      <column id="NAME" format="nm11"/>
+      <column id="KEY"  src="PB11_KV" display="debug"/>
+    </table>
+    <table id="BEST TIME - Narcis Prince" sort="KEY" sort-order="asc" lines-max="8">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="TIME" format="mktime12"/>
+      <column id="NAME" format="nm12"/>
+      <column id="KEY"  src="PB12_KV" display="debug"/>
+    </table>
+    <table id="BEST TIME - Hoy Quarlow" sort="KEY" sort-order="asc" lines-max="8">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="TIME" format="mktime13"/>
+      <column id="NAME" format="nm13"/>
+      <column id="KEY"  src="PB13_KV" display="debug"/>
+    </table>
+    <table id="BEST TIME - Rick Bruiser" sort="KEY" sort-order="asc" lines-max="8">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="TIME" format="mktime14"/>
+      <column id="NAME" format="nm14"/>
+      <column id="KEY"  src="PB14_KV" display="debug"/>
+    </table>
+    <table id="BEST TIME - Nick Bruiser" sort="KEY" sort-order="asc" lines-max="8">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="TIME" format="mktime15"/>
+      <column id="NAME" format="nm15"/>
+      <column id="KEY"  src="PB15_KV" display="debug"/>
+    </table>
+    <table id="BEST SCORE - Minor Circuit">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="SCORE" format="mkscore0"/>
+      <column id="NAME" src="S0_ID"/>
+    </table>
+    <table id="BEST SCORE - Major Circuit">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="SCORE" format="mkscore1"/>
+      <column id="NAME" src="S1_ID"/>
+    </table>
+    <table id="BEST SCORE - World Circuit">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="SCORE" format="mkscore2"/>
+      <column id="NAME" src="S2_ID"/>
+    </table>
+    <table id="BEST SCORE - Special Circuit">
+      <column id="RANK" src="index" format="rankdot"/>
+      <column id="SCORE" format="mkscore3"/>
+      <column id="NAME" src="S3_ID"/>
+    </table>
+    <!-- PERSONAL RECORDS (transposed): boxers as rows, up to 8 players as
+         columns. Row 0 shows each player live name (read at data-index 0);
+         rows 1..16 show that player personal-best time per boxer. Columns are
+         capped at 8 because the game stores at most 8 player profiles. -->
+    <table id="PERSONAL RECORDS">
+      <column id="BOXER" src="index" format="boxerrow"/>
+      <column id="Player 1" format="pr0"/>
+      <column id="Player 2" format="pr1"/>
+      <column id="Player 3" format="pr2"/>
+      <column id="Player 4" format="pr3"/>
+      <column id="Player 5" format="pr4"/>
+      <column id="Player 6" format="pr5"/>
+      <column id="Player 7" format="pr6"/>
+      <column id="Player 8" format="pr7"/>
+    </table>
+  </output>
+  <format id="boxerrow">
+    <case src="0" dst=""/>
+    <case src="1" dst="Gabby Jay"/>
+    <case src="2" dst="Bear Hugger"/>
+    <case src="3" dst="Piston Hurricane"/>
+    <case src="4" dst="Bald Bull"/>
+    <case src="5" dst="Bob Charlie"/>
+    <case src="6" dst="Dragon Chan"/>
+    <case src="7" dst="Masked Muscle"/>
+    <case src="8" dst="Mr. Sandman"/>
+    <case src="9" dst="Aran Ryan"/>
+    <case src="10" dst="Heike Kagero"/>
+    <case src="11" dst="Mad Clown"/>
+    <case src="12" dst="Super Macho Man"/>
+    <case src="13" dst="Narcis Prince"/>
+    <case src="14" dst="Hoy Quarlow"/>
+    <case src="15" dst="Rick Bruiser"/>
+    <case src="16" dst="Nick Bruiser"/>
+  </format>
+  <format id="pr0"><concat><column id="P0_NAME"/><column id="P0_M"/><txt>&apos;</txt><column id="P0_SSt"/><column id="P0_SSu"/><txt>&quot;</txt><column id="P0_CCt"/><column id="P0_CCu"/></concat><case src="255&apos;00&quot;00" dst=""/><replace src="&apos;&quot;" dst=""/><replace src="0000000" dst=""/></format>
+  <format id="pr1"><concat><column id="P1_NAME"/><column id="P1_M"/><txt>&apos;</txt><column id="P1_SSt"/><column id="P1_SSu"/><txt>&quot;</txt><column id="P1_CCt"/><column id="P1_CCu"/></concat><case src="255&apos;00&quot;00" dst=""/><replace src="&apos;&quot;" dst=""/><replace src="0000000" dst=""/></format>
+  <format id="pr2"><concat><column id="P2_NAME"/><column id="P2_M"/><txt>&apos;</txt><column id="P2_SSt"/><column id="P2_SSu"/><txt>&quot;</txt><column id="P2_CCt"/><column id="P2_CCu"/></concat><case src="255&apos;00&quot;00" dst=""/><replace src="&apos;&quot;" dst=""/><replace src="0000000" dst=""/></format>
+  <format id="pr3"><concat><column id="P3_NAME"/><column id="P3_M"/><txt>&apos;</txt><column id="P3_SSt"/><column id="P3_SSu"/><txt>&quot;</txt><column id="P3_CCt"/><column id="P3_CCu"/></concat><case src="255&apos;00&quot;00" dst=""/><replace src="&apos;&quot;" dst=""/><replace src="0000000" dst=""/></format>
+  <format id="pr4"><concat><column id="P4_NAME"/><column id="P4_M"/><txt>&apos;</txt><column id="P4_SSt"/><column id="P4_SSu"/><txt>&quot;</txt><column id="P4_CCt"/><column id="P4_CCu"/></concat><case src="255&apos;00&quot;00" dst=""/><replace src="&apos;&quot;" dst=""/><replace src="0000000" dst=""/></format>
+  <format id="pr5"><concat><column id="P5_NAME"/><column id="P5_M"/><txt>&apos;</txt><column id="P5_SSt"/><column id="P5_SSu"/><txt>&quot;</txt><column id="P5_CCt"/><column id="P5_CCu"/></concat><case src="255&apos;00&quot;00" dst=""/><replace src="&apos;&quot;" dst=""/><replace src="0000000" dst=""/></format>
+  <format id="pr6"><concat><column id="P6_NAME"/><column id="P6_M"/><txt>&apos;</txt><column id="P6_SSt"/><column id="P6_SSu"/><txt>&quot;</txt><column id="P6_CCt"/><column id="P6_CCu"/></concat><case src="255&apos;00&quot;00" dst=""/><replace src="&apos;&quot;" dst=""/><replace src="0000000" dst=""/></format>
+  <format id="pr7"><concat><column id="P7_NAME"/><column id="P7_M"/><txt>&apos;</txt><column id="P7_SSt"/><column id="P7_SSu"/><txt>&quot;</txt><column id="P7_CCt"/><column id="P7_CCu"/></concat><case src="255&apos;00&quot;00" dst=""/><replace src="&apos;&quot;" dst=""/><replace src="0000000" dst=""/></format>
+  <format id="boxerfmt">
+    <case src="0" dst="Gabby Jay"/>
+    <case src="1" dst="Bear Hugger"/>
+    <case src="2" dst="Piston Hurricane"/>
+    <case src="3" dst="Bald Bull"/>
+    <case src="4" dst="Bob Charlie"/>
+    <case src="5" dst="Dragon Chan"/>
+    <case src="6" dst="Masked Muscle"/>
+    <case src="7" dst="Mr. Sandman"/>
+    <case src="8" dst="Aran Ryan"/>
+    <case src="9" dst="Heike Kagero"/>
+    <case src="10" dst="Mad Clown"/>
+    <case src="11" dst="Super Macho Man"/>
+    <case src="12" dst="Narcis Prince"/>
+    <case src="13" dst="Hoy Quarlow"/>
+    <case src="14" dst="Rick Bruiser"/>
+    <case src="15" dst="Nick Bruiser"/>
+  </format>
+  <format id="prtime"><concat>
+    <column id="PR_M"/><txt>'</txt><column id="PR_SSt"/><column id="PR_SSu"/><txt>&quot;</txt><column id="PR_CCt"/><column id="PR_CCu"/>
+  </concat></format>
+  <format id="nm0"><concat><column id="PP_NAME"/><column id="B0_ID"/></concat></format>
+  <format id="nm1"><concat><column id="PP_NAME"/><column id="B1_ID"/></concat></format>
+  <format id="nm2"><concat><column id="PP_NAME"/><column id="B2_ID"/></concat></format>
+  <format id="nm3"><concat><column id="PP_NAME"/><column id="B3_ID"/></concat></format>
+  <format id="nm4"><concat><column id="PP_NAME"/><column id="B4_ID"/></concat></format>
+  <format id="nm5"><concat><column id="PP_NAME"/><column id="B5_ID"/></concat></format>
+  <format id="nm6"><concat><column id="PP_NAME"/><column id="B6_ID"/></concat></format>
+  <format id="nm7"><concat><column id="PP_NAME"/><column id="B7_ID"/></concat></format>
+  <format id="nm8"><concat><column id="PP_NAME"/><column id="B8_ID"/></concat></format>
+  <format id="nm9"><concat><column id="PP_NAME"/><column id="B9_ID"/></concat></format>
+  <format id="nm10"><concat><column id="PP_NAME"/><column id="B10_ID"/></concat></format>
+  <format id="nm11"><concat><column id="PP_NAME"/><column id="B11_ID"/></concat></format>
+  <format id="nm12"><concat><column id="PP_NAME"/><column id="B12_ID"/></concat></format>
+  <format id="nm13"><concat><column id="PP_NAME"/><column id="B13_ID"/></concat></format>
+  <format id="nm14"><concat><column id="PP_NAME"/><column id="B14_ID"/></concat></format>
+  <format id="nm15"><concat><column id="PP_NAME"/><column id="B15_ID"/></concat></format>
+  <format id="boxername">
+    <case src="0"  dst="Gabby Jay"/>
+    <case src="1"  dst="Bear Hugger"/>
+    <case src="2"  dst="Piston Hurricane"/>
+    <case src="3"  dst="Bald Bull"/>
+    <case src="4"  dst="Bob Charlie"/>
+    <case src="5"  dst="Dragon Chan"/>
+    <case src="6"  dst="Masked Muscle"/>
+    <case src="7"  dst="Mr. Sandman"/>
+    <case src="8"  dst="Aran Ryan"/>
+    <case src="9"  dst="Heike Kagero"/>
+    <case src="10" dst="Mad Clown"/>
+    <case src="11" dst="Super Macho Man"/>
+    <case src="12" dst="Narcis Prince"/>
+    <case src="13" dst="Hoy Quarlow"/>
+    <case src="14" dst="Rick Bruiser"/>
+    <case src="15" dst="Nick Bruiser"/>
+  </format>
+  <format id="mkpb"><concat>
+    <column id="PB_M"/><txt>'</txt><column id="PB_SSt"/><column id="PB_SSu"/><txt>&quot;</txt><column id="PB_CCt"/><column id="PB_CCu"/>
+  </concat></format>
+  <format id="idnum"><multiply>1</multiply></format>
+  <format id="fM"><divide_trunc>16777216</divide_trunc></format>
+  <format id="fSSt"><divide_trunc>65536</divide_trunc><remainder>256</remainder></format>
+  <format id="fSSu"><divide_trunc>256</divide_trunc><remainder>256</remainder></format>
+  <format id="fCCt"><remainder>256</remainder></format>
+  <format id="m10000"><multiply>10000</multiply></format>
+  <format id="m1000"><multiply>1000</multiply></format>
+  <format id="m100"><multiply>100</multiply></format>
+  <format id="m10"><multiply>10</multiply></format>
+  <format id="rankdot">
+    <case src="0" dst="1."/>
+    <case src="1" dst="2."/>
+    <case src="2" dst="3."/>
+    <case src="3" dst="4."/>
+    <case src="4" dst="5."/>
+    <case src="5" dst="6."/>
+    <case src="6" dst="7."/>
+    <case src="7" dst="8."/>
+  </format>
+  <format id="mktime0"><concat><column id="PB0_KV" format="fM"/><txt>'</txt><column id="PB0_KV" format="fSSt"/><column id="PB0_KV" format="fSSu"/><txt>&quot;</txt><column id="PB0_KV" format="fCCt"/><column id="PB0_CCu"/></concat></format>
+  <format id="mktime1"><concat><column id="PB1_KV" format="fM"/><txt>'</txt><column id="PB1_KV" format="fSSt"/><column id="PB1_KV" format="fSSu"/><txt>&quot;</txt><column id="PB1_KV" format="fCCt"/><column id="PB1_CCu"/></concat></format>
+  <format id="mktime2"><concat><column id="PB2_KV" format="fM"/><txt>'</txt><column id="PB2_KV" format="fSSt"/><column id="PB2_KV" format="fSSu"/><txt>&quot;</txt><column id="PB2_KV" format="fCCt"/><column id="PB2_CCu"/></concat></format>
+  <format id="mktime3"><concat><column id="PB3_KV" format="fM"/><txt>'</txt><column id="PB3_KV" format="fSSt"/><column id="PB3_KV" format="fSSu"/><txt>&quot;</txt><column id="PB3_KV" format="fCCt"/><column id="PB3_CCu"/></concat></format>
+  <format id="mktime4"><concat><column id="PB4_KV" format="fM"/><txt>'</txt><column id="PB4_KV" format="fSSt"/><column id="PB4_KV" format="fSSu"/><txt>&quot;</txt><column id="PB4_KV" format="fCCt"/><column id="PB4_CCu"/></concat></format>
+  <format id="mktime5"><concat><column id="PB5_KV" format="fM"/><txt>'</txt><column id="PB5_KV" format="fSSt"/><column id="PB5_KV" format="fSSu"/><txt>&quot;</txt><column id="PB5_KV" format="fCCt"/><column id="PB5_CCu"/></concat></format>
+  <format id="mktime6"><concat><column id="PB6_KV" format="fM"/><txt>'</txt><column id="PB6_KV" format="fSSt"/><column id="PB6_KV" format="fSSu"/><txt>&quot;</txt><column id="PB6_KV" format="fCCt"/><column id="PB6_CCu"/></concat></format>
+  <format id="mktime7"><concat><column id="PB7_KV" format="fM"/><txt>'</txt><column id="PB7_KV" format="fSSt"/><column id="PB7_KV" format="fSSu"/><txt>&quot;</txt><column id="PB7_KV" format="fCCt"/><column id="PB7_CCu"/></concat></format>
+  <format id="mktime8"><concat><column id="PB8_KV" format="fM"/><txt>'</txt><column id="PB8_KV" format="fSSt"/><column id="PB8_KV" format="fSSu"/><txt>&quot;</txt><column id="PB8_KV" format="fCCt"/><column id="PB8_CCu"/></concat></format>
+  <format id="mktime9"><concat><column id="PB9_KV" format="fM"/><txt>'</txt><column id="PB9_KV" format="fSSt"/><column id="PB9_KV" format="fSSu"/><txt>&quot;</txt><column id="PB9_KV" format="fCCt"/><column id="PB9_CCu"/></concat></format>
+  <format id="mktime10"><concat><column id="PB10_KV" format="fM"/><txt>'</txt><column id="PB10_KV" format="fSSt"/><column id="PB10_KV" format="fSSu"/><txt>&quot;</txt><column id="PB10_KV" format="fCCt"/><column id="PB10_CCu"/></concat></format>
+  <format id="mktime11"><concat><column id="PB11_KV" format="fM"/><txt>'</txt><column id="PB11_KV" format="fSSt"/><column id="PB11_KV" format="fSSu"/><txt>&quot;</txt><column id="PB11_KV" format="fCCt"/><column id="PB11_CCu"/></concat></format>
+  <format id="mktime12"><concat><column id="PB12_KV" format="fM"/><txt>'</txt><column id="PB12_KV" format="fSSt"/><column id="PB12_KV" format="fSSu"/><txt>&quot;</txt><column id="PB12_KV" format="fCCt"/><column id="PB12_CCu"/></concat></format>
+  <format id="mktime13"><concat><column id="PB13_KV" format="fM"/><txt>'</txt><column id="PB13_KV" format="fSSt"/><column id="PB13_KV" format="fSSu"/><txt>&quot;</txt><column id="PB13_KV" format="fCCt"/><column id="PB13_CCu"/></concat></format>
+  <format id="mktime14"><concat><column id="PB14_KV" format="fM"/><txt>'</txt><column id="PB14_KV" format="fSSt"/><column id="PB14_KV" format="fSSu"/><txt>&quot;</txt><column id="PB14_KV" format="fCCt"/><column id="PB14_CCu"/></concat></format>
+  <format id="mktime15"><concat><column id="PB15_KV" format="fM"/><txt>'</txt><column id="PB15_KV" format="fSSt"/><column id="PB15_KV" format="fSSu"/><txt>&quot;</txt><column id="PB15_KV" format="fCCt"/><column id="PB15_CCu"/></concat></format>
+  <format id="mkscore0"><concat>
+    <column id="S0_D5"/><column id="S0_D4"/><column id="S0_D3"/><column id="S0_D2"/><column id="S0_D1"/><column id="S0_D0"/>
+  </concat></format>
+  <format id="mkscore1"><concat>
+    <column id="S1_D5"/><column id="S1_D4"/><column id="S1_D3"/><column id="S1_D2"/><column id="S1_D1"/><column id="S1_D0"/>
+  </concat></format>
+  <format id="mkscore2"><concat>
+    <column id="S2_D5"/><column id="S2_D4"/><column id="S2_D3"/><column id="S2_D2"/><column id="S2_D1"/><column id="S2_D0"/>
+  </concat></format>
+  <format id="mkscore3"><concat>
+    <column id="S3_D5"/><column id="S3_D4"/><column id="S3_D3"/><column id="S3_D2"/><column id="S3_D1"/><column id="S3_D0"/>
+  </concat></format>
+  <charset id="cs_you"><char src="0x00" dst="" default="yes"/></charset>
+  <charset id="spo_names">
+    <char src="0x80" dst="*Don"/>
+    <char src="0x81" dst="*Caesar"/>
+    <char src="0x82" dst="*Peter"/>
+    <char src="0x83" dst="*Nancy"/>
+    <char src="0x84" dst="*Gerard"/>
+    <char src="0x85" dst="*Hutt"/>
+    <char src="0x86" dst="*Wario"/>
+    <char src="0x87" dst="*Slippy"/>
+    <char src="0x88" dst="*Derek"/>
+    <char src="0x89" dst="*Walt"/>
+    <char src="0x8a" dst="*Pat"/>
+    <char src="0x8b" dst="*Mark"/>
+    <char src="0x8c" dst="*JP"/>
+    <char src="0x8d" dst="*George"/>
+    <char src="0x8e" dst="*Luigi"/>
+    <char src="0x8f" dst="*Spinal"/>
+    <char src="0x90" dst="*DANO"/>
+    <char src="0x91" dst="*Wayne"/>
+    <char src="0x92" dst="*Phil"/>
+    <char src="0x93" dst="*Matt"/>
+    <char src="0x94" dst="*JT"/>
+    <char src="0x95" dst="*Fred"/>
+    <char src="0x96" dst="*Mario"/>
+    <char src="0x97" dst="*Thunder"/>
+    <char src="0x98" dst="*Howard"/>
+    <char src="0x99" dst="*Terry"/>
+    <char src="0x9a" dst="*Russell"/>
+    <char src="0x9b" dst="*Melissa"/>
+    <char src="0x9c" dst="*James"/>
+    <char src="0x9d" dst="*Eric"/>
+    <char src="0x9e" dst="*Peach"/>
+    <char src="0x9f" dst="*ZAP"/>
+    <char src="0xa0" dst="*Hans Lo"/>
+    <char src="0xa1" dst="*Tim"/>
+    <char src="0xa2" dst="*Ross"/>
+    <char src="0xa3" dst="*Michele"/>
+    <char src="0xa4" dst="*Juana"/>
+    <char src="0xa5" dst="*Dad"/>
+    <char src="0xa6" dst="*Zelda"/>
+    <char src="0xa7" dst="*DK Jr."/>
+    <char src="0xa8" dst="*Junior"/>
+    <char src="0xa9" dst="*Todd"/>
+    <char src="0xaa" dst="*Rocky"/>
+    <char src="0xab" dst="*Mike"/>
+    <char src="0xac" dst="*Jon"/>
+    <char src="0xad" dst="*Darren"/>
+    <char src="0xae" dst="*Andy"/>
+    <char src="0xaf" dst="*Icarus"/>
+    <char src="0xb0" dst="*Jim"/>
+    <char src="0xb1" dst="*Tom"/>
+    <char src="0xb2" dst="*Rob"/>
+    <char src="0xb3" dst="*McManus"/>
+    <char src="0xb4" dst="*John"/>
+    <char src="0xb5" dst="*Dave"/>
+    <char src="0xb6" dst="*Bruce"/>
+    <char src="0xb7" dst="*Kirby"/>
+    <char src="0xb8" dst="*Jeff"/>
+    <char src="0xb9" dst="*Tony"/>
+    <char src="0xba" dst="*Rick"/>
+    <char src="0xbb" dst="*Lance"/>
+    <char src="0xbc" dst="*Jerry"/>
+    <char src="0xbd" dst="*Debbie"/>
+    <char src="0xbe" dst="*Bill"/>
+    <char src="0xbf" dst="*Kong"/>
+    <char src="0xc0" dst="*KenLobb"/>
+    <char src="0xc1" dst="*Scott"/>
+    <char src="0xc2" dst="*Rich"/>
+    <char src="0xc3" dst="*Lincoln"/>
+    <char src="0xc4" dst="*J.C."/>
+    <char src="0xc5" dst="*Dennis"/>
+    <char src="0xc6" dst="*Craig"/>
+    <char src="0xc7" dst="*Link"/>
+    <char src="0xc8" dst="*Mr. A"/>
+    <char src="0xc9" dst="*Sean"/>
+    <char src="0xca" dst="*Ray"/>
+    <char src="0xcb" dst="*Loren"/>
+    <char src="0xcc" dst="*Kevin"/>
+    <char src="0xcd" dst="*Devin"/>
+    <char src="0xce" dst="*Cliff"/>
+    <char src="0xcf" dst="*Nester"/>
+    <char src="0xd0" dst="*Marcus"/>
+    <char src="0xd1" dst="*Sharon"/>
+    <char src="0xd2" dst="*Randy"/>
+    <char src="0xd3" dst="*KAL"/>
+    <char src="0xd4" dst="*Kelly"/>
+    <char src="0xd5" dst="*Donnie"/>
+    <char src="0xd6" dst="*Chuck"/>
+    <char src="0xd7" dst="*Pit"/>
+    <char src="0xd8" dst="*Sandhop"/>
+    <char src="0xd9" dst="*Shirk"/>
+    <char src="0xda" dst="*Ramin"/>
+    <char src="0xdb" dst="*Doug"/>
+    <char src="0xdc" dst="*Carl"/>
+    <char src="0xdd" dst="*Brian"/>
+    <char src="0xde" dst="*Chris"/>
+    <char src="0xdf" dst="*Samus"/>
+    <char src="0xe0" dst="*Yas."/>
+    <char src="0xe1" dst="*SAKI"/>
+    <char src="0xe2" dst="*Lamness"/>
+    <char src="0xe3" dst="*Shige"/>
+    <char src="0xe4" dst="*MATUBAR"/>
+    <char src="0xe5" dst="*TAKO.A"/>
+    <char src="0xe6" dst="*MIRROR"/>
+    <char src="0xe7" dst="*AYA"/>
+    <char src="0xe8" dst="*Eskei"/>
+    <char src="0xe9" dst="*CRUSHER"/>
+    <char src="0xea" dst="*LESCA"/>
+    <char src="0xeb" dst="*HIMAJIN"/>
+    <char src="0xec" dst="*Kim"/>
+    <char src="0xed" dst="*DaCider"/>
+    <char src="0xee" dst="*Ms.Fuji"/>
+    <char src="0xef" dst="*So Fun"/>
+    <char src="0xf0" dst="*HAM"/>
+    <char src="0xf1" dst="*DARMA X"/>
+    <char src="0xf2" dst="*MILK"/>
+    <char src="0xf3" dst="*DUNAN"/>
+    <char src="0xf4" dst="*NK3"/>
+    <char src="0xf5" dst="*FIANNA"/>
+    <char src="0xf6" dst="*Bilbo"/>
+    <char src="0xf7" dst="*Mr. J"/>
+    <char src="0xf8" dst="*Macotto"/>
+    <char src="0xf9" dst="*Hiro"/>
+    <char src="0xfa" dst="*COCOA"/>
+    <char src="0xfb" dst="*HITOMI"/>
+    <char src="0xfc" dst="*TOKIMER"/>
+    <char src="0xfd" dst="*KIRICCO"/>
+    <char src="0xfe" dst="*G. Joe"/>
+    <char src="0xff" dst="*Taocha"/>
+  </charset>
+  <charset id="spo_tiles">
+    <char src="0x00" dst="0"/>
+    <char src="0x01" dst="1"/>
+    <char src="0x02" dst="2"/>
+    <char src="0x03" dst="3"/>
+    <char src="0x04" dst="4"/>
+    <char src="0x05" dst="5"/>
+    <char src="0x06" dst="6"/>
+    <char src="0x07" dst="7"/>
+    <char src="0x08" dst="8"/>
+    <char src="0x09" dst="9"/>
+    <char src="0x0a" dst="A"/>
+    <char src="0x0b" dst="B"/>
+    <char src="0x0c" dst="C"/>
+    <char src="0x0d" dst="D"/>
+    <char src="0x0e" dst="E"/>
+    <char src="0x0f" dst="F"/>
+    <char src="0x10" dst="G"/>
+    <char src="0x11" dst="H"/>
+    <char src="0x12" dst="I"/>
+    <char src="0x13" dst="J"/>
+    <char src="0x14" dst="K"/>
+    <char src="0x15" dst="L"/>
+    <char src="0x16" dst="M"/>
+    <char src="0x17" dst="N"/>
+    <char src="0x18" dst="O"/>
+    <char src="0x19" dst="P"/>
+    <char src="0x1a" dst="Q"/>
+    <char src="0x1b" dst="R"/>
+    <char src="0x1c" dst="S"/>
+    <char src="0x1d" dst="T"/>
+    <char src="0x1e" dst="U"/>
+    <char src="0x1f" dst="V"/>
+    <char src="0x20" dst="W"/>
+    <char src="0x21" dst="X"/>
+    <char src="0x22" dst="Y"/>
+    <char src="0x23" dst="Z"/>
+    <char src="0x24" dst="a"/>
+    <char src="0x25" dst="b"/>
+    <char src="0x26" dst="c"/>
+    <char src="0x27" dst="d"/>
+    <char src="0x28" dst="e"/>
+    <char src="0x29" dst="f"/>
+    <char src="0x2a" dst="g"/>
+    <char src="0x2b" dst="h"/>
+    <char src="0x2c" dst="i"/>
+    <char src="0x2d" dst="j"/>
+    <char src="0x2e" dst="k"/>
+    <char src="0x2f" dst="l"/>
+    <char src="0x30" dst="m"/>
+    <char src="0x31" dst="n"/>
+    <char src="0x32" dst="o"/>
+    <char src="0x33" dst="p"/>
+    <char src="0x34" dst="q"/>
+    <char src="0x35" dst="r"/>
+    <char src="0x36" dst="s"/>
+    <char src="0x37" dst="t"/>
+    <char src="0x38" dst="u"/>
+    <char src="0x39" dst="v"/>
+    <char src="0x3a" dst="w"/>
+    <char src="0x3b" dst="x"/>
+    <char src="0x3c" dst="y"/>
+    <char src="0x3d" dst="z"/>
+    <char src="0xDF" dst="."/>
+    <char src="0xEF" dst=""/>
+    <char src="0x80" dst=""/>
+  </charset>
+</hi2txt>

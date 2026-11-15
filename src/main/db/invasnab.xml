@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    Invasion - The Abductors (Midway, 1999 - midzeus.cpp / Zeus hardware).
+    The HIGH SCORES board (10 entries) IS persisted natively to the main NVRAM,
+    which MAME saves as nvram\invasnab\nvram (131072 bytes). Proven by matching
+    the stored values to the on-screen board.
+
+    Table starts at offset 0x1000, 10 records of 0x1c (28) bytes each. Within a
+    record each of the 3 initials is stored as a 32-bit little-endian word with
+    the ASCII char in the low byte (so char + 3 zero pad), then the score as a
+    32-bit little-endian int, then a 12-byte per-entry extra block (secondary
+    stats, not shown on the board).
+      e.g. 47 00 00 00 4e 00 00 00 50 00 00 00  51 be 04 00  -> "GNP" 0x4be51 = 310865.
+    Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file="nvram">
+    <check>
+      <size>131072</size>
+    </check>
+    <elt size="4096" type="raw" id="HEADER"/>
+    <loop count="10">
+      <elt size="1" type="text" id="C1"    table-index="loop_index"/>
+      <elt size="3" type="raw"  id="P1"    table-index="loop_index"/>
+      <elt size="1" type="text" id="C2"    table-index="loop_index"/>
+      <elt size="3" type="raw"  id="P2"    table-index="loop_index"/>
+      <elt size="1" type="text" id="C3"    table-index="loop_index"/>
+      <elt size="3" type="raw"  id="P3"    table-index="loop_index"/>
+      <elt size="4" type="int"  id="SCORE" table-index="loop_index"
+           endianness="little_endian"/>
+      <elt size="12" type="raw" id="EXTRA" table-index="loop_index"/>
+    </loop>
+    <elt size="126696" type="raw" id="REST"/>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORES">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="C1"    format="namecat"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="namecat" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="C1"/><column src="C2"/><column src="C3"/>
+    </concat>
+  </format>
+</hi2txt>

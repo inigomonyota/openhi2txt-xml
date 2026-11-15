@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="BEST FRIENDS">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>1,000,000</cell><cell>PIP</cell></row>
+    <row><cell>2ND</cell><cell>850,000</cell><cell>AAA</cell></row>
+    <row><cell>3RD</cell><cell>720,000</cell><cell>BBB</cell></row>
+    <row><cell>4TH</cell><cell>600,000</cell><cell>CCC</cell></row>
+    <row><cell>5TH</cell><cell>500,000</cell><cell>DDD</cell></row>
+    <row><cell>6TH</cell><cell>420,000</cell><cell>EEE</cell></row>
+    <row><cell>7TH</cell><cell>350,000</cell><cell>FFF</cell></row>
+    <row><cell>8TH</cell><cell>280,000</cell><cell>GGG</cell></row>
+    <row><cell>9TH</cell><cell>200,000</cell><cell>HHH</cell></row>
+    <row><cell>10TH</cell><cell>120,000</cell><cell>III</cell></row>
+  </table>
+</hi2txt>

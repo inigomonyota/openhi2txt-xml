@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<table id="CHAMPIONSHIP TOP 16">
+<col>RANK</col><col>NAME</col><col>TIME</col><col>CAR</col><col>TRANSMISSION</col>
+<row><cell>1</cell><cell>POO</cell><cell>3'30"00</cell><cell>CELICA</cell><cell>AT</cell></row>
+<row><cell>2</cell><cell>KAW</cell><cell>3'33"00</cell><cell>DELTA</cell><cell>AT</cell></row>
+<row><cell>3</cell><cell>HAY</cell><cell>3'36"00</cell><cell>CELICA</cell><cell>MT</cell></row>
+<row><cell>4</cell><cell>SAS</cell><cell>3'39"00</cell><cell>DELTA</cell><cell>MT</cell></row>
+<row><cell>5</cell><cell>ARA</cell><cell>3'42"00</cell><cell>CELICA</cell><cell>AT</cell></row>
+<row><cell>6</cell><cell>SHO</cell><cell>3'45"00</cell><cell>DELTA</cell><cell>AT</cell></row>
+<row><cell>7</cell><cell>GAT</cell><cell>3'48"00</cell><cell>CELICA</cell><cell>MT</cell></row>
+<row><cell>8</cell><cell>KEN</cell><cell>3'51"00</cell><cell>DELTA</cell><cell>MT</cell></row>
+<row><cell>9</cell><cell>YEM</cell><cell>3'54"00</cell><cell>CELICA</cell><cell>AT</cell></row>
+<row><cell>10</cell><cell>RIC</cell><cell>3'57"00</cell><cell>DELTA</cell><cell>AT</cell></row>
+<row><cell>11</cell><cell>MAT</cell><cell>4'00"00</cell><cell>CELICA</cell><cell>MT</cell></row>
+<row><cell>12</cell><cell>KAM</cell><cell>4'03"00</cell><cell>DELTA</cell><cell>MT</cell></row>
+<row><cell>13</cell><cell>YAM</cell><cell>4'06"00</cell><cell>CELICA</cell><cell>AT</cell></row>
+<row><cell>14</cell><cell>HIR</cell><cell>4'09"00</cell><cell>DELTA</cell><cell>AT</cell></row>
+<row><cell>15</cell><cell>OHA</cell><cell>4'12"00</cell><cell>CELICA</cell><cell>MT</cell></row>
+<row><cell>16</cell><cell>MIZ</cell><cell>7'15"00</cell><cell>DELTA</cell><cell>MT</cell></row>
+</table>
+</hi2txt>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- plusalph by Jaleco, 1989 -->
+<!-- hiscore.dat: @:maincpu,program,f2f36,168,00,43 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>360</size>
+    </check>
+
+    <!-- Block 1: 15 Scores (60 bytes total) -->
+    <loop count="15">
+      <elt size="4" type="int" id="SCORE" base="16"/>
+    </loop>
+
+    <!-- Block 2: 15 Names (300 bytes total) -->
+    <!-- 20 bytes per record: [Null][Char][Null][Char]... -->
+    <!-- byte-skip="even" removes indices 0, 2, 4... leaving standard ASCII -->
+    <loop count="15">
+      <elt size="20" type="text" id="NAME" byte-skip="odd" charset="plusalpha_full"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"   src="index" format="ordinal"/>
+      <column id="POINTS" src="SCORE" format="comma_score"/>
+      <column id="NAME"   src="NAME"  format="trim_right"/>
+    </table>
+  </output>
+
+  <!-- Explicit Rank mapping -->
+  <format id="ordinal">
+    <case src="0"  dst="TOP"/><case src="1"  dst="2ND"/><case src="2"  dst="3RD"/>
+    <case src="3"  dst="4TH"/><case src="4"  dst="5TH"/><case src="5"  dst="6TH"/>
+    <case src="6"  dst="7TH"/><case src="7"  dst="8TH"/><case src="8"  dst="9TH"/>
+    <case src="9"  dst="10TH"/><case src="10" dst="11TH"/><case src="11" dst="12TH"/>
+    <case src="12" dst="13TH"/><case src="13" dst="14TH"/><case src="14" dst="15TH"/>
+  </format>
+
+  <format id="trim_right">
+    <trim direction="right"> </trim>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/><txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <!-- Comprehensive Jaleco Alphanumeric Charset -->
+  <charset id="plusalpha_full">
+    <!-- Standard Alphabet A-Z -->
+    <char src="0x41" dst="A"/><char src="0x42" dst="B"/><char src="0x43" dst="C"/>
+    <char src="0x44" dst="D"/><char src="0x45" dst="E"/><char src="0x46" dst="F"/>
+    <char src="0x47" dst="G"/><char src="0x48" dst="H"/><char src="0x49" dst="I"/>
+    <char src="0x4A" dst="J"/><char src="0x4B" dst="K"/><char src="0x4C" dst="L"/>
+    <char src="0x4D" dst="M"/><char src="0x4E" dst="N"/><char src="0x0E" dst="O"/>
+    <char src="0x4F" dst="O"/><char src="0x50" dst="P"/><char src="0x51" dst="Q"/>
+    <char src="0x52" dst="R"/><char src="0x53" dst="S"/><char src="0x54" dst="T"/>
+    <char src="0x55" dst="U"/><char src="0x56" dst="V"/><char src="0x57" dst="W"/>
+    <char src="0x58" dst="X"/><char src="0x59" dst="Y"/><char src="0x5A" dst="Z"/>
+    <!-- Numbers 0-9 -->
+    <char src="0x30" dst="0"/><char src="0x31" dst="1"/><char src="0x32" dst="2"/>
+    <char src="0x33" dst="3"/><char src="0x34" dst="4"/><char src="0x35" dst="5"/>
+    <char src="0x36" dst="6"/><char src="0x37" dst="7"/><char src="0x38" dst="8"/><char src="0x39" dst="9"/>
+    <!-- Special Jaleco Symbols -->
+    <char src="0x20" dst=" "/><char src="0x2D" dst="-"/>
+    <char src="0x5B" dst="♂"/><char src="0x5C" dst="♀"/>
+    <char src="0x5D" dst="❤"/><char src="0x5E" dst="♦"/><char src="0x7B" dst="α"/>
+  </charset>
+</hi2txt>

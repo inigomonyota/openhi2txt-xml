@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <hi2txt>
-  <table>
-    <col>RANK</col><col>SCORE</col><col>NAME</col>
-    <row><cell>1</cell><cell>8900</cell><cell></cell></row>
-    <row><cell>2</cell><cell>7400</cell><cell></cell></row>
-    <row><cell>3</cell><cell>6600</cell><cell></cell></row>
-    <row><cell>4</cell><cell>5100</cell><cell></cell></row>
-    <row><cell>5</cell><cell>4300</cell><cell></cell></row>
-    <row><cell>6</cell><cell>3700</cell><cell></cell></row>
-  </table>
+<table id="HIGH SCORES">
+<col>RANK</col><col>SCORE</col>
+<row><cell>1</cell><cell>008900</cell></row>
+<row><cell>2</cell><cell>007400</cell></row>
+<row><cell>3</cell><cell>006600</cell></row>
+<row><cell>4</cell><cell>005100</cell></row>
+<row><cell>5</cell><cell>004300</cell></row>
+<row><cell>6</cell><cell>003700</cell></row>
+</table>
 </hi2txt>

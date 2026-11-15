@@ -1,0 +1,28 @@
+<hi2txt>
+  <table id="HIGH ROLLERS">
+    <col>RANK</col><col>NAME</col><col>SCORE</col><col>TRAIL</col>
+    <row><cell>1</cell><cell>BF </cell><cell>93000</cell><cell>0xC200</cell></row>
+    <row><cell>2</cell><cell>MH </cell><cell>80000</cell><cell>0x0D01</cell></row>
+    <row><cell>3</cell><cell>BE </cell><cell>68000</cell><cell>0xA200</cell></row>
+    <row><cell>4</cell><cell>KM </cell><cell>57000</cell><cell>0xAB01</cell></row>
+    <row><cell>5</cell><cell>B F</cell><cell>47000</cell><cell>0x0218</cell></row>
+    <row><cell>6</cell><cell>JP </cell><cell>38000</cell><cell>0x0A02</cell></row>
+    <row><cell>7</cell><cell>CD </cell><cell>30000</cell><cell>0x8300</cell></row>
+    <row><cell>8</cell><cell>SC </cell><cell>23000</cell><cell>0x7300</cell></row>
+    <row><cell>9</cell><cell>TH </cell><cell>17000</cell><cell>0x1401</cell></row>
+    <row><cell>10</cell><cell>C D</cell><cell>12000</cell><cell>0x0310</cell></row>
+  </table>
+  <table id="KING OF THE MOUNTAIN">
+    <col>RANK</col><col>NAME</col><col>SCORE</col><col>TRAIL</col>
+    <row><cell>1</cell><cell>PL </cell><cell>240000</cell><cell>0x9001</cell></row>
+    <row><cell>2</cell><cell>MA </cell><cell>227000</cell><cell>0x2D00</cell></row>
+    <row><cell>3</cell><cell>GM </cell><cell>215000</cell><cell>0xA701</cell></row>
+    <row><cell>4</cell><cell>DC </cell><cell>204000</cell><cell>0x6400</cell></row>
+    <row><cell>5</cell><cell>PM </cell><cell>194000</cell><cell>0xB001</cell></row>
+    <row><cell>6</cell><cell>AB </cell><cell>185000</cell><cell>0x4100</cell></row>
+    <row><cell>7</cell><cell>ER </cell><cell>177000</cell><cell>0x4502</cell></row>
+    <row><cell>8</cell><cell>MP </cell><cell>170000</cell><cell>0x0D02</cell></row>
+    <row><cell>9</cell><cell>ML </cell><cell>164000</cell><cell>0x8D01</cell></row>
+    <row><cell>10</cell><cell>EL </cell><cell>159000</cell><cell>0x8501</cell></row>
+  </table>
+</hi2txt>

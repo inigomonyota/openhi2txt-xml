@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    ncommand - Ninja Commando (SNK, Neo Geo)
+    Reads the MAME saveram file (nvram/ncommand/saveram), 65536 bytes.
+
+    Neo Geo 68000: saveram is word-swapped, so structure uses byte-swap 2.
+    RANKING = 10 records of 8 bytes from 0x0320 (post-swap):
+      [0:4] SCORE 4-byte BCD (00 01 00 00 gives 10000)
+      [4:7] NAME  3 ASCII chars (may include ".")
+      [7]   trailing byte
+    RANK is positional (1..10).
+  -->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+
+    <!-- skip to table at 0x0320 (800 bytes) -->
+    <elt size="800" type="raw" id="PRE"/>
+    <loop count="10">
+      <elt size="4" type="int"  base="16" id="SCORE"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="TERM"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+</hi2txt>

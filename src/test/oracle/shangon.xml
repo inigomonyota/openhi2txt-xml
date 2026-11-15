@@ -1,0 +1,42 @@
+<hi2txt>
+  <table id="BEGINNER COURSE">
+    <col>RANK</col><col>SCORE</col><col>STAGE</col><col>NAME</col><col>TIME</col>
+    <row><cell>1ST</cell><cell>1000000</cell><cell>1</cell><cell>KAN</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>2ND</cell><cell>900000</cell><cell>1</cell><cell>OHE</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>3RD</cell><cell>800000</cell><cell>1</cell><cell>KAG</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>4TH</cell><cell>700000</cell><cell>1</cell><cell>MIZ</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>5TH</cell><cell>600000</cell><cell>1</cell><cell>SAT</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>6TH</cell><cell>500000</cell><cell>1</cell><cell>TAK</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>7TH</cell><cell>400000</cell><cell>1</cell><cell>MIY</cell><cell>-&apos;--&quot;--</cell></row>
+  </table>
+  <table id="JUNIOR COURSE">
+    <col>RANK</col><col>SCORE</col><col>STAGE</col><col>NAME</col><col>TIME</col>
+    <row><cell>1ST</cell><cell>2000000</cell><cell>1</cell><cell>KAN</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>2ND</cell><cell>1900000</cell><cell>1</cell><cell>OHE</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>3RD</cell><cell>1800000</cell><cell>1</cell><cell>KAG</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>4TH</cell><cell>1700000</cell><cell>1</cell><cell>MIZ</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>5TH</cell><cell>1600000</cell><cell>1</cell><cell>SAT</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>6TH</cell><cell>1500000</cell><cell>1</cell><cell>TAK</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>7TH</cell><cell>1400000</cell><cell>1</cell><cell>MAK</cell><cell>-&apos;--&quot;--</cell></row>
+  </table>
+  <table id="SENIOR COURSE">
+    <col>RANK</col><col>SCORE</col><col>STAGE</col><col>NAME</col><col>TIME</col>
+    <row><cell>1ST</cell><cell>3000000</cell><cell>1</cell><cell>KAN</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>2ND</cell><cell>2900000</cell><cell>1</cell><cell>OHE</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>3RD</cell><cell>2800000</cell><cell>1</cell><cell>KAG</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>4TH</cell><cell>2700000</cell><cell>1</cell><cell>MIZ</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>5TH</cell><cell>2600000</cell><cell>1</cell><cell>SAT</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>6TH</cell><cell>2500000</cell><cell>1</cell><cell>TAK</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>7TH</cell><cell>2400000</cell><cell>1</cell><cell>MIY</cell><cell>-&apos;--&quot;--</cell></row>
+  </table>
+  <table id="EXPERT COURSE">
+    <col>RANK</col><col>SCORE</col><col>STAGE</col><col>NAME</col><col>TIME</col>
+    <row><cell>1ST</cell><cell>4000000</cell><cell>1</cell><cell>KAN</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>2ND</cell><cell>3900000</cell><cell>1</cell><cell>OHE</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>3RD</cell><cell>3800000</cell><cell>1</cell><cell>KAG</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>4TH</cell><cell>3700000</cell><cell>1</cell><cell>MIZ</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>5TH</cell><cell>3600000</cell><cell>1</cell><cell>SAT</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>6TH</cell><cell>3500000</cell><cell>1</cell><cell>TAK</cell><cell>-&apos;--&quot;--</cell></row>
+    <row><cell>7TH</cell><cell>3400000</cell><cell>1</cell><cell>MAK</cell><cell>-&apos;--&quot;--</cell></row>
+  </table>
+</hi2txt>

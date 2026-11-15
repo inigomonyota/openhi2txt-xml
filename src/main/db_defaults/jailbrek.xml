@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+	<table id="SCORE RANKING">
+		<col>RANK</col><col>POINT</col><col>STAGE</col><col>NAME</col>
+		<row><cell>1ST</cell><cell>25300</cell><cell>2</cell><cell>Y.S</cell></row>
+		<row><cell>2ND</cell><cell>21400</cell><cell>1</cell><cell>AKI</cell></row>
+		<row><cell>3RD</cell><cell>18500</cell><cell>1</cell><cell>AAA</cell></row>
+		<row><cell>4TH</cell><cell>15100</cell><cell>1</cell><cell>N.M</cell></row>
+		<row><cell>5TH</cell><cell>11700</cell><cell>1</cell><cell>N.T</cell></row>
+		<row><cell>6TH</cell><cell>9300</cell><cell>1</cell><cell>T.I</cell></row>
+		<row><cell>7TH</cell><cell>9200</cell><cell>1</cell><cell>AAA</cell></row>
+		<row><cell>8TH</cell><cell>8500</cell><cell>1</cell><cell>A.F</cell></row>
+		<row><cell>9TH</cell><cell>6600</cell><cell>1</cell><cell>GTI</cell></row>
+		<row><cell>10TH</cell><cell>4200</cell><cell>1</cell><cell>OKA</cell></row>
+	</table>
+</hi2txt>

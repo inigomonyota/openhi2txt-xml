@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  empcity - Empire City: 1931 (Sega, 1986)
+  .hi file format (via hiscore.dat plugin)
+  hiscore.dat:
+    @:maincpu,program,e012,55,00,45
+  85 bytes = 5 entries x 17B
+  Record (17B): 9B score (unpacked BCD, 1 digit per byte, x10) + 8B name (ASCII)
+  First 5 score bytes are leading zeros for typical scores.
+  Special chars: 0x22=" 0x40=(c) 0x2C=, 0x2D=- 0x3C=<
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>85</size>
+    </check>
+    <loop count="5">
+      <!-- Score: 5B leading pad + 4 individual digit bytes -->
+      <elt size="5" type="raw" id="SPAD"/>
+      <elt size="1" type="int" id="D1"/>
+      <elt size="1" type="int" id="D2"/>
+      <elt size="1" type="int" id="D3"/>
+      <elt size="1" type="int" id="D4"/>
+      <!-- Name: 8B ASCII -->
+      <elt size="8" type="text" id="NAME"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="SCORE" src="D1" format="score_digits"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <!-- Score: concat 4 digit bytes + trailing 0, with comma -->
+  <format id="score_digits" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="D1"/>
+      <column src="D2"/>
+      <txt>,</txt>
+      <column src="D3"/>
+      <column src="D4"/>
+      <txt>0</txt>
+    </concat>
+  </format>
+
+</hi2txt>

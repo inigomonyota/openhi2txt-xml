@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 59 bytes -->
+    <check><size>59</size></check>
+    
+    <!-- 5 records * 12 bytes = 60 bytes. 
+         We use skip-last-bytes="1" because the final padding byte is missing. -->
+    <loop count="5" skip-last-bytes="1">
+      <!-- 4-byte Big-Endian BCD Score -->
+      <elt size="4" type="int"  id="SCORE" base="16" endianness="big_endian"/>
+      
+      <!-- 4-byte Big-Endian Integer for the Level -->
+      <elt size="4" type="int"  id="LEVEL" endianness="big_endian"/>
+      
+      <!-- 3-letter ASCII Initials -->
+      <elt size="3" type="text" id="INIT"/>
+      
+      <!-- 1 byte of padding/separator -->
+      <elt size="1" type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <!-- Because the scores are stored worst-to-best in memory, 
+         we sort them by SCORE descending so they print exactly like the screen! -->
+    <table id="EXCELLENT PLAYERS" sort="SCORE" sort-order="desc">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="LEVEL" src="LEVEL"/>
+      <column id="INIT"  src="INIT"/>
+    </table>
+  </output>
+
+  <!-- Translates the index from 0-4 to 1-5 -->
+  <format id="+1">
+    <add>1</add>
+  </format>
+</hi2txt>

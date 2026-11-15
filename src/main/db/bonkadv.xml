@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  bonkadv - B.C. Kid / Bonk's Adventure / PC Genjin (Kaneko, 1994)
+  .hi file format (via hiscore.dat plugin)
+  hiscore.dat:
+    @:maincpu,program,1032e0,5c,00,00
+    @:maincpu,program,10634b,37,60,50
+    @:maincpu,program,1032f7,1,80,80
+  148 bytes = 4B top score + 20B scores + 20B empty slots + 40B names + 64B tail
+  Scores: 4B BCD. Names: 4 x 2B characters (16-bit encoding: 0x00XX=ASCII, 0x01XX=hiragana).
+  Name characters output as 4 separate columns with romaji mapping.
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>148</size>
+    </check>
+    <!-- Top score (4B BCD) -->
+    <elt size="4" type="raw" id="TOPSCORE"/>
+    <!-- Scores: 5 x 4B BCD -->
+    <loop count="5">
+      <elt size="4" type="int" id="SCORE" base="16"/>
+    </loop>
+    <!-- Empty score slots: 5 x 4B -->
+    <elt size="20" type="raw" id="SCOREPAD"/>
+    <!-- Names: 5 x (4 chars x 2B) -->
+    <loop count="5">
+      <elt size="2" type="int" id="NC1"/>
+      <elt size="2" type="int" id="NC2"/>
+      <elt size="2" type="int" id="NC3"/>
+      <elt size="2" type="int" id="NC4"/>
+    </loop>
+    <!-- Tail: champion name + blank slots + other data -->
+    <elt size="64" type="raw" id="TAIL"/>
+  </structure>
+
+  <output>
+    <table id="BEST 5!">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="NC1" format="name_concat"/>
+      <column id="SCORE" format="comma_score"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="name_concat" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="NC1" format="charmap"/>
+      <column src="NC2" format="charmap"/>
+      <column src="NC3" format="charmap"/>
+      <column src="NC4" format="charmap"/>
+    </concat>
+  </format>
+
+  <!-- 16-bit character map: full value as decimal integer -->
+  <format id="charmap">
+    <!-- ASCII letters (0x0041-0x005A = 65-90) -->
+    <case src="65" operator="=" dst="A"/>
+    <case src="66" operator="=" dst="B"/>
+    <case src="67" operator="=" dst="C"/>
+    <case src="68" operator="=" dst="D"/>
+    <case src="69" operator="=" dst="E"/>
+    <case src="70" operator="=" dst="F"/>
+    <case src="71" operator="=" dst="G"/>
+    <case src="72" operator="=" dst="H"/>
+    <case src="73" operator="=" dst="I"/>
+    <case src="74" operator="=" dst="J"/>
+    <case src="75" operator="=" dst="K"/>
+    <case src="76" operator="=" dst="L"/>
+    <case src="77" operator="=" dst="M"/>
+    <case src="78" operator="=" dst="N"/>
+    <case src="79" operator="=" dst="O"/>
+    <case src="80" operator="=" dst="P"/>
+    <case src="81" operator="=" dst="Q"/>
+    <case src="82" operator="=" dst="R"/>
+    <case src="83" operator="=" dst="S"/>
+    <case src="84" operator="=" dst="T"/>
+    <case src="85" operator="=" dst="U"/>
+    <case src="86" operator="=" dst="V"/>
+    <case src="87" operator="=" dst="W"/>
+    <case src="88" operator="=" dst="X"/>
+    <case src="89" operator="=" dst="Y"/>
+    <case src="90" operator="=" dst="Z"/>
+    <!-- ASCII special characters -->
+    <case src="1" operator="=" dst="II"/>
+    <case src="8" operator="=" dst="!"/>
+    <case src="26" operator="=" dst="*"/>
+    <case src="32" operator="=" dst=" "/>
+    <!-- Hiragana (0x0141-0x016E = 321-366) -->
+    <case src="321" operator="=" dst="A"/>
+    <case src="322" operator="=" dst="I"/>
+    <case src="323" operator="=" dst="U"/>
+    <case src="324" operator="=" dst="E"/>
+    <case src="325" operator="=" dst="O"/>
+    <case src="326" operator="=" dst="KA"/>
+    <case src="327" operator="=" dst="KI"/>
+    <case src="328" operator="=" dst="KU"/>
+    <case src="329" operator="=" dst="KE"/>
+    <case src="330" operator="=" dst="KO"/>
+    <case src="331" operator="=" dst="SA"/>
+    <case src="332" operator="=" dst="SI"/>
+    <case src="333" operator="=" dst="SU"/>
+    <case src="334" operator="=" dst="SE"/>
+    <case src="335" operator="=" dst="SO"/>
+    <case src="336" operator="=" dst="TA"/>
+    <case src="337" operator="=" dst="TI"/>
+    <case src="338" operator="=" dst="TU"/>
+    <case src="339" operator="=" dst="TE"/>
+    <case src="340" operator="=" dst="TO"/>
+    <case src="341" operator="=" dst="NA"/>
+    <case src="342" operator="=" dst="NI"/>
+    <case src="343" operator="=" dst="NU"/>
+    <case src="344" operator="=" dst="NE"/>
+    <case src="345" operator="=" dst="NO"/>
+    <case src="346" operator="=" dst="HA"/>
+    <case src="347" operator="=" dst="HI"/>
+    <case src="348" operator="=" dst="HU"/>
+    <case src="349" operator="=" dst="HE"/>
+    <case src="350" operator="=" dst="HO"/>
+    <case src="351" operator="=" dst="MA"/>
+    <case src="352" operator="=" dst="MI"/>
+    <case src="353" operator="=" dst="MU"/>
+    <case src="354" operator="=" dst="ME"/>
+    <case src="355" operator="=" dst="MO"/>
+    <case src="356" operator="=" dst="YA"/>
+    <case src="357" operator="=" dst="YU"/>
+    <case src="358" operator="=" dst="YO"/>
+    <case src="359" operator="=" dst="RA"/>
+    <case src="360" operator="=" dst="RI"/>
+    <case src="361" operator="=" dst="RU"/>
+    <case src="362" operator="=" dst="RE"/>
+    <case src="363" operator="=" dst="RO"/>
+    <case src="364" operator="=" dst="WA"/>
+    <case src="365" operator="=" dst="WO"/>
+    <case src="366" operator="=" dst="N"/>
+    <!-- Blank character -->
+    <case src="24576" operator="=" dst=""/>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <!-- If score is >= 1,000,000,000 (Billions) -->
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    
+    <!-- If score is >= 1,000,000 (Millions) -->
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    
+    <!-- If score is >= 1,000 (Thousands) -->
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    
+    <!-- Fallback for scores under 1,000 (Passes the number through as-is) -->
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <!-- Formats like: 1,234,567,890 -->
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234,567 -->
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234 -->
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+</hi2txt>

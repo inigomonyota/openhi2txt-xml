@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- nslashers by Data East Corporation, 1993 -->
+<!-- hiscore.dat: @:maincpu,program,100044,50,13,00 | @:maincpu,program,100092,1,05,05 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>81</size>
+    </check>
+
+    <!-- 8 bytes per record: 3 (Name) + 2 (Pad) + 3 (Score) -->
+    <loop count="10">
+      <!-- Name characters are stored in reverse order (Little Endian) -->
+      <!-- Mapping: 00=A, 01=B, etc. handled by ascii-offset="65" -->
+      <elt size="3" type="text" id="NAME" endianness="little_endian" ascii-offset="65" charset="nslashers"/>
+      <elt size="2" type="raw"  id="PAD"/>
+      <!-- Score is 3-byte BCD, stored Little Endian (e.g., 00 30 00 = 3000) -->
+      <elt size="3" type="int"  id="SCORE" endianness="little_endian" base="16"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST PLAYERS">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="NAME"  src="NAME"/>
+      <!-- Data stores score/100, so we multiply by 100 for the full value -->
+      <column id="SCORE" src="SCORE" format="*100;comma_score"/>
+    </table>
+  </output>
+
+  <!-- Translates 0-9 into 1ST-10TH -->
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <!-- Charset for special Data East characters -->
+  <charset id="nslashers">
+    <char src="0x25" dst="."/>
+  </charset>
+
+</hi2txt>

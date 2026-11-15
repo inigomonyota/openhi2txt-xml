@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  spidman - Spider-Man: The Videogame (Sega, 1991)
+  Sega System 32 hardware.
+  hiscore.dat: @:mainpcb:maincpu,program,208c00,7f,a0,57
+  127 bytes total
+
+  Layout: 4 character tables × 4 entries × 8 bytes = 128 bytes,
+  but the last byte (separator/null after KAW) is truncated, giving 127.
+
+  8-byte record:
+    [0-3] Score (4B little-endian int)
+    [4-6] Name (3B ASCII)
+    [7]   Separator (0x00)
+
+  File order verified by experiment with distinctive scores per character:
+    File pos 1 (entries 1-4):   BLACK CAT
+    File pos 2 (entries 5-8):   SPIDER-MAN
+    File pos 3 (entries 9-12):  HAWKEYE
+    File pos 4 (entries 13-16): SUB-MARINER
+
+  In-game screen layout (2x2 grid):
+    Top-left: SPIDER-MAN | Top-right: SUB-MARINER
+    Bot-left: BLACK CAT  | Bot-right: HAWKEYE
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>127</size>
+    </check>
+
+    <!-- ====== Table 1: BLACK CAT (file pos 1) ====== -->
+    <loop count="4">
+      <elt size="4" type="int" id="BC_SCORE" endianness="little_endian" table-index="loop_index"/>
+      <elt size="3" type="text" id="BC_NAME" table-index="loop_index"/>
+      <elt size="1" type="raw" id="BC_PAD"/>
+    </loop>
+
+    <!-- ====== Table 2: SPIDER-MAN (file pos 2) ====== -->
+    <loop count="4">
+      <elt size="4" type="int" id="SM_SCORE" endianness="little_endian" table-index="loop_index"/>
+      <elt size="3" type="text" id="SM_NAME" table-index="loop_index"/>
+      <elt size="1" type="raw" id="SM_PAD"/>
+    </loop>
+
+    <!-- ====== Table 3: HAWKEYE (file pos 3) ====== -->
+    <loop count="4">
+      <elt size="4" type="int" id="HE_SCORE" endianness="little_endian" table-index="loop_index"/>
+      <elt size="3" type="text" id="HE_NAME" table-index="loop_index"/>
+      <elt size="1" type="raw" id="HE_PAD"/>
+    </loop>
+
+    <!-- ====== Table 4: SUB-MARINER (file pos 4) - last entry truncated by 1 byte ====== -->
+    <loop count="4" skip-last-bytes="1">
+      <elt size="4" type="int" id="NM_SCORE" endianness="little_endian" table-index="loop_index"/>
+      <elt size="3" type="text" id="NM_NAME" table-index="loop_index"/>
+      <elt size="1" type="raw" id="NM_PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="SPIDER-MAN" sort="SCORE" sort-order="desc" sort-format="sort_num">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="SCORE" src="SM_SCORE" format="comma_score"/>
+      <column id="NAME" src="SM_NAME"/>
+    </table>
+
+    <table id="SUB-MARINER" sort="SCORE" sort-order="desc" sort-format="sort_num">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="SCORE" src="NM_SCORE" format="comma_score"/>
+      <column id="NAME" src="NM_NAME"/>
+    </table>
+
+    <table id="BLACK CAT" sort="SCORE" sort-order="desc" sort-format="sort_num">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="SCORE" src="BC_SCORE" format="comma_score"/>
+      <column id="NAME" src="BC_NAME"/>
+    </table>
+
+    <table id="HAWKEYE" sort="SCORE" sort-order="desc" sort-format="sort_num">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="SCORE" src="HE_SCORE" format="comma_score"/>
+      <column id="NAME" src="HE_NAME"/>
+    </table>
+  </output>
+
+  <!-- Ordinal rank (0-3 -> 1ST-4TH) -->
+  <format id="ordinal">
+    <case src="0" operator="=" dst="1ST"/>
+    <case src="1" operator="=" dst="2ND"/>
+    <case src="2" operator="=" dst="3RD"/>
+    <case src="3" operator="=" dst="4TH"/>
+  </format>
+
+  <!-- Pass-through for numeric sort -->
+  <format id="sort_num"><multiply>1</multiply></format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+</hi2txt>

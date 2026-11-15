@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Ghoul Panic">
+
+  <!--
+    Native MAME EEPROM definition.
+
+    File: at28c16
+    Size: 2080 bytes (0x820)
+
+    Persistent ranking table:
+      offset 0x00BC
+      80 records x 12 bytes = 0x03C0 bytes
+
+    Record layout:
+      +0..2   NAME    3 ASCII characters
+      +3      PAD     00
+      +4..7   SCORE   32-bit little-endian
+      +8..11  COURSE  32-bit little-endian
+
+    COURSE:
+      0 = PRACTICE
+      1 = MEDIUM
+      2 = ADVANCED
+  -->
+
+  <structure file="at28c16">
+    <check>
+      <size>2080</size>
+    </check>
+
+    <!-- Skip bytes 0x0000-0x00BB -->
+    <elt size="188" type="raw" id="_PREFIX"/>
+
+    <!-- Ranking table: 0x00BC-0x047B -->
+    <loop count="80">
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw" id="_PAD"/>
+      <elt size="4" type="int" id="SCORE" endianness="little_endian"/>
+      <elt size="4" type="int" id="COURSE" endianness="little_endian"/>
+    </loop>
+
+    <!-- Remaining bytes 0x047C-0x081F -->
+    <elt size="932" type="raw" id="_SUFFIX"/>
+  </structure>
+
+  <output>
+    <table id="RANKING" lines-max="80">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="SCORE"/>
+      <column id="COURSE" format="course"/>
+    </table>
+  </output>
+
+  <format id="course">
+    <case src="0" dst="PRACTICE"/>
+    <case src="1" dst="MEDIUM"/>
+    <case src="2" dst="ADVANCED"/>
+  </format>
+
+</hi2txt>

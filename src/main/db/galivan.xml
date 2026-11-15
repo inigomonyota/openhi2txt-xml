@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 133 bytes -->
+    <check><size>133</size></check>
+    
+    <!-- 10 Records * 13 Bytes = 130 Bytes -->
+    <loop count="10">
+      <!-- 3-byte BCD Score (Missing the last two zeros) -->
+      <elt size="3" type="int"  id="SCORE" base="16" endianness="big_endian"/>
+      
+      <!-- 10-character string, utilizing our custom punctuation charset -->
+      <elt size="10" type="text" id="NAME" charset="galivan_char"/>
+    </loop>
+    
+    <!-- Remaining 3 bytes is the standalone Top Score tracker -->
+    <elt size="3" type="raw" id="TOP_SCORE"/>
+  </structure>
+
+  <output>
+    <!-- We sort by SCORE descending because the memory is stored worst-to-best -->
+    <table id="BEST 10" sort="SCORE" sort-order="desc">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SCORE" format="*100"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+  <!-- Translates the index from 0-9 to 1-10 -->
+  <format id="+1">
+    <add>1</add>
+  </format>
+
+  <!-- Translates the swapped punctuation marks -->
+  <charset id="galivan_char">
+    <char src="0x3A" dst="!"/>
+    <char src="0x3F" dst="."/>
+  </charset>
+</hi2txt>

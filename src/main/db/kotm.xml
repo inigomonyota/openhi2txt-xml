@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    kotm - King of the Monsters (SNK, Neo Geo)
+    Reads the MAME saveram file (nvram/kotm/saveram), 65536 bytes.
+
+    Neo Geo 68000: saveram is word-swapped, so structure uses byte-swap 2.
+    BEST PLAYERS = 10 records x 16 bytes from 0x0320 (post-swap):
+      [0:4]  SCORE 4-byte BCD (00 10 03 40 gives 100340)
+      [4:8]  padding
+      [8:11] NAME  3 chars, stored as ASCII + 0xA0 (0xE1=A, 0xCE=dot)
+             so ascii-offset of -160 restores plain ASCII
+      [11:16] padding
+    RANK is positional, shown as the number, a dot, then seven dashes.
+  -->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+
+    <!-- skip to table at 0x0320 (800 bytes) -->
+    <elt size="800" type="raw" id="PRE"/>
+    <loop count="10">
+      <elt size="4" type="int"  base="16" id="SCORE"/>
+      <elt size="4" type="raw"  id="PAD1"/>
+      <elt size="3" type="text" ascii-offset="-160" id="NAME"/>
+      <elt size="5" type="raw"  id="PAD2"/>
+    </loop>
+  </structure>
+
+  <format id="rank">
+    <add>1</add>
+    <suffix>.-------</suffix>
+  </format>
+
+  <output>
+    <table id="BEST PLAYERS">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+</hi2txt>

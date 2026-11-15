@@ -1,0 +1,41 @@
+<hi2txt>
+  <table id="TOP 10 RANKING - STRIKE 90">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>600</cell><cell>SNK</cell></row>
+    <row><cell>2.</cell><cell>550</cell><cell>SNK</cell></row>
+    <row><cell>3.</cell><cell>500</cell><cell>SNK</cell></row>
+    <row><cell>4.</cell><cell>450</cell><cell>SNK</cell></row>
+    <row><cell>5.</cell><cell>400</cell><cell>SNK</cell></row>
+    <row><cell>6.</cell><cell>350</cell><cell>SNK</cell></row>
+    <row><cell>7.</cell><cell>300</cell><cell>SNK</cell></row>
+    <row><cell>8.</cell><cell>250</cell><cell>SNK</cell></row>
+    <row><cell>9.</cell><cell>200</cell><cell>SNK</cell></row>
+    <row><cell>10.</cell><cell>150</cell><cell>SNK</cell></row>
+  </table>
+  <table id="TOP 10 RANKING - REGULATION">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>200</cell><cell>SNK</cell></row>
+    <row><cell>2.</cell><cell>190</cell><cell>SNK</cell></row>
+    <row><cell>3.</cell><cell>180</cell><cell>SNK</cell></row>
+    <row><cell>4.</cell><cell>170</cell><cell>SNK</cell></row>
+    <row><cell>5.</cell><cell>160</cell><cell>SNK</cell></row>
+    <row><cell>6.</cell><cell>150</cell><cell>SNK</cell></row>
+    <row><cell>7.</cell><cell>140</cell><cell>SNK</cell></row>
+    <row><cell>8.</cell><cell>130</cell><cell>SNK</cell></row>
+    <row><cell>9.</cell><cell>120</cell><cell>SNK</cell></row>
+    <row><cell>10.</cell><cell>110</cell><cell>SNK</cell></row>
+  </table>
+  <table id="TOP 10 RANKING - FLASH">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>2000</cell><cell>SNK</cell></row>
+    <row><cell>2.</cell><cell>1900</cell><cell>SNK</cell></row>
+    <row><cell>3.</cell><cell>1800</cell><cell>SNK</cell></row>
+    <row><cell>4.</cell><cell>1700</cell><cell>SNK</cell></row>
+    <row><cell>5.</cell><cell>1600</cell><cell>SNK</cell></row>
+    <row><cell>6.</cell><cell>1500</cell><cell>SNK</cell></row>
+    <row><cell>7.</cell><cell>1400</cell><cell>SNK</cell></row>
+    <row><cell>8.</cell><cell>1300</cell><cell>SNK</cell></row>
+    <row><cell>9.</cell><cell>1200</cell><cell>SNK</cell></row>
+    <row><cell>10.</cell><cell>1100</cell><cell>SNK</cell></row>
+  </table>
+</hi2txt>

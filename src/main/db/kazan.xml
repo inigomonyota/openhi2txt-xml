@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 163 bytes -->
+    <check><size>163</size></check>
+    
+    <!-- 5 Records * 32 Bytes = 160 Bytes -->
+    <loop count="5">
+      <!-- 8-character string padded to 16 bytes. byte-skip="even" brilliantly drops the 00s and the rogue % at the end! -->
+      <elt size="16" type="text" id="SCORE" byte-skip="even"/>
+      
+      <elt size="2"  type="raw"  id="PAD_1"/>
+      
+      <!-- 3-character string. byte-skip="even" drops the 02/00 padding -->
+      <elt size="6"  type="text" id="NAME"  byte-skip="even" charset="kazan_char"/>
+      
+      <elt size="8"  type="raw"  id="PAD_2"/>
+    </loop>
+    
+    <!-- Remaining 3 bytes of unused memory -->
+    <elt size="3" type="raw" id="TRAIL"/>
+  </structure>
+
+  <output>
+    <!-- Memory is perfectly ordered, so no sorting needed! -->
+    <table>
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="NAME"  src="NAME"/>
+      <!-- Trims the spaces from the memory string, then appends "PTS" -->
+      <column id="SCORE" src="SCORE" format="trim_space;add_pts"/>
+    </table>
+  </output>
+
+  <!-- Translates the visual row index to 1ST-5TH -->
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+
+  <!-- Cleans the leading spaces stored in the score string -->
+  <format id="trim_space">
+    <trim direction="left"> </trim>
+  </format>
+
+  <!-- Matches the screenshot's score display -->
+  <format id="add_pts">
+    <suffix>PTS</suffix>
+  </format>
+
+  <!-- Maps Jaleco's sequential font grid starting at 0xAC -->
+  <charset id="kazan_char">
+    <char src="0xAC" dst="A"/>
+    <char src="0xAD" dst="B"/>
+    <char src="0xAE" dst="C"/>
+    <char src="0xAF" dst="D"/>
+    <char src="0xB0" dst="E"/>
+    <char src="0xB1" dst="F"/>
+    <char src="0xB2" dst="G"/>
+    <char src="0xB3" dst="H"/>
+    <char src="0xB4" dst="I"/>
+    <char src="0xB5" dst="J"/>
+    <char src="0xB6" dst="K"/>
+    <char src="0xB7" dst="L"/>
+    <char src="0xB8" dst="M"/>
+    <char src="0xB9" dst="N"/>
+    <char src="0xBA" dst="O"/>
+    <char src="0xBB" dst="P"/>
+    <char src="0xBC" dst="Q"/>
+    <char src="0xBD" dst="R"/>
+    <char src="0xBE" dst="S"/>
+    <char src="0xBF" dst="T"/>
+    <char src="0xC0" dst="U"/>
+    <char src="0xC1" dst="V"/>
+    <char src="0xC2" dst="W"/>
+    <char src="0xC3" dst="X"/>
+    <char src="0xC4" dst="Y"/>
+    <char src="0xC5" dst="Z"/>
+    <char src="0xFF" dst="?" default="yes"/>
+  </charset>
+</hi2txt>

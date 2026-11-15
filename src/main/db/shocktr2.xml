@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!-- shocktr2 (Shock Troopers: 2nd Squad) - Neo Geo saveram, byte-swap=2.
+       All 28 ranking records (LEON, ANGEL, LULU, TOY: 7 each) are read ONCE, contiguously,
+       from post-swap 0x324. Each 10-byte record: score(4)+name(3)+pad(1)+class(1)+stage(1).
+       RANKING -ALL- sorts those 28 by score (desc) and shows the top 7; each hero table
+       filters the same 28 down to its own via a numeric hero index (HNUM). -->
+  <structure file="saveram" byte-swap="2">
+    <check><size>65536</size></check>
+    <!-- skip to 0x324 where the first score begins: 0x324 = 804 bytes -->
+    <elt size="804" type="text" id="PAD0"/>
+    <loop count="28">
+      <elt size="4" type="int"  id="SCORE" endianness="big_endian" base="16"/>
+      <elt size="3" type="text" id="NAME"  charset="shocktr2"/>
+      <elt size="1" type="text" id="PAD"/>
+      <elt size="1" type="int"  id="CLASS"/>
+      <elt size="1" type="int"  id="STAGE"/>
+    </loop>
+  </structure>
+
+  <output>
+    <!-- combined leaderboard: top 7 across all heroes, by score -->
+    <table id="RANKING -ALL-" sort="SCORE" sort-order="desc" lines-max="7">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="HERO"  src="unsorted_index" format="heromap"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="CLASS" src="CLASS" format="rankmap"/>
+      <column id="STAGE" src="STAGE"/>
+    </table>
+    <table id="RANKING -LEON-" line-ignore-operator="!=" line-ignore="HNUM:0">
+      <column id="RANK"  src="index" format="hrank"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="HERO"  src="unsorted_index" format="heromap"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="CLASS" src="CLASS" format="rankmap"/>
+      <column id="STAGE" src="STAGE"/>
+      <column id="HNUM"  src="unsorted_index" format="heronum" display="debug"/>
+    </table>
+    <table id="RANKING -ANGEL-" line-ignore-operator="!=" line-ignore="HNUM:1">
+      <column id="RANK"  src="index" format="hrank"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="HERO"  src="unsorted_index" format="heromap"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="CLASS" src="CLASS" format="rankmap"/>
+      <column id="STAGE" src="STAGE"/>
+      <column id="HNUM"  src="unsorted_index" format="heronum" display="debug"/>
+    </table>
+    <table id="RANKING -LULU-" line-ignore-operator="!=" line-ignore="HNUM:2">
+      <column id="RANK"  src="index" format="hrank"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="HERO"  src="unsorted_index" format="heromap"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="CLASS" src="CLASS" format="rankmap"/>
+      <column id="STAGE" src="STAGE"/>
+      <column id="HNUM"  src="unsorted_index" format="heronum" display="debug"/>
+    </table>
+    <table id="RANKING -TOY-" line-ignore-operator="!=" line-ignore="HNUM:3">
+      <column id="RANK"  src="index" format="hrank"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="HERO"  src="unsorted_index" format="heromap"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="CLASS" src="CLASS" format="rankmap"/>
+      <column id="STAGE" src="STAGE"/>
+      <column id="HNUM"  src="unsorted_index" format="heronum" display="debug"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+  </format>
+  <!-- per-hero rank = (row index mod 7) then ordinal, robust to how line-ignore indexes rows -->
+  <format id="hrank">
+    <remainder>7</remainder>
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+  </format>
+  <!-- hero from the record's original index: 0-6 LEON, 7-13 ANGEL, 14-20 LULU, 21-27 TOY -->
+  <format id="heromap">
+    <divide_trunc>7</divide_trunc>
+    <case src="0" dst="LEON"/>
+    <case src="1" dst="ANGEL"/>
+    <case src="2" dst="LULU"/>
+    <case src="3" dst="TOY"/>
+  </format>
+  <!-- numeric hero index (0-3) from the record's original position, for filtering -->
+  <format id="heronum">
+    <divide_trunc>7</divide_trunc>
+  </format>
+  <!-- class byte = 4 x tier (4 General of the Army .. 120 Recruit); 116 shows as PRIVATE -->
+  <format id="rankmap">
+    <case src="4" dst="GENERAL OF THE ARMY"/>
+    <case src="8" dst="GENERAL"/>
+    <case src="12" dst="LIEUTENANT GENERAL"/>
+    <case src="16" dst="MAJOR GENERAL"/>
+    <case src="20" dst="BRIGADIER GENERAL"/>
+    <case src="24" dst="COLONEL"/>
+    <case src="28" dst="LIEUTENANT COLONEL"/>
+    <case src="32" dst="MAJOR"/>
+    <case src="36" dst="CAPTAIN"/>
+    <case src="40" dst="FIRST LIEUTENANT"/>
+    <case src="44" dst="SECOND LIEUTENANT"/>
+    <case src="48" dst="MASTER CHIEF WARRANT OFFICER"/>
+    <case src="52" dst="CHIEF WARRANT OFFICER W-4"/>
+    <case src="56" dst="CHIEF WARRANT OFFICER W-3"/>
+    <case src="60" dst="CHIEF WARRANT OFFICER W-2"/>
+    <case src="64" dst="WARRANT OFFICER"/>
+    <case src="68" dst="SERGEANT MAJOR OF THE ARMY"/>
+    <case src="72" dst="COMMAND SERGEANT MAJOR"/>
+    <case src="76" dst="SERGEANT MAJOR"/>
+    <case src="80" dst="FIRST SERGEANT"/>
+    <case src="84" dst="MASTER SERGEANT"/>
+    <case src="88" dst="SERGEANT FIRST CLASS"/>
+    <case src="92" dst="PLATOON SERGEANT"/>
+    <case src="96" dst="STAFF SERGEANT"/>
+    <case src="100" dst="SERGEANT"/>
+    <case src="104" dst="CORPORAL"/>
+    <case src="108" dst="PRIVATE FIRST CLASS"/>
+    <case src="112" dst="PRIVATE E-2"/>
+    <case src="116" dst="PRIVATE"/>
+    <case src="120" dst="RECRUIT"/>
+    <case src="0" dst="?" default="yes"/>
+  </format>
+  <charset id="shocktr2">
+    <char src="0x00" dst="A"/>
+    <char src="0x02" dst="B"/>
+    <char src="0x04" dst="C"/>
+    <char src="0x06" dst="D"/>
+    <char src="0x08" dst="E"/>
+    <char src="0x0A" dst="F"/>
+    <char src="0x0C" dst="G"/>
+    <char src="0x0E" dst="H"/>
+    <char src="0x10" dst="I"/>
+    <char src="0x12" dst="J"/>
+    <char src="0x14" dst="K"/>
+    <char src="0x16" dst="L"/>
+    <char src="0x18" dst="M"/>
+    <char src="0x1A" dst="N"/>
+    <char src="0x1C" dst="O"/>
+    <char src="0x1E" dst="P"/>
+    <char src="0x20" dst="Q"/>
+    <char src="0x22" dst="R"/>
+    <char src="0x24" dst="S"/>
+    <char src="0x26" dst="T"/>
+    <char src="0x28" dst="U"/>
+    <char src="0x2A" dst="V"/>
+    <char src="0x2C" dst="W"/>
+    <char src="0x2E" dst="X"/>
+    <char src="0x30" dst="Y"/>
+    <char src="0x32" dst="Z"/>
+    <char src="0x34" dst="0"/>
+    <char src="0x36" dst="1"/>
+    <char src="0x38" dst="2"/>
+    <char src="0x3A" dst="3"/>
+    <char src="0x3C" dst="4"/>
+    <char src="0x3E" dst="5"/>
+    <char src="0x40" dst="6"/>
+    <char src="0x42" dst="7"/>
+    <char src="0x44" dst="8"/>
+    <char src="0x46" dst="9"/>
+    <char src="0x48" dst="."/>
+  </charset>
+</hi2txt>

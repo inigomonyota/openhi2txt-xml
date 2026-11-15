@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Comix Zone">
+  <!--
+    Genesis / Comix Zone (softlist: comixu, "Comix Zone (USA)"). Launch:
+    mame64.exe genesis comixu. Comix Zone has no battery-backed save on real
+    hardware; these scores only exist on the end-of-game SCORE tally screen, so
+    the table is "SCORES FROM LAST PLAY" (overwritten each play cycle).
+
+    IMPORTANT: the tally screen PAGES through categories and 0xffbef4 is only the
+    currently-animating DISPLAY register (it counts up), NOT a stored metric. Do
+    not read 0xffbef4. The per-category values are stored separately in 68000
+    work RAM (0xff0000-0xffffff), verified by diffing two plays:
+      SCORE    : 2-byte BE binary at 0xffbef8   (direct; play A 3000, play B 4250)
+      COMBOS   : 2-byte BE binary at 0xffbf00   (raw count, screen shows x100;
+                 play A 4 -> 400, play B 3 -> 300)
+      FINISHES : 2-byte BE binary at 0xffbf02   (raw count, "FINISHES X 100";
+                 play A 6 -> 600, play B 9 -> 900)
+      PROGRESS : 2-byte BE binary at 0xffbf3c   (direct percent; play A 7, play B 5)
+    TOTAL is NOT stored in RAM - it is the sum SCORE + COMBOS + FINISHES the game
+    computes during the tally (play A 3000+400+600=4000, play B 4250+300+900=5450).
+    The default table hard-codes TOTAL from the screenshots; the definition decodes
+    the four stored categories.
+
+    hiscore.dat concatenates three @: regions into the .hi (SCORE 2B, then the
+    contiguous COMBOS+FINISHES 4B, then PROGRESS 2B = 8 bytes) with @delay so the
+    00,00 check runs after boot while every field is still the power-on 0, the same
+    trick used for genesis_supshin.
+
+    .hi layout (8 bytes):
+      SCORE    : 2 bytes  big-endian binary
+      COMBOS   : 2 bytes  big-endian binary  (x100 on display)
+      FINISHES : 2 bytes  big-endian binary  (x100 on display)
+      PROGRESS : 2 bytes  big-endian binary  (percent)
+  //-->
+  <structure file=".hi">
+    <check>
+      <size>8</size>
+    </check>
+    <elt size="2" type="int" id="SCORE" base="10" endianness="big_endian"/>
+    <elt size="2" type="int" id="COMBOS" base="10" endianness="big_endian"/>
+    <elt size="2" type="int" id="FINISHES" base="10" endianness="big_endian"/>
+    <elt size="2" type="int" id="PROGRESS" base="10" endianness="big_endian"/>
+  </structure>
+
+  <output>
+    <table id="SCORES FROM LAST PLAY">
+      <column id="PROGRESSION" src="PROGRESS" format="pct"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="COMBO PTS" src="COMBOS" format="x100"/>
+      <column id="FINISH PTS" src="FINISHES" format="x100"/>
+      <column id="TOTAL SCORE" format="total"/>
+    </table>
+  </output>
+
+  <!-- category counts rendered x100 -->
+  <format id="x100">
+    <multiply>100</multiply>
+  </format>
+
+  <!-- progression percent, e.g. 5% -->
+  <format id="pct">
+    <suffix>%</suffix>
+  </format>
+
+  <!-- TOTAL = SCORE + COMBOS*100 + FINISHES*100 (game computes this at the tally;
+       not stored in RAM, so derive it from the stored categories) -->
+  <format id="total">
+    <sum>
+      <column id="SCORE"/>
+      <column id="COMBOS" format="x100"/>
+      <column id="FINISHES" format="x100"/>
+    </sum>
+  </format>
+</hi2txt>

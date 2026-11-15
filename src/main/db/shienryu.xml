@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  shienryu - Shienryu (Warashi Inc., 1997)
+  Sega Saturn-based ST-V hardware, SH-2 CPU.
+  hiscore.dat:
+    @:maincpu,program,60adc34,7ec,54,10
+    @:maincpu,program,60acbc4,4,00,e8
+  2032 bytes total = 2028B range1 + 4B range2
+
+  Layout:
+    [0-119]    TODAY'S EXCELLENT PLAYERS (10 entries):
+      [0-39]   10 × 4B names (3B ASCII + null)
+      [40-79]  10 × 4B BE int scores
+      [80-99]  10 × 2B BE stage main (stored as main - 1)
+      [100-119] 10 × 2B BE stage sub (stored as sub - 1)
+
+    [120-907]  First TOP 100 region (788 bytes - REDUNDANT/UNUSED):
+      [120-507] 388B (97 × 4B name slots? structure unclear)
+      [508-907] 400B (100 × 4B BE int scores - duplicate of second table)
+      Note: This first region appears to be a working/staging copy.
+      The XML reads only the second (clean) TOP 100 region below.
+
+    [908-1323] Padding (mostly zeros, single 0x02 at offset 1291)
+
+    [1324-1327] 4-byte marker "65 2C 9A D3"
+
+    [1328-2027] RANKING RECORD TOP 100 (the canonical table):
+      [1328-1627] 100 × 3B contiguous ASCII names (no separators!)
+      [1628-2027] 100 × 4B BE int scores
+
+    [2028-2031] Range 2: latest score (4B BE int)
+
+  Notes:
+  - TODAY's table has full stage info (main + sub).
+  - TOP 100 table does NOT store per-entry stage info anywhere we
+    could find. Stage column is hardcoded to "1-1" matching the default
+    behavior. The single non-default entry's actual stage (e.g. 1-3 for
+    a captured ./! entry) cannot be recovered for the TOP 100 view.
+  - Both score blocks (first at 508 and second at 1628) contain identical
+    data; we read the second one for cleanliness.
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>2032</size>
+    </check>
+
+    <!-- ====== TODAY'S EXCELLENT PLAYERS (10 entries, 120 bytes) ====== -->
+
+    <!-- 10 × 4B names (3B ASCII + 1B null) -->
+    <loop count="10">
+      <elt size="3" type="text" id="TD_NAME" table-index="loop_index"/>
+      <elt size="1" type="raw" id="TD_NPAD"/>
+    </loop>
+
+    <!-- 10 × 4B BE int scores -->
+    <loop count="10">
+      <elt size="4" type="int" id="TD_SCORE" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+
+    <!-- 10 × 2B BE stage main (stored as main - 1) -->
+    <loop count="10">
+      <elt size="2" type="int" id="TD_MAIN" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+
+    <!-- 10 × 2B BE stage sub (stored as sub - 1) -->
+    <loop count="10">
+      <elt size="2" type="int" id="TD_SUB" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+
+    <!-- ====== First TOP 100 region (788 bytes - read as raw) ====== -->
+    <elt size="788" type="raw" id="FIRST_TOP100_REGION"/>
+
+    <!-- ====== Gap + marker (420 bytes) ====== -->
+    <elt size="420" type="raw" id="GAP_AND_MARKER"/>
+
+    <!-- ====== RANKING RECORD TOP 100 (the canonical table) ====== -->
+
+    <!-- 100 × 3B contiguous names (no separator) -->
+    <loop count="100">
+      <elt size="3" type="text" id="TP_NAME" table-index="loop_index"/>
+    </loop>
+
+    <!-- 100 × 4B BE int scores -->
+    <loop count="100">
+      <elt size="4" type="int" id="TP_SCORE" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+
+    <!-- ====== Range 2: latest score (4 bytes) ====== -->
+    <elt size="4" type="raw" id="LATEST_SCORE"/>
+  </structure>
+
+  <output>
+    <table id="TODAY'S EXCELLENT PLAYERS">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="NAME" src="TD_NAME"/>
+      <column id="SCORE" src="TD_SCORE" format="comma_score"/>
+      <column id="STAGE" src="TD_MAIN" format="stage_fmt"/>
+    </table>
+
+    <table id="RANKING RECORD TOP 100">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="NAME" src="TP_NAME"/>
+      <column id="SCORE" src="TP_SCORE" format="comma_score"/>
+    </table>
+  </output>
+
+  <!-- Ordinal rank: 0-based index -> 1ST, 2ND, 3RD, 4TH, 5TH, ..., 100TH -->
+  <!-- Special endings for 1/21/31/41/51/61/71/81/91 (ST), 2/22/32/.../92 (ND),
+       3/23/33/.../93 (RD), all others (TH) -->
+  <format id="ordinal">
+    <add>1</add>
+    <case src="1"   operator="=" dst="1ST"/>
+    <case src="2"   operator="=" dst="2ND"/>
+    <case src="3"   operator="=" dst="3RD"/>
+    <case src="21"  operator="=" dst="21ST"/>
+    <case src="22"  operator="=" dst="22ND"/>
+    <case src="23"  operator="=" dst="23RD"/>
+    <case src="31"  operator="=" dst="31ST"/>
+    <case src="32"  operator="=" dst="32ND"/>
+    <case src="33"  operator="=" dst="33RD"/>
+    <case src="41"  operator="=" dst="41ST"/>
+    <case src="42"  operator="=" dst="42ND"/>
+    <case src="43"  operator="=" dst="43RD"/>
+    <case src="51"  operator="=" dst="51ST"/>
+    <case src="52"  operator="=" dst="52ND"/>
+    <case src="53"  operator="=" dst="53RD"/>
+    <case src="61"  operator="=" dst="61ST"/>
+    <case src="62"  operator="=" dst="62ND"/>
+    <case src="63"  operator="=" dst="63RD"/>
+    <case src="71"  operator="=" dst="71ST"/>
+    <case src="72"  operator="=" dst="72ND"/>
+    <case src="73"  operator="=" dst="73RD"/>
+    <case src="81"  operator="=" dst="81ST"/>
+    <case src="82"  operator="=" dst="82ND"/>
+    <case src="83"  operator="=" dst="83RD"/>
+    <case src="91"  operator="=" dst="91ST"/>
+    <case src="92"  operator="=" dst="92ND"/>
+    <case src="93"  operator="=" dst="93RD"/>
+    <case src="4"   operator="=" dst="4TH"/>
+    <case src="5"   operator="=" dst="5TH"/>
+    <case src="6"   operator="=" dst="6TH"/>
+    <case src="7"   operator="=" dst="7TH"/>
+    <case src="8"   operator="=" dst="8TH"/>
+    <case src="9"   operator="=" dst="9TH"/>
+    <case src="10"  operator="=" dst="10TH"/>
+    <case src="11"  operator="=" dst="11TH"/>
+    <case src="12"  operator="=" dst="12TH"/>
+    <case src="13"  operator="=" dst="13TH"/>
+    <case src="14"  operator="=" dst="14TH"/>
+    <case src="15"  operator="=" dst="15TH"/>
+    <case src="16"  operator="=" dst="16TH"/>
+    <case src="17"  operator="=" dst="17TH"/>
+    <case src="18"  operator="=" dst="18TH"/>
+    <case src="19"  operator="=" dst="19TH"/>
+    <case src="20"  operator="=" dst="20TH"/>
+    <case src="24"  operator="=" dst="24TH"/>
+    <case src="25"  operator="=" dst="25TH"/>
+    <case src="26"  operator="=" dst="26TH"/>
+    <case src="27"  operator="=" dst="27TH"/>
+    <case src="28"  operator="=" dst="28TH"/>
+    <case src="29"  operator="=" dst="29TH"/>
+    <case src="30"  operator="=" dst="30TH"/>
+    <case src="34"  operator="=" dst="34TH"/>
+    <case src="35"  operator="=" dst="35TH"/>
+    <case src="36"  operator="=" dst="36TH"/>
+    <case src="37"  operator="=" dst="37TH"/>
+    <case src="38"  operator="=" dst="38TH"/>
+    <case src="39"  operator="=" dst="39TH"/>
+    <case src="40"  operator="=" dst="40TH"/>
+    <case src="44"  operator="=" dst="44TH"/>
+    <case src="45"  operator="=" dst="45TH"/>
+    <case src="46"  operator="=" dst="46TH"/>
+    <case src="47"  operator="=" dst="47TH"/>
+    <case src="48"  operator="=" dst="48TH"/>
+    <case src="49"  operator="=" dst="49TH"/>
+    <case src="50"  operator="=" dst="50TH"/>
+    <case src="54"  operator="=" dst="54TH"/>
+    <case src="55"  operator="=" dst="55TH"/>
+    <case src="56"  operator="=" dst="56TH"/>
+    <case src="57"  operator="=" dst="57TH"/>
+    <case src="58"  operator="=" dst="58TH"/>
+    <case src="59"  operator="=" dst="59TH"/>
+    <case src="60"  operator="=" dst="60TH"/>
+    <case src="64"  operator="=" dst="64TH"/>
+    <case src="65"  operator="=" dst="65TH"/>
+    <case src="66"  operator="=" dst="66TH"/>
+    <case src="67"  operator="=" dst="67TH"/>
+    <case src="68"  operator="=" dst="68TH"/>
+    <case src="69"  operator="=" dst="69TH"/>
+    <case src="70"  operator="=" dst="70TH"/>
+    <case src="74"  operator="=" dst="74TH"/>
+    <case src="75"  operator="=" dst="75TH"/>
+    <case src="76"  operator="=" dst="76TH"/>
+    <case src="77"  operator="=" dst="77TH"/>
+    <case src="78"  operator="=" dst="78TH"/>
+    <case src="79"  operator="=" dst="79TH"/>
+    <case src="80"  operator="=" dst="80TH"/>
+    <case src="84"  operator="=" dst="84TH"/>
+    <case src="85"  operator="=" dst="85TH"/>
+    <case src="86"  operator="=" dst="86TH"/>
+    <case src="87"  operator="=" dst="87TH"/>
+    <case src="88"  operator="=" dst="88TH"/>
+    <case src="89"  operator="=" dst="89TH"/>
+    <case src="90"  operator="=" dst="90TH"/>
+    <case src="94"  operator="=" dst="94TH"/>
+    <case src="95"  operator="=" dst="95TH"/>
+    <case src="96"  operator="=" dst="96TH"/>
+    <case src="97"  operator="=" dst="97TH"/>
+    <case src="98"  operator="=" dst="98TH"/>
+    <case src="99"  operator="=" dst="99TH"/>
+    <case src="100" operator="=" dst="100TH"/>
+  </format>
+
+  <!-- Stage formatter: combines TD_MAIN and TD_SUB into "M-S" format -->
+  <format id="stage_fmt" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="TD_MAIN" format="plus1"/>
+      <txt>-</txt>
+      <column src="TD_SUB" format="plus1"/>
+    </concat>
+  </format>
+  <format id="plus1"><add>1</add></format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+</hi2txt>

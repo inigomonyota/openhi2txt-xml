@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Dark Seal">
+  <structure file=".hi">
+    <check><size>55</size></check>
+    <loop count="4"><elt size="4" type="int" id="SCORE" base="16" table-index="loop_index"/></loop>
+    <elt size="24" type="raw" id="UNKNOWN"/>
+    <loop count="3">
+      <elt size="3" type="text" id="NAME" table-index="loop_index"/>
+      <elt size="1" type="int" id="TITLE" table-index="loop_index"/>
+    </loop>
+    <elt size="3" type="text" id="NAME" table-index="3"/>
+  </structure>
+  <?openhi2txt-layout type="transpose" source="LEGENDARY HEROES" columns="CHARACTER" rows="RANK NAME SCORE"?>
+  <output>
+    <table id="LEGENDARY HEROES">
+      <column id="CHARACTER" src="index" format="class"/>
+      <column id="RANK" src="TITLE" format="title"/>
+      <column id="NAME"/>
+      <column id="SCORE" format="/10"/>
+    </table>
+  </output>
+  <format id="/10"><divide>10</divide></format>
+  <format id="class"><case src="0" dst="KNIGHT"/><case src="1" dst="WIZARD"/><case src="2" dst="BARD"/><case src="3" dst="NINJA"/></format>
+  <format id="title"><case src="0" dst="SQUIRE" default="yes"/><case src="1" dst="CAVALIER"/><case src="2" dst="LORD"/><case src="3" dst="BARON"/><case src="4" dst="VISCOUNT"/><case src="5" dst="COUNT"/><case src="6" dst="MARQUIS"/><case src="7" dst="DUKE"/><case src="8" dst="KING"/></format>
+</hi2txt>

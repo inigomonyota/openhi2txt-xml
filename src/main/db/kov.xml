@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    kov - Knights of Valour / Sangoku Senki (IGS PGM)
+    Reads the MAME sram file (nvram/kov/sram), 131072 bytes.
+
+    PGM 68000: sram is word-swapped, so structure uses byte-swap 2.
+    RANKING = 10 records x 30 bytes (0x1E) from 0x3B86 (post-swap):
+      [0:4]   NAME  4 ASCII chars
+      [4:22]  per-entry character/portrait data (18 bytes; cycles every 5
+              in the defaults, matching the repeated portraits on screen)
+      [22:26] SCORE 4-byte big-endian BINARY (00 03 0D 40 gives 200000)
+      [26:30] padding
+
+    TITLE is the on-screen "General" (JiangJun) honorary-rank ladder. It is
+    positional (one unique title per rank 1..10, NOT stored per record), so
+    it is generated from the row index below.
+    (Rank 7 glyphs were slightly blurry in the source capture.)
+  -->
+
+  <structure file="sram" byte-swap="2">
+    <check>
+      <size>131072</size>
+    </check>
+
+    <!-- skip to table at 0x3B86 (15238 bytes) -->
+    <elt size="15238" type="raw" id="PRE"/>
+    <loop count="10">
+      <elt size="4"  type="text" id="NAME"/>
+      <elt size="18" type="raw"  id="MID"/>
+      <elt size="4"  type="int"  id="SCORE"/>
+      <elt size="4"  type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <!-- positional General-title ladder (rank 1 = highest) -->
+  <format id="title">
+    <case src="0" dst="驃騎將軍"/>
+    <case src="1" dst="車騎將軍"/>
+    <case src="2" dst="驍騎將軍"/>
+    <case src="3" dst="龍驤將軍"/>
+    <case src="4" dst="虎翼將軍"/>
+    <case src="5" dst="破虜將軍"/>
+    <case src="6" dst="飛衛將軍"/>
+    <case src="7" dst="伏波將軍"/>
+    <case src="8" dst="奮威將軍"/>
+    <case src="9" dst="輔國將軍"/>
+  </format>
+
+  <output>
+    <table id="RANKING">
+      <column id="TITLE" src="index" format="title"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+</hi2txt>

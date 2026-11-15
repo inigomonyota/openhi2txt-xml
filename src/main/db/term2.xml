@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  hi2txt description for Terminator 2: Judgment Day (term2)  [Midway T-Unit]
+
+  Reads MAME's 32768-byte nvram directly - no hiscore.dat entry is needed,
+  MAME writes this file itself.
+
+  The hardware stores 8 bits in each 16-bit word, so only the EVEN byte
+  offsets hold data and every odd byte is 0x00. Hence byte-skip="even" on
+  every element, which halves each declared size.
+  (Note: even, not odd - the opposite parity to some other drivers.)
+
+  Two blocks, each a header record followed by the ten displayed entries:
+      raw 0x0000  TODAY'S BEST
+      raw 0x4000  ALL TIME BEST
+
+  per record (20 raw bytes = 10 data bytes):
+      [0-3]  SCORE  4 bytes bcd, 00 95 00 00 = 950000
+      [4-5]  always 00 00
+      [6-8]  NAME   3 chars
+      [9]    per-record counter, NOT a checksum: an unchanged record's
+             byte was observed incrementing 0x90 -> 0x91 across a reboot,
+             so it is most likely a day or session counter used to age
+             entries out of the daily table
+
+  Each block begins with one extra record before the table, which the game
+  does not display. It is a stale copy that does NOT track 1st place: after
+  a 1505300 entry took the top of both tables, the TODAY'S header still
+  read 310865 GNP and the ALL TIME header still read 1500000 GNP. Captured
+  as HEADER fields, output as debug only.
+
+  Persistence is confirmed working: a new entry survives a reboot in ALL
+  TIME BEST, while TODAY'S BEST correctly resets to its defaults, matching
+  real cabinet behaviour.
+
+  Names may contain spaces - "P C" and "P Z" are both genuine, stored as
+  50 20 43 and 50 20 5A.
+
+  The ALL TIME block continues past the tenth entry with further records
+  (AGF, EJB, AKN, LEB, CLB at 500000) which the game does not display, so
+  they are not decoded.
+
+  Verified against both attract screens:
+      TODAY'S BEST   GNP 310865 / JEH 300000 / WBD 280000 / JCV 260000 /
+                     TJC 240000 / CPG 220000 / DOZ 200000 / CMM 180000 /
+                     RJC 160000 / P C 140000
+      ALL TIME BEST  JRC 1000000 / ALS 950000 / REP 900000 / EZF 850000 /
+                     VIL 800000 / SNO 750000 / RAY 700000 / ROG 650000 /
+                     DAS 600000 / EDM 550000
+//-->
+<hi2txt>
+
+  <structure file="nvram">
+    <check>
+      <size>32768</size>
+    </check>
+
+    <!-- TODAY'S BEST @ raw 0x0000 //-->
+    <!-- leading header record //-->
+      <elt size="8" type="int"  id="TD HEADER SCORE" base="16" byte-skip="even"/>
+      <elt size="4" type="raw"  id="TD HEADER MID"             byte-skip="even"/>
+      <elt size="6" type="text" id="TD HEADER NAME"            byte-skip="even"/>
+      <elt size="2" type="raw"  id="TD HEADER COUNTER"           byte-skip="even"/>
+
+    <loop count="10">
+      <elt size="8" type="int"  id="TD SCORE" base="16" byte-skip="even"/>
+      <elt size="4" type="raw"  id="TD MID"             byte-skip="even"/>
+      <elt size="6" type="text" id="TD NAME"            byte-skip="even"/>
+      <elt size="2" type="raw"  id="TD COUNTER"           byte-skip="even"/>
+    </loop>
+
+      <!-- gap between the two blocks //-->
+      <elt size="1024" type="raw" id="GAP00"/>
+      <elt size="1024" type="raw" id="GAP01"/>
+      <elt size="1024" type="raw" id="GAP02"/>
+      <elt size="1024" type="raw" id="GAP03"/>
+      <elt size="1024" type="raw" id="GAP04"/>
+      <elt size="1024" type="raw" id="GAP05"/>
+      <elt size="1024" type="raw" id="GAP06"/>
+      <elt size="1024" type="raw" id="GAP07"/>
+      <elt size="1024" type="raw" id="GAP08"/>
+      <elt size="1024" type="raw" id="GAP09"/>
+      <elt size="1024" type="raw" id="GAP10"/>
+      <elt size="1024" type="raw" id="GAP11"/>
+      <elt size="1024" type="raw" id="GAP12"/>
+      <elt size="1024" type="raw" id="GAP13"/>
+      <elt size="1024" type="raw" id="GAP14"/>
+      <elt size="804" type="raw" id="GAP15"/>
+
+    <!-- ALL TIME BEST @ raw 0x4000 //-->
+    <!-- leading header record //-->
+      <elt size="8" type="int"  id="AT HEADER SCORE" base="16" byte-skip="even"/>
+      <elt size="4" type="raw"  id="AT HEADER MID"             byte-skip="even"/>
+      <elt size="6" type="text" id="AT HEADER NAME"            byte-skip="even"/>
+      <elt size="2" type="raw"  id="AT HEADER COUNTER"           byte-skip="even"/>
+
+    <loop count="10">
+      <elt size="8" type="int"  id="AT SCORE" base="16" byte-skip="even"/>
+      <elt size="4" type="raw"  id="AT MID"             byte-skip="even"/>
+      <elt size="6" type="text" id="AT NAME"            byte-skip="even"/>
+      <elt size="2" type="raw"  id="AT COUNTER"           byte-skip="even"/>
+    </loop>
+
+      <!-- remainder of nvram //-->
+      <elt size="1024" type="raw" id="TAIL00"/>
+      <elt size="1024" type="raw" id="TAIL01"/>
+      <elt size="1024" type="raw" id="TAIL02"/>
+      <elt size="1024" type="raw" id="TAIL03"/>
+      <elt size="1024" type="raw" id="TAIL04"/>
+      <elt size="1024" type="raw" id="TAIL05"/>
+      <elt size="1024" type="raw" id="TAIL06"/>
+      <elt size="1024" type="raw" id="TAIL07"/>
+      <elt size="1024" type="raw" id="TAIL08"/>
+      <elt size="1024" type="raw" id="TAIL09"/>
+      <elt size="1024" type="raw" id="TAIL10"/>
+      <elt size="1024" type="raw" id="TAIL11"/>
+      <elt size="1024" type="raw" id="TAIL12"/>
+      <elt size="1024" type="raw" id="TAIL13"/>
+      <elt size="1024" type="raw" id="TAIL14"/>
+      <elt size="804" type="raw" id="TAIL15"/>
+  </structure>
+
+  <output>
+
+    <table id="ALL TIME BEST">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="AT NAME"/>
+      <column id="SCORE" src="AT SCORE"/>
+    </table>
+
+    <table id="TODAY'S BEST">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="TD NAME"/>
+      <column id="SCORE" src="TD SCORE"/>
+    </table>
+
+    <field id="AT HEADER SCORE" display="debug"/>
+    <field id="AT HEADER NAME"  display="debug"/>
+    <field id="TD HEADER SCORE" display="debug"/>
+    <field id="TD HEADER NAME"  display="debug"/>
+
+  </output>
+
+  <!-- the cabinet numbers ranks plainly: 1) 2) 3) ... //-->
+  <format id="rank"><add>1</add></format>
+
+<!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <!-- If score is >= 1,000,000,000 (Billions) -->
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    
+    <!-- If score is >= 1,000,000 (Millions) -->
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    
+    <!-- If score is >= 1,000 (Thousands) -->
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    
+    <!-- Fallback for scores under 1,000 (Passes the number through as-is) -->
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <!-- Formats like: 1,234,567,890 -->
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234,567 -->
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234 -->
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+</hi2txt>

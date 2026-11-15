@@ -1,0 +1,80 @@
+<hi2txt>
+<table id="20 ga. PUMP SHOTGUN">
+<col>RANK</col><col>NAME</col><col>SCORE</col><col>BIRDS</col><col>STATE</col>
+<row><cell>1</cell><cell>Sammy</cell><cell>1200.0</cell><cell>12</cell><cell>FLORIDA</cell></row>
+<row><cell>2</cell><cell>Sammy</cell><cell>1000.0</cell><cell>10</cell><cell>FLORIDA</cell></row>
+<row><cell>3</cell><cell>Sammy</cell><cell>900.0</cell><cell>9</cell><cell>FLORIDA</cell></row>
+<row><cell>4</cell><cell>Sammy</cell><cell>850.0</cell><cell>9</cell><cell>FLORIDA</cell></row>
+<row><cell>5</cell><cell>Sammy</cell><cell>800.0</cell><cell>8</cell><cell>FLORIDA</cell></row>
+<row><cell>6</cell><cell>Sammy</cell><cell>750.0</cell><cell>8</cell><cell>FLORIDA</cell></row>
+<row><cell>7</cell><cell>Sammy</cell><cell>700.0</cell><cell>6</cell><cell>FLORIDA</cell></row>
+<row><cell>8</cell><cell>Sammy</cell><cell>650.0</cell><cell>6</cell><cell>FLORIDA</cell></row>
+<row><cell>9</cell><cell>Sammy</cell><cell>600.0</cell><cell>5</cell><cell>FLORIDA</cell></row>
+<row><cell>10</cell><cell>Sammy</cell><cell>550.0</cell><cell>5</cell><cell>FLORIDA</cell></row>
+</table>
+<table id="12 ga. PUMP SHOTGUN">
+<col>RANK</col><col>NAME</col><col>SCORE</col><col>BIRDS</col><col>STATE</col>
+<row><cell>1</cell><cell>---</cell><cell>900.0</cell><cell>10</cell><cell>KANSAS</cell></row>
+<row><cell>2</cell><cell>---</cell><cell>800.0</cell><cell>9</cell><cell>KANSAS</cell></row>
+<row><cell>3</cell><cell>---</cell><cell>750.0</cell><cell>9</cell><cell>KANSAS</cell></row>
+<row><cell>4</cell><cell>---</cell><cell>700.0</cell><cell>8</cell><cell>KANSAS</cell></row>
+<row><cell>5</cell><cell>---</cell><cell>650.0</cell><cell>8</cell><cell>KANSAS</cell></row>
+<row><cell>6</cell><cell>---</cell><cell>600.0</cell><cell>6</cell><cell>KANSAS</cell></row>
+<row><cell>7</cell><cell>---</cell><cell>550.0</cell><cell>6</cell><cell>KANSAS</cell></row>
+<row><cell>8</cell><cell>---</cell><cell>500.0</cell><cell>5</cell><cell>KANSAS</cell></row>
+<row><cell>9</cell><cell>---</cell><cell>450.0</cell><cell>5</cell><cell>KANSAS</cell></row>
+<row><cell>10</cell><cell>---</cell><cell>400.0</cell><cell>4</cell><cell>KANSAS</cell></row>
+</table>
+<table id=".233 RIFLE WITH SCOPE">
+<col>RANK</col><col>NAME</col><col>SCORE</col><col>BIRDS</col><col>STATE</col>
+<row><cell>1</cell><cell>---</cell><cell>900.0</cell><cell>10</cell><cell>NEW MEXICO</cell></row>
+<row><cell>2</cell><cell>---</cell><cell>800.0</cell><cell>9</cell><cell>NEW MEXICO</cell></row>
+<row><cell>3</cell><cell>---</cell><cell>750.0</cell><cell>9</cell><cell>NEW MEXICO</cell></row>
+<row><cell>4</cell><cell>---</cell><cell>700.0</cell><cell>8</cell><cell>NEW MEXICO</cell></row>
+<row><cell>5</cell><cell>---</cell><cell>650.0</cell><cell>8</cell><cell>NEW MEXICO</cell></row>
+<row><cell>6</cell><cell>---</cell><cell>600.0</cell><cell>6</cell><cell>NEW MEXICO</cell></row>
+<row><cell>7</cell><cell>---</cell><cell>550.0</cell><cell>6</cell><cell>NEW MEXICO</cell></row>
+<row><cell>8</cell><cell>---</cell><cell>500.0</cell><cell>5</cell><cell>NEW MEXICO</cell></row>
+<row><cell>9</cell><cell>---</cell><cell>450.0</cell><cell>5</cell><cell>NEW MEXICO</cell></row>
+<row><cell>10</cell><cell>---</cell><cell>400.0</cell><cell>4</cell><cell>NEW MEXICO</cell></row>
+</table>
+<table id="OVER UNDER SHOTGUN">
+<col>RANK</col><col>NAME</col><col>SCORE</col><col>BIRDS</col><col>STATE</col>
+<row><cell>1</cell><cell>---</cell><cell>700.0</cell><cell>5</cell><cell>PENNSYLVANIA</cell></row>
+<row><cell>2</cell><cell>---</cell><cell>600.0</cell><cell>5</cell><cell>PENNSYLVANIA</cell></row>
+<row><cell>3</cell><cell>---</cell><cell>550.0</cell><cell>4</cell><cell>PENNSYLVANIA</cell></row>
+<row><cell>4</cell><cell>---</cell><cell>500.0</cell><cell>4</cell><cell>PENNSYLVANIA</cell></row>
+<row><cell>5</cell><cell>---</cell><cell>450.0</cell><cell>3</cell><cell>PENNSYLVANIA</cell></row>
+<row><cell>6</cell><cell>---</cell><cell>400.0</cell><cell>3</cell><cell>PENNSYLVANIA</cell></row>
+<row><cell>7</cell><cell>---</cell><cell>380.0</cell><cell>3</cell><cell>PENNSYLVANIA</cell></row>
+<row><cell>8</cell><cell>---</cell><cell>360.0</cell><cell>3</cell><cell>PENNSYLVANIA</cell></row>
+<row><cell>9</cell><cell>---</cell><cell>340.0</cell><cell>3</cell><cell>PENNSYLVANIA</cell></row>
+<row><cell>10</cell><cell>---</cell><cell>320.0</cell><cell>3</cell><cell>PENNSYLVANIA</cell></row>
+</table>
+<table id="COMPOUND BOW">
+<col>RANK</col><col>NAME</col><col>SCORE</col><col>BIRDS</col><col>STATE</col>
+<row><cell>1</cell><cell>---</cell><cell>1000.0</cell><cell>8</cell><cell>MONTANA</cell></row>
+<row><cell>2</cell><cell>---</cell><cell>900.0</cell><cell>6</cell><cell>MONTANA</cell></row>
+<row><cell>3</cell><cell>---</cell><cell>850.0</cell><cell>6</cell><cell>MONTANA</cell></row>
+<row><cell>4</cell><cell>---</cell><cell>800.0</cell><cell>5</cell><cell>MONTANA</cell></row>
+<row><cell>5</cell><cell>---</cell><cell>750.0</cell><cell>5</cell><cell>MONTANA</cell></row>
+<row><cell>6</cell><cell>---</cell><cell>700.0</cell><cell>4</cell><cell>MONTANA</cell></row>
+<row><cell>7</cell><cell>---</cell><cell>650.0</cell><cell>4</cell><cell>MONTANA</cell></row>
+<row><cell>8</cell><cell>---</cell><cell>600.0</cell><cell>3</cell><cell>MONTANA</cell></row>
+<row><cell>9</cell><cell>---</cell><cell>550.0</cell><cell>3</cell><cell>MONTANA</cell></row>
+<row><cell>10</cell><cell>---</cell><cell>500.0</cell><cell>3</cell><cell>MONTANA</cell></row>
+</table>
+<table id="BLACK POWDER SHOTGUN">
+<col>RANK</col><col>NAME</col><col>SCORE</col><col>BIRDS</col><col>STATE</col>
+<row><cell>1</cell><cell>---</cell><cell>600.0</cell><cell>4</cell><cell>FLORIDA</cell></row>
+<row><cell>2</cell><cell>---</cell><cell>500.0</cell><cell>3</cell><cell>FLORIDA</cell></row>
+<row><cell>3</cell><cell>---</cell><cell>450.0</cell><cell>3</cell><cell>FLORIDA</cell></row>
+<row><cell>4</cell><cell>---</cell><cell>400.0</cell><cell>3</cell><cell>FLORIDA</cell></row>
+<row><cell>5</cell><cell>---</cell><cell>380.0</cell><cell>3</cell><cell>FLORIDA</cell></row>
+<row><cell>6</cell><cell>---</cell><cell>360.0</cell><cell>3</cell><cell>FLORIDA</cell></row>
+<row><cell>7</cell><cell>---</cell><cell>340.0</cell><cell>3</cell><cell>FLORIDA</cell></row>
+<row><cell>8</cell><cell>---</cell><cell>320.0</cell><cell>3</cell><cell>FLORIDA</cell></row>
+<row><cell>9</cell><cell>---</cell><cell>300.0</cell><cell>3</cell><cell>FLORIDA</cell></row>
+<row><cell>10</cell><cell>---</cell><cell>280.0</cell><cell>3</cell><cell>FLORIDA</cell></row>
+</table>
+</hi2txt>

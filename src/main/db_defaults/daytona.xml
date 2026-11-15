@@ -1,0 +1,26 @@
+<hi2txt>
+<table id="BEGINNER">
+<col>RANK</col><col>NAME</col><col>TIME</col><col>TIME ATTACK</col><col>REVERSE MODE</col>
+<row><cell>1ST</cell><cell>NAG</cell><cell>2'40"00</cell><cell>T.A</cell><cell></cell></row>
+<row><cell>2ND</cell><cell>GOS</cell><cell>2'45"00</cell><cell>T.A</cell><cell>R</cell></row>
+<row><cell>3RD</cell><cell>YAS</cell><cell>2'50"00</cell><cell></cell><cell></cell></row>
+<row><cell>4TH</cell><cell>GOM</cell><cell>2'55"00</cell><cell></cell><cell>R</cell></row>
+<row><cell>5TH</cell><cell>KAG</cell><cell>3'00"00</cell><cell>T.A</cell><cell>R</cell></row>
+</table>
+<table id="ADVANCED">
+<col>RANK</col><col>NAME</col><col>TIME</col><col>TIME ATTACK</col><col>REVERSE MODE</col>
+<row><cell>1ST</cell><cell>MAS</cell><cell>4'00"00</cell><cell></cell><cell></cell></row>
+<row><cell>2ND</cell><cell>MIT</cell><cell>4'05"00</cell><cell>T.A</cell><cell></cell></row>
+<row><cell>3RD</cell><cell>DEK</cell><cell>4'10"00</cell><cell></cell><cell></cell></row>
+<row><cell>4TH</cell><cell>D.K</cell><cell>4'15"00</cell><cell>T.A</cell><cell></cell></row>
+<row><cell>5TH</cell><cell>MIY</cell><cell>4'20"00</cell><cell></cell><cell>R</cell></row>
+</table>
+<table id="EXPERT">
+<col>RANK</col><col>NAME</col><col>TIME</col><col>TIME ATTACK</col><col>REVERSE MODE</col>
+<row><cell>1ST</cell><cell>YU.</cell><cell>4'00"00</cell><cell>T.A</cell><cell></cell></row>
+<row><cell>2ND</cell><cell>ARI</cell><cell>4'05"00</cell><cell></cell><cell>R</cell></row>
+<row><cell>3RD</cell><cell>OSA</cell><cell>4'10"00</cell><cell>T.A</cell><cell>R</cell></row>
+<row><cell>4TH</cell><cell>MAC</cell><cell>4'15"00</cell><cell></cell><cell></cell></row>
+<row><cell>5TH</cell><cell>KEN</cell><cell>4'20"00</cell><cell></cell><cell></cell></row>
+</table>
+</hi2txt>

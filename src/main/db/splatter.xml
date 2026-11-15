@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!-- splatter (Splatter House, Namco System 1). Reads the hiscore-plugin .hi file
+     (mame/hi/splatter/splatter.hi), NOT nvram - the high-score table is volatile
+     RAM and is never written to the 2KB nvram (settings/bookkeeping only).
+
+     BEST 8, 8 entries x 8 bytes; the last entry's trailing name pad is not dumped,
+     so the file is 63 bytes (skip-last-bytes="1" handles the truncated last byte).
+     Entry: score(3, BCD, x100 for display) + stage(1, int) + name(4, ASCII, space-padded).
+     Table is sorted by score descending for safety (the .hi is already in rank order).
+     Verified against the attract screen incl. rank 7 = 22100 / stage 3 / "@?>". -->
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>63</size>
+    </check>
+    <loop count="8" skip-last-bytes="1">
+      <elt id="SCORE" size="3" type="int"  base="16"/>
+      <elt id="STAGE" size="1" type="int"/>
+      <elt id="NAME"  size="4" type="text"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST 8" sort="SCORE" sort-order="desc">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="SCORE" format="*100"/>
+      <column id="STAGE" src="STAGE"/>
+      <column id="NAME"  src="NAME"  format="trim_name"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <add>1</add>
+    <prefix>NO.</prefix>
+  </format>
+  <format id="trim_name">
+    <trim direction="right"> </trim>
+  </format>
+</hi2txt>

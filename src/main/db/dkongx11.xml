@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Donkey Kong II: Jumpman Returns (hack, V1.1)">
+
+  <!--
+    58-byte .hi layout, 5 records of 11 bytes + 3-byte tail.
+
+    Per record:
+      [0..4]  five decimal digit bytes (unused for the displayed score)
+      [5..7]  NAME (3 chars, dkongx11_name charset)
+      [8..10] SCORE as score/10, little-endian packed BCD (3 bytes = 6 digits)
+
+    The 3-byte BCD field holds score/10, so reversing the bytes and reading
+    them as a hex string (base="16") yields score/10; multiply by 10 for the
+    exact score. DK scores always end in 0, so x10 is exact.
+
+    3 BCD bytes cover score/10 up to 999999 -> scores up to 9,999,990.
+
+    Decoded numerically (base=16 on the LE BCD field). Verified byte-identical
+    output in both hi2txt and openhi2txt.
+  -->
+
+  <structure file=".hi">
+    <check>
+      <size>58</size>
+    </check>
+
+    <loop count="5">
+      <elt size="5" type="raw"  id="_DIGITS"/>
+      <elt size="3" type="text" id="NAME" charset="dkongx11_name"/>
+      <elt size="3" type="int"  id="SCORE" endianness="little_endian" base="16" format="x10"/>
+    </loop>
+
+    <!-- Separate HIGH SCORE copy used by the game itself. -->
+    <elt size="3" type="raw" id="_TOP_SCORE_BCD"/>
+  </structure>
+
+  <output>
+    <table id="TOP 5 SCORES">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+
+  <format id="x10"><multiply>10</multiply></format>
+
+  <charset id="dkongx11_name">
+    <char src="0x10" dst=" "/>
+    <char src="0x11" dst="A"/>
+    <char src="0x12" dst="B"/>
+    <char src="0x13" dst="C"/>
+    <char src="0x14" dst="D"/>
+    <char src="0x15" dst="E"/>
+    <char src="0x16" dst="F"/>
+    <char src="0x17" dst="G"/>
+    <char src="0x18" dst="H"/>
+    <char src="0x19" dst="I"/>
+    <char src="0x1A" dst="J"/>
+    <char src="0x1B" dst="K"/>
+    <char src="0x1C" dst="L"/>
+    <char src="0x1D" dst="M"/>
+    <char src="0x1E" dst="N"/>
+    <char src="0x1F" dst="O"/>
+    <char src="0x20" dst="P"/>
+    <char src="0x21" dst="Q"/>
+    <char src="0x22" dst="R"/>
+    <char src="0x23" dst="S"/>
+    <char src="0x24" dst="T"/>
+    <char src="0x25" dst="U"/>
+    <char src="0x26" dst="V"/>
+    <char src="0x27" dst="W"/>
+    <char src="0x28" dst="X"/>
+    <char src="0x29" dst="Y"/>
+    <char src="0x2A" dst="Z"/>
+    <char src="0x2B" dst="."/>
+    <char src="0x2C" dst="-"/>
+  </charset>
+
+</hi2txt>

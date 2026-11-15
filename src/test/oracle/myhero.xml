@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="TODAY'S BEST 10">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>50,000</cell><cell>K.K</cell></row>
+    <row><cell>2</cell><cell>48,000</cell><cell>K.Y</cell></row>
+    <row><cell>3</cell><cell>45,000</cell><cell>M.N</cell></row>
+    <row><cell>4</cell><cell>43,000</cell><cell>S.S</cell></row>
+    <row><cell>5</cell><cell>40,180</cell><cell>   </cell></row>
+    <row><cell>6</cell><cell>40,000</cell><cell>S.K</cell></row>
+    <row><cell>7</cell><cell>35,000</cell><cell>T.S</cell></row>
+    <row><cell>8</cell><cell>32,000</cell><cell>M.M</cell></row>
+    <row><cell>9</cell><cell>30,000</cell><cell>A.Y</cell></row>
+    <row><cell>10</cell><cell>25,000</cell><cell>M.S</cell></row>
+  </table>
+</hi2txt>

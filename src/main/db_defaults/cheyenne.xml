@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="TABLE OF GUNSLINGERS">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1</cell><cell>LWH</cell><cell>500000</cell></row>
+    <row><cell>2</cell><cell>NGI</cell><cell>450000</cell></row>
+    <row><cell>3</cell><cell>VIC</cell><cell>400000</cell></row>
+    <row><cell>4</cell><cell>LYN</cell><cell>350000</cell></row>
+    <row><cell>5</cell><cell>KEN</cell><cell>300000</cell></row>
+    <row><cell>6</cell><cell>HEC</cell><cell>250000</cell></row>
+    <row><cell>7</cell><cell>RAY</cell><cell>200000</cell></row>
+	<row><cell>8</cell><cell>MIC</cell><cell>150000</cell></row>
+    <row><cell>9</cell><cell>HAI</cell><cell>100000</cell></row>
+    <row><cell>10</cell><cell>MRK</cell><cell>50000</cell></row>
+  </table>
+</hi2txt>

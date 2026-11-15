@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="SNK vs Capcom SVC Chaos">
+  <!--
+    Neo Geo saveram, byte-swap=2 ("BACKUP RAM OK !" confirmed). Values big-endian.
+    TIME ATTACK RANKING @ 0x320, 8 x 12B:
+      [UNUSED:4][TIME:4 int BE frames@60fps][NAME:3 ASCII][0xff term].
+    TIME = frame count -> "M'M' SS'S' CC": M=f/3600, S=(f%3600)/60, CC=f%60 (raw frame
+    remainder, 2-digit; NOT centiseconds). e.g. 36600 -> 10M 10S 00 ; 219605 -> 61M 00S 05.
+    NAME plain ASCII (SVC), 0xff terminator kept as raw.
+  //-->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+    <elt size="800" type="raw" id="HEADER"/>
+    <loop count="8">
+      <elt size="4" type="raw"  id="UNUSED"/>
+      <elt size="4" type="int"  id="TIME" endianness="big_endian"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="TERM"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TIME ATTACK RANKING">
+      <column id="RANK" src="index" format="+1;ordinal"/>
+      <column id="NAME"/>
+      <column id="TIME" format="time_fmt"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="ordinal">
+    <case src="1" dst="1ST"/><case src="2" dst="2ND"/><case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/><case src="5" dst="5TH"/><case src="6" dst="6TH"/>
+    <case src="7" dst="7TH"/><case src="8" dst="8TH"/>
+  </format>
+
+  <format id="time_fmt" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d3600"/>
+      <txt>M </txt>
+      <column format="%3600;d60;PadL20"/>
+      <txt>S </txt>
+      <column format="%60;PadL20"/>
+    </concat>
+  </format>
+</hi2txt>

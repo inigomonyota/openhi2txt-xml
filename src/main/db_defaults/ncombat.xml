@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<table id="NINJA BEST 8">
+<col>RANK</col><col>NAME</col><col>SCORE</col><col>AREA</col>
+<row><cell>1</cell><cell>ABC</cell><cell>750</cell><cell>2ST 1SC</cell></row>
+<row><cell>2</cell><cell>DEF</cell><cell>650</cell><cell>2ST 1SC</cell></row>
+<row><cell>3</cell><cell>VWX</cell><cell>630</cell><cell>1ST 3SC</cell></row>
+<row><cell>4</cell><cell>STU</cell><cell>620</cell><cell>1ST 3SC</cell></row>
+<row><cell>5</cell><cell>VWX</cell><cell>610</cell><cell>1ST 2SC</cell></row>
+<row><cell>6</cell><cell>STU</cell><cell>510</cell><cell>1ST 2SC</cell></row>
+<row><cell>7</cell><cell>PQR</cell><cell>410</cell><cell>1ST 1SC</cell></row>
+<row><cell>8</cell><cell>MNO</cell><cell>310</cell><cell>1ST 1SC</cell></row>
+</table>
+</hi2txt>

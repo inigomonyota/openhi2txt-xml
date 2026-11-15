@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Koutetsu Yousai Strahl">
+  <!--
+    strahl (World)
+
+    The .hi file concatenates two hiscore.dat ranges:
+      f30d9, length 0xea: names, displayed score strings, and trailing state
+      f0d8a, length 0x04: binary copy of the highest score
+
+    Names and displayed scores use one meaningful byte in each 16-bit word.
+  -->
+  <structure file=".hi">
+    <check>
+      <size>238</size>
+    </check>
+
+    <loop count="10">
+      <elt size="6" type="text" id="NAME" byte-skip="even"/>
+      <elt size="2" type="raw" id="NAME TERMINATOR"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="12" type="text" id="SCORE" byte-skip="even"/>
+      <elt size="2" type="raw" id="SCORE TERMINATOR"/>
+    </loop>
+
+    <elt size="14" type="raw" id="TRAILING STATE"/>
+    <elt size="4" type="int" id="TOP SCORE"/>
+  </structure>
+
+  <output>
+    <table id="BEST PLAYERS">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="NAME"/>
+      <column id="SCORE" format="score"/>
+      <column id="NAME TERMINATOR" format="hexadecimal_string" display="debug"/>
+      <column id="SCORE TERMINATOR" format="hexadecimal_string" display="debug"/>
+    </table>
+    <field id="TOP SCORE" display="extra"/>
+    <field id="TRAILING STATE" format="hexadecimal_string" display="debug"/>
+  </output>
+
+  <format id="rank">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+
+  <format id="score">
+    <trim direction="left">0</trim>
+  </format>
+</hi2txt>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Axelay">
+  <!--
+    SNES (softlist: axelay / axelayj / axelayu / axelayus)
+    hiscore.dat: @:maincpu,program,1e4c,3,30,00
+    The .hi file is exactly 3 bytes = the single high score.
+    Stored as 3-byte little-endian BCD (e.g. 30 57 00 = 5730; 97 25 01 =
+    12597); the game displays it x10, so 5730 -> 57300, 12597 -> 125970.
+    Default/power-on score is 57300 (bytes 30 57 00).
+  //-->
+  <structure file=".hi">
+    <check>
+      <size>3</size>
+    </check>
+    <elt size="3" type="int" id="SCORE" base="16" endianness="little_endian"/>
+  </structure>
+
+  <output>
+    <table>
+      <column id="HI" src="SCORE" format="*10"/>
+    </table>
+  </output>
+</hi2txt>

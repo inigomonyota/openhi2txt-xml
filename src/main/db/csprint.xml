@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Championship Sprint">
+  <!--
+    tested with:
+      mame 0.283
+
+    hiscore.dat entry:
+      csprint:
+      @:maincpu,program,000E9C,0000B4,27,00
+
+    notes:
+      30 entries, 6 bytes each:
+        2-byte big-endian score
+        3-byte ASCII name
+        1-byte null terminator
+
+    source: custom
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>180</size>
+    </check>
+
+    <loop count="30">
+      <elt size="2"
+           type="int"
+           id="SCORE"
+           />
+
+      <elt size="3"
+           type="text"
+           id="NAME"
+           />
+
+      <elt size="1"
+           type="raw"
+           id="UNKNOWN"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="CHAMPIONSHIP SPRINT RACING TEAM">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE"/>
+      <column id="NAME" format="trim"/>
+    </table>
+  </output>
+
+  <format id="+1">
+    <add>1</add>
+  </format>
+
+  <format id="trim">
+    <trim direction="both"> </trim>
+  </format>
+</hi2txt>

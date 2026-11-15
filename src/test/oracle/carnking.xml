@@ -1,0 +1,116 @@
+<hi2txt>
+  <table id="ARCADIA HIGH SCORES">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>24,030</cell><cell>PIP</cell></row>
+    <row><cell>2.</cell><cell>10,000</cell><cell>MIK</cell></row>
+    <row><cell>3.</cell><cell>6,400</cell><cell>JAR</cell></row>
+    <row><cell>4.</cell><cell>6,000</cell><cell>RU </cell></row>
+    <row><cell>5.</cell><cell>5,200</cell><cell>RSD</cell></row>
+    <row><cell>6.</cell><cell>4,800</cell><cell>LJH</cell></row>
+    <row><cell>7.</cell><cell>4,400</cell><cell>TAK</cell></row>
+    <row><cell>8.</cell><cell>4,000</cell><cell>MTK</cell></row>
+    <row><cell>9.</cell><cell>3,800</cell><cell>PIP</cell></row>
+    <row><cell>10.</cell><cell>3,600</cell><cell>RJL</cell></row>
+    <row><cell>11.</cell><cell>3,550</cell><cell>ZZZ</cell></row>
+  </table>
+  <table id="DREAMLAND HIGH SCORES">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>8,800</cell><cell>MIK</cell></row>
+    <row><cell>2.</cell><cell>7,600</cell><cell>JAR</cell></row>
+    <row><cell>3.</cell><cell>6,400</cell><cell>RU </cell></row>
+    <row><cell>4.</cell><cell>5,600</cell><cell>RSD</cell></row>
+    <row><cell>5.</cell><cell>5,475</cell><cell>PIP</cell></row>
+    <row><cell>6.</cell><cell>4,800</cell><cell>LJH</cell></row>
+    <row><cell>7.</cell><cell>4,400</cell><cell>TAK</cell></row>
+    <row><cell>8.</cell><cell>4,000</cell><cell>MTK</cell></row>
+    <row><cell>9.</cell><cell>3,600</cell><cell>RJL</cell></row>
+    <row><cell>10.</cell><cell>3,200</cell><cell>RWM</cell></row>
+    <row><cell>11.</cell><cell>2,800</cell><cell>JDS</cell></row>
+  </table>
+  <table id="LAGOON PARK HIGH SCORES">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>15,600</cell><cell>MIK</cell></row>
+    <row><cell>2.</cell><cell>14,400</cell><cell>JAR</cell></row>
+    <row><cell>3.</cell><cell>7,600</cell><cell>RU </cell></row>
+    <row><cell>4.</cell><cell>6,800</cell><cell>RSD</cell></row>
+    <row><cell>5.</cell><cell>4,800</cell><cell>LJH</cell></row>
+    <row><cell>6.</cell><cell>4,400</cell><cell>TAK</cell></row>
+    <row><cell>7.</cell><cell>4,000</cell><cell>MTK</cell></row>
+    <row><cell>8.</cell><cell>3,600</cell><cell>RJL</cell></row>
+    <row><cell>9.</cell><cell>3,200</cell><cell>RWM</cell></row>
+    <row><cell>10.</cell><cell>2,800</cell><cell>JDS</cell></row>
+    <row><cell>11.</cell><cell>2,400</cell><cell>CES</cell></row>
+  </table>
+  <table id="ARCADIA - KNOCK 'EM OVER">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>4,450</cell><cell>PIP</cell></row>
+    <row><cell>2.</cell><cell>3,800</cell><cell>PIP</cell></row>
+    <row><cell>3.</cell><cell>3,550</cell><cell>ZZZ</cell></row>
+  </table>
+  <table id="ARCADIA - SHOOTING GALLERY">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>3,100</cell><cell>RU </cell></row>
+    <row><cell>2.</cell><cell>2,950</cell><cell>PIP</cell></row>
+    <row><cell>3.</cell><cell>1,400</cell><cell>RSD</cell></row>
+  </table>
+  <table id="ARCADIA - CLUSTER BUSTER">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>3,030</cell><cell>PIP</cell></row>
+    <row><cell>2.</cell><cell>1,600</cell><cell>TAK</cell></row>
+    <row><cell>3.</cell><cell>1,200</cell><cell>MTK</cell></row>
+  </table>
+  <table id="ARCADIA - SHOOT THE STAR">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>4,650</cell><cell>PIP</cell></row>
+    <row><cell>2.</cell><cell>1,900</cell><cell>RWM</cell></row>
+    <row><cell>3.</cell><cell>1,400</cell><cell>JDS</cell></row>
+  </table>
+  <table id="DREAMLAND - SALOON SHOOT">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>5,475</cell><cell>PIP</cell></row>
+    <row><cell>2.</cell><cell>1,200</cell><cell>RSD</cell></row>
+    <row><cell>3.</cell><cell>1,000</cell><cell>LJH</cell></row>
+  </table>
+  <table id="DREAMLAND - HAUNTED HUNT">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>2,400</cell><cell>MTK</cell></row>
+    <row><cell>2.</cell><cell>1,500</cell><cell>RJL</cell></row>
+    <row><cell>3.</cell><cell>800</cell><cell>RWM</cell></row>
+  </table>
+  <table id="DREAMLAND - BALLOON WHEEL">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>2,300</cell><cell>JDS</cell></row>
+    <row><cell>2.</cell><cell>1,000</cell><cell>CES</cell></row>
+    <row><cell>3.</cell><cell>800</cell><cell>MIK</cell></row>
+  </table>
+  <table id="DREAMLAND - STOP THE ROBOT">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>1,100</cell><cell>JAR</cell></row>
+    <row><cell>2.</cell><cell>900</cell><cell>RU </cell></row>
+    <row><cell>3.</cell><cell>800</cell><cell>RSD</cell></row>
+  </table>
+  <table id="LAGOON PARK - MOUSE HUNT">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>2,600</cell><cell>RJL</cell></row>
+    <row><cell>2.</cell><cell>1,100</cell><cell>RWM</cell></row>
+    <row><cell>3.</cell><cell>1,000</cell><cell>JDS</cell></row>
+  </table>
+  <table id="LAGOON PARK - BULLSEYE CANYON">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>1,800</cell><cell>CES</cell></row>
+    <row><cell>2.</cell><cell>1,500</cell><cell>MIK</cell></row>
+    <row><cell>3.</cell><cell>800</cell><cell>JAR</cell></row>
+  </table>
+  <table id="LAGOON PARK - ANIMAL MATCH">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>900</cell><cell>RU </cell></row>
+    <row><cell>2.</cell><cell>700</cell><cell>RSD</cell></row>
+    <row><cell>3.</cell><cell>600</cell><cell>LJH</cell></row>
+  </table>
+  <table id="LAGOON PARK - QUICK DRAW">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1.</cell><cell>1,300</cell><cell>TAK</cell></row>
+    <row><cell>2.</cell><cell>700</cell><cell>MTK</cell></row>
+    <row><cell>3.</cell><cell>600</cell><cell>RJL</cell></row>
+  </table>
+</hi2txt>

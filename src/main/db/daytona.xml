@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    daytona - Daytona USA (Sega, Model 2)
+    Reads the MAME backup SRAM file (nvram/daytona/backup1), 16384 bytes.
+
+    Three ranking tables, each a list of 24-byte records:
+      +0  RANK pointer (u32 LE, 1..N) - not displayed; rank taken from row index
+      +4  TIME  (u32 LE) = seconds * 64   (10240 -> 160.0s -> 2'40"00)
+      +8  0xFFFFFFFF separator
+      +12 FLAGS (low byte): bit0 = TIME ATTACK, bit1 = REVERSE MODE
+      +16 TIME duplicate
+      +20 NAME (3 ASCII chars + null)
+    Table bases: BEGINNER 0x360, EXPERT 0x5A0, ADVANCED 0x7E0 (read order);
+    output below is in the game display order BEGINNER, ADVANCED, EXPERT.
+    Only the top 5 of each table are shown (matches the game screen).
+  -->
+
+  <structure file="backup1">
+    <check>
+      <size>16384</size>
+    </check>
+
+    <!-- skip to BEGINNER base 0x360 (864 bytes) -->
+    <elt size="864" type="raw" id="PRE"/>
+
+    <!-- BEGINNER @ 0x360 -->
+    <loop count="5">
+      <elt size="4" type="raw" id="BEG_RANKPTR"/>
+      <elt size="4" type="int" endianness="little_endian" id="BEG_TIME"/>
+      <elt size="4" type="raw" id="BEG_SEP"/>
+      <elt size="1" type="int" id="BEG_FLAGS"/>
+      <elt size="3" type="raw" id="BEG_FPAD"/>
+      <elt size="4" type="raw" id="BEG_TIME2"/>
+      <elt size="3" type="text" id="BEG_NAME"/>
+      <elt size="1" type="raw" id="BEG_NUL"/>
+    </loop>
+
+    <!-- skip 456 bytes from end of BEGINNER top-5 (0x3D8) to EXPERT 0x5A0 -->
+    <elt size="456" type="raw" id="GAP1"/>
+    <!-- EXPERT @ 0x5A0 -->
+    <loop count="5">
+      <elt size="4" type="raw" id="EXP_RANKPTR"/>
+      <elt size="4" type="int" endianness="little_endian" id="EXP_TIME"/>
+      <elt size="4" type="raw" id="EXP_SEP"/>
+      <elt size="1" type="int" id="EXP_FLAGS"/>
+      <elt size="3" type="raw" id="EXP_FPAD"/>
+      <elt size="4" type="raw" id="EXP_TIME2"/>
+      <elt size="3" type="text" id="EXP_NAME"/>
+      <elt size="1" type="raw" id="EXP_NUL"/>
+    </loop>
+
+    <!-- skip 456 bytes from end of EXPERT top-5 (0x618) to ADVANCED 0x7E0 -->
+    <elt size="456" type="raw" id="GAP2"/>
+    <!-- ADVANCED @ 0x7E0 -->
+    <loop count="5">
+      <elt size="4" type="raw" id="ADV_RANKPTR"/>
+      <elt size="4" type="int" endianness="little_endian" id="ADV_TIME"/>
+      <elt size="4" type="raw" id="ADV_SEP"/>
+      <elt size="1" type="int" id="ADV_FLAGS"/>
+      <elt size="3" type="raw" id="ADV_FPAD"/>
+      <elt size="4" type="raw" id="ADV_TIME2"/>
+      <elt size="3" type="text" id="ADV_NAME"/>
+      <elt size="1" type="raw" id="ADV_NUL"/>
+    </loop>
+  </structure>
+
+  <!-- rank index -> ordinal -->
+  <format id="rank">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+
+  <!-- TIME (seconds*64) -> M'SS"CC -->
+  <format id="dt_min"><divide_trunc>3840</divide_trunc></format>
+  <format id="dt_sec"><divide_trunc>64</divide_trunc><remainder>60</remainder><pad direction="left" max="2">0</pad></format>
+  <format id="dt_cs"><remainder>64</remainder><multiply>100</multiply><divide_trunc>64</divide_trunc><pad direction="left" max="2">0</pad></format>
+  <format id="dtime" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="dt_min"/>
+      <txt>'</txt>
+      <column format="dt_sec"/>
+      <txt>"</txt>
+      <column format="dt_cs"/>
+    </concat>
+  </format>
+
+  <!-- flag bits -> labels (flags are 0..3) -->
+  <format id="ta" default="">
+    <case src="1" dst="T.A"/><case src="3" dst="T.A"/>
+    <case src="0" dst=""/><case src="2" dst=""/>
+  </format>
+  <format id="rev" default="">
+    <case src="2" dst="R"/><case src="3" dst="R"/>
+    <case src="0" dst=""/><case src="1" dst=""/>
+  </format>
+
+  <output>
+    <table id="BEGINNER">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="NAME" src="BEG_NAME"/>
+      <column id="TIME" src="BEG_TIME" format="dtime"/>
+      <column id="TIME ATTACK" src="BEG_FLAGS" format="ta"/>
+      <column id="REVERSE MODE" src="BEG_FLAGS" format="rev"/>
+    </table>
+    <table id="ADVANCED">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="NAME" src="ADV_NAME"/>
+      <column id="TIME" src="ADV_TIME" format="dtime"/>
+      <column id="TIME ATTACK" src="ADV_FLAGS" format="ta"/>
+      <column id="REVERSE MODE" src="ADV_FLAGS" format="rev"/>
+    </table>
+    <table id="EXPERT">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="NAME" src="EXP_NAME"/>
+      <column id="TIME" src="EXP_TIME" format="dtime"/>
+      <column id="TIME ATTACK" src="EXP_FLAGS" format="ta"/>
+      <column id="REVERSE MODE" src="EXP_FLAGS" format="rev"/>
+    </table>
+  </output>
+
+</hi2txt>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!-- slipstrm (Slip Stream, Capcom).
+     .hi = range1 @0x2095E1 (1251B) + range2 @0x2037CF (92B) = 1343B, concatenated.
+     Times are 3 packed-BCD bytes [cs][sec][min], shown M'SS"CC.
+     Range-1 holds six 26-place ladders in 8-byte entries [val/time][name x3][idx][pad]:
+        0    PASSING CONTEST   (points, little-endian BCD; +0..1 = value, low byte first)
+        213  GERMAN overall    (time)
+        421  MONACO overall    (time)  (not emitted yet)
+        629  JAPANESE overall  (time)  (not emitted yet)
+        837  AUSTRALIAN overall(time)  (not emitted yet)
+        1045 WORLD CHAMPIONSHIP(time, combined 4-course total)
+     Range-2 holds the 4 course records: 4 x [flag][cs][sec][min] at offset 1264
+        (order GERMAN, MONACO, JAPANESE, AUSTRALIAN).
+     hi2txt reads forward-only, so elements are declared in ascending file order. -->
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>1343</size>
+    </check>
+
+    <loop count="26"> <!-- PASSING CONTEST (points), file 0..207 -->
+      <elt size="2" type="int" id="PTS_P" base="16" endianness="little_endian"/>
+      <elt size="2" type="raw" id="PADP"/>
+      <elt size="3" type="text" id="NAME_P"/>
+      <elt size="1" type="int" id="IDXP"/>
+    </loop>
+
+    <elt size="5" type="text" id="SKIP_PG"/>
+    <loop count="26"> <!-- GERMAN overall time, file 213..420 -->
+      <elt size="1" type="int"  id="CS_G"  base="16"/>
+      <elt size="1" type="int"  id="SEC_G" base="16"/>
+      <elt size="1" type="int"  id="MIN_G" base="16"/>
+      <elt size="3" type="text" id="NAME_G"/>
+      <elt size="1" type="int"  id="IDXG"/>
+      <elt size="1" type="raw"  id="PADG"/>
+    </loop>
+
+    <loop count="26"> <!-- MONACO overall time, file 421..628 -->
+      <elt size="1" type="int"  id="CS_M"  base="16"/>
+      <elt size="1" type="int"  id="SEC_M" base="16"/>
+      <elt size="1" type="int"  id="MIN_M" base="16"/>
+      <elt size="3" type="text" id="NAME_M"/>
+      <elt size="1" type="int"  id="IDXM"/>
+      <elt size="1" type="raw"  id="PADM"/>
+    </loop>
+
+    <loop count="26"> <!-- JAPANESE overall time, file 629..836 -->
+      <elt size="1" type="int"  id="CS_J"  base="16"/>
+      <elt size="1" type="int"  id="SEC_J" base="16"/>
+      <elt size="1" type="int"  id="MIN_J" base="16"/>
+      <elt size="3" type="text" id="NAME_J"/>
+      <elt size="1" type="int"  id="IDXJ"/>
+      <elt size="1" type="raw"  id="PADJ"/>
+    </loop>
+
+    <loop count="26"> <!-- AUSTRALIAN overall time, file 837..1044 -->
+      <elt size="1" type="int"  id="CS_A"  base="16"/>
+      <elt size="1" type="int"  id="SEC_A" base="16"/>
+      <elt size="1" type="int"  id="MIN_A" base="16"/>
+      <elt size="3" type="text" id="NAME_A"/>
+      <elt size="1" type="int"  id="IDXA"/>
+      <elt size="1" type="raw"  id="PADA"/>
+    </loop>
+
+    <loop count="26"> <!-- WORLD CHAMPIONSHIP time, file 1045..1252 -->
+      <elt size="1" type="int"  id="CS_W"  base="16"/>
+      <elt size="1" type="int"  id="SEC_W" base="16"/>
+      <elt size="1" type="int"  id="MIN_W" base="16"/>
+      <elt size="3" type="text" id="NAME_W"/>
+      <elt size="1" type="int"  id="IDXW"/>
+      <elt size="1" type="raw"  id="PADW"/>
+    </loop>
+
+    <elt size="11" type="text" id="SKIP_WC"/>
+    <loop count="4"> <!-- course records, file 1264..1279 -->
+      <elt size="1" type="raw" id="FLAG"/>
+      <elt size="1" type="int" id="CS"  base="16"/>
+      <elt size="1" type="int" id="SEC" base="16"/>
+      <elt size="1" type="int" id="MIN" base="16"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="WORLD CHAMPIONSHIP - DRIVERS RANKING">
+      <column id="RANK"   src="index" format="ordinal26"/>
+      <column id="NAME"   src="NAME_W"/>
+      <column id="CAR TYPE" src="IDXW" format="carmap"/>
+      <column id="RECORD" format="time_w"/>
+    </table>
+    <table id="PASSING CONTEST - DRIVERS RANKING">
+      <column id="RANK"   src="index" format="ordinal26"/>
+      <column id="NAME"   src="NAME_P"/>
+      <column id="CAR TYPE" src="IDXP" format="carmap"/>
+      <column id="POINTS" format="pts"/>
+    </table>
+    <table id="GERMAN COURSE - OVERALL RANKING">
+      <column id="RANK"   src="index" format="ordinal26"/>
+      <column id="NAME"   src="NAME_G"/>
+      <column id="CAR TYPE" src="IDXG" format="carmap"/>
+      <column id="RECORD" format="time_g"/>
+    </table>
+    <table id="MONACO COURSE - OVERALL RANKING">
+      <column id="RANK"   src="index" format="ordinal26"/>
+      <column id="NAME"   src="NAME_M"/>
+      <column id="CAR TYPE" src="IDXM" format="carmap"/>
+      <column id="RECORD" format="time_m"/>
+    </table>
+    <table id="JAPANESE COURSE - OVERALL RANKING">
+      <column id="RANK"   src="index" format="ordinal26"/>
+      <column id="NAME"   src="NAME_J"/>
+      <column id="CAR TYPE" src="IDXJ" format="carmap"/>
+      <column id="RECORD" format="time_j"/>
+    </table>
+    <table id="AUSTRALIAN COURSE - OVERALL RANKING">
+      <column id="RANK"   src="index" format="ordinal26"/>
+      <column id="NAME"   src="NAME_A"/>
+      <column id="CAR TYPE" src="IDXA" format="carmap"/>
+      <column id="RECORD" format="time_a"/>
+    </table>
+    <table id="COURSE RECORDS">
+      <column id="ANCHOR" src="MIN" display="debug"/> <!-- anchors 4 rows from the MIN array; hidden in normal output -->
+      <column id="COURSE" src="index" format="coursemap"/>
+      <column id="RECORD" format="time"/>
+    </table>
+  </output>
+
+  <format id="ordinal26">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+    <case src="10" dst="11TH"/>
+    <case src="11" dst="12TH"/>
+    <case src="12" dst="13TH"/>
+    <case src="13" dst="14TH"/>
+    <case src="14" dst="15TH"/>
+    <case src="15" dst="16TH"/>
+    <case src="16" dst="17TH"/>
+    <case src="17" dst="18TH"/>
+    <case src="18" dst="19TH"/>
+    <case src="19" dst="20TH"/>
+    <case src="20" dst="21ST"/>
+    <case src="21" dst="22ND"/>
+    <case src="22" dst="23RD"/>
+    <case src="23" dst="24TH"/>
+    <case src="24" dst="25TH"/>
+    <case src="25" dst="26TH"/>
+  </format>
+
+  <format id="coursemap">
+    <case src="0" dst="GERMAN"/>
+    <case src="1" dst="MONACO"/>
+    <case src="2" dst="JAPANESE"/>
+    <case src="3" dst="AUSTRALIAN"/>
+  </format>
+
+  <format id="carmap">
+    <case src="0" dst="SHAKE HIP"/>
+    <case src="1" dst="BEST BALANCE"/>
+    <case src="2" dst="POWERFUL MONSTER"/>
+    <case src="3" dst="FUN TO DRIVE"/>
+    <case src="4" dst="SPEEDSTER"/>
+    <case src="5" dst="SHOOTING STAR"/>
+    <case src="6" dst="DRAG STAR"/>
+    <case src="7" dst="QUICK HANDLING"/>
+  </format>
+
+
+  <format id="pad2"><pad direction="left" max="2">0</pad></format>
+
+  <!-- "NNN PTS" -->
+  <format id="pts">
+    <concat>
+      <column src="PTS_P"/>
+      <txt> PTS</txt>
+    </concat>
+  </format>
+
+  <!-- M'SS"CC time formats -->
+  <format id="time_w">
+    <concat>
+      <column src="MIN_W"/><txt>'</txt>
+      <column src="SEC_W" format="pad2"/><txt>"</txt>
+      <column src="CS_W"  format="pad2"/>
+    </concat>
+  </format>
+  <format id="time_g">
+    <concat>
+      <column src="MIN_G"/><txt>'</txt>
+      <column src="SEC_G" format="pad2"/><txt>"</txt>
+      <column src="CS_G"  format="pad2"/>
+    </concat>
+  </format>
+  <format id="time_m">
+    <concat>
+      <column src="MIN_M"/><txt>'</txt>
+      <column src="SEC_M" format="pad2"/><txt>"</txt>
+      <column src="CS_M"  format="pad2"/>
+    </concat>
+  </format>
+  <format id="time_j">
+    <concat>
+      <column src="MIN_J"/><txt>'</txt>
+      <column src="SEC_J" format="pad2"/><txt>"</txt>
+      <column src="CS_J"  format="pad2"/>
+    </concat>
+  </format>
+  <format id="time_a">
+    <concat>
+      <column src="MIN_A"/><txt>'</txt>
+      <column src="SEC_A" format="pad2"/><txt>"</txt>
+      <column src="CS_A"  format="pad2"/>
+    </concat>
+  </format>
+  <format id="time">
+    <concat>
+      <column src="MIN"/><txt>'</txt>
+      <column src="SEC" format="pad2"/><txt>"</txt>
+      <column src="CS"  format="pad2"/>
+    </concat>
+  </format>
+</hi2txt>

@@ -25,19 +25,41 @@
   </structure>
 
   <output>
-    <table>
-      <column id="RANK" src="index" format="+1"/>
-      <column id="SCORE"/>
+    <table id="SCORE RANKING">
+      <column id="RANK" src="index" format="ordinal"/>
       <column id="NAME"/>
+      <column id="SCORE" format="pts"/>
     </table>
-    <table>
-      <column id="RANK" src="index" format="+1"/>
-      <column id="TOTAL SCORE"/>
-      <column id="TOTAL NAME 1"/>
-	  <column id="TOTAL NAME 2"/>
+    <table id="TOTAL SCORE RANKING">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="TOTAL NAME" format="total_name"/>
+	  <column id="TOTAL SCORE" format="pts"/>
     </table>
 	<field id="HISCORE" display="extra"/>
   </output>
+
+  <format id="total_name">
+    <concat>
+      <column src="TOTAL NAME 1"/>
+      <txt> </txt>
+      <column src="TOTAL NAME 2"/>
+    </concat>
+  </format>
+
+  <format id="pts"><suffix> PTS</suffix></format>
+
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
   
   <charset id="charconv">
     <char src="0x00" dst="0"/>
@@ -50,14 +72,14 @@
 	<char src="0x07" dst="7"/>
 	<char src="0x08" dst="8"/>
 	<char src="0x09" dst="9"/>
-    <char src="0x0A" dst="@"/>
+    <char src="0x0A" dst="|"/>
 	<char src="0x0B" dst="!"/>
 	<char src="0x0D" dst="&single-music-note;"/>
 	<char src="0x0E" dst="?"/>
 	<char src="0x10" dst=" "/>
 	<char src="0x2C" dst="&spaceship;"/>
 	<char src="0x2B" dst="&double-music-note;"/>
-	<char src="0x2F" dst="&black-heart;"/>
-    <char src="0x3F" dst="&star;"/>
+	<char src="0x2F" dst="{"/>
+    <char src="0x3F" dst="}"/>
   </charset>
 </hi2txt>

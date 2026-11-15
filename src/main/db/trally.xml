@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Thrash Rally">
+  <!--
+    Neo Geo saveram, byte-swap=2 ("BACKUP RAM OK !" confirmed).
+    Two tables, 6 x 16B records, name = "X.Y " (3 ASCII incl '.'=0x2e + trailing space -> TrimR).
+
+    WORLD CHAMPIONSHIP @0x620: [pad:1][POINTS:1 BCD][pad:2][NAME:4][pad:8].
+    PARIS-DAKAR       @0x780: [pad:1][MIN:1 BCD][SEC:1 BCD][CS:1 BCD][NAME:4][pad:8].
+      TIME shown MM'SS"CC directly from the 3 BCD bytes (min unpadded, sec/cs 2-digit).
+    RANK shown "N - " (suffix " - ").
+  //-->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+
+    <elt size="1568" type="raw" id="HEADER"/>
+    <loop count="6">
+      <elt size="1" type="raw"  id="WPAD1"/>
+      <elt size="1" type="int"  id="POINTS" base="16"/>
+      <elt size="2" type="raw"  id="WPAD2"/>
+      <elt size="4" type="text" id="WNAME"/>
+      <elt size="8" type="raw"  id="WPAD3"/>
+    </loop>
+
+    <elt size="256" type="raw" id="GAP"/>
+    <loop count="6">
+      <elt size="1" type="raw"  id="PPAD1"/>
+      <elt size="1" type="int"  id="MIN" base="16"/>
+      <elt size="1" type="int"  id="SEC" base="16"/>
+      <elt size="1" type="int"  id="CS"  base="16"/>
+      <elt size="4" type="text" id="PNAME"/>
+      <elt size="8" type="raw"  id="PPAD2"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="PARIS-DAKAR 1992 - THE CAPE BEST 6">
+      <column id="RANK"          src="index" format="rank"/>
+      <column id="NAME"          src="PNAME" format="TrimR "/>
+      <column id="TOTAL - TIME"  format="time"/>
+    </table>
+    <table id="WORLD CHAMPIONSHIP 1992 - BEST 6">
+      <column id="RANK"        src="index" format="rank"/>
+      <column id="FOR DRIVERS" src="WNAME" format="TrimR "/>
+      <column id="POINTS"      src="POINTS"/>
+    </table>
+  </output>
+
+  <format id="rank"><add>1</add><suffix> - </suffix></format>
+
+  <format id="time">
+    <concat>
+      <column id="MIN"/>
+      <txt>'</txt>
+      <column id="SEC" format="pad2"/>
+      <txt>"</txt>
+      <column id="CS"  format="pad2"/>
+    </concat>
+  </format>
+  <format id="pad2" formatter="%02d"><multiply>1</multiply></format>
+</hi2txt>

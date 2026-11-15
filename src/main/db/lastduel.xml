@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 116 bytes -->
+    <check><size>116</size></check>
+    
+    <!-- Skip the standalone Top Score -->
+    <elt size="4" type="raw" id="SKIP_TOP"/>
+    
+    <!-- Skip the 20-byte Pointer Array! We will sort natively. -->
+    <elt size="20" type="raw" id="SKIP_POINTERS"/>
+    
+    <!-- 10 Records * 8 Bytes = 80 Bytes -->
+    <loop count="10">
+      <!-- 4-byte Big-Endian BCD Score -->
+      <elt size="4" type="int"  id="SCORE" base="16" endianness="big_endian"/>
+      
+      <!-- 4-character ASCII Name -->
+      <elt size="4" type="text" id="NAME" charset="lastduel_char"/>
+    </loop>
+    
+    <!-- Remaining 12 bytes of unused memory/padding -->
+    <elt size="12" type="raw" id="TRAIL"/>
+  </structure>
+
+  <output>
+    <!-- Sorting by SCORE descending magically reconstructs the table without needing pointers! -->
+    <table id="BEST 10" sort="SCORE" sort-order="desc">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="NAME"  src="NAME"  format="trim_space"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+  <!-- Translates the index from 0-9 to 1ST-10TH -->
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+  
+  <!-- Safely trims the 4th padding byte (blank space) off the end of the names -->
+  <format id="trim_space">
+    <trim direction="right"> </trim>
+  </format>
+
+  <!-- Replaces the Backslash with the custom Heart graphic -->
+  <charset id="lastduel_char">
+    <char src="0x5C" dst="&black-heart;"/>
+  </charset>
+</hi2txt>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Vs. Freedom Force">
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,712,9c,10,28</definition>
+      <size>156</size>
+    </check>
+    <!-- 10 records, 16 bytes each; the .hi captures 156 bytes so record 10 is
+         truncated after its NAME (12 bytes). Record layout:
+         [score 6 digit-chars][ff][2 ptr][name 3 chars][00][ff][2 ptr] -->
+    <loop count="10">
+      <elt size="6" type="text" id="SCORE" charset="vf"/>
+      <elt size="1" type="raw"  id="P0"/>
+      <elt size="2" type="raw"  id="P1"/>
+      <elt size="3" type="text" id="NAME"  charset="vf"/>
+      <elt size="1" type="raw"  id="P2"/>
+      <elt size="1" type="raw"  id="P3"/>
+      <elt size="2" type="raw"  id="P4"/>
+    </loop>
+  </structure>
+  <output>
+    <table id="HIGH SCORES">
+      <column id="RANK"  src="index" format="revrank"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+  <format id="revrank"><multiply>-1</multiply><add>10</add></format>
+  <charset id="vf">
+    <char src="0x10" dst="0"/><char src="0x11" dst="1"/><char src="0x12" dst="2"/><char src="0x13" dst="3"/><char src="0x14" dst="4"/>
+    <char src="0x15" dst="5"/><char src="0x16" dst="6"/><char src="0x17" dst="7"/><char src="0x18" dst="8"/><char src="0x19" dst="9"/>
+    <char src="0x1a" dst="A"/><char src="0x1b" dst="B"/><char src="0x1c" dst="C"/><char src="0x1d" dst="D"/><char src="0x1e" dst="E"/>
+    <char src="0x1f" dst="F"/><char src="0x20" dst="G"/><char src="0x21" dst="H"/><char src="0x22" dst="I"/><char src="0x23" dst="J"/>
+    <char src="0x24" dst="K"/><char src="0x25" dst="L"/><char src="0x26" dst="M"/><char src="0x27" dst="N"/><char src="0x28" dst="O"/>
+    <char src="0x29" dst="P"/><char src="0x2a" dst="Q"/><char src="0x2b" dst="R"/><char src="0x2c" dst="S"/><char src="0x2d" dst="T"/>
+    <char src="0x2e" dst="U"/><char src="0x2f" dst="V"/><char src="0x30" dst="W"/><char src="0x31" dst="X"/><char src="0x32" dst="Y"/><char src="0x33" dst="Z"/>
+    <char src="0x00" dst=" "/><char src="0xff" dst=" "/>
+  </charset>
+</hi2txt>

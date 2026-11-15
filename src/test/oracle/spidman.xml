@@ -1,0 +1,30 @@
+<hi2txt>
+  <table id="SPIDER-MAN">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>4,000</cell><cell>AAA</cell></row>
+    <row><cell>2ND</cell><cell>3,000</cell><cell>TSU</cell></row>
+    <row><cell>3RD</cell><cell>2,000</cell><cell>WIZ</cell></row>
+    <row><cell>4TH</cell><cell>1,000</cell><cell>KAW</cell></row>
+  </table>
+  <table id="SUB-MARINER">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>4,000</cell><cell>AAA</cell></row>
+    <row><cell>2ND</cell><cell>3,000</cell><cell>TSU</cell></row>
+    <row><cell>3RD</cell><cell>2,000</cell><cell>WIZ</cell></row>
+    <row><cell>4TH</cell><cell>1,000</cell><cell>KAW</cell></row>
+  </table>
+  <table id="BLACK CAT">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>4,000</cell><cell>AAA</cell></row>
+    <row><cell>2ND</cell><cell>3,000</cell><cell>TSU</cell></row>
+    <row><cell>3RD</cell><cell>2,000</cell><cell>WIZ</cell></row>
+    <row><cell>4TH</cell><cell>1,000</cell><cell>KAW</cell></row>
+  </table>
+  <table id="HAWKEYE">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>4,000</cell><cell>AAA</cell></row>
+    <row><cell>2ND</cell><cell>3,000</cell><cell>TSU</cell></row>
+    <row><cell>3RD</cell><cell>2,000</cell><cell>WIZ</cell></row>
+    <row><cell>4TH</cell><cell>1,000</cell><cell>KAW</cell></row>
+  </table>
+</hi2txt>

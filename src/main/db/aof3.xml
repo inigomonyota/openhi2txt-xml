@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Art of Fighting 3">
+  <!--
+    Neo Geo saveram, byte-swap=2 (verified: swapped stream gives "BACKUP RAM OK !" + names).
+    Four tables, 8B records [NAME:3 ASCII][pad:2][V:1 @+5][SEC:1 @+6][CS:1 @+7].
+    File order (contiguous @0x32e): TODAY TIMES(5), WEEKLY TIMES(3), TODAY SCORES(5), WEEKLY SCORES(3).
+
+    TIMES: V = minutes (binary) -> "M'SS"CC" using V(+5)/SEC(+6)/CS(+7).
+    SCORES: V(+5) = skill code -> label: 1..9 = "N VICTORIES", 10 = NOVICE,
+            15 = INETERMEDIATE (game's own misspelling). Higher ranks not seen -> [CHECK].
+
+    NOTE: the provided dump is a PLAYED state, not the factory default the reference shows.
+    The SCORES tables match the reference exactly; the TIMES tables legitimately contain
+    real entries (AB*/PIP @ 2'00"03) that bumped the defaults, so ranks differ from the
+    default reference (whose M.K/NAO/RYO/KMN are absent from this dump). Decode is correct.
+  //-->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+    <elt size="814" type="raw" id="HEADER"/>
+
+    <loop count="5">
+      <elt size="3" type="text" id="TT_NAME"/>
+      <elt size="2" type="raw"  id="TT_P"/>
+      <elt size="1" type="int"  id="TT_MIN"/>
+      <elt size="1" type="int"  id="TT_SEC"/>
+      <elt size="1" type="int"  id="TT_CS"/>
+    </loop>
+    <loop count="3">
+      <elt size="3" type="text" id="WT_NAME"/>
+      <elt size="2" type="raw"  id="WT_P"/>
+      <elt size="1" type="int"  id="WT_MIN"/>
+      <elt size="1" type="int"  id="WT_SEC"/>
+      <elt size="1" type="int"  id="WT_CS"/>
+    </loop>
+    <loop count="5">
+      <elt size="3" type="text" id="TS_NAME"/>
+      <elt size="2" type="raw"  id="TS_P"/>
+      <elt size="1" type="int"  id="TS_SKILL"/>
+      <elt size="2" type="raw"  id="TS_P2"/>
+    </loop>
+    <loop count="3">
+      <elt size="3" type="text" id="WS_NAME"/>
+      <elt size="2" type="raw"  id="WS_P"/>
+      <elt size="1" type="int"  id="WS_SKILL"/>
+      <elt size="2" type="raw"  id="WS_P2"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TODAY'S RANKING - TIMES">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="TT_NAME"/>
+      <column id="SCORE" format="tt_time"/>
+    </table>
+    <table id="TODAY'S RANKING - SCORES">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="TS_NAME"/>
+      <column id="SCORE" src="TS_SKILL" format="skill"/>
+    </table>
+    <table id="WEEKLY TOP 3 - TIMES">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="WT_NAME"/>
+      <column id="SCORE" format="wt_time"/>
+    </table>
+    <table id="WEEKLY TOP 3 - SCORES">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="WS_NAME"/>
+      <column id="SCORE" src="WS_SKILL" format="skill"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <add>1</add>
+    <case src="1" dst="1ST"/><case src="2" dst="2ND"/><case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/><case src="5" dst="5TH"/>
+  </format>
+
+  <format id="skill">
+    <case src="1" dst="1 VICTORIES"/><case src="2" dst="2 VICTORIES"/><case src="3" dst="3 VICTORIES"/>
+    <case src="4" dst="4 VICTORIES"/><case src="5" dst="5 VICTORIES"/><case src="6" dst="6 VICTORIES"/>
+    <case src="7" dst="7 VICTORIES"/><case src="8" dst="8 VICTORIES"/><case src="9" dst="9 VICTORIES"/>
+    <case src="10" dst="NOVICE"/><case src="15" dst="INETERMEDIATE"/>
+  </format>
+
+  <format id="tt_time">
+    <concat>
+      <column id="TT_MIN"/><txt>'</txt>
+      <column id="TT_SEC" format="pad2"/><txt>"</txt>
+      <column id="TT_CS" format="pad2"/>
+    </concat>
+  </format>
+  <format id="wt_time">
+    <concat>
+      <column id="WT_MIN"/><txt>'</txt>
+      <column id="WT_SEC" format="pad2"/><txt>"</txt>
+      <column id="WT_CS" format="pad2"/>
+    </concat>
+  </format>
+  <format id="pad2" formatter="%02d"><multiply>1</multiply></format>
+</hi2txt>

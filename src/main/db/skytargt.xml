@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<!-- Sky Target (Sega Model 2, backup1). i960 little-endian.
+     ACE PILOTS table @ raw 0x110, 10 records x 16 bytes (a 2nd copy sits at 0x1b4):
+       [0:4]   NAME    4-byte, 3 ASCII chars + null (byte-trunc 0x00)
+       [4:8]   SCORE   4-byte little-endian, stored /10 (displayed value = *10)
+       [8:12]  FIGHTER 4-byte little-endian aircraft index (case-mapped)
+       [12:16] KILL    4-byte little-endian -->
+<structure file="backup1">
+  <check>
+    <size>16384</size>
+  </check>
+  <elt size="272" type="raw" id="HEADER"/>
+  <loop count="10">
+    <elt size="4" type="text" id="NAME" byte-trunc="0x00"/>
+    <elt size="4" type="int"  id="SCORE"   endianness="little_endian"/>
+    <elt size="4" type="int"  id="FIGHTER" endianness="little_endian"/>
+    <elt size="4" type="int"  id="KILL"    endianness="little_endian"/>
+  </loop>
+</structure>
+
+<format id="rank">
+  <case src="0" dst="1ST"/>
+  <case src="1" dst="2ND"/>
+  <case src="2" dst="3RD"/>
+  <case src="3" dst="4TH"/>
+  <case src="4" dst="5TH"/>
+  <case src="5" dst="6TH"/>
+  <case src="6" dst="7TH"/>
+  <case src="7" dst="8TH"/>
+  <case src="8" dst="9TH"/>
+  <case src="9" dst="10TH"/>
+</format>
+
+<format id="fighter">
+  <case src="0" dst="F-14 D"/>
+  <case src="1" dst="F-15 S/MTD"/>
+  <case src="2" dst="F-16 C"/>
+  <case src="3" dst="RAFALE M"/>
+</format>
+
+<output>
+  <table id="ACE PILOTS">
+    <column id="RANK"    src="index" format="rank"/>
+    <column id="NAME"/>
+    <column id="SCORE"   format="*10"/>
+    <column id="FIGHTER" format="fighter"/>
+    <column id="KILL"/>
+  </table>
+</output>
+</hi2txt>

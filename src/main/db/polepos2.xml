@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hi2txt>
+  <!--
+    polepos2 (.hi) definition for hi2txt
+    (No DTD/doctype to avoid DTD lookup/validation warnings)
+
+    hiscore.dat ranges (reference):
+      @:maincpu,program,3000,7f2,d0,a2   -> 0x7F2 (2034) bytes
+      @:maincpu,program,40d6,1,c9,c9    -> +1 byte
+      Total .hi size observed: 2035 bytes
+
+    The file contains 4 track tables (FUJI, TEST, SUZUKA, SEASIDE).
+    Each table begins at offsets:
+      FUJI   : 0x0000
+      TEST   : 0x01E0 (480)
+      SUZUKA : 0x03C0 (960)
+      SEASIDE: 0x05A0 (1440)
+
+    Each table starts with 6 entries, each 6 bytes:
+      SCORE10 : 2 bytes little-endian (score / 10)
+      NAME    : 4 bytes (ASCII)
+    Example for FUJI row 1: 0x07D0 => 2000 => 20000.
+  -->
+
+  <structure file=".hi">
+    <!-- FUJI (6 rows) -->
+    <loop count="6">
+      <elt size="2" type="int"  id="FUJI_SCORE10" endianness="little_endian"/>
+      <elt size="4" type="text" id="FUJI_NAME"   charset="pp2"/>
+    </loop>
+    <elt size="444" type="raw" id="_SKIP0"/>
+
+    <!-- TEST (6 rows) -->
+    <loop count="6">
+      <elt size="2" type="int"  id="TEST_SCORE10" endianness="little_endian"/>
+      <elt size="4" type="text" id="TEST_NAME"   charset="pp2"/>
+    </loop>
+    <elt size="444" type="raw" id="_SKIP1"/>
+
+    <!-- SUZUKA (6 rows) -->
+    <loop count="6">
+      <elt size="2" type="int"  id="SUZUKA_SCORE10" endianness="little_endian"/>
+      <elt size="4" type="text" id="SUZUKA_NAME"   charset="pp2"/>
+    </loop>
+    <elt size="444" type="raw" id="_SKIP2"/>
+
+    <!-- SEASIDE (6 rows) -->
+    <loop count="6">
+      <elt size="2" type="int"  id="SEASIDE_SCORE10" endianness="little_endian"/>
+      <elt size="4" type="text" id="SEASIDE_NAME"   charset="pp2"/>
+    </loop>
+
+    <!-- remainder -->
+    <elt size="559" type="raw" id="_TAIL"/>
+  </structure>
+
+  <output>
+    <table id="FUJI">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="FUJI_SCORE10" format="x10"/>
+      <column id="NAME"  src="FUJI_NAME" format="trimr"/>
+    </table>
+
+    <table id="TEST">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="TEST_SCORE10" format="x10"/>
+      <column id="NAME"  src="TEST_NAME" format="trimr"/>
+    </table>
+
+    <table id="SUZUKA">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SUZUKA_SCORE10" format="x10"/>
+      <column id="NAME"  src="SUZUKA_NAME" format="trimr"/>
+    </table>
+
+    <table id="SEASIDE">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SEASIDE_SCORE10" format="x10"/>
+      <column id="NAME"  src="SEASIDE_NAME" format="trimr"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="x10"><multiply>10</multiply></format>
+  <format id="trimr"><trim direction="right"> </trim></format>
+
+  <charset id="pp2">
+    <char src="0x00" dst=" "/>
+  </charset>
+</hi2txt>

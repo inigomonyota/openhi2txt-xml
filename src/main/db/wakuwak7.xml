@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Waku Waku 7">
+  <!--
+    Neo Geo saveram, byte-swap=2 ("BACKUP RAM OK !" confirmed). Values big-endian.
+    ("WAKUWAKU7" signature @0x2a0 is just a label.)
+    BEST-7 SCORE @0x328, 7x8B: [SCORE:4 int BE][NAME:3 ASCII][CHARA:1 idx].
+    BEST-7 WINS  @0x360, 7x6B: [BEAT:2 int BE][NAME:3 ASCII][CHARA:1 idx] (contiguous).
+    CHARA idx -> roster: 0=RAI 1=ARINA 2=SLASH 3=DANDY-J 4=TESSE 5=MAURU 6=POLITANK-Z.
+    RANK "NO. N"; BEAT "BEAT = N".
+    NB: rank 3 NAME is "TAM" in the save (both tables) - the reference's "TAN" is a typo.
+  //-->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+    <elt size="808" type="raw" id="HEADER"/>
+    <loop count="7">
+      <elt size="4" type="int"  id="SCORE" endianness="big_endian"/>
+      <elt size="3" type="text" id="SNAME"/>
+      <elt size="1" type="int"  id="SCHARA"/>
+    </loop>
+    <loop count="7">
+      <elt size="2" type="int"  id="BEAT" endianness="big_endian"/>
+      <elt size="3" type="text" id="WNAME"/>
+      <elt size="1" type="int"  id="WCHARA"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST-7 SCORE">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="SNAME"/>
+      <column id="CHARA" src="SCHARA" format="chara"/>
+    </table>
+    <table id="BEST-7 WINS">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="BEAT"  src="BEAT" format="beat"/>
+      <column id="NAME"  src="WNAME"/>
+      <column id="CHARA" src="WCHARA" format="chara"/>
+    </table>
+  </output>
+
+  <format id="rank"><add>1</add><prefix>NO. </prefix></format>
+  <format id="beat"><prefix>BEAT = </prefix></format>
+  <format id="chara">
+    <case src="0" dst="RAI"/><case src="1" dst="ARINA"/><case src="2" dst="SLASH"/>
+    <case src="3" dst="DANDY-J"/><case src="4" dst="TESSE"/><case src="5" dst="MAURU"/>
+    <case src="6" dst="POLITANK-Z"/>
+  </format>
+</hi2txt>

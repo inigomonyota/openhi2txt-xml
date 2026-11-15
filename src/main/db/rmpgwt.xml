@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Rampage World Tour">
+
+  <!--
+    Live high-score RAM dump produced from:
+      maincpu program address 0x01166890
+      debugger length 0x4B0 (TMS34010 bit-addressed space)
+      resulting .hi/raw byte size = 150 bytes (0x96)
+
+    15 records x 10 bytes:
+      +0..1  SCORE / 100, 16-bit little-endian
+      +2..3  padding
+      +4..5  initial 1, 16-bit little-endian
+      +6..7  initial 2, 16-bit little-endian
+      +8..9  initial 3, 16-bit little-endian
+
+    Character codes:
+      0=A ... 25=Z
+      all other values are graphic glyphs and are displayed as '*'.
+
+    RAM stores each 5-entry table in ascending score order.
+    table-index reverses each group for normal 1st -> 5th display.
+  -->
+
+  <structure file=".hi">
+    <check>
+      <size>150</size>
+    </check>
+
+    <elt size="2" type="int" id="G_SCORE" table-index="4" endianness="little_endian" format="x100"/>
+    <elt size="2" type="raw" id="_G_PAD"/>
+    <elt size="2" type="int" id="G_C1" table-index="4" endianness="little_endian"/>
+    <elt size="2" type="int" id="G_C2" table-index="4" endianness="little_endian"/>
+    <elt size="2" type="int" id="G_C3" table-index="4" endianness="little_endian"/>
+    <elt size="2" type="int" id="G_SCORE" table-index="3" endianness="little_endian" format="x100"/>
+    <elt size="2" type="raw" id="_G_PAD"/>
+    <elt size="2" type="int" id="G_C1" table-index="3" endianness="little_endian"/>
+    <elt size="2" type="int" id="G_C2" table-index="3" endianness="little_endian"/>
+    <elt size="2" type="int" id="G_C3" table-index="3" endianness="little_endian"/>
+    <elt size="2" type="int" id="G_SCORE" table-index="2" endianness="little_endian" format="x100"/>
+    <elt size="2" type="raw" id="_G_PAD"/>
+    <elt size="2" type="int" id="G_C1" table-index="2" endianness="little_endian"/>
+    <elt size="2" type="int" id="G_C2" table-index="2" endianness="little_endian"/>
+    <elt size="2" type="int" id="G_C3" table-index="2" endianness="little_endian"/>
+    <elt size="2" type="int" id="G_SCORE" table-index="1" endianness="little_endian" format="x100"/>
+    <elt size="2" type="raw" id="_G_PAD"/>
+    <elt size="2" type="int" id="G_C1" table-index="1" endianness="little_endian"/>
+    <elt size="2" type="int" id="G_C2" table-index="1" endianness="little_endian"/>
+    <elt size="2" type="int" id="G_C3" table-index="1" endianness="little_endian"/>
+    <elt size="2" type="int" id="G_SCORE" table-index="0" endianness="little_endian" format="x100"/>
+    <elt size="2" type="raw" id="_G_PAD"/>
+    <elt size="2" type="int" id="G_C1" table-index="0" endianness="little_endian"/>
+    <elt size="2" type="int" id="G_C2" table-index="0" endianness="little_endian"/>
+    <elt size="2" type="int" id="G_C3" table-index="0" endianness="little_endian"/>
+    <elt size="2" type="int" id="L_SCORE" table-index="4" endianness="little_endian" format="x100"/>
+    <elt size="2" type="raw" id="_L_PAD"/>
+    <elt size="2" type="int" id="L_C1" table-index="4" endianness="little_endian"/>
+    <elt size="2" type="int" id="L_C2" table-index="4" endianness="little_endian"/>
+    <elt size="2" type="int" id="L_C3" table-index="4" endianness="little_endian"/>
+    <elt size="2" type="int" id="L_SCORE" table-index="3" endianness="little_endian" format="x100"/>
+    <elt size="2" type="raw" id="_L_PAD"/>
+    <elt size="2" type="int" id="L_C1" table-index="3" endianness="little_endian"/>
+    <elt size="2" type="int" id="L_C2" table-index="3" endianness="little_endian"/>
+    <elt size="2" type="int" id="L_C3" table-index="3" endianness="little_endian"/>
+    <elt size="2" type="int" id="L_SCORE" table-index="2" endianness="little_endian" format="x100"/>
+    <elt size="2" type="raw" id="_L_PAD"/>
+    <elt size="2" type="int" id="L_C1" table-index="2" endianness="little_endian"/>
+    <elt size="2" type="int" id="L_C2" table-index="2" endianness="little_endian"/>
+    <elt size="2" type="int" id="L_C3" table-index="2" endianness="little_endian"/>
+    <elt size="2" type="int" id="L_SCORE" table-index="1" endianness="little_endian" format="x100"/>
+    <elt size="2" type="raw" id="_L_PAD"/>
+    <elt size="2" type="int" id="L_C1" table-index="1" endianness="little_endian"/>
+    <elt size="2" type="int" id="L_C2" table-index="1" endianness="little_endian"/>
+    <elt size="2" type="int" id="L_C3" table-index="1" endianness="little_endian"/>
+    <elt size="2" type="int" id="L_SCORE" table-index="0" endianness="little_endian" format="x100"/>
+    <elt size="2" type="raw" id="_L_PAD"/>
+    <elt size="2" type="int" id="L_C1" table-index="0" endianness="little_endian"/>
+    <elt size="2" type="int" id="L_C2" table-index="0" endianness="little_endian"/>
+    <elt size="2" type="int" id="L_C3" table-index="0" endianness="little_endian"/>
+    <elt size="2" type="int" id="R_SCORE" table-index="4" endianness="little_endian" format="x100"/>
+    <elt size="2" type="raw" id="_R_PAD"/>
+    <elt size="2" type="int" id="R_C1" table-index="4" endianness="little_endian"/>
+    <elt size="2" type="int" id="R_C2" table-index="4" endianness="little_endian"/>
+    <elt size="2" type="int" id="R_C3" table-index="4" endianness="little_endian"/>
+    <elt size="2" type="int" id="R_SCORE" table-index="3" endianness="little_endian" format="x100"/>
+    <elt size="2" type="raw" id="_R_PAD"/>
+    <elt size="2" type="int" id="R_C1" table-index="3" endianness="little_endian"/>
+    <elt size="2" type="int" id="R_C2" table-index="3" endianness="little_endian"/>
+    <elt size="2" type="int" id="R_C3" table-index="3" endianness="little_endian"/>
+    <elt size="2" type="int" id="R_SCORE" table-index="2" endianness="little_endian" format="x100"/>
+    <elt size="2" type="raw" id="_R_PAD"/>
+    <elt size="2" type="int" id="R_C1" table-index="2" endianness="little_endian"/>
+    <elt size="2" type="int" id="R_C2" table-index="2" endianness="little_endian"/>
+    <elt size="2" type="int" id="R_C3" table-index="2" endianness="little_endian"/>
+    <elt size="2" type="int" id="R_SCORE" table-index="1" endianness="little_endian" format="x100"/>
+    <elt size="2" type="raw" id="_R_PAD"/>
+    <elt size="2" type="int" id="R_C1" table-index="1" endianness="little_endian"/>
+    <elt size="2" type="int" id="R_C2" table-index="1" endianness="little_endian"/>
+    <elt size="2" type="int" id="R_C3" table-index="1" endianness="little_endian"/>
+    <elt size="2" type="int" id="R_SCORE" table-index="0" endianness="little_endian" format="x100"/>
+    <elt size="2" type="raw" id="_R_PAD"/>
+    <elt size="2" type="int" id="R_C1" table-index="0" endianness="little_endian"/>
+    <elt size="2" type="int" id="R_C2" table-index="0" endianness="little_endian"/>
+    <elt size="2" type="int" id="R_C3" table-index="0" endianness="little_endian"/>
+  </structure>
+
+  <output>
+    <table id="GEORGE" lines-max="5">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="NAME" src="G_C1" format="g_name"/>
+      <column id="SCORE" src="G_SCORE"/>
+    </table>
+
+    <table id="LIZZIE" lines-max="5">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="NAME" src="L_C1" format="l_name"/>
+      <column id="SCORE" src="L_SCORE"/>
+    </table>
+
+    <table id="RALPH" lines-max="5">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="NAME" src="R_C1" format="r_name"/>
+      <column id="SCORE" src="R_SCORE"/>
+    </table>
+  </output>
+
+  <format id="x100"><multiply>100</multiply></format>
+
+  <format id="rank">
+    <case src="0" dst="1st"/>
+    <case src="1" dst="2nd"/>
+    <case src="2" dst="3rd"/>
+    <case src="3" dst="4th"/>
+    <case src="4" dst="5th"/>
+  </format>
+
+  <format id="g_name" input-as-subcolumns-input="yes">
+    <concat>
+      <column id="G_C1" format="char"/>
+      <column id="G_C2" format="char"/>
+      <column id="G_C3" format="char"/>
+    </concat>
+  </format>
+
+  <format id="l_name" input-as-subcolumns-input="yes">
+    <concat>
+      <column id="L_C1" format="char"/>
+      <column id="L_C2" format="char"/>
+      <column id="L_C3" format="char"/>
+    </concat>
+  </format>
+
+  <format id="r_name" input-as-subcolumns-input="yes">
+    <concat>
+      <column id="R_C1" format="char"/>
+      <column id="R_C2" format="char"/>
+      <column id="R_C3" format="char"/>
+    </concat>
+  </format>
+
+  <format id="char">
+    <case src="0" dst="A"/>
+    <case src="1" dst="B"/>
+    <case src="2" dst="C"/>
+    <case src="3" dst="D"/>
+    <case src="4" dst="E"/>
+    <case src="5" dst="F"/>
+    <case src="6" dst="G"/>
+    <case src="7" dst="H"/>
+    <case src="8" dst="I"/>
+    <case src="9" dst="J"/>
+    <case src="10" dst="K"/>
+    <case src="11" dst="L"/>
+    <case src="12" dst="M"/>
+    <case src="13" dst="N"/>
+    <case src="14" dst="O"/>
+    <case src="15" dst="P"/>
+    <case src="16" dst="Q"/>
+    <case src="17" dst="R"/>
+    <case src="18" dst="S"/>
+    <case src="19" dst="T"/>
+    <case src="20" dst="U"/>
+    <case src="21" dst="V"/>
+    <case src="22" dst="W"/>
+    <case src="23" dst="X"/>
+    <case src="24" dst="Y"/>
+    <case src="25" dst="Z"/>
+    <case src="0" default="yes" dst="*"/>
+  </format>
+
+</hi2txt>

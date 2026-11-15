@@ -1,0 +1,16 @@
+<hi2txt>
+  <table id="GP RIDER POINTS RANKING">
+    <col>RANK</col><col>NAME</col><col>POINTS</col><col>BEST LAP</col><col>LAP</col>
+    <row><cell>1</cell><cell>BIN</cell><cell>40</cell><cell>0&apos;58&apos;&apos;63</cell><cell>3</cell></row>
+    <row><cell>2</cell><cell>JEE</cell><cell>35</cell><cell>0&apos;59&apos;&apos;34</cell><cell>3</cell></row>
+    <row><cell>3</cell><cell>COM</cell><cell>30</cell><cell>1&apos;00&apos;&apos;12</cell><cell>2</cell></row>
+    <row><cell>4</cell><cell>PAP</cell><cell>25</cell><cell>1&apos;01&apos;&apos;56</cell><cell>2</cell></row>
+    <row><cell>5</cell><cell>KEN</cell><cell>20</cell><cell>1&apos;03&apos;&apos;78</cell><cell>1</cell></row>
+    <row><cell>6</cell><cell>YAS</cell><cell>15</cell><cell>1&apos;05&apos;&apos;42</cell><cell>1</cell></row>
+    <row><cell>7</cell><cell>HIR</cell><cell>10</cell><cell>1&apos;07&apos;&apos;10</cell><cell>1</cell></row>
+  </table>
+  <table id="SEGA INTERNATIONAL COURSE RECORD">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>MIT </cell><cell>1&apos;00&apos;&apos;00</cell></row>
+  </table>
+</hi2txt>

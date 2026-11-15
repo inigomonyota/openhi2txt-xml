@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+ <structure file=".hi">
+  <check>
+   <!-- two hiscore.dat regions concatenated: @e057 (0x0a) + @e061 (0x0f) = 25 bytes -->
+   <definition>0:e057:a:05:50 0:e061:f:87:8c</definition>
+   <size>25</size>
+  </check>
+  <!-- region @e057: 5 x [ ROUND (plain), LEVEL/OPP byte ] -->
+  <loop count="5">
+   <elt size="1" type="int" id="ROUND"/>
+   <elt size="1" type="int" id="LEVELOPP" nibble-skip="even"/>   <!-- keep HIGH nibble = grade index -->
+  </loop>
+  <!-- region @e061: 5 x NAME (3 chars) -->
+  <loop count="5">
+   <elt size="3" type="text" id="NAME" charset="kageki"/>
+  </loop>
+ </structure>
+
+ <output>
+  <table id="RANKING">
+   <column id="RANK"         src="index"    format="+1"/>
+   <column id="NAME"         src="NAME"     format="UC"/>
+   <column id="ROUND"        src="ROUND"    format="round_rd"/>
+   <column id="LEVEL"        src="LEVELOPP" format="level"/>    <!-- grade <- HIGH nibble -->
+   <column id="ROUND WINNER" src="ROUND"    format="winner"/>  <!-- opponent faced <- ROUND number -->
+  </table>
+ </output>
+
+ <!-- "5 RD" -->
+ <format id="round_rd"><suffix> RD</suffix></format>
+
+ <!-- LEVEL letter from the high nibble (grade index), then "LEVEL x" -->
+ <format id="level">
+  <case src="1" dst="B"/>
+  <case src="2" dst="C"/>
+  <case src="3" dst="D"/>
+  <case src="4" dst="D"/>
+  <case src="5" dst="E"/>
+  <case src="6" dst="6"/>   <!-- grade unconfirmed -->
+  <case src="7" dst="7"/>   <!-- grade unconfirmed -->
+  <case src="8" dst="8"/>   <!-- grade unconfirmed -->
+  <case src="0" dst="?" default="yes"/>
+  <prefix>LEVEL </prefix>
+ </format>
+
+ <!-- ROUND WINNER = opponent faced in that round (round 1 = JOHNNY) -->
+ <format id="winner">
+  <case src="1" dst="JOHNNY"/>
+  <case src="2" dst="HYENA"/>
+  <case src="3" dst="BRAD"/>
+  <case src="4" dst="HOOK"/>
+  <case src="5" dst="RIKI"/>
+  <case src="6" dst="SAMSON"/>
+  <case src="7" dst="BUSTER"/>
+  <case src="8" dst="BOSS"/>
+  <case src="0" dst="?" default="yes"/>
+ </format>
+
+ <!-- NAME charset: A=0x80..Z=0x99, '.'=0x9a, space=0x00 (all name bytes covered; no default needed) -->
+ <charset id="kageki">
+  <char src="0x00" dst=" "/>
+  <char src="0x80" dst="A"/>
+  <char src="0x81" dst="B"/>
+  <char src="0x82" dst="C"/>
+  <char src="0x83" dst="D"/>
+  <char src="0x84" dst="E"/>
+  <char src="0x85" dst="F"/>
+  <char src="0x86" dst="G"/>
+  <char src="0x87" dst="H"/>
+  <char src="0x88" dst="I"/>
+  <char src="0x89" dst="J"/>
+  <char src="0x8a" dst="K"/>
+  <char src="0x8b" dst="L"/>
+  <char src="0x8c" dst="M"/>
+  <char src="0x8d" dst="N"/>
+  <char src="0x8e" dst="O"/>
+  <char src="0x8f" dst="P"/>
+  <char src="0x90" dst="Q"/>
+  <char src="0x91" dst="R"/>
+  <char src="0x92" dst="S"/>
+  <char src="0x93" dst="T"/>
+  <char src="0x94" dst="U"/>
+  <char src="0x95" dst="V"/>
+  <char src="0x96" dst="W"/>
+  <char src="0x97" dst="X"/>
+  <char src="0x98" dst="Y"/>
+  <char src="0x99" dst="Z"/>
+  <char src="0x9a" dst="."/>
+ </charset>
+</hi2txt>

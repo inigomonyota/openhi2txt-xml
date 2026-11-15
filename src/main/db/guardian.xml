@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Guardians of the 'Hood">
+  <!--
+    Guardians of the 'Hood (Atari, atarig42.cpp / 68EC020). Shares Pit-Fighter's
+    packed-initials scheme. The live 10-entry ranking table is main RAM at
+    :maincpu program 0x00ff818f, 10 records x 5 bytes:
+      [2-byte BIG-endian score][2-byte LITTLE-endian packed NAMECODE][1-byte 00].
+    NAMECODE packs 3 initials at 5 bits each (0=space, 1..26 = A..Z); FIRST
+    initial is the LOW 5 bits (reverse of Pit-Fighter's order).
+      e.g. score 0x0bb8=3000, NAMECODE 0x34c7 -> 7/6/13 = G F M.
+    Scores persist natively in nvram\guardian\eeprom; the game rebuilds this RAM
+    table from it on boot. Proven byte-for-byte against live captures: the attract
+    default chart (GFM 3000 .. IJF 1500 = snap 0000.png) and two played states
+    (XYZ 2530 rank 3, PIP 2025 rank 6) all decode exactly. Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>50</size>
+    </check>
+    <loop count="10">
+      <elt size="2" type="int" id="SCORE"    endianness="big_endian"/>
+      <elt size="2" type="int" id="NAMECODE" endianness="little_endian"/>
+      <elt size="1" type="raw" id="_PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORES" lines-max="10">
+      <column id="RANK"  src="index"    format="rank"/>
+      <column id="NAME"  src="NAMECODE" format="name"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <add>1</add>
+    <suffix>.</suffix>
+  </format>
+
+  <format id="name" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="%32;char32"/>
+      <column format="d32;%32;char32"/>
+      <column format="d1024;char32"/>
+    </concat>
+  </format>
+
+  <format id="char32">
+    <case src="0" dst=" "/>
+    <case src="1" dst="A"/><case src="2" dst="B"/><case src="3" dst="C"/>
+    <case src="4" dst="D"/><case src="5" dst="E"/><case src="6" dst="F"/>
+    <case src="7" dst="G"/><case src="8" dst="H"/><case src="9" dst="I"/>
+    <case src="10" dst="J"/><case src="11" dst="K"/><case src="12" dst="L"/>
+    <case src="13" dst="M"/><case src="14" dst="N"/><case src="15" dst="O"/>
+    <case src="16" dst="P"/><case src="17" dst="Q"/><case src="18" dst="R"/>
+    <case src="19" dst="S"/><case src="20" dst="T"/><case src="21" dst="U"/>
+    <case src="22" dst="V"/><case src="23" dst="W"/><case src="24" dst="X"/>
+    <case src="25" dst="Y"/><case src="26" dst="Z"/>
+  </format>
+
+</hi2txt>

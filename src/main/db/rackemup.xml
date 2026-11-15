@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Rack 'em Up">
+  <!--
+    Rack 'em Up / The Hustler (rackemup) - Konami 1987.
+    Reads the live SCORE RANKING table saved by the hiscore plugin
+    (rackemup.hi = RAM 0x10A2, 80 bytes). Stored rank-1 first (no reversal).
+    Record = 8 bytes: [RATE BCD][pad][3 name tiles][pad x3].
+    Names are Konami tile codes: A=0x11..Z=0x2A, space=0x0E, '-'=0x0C, '.'=0x0D, '?'=0x0F.
+    RATE is a shot-success percentage; STAGE is always 1 on this ranking.
+  -->
+  <structure file=".hi">
+    <check><size>80</size></check>
+    <loop count="10">
+      <elt size="1" type="int"  id="RATE" base="16"/>
+      <elt size="1" type="raw"  id="P1"/>
+      <elt size="3" type="text" id="NAME" charset="cs"/>
+      <elt size="3" type="raw"  id="P2"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="SCORE RANKING">
+      <column id="RANK"  src="index" format="rankord"/>
+      <column id="RATE"  src="RATE"  format="pct"/>
+      <column id="STAGE">1</column>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+  <format id="rankord">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+  <format id="pct"><suffix> %</suffix></format>
+  <charset id="cs">
+    <char src="0x11" dst="A"/>
+    <char src="0x12" dst="B"/>
+    <char src="0x13" dst="C"/>
+    <char src="0x14" dst="D"/>
+    <char src="0x15" dst="E"/>
+    <char src="0x16" dst="F"/>
+    <char src="0x17" dst="G"/>
+    <char src="0x18" dst="H"/>
+    <char src="0x19" dst="I"/>
+    <char src="0x1a" dst="J"/>
+    <char src="0x1b" dst="K"/>
+    <char src="0x1c" dst="L"/>
+    <char src="0x1d" dst="M"/>
+    <char src="0x1e" dst="N"/>
+    <char src="0x1f" dst="O"/>
+    <char src="0x20" dst="P"/>
+    <char src="0x21" dst="Q"/>
+    <char src="0x22" dst="R"/>
+    <char src="0x23" dst="S"/>
+    <char src="0x24" dst="T"/>
+    <char src="0x25" dst="U"/>
+    <char src="0x26" dst="V"/>
+    <char src="0x27" dst="W"/>
+    <char src="0x28" dst="X"/>
+    <char src="0x29" dst="Y"/>
+    <char src="0x2a" dst="Z"/>
+    <char src="0x0e" dst=" "/>
+    <char src="0x0c" dst="-"/>
+    <char src="0x0d" dst="."/>
+    <char src="0x0f" dst="?"/>
+  </charset>
+</hi2txt>

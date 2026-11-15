@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="BEST 10">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>60000</cell><cell> DIRECTER </cell></row>
+    <row><cell>2</cell><cell>55000</cell><cell>S.FUJIWARA</cell></row>
+    <row><cell>3</cell><cell>50000</cell><cell>   SOFT   </cell></row>
+    <row><cell>4</cell><cell>45000</cell><cell>T.TSUCHIE </cell></row>
+    <row><cell>5</cell><cell>40000</cell><cell>   HARD   </cell></row>
+    <row><cell>6</cell><cell>35000</cell><cell>I.SHIKI   </cell></row>
+    <row><cell>7</cell><cell>30000</cell><cell>  DESIGN  </cell></row>
+    <row><cell>8</cell><cell>25000</cell><cell>K.NAKAGAWA</cell></row>
+    <row><cell>9</cell><cell>20000</cell><cell>  SOUND   </cell></row>
+    <row><cell>10</cell><cell>15000</cell><cell>K.YOSHIDA </cell></row>
+  </table>
+</hi2txt>

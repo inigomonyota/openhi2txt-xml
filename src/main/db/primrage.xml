@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Primal Rage">
+  <!--
+    Primal Rage (primrage) - Atari Games, 1994 (atarigt.cpp, MC68EC020).
+    The RANKING (top "RAGE CHAMPION" slot + ranks 2-10) lives in maincpu
+    work RAM, not in a clean persistent store: the 2 KB EEPROM holds a
+    checksummed, irregular copy of only the SCORES (and, like vindictr and
+    Atari Games titles generally, NO player initials for ranks 2-10 - those
+    are fixed ROM defaults ICK/YUK/WEE/OOW/HEY/EEE/HUH/WHU/DUD drawn when the
+    stored name is blank, and "RAGE CHAMPION" is itself a ROM default label).
+
+    MAME's hiscore plugin restores the live table via this hiscore.dat entry:
+      primrage: @:maincpu,program,ff8257,71,01,12
+      -> 0x71 = 113 bytes at 0xff8257 .. 0xff82c7.
+    (0xff0000-0xffffff is atarigt mainram; the table is at 0xff8257.)
+
+    Layout of the 113-byte region (68EC020 is big-endian):
+      [0..2]   RAGE CHAMPION score : 24-bit big-endian (01 86 a0 = 100000)
+      [3..12]  checksum + padding (reaches the first rank record at 0xff8264)
+      then 9 rank records, each 12 bytes:
+      [0..1]   SCORE  : 16-bit big-endian (0384=900 .. 0064=100)
+      [2..3]   16-bit checksum
+      [4..11]  padding (0x00) -> absent on the truncated 10th record
+
+    Verified byte-for-byte against the RANKING screenshot:
+      1 RAGE CHAMPION 100000  2 ICK 900  3 YUK 800  4 WEE 700  5 OOW 600
+      6 HEY 500  7 EEE 400  8 HUH 300  9 WHU 200  10 DUD 100
+    The player initials are not present in any save data, so this definition
+    decodes RANK + SCORE; the NAME column is supplied by the transcribed
+    default table in output\primrage\.
+
+    Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>113</size>
+    </check>
+
+    <elt size="3"  type="int" id="SCORE" endianness="big_endian" table-index="0"/>
+    <elt size="10" type="raw" id="CHP"/>
+
+    <elt size="2" type="int" id="SCORE" endianness="big_endian" table-index="1"/>
+    <elt size="10" type="raw" id="P1"/>
+    <elt size="2" type="int" id="SCORE" endianness="big_endian" table-index="2"/>
+    <elt size="10" type="raw" id="P2"/>
+    <elt size="2" type="int" id="SCORE" endianness="big_endian" table-index="3"/>
+    <elt size="10" type="raw" id="P3"/>
+    <elt size="2" type="int" id="SCORE" endianness="big_endian" table-index="4"/>
+    <elt size="10" type="raw" id="P4"/>
+    <elt size="2" type="int" id="SCORE" endianness="big_endian" table-index="5"/>
+    <elt size="10" type="raw" id="P5"/>
+    <elt size="2" type="int" id="SCORE" endianness="big_endian" table-index="6"/>
+    <elt size="10" type="raw" id="P6"/>
+    <elt size="2" type="int" id="SCORE" endianness="big_endian" table-index="7"/>
+    <elt size="10" type="raw" id="P7"/>
+    <elt size="2" type="int" id="SCORE" endianness="big_endian" table-index="8"/>
+    <elt size="10" type="raw" id="P8"/>
+
+    <!-- rank 10: truncated record (no trailing 8-byte pad) -->
+    <elt size="2" type="int" id="SCORE" endianness="big_endian" table-index="9"/>
+    <elt size="2" type="raw" id="PAD10"/>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+</hi2txt>

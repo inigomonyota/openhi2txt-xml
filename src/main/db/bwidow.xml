@@ -39,10 +39,10 @@
   </structure>
   
   <output>
-    <table>
+    <table id="BLACK WIDOW HALL OF FAME">
       <column id="RANK" src="index" format="+1"/>
-      <column id="SCORE"/>
       <column id="NAME"/>
+      <column id="SCORE"/>
       <column id="AREA"/>
     </table>
   </output>

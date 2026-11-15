@@ -1,0 +1,14 @@
+<hi2txt>
+  <table>
+    <col>SCORE FROM LAST PLAY - P1</col><col>SCORE FROM LAST PLAY - P2</col>
+    <row><cell>4690</cell><cell>910</cell></row>
+  </table>
+  <table id="RANKING">
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>CHARACTER</col>
+    <row><cell>1</cell><cell>50000</cell><cell>WIL</cell><cell>CLINT</cell></row>
+    <row><cell>2</cell><cell>40000</cell><cell>DGU</cell><cell>ANNIE</cell></row>
+    <row><cell>3</cell><cell>30000</cell><cell>NSN</cell><cell>ANNIE</cell></row>
+    <row><cell>4</cell><cell>20000</cell><cell>ATS</cell><cell>ANNIE</cell></row>
+    <row><cell>5</cell><cell>17120</cell><cell>PIP</cell><cell>ANNIE</cell></row>
+  </table>
+</hi2txt>

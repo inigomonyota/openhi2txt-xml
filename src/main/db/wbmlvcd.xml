@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    wbmlvcd  (Wonder Boy in Monster Land, Sega System 2, 1987 - decrypted
+    bootleg of the Vics licensed set; clone of wbml).
+
+    The game keeps NO native high-score file (no nvram / eeprom) and shipped
+    with no hiscore.dat entry for this clone. It only ever displays a single
+    "HIGH" value on screen; there is no name/initials table.
+
+    wbmlvcd shares wbml's :maincpu work-RAM map exactly (verified by dumping a
+    save state: gate bytes c101=0x24, 072f=0x03 and the default HIGH byte
+    c17d=0x03 all match wbml's hiscore.dat entry byte-for-byte). A hiscore.dat
+    entry for wbmlvcd was added to the shared wbml block so the MAME hiscore
+    plugin now persists the score and writes a 10-byte .hi.
+
+    The .hi is the plugin's concatenation of the 10 one-byte blocks, in DAT
+    order:
+      +0 c101  gate 0x24
+      +1 072f  gate 0x03
+      +2 c179  00
+      +3 c17a  00
+      +4 c17b  00
+      +5 c17c  00
+      +6 c17d  HIGH score, byte 1  (packed BCD, big-endian)
+      +7 c17e  HIGH score, byte 2
+      +8 c17f  HIGH score, byte 3
+      +9 c180  00
+    So the HIGH score is a 3-byte big-endian packed-BCD field at offset 6.
+    Default = 03 00 00 = 30000 (matches snap 0001). Proven live: forcing
+    c17e=0x45 produced .hi "...03 45 00..." and the plugin saved it, i.e.
+    HIGH = 034500. base="16" reads the packed 2-digits-per-byte BCD
+    (decoding-profile="bcd" would be unpacked and wrong).
+    Authored by the HI2TXT project (wbmlvcd support).
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>10</size>
+    </check>
+    <elt size="2" type="raw" id="GATE"/>
+    <elt size="4" type="raw" id="PAD"/>
+    <elt size="3" type="int" id="HIGH" base="16"/>
+    <elt size="1" type="raw" id="TAIL"/>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORE">
+      <column id="HIGH SCORE" src="HIGH"/>
+      <column id="GATE" format="0x" display="debug"/>
+      <column id="PAD"  format="0x" display="debug"/>
+      <column id="TAIL" format="0x" display="debug"/>
+    </table>
+  </output>
+</hi2txt>

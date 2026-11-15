@@ -1,0 +1,16 @@
+<hi2txt>
+  <table id="ODD ENTRIES (names garbled)">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>1500</cell><cell>TLc</cell></row>
+    <row><cell>2</cell><cell>1301</cell><cell>TQc</cell></row>
+    <row><cell>3</cell><cell>0</cell><cell>   </cell></row>
+    <row><cell>4</cell><cell>0</cell><cell>   </cell></row>
+  </table>
+  <table id="EVEN ENTRIES (names correct)">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>1401</cell><cell>TNK</cell></row>
+    <row><cell>2</cell><cell>1200</cell><cell>TNK</cell></row>
+    <row><cell>3</cell><cell>0</cell><cell>   </cell></row>
+    <row><cell>4</cell><cell>0</cell><cell>   </cell></row>
+  </table>
+</hi2txt>

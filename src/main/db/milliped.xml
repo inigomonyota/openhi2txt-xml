@@ -6,6 +6,16 @@
       source: GreatStone
   //-->
   
+  <structure file=".hi"> <!-- scores 4, 5, 6, 7, 8 //-->
+    <check>
+      <size>31</size>
+    </check>
+    
+    <loop count="5" start="3"><elt size="3"  type="text" id="NAME"  charset="milliped" ascii-offset="64"/></loop>
+    <loop count="5" start="3"><elt size="3"  type="int"  id="SCORE" endianness="little_endian" base="16"/></loop>
+                              <elt size="1"  type="raw"  id="UNKNOWN2"/>
+  </structure>
+  
   <structure file="earom"> <!-- scores 1, 2, 3 //-->
     <check>
       <!-- optional: if defined, it allows to select the good structure versus the provided file
@@ -15,22 +25,6 @@
     <loop count="3"><elt size="3" type="int"  id="SCORE" endianness="little_endian" base="16"/></loop>
     <loop count="3"><elt size="3" type="text" id="NAME"  charset="milliped" ascii-offset="64"/></loop>
                     <elt size="1" type="raw"  id="UNKNOWN"/>
-  </structure>
-  
-  <structure file=".hi"> <!-- scores 4, 5, 6, 7, 8 //-->
-    <check>
-      <!-- optional: if defined and hiscore.dat provided, it allows to select the good structure versus the provided file //-->
-      <definition>0:85:f:05:17
-                  0:6d:f:20:04
-                  0:24:1:a0:a0</definition>
-      <!-- optional: if defined, it allows to select the good structure versus the provided file
-                     useful if multiple structures are defined but hiscore.dat not provided //-->
-      <size>31</size>
-    </check>
-    
-    <loop count="5" start="3"><elt size="3"  type="text" id="NAME"  charset="milliped" ascii-offset="64"/></loop>
-    <loop count="5" start="3"><elt size="3"  type="int"  id="SCORE" endianness="little_endian" base="16"/></loop>
-                              <elt size="46" type="raw"  id="UNKNOWN2"/>
   </structure>
   
   <output>

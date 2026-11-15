@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt label="Hit the Ice">
+  <!--
+    Hit the Ice (Williams/Taito, 1990). Reads the hiscore-plugin .hi dump.
+    hiscore.dat:
+      @:maincpu,program,802830,27,00,4b   (region A: 39 bytes, the BEST 5 table)
+      @:maincpu,program,802852,1,56,56     (region B: 1 byte = rank-5 score dup)
+    .hi = 40 bytes = five 8-byte records (region A 39B + 1 dup byte at the tail).
+    The region is written by the game only at game-end (ranking update), so it is
+    captured here from a real automated playthrough, not from cold attract.
+    Record (8 bytes), on-screen columns RANK | NAME | GOALS | SCORE:
+      [00,01] GOALS : 2-byte packed BCD, big-endian (00 07 = 7 goals)
+      [02]    SCORE : 1-byte packed BCD, 2 digits   (0x77 = 77)
+      [03]    pad   : 00
+      [04..06] NAME : 3 ascii chars (0x4e 0x41 0x54 = "NAT")
+      [07]    term  : 0x24 ' (rank-5 record's term byte is off the end of region A;
+                      the file's 40th byte is the duplicated rank-5 score, discarded)
+    Packed BCD decoded with base="16" (same as jojoban): the byte's hex digits
+    ARE the decimal display. Records are already stored rank 1 -> rank 5.
+    Authored by the HI2TXT project (hitice support). Big-endian, ASCII names, BCD.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>0:802830:27:00:4b
+                  0:802852:1:56:56</definition>
+      <size>40</size>
+    </check>
+
+    <loop count="5">
+      <elt size="2" type="int"  id="GOALS" base="16"/>
+      <elt size="1" type="int"  id="SCORE" base="16"/>
+      <elt size="1" type="raw"  id="PAD"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="TERM"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="GOALS" src="GOALS"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="PAD"   src="PAD"  format="0x" display="debug"/>
+      <column id="TERM"  src="TERM" format="0x" display="debug"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <add>1</add>
+    <case src="1" dst="1ST"/><case src="2" dst="2ND"/><case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/><case src="5" dst="5TH"/>
+  </format>
+
+</hi2txt>

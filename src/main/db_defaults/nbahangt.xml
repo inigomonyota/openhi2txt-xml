@@ -1,0 +1,90 @@
+<hi2txt>
+  <table id="BEST OVERALL PLAYER">
+    <col>PLAYER</col><col>RECORD</col><col>STREAK</col><col>PTS/GAME</col><col>ALLOWED/GAME</col><col>TEAMS</col>
+    <row><cell>TURMEL</cell><cell>4-1</cell><cell>4</cell><cell>30.00</cell><cell>70.00</cell><cell>4</cell></row>
+  </table>
+  <table id="WORLD RECORDS">
+    <col>RECORD</col><col>NAME</col><col>VALUE</col>
+    <row><cell>WINSTREAK</cell><cell>DIVITA</cell><cell>2</cell></row>
+    <row><cell>POINTS IN GAME</cell><cell>TURMEL</cell><cell>10</cell></row>
+    <row><cell>ASSISTS IN GAME</cell><cell>EUGENE</cell><cell>4</cell></row>
+    <row><cell>REBOUNDS IN GAME</cell><cell>DANIEL</cell><cell>3</cell></row>
+  </table>
+  <table id="GREATEST PLAYERS (BEST WIN PERCENTAGE)">
+    <col>RANK</col><col>NAME</col><col>RECORD</col><col>PERCENTAGE</col>
+    <row><cell>1</cell><cell>TURMEL</cell><cell>4-1</cell><cell>0.800</cell></row>
+    <row><cell>2</cell><cell>JAPPLE</cell><cell>4-1</cell><cell>0.800</cell></row>
+    <row><cell>3</cell><cell>JENIFR</cell><cell>3-2</cell><cell>0.600</cell></row>
+    <row><cell>4</cell><cell>EUGENE</cell><cell>3-2</cell><cell>0.600</cell></row>
+    <row><cell>5</cell><cell>DANIEL</cell><cell>2-3</cell><cell>0.400</cell></row>
+    <row><cell>6</cell><cell>CARLTN</cell><cell>2-3</cell><cell>0.400</cell></row>
+    <row><cell>7</cell><cell>CARLOS</cell><cell>2-3</cell><cell>0.400</cell></row>
+    <row><cell>8</cell><cell>DIVITA</cell><cell>1-4</cell><cell>0.200</cell></row>
+  </table>
+  <table id="BIGGEST WINNERS (MOST GAMES WON)">
+    <col>RANK</col><col>NAME</col><col>RECORD</col><col>PERCENTAGE</col>
+    <row><cell>1</cell><cell>TURMEL</cell><cell>4-1</cell><cell>0.800</cell></row>
+    <row><cell>2</cell><cell>JAPPLE</cell><cell>4-1</cell><cell>0.800</cell></row>
+    <row><cell>3</cell><cell>JENIFR</cell><cell>3-2</cell><cell>0.600</cell></row>
+    <row><cell>4</cell><cell>EUGENE</cell><cell>3-2</cell><cell>0.600</cell></row>
+    <row><cell>5</cell><cell>DANIEL</cell><cell>2-3</cell><cell>0.400</cell></row>
+    <row><cell>6</cell><cell>CARLTN</cell><cell>2-3</cell><cell>0.400</cell></row>
+    <row><cell>7</cell><cell>CARLOS</cell><cell>2-3</cell><cell>0.400</cell></row>
+    <row><cell>8</cell><cell>DIVITA</cell><cell>1-4</cell><cell>0.200</cell></row>
+  </table>
+  <table id="BEST OFFENSIVE PLAYERS (POINTS SCORED PER GAME)">
+    <col>RANK</col><col>NAME</col><col>POINTS</col>
+    <row><cell>1</cell><cell>TURMEL</cell><cell>30.00</cell></row>
+    <row><cell>2</cell><cell>JAPPLE</cell><cell>30.00</cell></row>
+    <row><cell>3</cell><cell>JENIFR</cell><cell>30.00</cell></row>
+    <row><cell>4</cell><cell>EUGENE</cell><cell>30.00</cell></row>
+    <row><cell>5</cell><cell>DANIEL</cell><cell>30.00</cell></row>
+    <row><cell>6</cell><cell>CARLTN</cell><cell>30.00</cell></row>
+    <row><cell>7</cell><cell>CARLOS</cell><cell>30.00</cell></row>
+    <row><cell>8</cell><cell>DIVITA</cell><cell>30.00</cell></row>
+  </table>
+  <table id="BEST DEFENSIVE PLAYERS (POINTS ALLOWED PER GAME)">
+    <col>RANK</col><col>NAME</col><col>POINTS</col>
+    <row><cell>1</cell><cell>TURMEL</cell><cell>70.00</cell></row>
+    <row><cell>2</cell><cell>JAPPLE</cell><cell>70.00</cell></row>
+    <row><cell>3</cell><cell>JENIFR</cell><cell>70.00</cell></row>
+    <row><cell>4</cell><cell>EUGENE</cell><cell>70.00</cell></row>
+    <row><cell>5</cell><cell>DANIEL</cell><cell>70.00</cell></row>
+    <row><cell>6</cell><cell>CARLTN</cell><cell>70.00</cell></row>
+    <row><cell>7</cell><cell>CARLOS</cell><cell>70.00</cell></row>
+    <row><cell>8</cell><cell>DIVITA</cell><cell>70.00</cell></row>
+  </table>
+  <table id="EXPERIENCED PLAYERS (MOST GAMES PLAYED)">
+    <col>RANK</col><col>NAME</col><col>GAMES</col><col>PERCENTAGE</col>
+    <row><cell>1</cell><cell>TURMEL</cell><cell>5</cell><cell>0.800</cell></row>
+    <row><cell>2</cell><cell>JAPPLE</cell><cell>5</cell><cell>0.800</cell></row>
+    <row><cell>3</cell><cell>JENIFR</cell><cell>5</cell><cell>0.600</cell></row>
+    <row><cell>4</cell><cell>EUGENE</cell><cell>5</cell><cell>0.600</cell></row>
+    <row><cell>5</cell><cell>DANIEL</cell><cell>5</cell><cell>0.400</cell></row>
+    <row><cell>6</cell><cell>CARLTN</cell><cell>5</cell><cell>0.400</cell></row>
+    <row><cell>7</cell><cell>CARLOS</cell><cell>5</cell><cell>0.400</cell></row>
+    <row><cell>8</cell><cell>DIVITA</cell><cell>5</cell><cell>0.200</cell></row>
+  </table>
+  <table id="CURRENT WINNING STREAK (CONSECUTIVE WINS)">
+    <col>RANK</col><col>NAME</col><col>STREAK</col>
+    <row><cell>1</cell><cell>TURMEL</cell><cell>4</cell></row>
+    <row><cell>2</cell><cell>JAPPLE</cell><cell>4</cell></row>
+    <row><cell>3</cell><cell>JENIFR</cell><cell>2</cell></row>
+    <row><cell>4</cell><cell>DANIEL</cell><cell>2</cell></row>
+    <row><cell>5</cell><cell>CARLTN</cell><cell>1</cell></row>
+    <row><cell>6</cell><cell>EUGENE</cell><cell>0</cell></row>
+    <row><cell>7</cell><cell>CARLOS</cell><cell>0</cell></row>
+    <row><cell>8</cell><cell>DIVITA</cell><cell>0</cell></row>
+  </table>
+  <table id="TRIVIA MASTERS (MOST TRIVIA POINTS)">
+    <col>RANK</col><col>NAME</col><col>POINTS</col>
+    <row><cell>1</cell><cell>TURMEL</cell><cell>0</cell></row>
+    <row><cell>2</cell><cell>JAPPLE</cell><cell>0</cell></row>
+    <row><cell>3</cell><cell>JENIFR</cell><cell>0</cell></row>
+    <row><cell>4</cell><cell>EUGENE</cell><cell>0</cell></row>
+    <row><cell>5</cell><cell>DANIEL</cell><cell>0</cell></row>
+    <row><cell>6</cell><cell>CARLTN</cell><cell>0</cell></row>
+    <row><cell>7</cell><cell>CARLOS</cell><cell>0</cell></row>
+    <row><cell>8</cell><cell>DIVITA</cell><cell>0</cell></row>
+  </table>
+</hi2txt>

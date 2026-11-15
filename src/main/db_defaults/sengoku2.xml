@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<table id="RANKING">
+<col>RANK</col><col>NAME</col><col>SCORE</col>
+<row><cell>1ST</cell><cell>SNK</cell><cell>102400</cell></row>
+<row><cell>2ND</cell><cell> X </cell><cell>68040</cell></row>
+<row><cell>3RD</cell><cell>SSS</cell><cell>58000</cell></row>
+<row><cell>4TH</cell><cell>NKY</cell><cell>57000</cell></row>
+<row><cell>5TH</cell><cell>DEG</cell><cell>56000</cell></row>
+<row><cell>6TH</cell><cell>MVS</cell><cell>48000</cell></row>
+<row><cell>7TH</cell><cell>NEO</cell><cell>21800</cell></row>
+<row><cell>8TH</cell><cell>GEO</cell><cell>19500</cell></row>
+<row><cell>9TH</cell><cell>UFO</cell><cell>143</cell></row>
+<row><cell>10TH</cell><cell>CAN</cell><cell>110</cell></row>
+</table>
+</hi2txt>

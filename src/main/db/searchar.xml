@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="searchar">
+  <!--
+    Search and Rescue (searchar)
+
+    hiscore.dat ranges:
+      @:maincpu,program,437b6,50,00,1f   (80 bytes: 10 records x 8 bytes)
+      @:maincpu,program,40118,3,00,01    (3 bytes: top score mirror)
+
+    Observed .hi layout (83 bytes total):
+      10 records of 8 bytes:
+        [0x00] rank/pad (always 00)
+        [0x01-0x02] SCORE packed BCD ÷10 (2 bytes, use base="16", then x10)
+        [0x03] pad (always 00)
+        [0x04-0x06] NAME (ASCII-64, 3 bytes; A=0x01)
+        [0x07] terminator (always 1F)
+
+      trailing 3 bytes:
+        [0x50] pad (00)
+        [0x51-0x52] TOPSCORE packed BCD ÷10 (2 bytes, base="16", then x10)
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>0:437b6:50:00:1f
+                  0:40118:3:00:01</definition>
+      <definition>@:maincpu,program,437b6,50,00,1f
+                  @:maincpu,program,40118,3,00,01</definition>
+      <size>83</size>
+    </check>
+
+    <loop count="10">
+      <elt size="1" type="raw"  id="PAD0"/>
+      <elt size="2" type="int"  id="SCORE" base="16"/>
+      <elt size="1" type="raw"  id="PAD1"/>
+      <elt size="3" type="text" id="NAME" ascii-offset="64"/>
+      <elt size="1" type="raw"  id="TERM"/>
+    </loop>
+
+    <elt size="1" type="raw" id="PAD2"/>
+    <elt size="2" type="int" id="TOPSCORE" base="16"/>
+  </structure>
+
+  <output>
+    <table lines-max="10" line-ignore="SCORE:0">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" format="*10"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="*10"><multiply>10</multiply></format>
+</hi2txt>

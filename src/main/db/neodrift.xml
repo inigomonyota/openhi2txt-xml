@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<!-- Neo Drift Out (Neo Geo, saveram).
+     68000 => byte-swap="2".
+     Ranking table @ raw 0x34e, 10 records x 12 bytes:
+       [0:2]  TIME  = lap-record stored as a 60fps FRAME COUNT (big-endian after swap)
+       [2:4]  0000  padding
+       [4:7]  NAME  3 ASCII chars
+       [7:8]  00    null terminator
+       [8:12] two small unknown fields (course/car indices, 0..6 / 0..2) - not displayed
+     TIME display M'SS"CC:  M = frame d60 d60 ; SS = frame d60 %60 ; CC = frame %60 *100 D60. -->
+<structure file="saveram" byte-swap="2">
+  <check>
+    <size>65536</size>
+  </check>
+  <elt size="846" type="raw" id="HEADER"/>
+  <loop count="10">
+    <elt size="2" type="int"  id="TIME"/>
+    <elt size="2" type="raw"  id="PAD"/>
+    <elt size="3" type="text" id="NAME" byte-trunc="0x00"/>
+    <elt size="5" type="raw"  id="REST"/>
+  </loop>
+</structure>
+
+<format id="rank">
+  <case src="0" dst="1ST"/>
+  <case src="1" dst="2ND"/>
+  <case src="2" dst="3RD"/>
+  <case src="3" dst="4TH"/>
+  <case src="4" dst="5TH"/>
+  <case src="5" dst="6TH"/>
+  <case src="6" dst="7TH"/>
+  <case src="7" dst="8TH"/>
+  <case src="8" dst="9TH"/>
+  <case src="9" dst="10TH"/>
+</format>
+
+<format id="time" input-as-subcolumns-input="yes">
+  <concat>
+    <column format="d60;d60"/>
+    <txt>'</txt>
+    <column format="d60;%60;PadL20"/>
+    <txt>"</txt>
+    <column format="%60;*100;D60;PadL20"/>
+  </concat>
+</format>
+
+<output>
+  <table id="RANKING">
+    <column id="RANK" src="index" format="rank"/>
+    <column id="TIME" format="time"/>
+    <column id="NAME"/>
+  </table>
+</output>
+</hi2txt>

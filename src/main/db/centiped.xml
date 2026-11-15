@@ -2,32 +2,48 @@
 <!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
 <hi2txt>
   <!--
-    tested with mame 0.148 and related hiscore.dat
-      source: HiToText
+    Centipede (Atari, 1980)
+
+    Centipede's 8-entry table is split across two files by design:
+      - earom : ranks 1-3, saved natively by the game's EAROM
+      - .hi   : ranks 4-8, saved by the stock hiscore.dat hiscore plugin
+    The stock hiscore.dat entry is:
+        centiped: @:maincpu,program,000b,0f,10,01
+                  @:maincpu,program,0023,0f,04,12
+
+    RECOMMENDED SETUP (stock hiscore.dat):
+    Run hi2txt against BOTH files. The two structures below are rank-aligned so
+    their outputs dovetail into one correct 1-8 table with no merge step:
+        earom structure -> RANK 1-3
+        .hi (30-byte)   -> RANK 4-8 (loop start="3")
+    The game keeps its table sorted and always routes the top 3 to the EAROM and
+    ranks 4-8 to the .hi, so earom #3 >= .hi #4 always holds; the file boundary
+    is exactly the rank 3/4 boundary, so the offsets can never mis-order.
+
+    Do NOT extend hiscore.dat to dump all 8 into the .hi: its start marker would
+    then sit on the volatile rank-1 score byte, and once the #1 default (16543)
+    is beaten the EAROM restore changes that byte on boot, breaking the plugin's
+    marker match. Leave the top 3 to the EAROM.
+
+    The 48-byte .hi structure below is retained only to still read a full-dump
+    file produced by that (discouraged) extended entry; it is not needed for the
+    recommended stock setup.
   //-->
-  
-  <structure file="earom">
-    <check>
-      <!-- optional: if defined, it allows to select the good structure versus the provided file
-                     useful if multiple structures are defined but hiscore.dat not provided //-->
-      <size>64</size>
-    </check>
-    <loop count="3">
-      <elt size="3" type="int"  id="SCORE" endianness="little_endian" base="16"/>
-    </loop>
-    <loop count="3">
-      <elt size="3" type="text" id="NAME"  charset="centiped" ascii-offset="64"/>
-    </loop>
-  </structure>
+
+  <!-- full-dump .hi from the (discouraged) extended hiscore.dat: 48 bytes = all 8 -->
   <structure file=".hi">
-    <check>
-      <!-- optional: if defined and hiscore.dat provided, it allows to select the good structure versus the provided file //-->
-      <definition>0:000b:0f:10:01
-                  0:0023:0f:04:12</definition>
-      <!-- optional: if defined, it allows to select the good structure versus the provided file
-                     useful if multiple structures are defined but hiscore.dat not provided //-->
-      <size>30</size>
-    </check>
+    <check><size>48</size></check>
+    <loop count="8">
+      <elt size="3" type="int"  id="SCORE" endianness="little_endian" base="16"/>
+    </loop>
+    <loop count="8">
+      <elt size="3" type="text" id="NAME"  charset="centiped" ascii-offset="64"/>
+    </loop>
+  </structure>
+
+  <!-- RECOMMENDED: stock hiscore.dat .hi = 30 bytes, ranks 4-8 (RANK 4-8) -->
+  <structure file=".hi">
+    <check><size>30</size></check>
     <loop count="5" start="3">
       <elt size="3" type="int"  id="SCORE" endianness="little_endian" base="16"/>
     </loop>
@@ -35,15 +51,26 @@
       <elt size="3" type="text" id="NAME"  charset="centiped" ascii-offset="64"/>
     </loop>
   </structure>
-  
+
+  <!-- RECOMMENDED: native EAROM = top 3, ranks 1-3 (RANK 1-3) -->
+  <structure file="earom">
+    <check><size>64</size></check>
+    <loop count="3">
+      <elt size="3" type="int"  id="SCORE" endianness="little_endian" base="16"/>
+    </loop>
+    <loop count="3">
+      <elt size="3" type="text" id="NAME"  charset="centiped" ascii-offset="64"/>
+    </loop>
+  </structure>
+
   <output>
-    <table> <!-- line-ignore="SCORE:" -->
+    <table id="HIGH SCORES" line-ignore="SCORE:0">
       <column id="RANK" src="index" format="+1"/>
       <column id="SCORE"/>
       <column id="NAME"/>
     </table>
   </output>
-  
+
   <charset id="centiped">
     <char src="0x00" dst=" "/>
   </charset>

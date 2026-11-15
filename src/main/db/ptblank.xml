@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="point blank">
+    <!--
+      tested with mame 0.277 and related hiscore.dat
+      source: Danz83
+    //-->
+
+  <structure file=".hi">
+    <check>
+          <!-- optional: if defined and hiscore.dat provided, it allows to select the good structure versus the provided file //-->
+          <definition>@:maincpu,program,21ccd4,64,00,09</definition>
+          <!-- optional: if defined, it allows to select the good structure versus the provided file
+                         useful if multiple structures are defined but hiscore.dat not provided //-->
+          <size>100</size>
+    </check>
+    
+    <loop count="10">
+      <elt id="SCORE" type="int" size="4" endianness="big_endian" />    
+      <elt id="NAME" type="text" size="3" />
+      <elt id="COURSE" type="int" size="1" />
+      <elt id="PADDING" type="raw" size="1" />
+      <elt id="CNT" type="int" size="1" />
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK" src="index" format="+1" />
+      <column id="SCORE" src="SCORE" />
+      <column id="NAME" src="NAME" />
+      <column id="CNT" src="CNT" />
+	  <column id="COURSE" src="COURSE" format="course_mapping" />
+    </table>
+  </output>
+
+  <format id="course_mapping">
+    <replace src="0" dst="Namco" />
+    <replace src="1" dst="Beginner" />
+    <replace src="2" dst="Expert" />
+    <replace src="3" dst="Very Hard" />
+  </format>
+
+</hi2txt>

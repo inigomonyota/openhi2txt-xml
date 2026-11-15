@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+
+<!-- gground by Sega, 1988 -->
+<!-- hiscore.dat: @:maincpu,program,f07800,318,00,00 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>793</size>
+    </check>
+
+    <!-- 50 records, 8 bytes each -->
+    <loop count="50">
+      <elt size="4" type="int"  id="SCORE" base="16"/>
+      <elt size="3" type="text" id="NAME"  charset="sega_nulls"/>
+      <!-- This byte is the Linear Stage Index (0-49) -->
+      <elt size="1" type="int"  id="STAGE_INDEX"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="GREAT GAINERS">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="NAME"  src="NAME"  format="trim_right"/>
+      <!-- Logic to calculate Round-Stage from the index -->
+      <column id="ROUND-STAGE" src="STAGE_INDEX" format="calc_round_stage"/>
+      <column id="SCORE" src="SCORE" format="comma_score"/>
+    </table>
+  </output>
+
+  <!-- Translates 0-49 into 1-50 -->
+  <format id="ordinal">
+    <add>1</add>
+  </format>
+
+  <format id="trim_right">
+    <trim direction="right"> </trim>
+  </format>
+
+  <!-- Dynamic Round-Stage Calculator: (Index/10 + 1)-(Index%10 + 1) -->
+  <format id="calc_round_stage" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d10;+1"/>
+      <txt>-</txt>
+      <column format="%10;+1"/>
+    </concat>
+  </format>
+
+  <!-- Formatters for the math above -->
+  <format id="d10"><divide_trunc>10</divide_trunc></format>
+  <format id="%10"><remainder>10</remainder></format>
+  <format id="+1"><add>1</add></format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000" operator="&gt;=" format="one_comma"/>
+    <case src="1000" operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat><column format="d1000"/><txt>,</txt><column format="%1000;PadL30"/></concat>
+  </format>
+  <format id="d1000"><divide_trunc>1000</divide_trunc></format>
+  <format id="%1000"><remainder>1000</remainder></format>
+
+  <charset id="sega_nulls">
+    <char src="0x00" dst=" "/>
+  </charset>
+</hi2txt>

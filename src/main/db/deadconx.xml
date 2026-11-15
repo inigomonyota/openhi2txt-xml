@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Dead Connection">
+  <!--
+    tested with mame 0.??? and related hiscore.dat
+    structure: 89 bytes = 6 entries x 16 bytes, skip-last-bytes=7
+    per entry (16 bytes):
+      [0:4]  score, 4-byte big-endian integer (high 2 bytes always 00)
+      [4]    1 byte raw (zero)
+      [5]    round reached, 1-byte integer
+      [6:14] name, 8-byte ASCII, space-padded (TrimR)
+      [14:16] 2 bytes raw (zeros)
+    score displayed as 8 digits with leading zeros (PadL80)
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>89</size>
+    </check>
+    <loop count="6" skip-last-bytes="7">
+      <elt size="4"  type="int"  id="SCORE"/>
+      <elt size="1"  type="raw"  id="PAD"/>
+      <elt size="1"  type="int"  id="ROUND"/>
+      <elt size="8"  type="text" id="NAME"/>
+      <elt size="2"  type="raw"  id="PAD2"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORERS">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" format="PadL80"/>
+      <column id="ROUND"/>
+      <column id="NAME"  format="TrimR "/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+</hi2txt>

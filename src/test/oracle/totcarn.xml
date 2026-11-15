@@ -1,0 +1,28 @@
+<hi2txt>
+  <table id="ALL-TIME HIGH SCORES">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>484,692</cell><cell>MJT</cell></row>
+    <row><cell>2</cell><cell>434,010</cell><cell>SL!</cell></row>
+    <row><cell>3</cell><cell>418,913</cell><cell>RJR</cell></row>
+    <row><cell>4</cell><cell>366,892</cell><cell>JON</cell></row>
+    <row><cell>5</cell><cell>296,096</cell><cell>SYD</cell></row>
+    <row><cell>6</cell><cell>265,237</cell><cell>HEY</cell></row>
+    <row><cell>7</cell><cell>215,782</cell><cell>EJB</cell></row>
+    <row><cell>8</cell><cell>182,074</cell><cell>DRJ</cell></row>
+    <row><cell>9</cell><cell>146,892</cell><cell>PJS</cell></row>
+    <row><cell>10</cell><cell>100,865</cell><cell>GNP</cell></row>
+  </table>
+  <table id="TODAY'S HIGH SCORES">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>100,410</cell><cell>SL!</cell></row>
+    <row><cell>2</cell><cell>94,477</cell><cell>EPJ</cell></row>
+    <row><cell>3</cell><cell>80,486</cell><cell>LED</cell></row>
+    <row><cell>4</cell><cell>70,882</cell><cell>DAN</cell></row>
+    <row><cell>5</cell><cell>68,040</cell><cell>DJT</cell></row>
+    <row><cell>6</cell><cell>59,104</cell><cell>JPW</cell></row>
+    <row><cell>7</cell><cell>40,450</cell><cell>NED</cell></row>
+    <row><cell>8</cell><cell>38,780</cell><cell>MJT</cell></row>
+    <row><cell>9</cell><cell>28,088</cell><cell>BUY</cell></row>
+    <row><cell>10</cell><cell>16,502</cell><cell>WMS</cell></row>
+  </table>
+</hi2txt>

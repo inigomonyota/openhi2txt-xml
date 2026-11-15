@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="TOP 10">
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>SEPARATOR</col>
+    <row><cell>1ST</cell><cell>$100,000</cell><cell>KID</cell><cell>0x3F</cell></row>
+    <row><cell>2ND</cell><cell>$90,000</cell><cell>SAM</cell><cell>0x3F</cell></row>
+    <row><cell>3RD</cell><cell>$80,000</cell><cell>PAT</cell><cell>0x3F</cell></row>
+    <row><cell>4TH</cell><cell>$70,000</cell><cell>JIM</cell><cell>0x3F</cell></row>
+    <row><cell>5TH</cell><cell>$60,000</cell><cell>DOC</cell><cell>0x3F</cell></row>
+    <row><cell>6TH</cell><cell>$50,000</cell><cell>BOB</cell><cell>0x3F</cell></row>
+    <row><cell>7TH</cell><cell>$40,000</cell><cell>KIT</cell><cell>0x3F</cell></row>
+    <row><cell>8TH</cell><cell>$30,000</cell><cell>ROY</cell><cell>0x3F</cell></row>
+    <row><cell>9TH</cell><cell>$20,000</cell><cell>BUL</cell><cell>0x3F</cell></row>
+    <row><cell>10TH</cell><cell>$18,790</cell><cell>CEM</cell><cell>0x3F</cell></row>
+  </table>
+</hi2txt>

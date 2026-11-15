@@ -1,0 +1,188 @@
+<hi2txt>
+  <table id="STREAK">
+    <col>RANK</col><col>NAME</col><col>STREAK</col>
+    <row><cell>1</cell><cell>ROB</cell><cell>11</cell></row>
+    <row><cell>2</cell><cell>ROB</cell><cell>10</cell></row>
+    <row><cell>3</cell><cell>ROB</cell><cell>09</cell></row>
+    <row><cell>4</cell><cell>ROB</cell><cell>08</cell></row>
+    <row><cell>5</cell><cell>ROB</cell><cell>07</cell></row>
+    <row><cell>6</cell><cell>ROB</cell><cell>06</cell></row>
+    <row><cell>7</cell><cell>ROB</cell><cell>05</cell></row>
+    <row><cell>8</cell><cell>ROB</cell><cell>04</cell></row>
+    <row><cell>9</cell><cell>ROB</cell><cell>03</cell></row>
+    <row><cell>10</cell><cell>ROB</cell><cell>02</cell></row>
+  </table>
+  <table id="SPEED">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1</cell><cell>MB </cell><cell>10.00</cell></row>
+    <row><cell>2</cell><cell>MB </cell><cell>15.00</cell></row>
+    <row><cell>3</cell><cell>MB </cell><cell>20.00</cell></row>
+    <row><cell>4</cell><cell>MB </cell><cell>25.00</cell></row>
+    <row><cell>5</cell><cell>MB </cell><cell>30.00</cell></row>
+    <row><cell>6</cell><cell>MB </cell><cell>35.00</cell></row>
+    <row><cell>7</cell><cell>MB </cell><cell>40.00</cell></row>
+    <row><cell>8</cell><cell>MB </cell><cell>45.00</cell></row>
+    <row><cell>9</cell><cell>MB </cell><cell>50.00</cell></row>
+    <row><cell>10</cell><cell>MB </cell><cell>55.00</cell></row>
+  </table>
+  <table id="FULGORE HITS">
+    <col>RANK</col><col>NAME</col><col>HITS</col>
+    <row><cell>1</cell><cell>KEV</cell><cell>15</cell></row>
+    <row><cell>2</cell><cell>KEV</cell><cell>13</cell></row>
+    <row><cell>3</cell><cell>KEV</cell><cell>11</cell></row>
+    <row><cell>4</cell><cell>KEV</cell><cell>09</cell></row>
+    <row><cell>5</cell><cell>KEV</cell><cell>07</cell></row>
+  </table>
+  <table id="FULGORE DAMAGE">
+    <col>RANK</col><col>NAME</col><col>DAMAGE</col>
+    <row><cell>1</cell><cell>KEV</cell><cell>35</cell></row>
+    <row><cell>2</cell><cell>KEV</cell><cell>30</cell></row>
+    <row><cell>3</cell><cell>KEV</cell><cell>25</cell></row>
+    <row><cell>4</cell><cell>KEV</cell><cell>20</cell></row>
+    <row><cell>5</cell><cell>KEV</cell><cell>15</cell></row>
+  </table>
+  <table id="COMBO HITS">
+    <col>RANK</col><col>NAME</col><col>HITS</col>
+    <row><cell>1</cell><cell>CIT</cell><cell>15</cell></row>
+    <row><cell>2</cell><cell>CIT</cell><cell>13</cell></row>
+    <row><cell>3</cell><cell>CIT</cell><cell>11</cell></row>
+    <row><cell>4</cell><cell>CIT</cell><cell>09</cell></row>
+    <row><cell>5</cell><cell>CIT</cell><cell>07</cell></row>
+  </table>
+  <table id="COMBO DAMAGE">
+    <col>RANK</col><col>NAME</col><col>DAMAGE</col>
+    <row><cell>1</cell><cell>CIT</cell><cell>35</cell></row>
+    <row><cell>2</cell><cell>CIT</cell><cell>30</cell></row>
+    <row><cell>3</cell><cell>CIT</cell><cell>25</cell></row>
+    <row><cell>4</cell><cell>CIT</cell><cell>20</cell></row>
+    <row><cell>5</cell><cell>CIT</cell><cell>15</cell></row>
+  </table>
+  <table id="ORCHID HITS">
+    <col>RANK</col><col>NAME</col><col>HITS</col>
+    <row><cell>1</cell><cell>CRS</cell><cell>15</cell></row>
+    <row><cell>2</cell><cell>CRS</cell><cell>13</cell></row>
+    <row><cell>3</cell><cell>CRS</cell><cell>11</cell></row>
+    <row><cell>4</cell><cell>CRS</cell><cell>09</cell></row>
+    <row><cell>5</cell><cell>CRS</cell><cell>07</cell></row>
+  </table>
+  <table id="ORCHID DAMAGE">
+    <col>RANK</col><col>NAME</col><col>DAMAGE</col>
+    <row><cell>1</cell><cell>CRS</cell><cell>35</cell></row>
+    <row><cell>2</cell><cell>CRS</cell><cell>30</cell></row>
+    <row><cell>3</cell><cell>CRS</cell><cell>25</cell></row>
+    <row><cell>4</cell><cell>CRS</cell><cell>20</cell></row>
+    <row><cell>5</cell><cell>CRS</cell><cell>15</cell></row>
+  </table>
+  <table id="JAGO HITS">
+    <col>RANK</col><col>NAME</col><col>HITS</col>
+    <row><cell>1</cell><cell>RBN</cell><cell>15</cell></row>
+    <row><cell>2</cell><cell>RBN</cell><cell>13</cell></row>
+    <row><cell>3</cell><cell>RBN</cell><cell>11</cell></row>
+    <row><cell>4</cell><cell>RBN</cell><cell>09</cell></row>
+    <row><cell>5</cell><cell>RBN</cell><cell>07</cell></row>
+  </table>
+  <table id="JAGO DAMAGE">
+    <col>RANK</col><col>NAME</col><col>DAMAGE</col>
+    <row><cell>1</cell><cell>RBN</cell><cell>35</cell></row>
+    <row><cell>2</cell><cell>RBN</cell><cell>30</cell></row>
+    <row><cell>3</cell><cell>RBN</cell><cell>25</cell></row>
+    <row><cell>4</cell><cell>RBN</cell><cell>20</cell></row>
+    <row><cell>5</cell><cell>RBN</cell><cell>15</cell></row>
+  </table>
+  <table id="GLACIUS HITS">
+    <col>RANK</col><col>NAME</col><col>HITS</col>
+    <row><cell>1</cell><cell>LEE</cell><cell>15</cell></row>
+    <row><cell>2</cell><cell>LEE</cell><cell>13</cell></row>
+    <row><cell>3</cell><cell>LEE</cell><cell>11</cell></row>
+    <row><cell>4</cell><cell>LEE</cell><cell>09</cell></row>
+    <row><cell>5</cell><cell>LEE</cell><cell>07</cell></row>
+  </table>
+  <table id="GLACIUS DAMAGE">
+    <col>RANK</col><col>NAME</col><col>DAMAGE</col>
+    <row><cell>1</cell><cell>LEE</cell><cell>35</cell></row>
+    <row><cell>2</cell><cell>LEE</cell><cell>30</cell></row>
+    <row><cell>3</cell><cell>LEE</cell><cell>25</cell></row>
+    <row><cell>4</cell><cell>LEE</cell><cell>20</cell></row>
+    <row><cell>5</cell><cell>LEE</cell><cell>15</cell></row>
+  </table>
+  <table id="TUSK HITS">
+    <col>RANK</col><col>NAME</col><col>HITS</col>
+    <row><cell>1</cell><cell>DON</cell><cell>15</cell></row>
+    <row><cell>2</cell><cell>DON</cell><cell>13</cell></row>
+    <row><cell>3</cell><cell>DON</cell><cell>11</cell></row>
+    <row><cell>4</cell><cell>DON</cell><cell>09</cell></row>
+    <row><cell>5</cell><cell>DON</cell><cell>07</cell></row>
+  </table>
+  <table id="TUSK DAMAGE">
+    <col>RANK</col><col>NAME</col><col>DAMAGE</col>
+    <row><cell>1</cell><cell>DON</cell><cell>35</cell></row>
+    <row><cell>2</cell><cell>DON</cell><cell>30</cell></row>
+    <row><cell>3</cell><cell>DON</cell><cell>25</cell></row>
+    <row><cell>4</cell><cell>DON</cell><cell>20</cell></row>
+    <row><cell>5</cell><cell>DON</cell><cell>15</cell></row>
+  </table>
+  <table id="SPINAL HITS">
+    <col>RANK</col><col>NAME</col><col>HITS</col>
+    <row><cell>1</cell><cell>PHL</cell><cell>15</cell></row>
+    <row><cell>2</cell><cell>PHL</cell><cell>13</cell></row>
+    <row><cell>3</cell><cell>PHL</cell><cell>11</cell></row>
+    <row><cell>4</cell><cell>PHL</cell><cell>09</cell></row>
+    <row><cell>5</cell><cell>PHL</cell><cell>07</cell></row>
+  </table>
+  <table id="SPINAL DAMAGE">
+    <col>RANK</col><col>NAME</col><col>DAMAGE</col>
+    <row><cell>1</cell><cell>PHL</cell><cell>35</cell></row>
+    <row><cell>2</cell><cell>PHL</cell><cell>30</cell></row>
+    <row><cell>3</cell><cell>PHL</cell><cell>25</cell></row>
+    <row><cell>4</cell><cell>PHL</cell><cell>20</cell></row>
+    <row><cell>5</cell><cell>PHL</cell><cell>15</cell></row>
+  </table>
+  <table id="KIM WU HITS">
+    <col>RANK</col><col>NAME</col><col>HITS</col>
+    <row><cell>1</cell><cell>TW </cell><cell>15</cell></row>
+    <row><cell>2</cell><cell>TW </cell><cell>13</cell></row>
+    <row><cell>3</cell><cell>TW </cell><cell>11</cell></row>
+    <row><cell>4</cell><cell>TW </cell><cell>09</cell></row>
+    <row><cell>5</cell><cell>TW </cell><cell>07</cell></row>
+  </table>
+  <table id="KIM WU DAMAGE">
+    <col>RANK</col><col>NAME</col><col>DAMAGE</col>
+    <row><cell>1</cell><cell>TW </cell><cell>35</cell></row>
+    <row><cell>2</cell><cell>TW </cell><cell>30</cell></row>
+    <row><cell>3</cell><cell>TW </cell><cell>25</cell></row>
+    <row><cell>4</cell><cell>TW </cell><cell>20</cell></row>
+    <row><cell>5</cell><cell>TW </cell><cell>15</cell></row>
+  </table>
+  <table id="SABREWULF HITS">
+    <col>RANK</col><col>NAME</col><col>HITS</col>
+    <row><cell>1</cell><cell>HUW</cell><cell>15</cell></row>
+    <row><cell>2</cell><cell>HUW</cell><cell>13</cell></row>
+    <row><cell>3</cell><cell>HUW</cell><cell>11</cell></row>
+    <row><cell>4</cell><cell>HUW</cell><cell>09</cell></row>
+    <row><cell>5</cell><cell>HUW</cell><cell>07</cell></row>
+  </table>
+  <table id="SABREWULF DAMAGE">
+    <col>RANK</col><col>NAME</col><col>DAMAGE</col>
+    <row><cell>1</cell><cell>HUW</cell><cell>35</cell></row>
+    <row><cell>2</cell><cell>HUW</cell><cell>30</cell></row>
+    <row><cell>3</cell><cell>HUW</cell><cell>25</cell></row>
+    <row><cell>4</cell><cell>HUW</cell><cell>20</cell></row>
+    <row><cell>5</cell><cell>HUW</cell><cell>15</cell></row>
+  </table>
+  <table id="MAYA HITS">
+    <col>RANK</col><col>NAME</col><col>HITS</col>
+    <row><cell>1</cell><cell>GAZ</cell><cell>15</cell></row>
+    <row><cell>2</cell><cell>GAZ</cell><cell>13</cell></row>
+    <row><cell>3</cell><cell>GAZ</cell><cell>11</cell></row>
+    <row><cell>4</cell><cell>GAZ</cell><cell>09</cell></row>
+    <row><cell>5</cell><cell>GAZ</cell><cell>07</cell></row>
+  </table>
+  <table id="MAYA DAMAGE">
+    <col>RANK</col><col>NAME</col><col>DAMAGE</col>
+    <row><cell>1</cell><cell>GAZ</cell><cell>35</cell></row>
+    <row><cell>2</cell><cell>GAZ</cell><cell>30</cell></row>
+    <row><cell>3</cell><cell>GAZ</cell><cell>25</cell></row>
+    <row><cell>4</cell><cell>GAZ</cell><cell>20</cell></row>
+    <row><cell>5</cell><cell>GAZ</cell><cell>15</cell></row>
+  </table>
+</hi2txt>

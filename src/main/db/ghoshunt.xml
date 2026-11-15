@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>96</size>
+    </check>
+
+    <!-- 8 scores, 32-bit little-endian -->
+    <loop count="8">
+      <elt size="4" type="int" id="SCORE" endianness="little_endian"/>
+    </loop>
+
+    <!-- 8 ticket counts, 32-bit little-endian -->
+    <loop count="8">
+      <elt size="4" type="int" id="TICKETS" endianness="little_endian"/>
+    </loop>
+
+    <!-- 8 names, 3 ASCII characters followed by FF -->
+    <loop count="8">
+      <elt size="4" type="text" id="NAME" byte-trunc="0xFF"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORES" lines-max="6">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="SCORE"/>
+      <column id="TICKETS"/>
+    </table>
+  </output>
+</hi2txt>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Dead Angle">
+  <!--
+    tested with mame 0.??? and related hiscore.dat
+    structure: 190 bytes = 10 entries x 19 bytes (exact fit)
+    per entry (19 bytes):
+      [0:2]  score, 2-byte little-endian integer
+      [2:4]  2 bytes raw (zeros)
+      [4]    1 byte raw (loop/difficulty counter)
+      [5]    1 byte raw (zero)
+      [6]    1 byte raw (0x64=100, always)
+      [7]    1 byte raw (zero)
+      [8:18] name, 10-byte ASCII, null-terminated (default = "* * *\0\0\0\0\0")
+      [18]   1 byte raw (zero; 0x2A on last entry)
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>190</size>
+    </check>
+    <loop count="10">
+      <elt size="2"  type="int"  id="SCORE" endianness="little_endian"/>
+      <elt size="6"  type="raw"  id="PAD"/>
+      <elt size="10" type="text" id="NAME"/>
+      <elt size="1"  type="raw"  id="PAD2"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+</hi2txt>

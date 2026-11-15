@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Art of Fighting 2">
+  <!--
+    Neo Geo saveram, byte-swap=2 (verified: swapped stream gives "BACKUP RAM OK !"
+    AND clean names/scores; NB Neo Geo is usually swap=2 but always confirm).
+    Four contiguous tables @0x330 (16B header incl. duplicate rank-1 score @0x32c),
+    each 5 x 8B: [SCORE:4 BCD][NAME:4 ASCII 3+space].
+      file order: PLAYER VS COM TOTAL @0x330, PLAYER VS COM TODAY @0x358,
+                  P1 VS P2 TODAY @0x380, P1 VS P2 TOTAL @0x3a8.
+    NAME plain ASCII incl digits and '-' (I-N, 0x2d) - no charset needed; trailing space TrimR.
+    PLAYER-VS-COM SCORE = BCD as-is. P1-VS-P2 SCORE = "BEAT BY {BCD}" (0x10 BCD = 10).
+  //-->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+    <elt size="816" type="raw" id="HEADER"/>
+    <loop count="5">
+      <elt size="4" type="int"  id="PVCT_SCORE" base="16"/>
+      <elt size="4" type="text" id="PVCT_NAME"/>
+    </loop>
+    <loop count="5">
+      <elt size="4" type="int"  id="PVCD_SCORE" base="16"/>
+      <elt size="4" type="text" id="PVCD_NAME"/>
+    </loop>
+    <loop count="5">
+      <elt size="4" type="int"  id="P2D_VAL" base="16"/>
+      <elt size="4" type="text" id="P2D_NAME"/>
+    </loop>
+    <loop count="5">
+      <elt size="4" type="int"  id="P2T_VAL" base="16"/>
+      <elt size="4" type="text" id="P2T_NAME"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="PLAYER VS COM TODAY'S RANKING">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="PVCD_SCORE"/>
+      <column id="NAME"  src="PVCD_NAME" format="TrimR "/>
+    </table>
+    <table id="PLAYER VS COM TOTAL RANKING">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="PVCT_SCORE"/>
+      <column id="NAME"  src="PVCT_NAME" format="TrimR "/>
+    </table>
+    <table id="P1 VS P2 TODAY'S RANKING">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="P2D_VAL" format="beat"/>
+      <column id="NAME"  src="P2D_NAME" format="TrimR "/>
+    </table>
+    <table id="P1 VS P2 TOTAL RANKING">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="P2T_VAL" format="beat"/>
+      <column id="NAME"  src="P2T_NAME" format="TrimR "/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <add>1</add>
+    <case src="1" dst="1ST"/><case src="2" dst="2ND"/><case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/><case src="5" dst="5TH"/>
+  </format>
+  <format id="beat"><prefix>BEAT BY </prefix></format>
+</hi2txt>

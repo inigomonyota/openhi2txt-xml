@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<!-- Robo Army (Neo Geo, saveram). 68000 => byte-swap="2".
+     BEST PLAYERS table @ raw 0x3a7, 10 records x 8 bytes:
+       [0:2] SCORE  2-byte packed BCD, stored /10  (displayed value = BCD * 10)
+       [2:4] SEED   2-byte counter/seed (not displayed)
+       [4:7] NAME   3 chars, A=0 (ascii-offset 65); default AAA = 00 00 00
+       [7]   padding
+     Rank 1 labelled "TOP", then 2ND..10TH.
+     NOTE: name encoding A=0 inferred from the all-AAA default; verify with a played name. -->
+<structure file="saveram" byte-swap="2">
+  <check>
+    <size>65536</size>
+  </check>
+  <elt size="935" type="raw" id="HEADER"/>
+  <loop count="10">
+    <elt size="2" type="int"  id="SCORE" base="16"/>
+    <elt size="2" type="raw"  id="SEED"/>
+    <elt size="3" type="text" id="NAME" ascii-offset="65"/>
+    <elt size="1" type="raw"  id="PAD"/>
+  </loop>
+</structure>
+
+<format id="rank">
+  <case src="0" dst="TOP"/>
+  <case src="1" dst="2ND"/>
+  <case src="2" dst="3RD"/>
+  <case src="3" dst="4TH"/>
+  <case src="4" dst="5TH"/>
+  <case src="5" dst="6TH"/>
+  <case src="6" dst="7TH"/>
+  <case src="7" dst="8TH"/>
+  <case src="8" dst="9TH"/>
+  <case src="9" dst="10TH"/>
+</format>
+
+<output>
+  <table id="BEST PLAYERS">
+    <column id="RANK"  src="index" format="rank"/>
+    <column id="NAME"/>
+    <column id="SCORE" format="*10"/>
+  </table>
+</output>
+</hi2txt>

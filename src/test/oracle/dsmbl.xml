@@ -54,7 +54,7 @@
   </table>
   <table id="TODAYS TOP SCORES">
     <col>TODAYS RANK</col><col>TODAYS LOCAL RANK</col><col>TODAYS SCORE</col><col>TODAYS NAME</col><col>TODAYS STAGE</col><col>TODAYS CONTINUE</col><col>TODAYS CHARACTER</col><col>TODAYS PLAYER</col><col>TODAYS UNKNOWN</col><col>TODAYS UNKNOWN2</col>
-    <row><cell>1</cell><cell>1</cell><cell>100000000</cell><cell>MRM</cell><cell>ST 2-2 boss</cell><cell>1</cell><cell>WINDIA</cell><cell>P1</cell><cell>0x00000000</cell><cell>0x000000</cell></row>
+    <row><cell>1</cell><cell>1</cell><cell>100000000</cell><cell>MRM</cell><cell>ST 2-2</cell><cell>0</cell><cell>WINDIA</cell><cell>P1</cell><cell>0x00000000</cell><cell>0x000000</cell></row>
     <row><cell>2</cell><cell>2</cell><cell>9000000</cell><cell>IID</cell><cell>ST 2-2</cell><cell>0</cell><cell>WINDIA</cell><cell>P1</cell><cell>0x00000000</cell><cell>0x000000</cell></row>
     <row><cell>3</cell><cell>3</cell><cell>8000000</cell><cell>TYM</cell><cell>ST 2-1</cell><cell>0</cell><cell>WINDIA</cell><cell>P1</cell><cell>0x00000000</cell><cell>0x000000</cell></row>
     <row><cell>4</cell><cell>4</cell><cell>7000000</cell><cell>HJO</cell><cell>ST 2-1</cell><cell>0</cell><cell>WINDIA</cell><cell>P2</cell><cell>0x00000000</cell><cell>0x000000</cell></row>
@@ -103,6 +103,6 @@
     <row><cell>47</cell><cell>7</cell><cell>4000000</cell><cell>KRK</cell><cell>ST 2-2</cell><cell>0</cell><cell>SAKURA</cell><cell>P2</cell><cell>0x00000000</cell><cell>0x000000</cell></row>
     <row><cell>48</cell><cell>8</cell><cell>3000000</cell><cell>FKS</cell><cell>ST 2-1</cell><cell>0</cell><cell>SAKURA</cell><cell>P2</cell><cell>0x00000000</cell><cell>0x000000</cell></row>
     <row><cell>49</cell><cell>9</cell><cell>2000000</cell><cell>NGS</cell><cell>ST 2-1</cell><cell>0</cell><cell>SAKURA</cell><cell>P1</cell><cell>0x00000000</cell><cell>0x000000</cell></row>
-    <row><cell>50</cell><cell>10</cell><cell>1000000</cell><cell>TTM</cell><cell>ST 1-2</cell><cell>0</cell><cell>SAKURA</cell><cell>P1</cell><cell>0x00000000</cell><cell>0x000000</cell></row>
+    <row><cell>50</cell><cell>10</cell><cell>1070404</cell><cell>EMZ</cell><cell>ST 3-2 boss</cell><cell>0</cell><cell>SAKURA</cell><cell>P1</cell><cell>0x01000905</cell><cell>0x000000</cell></row>
   </table>
 </hi2txt>

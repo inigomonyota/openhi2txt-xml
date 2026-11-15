@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Marble Madness II (prototype)">
+  <!--
+    Marble Madness II (prototype) - Atari Games, 1991. 68000, BIG-ENDIAN.
+    No stock hiscore.dat entry existed; the persistent eeprom stores the table
+    in Atari's scrambled form (not cleanly decodable - 6 of 20 scores are not
+    present as plain bytes and the high bytes are transformed). The game does,
+    however, de-scramble the eeprom at boot into a plain WORK-RAM table that
+    the attract screen reads. This definition reads a .hi captured by a new
+    hiscore.dat entry made of TWO regions:
+      region1 @:maincpu,program,7f8156,64  (100 bytes) - LIVE scores
+         HIGH ROLLERS      : 10 x 5-byte records [ score 3 BE ][ 2 trailer ]
+         KING OF THE MOUNTAIN : 10 x 5-byte records, same format (contiguous)
+      region2 @:maincpu,program,0113fc,a0  (160 bytes) - names (ROM default
+         table, which supplies the fixed initials; scores there are defaults):
+         20 x 8-byte records [ score 4 BE ][ name 3 ascii ][ 00 ]
+    Scores are plain big-endian ints (0x03A980 = 240000). Names are plain ASCII
+    (2-3 chars, space padded). Verified byte-for-byte against the live HIGH
+    ROLLERS / KING OF THE MOUNTAIN attract screens. Authored by the HI2TXT project.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,7f8156,64,01,01
+                  @:maincpu,program,0113fc,a0,00,00</definition>
+      <size>260</size>
+    </check>
+
+    <!-- region1: live scores -->
+    <loop count="10">
+      <elt size="3" type="int" id="HR_SCORE"/>
+      <elt size="2" type="raw" id="HR_TRAIL"/>
+    </loop>
+    <loop count="10">
+      <elt size="3" type="int" id="KM_SCORE"/>
+      <elt size="2" type="raw" id="KM_TRAIL"/>
+    </loop>
+
+    <!-- region2: names (from ROM default table) -->
+    <loop count="10">
+      <elt size="4" type="raw"  id="HR_DEFSCORE"/>
+      <elt size="3" type="text" id="HR_NAME"/>
+      <elt size="1" type="raw"  id="HR_NULL"/>
+    </loop>
+    <loop count="10">
+      <elt size="4" type="raw"  id="KM_DEFSCORE"/>
+      <elt size="3" type="text" id="KM_NAME"/>
+      <elt size="1" type="raw"  id="KM_NULL"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="HIGH ROLLERS">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="HR_NAME"/>
+      <column id="SCORE" src="HR_SCORE"/>
+      <column id="TRAIL" src="HR_TRAIL" format="hexadecimal_string" display="debug"/>
+    </table>
+    <table id="KING OF THE MOUNTAIN">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="KM_NAME"/>
+      <column id="SCORE" src="KM_SCORE"/>
+      <column id="TRAIL" src="KM_TRAIL" format="hexadecimal_string" display="debug"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+</hi2txt>

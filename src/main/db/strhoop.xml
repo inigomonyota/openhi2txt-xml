@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Street Hoop">
+  <!--
+    Neo Geo saveram, byte-swap=2 ("BACKUP RAM OK !" confirmed).
+    BEST SCORE @ 0x323, 5 x 8B: [NAME:3][pad:2][SCORE:2 BCD][COUNTRY:1].
+    NAME A=0 (ascii-offset=65: D=0x03, E=0x04) + charset '.'=0x1c.
+    SCORE 2-byte BCD (0x0060 -> "0060") via PadL40.
+    COUNTRY 1-byte id (per-game, partial): 0=JAPAN 1=FRANCE 2=USA 6=SPAIN 8=GREAT BRITAIN.
+  //-->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+    <elt size="803" type="raw" id="HEADER"/>
+    <loop count="5">
+      <elt size="3" type="text" id="NAME"    ascii-offset="65" charset="csHoop"/>
+      <elt size="2" type="raw"  id="PAD"/>
+      <elt size="2" type="int"  id="SCORE"   base="16"/>
+      <elt size="1" type="int"  id="COUNTRY"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST SCORE">
+      <column id="RANK"    src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="SCORE"   format="PadL40"/>
+      <column id="COUNTRY" format="country"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="country">
+    <case src="0" dst="JAPAN"/>
+    <case src="1" dst="FRANCE"/>
+    <case src="2" dst="USA"/>
+    <case src="6" dst="SPAIN"/>
+    <case src="8" dst="GREAT BRITAIN"/>
+  </format>
+
+  <charset id="csHoop">
+    <char src="0x1c" dst="."/>
+  </charset>
+
+</hi2txt>

@@ -1,0 +1,15 @@
+<hi2txt>
+  <table>
+    <col>RANK</col><col>NAME</col><col>SCORE</col><col>LEVEL</col>
+    <row><cell>1</cell><cell>NAM</cell><cell>50000</cell><cell>INSANE</cell></row>
+    <row><cell>2</cell><cell>PAC</cell><cell>45000</cell><cell>ADVANCED</cell></row>
+    <row><cell>3</cell><cell>GON</cell><cell>40000</cell><cell>BEGINNER</cell></row>
+    <row><cell>4</cell><cell>UPS</cell><cell>35000</cell><cell>PRACTICE</cell></row>
+    <row><cell>5</cell><cell>OYR</cell><cell>30000</cell><cell>INSANE</cell></row>
+    <row><cell>6</cell><cell>SYS</cell><cell>25000</cell><cell>ADVANCED</cell></row>
+    <row><cell>7</cell><cell>IPP</cell><cell>21165</cell><cell>PRACTICE</cell></row>
+    <row><cell>8</cell><cell>GUN</cell><cell>20000</cell><cell>BEGINNER</cell></row>
+    <row><cell>9</cell><cell>ARM</cell><cell>15000</cell><cell>PRACTICE</cell></row>
+    <row><cell>10</cell><cell>LEI</cell><cell>10000</cell><cell>PRACTICE</cell></row>
+  </table>
+</hi2txt>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  Uridium (Commodore 64, Hewson 1986) - "HALL OF FAME" board.
+
+  Source: C64 main RAM. The Hall of Fame is drawn from a list of fixed-width
+  print records (22 bytes / 0x16 stride each). Every record begins with the
+  constant print-control byte 0x28 and carries a 3-char NAME and a 3-byte
+  big-endian packed BCD score:
+
+    per 22-byte record (offset 0 = the 0x28 that starts the printed line):
+      [0]     0x28   print-control (CONSTANT - used as the plugin mem-check byte)
+      [1-4]   ASCII "0000" scratch
+      [5-9]   flags / colour scratch
+      [10]    0x30   name-field pad (always "0")
+      [11-13] NAME   3 chars in Uridium's packed custom charset (see below)
+      [14-15] 0xFF 0x00  line terminator
+      [16-18] SCORE  3-byte big-endian packed BCD (01 20 00 = 12000)
+      [19-20] screen X / Y of the NEXT line
+      [21]    rank / colour index of the NEXT line
+
+  Custom charset: this font is packed so that '0'..'9' occupy 0x30..0x39 and the
+  letters continue straight on with NO gap: A=0x3a, B=0x3b ... Z=0x53. So the
+  rank-1 initials "AEB" are stored as 3a 3e 3b. Empty name slots hold 0x30
+  ("0"), mapped here to blank so unfilled ranks print no name (matches screen).
+
+  The capture region begins at $35F3 (the 0x28 of the score-header print line,
+  the record immediately before rank 1) so that:
+    * the region STARTS on the constant 0x28  (mem-check c_start = 0x28), and
+    * frame k's NAME + score-at-offset-16 are exactly rank (k+1)'s row:
+        frame0 @$35F3 -> "AEB" / $3603 = 12000 (rank 1) ... frame7 = 5000 (rank 8)
+  The region ends at $36AC on the constant 0xFF line-terminator (c_end = 0xFF).
+  Total region = $35F3..$36AC = 186 bytes (0xBA). hiscore.dat:
+     @:maincpu,program,35f3,ba,28,ff
+
+  Both mem-check bytes (0x28 start, 0xFF end) are structural constants, so the
+  check no longer depends on the #1 score's magnitude.
+
+  Verified byte-for-byte against snap\c64\0000.png: 12000/AEB, 11000, 10000,
+  9000, 8000, 7000, 6000, 5000.
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>186</size>
+    </check>
+    <loop count="8">
+      <elt size="10" type="raw"  id="PADA"/>
+      <elt size="1"  type="raw"  id="PADNAME"/>
+      <elt size="3"  type="text" id="NAME" charset="uridium_font"/>
+      <elt size="2"  type="raw"  id="PADTERM"/>
+      <elt size="3"  type="int"  id="SCORE" base="16"/>
+      <elt size="3"  type="raw"  id="PADB"/>
+    </loop>
+    <elt size="10" type="raw" id="PADEND"/>
+  </structure>
+
+  <output>
+    <table id="HALL OF FAME">
+      <column id="RANK"  src="index" format="rank_dot"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+  <!-- row index (0..7) -> "1." .. "8." to match the on-screen numbering -->
+  <format id="rank_dot">
+    <case src="0" operator="=" dst="1."/>
+    <case src="1" operator="=" dst="2."/>
+    <case src="2" operator="=" dst="3."/>
+    <case src="3" operator="=" dst="4."/>
+    <case src="4" operator="=" dst="5."/>
+    <case src="5" operator="=" dst="6."/>
+    <case src="6" operator="=" dst="7."/>
+    <case src="7" operator="=" dst="8."/>
+  </format>
+
+  <!-- Uridium packed font: digits 0x30-0x39, letters run on A=0x3a .. Z=0x53.
+       0x30 maps to blank so empty name slots print nothing. -->
+  <charset id="uridium_font">
+    <char src="0x30" dst=""/>
+    <char src="0x31" dst="1"/>
+    <char src="0x32" dst="2"/>
+    <char src="0x33" dst="3"/>
+    <char src="0x34" dst="4"/>
+    <char src="0x35" dst="5"/>
+    <char src="0x36" dst="6"/>
+    <char src="0x37" dst="7"/>
+    <char src="0x38" dst="8"/>
+    <char src="0x39" dst="9"/>
+    <char src="0x3a" dst="A"/>
+    <char src="0x3b" dst="B"/>
+    <char src="0x3c" dst="C"/>
+    <char src="0x3d" dst="D"/>
+    <char src="0x3e" dst="E"/>
+    <char src="0x3f" dst="F"/>
+    <char src="0x40" dst="G"/>
+    <char src="0x41" dst="H"/>
+    <char src="0x42" dst="I"/>
+    <char src="0x43" dst="J"/>
+    <char src="0x44" dst="K"/>
+    <char src="0x45" dst="L"/>
+    <char src="0x46" dst="M"/>
+    <char src="0x47" dst="N"/>
+    <char src="0x48" dst="O"/>
+    <char src="0x49" dst="P"/>
+    <char src="0x4a" dst="Q"/>
+    <char src="0x4b" dst="R"/>
+    <char src="0x4c" dst="S"/>
+    <char src="0x4d" dst="T"/>
+    <char src="0x4e" dst="U"/>
+    <char src="0x4f" dst="V"/>
+    <char src="0x50" dst="W"/>
+    <char src="0x51" dst="X"/>
+    <char src="0x52" dst="Y"/>
+    <char src="0x53" dst="Z"/>
+  </charset>
+
+</hi2txt>

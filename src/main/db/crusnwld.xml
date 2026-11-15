@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Cruis'n World">
+  <!--
+    Cruis'n World (crusnwld) - Midway, 1996 (midvunit.cpp / V-Unit hardware).
+    Like Cruis'n USA, the GOOD TIMES best-times boards persist natively to CMOS,
+    saved by MAME as nvram\crusnwld\nvram (32768 bytes). One board PER COURSE
+    (14 courses) plus a final overall cross-country ("OVERALL") board: 15 boards.
+    Proven by matching stored values to the on-screen boards (e.g. Japan #1 ELP
+    01:54:70, #10 YOU 02:00:76; overall #1 DRJ 30:33:40, #10 YOU 40:19:81).
+
+    Boards begin at offset 0x0fe0, back-to-back, each 10 records x 0x20 (32)
+    bytes => 320 bytes per board, 15 boards = 4800 bytes (ends at 0x22a0 where
+    the 0xff fill begins). Each 32-byte record:
+      [0..11]  leading zeros + a redundant (tick>>8) copy -> skipped
+      [12..15] best time: 32-bit little-endian tick count @ ~55 Hz (overall
+               needs 3 bytes; byte 15 is always 0 -> safe to read 4)
+      [16..18] 3 initials, plain ASCII, one byte each (e.g. 45 4c 50 = "ELP")
+      [19]     char-count byte (0x03); [20..31] cascading redundant copies -> skipped
+
+    Displayed time = trunc(tick * 20 / 11) centiseconds, shown as MM:SS:CC
+    (verified against every snapshot). Course boards carry identical factory
+    defaults where two courses share one default table (Japan/Germany,
+    England/Mexico, Africa/France); titles follow the snapshot subtitles. The
+    15th board is the overall cross-country run (no snapshot; decodes cleanly).
+
+    NOTE: the stylized digital initials font makes some letters ambiguous on
+    screen (E looks like F, D like O, V like U); the CMOS bytes are authoritative
+    (ELP/DRJ/.../"V P"/YOU).
+
+    Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file="nvram">
+    <check>
+      <size>32768</size>
+    </check>
+
+    <elt size="4064" type="raw" id="HEADER"/>
+
+    <loop count="10">
+      <elt size="12" type="raw"  id="SKA0"/>
+      <elt size="4"  type="int"  id="TICK0" endianness="little_endian"/>
+      <elt size="1"  type="text" id="C1_0"/>
+      <elt size="1"  type="text" id="C2_0"/>
+      <elt size="1"  type="text" id="C3_0"/>
+      <elt size="13" type="raw"  id="SKB0"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="12" type="raw"  id="SKA1"/>
+      <elt size="4"  type="int"  id="TICK1" endianness="little_endian"/>
+      <elt size="1"  type="text" id="C1_1"/>
+      <elt size="1"  type="text" id="C2_1"/>
+      <elt size="1"  type="text" id="C3_1"/>
+      <elt size="13" type="raw"  id="SKB1"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="12" type="raw"  id="SKA2"/>
+      <elt size="4"  type="int"  id="TICK2" endianness="little_endian"/>
+      <elt size="1"  type="text" id="C1_2"/>
+      <elt size="1"  type="text" id="C2_2"/>
+      <elt size="1"  type="text" id="C3_2"/>
+      <elt size="13" type="raw"  id="SKB2"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="12" type="raw"  id="SKA3"/>
+      <elt size="4"  type="int"  id="TICK3" endianness="little_endian"/>
+      <elt size="1"  type="text" id="C1_3"/>
+      <elt size="1"  type="text" id="C2_3"/>
+      <elt size="1"  type="text" id="C3_3"/>
+      <elt size="13" type="raw"  id="SKB3"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="12" type="raw"  id="SKA4"/>
+      <elt size="4"  type="int"  id="TICK4" endianness="little_endian"/>
+      <elt size="1"  type="text" id="C1_4"/>
+      <elt size="1"  type="text" id="C2_4"/>
+      <elt size="1"  type="text" id="C3_4"/>
+      <elt size="13" type="raw"  id="SKB4"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="12" type="raw"  id="SKA5"/>
+      <elt size="4"  type="int"  id="TICK5" endianness="little_endian"/>
+      <elt size="1"  type="text" id="C1_5"/>
+      <elt size="1"  type="text" id="C2_5"/>
+      <elt size="1"  type="text" id="C3_5"/>
+      <elt size="13" type="raw"  id="SKB5"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="12" type="raw"  id="SKA6"/>
+      <elt size="4"  type="int"  id="TICK6" endianness="little_endian"/>
+      <elt size="1"  type="text" id="C1_6"/>
+      <elt size="1"  type="text" id="C2_6"/>
+      <elt size="1"  type="text" id="C3_6"/>
+      <elt size="13" type="raw"  id="SKB6"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="12" type="raw"  id="SKA7"/>
+      <elt size="4"  type="int"  id="TICK7" endianness="little_endian"/>
+      <elt size="1"  type="text" id="C1_7"/>
+      <elt size="1"  type="text" id="C2_7"/>
+      <elt size="1"  type="text" id="C3_7"/>
+      <elt size="13" type="raw"  id="SKB7"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="12" type="raw"  id="SKA8"/>
+      <elt size="4"  type="int"  id="TICK8" endianness="little_endian"/>
+      <elt size="1"  type="text" id="C1_8"/>
+      <elt size="1"  type="text" id="C2_8"/>
+      <elt size="1"  type="text" id="C3_8"/>
+      <elt size="13" type="raw"  id="SKB8"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="12" type="raw"  id="SKA9"/>
+      <elt size="4"  type="int"  id="TICK9" endianness="little_endian"/>
+      <elt size="1"  type="text" id="C1_9"/>
+      <elt size="1"  type="text" id="C2_9"/>
+      <elt size="1"  type="text" id="C3_9"/>
+      <elt size="13" type="raw"  id="SKB9"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="12" type="raw"  id="SKA10"/>
+      <elt size="4"  type="int"  id="TICK10" endianness="little_endian"/>
+      <elt size="1"  type="text" id="C1_10"/>
+      <elt size="1"  type="text" id="C2_10"/>
+      <elt size="1"  type="text" id="C3_10"/>
+      <elt size="13" type="raw"  id="SKB10"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="12" type="raw"  id="SKA11"/>
+      <elt size="4"  type="int"  id="TICK11" endianness="little_endian"/>
+      <elt size="1"  type="text" id="C1_11"/>
+      <elt size="1"  type="text" id="C2_11"/>
+      <elt size="1"  type="text" id="C3_11"/>
+      <elt size="13" type="raw"  id="SKB11"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="12" type="raw"  id="SKA12"/>
+      <elt size="4"  type="int"  id="TICK12" endianness="little_endian"/>
+      <elt size="1"  type="text" id="C1_12"/>
+      <elt size="1"  type="text" id="C2_12"/>
+      <elt size="1"  type="text" id="C3_12"/>
+      <elt size="13" type="raw"  id="SKB12"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="12" type="raw"  id="SKA13"/>
+      <elt size="4"  type="int"  id="TICK13" endianness="little_endian"/>
+      <elt size="1"  type="text" id="C1_13"/>
+      <elt size="1"  type="text" id="C2_13"/>
+      <elt size="1"  type="text" id="C3_13"/>
+      <elt size="13" type="raw"  id="SKB13"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="12" type="raw"  id="SKA14"/>
+      <elt size="4"  type="int"  id="TICK14" endianness="little_endian"/>
+      <elt size="1"  type="text" id="C1_14"/>
+      <elt size="1"  type="text" id="C2_14"/>
+      <elt size="1"  type="text" id="C3_14"/>
+      <elt size="13" type="raw"  id="SKB14"/>
+    </loop>
+
+    <elt size="23904" type="raw" id="REST"/>
+  </structure>
+
+  <output>
+    <table id="JAPAN">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_0" format="namecat0"/>
+      <column id="TIME" src="TICK0" format="besttime"/>
+    </table>
+    <table id="ENGLAND">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_1" format="namecat1"/>
+      <column id="TIME" src="TICK1" format="besttime"/>
+    </table>
+    <table id="AFRICA">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_2" format="namecat2"/>
+      <column id="TIME" src="TICK2" format="besttime"/>
+    </table>
+    <table id="ITALY">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_3" format="namecat3"/>
+      <column id="TIME" src="TICK3" format="besttime"/>
+    </table>
+    <table id="FLORIDA">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_4" format="namecat4"/>
+      <column id="TIME" src="TICK4" format="besttime"/>
+    </table>
+    <table id="MOSCOW">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_5" format="namecat5"/>
+      <column id="TIME" src="TICK5" format="besttime"/>
+    </table>
+    <table id="CHINA">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_6" format="namecat6"/>
+      <column id="TIME" src="TICK6" format="besttime"/>
+    </table>
+    <table id="MEXICO">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_7" format="namecat7"/>
+      <column id="TIME" src="TICK7" format="besttime"/>
+    </table>
+    <table id="GERMANY">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_8" format="namecat8"/>
+      <column id="TIME" src="TICK8" format="besttime"/>
+    </table>
+    <table id="NEW YORK">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_9" format="namecat9"/>
+      <column id="TIME" src="TICK9" format="besttime"/>
+    </table>
+    <table id="HAWAII">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_10" format="namecat10"/>
+      <column id="TIME" src="TICK10" format="besttime"/>
+    </table>
+    <table id="EGYPT">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_11" format="namecat11"/>
+      <column id="TIME" src="TICK11" format="besttime"/>
+    </table>
+    <table id="FRANCE">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_12" format="namecat12"/>
+      <column id="TIME" src="TICK12" format="besttime"/>
+    </table>
+    <table id="AUSTRALIA">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_13" format="namecat13"/>
+      <column id="TIME" src="TICK13" format="besttime"/>
+    </table>
+    <table id="OVERALL">
+      <column id="RANK" src="index"  format="+1"/>
+      <column id="NAME" src="C1_14" format="namecat14"/>
+      <column id="TIME" src="TICK14" format="besttime"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="namecat0" input-as-subcolumns-input="yes">
+    <concat><column src="C1_0"/><column src="C2_0"/><column src="C3_0"/></concat>
+  </format>
+  <format id="namecat1" input-as-subcolumns-input="yes">
+    <concat><column src="C1_1"/><column src="C2_1"/><column src="C3_1"/></concat>
+  </format>
+  <format id="namecat2" input-as-subcolumns-input="yes">
+    <concat><column src="C1_2"/><column src="C2_2"/><column src="C3_2"/></concat>
+  </format>
+  <format id="namecat3" input-as-subcolumns-input="yes">
+    <concat><column src="C1_3"/><column src="C2_3"/><column src="C3_3"/></concat>
+  </format>
+  <format id="namecat4" input-as-subcolumns-input="yes">
+    <concat><column src="C1_4"/><column src="C2_4"/><column src="C3_4"/></concat>
+  </format>
+  <format id="namecat5" input-as-subcolumns-input="yes">
+    <concat><column src="C1_5"/><column src="C2_5"/><column src="C3_5"/></concat>
+  </format>
+  <format id="namecat6" input-as-subcolumns-input="yes">
+    <concat><column src="C1_6"/><column src="C2_6"/><column src="C3_6"/></concat>
+  </format>
+  <format id="namecat7" input-as-subcolumns-input="yes">
+    <concat><column src="C1_7"/><column src="C2_7"/><column src="C3_7"/></concat>
+  </format>
+  <format id="namecat8" input-as-subcolumns-input="yes">
+    <concat><column src="C1_8"/><column src="C2_8"/><column src="C3_8"/></concat>
+  </format>
+  <format id="namecat9" input-as-subcolumns-input="yes">
+    <concat><column src="C1_9"/><column src="C2_9"/><column src="C3_9"/></concat>
+  </format>
+  <format id="namecat10" input-as-subcolumns-input="yes">
+    <concat><column src="C1_10"/><column src="C2_10"/><column src="C3_10"/></concat>
+  </format>
+  <format id="namecat11" input-as-subcolumns-input="yes">
+    <concat><column src="C1_11"/><column src="C2_11"/><column src="C3_11"/></concat>
+  </format>
+  <format id="namecat12" input-as-subcolumns-input="yes">
+    <concat><column src="C1_12"/><column src="C2_12"/><column src="C3_12"/></concat>
+  </format>
+  <format id="namecat13" input-as-subcolumns-input="yes">
+    <concat><column src="C1_13"/><column src="C2_13"/><column src="C3_13"/></concat>
+  </format>
+  <format id="namecat14" input-as-subcolumns-input="yes">
+    <concat><column src="C1_14"/><column src="C2_14"/><column src="C3_14"/></concat>
+  </format>
+
+  <!-- trunc(tick*20/11) centiseconds, split into MM:SS:CC, each 2 digits -->
+  <format id="besttime" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="*20;d11;d6000;d10"/>
+      <column format="*20;d11;d6000;%10"/>
+      <txt>:</txt>
+      <column format="*20;d11;%6000;d100;d10"/>
+      <column format="*20;d11;%6000;d100;%10"/>
+      <txt>:</txt>
+      <column format="*20;d11;%100;d10"/>
+      <column format="*20;d11;%100;%10"/>
+    </concat>
+  </format>
+
+</hi2txt>

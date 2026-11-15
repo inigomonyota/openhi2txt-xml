@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <table id="SCORE RANKING">
+    <col>RANK</col><col>SCORE</col><col>INITIALS</col><col>CHARACTER</col>
+    <row><cell>1ST</cell><cell>500000</cell><cell>CMP</cell><cell>MASTER HUANG</cell></row>
+    <row><cell>2ND</cell><cell>300000</cell><cell>TBQ</cell><cell>DRUNK MASTER</cell></row>
+    <row><cell>3RD</cell><cell>100000</cell><cell>BST</cell><cell>SCORPION</cell></row>
+    <row><cell>4TH</cell><cell>90000</cell><cell>HQR</cell><cell>TIGER</cell></row>
+    <row><cell>5TH</cell><cell>80000</cell><cell>SOT</cell><cell>MONK</cell></row>
+    <row><cell>6TH</cell><cell>70000</cell><cell>LER</cell><cell>REIKA</cell></row>
+  </table>
+  <table id="VS RANKING">
+    <col>RANK</col><col>WINS</col><col>INITIALS</col><col>CHARACTER</col>
+    <row><cell>1ST</cell><cell>6</cell><cell>CMP</cell><cell>TIGER</cell></row>
+    <row><cell>2ND</cell><cell>5</cell><cell>TBQ</cell><cell>DRUNK MASTER</cell></row>
+    <row><cell>3RD</cell><cell>4</cell><cell>BST</cell><cell>SCORPION</cell></row>
+    <row><cell>4TH</cell><cell>3</cell><cell>HPH</cell><cell>MASTER HUANG</cell></row>
+    <row><cell>5TH</cell><cell>2</cell><cell>SOT</cell><cell>MONK</cell></row>
+    <row><cell>6TH</cell><cell>1</cell><cell>LER</cell><cell>REIKA</cell></row>
+  </table>
+  <table id="ROLE RANKING">
+    <col>RANK</col><col>PLAYS</col><col>CHARACTER</col>
+    <row><cell>1ST</cell><cell>0</cell><cell>MASTER HUANG</cell></row>
+    <row><cell>2ND</cell><cell>0</cell><cell>DRUNK MASTER</cell></row>
+    <row><cell>3RD</cell><cell>0</cell><cell>SCORPION</cell></row>
+    <row><cell>4TH</cell><cell>0</cell><cell>TIGER</cell></row>
+    <row><cell>5TH</cell><cell>0</cell><cell>MONK</cell></row>
+    <row><cell>6TH</cell><cell>0</cell><cell>REIKA</cell></row>
+  </table>
+</hi2txt>

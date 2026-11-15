@@ -1,0 +1,13 @@
+# ODD ENTRIES (names garbled)
+RANK|SCORE|NAME
+1|1500|TLc
+2|1301|TQc
+3|0|   
+4|0|   
+
+# EVEN ENTRIES (names correct)
+RANK|SCORE|NAME
+1|1401|TNK
+2|1200|TNK
+3|0|   
+4|0|

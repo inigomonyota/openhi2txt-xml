@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="TODAY'S BEST GUYS">
+    <col>RANK</col><col>NAME</col><col>SCORE</col><col>RATE</col><col>CT</col><col>STAGE</col><col>PLAYER</col>
+    <row><cell>1ST</cell><cell>GORO</cell><cell>10,000</cell><cell>1.0%</cell><cell>0</cell><cell>1</cell><cell>1P</cell></row>
+    <row><cell>2ND</cell><cell>H K </cell><cell>9,000</cell><cell>0.9%</cell><cell>0</cell><cell>1</cell><cell>2P</cell></row>
+    <row><cell>3RD</cell><cell>TAKA</cell><cell>8,000</cell><cell>0.8%</cell><cell>0</cell><cell>1</cell><cell>1P</cell></row>
+    <row><cell>4TH</cell><cell>YASU</cell><cell>7,000</cell><cell>0.7%</cell><cell>0</cell><cell>1</cell><cell>2P</cell></row>
+    <row><cell>5TH</cell><cell>KIMU</cell><cell>6,000</cell><cell>0.6%</cell><cell>0</cell><cell>1</cell><cell>1P</cell></row>
+    <row><cell>6TH</cell><cell>YAMA</cell><cell>5,000</cell><cell>0.5%</cell><cell>0</cell><cell>1</cell><cell>2P</cell></row>
+    <row><cell>7TH</cell><cell>FUKU</cell><cell>4,000</cell><cell>0.4%</cell><cell>0</cell><cell>1</cell><cell>1P</cell></row>
+    <row><cell>8TH</cell><cell>YAGU</cell><cell>3,000</cell><cell>0.3%</cell><cell>0</cell><cell>1</cell><cell>2P</cell></row>
+    <row><cell>9TH</cell><cell>TUCH</cell><cell>2,000</cell><cell>0.2%</cell><cell>0</cell><cell>1</cell><cell>1P</cell></row>
+    <row><cell>10TH</cell><cell>HIJI</cell><cell>1,000</cell><cell>0.1%</cell><cell>0</cell><cell>1</cell><cell>2P</cell></row>
+  </table>
+</hi2txt>

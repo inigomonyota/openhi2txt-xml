@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt label="Cyberball 2072 (2 player)">
+  <!--
+    Cyberball 2072, 2-player (Atari Games, 1989). 68000, BIG-ENDIAN.
+    No stock hiscore.dat entry existed; the persistent eeprom stores the
+    "GAME BREAKERS" table in Atari's scrambled form. This definition instead
+    reads the plainly-laid-out display table in main RAM, captured by the
+    hiscore plugin via a new hiscore.dat entry:
+      @:maincpu,program,ffad80,c8,00,20   (200 bytes, both tables)
+    The on-screen attract board has TWO rankings of 10:
+      1-PLAYER TEAMS  @ 0xffad80 : 10 x 8-byte records
+         [ score : 4-byte big-endian int ][ name : 3 ascii ][ 00 ]
+      2-PLAYER TEAMS  @ 0xffadd0 : 10 x 12-byte records
+         [ score : 4-byte big-endian int ][ name : 8 ascii ]
+    Scores are plain 32-bit big-endian (0x000186a0 = 100000). Names are plain
+    ASCII. Stored rank 1 -> rank 10 (highest first). Verified against the live
+    GAME BREAKERS attract screen. Authored by the HI2TXT project.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,ffad80,c8,00,20</definition>
+      <size>200</size>
+    </check>
+
+    <loop count="10">
+      <elt size="4" type="int"  id="P1_SCORE"/>
+      <elt size="3" type="text" id="P1_NAME"/>
+      <elt size="1" type="raw"  id="P1_NULL"/>
+    </loop>
+
+    <loop count="10">
+      <elt size="4" type="int"  id="P2_SCORE"/>
+      <elt size="8" type="text" id="P2_NAME"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="1-PLAYER TEAMS">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="P1_NAME"/>
+      <column id="SCORE" src="P1_SCORE"/>
+      <column id="P1_NULL" src="P1_NULL" format="0x" display="debug"/>
+    </table>
+    <table id="2-PLAYER TEAMS">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="P2_NAME"/>
+      <column id="SCORE" src="P2_SCORE"/>
+    </table>
+  </output>
+
+</hi2txt>

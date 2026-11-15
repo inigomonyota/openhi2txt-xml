@@ -14,10 +14,10 @@
   </table>
   <table id="BEST PER CREDIT">
     <col>UNKNOWN2</col><col>BEST PER CREDIT AVG UNKNOWN2</col>
-    <row><cell>0xFF75FFBAFF76FF</cell><cell></cell></row>
-    <row><cell>0xFF8DFF05FFC1FF</cell><cell></cell></row>
-    <row><cell>0xFF4DFFDCFFF3FF</cell><cell></cell></row>
-    <row><cell>0xFF4EFFC8FF86FF</cell><cell></cell></row>
-    <row><cell>0xFFFFFF00FF00FF</cell><cell></cell></row>
+    <row><cell>0x75BA76</cell><cell>0xD7F98A</cell></row>
+    <row><cell>0x8D05C1</cell><cell>0x8A2B25</cell></row>
+    <row><cell>0x4DDCF3</cell><cell>0x9C9FD5</cell></row>
+    <row><cell>0x4EC886</cell><cell>0xC19073</cell></row>
+    <row><cell>0xFF0000</cell><cell>0x6CBACB</cell></row>
   </table>
 </hi2txt>

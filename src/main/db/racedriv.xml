@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Race Drivin'">
+  <!--
+    racedriv (Race Drivin', Atari Games, Hard Drivin'/Race Drivin' hardware,
+    68010 main CPU). The RACE DRIVIN' CHAMPIONS board (one champion per track)
+    persists in the main-board NVRAM. On this 16-bit 68000 bus the NVRAM is a
+    pair of byte-wide EEPROMs that hold the EVEN and ODD data lanes separately:
+        nvram\racedriv\mainpcb_200e  = EVEN bytes (D15..D8)
+        nvram\racedriv\mainpcb_210e  = ODD  bytes (D7..D0)
+    Neither file is readable alone; the logical NVRAM is reconstructed by
+    byte-interleaving them: logical[2k]=200e[k], logical[2k+1]=210e[k], giving a
+    4096-byte image. THIS DEFINITION READS THAT INTERLEAVED IMAGE (hi2txt cannot
+    interleave two input files itself - the combined file must be built first;
+    see problems.txt / notes.md: feature request for openhi2txt two-file lane
+    interleave).
+
+    In the combined image the CHAMPIONS table starts at offset 0x71e, 3 records
+    of 0x18 bytes, one per track in fixed order:
+        +0x00  TIME  u16 BIG-ENDIAN, units of 1/250 s  (value = seconds*250)
+        +0x02  NAME  16 bytes ASCII, null-padded
+        +0x08  PAD   6 bytes (0x00)
+    TIME display is M:SS:CC: milliseconds = value*4, then split. Proven against
+    the attract screenshots: PHANTOM PHOTON 0x5ad2=23250 -> 1:33:00; AUTOCROSS
+    ANNIE 0x2422=9250 -> 0:37:00; HELEN WEALES 0x6513=25875 -> 1:43:50.
+    The HARDEST DRIVERS 10-rank board is unpopulated (ROM-default empty) in this
+    NVRAM and is not decoded here.
+    Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file="racedriv">
+    <check>
+      <size>4096</size>
+    </check>
+
+    <elt type="raw" size="1822" id="_PREFIX"/>
+    <loop count="3">
+      <elt size="2"  type="int"  id="TIME" endianness="big_endian"/>
+      <elt size="16" type="text" id="NAME" byte-trunc="0x00"/>
+      <elt size="6"  type="raw"  id="_PAD"/>
+    </loop>
+    <elt type="raw" size="2202" id="_REST"/>
+  </structure>
+
+  <output>
+    <table id="THE RACE DRIVIN' CHAMPIONS">
+      <column id="TRACK" src="index" format="track"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="TIME"  src="TIME"  format="gtime"/>
+    </table>
+  </output>
+
+  <format id="track">
+    <case src="0" dst="ORIGINAL TRACK"/>
+    <case src="1" dst="AUTOCROSS TRACK"/>
+    <case src="2" dst="SUPER STUNT TRACK"/>
+  </format>
+
+  <format id="t_min"><multiply>4</multiply><divide_trunc>60000</divide_trunc></format>
+  <format id="t_sec"><multiply>4</multiply><divide_trunc>1000</divide_trunc><remainder>60</remainder><pad direction="left" max="2">0</pad></format>
+  <format id="t_cs"><multiply>4</multiply><divide_trunc>10</divide_trunc><remainder>100</remainder><pad direction="left" max="2">0</pad></format>
+  <format id="gtime" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="t_min"/>
+      <txt>:</txt>
+      <column format="t_sec"/>
+      <txt>:</txt>
+      <column format="t_cs"/>
+    </concat>
+  </format>
+</hi2txt>

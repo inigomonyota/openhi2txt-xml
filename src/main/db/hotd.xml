@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    hotd - The House of the Dead (Sega, Model 2)
+    Reads the MAME backup SRAM file (nvram/hotd/backup1), 16384 bytes.
+
+    "RANKING" = 10 records of 12 bytes starting at 0x0104 (a 4-byte header
+    field sits at 0x0100 before the table; the table is also mirrored later).
+    Record:
+      [0:3] NAME  3 ASCII chars
+      [3]   null
+      [4:8] RANK grade, 4-byte little-endian; displayed as "RANK "+(value+1)
+      [8:12] SCORE 4-byte little-endian BINARY
+    First (unnamed) column is the row number 1..10.
+  -->
+
+  <structure file="backup1">
+    <check>
+      <size>16384</size>
+    </check>
+
+    <!-- skip to table at 0x0104 (260 bytes) -->
+    <elt size="260" type="raw" id="PRE"/>
+    <loop count="10">
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw" id="NUL"/>
+      <elt size="4" type="int" endianness="little_endian" id="GRADE"/>
+      <elt size="4" type="int" endianness="little_endian" id="SCORE"/>
+    </loop>
+  </structure>
+
+  <!-- stored grade -> "RANK "+(value+1) -->
+  <format id="rankgrade">
+    <add>1</add>
+    <prefix>RANK </prefix>
+  </format>
+
+  <output>
+    <table id="RANKING">
+      <column id=" " src="index" format="+1"/>
+      <column id="RANK" src="GRADE" format="rankgrade"/>
+      <column id="NAME" src="NAME"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+</hi2txt>

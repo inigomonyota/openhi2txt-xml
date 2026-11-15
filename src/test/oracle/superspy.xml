@@ -1,0 +1,10 @@
+<hi2txt>
+  <table id="RANKING BEST 5">
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>LEVEL</col>
+    <row><cell>1&#183;</cell><cell>30000</cell><cell>SNK</cell><cell>5</cell></row>
+    <row><cell>2&#183;</cell><cell>25000</cell><cell>SNK</cell><cell>3</cell></row>
+    <row><cell>3&#183;</cell><cell>20000</cell><cell>SNK</cell><cell>2</cell></row>
+    <row><cell>4&#183;</cell><cell>15000</cell><cell>SNK</cell><cell>1</cell></row>
+    <row><cell>5&#183;</cell><cell>10000</cell><cell>SNK</cell><cell>1</cell></row>
+  </table>
+</hi2txt>

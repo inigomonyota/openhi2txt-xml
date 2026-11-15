@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openhi2txt label="NBA Maximum Hangtime" requires="0.3.0">
+  <!--
+    NBA Maximum Hangtime stores 410 packed player profiles beginning at raw NVRAM
+    offset 0x1000. Each profile contains 30 meaningful bytes. On Midway
+    T-unit hardware every meaningful CMOS byte occupies the even byte of a
+    16-bit word, so each profile consumes 60 raw bytes.
+
+    The four packed world records begin at raw offset 0x71B2. Overlapping
+    64-bit windows keep every name/value pair inside ordinary integer formats.
+  -->
+  <structure file="nvram">
+    <check><size>49152</size></check>
+    <elt id="PREFIX" type="raw" size="4096"/>
+
+    <loop count="410">
+      <elt id="DATA 0" type="int" size="12" byte-skip="even" endianness="little_endian"/>
+      <elt id="DATA 1" type="int" size="12" byte-skip="even" endianness="little_endian"/>
+      <elt id="DATA 2" type="int" size="12" byte-skip="even" endianness="little_endian"/>
+      <elt id="DATA 3" type="int" size="12" byte-skip="even" endianness="little_endian"/>
+      <elt id="DATA 4" type="int" size="12" byte-skip="even" endianness="little_endian"/>
+    </loop>
+
+    <!-- Stored order: win streak, points, rebounds, assists. -->
+    <elt id="WORLD NAME" type="int" size="12" byte-skip="even" endianness="little_endian"
+         offset="0x71B2" table-index="0" format="WORLD 0 NAME"/>
+    <elt id="WORLD VALUE" type="int" size="4" byte-skip="even" endianness="little_endian"
+         offset="0x71BE" table-index="0" format="WORLD 0 VALUE"/>
+    <elt id="WORLD NAME" type="int" size="12" byte-skip="even" endianness="little_endian"
+         offset="0x71C0" table-index="1" format="WORLD 1 NAME"/>
+    <elt id="WORLD VALUE" type="int" size="4" byte-skip="even" endianness="little_endian"
+         offset="0x71CC" table-index="1" format="WORLD 1 VALUE"/>
+    <elt id="WORLD NAME" type="int" size="12" byte-skip="even" endianness="little_endian"
+         offset="0x71CE" table-index="3" format="WORLD 2 NAME"/>
+    <elt id="WORLD VALUE" type="int" size="4" byte-skip="even" endianness="little_endian"
+         offset="0x71DA" table-index="3" format="WORLD 2 VALUE"/>
+    <elt id="WORLD NAME" type="int" size="12" byte-skip="even" endianness="little_endian"
+         offset="0x71DC" table-index="2" format="WORLD 3 NAME"/>
+    <elt id="WORLD VALUE" type="int" size="4" byte-skip="even" endianness="little_endian"
+         offset="0x71EA" table-index="2" format="WORLD 3 VALUE"/>
+  </structure>
+
+  <output sort-method="midway">
+    <!-- Hangtime primes the profile order with its Grand Champion sort. -->
+    <table display="sort" sort="DATA 1" sort-format="TEAM COUNT" sort-order="desc"
+           line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="DATA 0" format="WINS" order="desc"/>
+      <sort src="DATA 2" format="STREAK" order="desc"/>
+      <column id="NAME" src="DATA 0" format="NAME"/>
+      <column id="GAMES" src="DATA 0" format="GAMES" display="debug"/>
+      <column id="WINS" src="DATA 0" format="WINS" display="debug"/>
+      <column id="STREAK" src="DATA 2" format="STREAK" display="debug"/>
+      <column id="TEAM COUNT" src="DATA 1" format="TEAM COUNT" display="debug"/>
+    </table>
+
+    <table id="BEST OVERALL PLAYER" sort="DATA 0" sort-format="WIN PERCENTAGE SORT" sort-order="desc"
+           lines-max="1" line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="DATA 0" format="WINS" order="desc"/>
+      <sort src="DATA 1" format="TEAM COUNT" order="desc"/>
+      <column id="PLAYER" src="DATA 0" format="NAME"/>
+      <column id="RECORD" src="DATA 0" format="RECORD"/>
+      <column id="STREAK" src="DATA 2" format="STREAK"/>
+      <column id="PTS/GAME" src="DATA 3" format="POINTS SCORED;PER GAME"/>
+      <column id="ALLOWED/GAME" src="DATA 3" format="POINTS ALLOWED;PER GAME"/>
+      <column id="TEAMS" src="DATA 1" format="TEAM COUNT"/>
+      <column id="GAMES" src="DATA 0" format="GAMES" display="debug"/>
+      <column id="WINS" src="DATA 0" format="WINS" display="debug"/>
+      <column id="TEAM COUNT" src="DATA 1" format="TEAM COUNT" display="debug"/>
+      <column id="WIN PERCENTAGE SORT" src="DATA 0" format="WIN PERCENTAGE SORT" display="debug"/>
+    </table>
+
+    <table id="GRAND CHAMPIONS (DEFEATED ALL 29 NBA TEAMS)" lines-max="3"
+           show-empty="false" line-ignore="TEAM COUNT:29" line-ignore-operator="&lt;">
+      <column id="NAME" src="DATA 0" format="NAME"/>
+      <column id="TEAM COUNT" src="DATA 1" format="TEAM COUNT" display="debug"/>
+    </table>
+
+    <table id="WORLD RECORDS" lines-max="4">
+      <column id="RECORD" src="index" format="WORLD RECORD NAME"/>
+      <column id="NAME" src="WORLD NAME" source-row="output_index"/>
+      <column id="VALUE" src="WORLD VALUE" source-row="output_index"/>
+    </table>
+
+    <table id="GREATEST PLAYERS (BEST WIN PERCENTAGE)"
+           sort="DATA 0" sort-format="WIN PERCENTAGE SORT" sort-order="desc" lines-max="8"
+           line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="DATA 0" format="GAMES" order="desc"/><sort src="DATA 2" format="STREAK" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="DATA 0" format="NAME"/>
+      <column id="RECORD" src="DATA 0" format="RECORD"/>
+      <column id="PERCENTAGE" src="DATA 0" format="WIN PERCENTAGE"/>
+      <column id="GAMES" src="DATA 0" format="GAMES" display="debug"/>
+      <column id="STREAK" src="DATA 2" format="STREAK" display="debug"/>
+      <column id="WIN PERCENTAGE SORT" src="DATA 0" format="WIN PERCENTAGE SORT" display="debug"/>
+    </table>
+
+    <table id="BIGGEST WINNERS (MOST GAMES WON)" sort="DATA 0" sort-format="WINS" sort-order="desc"
+           lines-max="8" line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="DATA 0" format="GAMES" order="desc"/><sort src="DATA 2" format="STREAK" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="DATA 0" format="NAME"/>
+      <column id="RECORD" src="DATA 0" format="RECORD"/>
+      <column id="PERCENTAGE" src="DATA 0" format="WIN PERCENTAGE"/>
+      <column id="GAMES" src="DATA 0" format="GAMES" display="debug"/>
+      <column id="WINS" src="DATA 0" format="WINS" display="debug"/>
+      <column id="STREAK" src="DATA 2" format="STREAK" display="debug"/>
+    </table>
+
+    <table id="BEST OFFENSIVE PLAYERS (POINTS SCORED PER GAME)"
+           sort="DATA 3" sort-format="POINTS SCORED;PER GAME SORT" sort-order="desc" lines-max="8"
+           line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="DATA 0" format="WINS" order="desc"/><sort src="DATA 2" format="STREAK" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="DATA 0" format="NAME"/>
+      <column id="POINTS" src="DATA 3" format="POINTS SCORED;PER GAME"/>
+      <column id="GAMES" src="DATA 0" format="GAMES" display="debug"/>
+      <column id="WINS" src="DATA 0" format="WINS" display="debug"/>
+      <column id="STREAK" src="DATA 2" format="STREAK" display="debug"/>
+      <column id="POINTS SORT" src="DATA 3" format="POINTS SCORED;PER GAME SORT" display="debug"/>
+    </table>
+
+    <table id="BEST DEFENSIVE PLAYERS (POINTS ALLOWED PER GAME)"
+           sort="DATA 3" sort-format="POINTS ALLOWED;PER GAME SORT" sort-order="asc" lines-max="8"
+           line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="DATA 0" format="WINS" order="desc"/><sort src="DATA 2" format="STREAK" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="DATA 0" format="NAME"/>
+      <column id="POINTS" src="DATA 3" format="POINTS ALLOWED;PER GAME"/>
+      <column id="GAMES" src="DATA 0" format="GAMES" display="debug"/>
+      <column id="WINS" src="DATA 0" format="WINS" display="debug"/>
+      <column id="STREAK" src="DATA 2" format="STREAK" display="debug"/>
+      <column id="POINTS SORT" src="DATA 3" format="POINTS ALLOWED;PER GAME SORT" display="debug"/>
+    </table>
+
+    <table id="EXPERIENCED PLAYERS (MOST GAMES PLAYED)" sort="DATA 0" sort-format="GAMES" sort-order="desc"
+           lines-max="8" line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="DATA 0" format="WINS" order="desc"/><sort src="DATA 2" format="STREAK" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="DATA 0" format="NAME"/>
+      <column id="GAMES" src="DATA 0" format="GAMES"/>
+      <column id="PERCENTAGE" src="DATA 0" format="WIN PERCENTAGE"/>
+      <column id="WINS" src="DATA 0" format="WINS" display="debug"/>
+      <column id="STREAK" src="DATA 2" format="STREAK" display="debug"/>
+      <column id="WIN PERCENTAGE SORT" src="DATA 0" format="WIN PERCENTAGE SORT" display="debug"/>
+    </table>
+
+    <table id="CURRENT WINNING STREAK (CONSECUTIVE WINS)" sort="DATA 2" sort-format="STREAK" sort-order="desc"
+           lines-max="8" line-ignore="GAMES:4" line-ignore-operator="&lt;">
+      <sort src="DATA 0" format="GAMES" order="desc"/><sort src="DATA 0" format="WINS" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="DATA 0" format="NAME"/>
+      <column id="STREAK" src="DATA 2" format="STREAK"/>
+      <column id="GAMES" src="DATA 0" format="GAMES" display="debug"/>
+      <column id="WINS" src="DATA 0" format="WINS" display="debug"/>
+    </table>
+
+  </output>
+
+  <format id="GAMES"><remainder>1024</remainder></format>
+  <format id="WINS"><divide_trunc>1024</divide_trunc><remainder>1024</remainder></format>
+  <format id="TEAMS"><divide_trunc>8589934592</divide_trunc><remainder>32768</remainder><add><column id="DATA 2" format="TEAM HIGH"/></add></format>
+  <format id="TEAM HIGH"><remainder>32768</remainder><multiply>32768</multiply></format>
+  <format id="STREAK"><divide_trunc>32768</divide_trunc><remainder>64</remainder></format>
+  <format id="POINTS SCORED"><divide_trunc>134217728</divide_trunc><remainder>65536</remainder></format>
+  <format id="POINTS ALLOWED"><divide_trunc>8796093022208</divide_trunc><remainder>32</remainder><add><column id="DATA 4" format="POINTS ALLOWED HIGH"/></add></format>
+  <format id="POINTS ALLOWED HIGH"><remainder>2048</remainder><multiply>32</multiply></format>
+  <format id="TRIVIA POINTS"><divide_trunc>262144</divide_trunc><remainder>256</remainder></format>
+
+  <format id="TEAM COUNT"><divide_trunc>8589934592</divide_trunc><remainder>32768</remainder><add><column id="DATA 2" format="TEAM HIGH"/></add><bit-count/></format>
+  <format id="WIN PERCENTAGE SORT"><divide_trunc>1024</divide_trunc><remainder>1024</remainder><multiply>1000</multiply><divide_trunc><column id="DATA 0" format="GAMES"/></divide_trunc></format>
+  <format id="WIN PERCENTAGE" formatter="%.3f"><divide_trunc>1024</divide_trunc><remainder>1024</remainder><divide><column id="DATA 0" format="GAMES"/></divide></format>
+  <format id="PER GAME" formatter="%.2f"><divide><column id="DATA 0" format="GAMES"/></divide></format>
+  <format id="PER GAME SORT"><multiply>100</multiply><divide_trunc><column id="DATA 0" format="GAMES"/></divide_trunc></format>
+
+  <format id="RECORD" input-as-subcolumns-input="true"><concat>
+    <column format="WINS"/><txt>-</txt><column id="DATA 0" format="LOSSES"/>
+  </concat></format>
+  <format id="LOSSES"><remainder>1024</remainder><substract><column id="DATA 0" format="WINS"/></substract></format>
+
+  <format id="NAME" input-as-subcolumns-input="true"><concat>
+    <column format="CHAR 1;LETTER"/><column format="CHAR 2;LETTER"/>
+    <column format="CHAR 3;LETTER"/><column format="CHAR 4;LETTER"/>
+    <column id="DATA 1" format="CHAR 5;LETTER"/><column id="DATA 1" format="CHAR 6;LETTER"/>
+  </concat><trim direction="right"> </trim></format>
+  <format id="CHAR 1"><divide_trunc>2147483648</divide_trunc><remainder>32</remainder></format>
+  <format id="CHAR 2"><divide_trunc>68719476736</divide_trunc><remainder>32</remainder></format>
+  <format id="CHAR 3"><divide_trunc>2199023255552</divide_trunc><remainder>32</remainder></format>
+  <format id="CHAR 4"><divide_trunc>70368744177664</divide_trunc><remainder>4</remainder><add><column id="DATA 1" format="CHAR 4 HIGH"/></add></format>
+  <format id="CHAR 4 HIGH"><remainder>8</remainder><multiply>4</multiply></format>
+  <format id="CHAR 5"><divide_trunc>8</divide_trunc><remainder>32</remainder></format>
+  <format id="CHAR 6"><divide_trunc>256</divide_trunc><remainder>32</remainder></format>
+
+  <format id="LETTER">
+    <case src="0" dst=" "/><case src="1" dst="A"/><case src="2" dst="B"/>
+    <case src="3" dst="C"/><case src="4" dst="D"/><case src="5" dst="E"/>
+    <case src="6" dst="F"/><case src="7" dst="G"/><case src="8" dst="H"/>
+    <case src="9" dst="I"/><case src="10" dst="J"/><case src="11" dst="K"/>
+    <case src="12" dst="L"/><case src="13" dst="M"/><case src="14" dst="N"/>
+    <case src="15" dst="O"/><case src="16" dst="P"/><case src="17" dst="Q"/>
+    <case src="18" dst="R"/><case src="19" dst="S"/><case src="20" dst="T"/>
+    <case src="21" dst="U"/><case src="22" dst="V"/><case src="23" dst="W"/>
+    <case src="24" dst="X"/><case src="25" dst="Y"/><case src="26" dst="Z"/>
+    <case default="true" dst=" "/>
+  </format>
+
+  <format id="WORLD 0 NAME" input-as-subcolumns-input="true"><concat>
+    <column format="WORLD 0 CHAR 1;LETTER"/><column format="WORLD 0 CHAR 2;LETTER"/>
+    <column format="WORLD 0 CHAR 3;LETTER"/><column format="WORLD 0 CHAR 4;LETTER"/>
+    <column format="WORLD 0 CHAR 5;LETTER"/><column format="WORLD 0 CHAR 6;LETTER"/>
+  </concat><trim direction="right"> </trim></format>
+  <format id="WORLD 1 NAME" input-as-subcolumns-input="true"><concat>
+    <column format="WORLD 1 CHAR 1;LETTER"/><column format="WORLD 1 CHAR 2;LETTER"/>
+    <column format="WORLD 1 CHAR 3;LETTER"/><column format="WORLD 1 CHAR 4;LETTER"/>
+    <column format="WORLD 1 CHAR 5;LETTER"/><column format="WORLD 1 CHAR 6;LETTER"/>
+  </concat><trim direction="right"> </trim></format>
+  <format id="WORLD 2 NAME" input-as-subcolumns-input="true"><concat>
+    <column format="WORLD 2 CHAR 1;LETTER"/><column format="WORLD 2 CHAR 2;LETTER"/>
+    <column format="WORLD 2 CHAR 3;LETTER"/><column format="WORLD 2 CHAR 4;LETTER"/>
+    <column format="WORLD 2 CHAR 5;LETTER"/><column format="WORLD 2 CHAR 6;LETTER"/>
+  </concat><trim direction="right"> </trim></format>
+  <format id="WORLD 3 NAME" input-as-subcolumns-input="true"><concat>
+    <column format="WORLD 3 CHAR 1;LETTER"/><column format="WORLD 3 CHAR 2;LETTER"/>
+    <column format="WORLD 3 CHAR 3;LETTER"/><column format="WORLD 3 CHAR 4;LETTER"/>
+    <column format="WORLD 3 CHAR 5;LETTER"/><column format="WORLD 3 CHAR 6;LETTER"/>
+  </concat><trim direction="right"> </trim></format>
+
+  <format id="WORLD 0 CHAR 1"><remainder>32</remainder></format>
+  <format id="WORLD 0 CHAR 2"><divide_trunc>32</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 0 CHAR 3"><divide_trunc>1024</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 0 CHAR 4"><divide_trunc>32768</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 0 CHAR 5"><divide_trunc>1048576</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 0 CHAR 6"><divide_trunc>33554432</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 1 CHAR 1"><divide_trunc>4</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 1 CHAR 2"><divide_trunc>128</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 1 CHAR 3"><divide_trunc>4096</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 1 CHAR 4"><divide_trunc>131072</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 1 CHAR 5"><divide_trunc>4194304</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 1 CHAR 6"><divide_trunc>134217728</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 2 CHAR 1"><divide_trunc>16</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 2 CHAR 2"><divide_trunc>512</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 2 CHAR 3"><divide_trunc>16384</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 2 CHAR 4"><divide_trunc>524288</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 2 CHAR 5"><divide_trunc>16777216</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 2 CHAR 6"><divide_trunc>536870912</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 3 CHAR 1"><divide_trunc>64</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 3 CHAR 2"><divide_trunc>2048</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 3 CHAR 3"><divide_trunc>65536</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 3 CHAR 4"><divide_trunc>2097152</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 3 CHAR 5"><divide_trunc>67108864</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 3 CHAR 6"><divide_trunc>2147483648</divide_trunc><remainder>32</remainder></format>
+  <format id="WORLD 0 VALUE"><divide_trunc>4</divide_trunc><remainder>256</remainder></format>
+  <format id="WORLD 1 VALUE"><divide_trunc>16</divide_trunc><remainder>256</remainder></format>
+  <format id="WORLD 2 VALUE"><divide_trunc>64</divide_trunc><remainder>256</remainder></format>
+  <format id="WORLD 3 VALUE"><remainder>256</remainder></format>
+
+  <format id="WORLD RECORD NAME">
+    <case src="0" dst="WINSTREAK"/><case src="1" dst="POINTS IN GAME"/>
+    <case src="2" dst="ASSISTS IN GAME"/><case src="3" dst="REBOUNDS IN GAME"/>
+  </format>
+</openhi2txt>

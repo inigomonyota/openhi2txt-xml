@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    kabukikl - Far East of Eden: Kabuki Klash (Hudson/SNK, Neo Geo)
+    Reads the MAME saveram file (nvram/kabukikl/saveram), 65536 bytes.
+
+    Neo Geo 68000: saveram is word-swapped, so structure uses byte-swap 2.
+    RANKING = two adjacent arrays (post-swap):
+      0x0323  5 records x 8 bytes:
+                [0:3] SCORE 3-byte BCD (07 00 00 -> 70000)
+                [3:6] NAME  3 ASCII chars
+                [6]   rank/sort index (0..4, not displayed)
+                [7]   CHARACTER byte (0 = blank in all defaults)
+      0x034B  WINS array, 5 x BCD byte at stride 2 (15,10,8,6,4)
+    RANK is positional (1ST..5TH); WINS shown as "N IN A ROW".
+
+    NOTE: CHARACTER is 0 (blank) for every default; the character-index to
+    name mapping is unverified (no played sample), so non-zero values pass
+    through as a raw number pending a sample.
+  -->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+
+    <!-- skip to score/name table at 0x0323 (803 bytes) -->
+    <elt size="803" type="raw" id="PRE"/>
+    <loop count="5">
+      <elt size="3" type="int"  base="16" id="SCORE"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="IDX"/>
+      <elt size="1" type="int"  id="CHAR"/>
+    </loop>
+
+    <!-- WINS array at 0x034B: BCD byte + 1 pad, x5 -->
+    <loop count="5">
+      <elt size="1" type="int" base="16" id="WINS"/>
+      <elt size="1" type="raw" id="WPAD"/>
+    </loop>
+  </structure>
+
+  <format id="rank">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+
+  <format id="wins">
+    <suffix> IN A ROW</suffix>
+  </format>
+
+  <!-- character 0 -> blank -->
+  <format id="char">
+    <case src="0" dst=""/>
+  </format>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK"      src="index" format="rank"/>
+      <column id="SCORE"     src="SCORE"/>
+      <column id="WINS"      src="WINS" format="wins"/>
+      <column id="NAME"      src="NAME"/>
+      <column id="CHARACTER" src="CHAR" format="char"/>
+    </table>
+  </output>
+
+</hi2txt>

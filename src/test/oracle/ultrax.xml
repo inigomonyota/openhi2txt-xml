@@ -1,0 +1,10 @@
+<hi2txt>
+  <table id="BEST 5">
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>EDF FACTION</col>
+    <row><cell>1ST</cell><cell>1,000,000</cell><cell>MTY</cell><cell>SSP (JET-VTOL)</cell></row>
+    <row><cell>2ND</cell><cell>600,000</cell><cell>MTY</cell><cell>TDF (ULTRA-HAWK)</cell></row>
+    <row><cell>3RD</cell><cell>400,000</cell><cell>MTY</cell><cell>MAT (MAT-ARROW)</cell></row>
+    <row><cell>4TH</cell><cell>300,000</cell><cell>MTY</cell><cell>TAC (TAC-SPACE)</cell></row>
+    <row><cell>5TH</cell><cell>200,000</cell><cell>MTY</cell><cell>ZAT (CONDOR-1)</cell></row>
+  </table>
+</hi2txt>

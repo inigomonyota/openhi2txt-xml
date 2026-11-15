@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Super Sprint">
+  <!--
+    tested with:
+      mame 0.283 and hiscore.dat 2026-02-22
+    hiscore.dat entry:
+      ssprint:
+      @:maincpu,program,eca,96,00,00
+    notes:
+      30 entries, 5 bytes each: 2-byte big-endian score + 3-byte ASCII name
+      score is stored /10 (multiply by 10 to get displayed value)
+    source: custom
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>150</size>
+    </check>
+    <loop count="30">
+      <elt size="2" type="int" id="SCORE" endianness="big_endian"/>
+      <elt size="3" type="text" id="NAME" ascii-offset="0"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="SUPER SPRINT RACING TEAM">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" format="x10"/>
+      <column id="NAME" format="trim"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="x10"><multiply>10</multiply></format>
+  <format id="trim"><trim direction="both"> </trim></format>
+
+</hi2txt>

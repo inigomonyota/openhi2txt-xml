@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="FAR OUT PLAYERS">
+    <col>RANK</col><col>SCORE</col><col>DISTANCE (KM)</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>200,000</cell><cell>23.4 KM</cell><cell>YAM</cell></row>
+    <row><cell>2ND</cell><cell>190,000</cell><cell>20.1 KM</cell><cell>SAN</cell></row>
+    <row><cell>3RD</cell><cell>184,650</cell><cell>18.4 KM</cell><cell>UCH</cell></row>
+    <row><cell>4TH</cell><cell>176,960</cell><cell>15.9 KM</cell><cell>KAW</cell></row>
+    <row><cell>5TH</cell><cell>169,880</cell><cell>15.9 KM</cell><cell>IKI</cell></row>
+    <row><cell>6TH</cell><cell>153,990</cell><cell>15.4 KM</cell><cell>HIR</cell></row>
+    <row><cell>7TH</cell><cell>152,050</cell><cell>14.7 KM</cell><cell>IGA</cell></row>
+    <row><cell>8TH</cell><cell>143,280</cell><cell>14.4 KM</cell><cell>KOD</cell></row>
+    <row><cell>9TH</cell><cell>140,660</cell><cell>14.2 KM</cell><cell>SAT</cell></row>
+    <row><cell>10TH</cell><cell>135,820</cell><cell>13.8 KM</cell><cell>MRI</cell></row>
+  </table>
+</hi2txt>

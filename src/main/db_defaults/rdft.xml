@@ -1,0 +1,28 @@
+<hi2txt>
+<table id="ACE PILOTS - SOLO PLAY">
+<col>RANK</col><col>NAME</col><col>SCORE</col><col>SHIP</col><col>STAGE</col>
+<row><cell>1st</cell><cell>H.H</cell><cell>1000000</cell><cell>AEGIS</cell><cell>1-1</cell></row>
+<row><cell>2nd</cell><cell>S.Y</cell><cell>900000</cell><cell>BEAST ARROW</cell><cell>1-1</cell></row>
+<row><cell>3rd</cell><cell>Y.K</cell><cell>800000</cell><cell>CHASER</cell><cell>1-1</cell></row>
+<row><cell>4th</cell><cell>T.S</cell><cell>700000</cell><cell>DEVASTATOR</cell><cell>1-1</cell></row>
+<row><cell>5th</cell><cell>N.M</cell><cell>600000</cell><cell>ENDEAVOR</cell><cell>1-1</cell></row>
+<row><cell>6th</cell><cell>T.S</cell><cell>500000</cell><cell>RAIDEN MK-II</cell><cell>1-1</cell></row>
+<row><cell>7th</cell><cell>T.W</cell><cell>400000</cell><cell>JUDGE SPEAR</cell><cell>1-1</cell></row>
+</table>
+<table id="ACE PILOTS - DUAL PLAYER (1 PLAYER)">
+<col>RANK</col><col>NAME</col><col>SCORE</col><col>SHIP</col><col>STAGE</col>
+<row><cell>1st</cell><cell>C.T</cell><cell>1000000</cell><cell>AEGIS</cell><cell>1-1</cell></row>
+<row><cell>2nd</cell><cell>W.S</cell><cell>900000</cell><cell>BEAST ARROW</cell><cell>1-1</cell></row>
+<row><cell>3rd</cell><cell>T.H</cell><cell>800000</cell><cell>CHASER</cell><cell>1-1</cell></row>
+<row><cell>4th</cell><cell>K.M</cell><cell>700000</cell><cell>DEVASTATOR</cell><cell>1-1</cell></row>
+<row><cell>5th</cell><cell>M.I</cell><cell>600000</cell><cell>ENDEAVOR</cell><cell>1-1</cell></row>
+</table>
+<table id="ACE PILOTS - DUAL PLAYER (2 PLAYER)">
+<col>RANK</col><col>NAME</col><col>SCORE</col><col>SHIP</col><col>STAGE</col>
+<row><cell>1st</cell><cell>G.S</cell><cell>1000000</cell><cell>AEGIS</cell><cell>1-1</cell></row>
+<row><cell>2nd</cell><cell>Y.Y</cell><cell>900000</cell><cell>BEAST ARROW</cell><cell>1-1</cell></row>
+<row><cell>3rd</cell><cell>K.M</cell><cell>800000</cell><cell>CHASER</cell><cell>1-1</cell></row>
+<row><cell>4th</cell><cell>T.H</cell><cell>700000</cell><cell>DEVASTATOR</cell><cell>1-1</cell></row>
+<row><cell>5th</cell><cell>Y.O</cell><cell>600000</cell><cell>ENDEAVOR</cell><cell>1-1</cell></row>
+</table>
+</hi2txt>

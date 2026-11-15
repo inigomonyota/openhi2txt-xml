@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<!-- Revolution X (Midway). nvram stores high scores in DIRECT byte format (NOT the
+     1-byte-per-4-word packing) as 10-byte records:
+       [0:4]  SCORE  4-byte packed BCD (2 digits/byte, big-endian)
+       [4:6]  00 00  padding
+       [6:9]  NAME   3 ASCII chars
+       [9]    trailer byte (varies; not displayed)
+     Layout:
+       0x000            today's champion slot (duplicate of today rank 1) - not displayed
+       0x00a..0x059     TODAY'S REVOLUTIONARIES  (8 records)
+       0x400            NUMBER ONE PLATINUM PLAYER slot (all-time champion record)
+       0x40a..0x459     ALL TIME REVOLUTIONARIES (8 records)
+     The score columns are named "SCORE", so the reference's comma grouping is produced at
+     runtime via  -score-grouping yes -score-grouping-separator ","  (grouping is a hi2txt
+     command-line option that targets the SCORE field, not an XML format): 310865 -> 310,865.
+     NOTE: file is authoritative - the platinum slot @0x400 holds GNP / 1500000 in this dump;
+     the reference shows SVT / 1000000 (all-time rank 1), which the platinum screen defaults to. -->
+<structure file="nvram">
+  <check>
+    <size>8192</size>
+  </check>
+  <elt size="10" type="raw" id="HDR0"/>
+  <loop count="8">
+    <elt size="4" type="int"  id="TSCORE" base="16"/>
+    <elt size="2" type="raw"  id="TPAD"/>
+    <elt size="3" type="text" id="TNAME"/>
+    <elt size="1" type="raw"  id="TTRL"/>
+  </loop>
+  <elt size="934" type="raw" id="GAP"/>
+  <elt size="4" type="int"  id="PSCORE" base="16"/>
+  <elt size="2" type="raw"  id="PPAD"/>
+  <elt size="3" type="text" id="PNAME"/>
+  <elt size="1" type="raw"  id="PTRL"/>
+  <loop count="8">
+    <elt size="4" type="int"  id="ASCORE" base="16"/>
+    <elt size="2" type="raw"  id="APAD"/>
+    <elt size="3" type="text" id="ANAME"/>
+    <elt size="1" type="raw"  id="ATRL"/>
+  </loop>
+</structure>
+
+<output>
+  <table id="TODAY'S REVOLUTIONARIES">
+    <column id="RANK"  src="index" format="+1;Suffix)"/>
+    <column id="NAME"  src="TNAME"/>
+    <column id="SCORE" src="TSCORE"/>
+  </table>
+  <table id="ALL TIME REVOLUTIONARIES">
+    <column id="RANK"  src="index" format="+1;Suffix)"/>
+    <column id="NAME"  src="ANAME"/>
+    <column id="SCORE" src="ASCORE"/>
+  </table>
+  <table id="NUMBER ONE PLATINUM PLAYER">
+    <column id="NAME"  src="PNAME"/>
+    <column id="SCORE" src="PSCORE"/>
+  </table>
+</output>
+</hi2txt>

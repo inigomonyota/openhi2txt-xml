@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  shdancer (Shadow Dancer, Sega, 1989) - .hi definition for hi2txt
+
+  hiscore.dat range: skip 2012 bytes, then 8 entries x 10 bytes = 80 bytes
+  Total file size: 5028 bytes (remainder after the entries is other game
+  state/settings data, not part of the high score table - read as raw
+  padding to satisfy the size check).
+
+  Each 10-byte entry:
+    [0-3] 4B BCD BE score
+    [4]   1B stage byte: high nibble = world-1, low nibble = stage-1
+    [5-7] 3B ASCII name
+    [8]   1B coins used
+    [9]   1B trailing padding (always 0x00)
+
+  FIXES from the original shdancer.xml:
+  1. Added table-index="loop_index" to every element inside the loop.
+     Without this, hi2txt cannot correctly populate per-row data across
+     the 8 entries - this is required in every working XML in this
+     collection and was missing here.
+  2. Replaced <shift-right> and <and> (bitwise operations) with
+     <divide> and <modulo>, which are mathematically equivalent for a
+     single byte 0-255 and are the operations the C# hi2txt port
+     actually supports. shift-right/and are not part of its format
+     operation vocabulary and would fail silently or error out.
+  3. Added a <size> check and trailing raw padding so the full 5028-byte
+     file is consumed exactly, rather than leaving trailing bytes
+     unaccounted for.
+  4. CRITICAL FIX: entries are 10 bytes each, not 9. An extra trailing
+     padding byte after COINS was missed originally, causing every
+     entry after rank 1 to be read 1 byte short - each subsequent rank
+     drifted further out of alignment, producing garbage values (e.g.
+     a rank showing a 20-million score that was really misread bytes
+     from the START of the next real entry). Verified correct against
+     a second .hi file with 3 real entries (ranks 1-3) matching an
+     in-game screenshot exactly: rank1=700/HOG/1-1/3 coins,
+     rank2=blank/1-1/1 coin, rank3=blank/1-1/1 coin.
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>5028</size>
+    </check>
+
+    <elt size="2012" type="raw" id="_SKIP"/>
+
+    <loop count="8">
+      <elt size="4" type="int"  id="SCORE"     base="16" table-index="loop_index"/>
+      <elt size="1" type="int"  id="STAGE_RAW" table-index="loop_index"/>
+      <elt size="3" type="text" id="NAME"      table-index="loop_index"/>
+      <elt size="1" type="int"  id="COINS"     table-index="loop_index"/>
+      <elt size="1" type="raw"  id="_ENTRY_PAD"/>
+    </loop>
+
+    <!-- Remaining bytes (other game state, not part of the score table) -->
+    <elt size="2936" type="raw" id="_TRAIL"/>
+  </structure>
+
+  <output>
+    <table id="SHADOW DANCER HIGH SCORES" line-ignore="SCORE:0">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="STAGE" src="STAGE_RAW" format="stage_lookup"/>
+      <column id="COINS" src="COINS"/>
+    </table>
+  </output>
+
+  <format id="rank"><add>1</add></format>
+
+  <!-- stage_lookup: STAGE_RAW is a single byte, high nibble = world-1,
+       low nibble = stage-1. Neither bitwise shift/and NOR modulo are
+       supported by hi2txt, so this is done as a direct case lookup on
+       the raw byte value instead of nibble arithmetic. Covers world
+       1-8, stage 1-8 (byte values 0x00-0x77). Extend with more cases
+       if a world/stage combination beyond this range is ever seen. -->
+  <format id="stage_lookup">
+    <case src="0" operator="=" dst="1-1"/>
+    <case src="1" operator="=" dst="1-2"/>
+    <case src="2" operator="=" dst="1-3"/>
+    <case src="3" operator="=" dst="1-4"/>
+    <case src="4" operator="=" dst="1-5"/>
+    <case src="5" operator="=" dst="1-6"/>
+    <case src="6" operator="=" dst="1-7"/>
+    <case src="7" operator="=" dst="1-8"/>
+    <case src="16" operator="=" dst="2-1"/>
+    <case src="17" operator="=" dst="2-2"/>
+    <case src="18" operator="=" dst="2-3"/>
+    <case src="19" operator="=" dst="2-4"/>
+    <case src="20" operator="=" dst="2-5"/>
+    <case src="21" operator="=" dst="2-6"/>
+    <case src="22" operator="=" dst="2-7"/>
+    <case src="23" operator="=" dst="2-8"/>
+    <case src="32" operator="=" dst="3-1"/>
+    <case src="33" operator="=" dst="3-2"/>
+    <case src="34" operator="=" dst="3-3"/>
+    <case src="35" operator="=" dst="3-4"/>
+    <case src="36" operator="=" dst="3-5"/>
+    <case src="37" operator="=" dst="3-6"/>
+    <case src="38" operator="=" dst="3-7"/>
+    <case src="39" operator="=" dst="3-8"/>
+    <case src="48" operator="=" dst="4-1"/>
+    <case src="49" operator="=" dst="4-2"/>
+    <case src="50" operator="=" dst="4-3"/>
+    <case src="51" operator="=" dst="4-4"/>
+    <case src="52" operator="=" dst="4-5"/>
+    <case src="53" operator="=" dst="4-6"/>
+    <case src="54" operator="=" dst="4-7"/>
+    <case src="55" operator="=" dst="4-8"/>
+    <case src="64" operator="=" dst="5-1"/>
+    <case src="65" operator="=" dst="5-2"/>
+    <case src="66" operator="=" dst="5-3"/>
+    <case src="67" operator="=" dst="5-4"/>
+    <case src="68" operator="=" dst="5-5"/>
+    <case src="69" operator="=" dst="5-6"/>
+    <case src="70" operator="=" dst="5-7"/>
+    <case src="71" operator="=" dst="5-8"/>
+    <case src="80" operator="=" dst="6-1"/>
+    <case src="81" operator="=" dst="6-2"/>
+    <case src="82" operator="=" dst="6-3"/>
+    <case src="83" operator="=" dst="6-4"/>
+    <case src="84" operator="=" dst="6-5"/>
+    <case src="85" operator="=" dst="6-6"/>
+    <case src="86" operator="=" dst="6-7"/>
+    <case src="87" operator="=" dst="6-8"/>
+    <case src="96" operator="=" dst="7-1"/>
+    <case src="97" operator="=" dst="7-2"/>
+    <case src="98" operator="=" dst="7-3"/>
+    <case src="99" operator="=" dst="7-4"/>
+    <case src="100" operator="=" dst="7-5"/>
+    <case src="101" operator="=" dst="7-6"/>
+    <case src="102" operator="=" dst="7-7"/>
+    <case src="103" operator="=" dst="7-8"/>
+    <case src="112" operator="=" dst="8-1"/>
+    <case src="113" operator="=" dst="8-2"/>
+    <case src="114" operator="=" dst="8-3"/>
+    <case src="115" operator="=" dst="8-4"/>
+    <case src="116" operator="=" dst="8-5"/>
+    <case src="117" operator="=" dst="8-6"/>
+    <case src="118" operator="=" dst="8-7"/>
+    <case src="119" operator="=" dst="8-8"/>
+  </format>
+</hi2txt>

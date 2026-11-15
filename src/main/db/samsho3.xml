@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Samurai Shodown III">
+
+  <!--
+    Neo Geo 64KB saveram, interpreted after byte-swap="2".
+
+    Persistent records:
+      0x0330-0x0333 : highest score
+      0x0334        : score portrait/character selector (not displayed)
+      0x0335-0x0337 : score name, ASCII
+
+      0x0338-0x033B : most wins
+      0x033C        : wins portrait/character selector (not displayed)
+      0x033D-0x033F : wins name, ASCII
+
+    Confirmed high-score example:
+      00 17 17 00 -> base="16" -> 171700
+      08 4D 20 20 -> portrait 08, name "M  "
+  -->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+
+    <!-- 0x0000-0x032F -->
+    <elt size="816" type="raw" id="_PREFIX"/>
+
+    <!-- 0x0330-0x0333 -->
+    <elt size="4" type="int" id="HIGH_SCORE"
+         endianness="big_endian" base="16"/>
+
+    <!-- 0x0334 -->
+    <elt size="1" type="raw" id="_HIGH_SCORE_CHARACTER"/>
+
+    <!-- 0x0335-0x0337 -->
+    <elt size="3" type="text" id="HIGH_SCORE_NAME"/>
+
+    <!-- 0x0338-0x033B -->
+    <elt size="4" type="int" id="MOST_WINS"
+         endianness="big_endian"/>
+
+    <!-- 0x033C -->
+    <elt size="1" type="raw" id="_MOST_WINS_CHARACTER"/>
+
+    <!-- 0x033D-0x033F -->
+    <elt size="3" type="text" id="MOST_WINS_NAME"/>
+
+    <!-- 0x0340-0xFFFF -->
+    <elt size="64704" type="raw" id="_SUFFIX"/>
+  </structure>
+
+  <output>
+    <table id="PLAYER WITH THE HIGHEST SCORE" lines-max="1">
+      <column id="NAME" src="HIGH_SCORE_NAME"/>
+      <column id="SCORE" src="HIGH_SCORE"/>
+    </table>
+
+    <table id="PLAYER WITH THE MOST NUMEROUS WIN" lines-max="1">
+      <column id="NAME" src="MOST_WINS_NAME"/>
+      <column id="WINS" src="MOST_WINS"/>
+    </table>
+  </output>
+
+</hi2txt>

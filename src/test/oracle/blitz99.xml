@@ -1,0 +1,154 @@
+<hi2txt>
+  <table id="GREATEST PLAYERS (BEST WIN PERCENTAGE)">
+    <col>RANK</col><col>NAME</col><col>PERCENTAGE</col>
+    <row><cell>1</cell><cell>JAPPLE</cell><cell>0.800</cell></row>
+    <row><cell>2</cell><cell>TURMEL</cell><cell>0.800</cell></row>
+    <row><cell>3</cell><cell>JASON</cell><cell>0.800</cell></row>
+    <row><cell>4</cell><cell>EDDIE</cell><cell>0.800</cell></row>
+    <row><cell>5</cell><cell>DANIEL</cell><cell>0.600</cell></row>
+    <row><cell>6</cell><cell>LUIS</cell><cell>0.600</cell></row>
+    <row><cell>7</cell><cell>JENIFR</cell><cell>0.600</cell></row>
+    <row><cell>8</cell><cell>MIKE</cell><cell>0.600</cell></row>
+    <row><cell>9</cell><cell>ROOT</cell><cell>0.600</cell></row>
+    <row><cell>10</cell><cell>PAULO</cell><cell>0.600</cell></row>
+  </table>
+  <table id="BIGGEST WINNERS (MOST GAMES WON)">
+    <col>RANK</col><col>NAME</col><col>WINS</col>
+    <row><cell>1</cell><cell>JAPPLE</cell><cell>4</cell></row>
+    <row><cell>2</cell><cell>TURMEL</cell><cell>4</cell></row>
+    <row><cell>3</cell><cell>JASON</cell><cell>4</cell></row>
+    <row><cell>4</cell><cell>EDDIE</cell><cell>4</cell></row>
+    <row><cell>5</cell><cell>DANIEL</cell><cell>3</cell></row>
+    <row><cell>6</cell><cell>LUIS</cell><cell>3</cell></row>
+    <row><cell>7</cell><cell>JENIFR</cell><cell>3</cell></row>
+    <row><cell>8</cell><cell>MIKE</cell><cell>3</cell></row>
+    <row><cell>9</cell><cell>ROOT</cell><cell>3</cell></row>
+    <row><cell>10</cell><cell>PAULO</cell><cell>3</cell></row>
+  </table>
+  <table id="BEST OFFENSIVE PLAYERS (POINTS SCORED PER GAME)">
+    <col>RANK</col><col>NAME</col><col>POINTS</col>
+    <row><cell>1</cell><cell>JAPPLE</cell><cell>25.20</cell></row>
+    <row><cell>2</cell><cell>JENIFR</cell><cell>24.80</cell></row>
+    <row><cell>3</cell><cell>DANIEL</cell><cell>24.40</cell></row>
+    <row><cell>4</cell><cell>TURMEL</cell><cell>24.20</cell></row>
+    <row><cell>5</cell><cell>ROOT</cell><cell>24.20</cell></row>
+    <row><cell>6</cell><cell>SAL</cell><cell>24.20</cell></row>
+    <row><cell>7</cell><cell>EDDIE</cell><cell>24.00</cell></row>
+    <row><cell>8</cell><cell>LEX</cell><cell>23.80</cell></row>
+    <row><cell>9</cell><cell>MIKE</cell><cell>23.60</cell></row>
+    <row><cell>10</cell><cell>MXV</cell><cell>23.60</cell></row>
+  </table>
+  <table id="BEST DEFENSIVE PLAYERS (POINTS ALLOWED PER GAME)">
+    <col>RANK</col><col>NAME</col><col>POINTS</col>
+    <row><cell>1</cell><cell>SAL</cell><cell>37.40</cell></row>
+    <row><cell>2</cell><cell>TURMEL</cell><cell>38.80</cell></row>
+    <row><cell>3</cell><cell>DANIEL</cell><cell>40.00</cell></row>
+    <row><cell>4</cell><cell>MXV</cell><cell>40.20</cell></row>
+    <row><cell>5</cell><cell>LEX</cell><cell>40.20</cell></row>
+    <row><cell>6</cell><cell>MIKE</cell><cell>40.20</cell></row>
+    <row><cell>7</cell><cell>EDDIE</cell><cell>40.20</cell></row>
+    <row><cell>8</cell><cell>JAPPLE</cell><cell>40.20</cell></row>
+    <row><cell>9</cell><cell>ROOT</cell><cell>40.80</cell></row>
+    <row><cell>10</cell><cell>JASON</cell><cell>40.80</cell></row>
+  </table>
+  <table id="BEST RUSHERS (YARDS PER GAME)">
+    <col>RANK</col><col>NAME</col><col>YARDS</col>
+    <row><cell>1</cell><cell>JENIFR</cell><cell>52.80</cell></row>
+    <row><cell>2</cell><cell>DANIEL</cell><cell>50.60</cell></row>
+    <row><cell>3</cell><cell>JAPPLE</cell><cell>50.00</cell></row>
+    <row><cell>4</cell><cell>EDDIE</cell><cell>45.40</cell></row>
+    <row><cell>5</cell><cell>LEX</cell><cell>45.00</cell></row>
+    <row><cell>6</cell><cell>MXV</cell><cell>45.00</cell></row>
+    <row><cell>7</cell><cell>MIKE</cell><cell>44.60</cell></row>
+    <row><cell>8</cell><cell>SAL</cell><cell>44.20</cell></row>
+    <row><cell>9</cell><cell>JASON</cell><cell>43.80</cell></row>
+    <row><cell>10</cell><cell>TURMEL</cell><cell>43.00</cell></row>
+  </table>
+  <table id="BEST PASSERS (YARDS PER GAME)">
+    <col>RANK</col><col>NAME</col><col>YARDS</col>
+    <row><cell>1</cell><cell>JASON</cell><cell>73.00</cell></row>
+    <row><cell>2</cell><cell>ROOT</cell><cell>72.00</cell></row>
+    <row><cell>3</cell><cell>PAULO</cell><cell>69.00</cell></row>
+    <row><cell>4</cell><cell>GRINCH</cell><cell>69.00</cell></row>
+    <row><cell>5</cell><cell>DANIEL</cell><cell>65.00</cell></row>
+    <row><cell>6</cell><cell>TURMEL</cell><cell>60.00</cell></row>
+    <row><cell>7</cell><cell>GUIDO</cell><cell>60.00</cell></row>
+    <row><cell>8</cell><cell>SAL</cell><cell>60.00</cell></row>
+    <row><cell>9</cell><cell>LUIS</cell><cell>59.00</cell></row>
+    <row><cell>10</cell><cell>JENIFR</cell><cell>55.00</cell></row>
+  </table>
+  <table id="CURRENT WINNING STREAK (CONSECUTIVE WINS)">
+    <col>RANK</col><col>NAME</col><col>WINS</col>
+    <row><cell>1</cell><cell>JAPPLE</cell><cell>4</cell></row>
+    <row><cell>2</cell><cell>TURMEL</cell><cell>3</cell></row>
+    <row><cell>3</cell><cell>EDDIE</cell><cell>2</cell></row>
+    <row><cell>4</cell><cell>DANIEL</cell><cell>2</cell></row>
+    <row><cell>5</cell><cell>PAULO</cell><cell>1</cell></row>
+    <row><cell>6</cell><cell>ROOT</cell><cell>1</cell></row>
+    <row><cell>7</cell><cell>GRINCH</cell><cell>1</cell></row>
+    <row><cell>8</cell><cell>JASON</cell><cell>1</cell></row>
+    <row><cell>9</cell><cell>LUIS</cell><cell>1</cell></row>
+    <row><cell>10</cell><cell>JENIFR</cell><cell>1</cell></row>
+  </table>
+  <table id="EXPERIENCED PLAYERS (MOST GAMES PLAYED)">
+    <col>RANK</col><col>NAME</col><col>GAMES</col>
+    <row><cell>1</cell><cell>JAPPLE</cell><cell>5</cell></row>
+    <row><cell>2</cell><cell>TURMEL</cell><cell>5</cell></row>
+    <row><cell>3</cell><cell>EDDIE</cell><cell>5</cell></row>
+    <row><cell>4</cell><cell>JASON</cell><cell>5</cell></row>
+    <row><cell>5</cell><cell>DANIEL</cell><cell>5</cell></row>
+    <row><cell>6</cell><cell>PAULO</cell><cell>5</cell></row>
+    <row><cell>7</cell><cell>GRINCH</cell><cell>5</cell></row>
+    <row><cell>8</cell><cell>ROOT</cell><cell>5</cell></row>
+    <row><cell>9</cell><cell>LUIS</cell><cell>5</cell></row>
+    <row><cell>10</cell><cell>JENIFR</cell><cell>5</cell></row>
+  </table>
+  <table id="QB RATING (BEST OVERALL QUARTERBACK)">
+    <col>RANK</col><col>NAME</col><col>RATING</col>
+    <row><cell>1</cell><cell>JASON</cell><cell>121.4</cell></row>
+    <row><cell>2</cell><cell>SAL</cell><cell>104.4</cell></row>
+    <row><cell>3</cell><cell>LUIS</cell><cell>103.5</cell></row>
+    <row><cell>4</cell><cell>LEX</cell><cell>102.9</cell></row>
+    <row><cell>5</cell><cell>DANIEL</cell><cell>102.5</cell></row>
+    <row><cell>6</cell><cell>JENIFR</cell><cell>101.0</cell></row>
+    <row><cell>7</cell><cell>EDDIE</cell><cell>93.2</cell></row>
+    <row><cell>8</cell><cell>MXV</cell><cell>93.2</cell></row>
+    <row><cell>9</cell><cell>MIKE</cell><cell>93.2</cell></row>
+    <row><cell>10</cell><cell>ROOT</cell><cell>92.7</cell></row>
+  </table>
+  <table id="BLITZ TRIVIA MASTERS (MOST TRIVIA POINTS)">
+    <col>RANK</col><col>NAME</col><col>POINTS</col>
+    <row><cell>1</cell><cell>DANIEL</cell><cell>3</cell></row>
+    <row><cell>2</cell><cell>JASON</cell><cell>2</cell></row>
+    <row><cell>3</cell><cell>TURMEL</cell><cell>2</cell></row>
+    <row><cell>4</cell><cell>GUIDO</cell><cell>2</cell></row>
+    <row><cell>5</cell><cell>MIKE</cell><cell>2</cell></row>
+    <row><cell>6</cell><cell>JENIFR</cell><cell>2</cell></row>
+    <row><cell>7</cell><cell>PAULO</cell><cell>2</cell></row>
+    <row><cell>8</cell><cell>JAPPLE</cell><cell>2</cell></row>
+    <row><cell>9</cell><cell>MXV</cell><cell>1</cell></row>
+    <row><cell>10</cell><cell>ROOT</cell><cell>1</cell></row>
+  </table>
+  <table id="WORLD RECORDS (BEST SINGLE GAME RECORDS)">
+    <col>RECORD</col><col>NAME</col><col>VALUE</col>
+    <row><cell>MOST SACKS</cell><cell>JASON</cell><cell>10</cell></row>
+    <row><cell>MOST TOUCHDOWNS</cell><cell>TURMEL</cell><cell>2</cell></row>
+    <row><cell>MOST TACKLES</cell><cell>DANIEL</cell><cell>2</cell></row>
+    <row><cell>MOST INTERCEPTIONS</cell><cell>JAPPLE</cell><cell>10</cell></row>
+    <row><cell>MOST POINTS</cell><cell>JENIFR</cell><cell>21</cell></row>
+    <row><cell>LARGEST VICTORY MARGIN</cell><cell>SAL</cell><cell>5</cell></row>
+  </table>
+  <table id="MOST POPULAR TEAMS (BASED ON THIS LOCATION)">
+    <col>RANK</col><col>TEAM</col><col>TEAM INDEX</col><col>TEAM_USES</col>
+    <row><cell>1</cell><cell>ARIZONA CARDINALS</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>2</cell><cell>ATLANTA FALCONS</cell><cell>1</cell><cell>0</cell></row>
+    <row><cell>3</cell><cell>BALTIMORE RAVENS</cell><cell>2</cell><cell>0</cell></row>
+    <row><cell>4</cell><cell>BUFFALO BILLS</cell><cell>3</cell><cell>0</cell></row>
+    <row><cell>5</cell><cell>CAROLINA PANTHERS</cell><cell>4</cell><cell>0</cell></row>
+    <row><cell>6</cell><cell>CHICAGO BEARS</cell><cell>5</cell><cell>0</cell></row>
+    <row><cell>7</cell><cell>CINCINNATI BENGALS</cell><cell>6</cell><cell>0</cell></row>
+    <row><cell>8</cell><cell>DALLAS COWBOYS</cell><cell>7</cell><cell>0</cell></row>
+    <row><cell>9</cell><cell>DENVER BRONCOS</cell><cell>8</cell><cell>0</cell></row>
+    <row><cell>10</cell><cell>DETROIT LIONS</cell><cell>9</cell><cell>0</cell></row>
+  </table>
+</hi2txt>

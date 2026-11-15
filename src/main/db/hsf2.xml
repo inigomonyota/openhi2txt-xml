@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    Hyper Street Fighter II: The Anniversary Edition (Capcom, 2004)
+    hsf2, hsf2a, hsf2d, hsf2j
+
+    .hi file: 51 bytes (2 chunks from hiscore.dat)
+      Chunk 1 (47B @ffd454): score table (5 displayed + 1 overflow)
+      Chunk 2 ( 4B @ffd4cc): top score display
+
+    Entry format (8 bytes):
+      [SCORE:4 BCD] [NAME:3 ASCII] [PAD:1 (0x20)]
+      SCORE: 4-byte BCD (base="16"), big-endian
+      NAME:  3 bytes plain ASCII (A-Z)
+      PAD:   0x20 (space)
+
+    6 entries stored in RAM but game only displays top 5.
+    Entry 6 is 7 bytes (pad byte falls in chunk 2).
+
+    Default high scores: 50000 ONI, 45000 SIN, 40000 KID,
+    35000 MIN, 30000 MCH.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,ffd454,2f,00,58
+                  @:maincpu,program,ffd4cc,4,00,00</definition>
+      <size>51</size>
+    </check>
+    <!-- 6 entries x 8 bytes, last entry short by 1 (pad in chunk 2) -->
+    <loop count="6" skip-last-bytes="1">
+      <elt size="4" type="int" base="16" id="SCORE"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw" id="PAD"/>
+    </loop>
+    <!-- Chunk 2: Top score (4-byte BCD) -->
+    <elt size="4" type="int" base="16" id="TOP SCORE"/>
+  </structure>
+
+  <output>
+    <table lines-max="5">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+</hi2txt>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Trophy Hunting - Bear &amp; Moose">
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,000000,10000,00,00</definition>
+      <size>65536</size>
+    </check>
+    <elt size="40" type="raw" id="HDR"/>
+    <loop count="20">
+      <elt size="1" type="int"  id="B_WPN"/>
+      <elt size="1" type="raw"  id="B_RK"/>
+      <elt size="1" type="int"  id="B_SIDX" base="16"/>
+      <elt size="1" type="raw"  id="B_P3"/>
+      <elt size="1" type="text" id="B_I1"/>
+      <elt size="1" type="raw"  id="B_P5"/>
+      <elt size="1" type="text" id="B_I2"/>
+      <elt size="1" type="raw"  id="B_P7"/>
+    </loop>
+    <elt size="8" type="raw" id="BSKIP"/>
+    <loop count="20">
+      <elt size="1" type="int"  id="M_WPN"/>
+      <elt size="1" type="raw"  id="M_RK"/>
+      <elt size="1" type="int"  id="M_SIDX" base="16"/>
+      <elt size="1" type="raw"  id="M_P3"/>
+      <elt size="1" type="text" id="M_I1"/>
+      <elt size="1" type="raw"  id="M_P5"/>
+      <elt size="1" type="text" id="M_I2"/>
+      <elt size="1" type="raw"  id="M_P7"/>
+    </loop>
+  </structure>
+  <output>
+    <table id="BEAR TOP20">
+      <column id="RANK"  src="index" format="rk"/>
+      <column id="NAME"  src="B_I1" format="mkname_B"/>
+      <column id="SCORE" src="B_SIDX" format="score_bear"/>
+    </table>
+    <table id="MOOSE TOP20">
+      <column id="RANK"  src="index" format="rk"/>
+      <column id="NAME"  src="M_I1" format="mkname_M"/>
+      <column id="SCORE" src="M_SIDX" format="score_moose"/>
+    </table>
+  </output>
+  <format id="rk"><add>1</add></format>
+  <format id="mkname_B"><concat><column>.</column><column id="B_I2"/></concat></format>
+  <format id="mkname_M"><concat><column>.</column><column id="M_I2"/></concat></format>
+  <format id="linbear"><add>5</add><multiply>100</multiply></format>
+  <format id="linmoose"><substract>5</substract><multiply>100</multiply></format>
+  <format id="score_bear">
+    <case src="30" dst="5000"/>
+    <case src="27" dst="4000"/>
+    <case src="25" dst="3500"/>
+    <case src="22" dst="3000"/>
+    <case src="0" operator="&gt;=" default="yes" format="linbear"/>
+  </format>
+  <format id="score_moose">
+    <case src="50" dst="3000"/>
+    <case src="40" dst="2750"/>
+    <case src="35" dst="2500"/>
+    <case src="30" dst="2250"/>
+    <case src="0" operator="&gt;=" default="yes" format="linmoose"/>
+  </format>
+</hi2txt>

@@ -1,0 +1,42 @@
+<hi2txt>
+  <table id="NORTH">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>40000</cell><cell>...</cell></row>
+    <row><cell>2</cell><cell>39000</cell><cell>...</cell></row>
+    <row><cell>3</cell><cell>38000</cell><cell>...</cell></row>
+    <row><cell>4</cell><cell>37000</cell><cell>...</cell></row>
+    <row><cell>5</cell><cell>36000</cell><cell>...</cell></row>
+  </table>
+  <table id="EAST">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>40000</cell><cell>...</cell></row>
+    <row><cell>2</cell><cell>39000</cell><cell>...</cell></row>
+    <row><cell>3</cell><cell>38000</cell><cell>...</cell></row>
+    <row><cell>4</cell><cell>37000</cell><cell>...</cell></row>
+    <row><cell>5</cell><cell>36000</cell><cell>...</cell></row>
+  </table>
+  <table id="SOUTH">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>40000</cell><cell>...</cell></row>
+    <row><cell>2</cell><cell>39000</cell><cell>...</cell></row>
+    <row><cell>3</cell><cell>38000</cell><cell>...</cell></row>
+    <row><cell>4</cell><cell>37000</cell><cell>...</cell></row>
+    <row><cell>5</cell><cell>36000</cell><cell>...</cell></row>
+  </table>
+  <table id="WEST">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>40000</cell><cell>...</cell></row>
+    <row><cell>2</cell><cell>39000</cell><cell>...</cell></row>
+    <row><cell>3</cell><cell>38000</cell><cell>...</cell></row>
+    <row><cell>4</cell><cell>37000</cell><cell>...</cell></row>
+    <row><cell>5</cell><cell>36000</cell><cell>...</cell></row>
+  </table>
+  <table id="OFFROAD">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>40000</cell><cell>...</cell></row>
+    <row><cell>2</cell><cell>39000</cell><cell>...</cell></row>
+    <row><cell>3</cell><cell>38000</cell><cell>...</cell></row>
+    <row><cell>4</cell><cell>37000</cell><cell>...</cell></row>
+    <row><cell>5</cell><cell>36000</cell><cell>...</cell></row>
+  </table>
+</hi2txt>

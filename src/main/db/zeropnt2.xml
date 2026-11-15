@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- zeropnt2 by Unico, 1999 -->
+<!-- hiscore.dat: @:maincpu,program,fe901a,37,14,00 | @:maincpu,program,fe904c,1,01,01 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>56</size>
+    </check>
+
+    <!-- 5 records, 11 bytes each -->
+    <!-- Record: 5(Name) + 6(Score) -->
+    <loop count="5">
+      <!-- Unico character mapping: 0x00=A, 0x01=B... 0x14=U -->
+      <elt size="5" type="text" id="NAME" ascii-offset="65"/>
+      <!-- Score is stored 1 digit per byte. nibble-skip extracts the digits. -->
+      <elt size="6" type="int"  id="SCORE" nibble-skip="odd" base="16"/>
+    </loop>
+    <!-- trailing init flag from hiscore.dat @fe904c,1 (the .hi is 56B, not 55B) -->
+    <elt size="1" type="raw" id="FLAG"/>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <!-- Pad to 6 digits to match game display (100000, 070000) -->
+      <column id="SCORE" src="SCORE" format="PadL60;comma_score"/>
+	  <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+  <!-- Translates 0-4 into 1ST-5TH -->
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/><txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+</hi2txt>

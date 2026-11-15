@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  64street: 64th Street: A Detective Story
+
+  hiscore file: hiscore/64street.hi (116 bytes)
+  10 records x 12 bytes:
+
+    +0  CHARACTER (0=RICK, 1=ALLEN)
+    +1  padding (00)
+    +2  SCORE (3 bytes packed BCD => 6 digits)
+    +5  NAME (3 ASCII)
+    +8  padding (00000000)
+-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>116</size>
+    </check>
+
+    <loop count="10">
+      <elt size="1" type="int" id="CHARACTER"/>
+      <elt size="1" type="raw" id="PAD1"/>
+      <elt size="3" type="int" id="SCORE" base="16"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="4" type="raw" id="PAD2"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table sort="SCORE" sort-order="desc" line-ignore="SCORE:0">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="CHARACTER" format="character"/>
+      <column id="SCORE"/>
+      <column id="NAME" format="TrimR"/>
+    </table>
+  </output>
+
+<format id="character">
+  <case src="0" dst="RICK"/>
+  <case src="1" dst="ALLEN" default="yes"/>
+</format>
+
+</hi2txt>

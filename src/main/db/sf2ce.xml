@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hi2txt>
+  <!--
+    sf2ce (.hi) definition for hi2txt
+
+    hiscore.dat ranges (reference):
+      @:maincpu,program,ffd276,28,00,20   -> 0x28 (40 bytes) ranking table
+      @:maincpu,program,ffd2c6,14,ff,96   -> 0x14 (20 bytes) aux/check
+      @:maincpu,program,ffd2ee,04,00,00   -> 0x04 (4 bytes)  aux/check
+      Total .hi size = 64 bytes
+
+    Ranking table (first 0x28 bytes):
+      5 entries x 8 bytes:
+        SCORE : 4 bytes packed BCD (base="16") e.g. 00 50 50 02 -> 50502
+        NAME  : 3 bytes ASCII (initials)
+        PAD   : 1 byte (unused)
+  -->
+
+  <structure file=".hi">
+    <check><size>64</size></check>
+
+    <loop count="5">
+      <elt size="4" type="int"  id="SCORE" base="16"/>
+      <elt size="3" type="text" id="NAME" charset="sf2ce"/>
+      <elt size="1" type="raw"  id="_PAD"/>
+    </loop>
+
+    <!-- ignore remaining aux/check bytes -->
+    <elt size="24" type="raw" id="_TAIL"/>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME" format="trimr"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="trimr">
+    <trim direction="right"> </trim>
+  </format>
+
+  <charset id="sf2ce">
+    <char src="0x00" dst=" "/>
+  </charset>
+</hi2txt>

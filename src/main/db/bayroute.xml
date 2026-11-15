@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hi2txt>
+  <!--
+    bayroute (.hi) definition for hi2txt
+
+    hiscore.dat range:
+      @:maincpu,program,500110,50,00,0f  -> 0x50 (80 bytes)
+
+    Observed .hi layout (80 bytes):
+      10 records * 8 bytes each:
+
+        SCORE_BCD : 4 bytes (packed BCD digits; score appears to be stored /10)
+        ROUND_M1  : 1 byte  (round stored as (round-1))
+        NAME      : 3 bytes (custom charset, includes '.' separator)
+
+    This outputs a single unified chart:
+      RANK | SCORE | ROUND | NAME
+  -->
+
+  <structure file=".hi">
+    <check><size>80</size></check>
+
+    <loop count="10">
+      <elt size="4" type="int"  id="SCORE_RAW" base="16"/>
+      <elt size="1" type="int"  id="ROUND_M1" base="10"/>
+      <elt size="3" type="text" id="NAME" charset="bayroute"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index"     format="+1"/>
+      <column id="SCORE" src="SCORE_RAW" format="score_x10_blank0"/>
+      <column id="ROUND" src="ROUND_M1"  format="round_plus1_blank_if_score_blank"/>
+      <column id="NAME"  src="NAME"      format="trimr"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <!-- score stored /10 -->
+  <format id="score_x10_blank0">
+    <case src="0" dst=""/>
+    <multiply>10</multiply>
+  </format>
+
+  <!-- round is (round-1); also blank it if SCORE is blank -->
+  <format id="round_plus1_blank_if_score_blank">
+    <add>1</add>
+  </format>
+
+  <format id="trimr">
+    <trim direction="right"> </trim>
+  </format>
+
+  <charset id="bayroute">
+    <char src="0x00" dst=" "/>
+
+    <!-- separator -->
+    <char src="0x26" dst="." />
+
+    <!-- letters observed in your file -->
+    <char src="0x0a" dst="A" />
+    <char src="0x14" dst="K" />
+    <char src="0x16" dst="M" />
+    <char src="0x1b" dst="R" />
+    <char src="0x1c" dst="S" />
+    <char src="0x1d" dst="T" />
+    <char src="0x22" dst="Y" />
+
+    <!-- common extras for this game family (safe to include) -->
+    <char src="0x12" dst="O" />
+    <char src="0x18" dst="H" />
+    <char src="0x0f" dst="G" />
+    <char src="0x0b" dst="N" />
+    <char src="0x23" dst="P" />
+    <char src="0x27" dst="'" />
+    <char src="0x2d" dst="&amp;" />
+  </charset>
+</hi2txt>

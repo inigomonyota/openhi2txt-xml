@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE openhi2txt>
+<openhi2txt requires="0.3.0" label="Killer Instinct 2">
+  <structure file="dif" offset="0x0c7c" length="0x0618">
+    <loop count="10">
+      <elt id="STREAK NAME" type="text" size="3"/>
+      <elt id="STREAK NAME NUL" type="raw" size="1"/>
+      <elt id="STREAK" type="int" size="4" endianness="little_endian"/>
+      <elt id="STREAK UNUSED" type="raw" size="4"/>
+    </loop>
+    <elt id="UNUSED GLOBAL TABLE" type="raw" size="120"/>
+    <loop count="10">
+      <elt id="SPEED NAME" type="text" size="3"/>
+      <elt id="SPEED NAME NUL" type="raw" size="1"/>
+      <elt id="SPEED TIME" type="int" size="4" endianness="little_endian"/>
+      <elt id="SPEED UNUSED" type="raw" size="4"/>
+    </loop>
+
+    <loop count="5">
+      <elt id="FULGORE HITS NAME" type="text" size="3"/>
+      <elt id="FULGORE HITS NAME NUL" type="raw" size="1"/>
+      <elt id="FULGORE HITS" type="int" size="4" endianness="little_endian"/>
+      <elt id="FULGORE HITS UNUSED" type="raw" size="4"/>
+    </loop>
+    <loop count="5">
+      <elt id="FULGORE DAMAGE NAME" type="text" size="3"/>
+      <elt id="FULGORE DAMAGE NAME NUL" type="raw" size="1"/>
+      <elt id="FULGORE DAMAGE" type="int" size="4" endianness="little_endian"/>
+      <elt id="FULGORE DAMAGE UNUSED" type="raw" size="4"/>
+    </loop>
+
+    <loop count="5">
+      <elt id="COMBO HITS NAME" type="text" size="3"/>
+      <elt id="COMBO HITS NAME NUL" type="raw" size="1"/>
+      <elt id="COMBO HITS" type="int" size="4" endianness="little_endian"/>
+      <elt id="COMBO HITS UNUSED" type="raw" size="4"/>
+    </loop>
+    <loop count="5">
+      <elt id="COMBO DAMAGE NAME" type="text" size="3"/>
+      <elt id="COMBO DAMAGE NAME NUL" type="raw" size="1"/>
+      <elt id="COMBO DAMAGE" type="int" size="4" endianness="little_endian"/>
+      <elt id="COMBO DAMAGE UNUSED" type="raw" size="4"/>
+    </loop>
+
+    <loop count="5">
+      <elt id="ORCHID HITS NAME" type="text" size="3"/>
+      <elt id="ORCHID HITS NAME NUL" type="raw" size="1"/>
+      <elt id="ORCHID HITS" type="int" size="4" endianness="little_endian"/>
+      <elt id="ORCHID HITS UNUSED" type="raw" size="4"/>
+    </loop>
+    <loop count="5">
+      <elt id="ORCHID DAMAGE NAME" type="text" size="3"/>
+      <elt id="ORCHID DAMAGE NAME NUL" type="raw" size="1"/>
+      <elt id="ORCHID DAMAGE" type="int" size="4" endianness="little_endian"/>
+      <elt id="ORCHID DAMAGE UNUSED" type="raw" size="4"/>
+    </loop>
+
+    <loop count="5">
+      <elt id="JAGO HITS NAME" type="text" size="3"/>
+      <elt id="JAGO HITS NAME NUL" type="raw" size="1"/>
+      <elt id="JAGO HITS" type="int" size="4" endianness="little_endian"/>
+      <elt id="JAGO HITS UNUSED" type="raw" size="4"/>
+    </loop>
+    <loop count="5">
+      <elt id="JAGO DAMAGE NAME" type="text" size="3"/>
+      <elt id="JAGO DAMAGE NAME NUL" type="raw" size="1"/>
+      <elt id="JAGO DAMAGE" type="int" size="4" endianness="little_endian"/>
+      <elt id="JAGO DAMAGE UNUSED" type="raw" size="4"/>
+    </loop>
+
+    <loop count="5">
+      <elt id="GLACIUS HITS NAME" type="text" size="3"/>
+      <elt id="GLACIUS HITS NAME NUL" type="raw" size="1"/>
+      <elt id="GLACIUS HITS" type="int" size="4" endianness="little_endian"/>
+      <elt id="GLACIUS HITS UNUSED" type="raw" size="4"/>
+    </loop>
+    <loop count="5">
+      <elt id="GLACIUS DAMAGE NAME" type="text" size="3"/>
+      <elt id="GLACIUS DAMAGE NAME NUL" type="raw" size="1"/>
+      <elt id="GLACIUS DAMAGE" type="int" size="4" endianness="little_endian"/>
+      <elt id="GLACIUS DAMAGE UNUSED" type="raw" size="4"/>
+    </loop>
+
+    <loop count="5">
+      <elt id="TUSK HITS NAME" type="text" size="3"/>
+      <elt id="TUSK HITS NAME NUL" type="raw" size="1"/>
+      <elt id="TUSK HITS" type="int" size="4" endianness="little_endian"/>
+      <elt id="TUSK HITS UNUSED" type="raw" size="4"/>
+    </loop>
+    <loop count="5">
+      <elt id="TUSK DAMAGE NAME" type="text" size="3"/>
+      <elt id="TUSK DAMAGE NAME NUL" type="raw" size="1"/>
+      <elt id="TUSK DAMAGE" type="int" size="4" endianness="little_endian"/>
+      <elt id="TUSK DAMAGE UNUSED" type="raw" size="4"/>
+    </loop>
+
+    <loop count="5">
+      <elt id="SPINAL HITS NAME" type="text" size="3"/>
+      <elt id="SPINAL HITS NAME NUL" type="raw" size="1"/>
+      <elt id="SPINAL HITS" type="int" size="4" endianness="little_endian"/>
+      <elt id="SPINAL HITS UNUSED" type="raw" size="4"/>
+    </loop>
+    <loop count="5">
+      <elt id="SPINAL DAMAGE NAME" type="text" size="3"/>
+      <elt id="SPINAL DAMAGE NAME NUL" type="raw" size="1"/>
+      <elt id="SPINAL DAMAGE" type="int" size="4" endianness="little_endian"/>
+      <elt id="SPINAL DAMAGE UNUSED" type="raw" size="4"/>
+    </loop>
+
+    <loop count="5">
+      <elt id="KIM WU HITS NAME" type="text" size="3"/>
+      <elt id="KIM WU HITS NAME NUL" type="raw" size="1"/>
+      <elt id="KIM WU HITS" type="int" size="4" endianness="little_endian"/>
+      <elt id="KIM WU HITS UNUSED" type="raw" size="4"/>
+    </loop>
+    <loop count="5">
+      <elt id="KIM WU DAMAGE NAME" type="text" size="3"/>
+      <elt id="KIM WU DAMAGE NAME NUL" type="raw" size="1"/>
+      <elt id="KIM WU DAMAGE" type="int" size="4" endianness="little_endian"/>
+      <elt id="KIM WU DAMAGE UNUSED" type="raw" size="4"/>
+    </loop>
+
+    <loop count="5">
+      <elt id="SABREWULF HITS NAME" type="text" size="3"/>
+      <elt id="SABREWULF HITS NAME NUL" type="raw" size="1"/>
+      <elt id="SABREWULF HITS" type="int" size="4" endianness="little_endian"/>
+      <elt id="SABREWULF HITS UNUSED" type="raw" size="4"/>
+    </loop>
+    <loop count="5">
+      <elt id="SABREWULF DAMAGE NAME" type="text" size="3"/>
+      <elt id="SABREWULF DAMAGE NAME NUL" type="raw" size="1"/>
+      <elt id="SABREWULF DAMAGE" type="int" size="4" endianness="little_endian"/>
+      <elt id="SABREWULF DAMAGE UNUSED" type="raw" size="4"/>
+    </loop>
+
+    <loop count="5">
+      <elt id="MAYA HITS NAME" type="text" size="3"/>
+      <elt id="MAYA HITS NAME NUL" type="raw" size="1"/>
+      <elt id="MAYA HITS" type="int" size="4" endianness="little_endian"/>
+      <elt id="MAYA HITS UNUSED" type="raw" size="4"/>
+    </loop>
+    <loop count="5">
+      <elt id="MAYA DAMAGE NAME" type="text" size="3"/>
+      <elt id="MAYA DAMAGE NAME NUL" type="raw" size="1"/>
+      <elt id="MAYA DAMAGE" type="int" size="4" endianness="little_endian"/>
+      <elt id="MAYA DAMAGE UNUSED" type="raw" size="4"/>
+    </loop>
+  </structure>
+
+  <format id="TIME" formatter="%.2f">
+    <divide>60</divide>
+  </format>
+  <format id="PAD2"><pad direction="left" max="2">0</pad></format>
+
+  <output>
+    <table id="STREAK">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="STREAK NAME"/>
+      <column id="STREAK" format="PAD2"/>
+    </table>
+    <table id="SPEED">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="SPEED NAME"/>
+      <column id="TIME" src="SPEED TIME" format="TIME"/>
+    </table>
+
+    <table id="FULGORE HITS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="FULGORE HITS NAME"/>
+      <column id="HITS" src="FULGORE HITS" format="PAD2"/>
+    </table>
+    <table id="FULGORE DAMAGE">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="FULGORE DAMAGE NAME"/>
+      <column id="DAMAGE" src="FULGORE DAMAGE" format="PAD2"/>
+    </table>
+
+    <table id="COMBO HITS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="COMBO HITS NAME"/>
+      <column id="HITS" src="COMBO HITS" format="PAD2"/>
+    </table>
+    <table id="COMBO DAMAGE">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="COMBO DAMAGE NAME"/>
+      <column id="DAMAGE" src="COMBO DAMAGE" format="PAD2"/>
+    </table>
+
+    <table id="ORCHID HITS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="ORCHID HITS NAME"/>
+      <column id="HITS" src="ORCHID HITS" format="PAD2"/>
+    </table>
+    <table id="ORCHID DAMAGE">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="ORCHID DAMAGE NAME"/>
+      <column id="DAMAGE" src="ORCHID DAMAGE" format="PAD2"/>
+    </table>
+
+    <table id="JAGO HITS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="JAGO HITS NAME"/>
+      <column id="HITS" src="JAGO HITS" format="PAD2"/>
+    </table>
+    <table id="JAGO DAMAGE">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="JAGO DAMAGE NAME"/>
+      <column id="DAMAGE" src="JAGO DAMAGE" format="PAD2"/>
+    </table>
+
+    <table id="GLACIUS HITS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="GLACIUS HITS NAME"/>
+      <column id="HITS" src="GLACIUS HITS" format="PAD2"/>
+    </table>
+    <table id="GLACIUS DAMAGE">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="GLACIUS DAMAGE NAME"/>
+      <column id="DAMAGE" src="GLACIUS DAMAGE" format="PAD2"/>
+    </table>
+
+    <table id="TUSK HITS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="TUSK HITS NAME"/>
+      <column id="HITS" src="TUSK HITS" format="PAD2"/>
+    </table>
+    <table id="TUSK DAMAGE">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="TUSK DAMAGE NAME"/>
+      <column id="DAMAGE" src="TUSK DAMAGE" format="PAD2"/>
+    </table>
+
+    <table id="SPINAL HITS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="SPINAL HITS NAME"/>
+      <column id="HITS" src="SPINAL HITS" format="PAD2"/>
+    </table>
+    <table id="SPINAL DAMAGE">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="SPINAL DAMAGE NAME"/>
+      <column id="DAMAGE" src="SPINAL DAMAGE" format="PAD2"/>
+    </table>
+
+    <table id="KIM WU HITS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="KIM WU HITS NAME"/>
+      <column id="HITS" src="KIM WU HITS" format="PAD2"/>
+    </table>
+    <table id="KIM WU DAMAGE">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="KIM WU DAMAGE NAME"/>
+      <column id="DAMAGE" src="KIM WU DAMAGE" format="PAD2"/>
+    </table>
+
+    <table id="SABREWULF HITS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="SABREWULF HITS NAME"/>
+      <column id="HITS" src="SABREWULF HITS" format="PAD2"/>
+    </table>
+    <table id="SABREWULF DAMAGE">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="SABREWULF DAMAGE NAME"/>
+      <column id="DAMAGE" src="SABREWULF DAMAGE" format="PAD2"/>
+    </table>
+
+    <table id="MAYA HITS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="MAYA HITS NAME"/>
+      <column id="HITS" src="MAYA HITS" format="PAD2"/>
+    </table>
+    <table id="MAYA DAMAGE">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="MAYA DAMAGE NAME"/>
+      <column id="DAMAGE" src="MAYA DAMAGE" format="PAD2"/>
+    </table>
+  </output>
+</openhi2txt>

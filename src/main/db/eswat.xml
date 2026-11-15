@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    eswat - E-SWAT: Cyber Police (Sega System 16B)
+    Reads the MAME nvram file (nvram/eswat/nvram), 16384 bytes.
+
+    Sega 68000 board: nvram is word-swapped, so structure uses byte-swap="2".
+    "SUPER COPS LIST" = 7 records of 10 bytes starting at 0x0C00 (post-swap):
+      [0:4] SCORE  4-byte BCD big-endian  (00 30 00 00 -> 300000)
+      [4:7] NAME   3 ASCII chars
+      [7]   space pad (0x20)
+      [8]   STAGE  (0 -> "-"; non-zero = stage number)
+      [9]   pad
+    NOTE: all default STAGE values are 0 ("-"); the non-zero stage encoding
+    is unverified (no played sample), so that byte may need adjustment later.
+  -->
+
+  <structure file="nvram" byte-swap="2">
+    <check>
+      <size>16384</size>
+    </check>
+
+    <!-- skip to table at 0x0C00 (3072 bytes) -->
+    <elt size="3072" type="raw" id="PRE"/>
+
+    <loop count="7">
+      <elt size="4" type="int"  base="16" id="SCORE"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="NSEP"/>
+      <elt size="1" type="int"  id="STAGE"/>
+      <elt size="1" type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <!-- stage 0 -> "-" (default); other values pass through -->
+  <format id="stage">
+    <case src="0" dst="-"/>
+  </format>
+
+  <output>
+    <table id="SUPER COPS LIST">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="STAGE" src="STAGE" format="stage"/>
+    </table>
+  </output>
+
+</hi2txt>

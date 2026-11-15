@@ -1,0 +1,75 @@
+<hi2txt>
+  <table id="CHARACTER TIME RECORD">
+    <col>RANK</col><col>CHARACTER</col><col>PARTNER</col><col>TIME</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>PAUL</cell><cell>LAW</cell><cell>99&apos;00&quot;00</cell><cell>PAU</cell></row>
+    <row><cell>2ND</cell><cell>LAW</cell><cell>LEI</cell><cell>99&apos;00&quot;00</cell><cell>LAW</cell></row>
+    <row><cell>3RD</cell><cell>LEI</cell><cell>KING</cell><cell>99&apos;00&quot;00</cell><cell>LEI</cell></row>
+    <row><cell>4TH</cell><cell>KING</cell><cell>YOSHIMITSU</cell><cell>99&apos;00&quot;00</cell><cell>KIN</cell></row>
+    <row><cell>5TH</cell><cell>YOSHIMITSU</cell><cell>NINA</cell><cell>99&apos;00&quot;00</cell><cell>YOS</cell></row>
+    <row><cell>6TH</cell><cell>NINA</cell><cell>HWOARANG</cell><cell>99&apos;00&quot;00</cell><cell>NIN</cell></row>
+    <row><cell>7TH</cell><cell>HWOARANG</cell><cell>XIAOYU</cell><cell>99&apos;00&quot;00</cell><cell>HWO</cell></row>
+    <row><cell>8TH</cell><cell>XIAOYU</cell><cell>EDDY</cell><cell>99&apos;00&quot;00</cell><cell>XIA</cell></row>
+    <row><cell>9TH</cell><cell>EDDY</cell><cell>BAEK</cell><cell>99&apos;00&quot;00</cell><cell>EDD</cell></row>
+    <row><cell>10TH</cell><cell>JIN</cell><cell>JULIA</cell><cell>99&apos;00&quot;00</cell><cell>JIN</cell></row>
+    <row><cell>11TH</cell><cell>JULIA</cell><cell>BRYAN</cell><cell>99&apos;00&quot;00</cell><cell>JUL</cell></row>
+    <row><cell>12TH</cell><cell>KUMA</cell><cell>PAUL</cell><cell>99&apos;00&quot;00</cell><cell>KUM</cell></row>
+    <row><cell>13TH</cell><cell>BRYAN</cell><cell>HEIHACHI</cell><cell>99&apos;00&quot;00</cell><cell>BRY</cell></row>
+    <row><cell>14TH</cell><cell>HEIHACHI</cell><cell>GUNJACK</cell><cell>99&apos;00&quot;00</cell><cell>HEI</cell></row>
+    <row><cell>15TH</cell><cell>OGRE</cell><cell>KING</cell><cell>99&apos;00&quot;00</cell><cell>OGR</cell></row>
+    <row><cell>16TH</cell><cell>TETSUJIN</cell><cell>LEI</cell><cell>99&apos;00&quot;00</cell><cell>TET</cell></row>
+    <row><cell>17TH</cell><cell>GUNJACK</cell><cell>ANNA</cell><cell>99&apos;00&quot;00</cell><cell>GUN</cell></row>
+    <row><cell>18TH</cell><cell>ROGER</cell><cell>HWOARANG</cell><cell>99&apos;00&quot;00</cell><cell>ROG</cell></row>
+    <row><cell>19TH</cell><cell>ANNA</cell><cell>MICHELLE</cell><cell>99&apos;00&quot;00</cell><cell>ANN</cell></row>
+    <row><cell>20TH</cell><cell>KAZUYA</cell><cell>JUN</cell><cell>99&apos;00&quot;00</cell><cell>KAZ</cell></row>
+  </table>
+  <table id="VS GAME WINS RECORD">
+    <col>RANK</col><col>CHARACTER</col><col>PARTNER</col><col>WINS</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>PAUL</cell><cell>LAW</cell><cell>5 WINS</cell><cell>PAU</cell></row>
+    <row><cell>2ND</cell><cell>LEI</cell><cell>KING</cell><cell>5 WINS</cell><cell>LEI</cell></row>
+    <row><cell>3RD</cell><cell>YOSHIMITSU</cell><cell>NINA</cell><cell>4 WINS</cell><cell>YOS</cell></row>
+    <row><cell>4TH</cell><cell>HWOARANG</cell><cell>XIAOYU</cell><cell>4 WINS</cell><cell>HWO</cell></row>
+    <row><cell>5TH</cell><cell>EDDY</cell><cell>JIN</cell><cell>3 WINS</cell><cell>EDD</cell></row>
+    <row><cell>6TH</cell><cell>JULIA</cell><cell>BRYAN</cell><cell>3 WINS</cell><cell>JUL</cell></row>
+    <row><cell>7TH</cell><cell>HEIHACHI</cell><cell>GUNJACK</cell><cell>2 WINS</cell><cell>HEI</cell></row>
+    <row><cell>8TH</cell><cell>ANNA</cell><cell>MICHELLE</cell><cell>2 WINS</cell><cell>ANN</cell></row>
+    <row><cell>9TH</cell><cell>ARMORKING</cell><cell>GANRYU</cell><cell>1 WIN</cell><cell>ARM</cell></row>
+    <row><cell>10TH</cell><cell>JUN</cell><cell>BAEK</cell><cell>1 WIN</cell><cell>JUN</cell></row>
+  </table>
+  <table id="CHARACTERS">
+    <col>RANK</col><col>CHARACTER</col><col>PLAYS</col><col>U0COL</col>
+    <row><cell>1ST</cell><cell>PAUL</cell><cell>1</cell><cell>1</cell></row>
+    <row><cell>2ND</cell><cell>EDDY</cell><cell>1</cell><cell>1</cell></row>
+    <row><cell>3RD</cell><cell>LAW</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>4TH</cell><cell>LEI</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>5TH</cell><cell>KING</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>6TH</cell><cell>YOSHIMITSU</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>7TH</cell><cell>NINA</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>8TH</cell><cell>HWOARANG</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>9TH</cell><cell>XIAOYU</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>10TH</cell><cell>JIN</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>11TH</cell><cell>JULIA</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>12TH</cell><cell>KUMA</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>13TH</cell><cell>BRYAN</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>14TH</cell><cell>HEIHACHI</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>15TH</cell><cell>OGRE</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>16TH</cell><cell>TETSUJIN</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>17TH</cell><cell>GUNJACK</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>18TH</cell><cell>ROGER</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>19TH</cell><cell>ANNA</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>20TH</cell><cell>KAZUYA</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>21ST</cell><cell>TRUE OGRE</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>22ND</cell><cell>JACK-2</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>23RD</cell><cell>P.JACK</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>24TH</cell><cell>MICHELLE</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>25TH</cell><cell>WANG</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>26TH</cell><cell>LEE</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>27TH</cell><cell>ARMORKING</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>28TH</cell><cell>GANRYU</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>29TH</cell><cell>KUNIMITSU</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>30TH</cell><cell>DEVIL</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>31ST</cell><cell>JUN</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>32ND</cell><cell>BRUCE</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>33RD</cell><cell>BAEK</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>34TH</cell><cell>UNKNOWN</cell><cell>0</cell><cell>0</cell></row>
+  </table>
+</hi2txt>

@@ -1,0 +1,23 @@
+<hi2txt>
+  <table id="RANKING">
+    <col>RANK</col><col>TIME</col><col>NAME</col><col>CHARACTER</col>
+    <row><cell>1</cell><cell>30000050&apos;00&quot;00</cell><cell>YU.</cell><cell>JEFFRY</cell></row>
+    <row><cell>2</cell><cell>30300050&apos;30&quot;00</cell><cell>IKE</cell><cell>PAI</cell></row>
+    <row><cell>3</cell><cell>30600051&apos;00&quot;00</cell><cell>IZA</cell><cell>WOLF</cell></row>
+    <row><cell>4</cell><cell>30900051&apos;30&quot;00</cell><cell>TAK</cell><cell>SHUN</cell></row>
+    <row><cell>5</cell><cell>31200052&apos;00&quot;00</cell><cell>SIN</cell><cell>LION</cell></row>
+    <row><cell>6</cell><cell>31500052&apos;30&quot;00</cell><cell>INO</cell><cell>AKIRA</cell></row>
+    <row><cell>7</cell><cell>31800053&apos;00&quot;00</cell><cell>TOM</cell><cell>JACKY</cell></row>
+    <row><cell>8</cell><cell>32100053&apos;30&quot;00</cell><cell>OGU</cell><cell>SARAH</cell></row>
+    <row><cell>9</cell><cell>32400054&apos;00&quot;00</cell><cell>HID</cell><cell>KAGE</cell></row>
+    <row><cell>10</cell><cell>32700054&apos;30&quot;00</cell><cell>OSI</cell><cell>LAU</cell></row>
+    <row><cell>11</cell><cell>33000055&apos;00&quot;00</cell><cell>JEF</cell><cell>JEFFRY</cell></row>
+    <row><cell>12</cell><cell>33300055&apos;30&quot;00</cell><cell>MIU</cell><cell>PAI</cell></row>
+    <row><cell>13</cell><cell>33600056&apos;00&quot;00</cell><cell>ISO</cell><cell>WOLF</cell></row>
+    <row><cell>14</cell><cell>33900056&apos;30&quot;00</cell><cell>YAM</cell><cell>SHUN</cell></row>
+    <row><cell>15</cell><cell>34200057&apos;00&quot;00</cell><cell>OSA</cell><cell>LION</cell></row>
+    <row><cell>16</cell><cell>34500057&apos;30&quot;00</cell><cell>KAK</cell><cell>AKIRA</cell></row>
+    <row><cell>17</cell><cell>34800058&apos;00&quot;00</cell><cell>YAK</cell><cell>JACKY</cell></row>
+    <row><cell>18</cell><cell>35100058&apos;30&quot;00</cell><cell>KAO</cell><cell>SARAH</cell></row>
+  </table>
+</hi2txt>

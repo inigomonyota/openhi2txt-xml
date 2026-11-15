@@ -1,0 +1,10 @@
+<hi2txt>
+  <table id="TOP PLAYERS">
+    <col>RANK</col><col>SCORE</col><col>STAGE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>3,210</cell><cell>1</cell><cell>MON</cell></row>
+    <row><cell>2ND</cell><cell>2,970</cell><cell>1</cell><cell>YSI</cell></row>
+    <row><cell>3RD</cell><cell>1,994</cell><cell>1</cell><cell>ANA</cell></row>
+    <row><cell>4TH</cell><cell>618</cell><cell>1</cell><cell>YOU</cell></row>
+    <row><cell>5TH</cell><cell>30</cell><cell>1</cell><cell>MOR</cell></row>
+  </table>
+</hi2txt>

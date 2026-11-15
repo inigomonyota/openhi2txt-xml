@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Liberator">
+  <!--
+    Liberator (Atari, 1982) - reads the LIVE high-score table saved by the
+    hiscore plugin (liberatr.hi = RAM 0x0100, 60 bytes). Pure hi2txt: no
+    openhi2txt-only features. Runs in hi2txt OR openhi2txt.
+
+    .hi layout (stored REVERSE-RANK: rank 10 first):
+      +0x00  10 names x 3 ASCII (default champion DEN carries bit7 on its 'N'=0xCE;
+             charset strips bit7 for space/0-9/A-Z so any flagged initial decodes)
+      +0x1E  10 scores x 3 = packed BCD little-endian, displayed x10
+
+    Names/scores are read sequentially, so unsorted_index 0..9 = rank 10..1.
+    Sorting the hidden STORED column (= unsorted_index) DESCENDING flips that to
+    rank 1..10, and RANK is the post-sort position. This avoids loop_reverse_index
+    (which this hi2txt build does not honour).
+  -->
+  <structure file=".hi">
+    <check><size>60</size></check>
+    <loop count="10">
+      <elt size="3" type="text" id="NAME" charset="cs"/>
+    </loop>
+    <loop count="10">
+      <elt size="3" type="int"  id="SCORE" base="16" endianness="little_endian"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="HI SCORES:" sort="STORED" sort-order="desc">
+      <column id="RANK"   src="index"          format="plus1"/>
+      <column id="SCORE"  src="SCORE"          format="x10"/>
+      <column id="NAME"   src="NAME"/>
+      <column id="STORED" src="unsorted_index" display="debug"/>
+    </table>
+  </output>
+
+  <format id="plus1"><add>1</add></format>
+  <format id="x10"><multiply>10</multiply></format>
+  <charset id="cs">
+    <char src="0xa0" dst=" "/>
+    <char src="0xb0" dst="0"/>
+    <char src="0xb1" dst="1"/>
+    <char src="0xb2" dst="2"/>
+    <char src="0xb3" dst="3"/>
+    <char src="0xb4" dst="4"/>
+    <char src="0xb5" dst="5"/>
+    <char src="0xb6" dst="6"/>
+    <char src="0xb7" dst="7"/>
+    <char src="0xb8" dst="8"/>
+    <char src="0xb9" dst="9"/>
+    <char src="0xc1" dst="A"/>
+    <char src="0xc2" dst="B"/>
+    <char src="0xc3" dst="C"/>
+    <char src="0xc4" dst="D"/>
+    <char src="0xc5" dst="E"/>
+    <char src="0xc6" dst="F"/>
+    <char src="0xc7" dst="G"/>
+    <char src="0xc8" dst="H"/>
+    <char src="0xc9" dst="I"/>
+    <char src="0xca" dst="J"/>
+    <char src="0xcb" dst="K"/>
+    <char src="0xcc" dst="L"/>
+    <char src="0xcd" dst="M"/>
+    <char src="0xce" dst="N"/>
+    <char src="0xcf" dst="O"/>
+    <char src="0xd0" dst="P"/>
+    <char src="0xd1" dst="Q"/>
+    <char src="0xd2" dst="R"/>
+    <char src="0xd3" dst="S"/>
+    <char src="0xd4" dst="T"/>
+    <char src="0xd5" dst="U"/>
+    <char src="0xd6" dst="V"/>
+    <char src="0xd7" dst="W"/>
+    <char src="0xd8" dst="X"/>
+    <char src="0xd9" dst="Y"/>
+    <char src="0xda" dst="Z"/>
+  </charset>
+</hi2txt>

@@ -1,25 +1,25 @@
 <hi2txt>
   <table>
     <col>RANK</col><col>SCORE</col><col>NAME</col><col>LEVEL</col><col>SEPARATOR</col>
-    <row><cell>1</cell><cell>39720</cell><cell>AZY</cell><cell>4</cell><cell>0x3F</cell></row>
-    <row><cell>2</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>3</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>4</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>5</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>6</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>7</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>8</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>9</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>10</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>11</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>12</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>13</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>14</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>15</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>16</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>17</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>18</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>19</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
-    <row><cell>20</cell><cell>10000</cell><cell>AAA</cell><cell>2</cell><cell>0x3F</cell></row>
+    <row><cell>1</cell><cell>209380</cell><cell>STU</cell><cell>9</cell><cell>0x3F</cell></row>
+    <row><cell>2</cell><cell>203880</cell><cell>STU</cell><cell>16</cell><cell>0x3F</cell></row>
+    <row><cell>3</cell><cell>203620</cell><cell>STU</cell><cell>9</cell><cell>0x3F</cell></row>
+    <row><cell>4</cell><cell>192920</cell><cell>STU</cell><cell>9</cell><cell>0x3F</cell></row>
+    <row><cell>5</cell><cell>183120</cell><cell>STU</cell><cell>8</cell><cell>0x3F</cell></row>
+    <row><cell>6</cell><cell>181300</cell><cell>STU</cell><cell>9</cell><cell>0x3F</cell></row>
+    <row><cell>7</cell><cell>180650</cell><cell>STU</cell><cell>8</cell><cell>0x3F</cell></row>
+    <row><cell>8</cell><cell>180430</cell><cell>STU</cell><cell>8</cell><cell>0x3F</cell></row>
+    <row><cell>9</cell><cell>175870</cell><cell>STU</cell><cell>8</cell><cell>0x3F</cell></row>
+    <row><cell>10</cell><cell>171890</cell><cell>AAA</cell><cell>8</cell><cell>0x3F</cell></row>
+    <row><cell>11</cell><cell>166650</cell><cell>AAA</cell><cell>7</cell><cell>0x3F</cell></row>
+    <row><cell>12</cell><cell>164890</cell><cell>AAA</cell><cell>8</cell><cell>0x3F</cell></row>
+    <row><cell>13</cell><cell>163990</cell><cell>SSA</cell><cell>8</cell><cell>0x3F</cell></row>
+    <row><cell>14</cell><cell>162410</cell><cell>STU</cell><cell>8</cell><cell>0x3F</cell></row>
+    <row><cell>15</cell><cell>152380</cell><cell>STU</cell><cell>8</cell><cell>0x3F</cell></row>
+    <row><cell>16</cell><cell>149460</cell><cell>@@@</cell><cell>8</cell><cell>0x3F</cell></row>
+    <row><cell>17</cell><cell>148880</cell><cell>STU</cell><cell>8</cell><cell>0x3F</cell></row>
+    <row><cell>18</cell><cell>146120</cell><cell>STU</cell><cell>7</cell><cell>0x3F</cell></row>
+    <row><cell>19</cell><cell>146120</cell><cell>STU</cell><cell>9</cell><cell>0x3F</cell></row>
+    <row><cell>20</cell><cell>145450</cell><cell>STU</cell><cell>7</cell><cell>0x3F</cell></row>
   </table>
 </hi2txt>

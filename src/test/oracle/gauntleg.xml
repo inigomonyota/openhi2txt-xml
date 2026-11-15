@@ -1,0 +1,54 @@
+<hi2txt>
+  <table id="WIZARDS">
+    <col>RANK</col><col>NAME</col><col>LEVEL</col><col>COMPLETED GAME</col><col>SCORE</col><col>P</col><col>Q</col>
+    <row><cell>1</cell><cell>PIP</cell><cell>99</cell><cell>}x9</cell><cell>999999</cell><cell>0x36363600</cell><cell>0x09000000</cell></row>
+    <row><cell>2</cell><cell>ASS</cell><cell>66</cell><cell>}x3</cell><cell>195741</cell><cell>0x30303000</cell><cell>0x09000000</cell></row>
+    <row><cell>3</cell><cell>KEN</cell><cell>59</cell><cell></cell><cell>164089</cell><cell>0x30313000</cell><cell>0x1A000000</cell></row>
+    <row><cell>4</cell><cell>JON</cell><cell>51</cell><cell>}x2</cell><cell>130262</cell><cell>0x31393800</cell><cell>0x19000000</cell></row>
+    <row><cell>5</cell><cell>HHH</cell><cell>39</cell><cell></cell><cell>83560</cell><cell>0x36363600</cell><cell>0x09000000</cell></row>
+    <row><cell>6</cell><cell>MEA</cell><cell>4</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x0A000000</cell></row>
+    <row><cell>7</cell><cell>GSB</cell><cell>3</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x0B000000</cell></row>
+    <row><cell>8</cell><cell>LAS</cell><cell>2</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x08000000</cell></row>
+    <row><cell>9</cell><cell>JWP</cell><cell>2</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x09000000</cell></row>
+    <row><cell>10</cell><cell>AAA</cell><cell>2</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x06000000</cell></row>
+  </table>
+  <table id="VALKYRIES">
+    <col>RANK</col><col>NAME</col><col>LEVEL</col><col>COMPLETED GAME</col><col>SCORE</col><col>P</col><col>Q</col>
+    <row><cell>1</cell><cell>PIP</cell><cell>99</cell><cell>}x9</cell><cell>999999</cell><cell>0x36363600</cell><cell>0x04000000</cell></row>
+    <row><cell>2</cell><cell>WSM</cell><cell>80</cell><cell>}x2</cell><cell>258614</cell><cell>0x36363600</cell><cell>0x05000000</cell></row>
+    <row><cell>3</cell><cell>JDD</cell><cell>55</cell><cell>}x4</cell><cell>143380</cell><cell>0x32383300</cell><cell>0x05000000</cell></row>
+    <row><cell>4</cell><cell>ART</cell><cell>55</cell><cell></cell><cell>146190</cell><cell>0x36363600</cell><cell>0x05000000</cell></row>
+    <row><cell>5</cell><cell>MDW</cell><cell>50</cell><cell></cell><cell>125732</cell><cell>0x35343800</cell><cell>0x0B000000</cell></row>
+    <row><cell>6</cell><cell>ALH</cell><cell>4</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x08000000</cell></row>
+    <row><cell>7</cell><cell>AAA</cell><cell>3</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x09000000</cell></row>
+    <row><cell>8</cell><cell>BBB</cell><cell>2</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x0A000000</cell></row>
+    <row><cell>9</cell><cell>CCC</cell><cell>2</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x0B000000</cell></row>
+    <row><cell>10</cell><cell>DDD</cell><cell>2</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x01000000</cell></row>
+  </table>
+  <table id="WARRIORS">
+    <col>RANK</col><col>NAME</col><col>LEVEL</col><col>COMPLETED GAME</col><col>SCORE</col><col>P</col><col>Q</col>
+    <row><cell>1</cell><cell>PIP</cell><cell>99</cell><cell>}x9</cell><cell>999999</cell><cell>0x32383300</cell><cell>0x10000000</cell></row>
+    <row><cell>2</cell><cell>SJC</cell><cell>99</cell><cell>}x2</cell><cell>380113</cell><cell>0x34313800</cell><cell>0x02000000</cell></row>
+    <row><cell>3</cell><cell>CCC</cell><cell>86</cell><cell></cell><cell>289161</cell><cell>0x35353500</cell><cell>0x01000000</cell></row>
+    <row><cell>4</cell><cell>AAA</cell><cell>79</cell><cell>}x2</cell><cell>257075</cell><cell>0x39393900</cell><cell>0x11000000</cell></row>
+    <row><cell>5</cell><cell>TEX</cell><cell>76</cell><cell>}x2</cell><cell>238932</cell><cell>0x36363600</cell><cell>0x09000000</cell></row>
+    <row><cell>6</cell><cell>TPL</cell><cell>4</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x0A000000</cell></row>
+    <row><cell>7</cell><cell>KEN</cell><cell>3</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x0B000000</cell></row>
+    <row><cell>8</cell><cell>AAA</cell><cell>2</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x08000000</cell></row>
+    <row><cell>9</cell><cell>BBB</cell><cell>2</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x09000000</cell></row>
+    <row><cell>10</cell><cell>CCC</cell><cell>2</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x1E000000</cell></row>
+  </table>
+  <table id="ARCHERS">
+    <col>RANK</col><col>NAME</col><col>LEVEL</col><col>COMPLETED GAME</col><col>SCORE</col><col>P</col><col>Q</col>
+    <row><cell>1</cell><cell>PIP</cell><cell>99</cell><cell>}x9</cell><cell>999999</cell><cell>0x34323000</cell><cell>0x1E000000</cell></row>
+    <row><cell>2</cell><cell>JDL</cell><cell>99</cell><cell>}x4</cell><cell>351042</cell><cell>0x36363600</cell><cell>0x0D000000</cell></row>
+    <row><cell>3</cell><cell>MSM</cell><cell>99</cell><cell>}x4</cell><cell>348980</cell><cell>0x30303000</cell><cell>0x0E000000</cell></row>
+    <row><cell>4</cell><cell>JAH</cell><cell>99</cell><cell>}x2</cell><cell>394224</cell><cell>0x30313100</cell><cell>0x0E000000</cell></row>
+    <row><cell>5</cell><cell>SJC</cell><cell>99</cell><cell>}</cell><cell>393076</cell><cell>0x34313800</cell><cell>0x0B000000</cell></row>
+    <row><cell>6</cell><cell>DDD</cell><cell>4</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x08000000</cell></row>
+    <row><cell>7</cell><cell>EEE</cell><cell>3</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x09000000</cell></row>
+    <row><cell>8</cell><cell>FFF</cell><cell>2</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x0A000000</cell></row>
+    <row><cell>9</cell><cell>GGG</cell><cell>2</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0x0B000000</cell></row>
+    <row><cell>10</cell><cell>HHH</cell><cell>2</cell><cell></cell><cell>0</cell><cell>0x5F5F5F00</cell><cell>0xF0082080</cell></row>
+  </table>
+</hi2txt>

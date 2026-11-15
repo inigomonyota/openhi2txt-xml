@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="B.Rap Boys">
+  <structure file=".hi">
+    <check>
+      <size>49</size>
+    </check>
+
+    <!-- Five displayed records; the final trailing byte is not saved. -->
+    <loop count="5" skip-last-bytes="1">
+      <elt id="SCORE"
+           type="int"
+           size="4"
+           base="16"
+           table-index="loop_index"/>
+      <elt id="CHARACTER"
+           type="int"
+           size="1"
+           table-index="loop_index"/>
+      <elt id="PADDING"
+           type="raw"
+           size="1"
+           table-index="loop_index"/>
+      <elt id="NAME"
+           type="text"
+           size="3"
+           table-index="loop_index"/>
+      <elt id="TRAILING"
+           type="raw"
+           size="1"
+           table-index="loop_index"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="WINNERS">
+      <column id="RANK" src="index" format="+1;Suffix."/>
+      <column id="SCORE" format="/100"/>
+      <column id="CHARACTER" format="character"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="character">
+    <case src="0" dst="TOP"/>
+    <case src="1" dst="PAN"/>
+    <case src="2" dst="PEA" default="yes"/>
+  </format>
+</hi2txt>

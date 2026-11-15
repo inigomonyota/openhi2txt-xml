@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  citycon - City Connection (Jaleco, 1985)
+  .hi file format (via hiscore.dat plugin)
+  hiscore.dat:
+    @:maincpu,program,0055,3,00,13
+    @:maincpu,program,0043,3,00,02
+    @:maincpu,program,0900,f0,53,90
+  246 bytes = 3B top pointer + 3B top runner + 240B main data
+  Main: 20 entries x 12B (10 runner + 10 pointer)
+  Record (12B): 8B name (ASCII, null/space padded) + 2B separator (25 00) + 2B score (BCD)
+  Runner scores: raw BCD. Pointer scores: BCD x 100.
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>246</size>
+    </check>
+    <!-- Range 1: top pointer score -->
+    <elt size="3" type="raw" id="TOPPOINTER"/>
+    <!-- Range 2: top runner score -->
+    <elt size="3" type="raw" id="TOPRUNNER"/>
+    <!-- Runner table: 10 entries -->
+    <loop count="10">
+      <elt size="8" type="text" id="RNAME" byte-trim="0x00"/>
+      <elt size="2" type="raw" id="RSEP"/>
+      <elt size="2" type="int" id="RSCORE" base="16"/>
+    </loop>
+    <!-- Pointer table: 10 entries -->
+    <loop count="10">
+      <elt size="8" type="text" id="PNAME" byte-trim="0x00"/>
+      <elt size="2" type="raw" id="PSEP"/>
+      <elt size="2" type="int" id="PSCORE" base="16"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TOP 10 RUNNER" sort="RSCORE" sort-order="desc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="RNAME"/>
+      <column id="SCORE" src="RSCORE"/>
+    </table>
+    <table id="TOP 10 POINTER" sort="PSCORE" sort-order="desc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="PNAME"/>
+      <column id="SCORE" src="PSCORE" format="x100"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="x100"><multiply>100</multiply></format>
+
+</hi2txt>

@@ -1,0 +1,38 @@
+<hi2txt>
+  <table id="FUJI">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>20000</cell><cell></cell></row>
+    <row><cell>2</cell><cell>19970</cell><cell></cell></row>
+    <row><cell>3</cell><cell>19940</cell><cell></cell></row>
+    <row><cell>4</cell><cell>19910</cell><cell></cell></row>
+    <row><cell>5</cell><cell>19880</cell><cell></cell></row>
+    <row><cell>6</cell><cell>19850</cell><cell></cell></row>
+  </table>
+  <table id="TEST">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>17600</cell><cell></cell></row>
+    <row><cell>2</cell><cell>17570</cell><cell></cell></row>
+    <row><cell>3</cell><cell>17540</cell><cell></cell></row>
+    <row><cell>4</cell><cell>17510</cell><cell></cell></row>
+    <row><cell>5</cell><cell>17480</cell><cell></cell></row>
+    <row><cell>6</cell><cell>17450</cell><cell></cell></row>
+  </table>
+  <table id="SUZUKA">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>15200</cell><cell></cell></row>
+    <row><cell>2</cell><cell>15170</cell><cell></cell></row>
+    <row><cell>3</cell><cell>15140</cell><cell></cell></row>
+    <row><cell>4</cell><cell>15110</cell><cell></cell></row>
+    <row><cell>5</cell><cell>15080</cell><cell></cell></row>
+    <row><cell>6</cell><cell>15050</cell><cell></cell></row>
+  </table>
+  <table id="SEASIDE">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>12800</cell><cell></cell></row>
+    <row><cell>2</cell><cell>12770</cell><cell></cell></row>
+    <row><cell>3</cell><cell>12740</cell><cell></cell></row>
+    <row><cell>4</cell><cell>12710</cell><cell></cell></row>
+    <row><cell>5</cell><cell>12680</cell><cell></cell></row>
+    <row><cell>6</cell><cell>12650</cell><cell></cell></row>
+  </table>
+</hi2txt>

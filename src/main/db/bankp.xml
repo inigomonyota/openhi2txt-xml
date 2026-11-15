@@ -1,53 +1,91 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  hi2txt description for Bank Panic (bankp)
+
+  Based on the HiToText definition, with the SCORE decoding corrected for
+  this dump. HiToText reads SCORE as 7-byte packed bcd, which on a dump
+  produced by this MAME build yields 6080000 for a displayed 6800. Here the
+  score is stored one DECIMAL DIGIT PER BYTE (high nibble always 0):
+      00 00 00 06 08 00 00  ->  digits 0006800  ->  6800
+  nibble-skip="odd" keeps the low nibble of each byte, base="16" then reads
+  the packed result as the decimal value. Everything else matches HiToText.
+
+  167-byte dump: ten 16-byte records, then a 7-byte tail duplicating the
+  top score.
+
+  Verified against a real entry - 6800 / ".ZA" / 2:26 / stage 1:
+      00 00 00 06 08 00 00 3d 5a 41 92 00 00 01 00 00
+
+  per record:
+      [0-6]  SCORE  7 bytes, one decimal digit per byte
+      [7-9]  NAME   3 chars; '.' stored as 0x3D, space as 0x00
+      [10-11] TIME  2 bytes little-endian, in seconds (0x0092 = 146 = 2:26)
+      [12-13] LEVEL 2 bytes bcd
+      [14-15] unused
+//-->
 <hi2txt>
-  <!--
-    tested with mame 0.148 and related hiscore.dat
-      source: HiToText
-  //-->
-  
+
   <structure file=".hi">
     <check>
-      <!-- optional: if defined and hiscore.dat provided, it allows to select the good structure versus the provided file //-->
-      <definition>0:e590:a0:00:00
-                  0:e018:7:00:00</definition>
-      <!-- optional: if defined, it allows to select the good structure versus the provided file
-                     useful if multiple structures are defined but hiscore.dat not provided //-->
       <size>167</size>
     </check>
+
     <loop count="10">
-      <elt size="7" type="int"  id="SCORE" decoding-profile="bcd"/>
+      <elt size="7" type="int"  id="SCORE" base="16" nibble-skip="odd"/>
       <elt size="3" type="text" id="NAME"  charset="bankp"/>
       <elt size="2" type="int"  id="TIME"  endianness="little_endian"/>
-      <elt size="2" type="int"  id="STAGE" decoding-profile="bcd"/>
+      <elt size="2" type="int"  id="LEVEL" decoding-profile="bcd"/>
       <elt size="2" type="raw"  id="UNUSED"/>
     </loop>
-    <elt size="7" type="int" id="TOP SCORE" decoding-profile="bcd"/>
+
+    <elt size="7" type="raw" id="TOP SCORE COPY"/>
   </structure>
-  
+
   <output>
-    <table line-ignore="SCORE:0">
-      <column id="RANK" src="index" format="+1"/>
-      <column id="SCORE"/>
-      <column id="NAME"/>
-      <column id="TIME" format="time"/>
-      <column id="STAGE"/>
-      <column id="UNUSED" format="0x" display="debug"/>
+    <table id="BEST SCORE">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="TIME"  src="TIME" format="mmss"/>
+      <column id="LEVEL" src="LEVEL"/>
     </table>
-    <field id="TOP SCORE" display="extra"/>
   </output>
-  
-  <format id="time" input-as-subcolumns-input="true">
+
+  <format id="rank">
+    <add>1</add>
+    <case src="1" dst="1ST"/>
+    <case src="2" dst="2ND"/>
+    <case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/>
+    <case src="5" dst="5TH"/>
+    <case src="6" dst="6TH"/>
+    <case src="7" dst="7TH"/>
+    <case src="8" dst="8TH"/>
+    <case src="9" dst="9TH"/>
+    <case src="10" dst="10TH"/>
+  </format>
+
+  <!-- seconds -> M:SS, seconds zero-padded to two digits //-->
+  <format id="mmss" input-as-subcolumns-input="true">
     <concat>
       <column format="d60"/>
       <field>:</field>
-      <column format="%60"/>
+      <column format="s60pad"/>
     </concat>
   </format>
-  
+  <format id="d60"><divide_trunc>60</divide_trunc></format>
+
+  <!-- remainder first, then the %02d formatter zero-pads it. The
+       formatter works here because <remainder> is a sibling child (a
+       formatter-only format with no child element is rejected). //-->
+  <format id="s60pad" formatter="%02d">
+    <remainder>60</remainder>
+  </format>
+
   <charset id="bankp">
     <char src="0x00" dst=" "/>
     <char src="0x3D" dst="."/>
   </charset>
-</hi2txt>
 
+</hi2txt>

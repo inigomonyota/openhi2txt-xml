@@ -1,105 +1,321 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  hi2txt description for Track & Field (trackfld)
+
+  Reads MAME's 2048-byte nvram directly - no hiscore.dat entry needed.
+
+  Based on the HiToText definition, with three changes:
+    1. the six per-event tables no longer carry display="extra" on every
+       column, so they actually appear in normal output
+    2. event 4 is 110M HURDLES, not 100M HURDLES
+    3. blank rows are dropped via line-ignore, and ranks print as ordinals
+
+  Layout:
+    0x000-0x3FF  1024 bytes of settings / bookkeeping (not decoded)
+    0x400-0x4BF  six events x 4 entries of 8 bytes:
+                     [0-3] record, one decimal digit per byte
+                     [4-6] name, 3 chars, +48 to reach ascii
+                     [7]   separator
+                 entries 1-3 hold the world records, entry 4 is blank
+    0x4C0-0x7DF  TOP SCORES: 160 entries of 5 bytes
+                     [0-2] score, bcd, x10
+                     [3-4] name, konami base-32, 3 chars in 2 bytes
+                 100 entries are populated by default, all at 10000
+    0x7E0-0x7FF  32 bytes of trailing bookkeeping (not decoded)
+
+  Factory defaults for reference:
+      100M DASH     9.95  10.00  10.12  sec
+      LONG JUMP     8.90   8.77   8.43  m
+      JAVELIN      96.72  90.21  84.96  m
+      110M HURDLES 12.93  13.08  13.26  sec
+      HAMMER       83.93  79.96  76.05  m
+      HIGH JUMP     2.36   2.30   2.25  m
+//-->
 <hi2txt>
-  <!--
-    tested with mame 0.148 and related hiscore.dat
-      source: HiToText
-  //-->
-  
+
   <structure file="nvram">
     <check>
-      <!-- optional: if defined, it allows to select the good structure versus the provided file
-                     useful if multiple structures are defined but hiscore.dat not provided //-->
       <size>2048</size>
     </check>
-    
-    <elt size="1024" type="raw" id="UNKNOWN"/>
-    <loop count="4">
-      <elt size="4" type="int"  id="100M SCORE" decoding-profile="bcd"/>
-      <elt size="3" type="text" id="100M NAME"  charset="trackfld2" ascii-offset="48"/>
-      <elt size="1" type="raw"  id="100M SEPARATOR"/>
+
+    <elt size="1024" type="raw" id="SETTINGS"/>
+
+    <!-- 100M DASH world records //-->
+    <loop count="3">
+      <elt size="4" type="int"  id="100M DASH SCORE" decoding-profile="bcd"/>
+      <elt size="3" type="text" id="100M DASH NAME"  charset="trackfld2" ascii-offset="48"/>
+      <elt size="1" type="raw"  id="100M DASH SEPARATOR"/>
     </loop>
-    <loop count="4">
+    <elt size="8" type="raw" id="100M DASH BLANK SLOT"/>
+    <!-- LONG JUMP world records //-->
+    <loop count="3">
       <elt size="4" type="int"  id="LONG JUMP SCORE" decoding-profile="bcd"/>
       <elt size="3" type="text" id="LONG JUMP NAME"  charset="trackfld2" ascii-offset="48"/>
       <elt size="1" type="raw"  id="LONG JUMP SEPARATOR"/>
     </loop>
-    <loop count="4">
+    <elt size="8" type="raw" id="LONG JUMP BLANK SLOT"/>
+    <!-- JAVELIN world records //-->
+    <loop count="3">
       <elt size="4" type="int"  id="JAVELIN SCORE" decoding-profile="bcd"/>
       <elt size="3" type="text" id="JAVELIN NAME"  charset="trackfld2" ascii-offset="48"/>
       <elt size="1" type="raw"  id="JAVELIN SEPARATOR"/>
     </loop>
-    <loop count="4">
-      <elt size="4" type="int"  id="100M HURDLES SCORE" decoding-profile="bcd"/>
-      <elt size="3" type="text" id="100M HURDLES NAME"  charset="trackfld2" ascii-offset="48"/>
-      <elt size="1" type="raw"  id="100M HURDLES SEPARATOR"/>
+    <elt size="8" type="raw" id="JAVELIN BLANK SLOT"/>
+    <!-- 110M HURDLES world records //-->
+    <loop count="3">
+      <elt size="4" type="int"  id="110M HURDLES SCORE" decoding-profile="bcd"/>
+      <elt size="3" type="text" id="110M HURDLES NAME"  charset="trackfld2" ascii-offset="48"/>
+      <elt size="1" type="raw"  id="110M HURDLES SEPARATOR"/>
     </loop>
-    <loop count="4">
+    <elt size="8" type="raw" id="110M HURDLES BLANK SLOT"/>
+    <!-- HAMMER world records //-->
+    <loop count="3">
       <elt size="4" type="int"  id="HAMMER SCORE" decoding-profile="bcd"/>
       <elt size="3" type="text" id="HAMMER NAME"  charset="trackfld2" ascii-offset="48"/>
       <elt size="1" type="raw"  id="HAMMER SEPARATOR"/>
     </loop>
-    <loop count="4">
+    <elt size="8" type="raw" id="HAMMER BLANK SLOT"/>
+    <!-- HIGH JUMP world records //-->
+    <loop count="3">
       <elt size="4" type="int"  id="HIGH JUMP SCORE" decoding-profile="bcd"/>
       <elt size="3" type="text" id="HIGH JUMP NAME"  charset="trackfld2" ascii-offset="48"/>
       <elt size="1" type="raw"  id="HIGH JUMP SEPARATOR"/>
     </loop>
+    <elt size="8" type="raw" id="HIGH JUMP BLANK SLOT"/>
+
+    <!-- main high score table //-->
     <loop count="160">
       <elt size="3" type="int"  id="SCORE" base="16"/>
       <elt size="2" type="text" id="NAME"  decoding-profile="base-32" charset="trackfld"/>
     </loop>
-    <!-- 2016 //-->
+
+    <elt size="32" type="raw" id="BOOKKEEPING"/>
   </structure>
-  
+
   <output>
-    <table id="TOP SCORES" line-ignore="SCORE:0">
-      <column id="RANK" src="index" format="+1"/>
-      <column id="SCORE" format="*10"/>
-      <column id="NAME"/>
+
+    <table id="100M DASH WORLD RECORDS">
+      <column id="RANK"   src="index"     format="rank"/>
+      <column id="RECORD" src="100M DASH SCORE"  format="time"/>
+      <column id="NAME"   src="100M DASH NAME"/>
     </table>
-    <table id="100M TOP SCORES">
-      <column id="RANK" src="index" format="+1" display="extra"/>
-      <column id="100M SCORE" format="time"     display="extra"/>
-      <column id="100M NAME"                    display="extra"/>
+
+    <table id="LONG JUMP WORLD RECORDS">
+      <column id="RANK"   src="index"     format="rank"/>
+      <column id="RECORD" src="LONG JUMP SCORE"  format="distance"/>
+      <column id="NAME"   src="LONG JUMP NAME"/>
     </table>
-    <table id="LONG JUMP TOP SCORES">
-      <column id="RANK" src="index" format="+1"      display="extra"/>
-      <column id="LONG JUMP SCORE" format="distance" display="extra"/>
-      <column id="LONG JUMP NAME"                    display="extra"/>
+
+    <table id="JAVELIN WORLD RECORDS">
+      <column id="RANK"   src="index"     format="rank"/>
+      <column id="RECORD" src="JAVELIN SCORE"  format="distance"/>
+      <column id="NAME"   src="JAVELIN NAME"/>
     </table>
-    <table id="JAVELIN TOP SCORES">
-      <column id="RANK" src="index" format="+1"    display="extra"/>
-      <column id="JAVELIN SCORE" format="distance" display="extra"/>
-      <column id="JAVELIN NAME"                    display="extra"/>
+
+    <table id="110M HURDLES WORLD RECORDS">
+      <column id="RANK"   src="index"     format="rank"/>
+      <column id="RECORD" src="110M HURDLES SCORE"  format="time"/>
+      <column id="NAME"   src="110M HURDLES NAME"/>
     </table>
-    <table id="100M HURDLES TOP SCORES">
-      <column id="RANK" src="index" format="+1"     display="extra"/>
-      <column id="100M HURDLES SCORE" format="time" display="extra"/>
-      <column id="100M HURDLES NAME"                display="extra"/>
+
+    <table id="HAMMER WORLD RECORDS">
+      <column id="RANK"   src="index"     format="rank"/>
+      <column id="RECORD" src="HAMMER SCORE"  format="distance"/>
+      <column id="NAME"   src="HAMMER NAME"/>
     </table>
-    <table id="HAMMER TOP SCORES">
-      <column id="RANK" src="index" format="+1"   display="extra"/>
-      <column id="HAMMER SCORE" format="distance" display="extra"/>
-      <column id="HAMMER NAME"                    display="extra"/>
+
+    <table id="HIGH JUMP WORLD RECORDS">
+      <column id="RANK"   src="index"     format="rank"/>
+      <column id="RECORD" src="HIGH JUMP SCORE"  format="distance"/>
+      <column id="NAME"   src="HIGH JUMP NAME"/>
     </table>
-    <table id="HIGH JUMP TOP SCORES">
-      <column id="RANK" src="index" format="+1"      display="extra"/>
-      <column id="HIGH JUMP SCORE" format="distance" display="extra"/>
-      <column id="HIGH JUMP NAME"                    display="extra"/>
+	
+	<table id="TOP SCORES" line-ignore="SCORE:0">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="SCORE"  format="*10"/>
+      <column id="NAME"  src="NAME"/>
     </table>
+
   </output>
-  
-  <format id="+1"><add>1</add></format>
+
+  <format id="rank">
+    <add>1</add>
+    <case src="1" dst="1ST"/>
+    <case src="2" dst="2ND"/>
+    <case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/>
+    <case src="5" dst="5TH"/>
+    <case src="6" dst="6TH"/>
+    <case src="7" dst="7TH"/>
+    <case src="8" dst="8TH"/>
+    <case src="9" dst="9TH"/>
+    <case src="10" dst="10TH"/>
+    <case src="11" dst="11TH"/>
+    <case src="12" dst="12TH"/>
+    <case src="13" dst="13TH"/>
+    <case src="14" dst="14TH"/>
+    <case src="15" dst="15TH"/>
+    <case src="16" dst="16TH"/>
+    <case src="17" dst="17TH"/>
+    <case src="18" dst="18TH"/>
+    <case src="19" dst="19TH"/>
+    <case src="20" dst="20TH"/>
+    <case src="21" dst="21ST"/>
+    <case src="22" dst="22ND"/>
+    <case src="23" dst="23RD"/>
+    <case src="24" dst="24TH"/>
+    <case src="25" dst="25TH"/>
+    <case src="26" dst="26TH"/>
+    <case src="27" dst="27TH"/>
+    <case src="28" dst="28TH"/>
+    <case src="29" dst="29TH"/>
+    <case src="30" dst="30TH"/>
+    <case src="31" dst="31ST"/>
+    <case src="32" dst="32ND"/>
+    <case src="33" dst="33RD"/>
+    <case src="34" dst="34TH"/>
+    <case src="35" dst="35TH"/>
+    <case src="36" dst="36TH"/>
+    <case src="37" dst="37TH"/>
+    <case src="38" dst="38TH"/>
+    <case src="39" dst="39TH"/>
+    <case src="40" dst="40TH"/>
+    <case src="41" dst="41ST"/>
+    <case src="42" dst="42ND"/>
+    <case src="43" dst="43RD"/>
+    <case src="44" dst="44TH"/>
+    <case src="45" dst="45TH"/>
+    <case src="46" dst="46TH"/>
+    <case src="47" dst="47TH"/>
+    <case src="48" dst="48TH"/>
+    <case src="49" dst="49TH"/>
+    <case src="50" dst="50TH"/>
+    <case src="51" dst="51ST"/>
+    <case src="52" dst="52ND"/>
+    <case src="53" dst="53RD"/>
+    <case src="54" dst="54TH"/>
+    <case src="55" dst="55TH"/>
+    <case src="56" dst="56TH"/>
+    <case src="57" dst="57TH"/>
+    <case src="58" dst="58TH"/>
+    <case src="59" dst="59TH"/>
+    <case src="60" dst="60TH"/>
+    <case src="61" dst="61ST"/>
+    <case src="62" dst="62ND"/>
+    <case src="63" dst="63RD"/>
+    <case src="64" dst="64TH"/>
+    <case src="65" dst="65TH"/>
+    <case src="66" dst="66TH"/>
+    <case src="67" dst="67TH"/>
+    <case src="68" dst="68TH"/>
+    <case src="69" dst="69TH"/>
+    <case src="70" dst="70TH"/>
+    <case src="71" dst="71ST"/>
+    <case src="72" dst="72ND"/>
+    <case src="73" dst="73RD"/>
+    <case src="74" dst="74TH"/>
+    <case src="75" dst="75TH"/>
+    <case src="76" dst="76TH"/>
+    <case src="77" dst="77TH"/>
+    <case src="78" dst="78TH"/>
+    <case src="79" dst="79TH"/>
+    <case src="80" dst="80TH"/>
+    <case src="81" dst="81ST"/>
+    <case src="82" dst="82ND"/>
+    <case src="83" dst="83RD"/>
+    <case src="84" dst="84TH"/>
+    <case src="85" dst="85TH"/>
+    <case src="86" dst="86TH"/>
+    <case src="87" dst="87TH"/>
+    <case src="88" dst="88TH"/>
+    <case src="89" dst="89TH"/>
+    <case src="90" dst="90TH"/>
+    <case src="91" dst="91ST"/>
+    <case src="92" dst="92ND"/>
+    <case src="93" dst="93RD"/>
+    <case src="94" dst="94TH"/>
+    <case src="95" dst="95TH"/>
+    <case src="96" dst="96TH"/>
+    <case src="97" dst="97TH"/>
+    <case src="98" dst="98TH"/>
+    <case src="99" dst="99TH"/>
+    <case src="100" dst="100TH"/>
+    <case src="101" dst="101ST"/>
+    <case src="102" dst="102ND"/>
+    <case src="103" dst="103RD"/>
+    <case src="104" dst="104TH"/>
+    <case src="105" dst="105TH"/>
+    <case src="106" dst="106TH"/>
+    <case src="107" dst="107TH"/>
+    <case src="108" dst="108TH"/>
+    <case src="109" dst="109TH"/>
+    <case src="110" dst="110TH"/>
+    <case src="111" dst="111TH"/>
+    <case src="112" dst="112TH"/>
+    <case src="113" dst="113TH"/>
+    <case src="114" dst="114TH"/>
+    <case src="115" dst="115TH"/>
+    <case src="116" dst="116TH"/>
+    <case src="117" dst="117TH"/>
+    <case src="118" dst="118TH"/>
+    <case src="119" dst="119TH"/>
+    <case src="120" dst="120TH"/>
+    <case src="121" dst="121ST"/>
+    <case src="122" dst="122ND"/>
+    <case src="123" dst="123RD"/>
+    <case src="124" dst="124TH"/>
+    <case src="125" dst="125TH"/>
+    <case src="126" dst="126TH"/>
+    <case src="127" dst="127TH"/>
+    <case src="128" dst="128TH"/>
+    <case src="129" dst="129TH"/>
+    <case src="130" dst="130TH"/>
+    <case src="131" dst="131ST"/>
+    <case src="132" dst="132ND"/>
+    <case src="133" dst="133RD"/>
+    <case src="134" dst="134TH"/>
+    <case src="135" dst="135TH"/>
+    <case src="136" dst="136TH"/>
+    <case src="137" dst="137TH"/>
+    <case src="138" dst="138TH"/>
+    <case src="139" dst="139TH"/>
+    <case src="140" dst="140TH"/>
+    <case src="141" dst="141ST"/>
+    <case src="142" dst="142ND"/>
+    <case src="143" dst="143RD"/>
+    <case src="144" dst="144TH"/>
+    <case src="145" dst="145TH"/>
+    <case src="146" dst="146TH"/>
+    <case src="147" dst="147TH"/>
+    <case src="148" dst="148TH"/>
+    <case src="149" dst="149TH"/>
+    <case src="150" dst="150TH"/>
+    <case src="151" dst="151ST"/>
+    <case src="152" dst="152ND"/>
+    <case src="153" dst="153RD"/>
+    <case src="154" dst="154TH"/>
+    <case src="155" dst="155TH"/>
+    <case src="156" dst="156TH"/>
+    <case src="157" dst="157TH"/>
+    <case src="158" dst="158TH"/>
+    <case src="159" dst="159TH"/>
+    <case src="160" dst="160TH"/>
+  </format>
+
   <format id="*10"><multiply>10</multiply></format>
   <format id="distance" formatter="%.2fm">  <divide>100</divide></format>
   <format id="time"     formatter="%.2fsec"><divide>100</divide></format>
-  
+
   <charset id="trackfld">
-    <char src="0x00" dst=" "/> <!-- code before ascii-offset but after base-32 decoding //-->
+    <char src="0x00" dst=" "/>
+    <!-- base-32 code 27 falls past 'Z'; the game shows it as a dot //-->
+    <char src="0x1B" dst="."/>
   </charset>
   <charset id="trackfld2">
     <char src="0x00" dst=" "/>
     <char src="0x10" dst=" "/>
     <char src="0x2B" dst="."/>
   </charset>
+
 </hi2txt>

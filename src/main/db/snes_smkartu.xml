@@ -1,0 +1,494 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Super Mario Kart (USA) - SNES">
+  <!--
+    snes_smkartu.hi is a 0x192-byte capture of SRAM $70065F-$7007F0.
+    Byte 0 is the leading FF guard.
+    Bytes 1-400 are the 20 Time Trial course blocks.
+    Final byte is the trailing 00 guard.
+  -->
+  <structure file=".hi">
+    <check><size>402</size></check>
+    <elt size="1" type="raw" id="_LEADING_GUARD"/>
+    <!-- Physical block 00: KOOPA BEACH 1 -->
+    <elt size="2" type="int" id="KOOPA_BEACH_1_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="KOOPA_BEACH_1_HUND"/>
+      <elt size="1" type="int" id="KOOPA_BEACH_1_SEC"/>
+      <elt size="1" type="int" id="KOOPA_BEACH_1_META"/>
+    </loop>
+    <loop count="1" start="10">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 01: MARIO CIRCUIT 4 -->
+    <elt size="2" type="int" id="MARIO_CIRCUIT_4_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="MARIO_CIRCUIT_4_HUND"/>
+      <elt size="1" type="int" id="MARIO_CIRCUIT_4_SEC"/>
+      <elt size="1" type="int" id="MARIO_CIRCUIT_4_META"/>
+    </loop>
+    <loop count="1" start="14">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 02: DONUT PLAINS 2 -->
+    <elt size="2" type="int" id="DONUT_PLAINS_2_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="DONUT_PLAINS_2_HUND"/>
+      <elt size="1" type="int" id="DONUT_PLAINS_2_SEC"/>
+      <elt size="1" type="int" id="DONUT_PLAINS_2_META"/>
+    </loop>
+    <loop count="1" start="7">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 03: GHOST VALLEY 2 -->
+    <elt size="2" type="int" id="GHOST_VALLEY_2_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="GHOST_VALLEY_2_HUND"/>
+      <elt size="1" type="int" id="GHOST_VALLEY_2_SEC"/>
+      <elt size="1" type="int" id="GHOST_VALLEY_2_META"/>
+    </loop>
+    <loop count="1" start="6">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 04: RAINBOW ROAD -->
+    <elt size="2" type="int" id="RAINBOW_ROAD_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="RAINBOW_ROAD_HUND"/>
+      <elt size="1" type="int" id="RAINBOW_ROAD_SEC"/>
+      <elt size="1" type="int" id="RAINBOW_ROAD_META"/>
+    </loop>
+    <loop count="1" start="19">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 05: GHOST VALLEY 3 -->
+    <elt size="2" type="int" id="GHOST_VALLEY_3_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="GHOST_VALLEY_3_HUND"/>
+      <elt size="1" type="int" id="GHOST_VALLEY_3_SEC"/>
+      <elt size="1" type="int" id="GHOST_VALLEY_3_META"/>
+    </loop>
+    <loop count="1" start="17">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 06: VANILLA LAKE 2 -->
+    <elt size="2" type="int" id="VANILLA_LAKE_2_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="VANILLA_LAKE_2_HUND"/>
+      <elt size="1" type="int" id="VANILLA_LAKE_2_SEC"/>
+      <elt size="1" type="int" id="VANILLA_LAKE_2_META"/>
+    </loop>
+    <loop count="1" start="18">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 07: MARIO CIRCUIT 1 -->
+    <elt size="2" type="int" id="MARIO_CIRCUIT_1_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="MARIO_CIRCUIT_1_HUND"/>
+      <elt size="1" type="int" id="MARIO_CIRCUIT_1_SEC"/>
+      <elt size="1" type="int" id="MARIO_CIRCUIT_1_META"/>
+    </loop>
+    <loop count="1" start="0">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 08: KOOPA BEACH 2 -->
+    <elt size="2" type="int" id="KOOPA_BEACH_2_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="KOOPA_BEACH_2_HUND"/>
+      <elt size="1" type="int" id="KOOPA_BEACH_2_SEC"/>
+      <elt size="1" type="int" id="KOOPA_BEACH_2_META"/>
+    </loop>
+    <loop count="1" start="16">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 09: CHOCO ISLAND 2 -->
+    <elt size="2" type="int" id="CHOCO_ISLAND_2_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="CHOCO_ISLAND_2_HUND"/>
+      <elt size="1" type="int" id="CHOCO_ISLAND_2_SEC"/>
+      <elt size="1" type="int" id="CHOCO_ISLAND_2_META"/>
+    </loop>
+    <loop count="1" start="11">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 0A: BOWSER CASTLE 2 -->
+    <elt size="2" type="int" id="BOWSER_CASTLE_2_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="BOWSER_CASTLE_2_HUND"/>
+      <elt size="1" type="int" id="BOWSER_CASTLE_2_SEC"/>
+      <elt size="1" type="int" id="BOWSER_CASTLE_2_META"/>
+    </loop>
+    <loop count="1" start="8">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 0B: VANILLA LAKE 1 -->
+    <elt size="2" type="int" id="VANILLA_LAKE_1_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="VANILLA_LAKE_1_HUND"/>
+      <elt size="1" type="int" id="VANILLA_LAKE_1_SEC"/>
+      <elt size="1" type="int" id="VANILLA_LAKE_1_META"/>
+    </loop>
+    <loop count="1" start="12">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 0C: BOWSER CASTLE 3 -->
+    <elt size="2" type="int" id="BOWSER_CASTLE_3_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="BOWSER_CASTLE_3_HUND"/>
+      <elt size="1" type="int" id="BOWSER_CASTLE_3_SEC"/>
+      <elt size="1" type="int" id="BOWSER_CASTLE_3_META"/>
+    </loop>
+    <loop count="1" start="13">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 0D: MARIO CIRCUIT 3 -->
+    <elt size="2" type="int" id="MARIO_CIRCUIT_3_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="MARIO_CIRCUIT_3_HUND"/>
+      <elt size="1" type="int" id="MARIO_CIRCUIT_3_SEC"/>
+      <elt size="1" type="int" id="MARIO_CIRCUIT_3_META"/>
+    </loop>
+    <loop count="1" start="9">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 0E: DONUT PLAINS 3 -->
+    <elt size="2" type="int" id="DONUT_PLAINS_3_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="DONUT_PLAINS_3_HUND"/>
+      <elt size="1" type="int" id="DONUT_PLAINS_3_SEC"/>
+      <elt size="1" type="int" id="DONUT_PLAINS_3_META"/>
+    </loop>
+    <loop count="1" start="15">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 0F: CHOCO ISLAND 1 -->
+    <elt size="2" type="int" id="CHOCO_ISLAND_1_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="CHOCO_ISLAND_1_HUND"/>
+      <elt size="1" type="int" id="CHOCO_ISLAND_1_SEC"/>
+      <elt size="1" type="int" id="CHOCO_ISLAND_1_META"/>
+    </loop>
+    <loop count="1" start="5">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 10: GHOST VALLEY 1 -->
+    <elt size="2" type="int" id="GHOST_VALLEY_1_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="GHOST_VALLEY_1_HUND"/>
+      <elt size="1" type="int" id="GHOST_VALLEY_1_SEC"/>
+      <elt size="1" type="int" id="GHOST_VALLEY_1_META"/>
+    </loop>
+    <loop count="1" start="2">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 11: BOWSER CASTLE 1 -->
+    <elt size="2" type="int" id="BOWSER_CASTLE_1_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="BOWSER_CASTLE_1_HUND"/>
+      <elt size="1" type="int" id="BOWSER_CASTLE_1_SEC"/>
+      <elt size="1" type="int" id="BOWSER_CASTLE_1_META"/>
+    </loop>
+    <loop count="1" start="3">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 12: DONUT PLAINS 1 -->
+    <elt size="2" type="int" id="DONUT_PLAINS_1_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="DONUT_PLAINS_1_HUND"/>
+      <elt size="1" type="int" id="DONUT_PLAINS_1_SEC"/>
+      <elt size="1" type="int" id="DONUT_PLAINS_1_META"/>
+    </loop>
+    <loop count="1" start="1">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <!-- Physical block 13: MARIO CIRCUIT 2 -->
+    <elt size="2" type="int" id="MARIO_CIRCUIT_2_CHECKSUM" endianness="little_endian"/>
+    <loop count="5">
+      <elt size="1" type="int" id="MARIO_CIRCUIT_2_HUND"/>
+      <elt size="1" type="int" id="MARIO_CIRCUIT_2_SEC"/>
+      <elt size="1" type="int" id="MARIO_CIRCUIT_2_META"/>
+    </loop>
+    <loop count="1" start="4">
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+    </loop>
+    <elt size="1" type="raw" id="_TRAILING_GUARD"/>
+  </structure>
+  <output>
+    <table id="FASTEST LAP TIMES">
+      <column id="COURSE" src="index" format="course_name"/><column id="TIME" format="lap_time;blank_time"/><column id="CHARACTER" src="LAP_META" format="character"/>
+    </table>
+    <table id="MARIO CIRCUIT 1 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_MARIO_CIRCUIT_1;blank_time"/><column id="CHARACTER" src="MARIO_CIRCUIT_1_META" format="character"/>
+    </table>
+    <table id="DONUT PLAINS 1 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_DONUT_PLAINS_1;blank_time"/><column id="CHARACTER" src="DONUT_PLAINS_1_META" format="character"/>
+    </table>
+    <table id="GHOST VALLEY 1 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_GHOST_VALLEY_1;blank_time"/><column id="CHARACTER" src="GHOST_VALLEY_1_META" format="character"/>
+    </table>
+    <table id="BOWSER CASTLE 1 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_BOWSER_CASTLE_1;blank_time"/><column id="CHARACTER" src="BOWSER_CASTLE_1_META" format="character"/>
+    </table>
+    <table id="MARIO CIRCUIT 2 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_MARIO_CIRCUIT_2;blank_time"/><column id="CHARACTER" src="MARIO_CIRCUIT_2_META" format="character"/>
+    </table>
+    <table id="CHOCO ISLAND 1 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_CHOCO_ISLAND_1;blank_time"/><column id="CHARACTER" src="CHOCO_ISLAND_1_META" format="character"/>
+    </table>
+    <table id="GHOST VALLEY 2 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_GHOST_VALLEY_2;blank_time"/><column id="CHARACTER" src="GHOST_VALLEY_2_META" format="character"/>
+    </table>
+    <table id="DONUT PLAINS 2 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_DONUT_PLAINS_2;blank_time"/><column id="CHARACTER" src="DONUT_PLAINS_2_META" format="character"/>
+    </table>
+    <table id="BOWSER CASTLE 2 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_BOWSER_CASTLE_2;blank_time"/><column id="CHARACTER" src="BOWSER_CASTLE_2_META" format="character"/>
+    </table>
+    <table id="MARIO CIRCUIT 3 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_MARIO_CIRCUIT_3;blank_time"/><column id="CHARACTER" src="MARIO_CIRCUIT_3_META" format="character"/>
+    </table>
+    <table id="KOOPA BEACH 1 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_KOOPA_BEACH_1;blank_time"/><column id="CHARACTER" src="KOOPA_BEACH_1_META" format="character"/>
+    </table>
+    <table id="CHOCO ISLAND 2 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_CHOCO_ISLAND_2;blank_time"/><column id="CHARACTER" src="CHOCO_ISLAND_2_META" format="character"/>
+    </table>
+    <table id="VANILLA LAKE 1 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_VANILLA_LAKE_1;blank_time"/><column id="CHARACTER" src="VANILLA_LAKE_1_META" format="character"/>
+    </table>
+    <table id="BOWSER CASTLE 3 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_BOWSER_CASTLE_3;blank_time"/><column id="CHARACTER" src="BOWSER_CASTLE_3_META" format="character"/>
+    </table>
+    <table id="MARIO CIRCUIT 4 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_MARIO_CIRCUIT_4;blank_time"/><column id="CHARACTER" src="MARIO_CIRCUIT_4_META" format="character"/>
+    </table>
+    <table id="DONUT PLAINS 3 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_DONUT_PLAINS_3;blank_time"/><column id="CHARACTER" src="DONUT_PLAINS_3_META" format="character"/>
+    </table>
+    <table id="KOOPA BEACH 2 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_KOOPA_BEACH_2;blank_time"/><column id="CHARACTER" src="KOOPA_BEACH_2_META" format="character"/>
+    </table>
+    <table id="GHOST VALLEY 3 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_GHOST_VALLEY_3;blank_time"/><column id="CHARACTER" src="GHOST_VALLEY_3_META" format="character"/>
+    </table>
+    <table id="VANILLA LAKE 2 - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_VANILLA_LAKE_2;blank_time"/><column id="CHARACTER" src="VANILLA_LAKE_2_META" format="character"/>
+    </table>
+    <table id="RAINBOW ROAD - TOP 5 COMPLETION TIMES">
+      <column id="RANK" src="index" format="rank5"/><column id="TIME" format="time_RAINBOW_ROAD;blank_time"/><column id="CHARACTER" src="RAINBOW_ROAD_META" format="character"/>
+    </table>
+  </output>
+  <format id="rank5">
+    <case src="0" dst="1ST"/><case src="1" dst="2ND"/><case src="2" dst="3RD"/><case src="3" dst="4TH"/><case src="4" dst="5TH"/>
+  </format>
+  <format id="course_name">
+    <case src="0" dst="MARIO CIRCUIT 1"/>
+    <case src="1" dst="DONUT PLAINS 1"/>
+    <case src="2" dst="GHOST VALLEY 1"/>
+    <case src="3" dst="BOWSER CASTLE 1"/>
+    <case src="4" dst="MARIO CIRCUIT 2"/>
+    <case src="5" dst="CHOCO ISLAND 1"/>
+    <case src="6" dst="GHOST VALLEY 2"/>
+    <case src="7" dst="DONUT PLAINS 2"/>
+    <case src="8" dst="BOWSER CASTLE 2"/>
+    <case src="9" dst="MARIO CIRCUIT 3"/>
+    <case src="10" dst="KOOPA BEACH 1"/>
+    <case src="11" dst="CHOCO ISLAND 2"/>
+    <case src="12" dst="VANILLA LAKE 1"/>
+    <case src="13" dst="BOWSER CASTLE 3"/>
+    <case src="14" dst="MARIO CIRCUIT 4"/>
+    <case src="15" dst="DONUT PLAINS 3"/>
+    <case src="16" dst="KOOPA BEACH 2"/>
+    <case src="17" dst="GHOST VALLEY 3"/>
+    <case src="18" dst="VANILLA LAKE 2"/>
+    <case src="19" dst="RAINBOW ROAD"/>
+  </format>
+  <format id="div16"><divide_trunc>16</divide_trunc></format>
+  <format id="mod16"><remainder>16</remainder></format>
+  <format id="bcd_byte" input-as-subcolumns-input="true"><concat><column format="div16"/><column format="mod16"/></concat></format>
+  <format id="minute"><remainder>16</remainder></format>
+  <format id="character">
+    <case src="10" dst="----"/><case src="0" dst="MARIO"/>
+    <case src="1" dst="MARIO"/>
+    <case src="2" dst="MARIO"/>
+    <case src="3" dst="MARIO"/>
+    <case src="4" dst="MARIO"/>
+    <case src="5" dst="MARIO"/>
+    <case src="6" dst="MARIO"/>
+    <case src="7" dst="MARIO"/>
+    <case src="8" dst="MARIO"/>
+    <case src="9" dst="MARIO"/>
+    <case src="16" dst="LUIGI"/>
+    <case src="17" dst="LUIGI"/>
+    <case src="18" dst="LUIGI"/>
+    <case src="19" dst="LUIGI"/>
+    <case src="20" dst="LUIGI"/>
+    <case src="21" dst="LUIGI"/>
+    <case src="22" dst="LUIGI"/>
+    <case src="23" dst="LUIGI"/>
+    <case src="24" dst="LUIGI"/>
+    <case src="25" dst="LUIGI"/>
+    <case src="32" dst="BOWSER"/>
+    <case src="33" dst="BOWSER"/>
+    <case src="34" dst="BOWSER"/>
+    <case src="35" dst="BOWSER"/>
+    <case src="36" dst="BOWSER"/>
+    <case src="37" dst="BOWSER"/>
+    <case src="38" dst="BOWSER"/>
+    <case src="39" dst="BOWSER"/>
+    <case src="40" dst="BOWSER"/>
+    <case src="41" dst="BOWSER"/>
+    <case src="48" dst="PRINCESS"/>
+    <case src="49" dst="PRINCESS"/>
+    <case src="50" dst="PRINCESS"/>
+    <case src="51" dst="PRINCESS"/>
+    <case src="52" dst="PRINCESS"/>
+    <case src="53" dst="PRINCESS"/>
+    <case src="54" dst="PRINCESS"/>
+    <case src="55" dst="PRINCESS"/>
+    <case src="56" dst="PRINCESS"/>
+    <case src="57" dst="PRINCESS"/>
+    <case src="64" dst="D.K.JR"/>
+    <case src="65" dst="D.K.JR"/>
+    <case src="66" dst="D.K.JR"/>
+    <case src="67" dst="D.K.JR"/>
+    <case src="68" dst="D.K.JR"/>
+    <case src="69" dst="D.K.JR"/>
+    <case src="70" dst="D.K.JR"/>
+    <case src="71" dst="D.K.JR"/>
+    <case src="72" dst="D.K.JR"/>
+    <case src="73" dst="D.K.JR"/>
+    <case src="80" dst="KOOPA TROOPA"/>
+    <case src="81" dst="KOOPA TROOPA"/>
+    <case src="82" dst="KOOPA TROOPA"/>
+    <case src="83" dst="KOOPA TROOPA"/>
+    <case src="84" dst="KOOPA TROOPA"/>
+    <case src="85" dst="KOOPA TROOPA"/>
+    <case src="86" dst="KOOPA TROOPA"/>
+    <case src="87" dst="KOOPA TROOPA"/>
+    <case src="88" dst="KOOPA TROOPA"/>
+    <case src="89" dst="KOOPA TROOPA"/>
+    <case src="96" dst="TOAD"/>
+    <case src="97" dst="TOAD"/>
+    <case src="98" dst="TOAD"/>
+    <case src="99" dst="TOAD"/>
+    <case src="100" dst="TOAD"/>
+    <case src="101" dst="TOAD"/>
+    <case src="102" dst="TOAD"/>
+    <case src="103" dst="TOAD"/>
+    <case src="104" dst="TOAD"/>
+    <case src="105" dst="TOAD"/>
+    <case src="112" dst="YOSHI"/>
+    <case src="113" dst="YOSHI"/>
+    <case src="114" dst="YOSHI"/>
+    <case src="115" dst="YOSHI"/>
+    <case src="116" dst="YOSHI"/>
+    <case src="117" dst="YOSHI"/>
+    <case src="118" dst="YOSHI"/>
+    <case src="119" dst="YOSHI"/>
+    <case src="120" dst="YOSHI"/>
+    <case src="121" dst="YOSHI"/>
+    </format>
+  <format id="lap_time">
+    <concat><column src="LAP_META" format="minute"/><txt>'</txt><column src="LAP_SEC" format="bcd_byte"/><txt>''</txt><column src="LAP_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="blank_time"><case src="10'59''99" dst="-'--''--"/></format><format id="time_MARIO_CIRCUIT_1">
+    <concat><column src="MARIO_CIRCUIT_1_META" format="minute"/><txt>'</txt><column src="MARIO_CIRCUIT_1_SEC" format="bcd_byte"/><txt>''</txt><column src="MARIO_CIRCUIT_1_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_DONUT_PLAINS_1">
+    <concat><column src="DONUT_PLAINS_1_META" format="minute"/><txt>'</txt><column src="DONUT_PLAINS_1_SEC" format="bcd_byte"/><txt>''</txt><column src="DONUT_PLAINS_1_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_GHOST_VALLEY_1">
+    <concat><column src="GHOST_VALLEY_1_META" format="minute"/><txt>'</txt><column src="GHOST_VALLEY_1_SEC" format="bcd_byte"/><txt>''</txt><column src="GHOST_VALLEY_1_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_BOWSER_CASTLE_1">
+    <concat><column src="BOWSER_CASTLE_1_META" format="minute"/><txt>'</txt><column src="BOWSER_CASTLE_1_SEC" format="bcd_byte"/><txt>''</txt><column src="BOWSER_CASTLE_1_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_MARIO_CIRCUIT_2">
+    <concat><column src="MARIO_CIRCUIT_2_META" format="minute"/><txt>'</txt><column src="MARIO_CIRCUIT_2_SEC" format="bcd_byte"/><txt>''</txt><column src="MARIO_CIRCUIT_2_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_CHOCO_ISLAND_1">
+    <concat><column src="CHOCO_ISLAND_1_META" format="minute"/><txt>'</txt><column src="CHOCO_ISLAND_1_SEC" format="bcd_byte"/><txt>''</txt><column src="CHOCO_ISLAND_1_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_GHOST_VALLEY_2">
+    <concat><column src="GHOST_VALLEY_2_META" format="minute"/><txt>'</txt><column src="GHOST_VALLEY_2_SEC" format="bcd_byte"/><txt>''</txt><column src="GHOST_VALLEY_2_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_DONUT_PLAINS_2">
+    <concat><column src="DONUT_PLAINS_2_META" format="minute"/><txt>'</txt><column src="DONUT_PLAINS_2_SEC" format="bcd_byte"/><txt>''</txt><column src="DONUT_PLAINS_2_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_BOWSER_CASTLE_2">
+    <concat><column src="BOWSER_CASTLE_2_META" format="minute"/><txt>'</txt><column src="BOWSER_CASTLE_2_SEC" format="bcd_byte"/><txt>''</txt><column src="BOWSER_CASTLE_2_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_MARIO_CIRCUIT_3">
+    <concat><column src="MARIO_CIRCUIT_3_META" format="minute"/><txt>'</txt><column src="MARIO_CIRCUIT_3_SEC" format="bcd_byte"/><txt>''</txt><column src="MARIO_CIRCUIT_3_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_KOOPA_BEACH_1">
+    <concat><column src="KOOPA_BEACH_1_META" format="minute"/><txt>'</txt><column src="KOOPA_BEACH_1_SEC" format="bcd_byte"/><txt>''</txt><column src="KOOPA_BEACH_1_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_CHOCO_ISLAND_2">
+    <concat><column src="CHOCO_ISLAND_2_META" format="minute"/><txt>'</txt><column src="CHOCO_ISLAND_2_SEC" format="bcd_byte"/><txt>''</txt><column src="CHOCO_ISLAND_2_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_VANILLA_LAKE_1">
+    <concat><column src="VANILLA_LAKE_1_META" format="minute"/><txt>'</txt><column src="VANILLA_LAKE_1_SEC" format="bcd_byte"/><txt>''</txt><column src="VANILLA_LAKE_1_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_BOWSER_CASTLE_3">
+    <concat><column src="BOWSER_CASTLE_3_META" format="minute"/><txt>'</txt><column src="BOWSER_CASTLE_3_SEC" format="bcd_byte"/><txt>''</txt><column src="BOWSER_CASTLE_3_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_MARIO_CIRCUIT_4">
+    <concat><column src="MARIO_CIRCUIT_4_META" format="minute"/><txt>'</txt><column src="MARIO_CIRCUIT_4_SEC" format="bcd_byte"/><txt>''</txt><column src="MARIO_CIRCUIT_4_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_DONUT_PLAINS_3">
+    <concat><column src="DONUT_PLAINS_3_META" format="minute"/><txt>'</txt><column src="DONUT_PLAINS_3_SEC" format="bcd_byte"/><txt>''</txt><column src="DONUT_PLAINS_3_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_KOOPA_BEACH_2">
+    <concat><column src="KOOPA_BEACH_2_META" format="minute"/><txt>'</txt><column src="KOOPA_BEACH_2_SEC" format="bcd_byte"/><txt>''</txt><column src="KOOPA_BEACH_2_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_GHOST_VALLEY_3">
+    <concat><column src="GHOST_VALLEY_3_META" format="minute"/><txt>'</txt><column src="GHOST_VALLEY_3_SEC" format="bcd_byte"/><txt>''</txt><column src="GHOST_VALLEY_3_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_VANILLA_LAKE_2">
+    <concat><column src="VANILLA_LAKE_2_META" format="minute"/><txt>'</txt><column src="VANILLA_LAKE_2_SEC" format="bcd_byte"/><txt>''</txt><column src="VANILLA_LAKE_2_HUND" format="bcd_byte"/></concat>
+  </format>
+  <format id="time_RAINBOW_ROAD">
+    <concat><column src="RAINBOW_ROAD_META" format="minute"/><txt>'</txt><column src="RAINBOW_ROAD_SEC" format="bcd_byte"/><txt>''</txt><column src="RAINBOW_ROAD_HUND" format="bcd_byte"/></concat>
+  </format>
+</hi2txt>

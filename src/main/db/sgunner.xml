@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- The file dumped by hiscore.dat is exactly 199 bytes -->
+    <check><size>199</size></check>
+    
+    <!-- TABLE 1: TODAY'S BEST 5 -->
+    <loop count="5">
+      <elt size="12" type="text" id="B_SCORE" byte-skip="even" ascii-offset="48"/>
+      <elt size="2"  type="int"  id="B_CR" endianness="little_endian"/>
+      <elt size="6"  type="text" id="B_INI" byte-skip="even"/>
+      <elt size="4"  type="raw"  id="B_PAD"/>
+    </loop>
+
+    <!-- TABLE 2: TODAY'S WORST 5 -->
+    <loop count="5">
+      <elt size="6"  type="text" id="W_MISS" byte-skip="even" ascii-offset="48"/>
+      <elt size="6"  type="text" id="W_INI"  byte-skip="even"/>
+      <elt size="2"  type="raw"  id="W_PAD"/>
+    </loop>
+    
+    <elt size="9" type="raw" id="TRAIL"/>
+  </structure>
+
+  <output>
+    <table id="TODAY'S BEST 5">
+      <column id="RANK"  src="index"   format="ordinal"/>
+      <column id="SCORE" src="B_SCORE" format="trim_zeros"/>
+      <column id="CR"    src="B_CR"/>
+      <column id="INI"   src="B_INI"/>
+    </table>
+
+    <table id="TODAY'S WORST 5">
+      <column id="RANK"      src="index"  format="ordinal"/>
+      <column id="MISS SHOT" src="W_MISS" format="trim_zeros"/>
+      <column id="INI"       src="W_INI"/>
+    </table>
+  </output>
+    
+  <format id="ordinal">
+    <case src="0" dst="1."/>
+    <case src="1" dst="2."/>
+    <case src="2" dst="3."/>
+    <case src="3" dst="4."/>
+    <case src="4" dst="5."/>
+  </format>
+
+  <!-- Safely trims leading zeros. If a player scores exactly 0, it leaves a single "0". -->
+  <format id="trim_zeros">
+    <trim direction="left">0</trim>
+    <case src="" dst="0"/>
+  </format>
+</hi2txt>

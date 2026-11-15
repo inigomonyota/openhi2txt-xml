@@ -1,0 +1,20 @@
+<hi2txt>
+  <table id="RANKING SCORE">
+    <col>RANK</col><col>NAME</col><col>CHARACTER</col><col>SCORE</col>
+    <row><cell>1st</cell><cell>PIP</cell><cell>RYU</cell><cell>123456</cell></row>
+    <row><cell>2nd</cell><cell>SDM</cell><cell>ALEX</cell><cell>100000</cell></row>
+    <row><cell>3rd</cell><cell>SET</cell><cell>NECRO</cell><cell>90000</cell></row>
+    <row><cell>4th</cell><cell>NEO</cell><cell>DUDLEY</cell><cell>80000</cell></row>
+    <row><cell>5th</cell><cell>ONU</cell><cell>YANG</cell><cell>70000</cell></row>
+    <row><cell>6th</cell><cell>YOK</cell><cell>ELENA</cell><cell>60000</cell></row>
+  </table>
+  <table id="RANKING WINS">
+    <col>RANK</col><col>NAME</col><col>CHARACTER</col><col>WINS</col>
+    <row><cell>1st</cell><cell>KAI</cell><cell>KEN</cell><cell>7</cell></row>
+    <row><cell>2nd</cell><cell>LTI</cell><cell>RYU</cell><cell>6</cell></row>
+    <row><cell>3rd</cell><cell>YUK</cell><cell>IBUKI</cell><cell>5</cell></row>
+    <row><cell>4th</cell><cell>RAO</cell><cell>IBUKI</cell><cell>4</cell></row>
+    <row><cell>5th</cell><cell>INE</cell><cell>YUN</cell><cell>3</cell></row>
+    <row><cell>6th</cell><cell>008</cell><cell>ORO</cell><cell>2</cell></row>
+  </table>
+</hi2txt>

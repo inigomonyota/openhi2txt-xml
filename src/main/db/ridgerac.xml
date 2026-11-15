@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Ridge Racer">
+  <!-- [Ridge Racer (Namco System 22). The 8192-byte eeprom stores per-course
+       BEST records at file 0x600: 4 records x 6 bytes = [best-lap][best-total],
+       each a 3-byte packed-BCD time whose 6 hex digits read straight as the
+       decimal M SS MMM shown on screen (M'SS"MMM).
+       GROUND TRUTH: a played race set record #4 to best-lap 0x118723=1'18"723 and
+       total 0x404141=4'04"141, byte-identical to the on-screen result; the live
+       work-RAM copy mirrors this block exactly (save-state blob 0x1c3e). The
+       attract-mode TODAY'S RANKING (names + times) is ROM-resident, NOT persisted
+       in eeprom, so it is not decodable here. Record #4 is the only one a single
+       race changed, proving record = per-course best. No hiscore.dat exists for
+       any System 22 game. base="16" = packed 2-digit-per-byte BCD. //-->
+  <structure file="eeprom">
+    <check><size>8192</size></check>
+    <elt type="raw" size="1536" id="_PREFIX"/>
+    <loop count="4">
+      <elt size="3" type="int" id="BESTLAP" base="16"/>
+      <elt size="3" type="int" id="TOTAL"   base="16"/>
+    </loop>
+    <elt type="raw" size="6632" id="_REST"/>
+  </structure>
+  <output>
+    <table id="COURSE RECORDS">
+      <column id="COURSE"    src="index"   format="course"/>
+      <column id="BEST LAP"  src="BESTLAP" format="gtime"/>
+      <column id="BEST TIME" src="TOTAL"   format="gtime"/>
+    </table>
+  </output>
+  <format id="course">
+    <case src="0" dst="COURSE 1"/>
+    <case src="1" dst="COURSE 2"/>
+    <case src="2" dst="COURSE 3"/>
+    <case src="3" dst="COURSE 4"/>
+  </format>
+  <format id="t_min"><divide_trunc>100000</divide_trunc></format>
+  <format id="t_sec"><divide_trunc>1000</divide_trunc><remainder>100</remainder><pad direction="left" max="2">0</pad></format>
+  <format id="t_ms"><remainder>1000</remainder><pad direction="left" max="3">0</pad></format>
+  <format id="gtime" input-as-subcolumns-input="yes">
+    <concat><column format="t_min"/><txt>'</txt><column format="t_sec"/><txt>"</txt><column format="t_ms"/></concat>
+  </format>
+</hi2txt>

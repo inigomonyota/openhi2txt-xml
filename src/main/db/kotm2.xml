@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    kotm2 - King of the Monsters 2 (SNK, Neo Geo)
+    Reads the MAME saveram file (nvram/kotm2/saveram), 65536 bytes.
+
+    Neo Geo 68000: saveram is word-swapped, so structure uses byte-swap 2.
+    BEST PLAYERS = 10 records x 8 bytes from 0x0337 (post-swap):
+      [0:3] SCORE 3-byte BCD (02 44 80 gives 24480)
+      [3:6] NAME  3 ASCII chars (byte 0x1B is the middot)
+      [6]   BATTLE byte: 0 gives BATTLE1, 1 gives BATTLE2
+      [7]   padding
+    RANK is positional, shown as the number followed by a dash.
+  -->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+
+    <!-- skip to table at 0x0337 (823 bytes) -->
+    <elt size="823" type="raw" id="PRE"/>
+    <loop count="10">
+      <elt size="3" type="int"  base="16" id="SCORE"/>
+      <elt size="3" type="text" charset="dotcs" id="NAME"/>
+      <elt size="1" type="int"  id="BATTLE"/>
+      <elt size="1" type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <format id="rank">
+    <add>1</add>
+    <suffix>-</suffix>
+  </format>
+
+  <!-- battle byte -> "BATTLE"+(value+1) -->
+  <format id="battle">
+    <add>1</add>
+    <prefix>BATTLE</prefix>
+  </format>
+
+  <output>
+    <table id="BEST PLAYERS">
+      <column id="RANK"   src="index" format="rank"/>
+      <column id="SCORE"  src="SCORE"/>
+      <column id="NAME"   src="NAME"/>
+      <column id="BATTLE" src="BATTLE" format="battle"/>
+    </table>
+  </output>
+
+  <!-- name charset: 0x1B is the middot; other bytes are plain ASCII -->
+  <charset id="dotcs">
+    <char src="0x1B" dst="·"/>
+  </charset>
+
+</hi2txt>

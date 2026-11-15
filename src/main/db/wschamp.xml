@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Wing Shooting Championship">
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,000000,10000,a4,00</definition>
+      <size>65536</size>
+    </check>
+    <elt size="1124" type="raw" id="HDR"/>
+    <loop count="20">
+      <elt size="1" type="text" id="N1" charset="ws"/>
+      <elt size="1" type="raw"  id="P1"/>
+      <elt size="1" type="text" id="N2" charset="ws"/>
+      <elt size="1" type="raw"  id="P2"/>
+      <elt size="1" type="text" id="N3" charset="ws"/>
+      <elt size="1" type="raw"  id="P3"/>
+      <elt size="2" type="int"  id="BIRDTYPE" endianness="little_endian"/>
+      <elt size="2" type="int"  id="GUN"      endianness="little_endian"/>
+      <elt size="2" type="int"  id="BIRDS"    endianness="little_endian"/>
+      <elt size="2" type="int"  id="MISSED"   endianness="little_endian"/>
+      <elt size="2" type="int"  id="GRADE"    endianness="little_endian"/>
+    </loop>
+  </structure>
+  <output>
+    <table id="TOP 20 RANKING">
+      <column id="RANK"  src="index" format="rk"/>
+      <column id="NAME"  src="N1" format="mkname"/>
+      <column id="BIRD"  src="BIRDTYPE" format="birds"/>
+      <column id="GUN"   src="GUN" format="guns"/>
+      <column id="HIT"   src="BIRDS"/>
+      <column id="MISS"  src="MISSED"/>
+      <column id="GRADE" src="GRADE" format="grades"/>
+    </table>
+  </output>
+  <format id="rk"><add>1</add></format>
+  <format id="mkname"><concat><column id="N2"/><column id="N3"/></concat></format>
+  <format id="birds">
+    <case src="0" dst="Ring-Necked Pheasant"/>
+    <case src="1" dst="Great Plains Quail"/>
+    <case src="2" dst="Eastern Bobwhite"/>
+  </format>
+  <format id="guns">
+    <case src="1" dst="Pump Action"/>
+    <case src="2" dst="Semi-Auto"/>
+    <case src="3" dst="Side by Side"/>
+    <case src="4" dst="Over &amp; Under"/>
+    <case src="5" dst="Single Shot"/>
+  </format>
+  <format id="grades">
+    <case src="0" dst="A"/>
+    <case src="1" dst="B"/>
+    <case src="2" dst="C"/>
+  </format>
+  <charset id="ws">
+    <char src="0x11" dst="A"/>
+    <char src="0x12" dst="B"/>
+    <char src="0x13" dst="C"/>
+    <char src="0x14" dst="D"/>
+    <char src="0x15" dst="E"/>
+    <char src="0x16" dst="F"/>
+    <char src="0x17" dst="G"/>
+    <char src="0x18" dst="H"/>
+    <char src="0x19" dst="I"/>
+    <char src="0x1a" dst="J"/>
+    <char src="0x1b" dst="K"/>
+    <char src="0x1c" dst="L"/>
+    <char src="0x1d" dst="M"/>
+    <char src="0x1e" dst="N"/>
+    <char src="0x1f" dst="O"/>
+    <char src="0x20" dst="P"/>
+    <char src="0x21" dst="Q"/>
+    <char src="0x22" dst="R"/>
+    <char src="0x23" dst="S"/>
+    <char src="0x24" dst="T"/>
+    <char src="0x25" dst="U"/>
+    <char src="0x26" dst="V"/>
+    <char src="0x27" dst="W"/>
+    <char src="0x28" dst="X"/>
+    <char src="0x29" dst="Y"/>
+    <char src="0x2a" dst="Z"/>
+  </charset>
+</hi2txt>

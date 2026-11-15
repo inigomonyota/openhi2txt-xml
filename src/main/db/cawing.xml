@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>64</size>
+    </check>
+    <loop count="5">
+      <elt size="4" type="int" base="16" id="SCORE"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw" id="PAD"/>
+    </loop>
+    <elt size="20" type="raw" id="PTRS"/>
+    <elt size="4" type="raw" id="TAIL"/>
+  </structure>
+  <output>
+    <table id="TOP OF ACE!" sort="SCORE" sort-order="desc">
+      <column src="index" format="+1" id="RANK"/>
+      <column src="NAME" id="NAME"/>
+      <column src="SCORE" id="SCORE"/>
+    </table>
+  </output>
+</hi2txt>

@@ -1,0 +1,12 @@
+# OutRunner of OutRunners
+COURSE|NAME|TIME|CAR TYPE
+Australia Course|SGA|5'00"00|MAD POWER
+HongKong Course|TSU|5'00"00|SPEED BUSTER
+Japan Course|WIZ|5'00"00|EASY HANDLING
+China Course|AIK|5'00"00|SMOOTH OPERATOR
+Russia Course|SNB|5'00"00|BAD BOY
+Northern Europe Course|KND|5'00"00|ROAD MONSTER
+Switzerland Course|HDK|5'00"00|QUICK REACTOR
+The Atlantic Course|---|3'02"41|ROAD MONSTER
+Spain Course|MKA|5'00"00|MAD POWER
+Kenya Course|SMA|5'00"00|SPEED BUSTER

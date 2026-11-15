@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    buggyboyjr - Buggy Boy Junior (Tatsumi, 1986)
+    5 tracks x 150 entries x 6 bytes (2b score LE + 1b pad + 3b initials)
+    Score tables at offset 0x2CCA, 900 bytes per track
+  //-->
+  
+  <structure file="nvram">
+    <check>
+      <size>16384</size>
+    </check>
+    <elt size="11466" type="raw" id="HEADER"/>
+    <!-- Track: NORTH -->
+    <loop count="5">
+      <elt size="2" type="int" id="NORTH SCORE" endianness="little_endian"/>
+      <elt size="1" type="raw" id="NORTH PAD"/>
+      <elt size="3" type="text" id="NORTH NAME" charset="buggyboy"/>
+    </loop>
+    <elt size="870" type="raw" id="SKIP1"/>
+    <!-- Track: EAST -->
+    <loop count="5">
+      <elt size="2" type="int" id="EAST SCORE" endianness="little_endian"/>
+      <elt size="1" type="raw" id="EAST PAD"/>
+      <elt size="3" type="text" id="EAST NAME" charset="buggyboy"/>
+    </loop>
+    <elt size="870" type="raw" id="SKIP2"/>
+    <!-- Track: SOUTH -->
+    <loop count="5">
+      <elt size="2" type="int" id="SOUTH SCORE" endianness="little_endian"/>
+      <elt size="1" type="raw" id="SOUTH PAD"/>
+      <elt size="3" type="text" id="SOUTH NAME" charset="buggyboy"/>
+    </loop>
+    <elt size="870" type="raw" id="SKIP3"/>
+    <!-- Track: WEST -->
+    <loop count="5">
+      <elt size="2" type="int" id="WEST SCORE" endianness="little_endian"/>
+      <elt size="1" type="raw" id="WEST PAD"/>
+      <elt size="3" type="text" id="WEST NAME" charset="buggyboy"/>
+    </loop>
+    <elt size="870" type="raw" id="SKIP4"/>
+    <!-- Track: OFFROAD -->
+    <loop count="5">
+      <elt size="2" type="int" id="OFFROAD SCORE" endianness="little_endian"/>
+      <elt size="1" type="raw" id="OFFROAD PAD"/>
+      <elt size="3" type="text" id="OFFROAD NAME" charset="buggyboy"/>
+    </loop>
+    <elt size="1288" type="raw" id="TAIL"/>
+  </structure>
+  
+  <output>
+    <table id="NORTH">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="NORTH SCORE"/>
+      <column id="NAME" src="NORTH NAME"/>
+    </table>
+    <table id="EAST">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="EAST SCORE"/>
+      <column id="NAME" src="EAST NAME"/>
+    </table>
+    <table id="SOUTH">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="SOUTH SCORE"/>
+      <column id="NAME" src="SOUTH NAME"/>
+    </table>
+    <table id="WEST">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="WEST SCORE"/>
+      <column id="NAME" src="WEST NAME"/>
+    </table>
+    <table id="OFFROAD">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="OFFROAD SCORE"/>
+      <column id="NAME" src="OFFROAD NAME"/>
+    </table>
+  </output>
+
+  <charset id="buggyboy">
+    <char src="0x3C" dst="."/>
+  </charset>
+</hi2txt>

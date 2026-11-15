@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 104 bytes -->
+    <check><size>104</size></check>
+    
+    <!-- 10 Records * 10 Bytes = 100 Bytes -->
+    <loop count="10">
+      <!-- 4-byte Big Endian BCD Score -->
+      <elt size="4" type="int"  id="SCORE" base="16" endianness="big_endian"/>
+      
+      <!-- Round is stored as Round minus 1 -->
+      <elt size="2" type="int"  id="ROUND" endianness="big_endian"/>
+      
+      <!-- 4-byte Name (starts with a blank space) -->
+      <elt size="4" type="text" id="NAME"/>
+    </loop>
+    
+    <!-- Remaining 4 bytes is the standalone Top Score tracker -->
+    <elt size="4" type="int" id="TOP_SCORE" base="16" endianness="big_endian"/>
+  </structure>
+
+  <output>
+    <table id="TOP 10 RANKERS">
+      <column id="RANK"   src="index" format="+1"/>
+      <column id="SCORE"  src="SCORE"/>
+      <column id="RANKER" src="NAME"  format="trim_space"/>
+      <column id="ROUND"  src="ROUND" format="+1"/>
+    </table>
+  </output>
+
+  <!-- Translates memory indices by adding 1 (Used for both RANK and ROUND) -->
+  <format id="+1">
+    <add>1</add>
+  </format>
+
+  <!-- Cleanly removes the leading space (0x20) stored in front of the names -->
+  <format id="trim_space">
+    <trim direction="left"> </trim>
+  </format>
+
+</hi2txt>

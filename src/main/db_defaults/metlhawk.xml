@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+	<table>
+		<col>POSITION</col><col>RANK</col><col>INI'T</col><col>SCORE</col>
+		<row><cell>1</cell><cell>MARSHAL</cell><cell>NMC</cell><cell>4150</cell></row>
+		<row><cell>2</cell><cell>COLONEL</cell><cell>SUN</cell><cell>3360</cell></row>
+		<row><cell>3</cell><cell>CAPTAIN</cell><cell>RYO</cell><cell>2090</cell></row>
+		<row><cell>4</cell><cell>WARRANT OFFICER</cell><cell>AMU</cell><cell>1592</cell></row>
+		<row><cell>5</cell><cell>MASTER SERGEANT</cell><cell>EVE</cell><cell>1068</cell></row>
+	</table>
+</hi2txt>

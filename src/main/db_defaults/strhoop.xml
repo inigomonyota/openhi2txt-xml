@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<table id="BEST SCORE">
+<col>RANK</col><col>NAME</col><col>SCORE</col><col>COUNTRY</col>
+<row><cell>1</cell><cell>D.E</cell><cell>0060</cell><cell>USA</cell></row>
+<row><cell>2</cell><cell>D.E</cell><cell>0050</cell><cell>FRANCE</cell></row>
+<row><cell>3</cell><cell>D.E</cell><cell>0040</cell><cell>SPAIN</cell></row>
+<row><cell>4</cell><cell>D.E</cell><cell>0030</cell><cell>GREAT BRITAIN</cell></row>
+<row><cell>5</cell><cell>D.E</cell><cell>0020</cell><cell>JAPAN</cell></row>
+</table>
+</hi2txt>

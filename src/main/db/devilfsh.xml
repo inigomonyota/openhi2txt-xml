@@ -9,7 +9,7 @@
   <structure file=".hi">
     <check>
       <!-- optional: if defined and hiscore.dat provided, it allows to select the good structure versus the provided file //-->
-      <definition>0:40a8:3:0:0</definition>
+      <definition>0:40a8:3:00:00</definition>
       <!-- optional: if defined, it allows to select the good structure versus the provided file
                      useful if multiple structures are defined but hiscore.dat not provided //-->
       <size>3</size>

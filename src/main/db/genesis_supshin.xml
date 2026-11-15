@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="The Super Shinobi">
+  <!--
+    Genesis / Revenge of Shinobi (softlist: supshin, "The Super Shinobi (Japan)",
+    cloneof revshin). Launch: mame64.exe genesis supshin.
+
+    hiscore.dat:
+      @delay=1.5
+      @:maincpu,program,ffff14,4,00,00
+      The game clears work RAM ~frame 50 during boot then never re-inits the
+      HI-SCORE field (it is preserved until beaten), so a 4-byte 00,00 check is
+      safe PROVIDED the plugin waits past the RAM clear, hence @delay=1.5, which
+      makes it inject ~1.75s after boot (during attract) rather than waiting for a
+      game to start. (@delay avoids the earlier 8-byte trick that anchored c_end on
+      the adjacent 5000 constant, which only appears once a game session begins.)
+
+    HI-SCORE encoding: 4-byte BIG-ENDIAN BINARY integer holding score/10 (the game
+    always renders a fixed trailing 0). e.g. 0x00000CDA = 3290 -> display 32900.
+    NOTE: unlike shinobi3u (3-byte packed BCD) this is plain binary, so read base=10
+    and multiply by 10 rather than printing the hex nibbles.
+    Power-on default score = 0.
+
+    .hi layout (4 bytes):
+      SCORE_RAW : 4 bytes  big-endian binary, = score/10
+  //-->
+  <structure file=".hi">
+    <check>
+      <size>4</size>
+    </check>
+    <elt size="4" type="int" id="SCORE_RAW" base="10" endianness="big_endian"/>
+  </structure>
+
+  <output>
+    <table>
+      <column id="HI" src="SCORE_RAW" format="score_x10"/>
+    </table>
+  </output>
+
+  <!-- score stored /10 -->
+  <format id="score_x10">
+    <multiply>10</multiply>
+  </format>
+</hi2txt>

@@ -14,7 +14,7 @@
     <row><cell>11</cell><cell>0</cell><cell>AAA</cell><cell>LIGHTNING(P1)</cell><cell>1</cell><cell>00</cell></row>
     <row><cell>12</cell><cell>0</cell><cell>AAA</cell><cell>LIGHTNING(P1)</cell><cell>1</cell><cell></cell></row>
   </table>
-  <field id="TOP SCORE">100000</field>
+  <field id="TOP SCORE">246400</field>
   <table id="TOP ACCURACIES">
     <col>STAGE</col><col>TOP SCORE ACCURACY</col>
     <row><cell>1</cell><cell>PERFECT</cell></row>

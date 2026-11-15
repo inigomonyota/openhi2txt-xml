@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<!-- Strikers 1945 Plus (Psikyo, saveram). 68000/SH-2 => byte-swap="2".
+     BEST STRIKERS table @ raw 0x32c, 10 records x 10 bytes:
+       [0:4] SCORE 4-byte big-endian binary
+       [4]   TYPE  plane index 1..7 (case-mapped to ROM plane names)
+       [5]   STAGE 1 byte, nibble-encoded: (hi_nibble+1)-(lo_nibble+1); 0x00 => "1-1"
+       [6:9] NAME  3 ASCII chars
+       [9]   padding
+     NOTE: STAGE nibble encoding inferred from the all-"1-1" default (every STAGE byte = 0x00);
+     verify the area/stage split with a played saveram that reached a later stage. -->
+<structure file="saveram" byte-swap="2">
+  <check>
+    <size>65536</size>
+  </check>
+  <elt size="812" type="raw" id="HEADER"/>
+  <loop count="10">
+    <elt size="4" type="int"  id="SCORE"/>
+    <elt size="1" type="int"  id="TYPE"/>
+    <elt size="1" type="int"  id="STAGE"/>
+    <elt size="3" type="text" id="NAME"/>
+    <elt size="1" type="raw"  id="PAD"/>
+  </loop>
+</structure>
+
+<format id="type">
+  <case src="1" dst="P38"/>
+  <case src="2" dst="F5U"/>
+  <case src="3" dst="SPITFIRE"/>
+  <case src="4" dst="TA152"/>
+  <case src="5" dst="ZERO52"/>
+  <case src="6" dst="G.56"/>
+  <case src="7" dst="P55"/>
+</format>
+
+<format id="stage" input-as-subcolumns-input="yes">
+  <concat>
+    <column format="d16;+1"/>
+    <txt>-</txt>
+    <column format="%16;+1"/>
+  </concat>
+</format>
+
+<output>
+  <table id="BEST STRIKERS">
+    <column id="RANK"  src="index" format="+1;Suffix:"/>
+    <column id="NAME"/>
+    <column id="TYPE"  format="type"/>
+    <column id="STAGE" format="stage"/>
+    <column id="SCORE"/>
+  </table>
+</output>
+</hi2txt>

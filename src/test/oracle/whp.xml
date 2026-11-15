@@ -1,0 +1,10 @@
+<hi2txt>
+  <table id="BEST HEROES">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1ST</cell><cell>ICN</cell><cell>,d</cell></row>
+    <row><cell>2ND</cell><cell>PYO</cell><cell>,d</cell></row>
+    <row><cell>3RD</cell><cell>KBT</cell><cell>,d</cell></row>
+    <row><cell>4TH</cell><cell>TAT</cell><cell>,d</cell></row>
+    <row><cell>5TH</cell><cell>MST</cell><cell>,d</cell></row>
+  </table>
+</hi2txt>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- 5 records * 12 bytes each = 60 bytes -->
+    <loop count="5">
+      <!-- Score stored as 3-byte big-endian, multiply by 100 for actual value -->
+      <elt size="3" type="int" id="SCORE" endianness="big_endian"/>
+
+      <!-- 2 padding bytes -->
+      <elt size="2" type="raw" id="PAD"/>
+
+      <!-- Round stored as ASCII digit ('1'-'9') -->
+      <elt size="1" type="text" id="ROUND"/>
+
+      <!-- 1 null separator -->
+      <elt size="1" type="raw" id="SEP"/>
+
+      <!-- Name: 3 ASCII chars -->
+      <elt size="3" type="text" id="NAME"/>
+
+      <!-- 2 null terminator bytes -->
+      <elt size="2" type="raw" id="TERM"/>
+    </loop>
+  </structure>
+  <output>
+    <table id="BEST 5" sort="SCORE" sort-order="desc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="SCORE" format="*100"/>
+      <column id="ROUND" src="ROUND"/>
+      <column id="NAME" src="NAME"/>
+    </table>
+  </output>
+  <format id="+1">
+    <add>1</add>
+  </format>
+</hi2txt>

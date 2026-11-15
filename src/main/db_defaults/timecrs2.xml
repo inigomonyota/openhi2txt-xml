@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<table id="RANKING - SOLO PLAY">
+<col>RANK</col><col>NAME</col><col>SCORE</col><col>TIME</col>
+<row><cell>1ST</cell><cell>RHD</cell><cell>600000</cell><cell>20'59"99</cell></row>
+<row><cell>2ND</cell><cell>KIH</cell><cell>550000</cell><cell>21'59"99</cell></row>
+<row><cell>3RD</cell><cell>SHD</cell><cell>500000</cell><cell>22'59"99</cell></row>
+<row><cell>4TH</cell><cell>CRS</cell><cell>450000</cell><cell>23'59"99</cell></row>
+<row><cell>5TH</cell><cell>DIZ</cell><cell>400000</cell><cell>24'59"99</cell></row>
+</table>
+<table id="RANKING - LINK PLAY">
+<col>RANK</col><col>NAMES</col><col>SCORE</col><col>TIME</col>
+<row><cell>1ST</cell><cell>RHD&amp;WID</cell><cell>600000</cell><cell>20'59"99</cell></row>
+<row><cell>2ND</cell><cell>KIH&amp;ROB</cell><cell>550000</cell><cell>21'59"99</cell></row>
+<row><cell>3RD</cell><cell>SHD&amp;MOZ</cell><cell>500000</cell><cell>22'59"99</cell></row>
+<row><cell>4TH</cell><cell>CRS&amp;RCL</cell><cell>450000</cell><cell>23'59"99</cell></row>
+<row><cell>5TH</cell><cell>DIZ&amp;NDI</cell><cell>400000</cell><cell>24'59"99</cell></row>
+</table>
+</hi2txt>

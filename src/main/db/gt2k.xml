@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!-- gt2k live: 3 leaderboards + 3 course-record tables + Longest Drive/Putt Ever.
+     Distances stored in INCHES (drive/36=Yards, putt/12=Feet, truncated). Total Score shows strokes,+par. -->
+<hi2txt>
+  <structure file="nvram32">
+    <check><size>131072</size></check>
+    <elt size="280" type="raw" id="PRE"/>
+    <loop count="1">  <!-- Longest Drive/Putt Ever + course records -->
+      <elt size="1" type="text" id="ED_H1" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="text" id="ED_H0" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="int" id="ED_VLO" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="int" id="ED_VHI" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="int" id="ED_CRS" table-index="loop_index" table-index-format="+0"/>
+      <elt size="2" type="raw" id="S0"/>
+      <elt size="1" type="text" id="ED_H2" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="int" id="ED_VLO" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="int" id="ED_VHI" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="int" id="ED_HOLE" table-index="loop_index" table-index-format="+0"/>
+      <elt size="2" type="raw" id="S1"/>
+      <elt size="1" type="text" id="ED_H2" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="text" id="ED_H1" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="text" id="ED_H0" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="int" id="ED_HOLE" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw" id="S2"/>
+      <elt size="1" type="int" id="ED_CRS" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw" id="S3"/>
+      <elt size="1" type="int" id="SV_VLO" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="int" id="SV_VHI" table-index="loop_index" table-index-format="+0"/>
+      <elt size="3" type="raw" id="S4"/>
+      <elt size="1" type="text" id="SV_H2" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="text" id="SV_H1" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="text" id="SV_H0" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="text" id="SV_H1" table-index="loop_index" table-index-format="+6"/>
+      <elt size="1" type="text" id="SV_H0" table-index="loop_index" table-index-format="+6"/>
+      <elt size="1" type="int" id="SV_VLO" table-index="loop_index" table-index-format="+6"/>
+      <elt size="1" type="int" id="SV_VHI" table-index="loop_index" table-index-format="+6"/>
+      <elt size="1" type="int" id="SV_VLO" table-index="loop_index" table-index-format="+7"/>
+      <elt size="1" type="int" id="SV_VHI" table-index="loop_index" table-index-format="+7"/>
+      <elt size="1" type="raw" id="S5"/>
+      <elt size="1" type="text" id="SV_H2" table-index="loop_index" table-index-format="+6"/>
+      <elt size="1" type="raw" id="S6"/>
+      <elt size="1" type="text" id="SV_H2" table-index="loop_index" table-index-format="+7"/>
+      <elt size="1" type="text" id="SV_H1" table-index="loop_index" table-index-format="+7"/>
+      <elt size="1" type="text" id="SV_H0" table-index="loop_index" table-index-format="+7"/>
+      <elt size="1" type="text" id="SV_H1" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="text" id="SV_H0" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="int" id="SV_VLO" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="int" id="SV_VHI" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="int" id="SV_VLO" table-index="loop_index" table-index-format="+3"/>
+      <elt size="1" type="int" id="SV_VHI" table-index="loop_index" table-index-format="+3"/>
+      <elt size="1" type="raw" id="S7"/>
+      <elt size="1" type="text" id="SV_H2" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw" id="S8"/>
+      <elt size="1" type="text" id="SV_H2" table-index="loop_index" table-index-format="+3"/>
+      <elt size="1" type="text" id="SV_H1" table-index="loop_index" table-index-format="+3"/>
+      <elt size="1" type="text" id="SV_H0" table-index="loop_index" table-index-format="+3"/>
+      <elt size="1" type="text" id="SV_H1" table-index="loop_index" table-index-format="+2"/>
+      <elt size="1" type="text" id="SV_H0" table-index="loop_index" table-index-format="+2"/>
+      <elt size="1" type="int" id="SV_VLO" table-index="loop_index" table-index-format="+2"/>
+      <elt size="1" type="int" id="SV_VHI" table-index="loop_index" table-index-format="+2"/>
+      <elt size="1" type="int" id="SV_VLO" table-index="loop_index" table-index-format="+5"/>
+      <elt size="1" type="int" id="SV_VHI" table-index="loop_index" table-index-format="+5"/>
+      <elt size="1" type="raw" id="S9"/>
+      <elt size="1" type="text" id="SV_H2" table-index="loop_index" table-index-format="+2"/>
+      <elt size="1" type="raw" id="S10"/>
+      <elt size="1" type="text" id="SV_H2" table-index="loop_index" table-index-format="+5"/>
+      <elt size="1" type="text" id="SV_H1" table-index="loop_index" table-index-format="+5"/>
+      <elt size="1" type="text" id="SV_H0" table-index="loop_index" table-index-format="+5"/>
+      <elt size="1" type="text" id="SV_H1" table-index="loop_index" table-index-format="+4"/>
+      <elt size="1" type="text" id="SV_H0" table-index="loop_index" table-index-format="+4"/>
+      <elt size="1" type="int" id="SV_VLO" table-index="loop_index" table-index-format="+4"/>
+      <elt size="1" type="int" id="SV_VHI" table-index="loop_index" table-index-format="+4"/>
+      <elt size="3" type="raw" id="S11"/>
+      <elt size="1" type="text" id="SV_H2" table-index="loop_index" table-index-format="+4"/>
+      <elt size="1" type="text" id="SV_H1" table-index="loop_index" table-index-format="+8"/>
+      <elt size="1" type="text" id="SV_H0" table-index="loop_index" table-index-format="+8"/>
+      <elt size="1" type="int" id="SV_VLO" table-index="loop_index" table-index-format="+8"/>
+      <elt size="1" type="int" id="SV_VHI" table-index="loop_index" table-index-format="+8"/>
+      <elt size="3" type="raw" id="S12"/>
+      <elt size="1" type="text" id="SV_H2" table-index="loop_index" table-index-format="+8"/>
+      <elt size="1" type="text" id="SH_H1" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="text" id="SH_H0" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="int" id="SH_VLO" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="int" id="SH_VHI" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="int" id="SH_VLO" table-index="loop_index" table-index-format="+6"/>
+      <elt size="1" type="int" id="SH_VHI" table-index="loop_index" table-index-format="+6"/>
+      <elt size="1" type="raw" id="S13"/>
+      <elt size="1" type="text" id="SH_H2" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="raw" id="S14"/>
+      <elt size="1" type="text" id="SH_H2" table-index="loop_index" table-index-format="+6"/>
+      <elt size="1" type="text" id="SH_H1" table-index="loop_index" table-index-format="+6"/>
+      <elt size="1" type="text" id="SH_H0" table-index="loop_index" table-index-format="+6"/>
+      <elt size="1" type="text" id="SH_H1" table-index="loop_index" table-index-format="+7"/>
+      <elt size="1" type="text" id="SH_H0" table-index="loop_index" table-index-format="+7"/>
+      <elt size="1" type="int" id="SH_VLO" table-index="loop_index" table-index-format="+7"/>
+      <elt size="1" type="int" id="SH_VHI" table-index="loop_index" table-index-format="+7"/>
+      <elt size="1" type="int" id="SH_VLO" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="int" id="SH_VHI" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw" id="S15"/>
+      <elt size="1" type="text" id="SH_H2" table-index="loop_index" table-index-format="+7"/>
+      <elt size="1" type="raw" id="S16"/>
+      <elt size="1" type="text" id="SH_H2" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="text" id="SH_H1" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="text" id="SH_H0" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="text" id="SH_H1" table-index="loop_index" table-index-format="+3"/>
+      <elt size="1" type="text" id="SH_H0" table-index="loop_index" table-index-format="+3"/>
+      <elt size="1" type="int" id="SH_VLO" table-index="loop_index" table-index-format="+3"/>
+      <elt size="1" type="int" id="SH_VHI" table-index="loop_index" table-index-format="+3"/>
+      <elt size="1" type="int" id="SH_VLO" table-index="loop_index" table-index-format="+2"/>
+      <elt size="1" type="int" id="SH_VHI" table-index="loop_index" table-index-format="+2"/>
+      <elt size="1" type="raw" id="S17"/>
+      <elt size="1" type="text" id="SH_H2" table-index="loop_index" table-index-format="+3"/>
+      <elt size="1" type="raw" id="S18"/>
+      <elt size="1" type="text" id="SH_H2" table-index="loop_index" table-index-format="+2"/>
+      <elt size="1" type="text" id="SH_H1" table-index="loop_index" table-index-format="+2"/>
+      <elt size="1" type="text" id="SH_H0" table-index="loop_index" table-index-format="+2"/>
+      <elt size="1" type="text" id="SH_H1" table-index="loop_index" table-index-format="+5"/>
+      <elt size="1" type="text" id="SH_H0" table-index="loop_index" table-index-format="+5"/>
+      <elt size="1" type="int" id="SH_VLO" table-index="loop_index" table-index-format="+5"/>
+      <elt size="1" type="int" id="SH_VHI" table-index="loop_index" table-index-format="+5"/>
+      <elt size="1" type="int" id="SH_VLO" table-index="loop_index" table-index-format="+4"/>
+      <elt size="1" type="int" id="SH_VHI" table-index="loop_index" table-index-format="+4"/>
+      <elt size="1" type="raw" id="S19"/>
+      <elt size="1" type="text" id="SH_H2" table-index="loop_index" table-index-format="+5"/>
+      <elt size="1" type="raw" id="S20"/>
+      <elt size="1" type="text" id="SH_H2" table-index="loop_index" table-index-format="+4"/>
+      <elt size="1" type="text" id="SH_H1" table-index="loop_index" table-index-format="+4"/>
+      <elt size="1" type="text" id="SH_H0" table-index="loop_index" table-index-format="+4"/>
+      <elt size="1" type="int" id="SH_VLO" table-index="loop_index" table-index-format="+8"/>
+      <elt size="1" type="int" id="SH_VHI" table-index="loop_index" table-index-format="+8"/>
+      <elt size="3" type="raw" id="S21"/>
+      <elt size="1" type="text" id="SH_H2" table-index="loop_index" table-index-format="+8"/>
+      <elt size="1" type="text" id="SH_H1" table-index="loop_index" table-index-format="+8"/>
+      <elt size="1" type="text" id="SH_H0" table-index="loop_index" table-index-format="+8"/>
+      <elt size="1" type="int" id="CR_VLO" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="int" id="CR_VHI" table-index="loop_index" table-index-format="+0"/>
+      <elt size="3" type="raw" id="S22"/>
+      <elt size="1" type="text" id="CR_H2" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="text" id="CR_H1" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="text" id="CR_H0" table-index="loop_index" table-index-format="+0"/>
+      <elt size="1" type="text" id="CR_H1" table-index="loop_index" table-index-format="+6"/>
+      <elt size="1" type="text" id="CR_H0" table-index="loop_index" table-index-format="+6"/>
+      <elt size="1" type="int" id="CR_VLO" table-index="loop_index" table-index-format="+6"/>
+      <elt size="1" type="int" id="CR_VHI" table-index="loop_index" table-index-format="+6"/>
+      <elt size="1" type="int" id="CR_VLO" table-index="loop_index" table-index-format="+7"/>
+      <elt size="1" type="int" id="CR_VHI" table-index="loop_index" table-index-format="+7"/>
+      <elt size="1" type="raw" id="S23"/>
+      <elt size="1" type="text" id="CR_H2" table-index="loop_index" table-index-format="+6"/>
+      <elt size="1" type="raw" id="S24"/>
+      <elt size="1" type="text" id="CR_H2" table-index="loop_index" table-index-format="+7"/>
+      <elt size="1" type="text" id="CR_H1" table-index="loop_index" table-index-format="+7"/>
+      <elt size="1" type="text" id="CR_H0" table-index="loop_index" table-index-format="+7"/>
+      <elt size="1" type="text" id="CR_H1" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="text" id="CR_H0" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="int" id="CR_VLO" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="int" id="CR_VHI" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="int" id="CR_VLO" table-index="loop_index" table-index-format="+3"/>
+      <elt size="1" type="int" id="CR_VHI" table-index="loop_index" table-index-format="+3"/>
+      <elt size="1" type="raw" id="S25"/>
+      <elt size="1" type="text" id="CR_H2" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw" id="S26"/>
+      <elt size="1" type="text" id="CR_H2" table-index="loop_index" table-index-format="+3"/>
+      <elt size="1" type="text" id="CR_H1" table-index="loop_index" table-index-format="+3"/>
+      <elt size="1" type="text" id="CR_H0" table-index="loop_index" table-index-format="+3"/>
+      <elt size="1" type="text" id="CR_H1" table-index="loop_index" table-index-format="+2"/>
+      <elt size="1" type="text" id="CR_H0" table-index="loop_index" table-index-format="+2"/>
+      <elt size="1" type="int" id="CR_VLO" table-index="loop_index" table-index-format="+2"/>
+      <elt size="1" type="int" id="CR_VHI" table-index="loop_index" table-index-format="+2"/>
+      <elt size="1" type="int" id="CR_VLO" table-index="loop_index" table-index-format="+5"/>
+      <elt size="1" type="int" id="CR_VHI" table-index="loop_index" table-index-format="+5"/>
+      <elt size="1" type="raw" id="S27"/>
+      <elt size="1" type="text" id="CR_H2" table-index="loop_index" table-index-format="+2"/>
+      <elt size="1" type="raw" id="S28"/>
+      <elt size="1" type="text" id="CR_H2" table-index="loop_index" table-index-format="+5"/>
+      <elt size="1" type="text" id="CR_H1" table-index="loop_index" table-index-format="+5"/>
+      <elt size="1" type="text" id="CR_H0" table-index="loop_index" table-index-format="+5"/>
+      <elt size="1" type="text" id="CR_H1" table-index="loop_index" table-index-format="+4"/>
+      <elt size="1" type="text" id="CR_H0" table-index="loop_index" table-index-format="+4"/>
+      <elt size="1" type="int" id="CR_VLO" table-index="loop_index" table-index-format="+4"/>
+      <elt size="1" type="int" id="CR_VHI" table-index="loop_index" table-index-format="+4"/>
+      <elt size="3" type="raw" id="S29"/>
+      <elt size="1" type="text" id="CR_H2" table-index="loop_index" table-index-format="+4"/>
+      <elt size="1" type="text" id="CR_H1" table-index="loop_index" table-index-format="+8"/>
+      <elt size="1" type="text" id="CR_H0" table-index="loop_index" table-index-format="+8"/>
+      <elt size="1" type="int" id="CR_VLO" table-index="loop_index" table-index-format="+8"/>
+      <elt size="1" type="int" id="CR_VHI" table-index="loop_index" table-index-format="+8"/>
+      <elt size="2" type="raw" id="S30"/>
+    </loop>
+    <loop count="1">
+      <elt size="1" type="raw" id="S31"/>
+      <elt size="1" type="text" id="CR_H2" table-index="loop_index" table-index-format="+8"/>
+      <elt size="12" type="raw" id="S32"/>
+      <elt size="1" type="int" id="SV_TOTAL" table-index="loop_index" table-index-format="*4"/>
+      <elt size="4" type="raw" id="S33"/>
+      <elt size="1" type="text" id="SV_N2" table-index="loop_index" table-index-format="*4"/>
+      <elt size="1" type="text" id="SV_N1" table-index="loop_index" table-index-format="*4"/>
+      <elt size="1" type="text" id="SV_N0" table-index="loop_index" table-index-format="*4"/>
+      <elt size="24" type="raw" id="S34"/>
+      <elt size="1" type="text" id="SV_N2" table-index="loop_index" table-index-format="*4;+1"/>
+      <elt size="1" type="text" id="SV_N1" table-index="loop_index" table-index-format="*4;+1"/>
+      <elt size="1" type="text" id="SV_N0" table-index="loop_index" table-index-format="*4;+1"/>
+      <elt size="1" type="int" id="SV_TOTAL" table-index="loop_index" table-index-format="*4;+1"/>
+      <elt size="24" type="raw" id="S35"/>
+      <elt size="1" type="text" id="SV_N1" table-index="loop_index" table-index-format="*4;+2"/>
+      <elt size="1" type="text" id="SV_N0" table-index="loop_index" table-index-format="*4;+2"/>
+      <elt size="1" type="int" id="SV_TOTAL" table-index="loop_index" table-index-format="*4;+2"/>
+      <elt size="4" type="raw" id="S36"/>
+      <elt size="1" type="text" id="SV_N2" table-index="loop_index" table-index-format="*4;+2"/>
+      <elt size="20" type="raw" id="S37"/>
+      <elt size="1" type="text" id="SV_N0" table-index="loop_index" table-index-format="*4;+3"/>
+      <elt size="1" type="int" id="SV_TOTAL" table-index="loop_index" table-index-format="*4;+3"/>
+      <elt size="4" type="raw" id="S38"/>
+      <elt size="1" type="text" id="SV_N2" table-index="loop_index" table-index-format="*4;+3"/>
+      <elt size="1" type="text" id="SV_N1" table-index="loop_index" table-index-format="*4;+3"/>
+      <elt size="6" type="raw" id="S39"/>
+    </loop>
+    <loop count="6">
+      <elt size="14" type="raw" id="S40"/>
+      <elt size="1" type="int" id="SV_TOTAL" table-index="loop_index" table-index-format="+1;*4;+0"/>
+      <elt size="4" type="raw" id="S41"/>
+      <elt size="1" type="text" id="SV_N2" table-index="loop_index" table-index-format="+1;*4;+0"/>
+      <elt size="1" type="text" id="SV_N1" table-index="loop_index" table-index-format="+1;*4;+0"/>
+      <elt size="1" type="text" id="SV_N0" table-index="loop_index" table-index-format="+1;*4;+0"/>
+      <elt size="24" type="raw" id="S42"/>
+      <elt size="1" type="text" id="SV_N2" table-index="loop_index" table-index-format="+1;*4;+1"/>
+      <elt size="1" type="text" id="SV_N1" table-index="loop_index" table-index-format="+1;*4;+1"/>
+      <elt size="1" type="text" id="SV_N0" table-index="loop_index" table-index-format="+1;*4;+1"/>
+      <elt size="1" type="int" id="SV_TOTAL" table-index="loop_index" table-index-format="+1;*4;+1"/>
+      <elt size="24" type="raw" id="S43"/>
+      <elt size="1" type="text" id="SV_N1" table-index="loop_index" table-index-format="+1;*4;+2"/>
+      <elt size="1" type="text" id="SV_N0" table-index="loop_index" table-index-format="+1;*4;+2"/>
+      <elt size="1" type="int" id="SV_TOTAL" table-index="loop_index" table-index-format="+1;*4;+2"/>
+      <elt size="4" type="raw" id="S44"/>
+      <elt size="1" type="text" id="SV_N2" table-index="loop_index" table-index-format="+1;*4;+2"/>
+      <elt size="20" type="raw" id="S45"/>
+      <elt size="1" type="text" id="SV_N0" table-index="loop_index" table-index-format="+1;*4;+3"/>
+      <elt size="1" type="int" id="SV_TOTAL" table-index="loop_index" table-index-format="+1;*4;+3"/>
+      <elt size="4" type="raw" id="S46"/>
+      <elt size="1" type="text" id="SV_N2" table-index="loop_index" table-index-format="+1;*4;+3"/>
+      <elt size="1" type="text" id="SV_N1" table-index="loop_index" table-index-format="+1;*4;+3"/>
+      <elt size="6" type="raw" id="S47"/>
+    </loop>
+    <loop count="1">
+      <elt size="14" type="raw" id="S48"/>
+      <elt size="1" type="int" id="SV_TOTAL" table-index="loop_index" table-index-format="+28"/>
+      <elt size="4" type="raw" id="S49"/>
+      <elt size="1" type="text" id="SV_N2" table-index="loop_index" table-index-format="+28"/>
+      <elt size="1" type="text" id="SV_N1" table-index="loop_index" table-index-format="+28"/>
+      <elt size="1" type="text" id="SV_N0" table-index="loop_index" table-index-format="+28"/>
+      <elt size="24" type="raw" id="S50"/>
+      <elt size="1" type="text" id="SV_N2" table-index="loop_index" table-index-format="+29"/>
+      <elt size="1" type="text" id="SV_N1" table-index="loop_index" table-index-format="+29"/>
+      <elt size="1" type="text" id="SV_N0" table-index="loop_index" table-index-format="+29"/>
+      <elt size="1" type="int" id="SV_TOTAL" table-index="loop_index" table-index-format="+29"/>
+      <elt size="8" type="raw" id="S51"/>
+    </loop>
+    <loop count="1">
+      <elt size="16" type="raw" id="S52"/>
+      <elt size="1" type="text" id="SH_N1" table-index="loop_index" table-index-format="*4"/>
+      <elt size="1" type="text" id="SH_N0" table-index="loop_index" table-index-format="*4"/>
+      <elt size="1" type="int" id="SH_TOTAL" table-index="loop_index" table-index-format="*4"/>
+      <elt size="4" type="raw" id="S53"/>
+      <elt size="1" type="text" id="SH_N2" table-index="loop_index" table-index-format="*4"/>
+      <elt size="20" type="raw" id="S54"/>
+      <elt size="1" type="text" id="SH_N0" table-index="loop_index" table-index-format="*4;+1"/>
+      <elt size="1" type="int" id="SH_TOTAL" table-index="loop_index" table-index-format="*4;+1"/>
+      <elt size="4" type="raw" id="S55"/>
+      <elt size="1" type="text" id="SH_N2" table-index="loop_index" table-index-format="*4;+1"/>
+      <elt size="1" type="text" id="SH_N1" table-index="loop_index" table-index-format="*4;+1"/>
+      <elt size="20" type="raw" id="S56"/>
+      <elt size="1" type="int" id="SH_TOTAL" table-index="loop_index" table-index-format="*4;+2"/>
+      <elt size="4" type="raw" id="S57"/>
+      <elt size="1" type="text" id="SH_N2" table-index="loop_index" table-index-format="*4;+2"/>
+      <elt size="1" type="text" id="SH_N1" table-index="loop_index" table-index-format="*4;+2"/>
+      <elt size="1" type="text" id="SH_N0" table-index="loop_index" table-index-format="*4;+2"/>
+      <elt size="24" type="raw" id="S58"/>
+      <elt size="1" type="text" id="SH_N2" table-index="loop_index" table-index-format="*4;+3"/>
+      <elt size="1" type="text" id="SH_N1" table-index="loop_index" table-index-format="*4;+3"/>
+      <elt size="1" type="text" id="SH_N0" table-index="loop_index" table-index-format="*4;+3"/>
+      <elt size="1" type="int" id="SH_TOTAL" table-index="loop_index" table-index-format="*4;+3"/>
+      <elt size="8" type="raw" id="S59"/>
+    </loop>
+    <loop count="6">
+      <elt size="16" type="raw" id="S60"/>
+      <elt size="1" type="text" id="SH_N1" table-index="loop_index" table-index-format="+1;*4;+0"/>
+      <elt size="1" type="text" id="SH_N0" table-index="loop_index" table-index-format="+1;*4;+0"/>
+      <elt size="1" type="int" id="SH_TOTAL" table-index="loop_index" table-index-format="+1;*4;+0"/>
+      <elt size="4" type="raw" id="S61"/>
+      <elt size="1" type="text" id="SH_N2" table-index="loop_index" table-index-format="+1;*4;+0"/>
+      <elt size="20" type="raw" id="S62"/>
+      <elt size="1" type="text" id="SH_N0" table-index="loop_index" table-index-format="+1;*4;+1"/>
+      <elt size="1" type="int" id="SH_TOTAL" table-index="loop_index" table-index-format="+1;*4;+1"/>
+      <elt size="4" type="raw" id="S63"/>
+      <elt size="1" type="text" id="SH_N2" table-index="loop_index" table-index-format="+1;*4;+1"/>
+      <elt size="1" type="text" id="SH_N1" table-index="loop_index" table-index-format="+1;*4;+1"/>
+      <elt size="20" type="raw" id="S64"/>
+      <elt size="1" type="int" id="SH_TOTAL" table-index="loop_index" table-index-format="+1;*4;+2"/>
+      <elt size="4" type="raw" id="S65"/>
+      <elt size="1" type="text" id="SH_N2" table-index="loop_index" table-index-format="+1;*4;+2"/>
+      <elt size="1" type="text" id="SH_N1" table-index="loop_index" table-index-format="+1;*4;+2"/>
+      <elt size="1" type="text" id="SH_N0" table-index="loop_index" table-index-format="+1;*4;+2"/>
+      <elt size="24" type="raw" id="S66"/>
+      <elt size="1" type="text" id="SH_N2" table-index="loop_index" table-index-format="+1;*4;+3"/>
+      <elt size="1" type="text" id="SH_N1" table-index="loop_index" table-index-format="+1;*4;+3"/>
+      <elt size="1" type="text" id="SH_N0" table-index="loop_index" table-index-format="+1;*4;+3"/>
+      <elt size="1" type="int" id="SH_TOTAL" table-index="loop_index" table-index-format="+1;*4;+3"/>
+      <elt size="8" type="raw" id="S67"/>
+    </loop>
+    <loop count="1">
+      <elt size="16" type="raw" id="S68"/>
+      <elt size="1" type="text" id="SH_N1" table-index="loop_index" table-index-format="+28"/>
+      <elt size="1" type="text" id="SH_N0" table-index="loop_index" table-index-format="+28"/>
+      <elt size="1" type="int" id="SH_TOTAL" table-index="loop_index" table-index-format="+28"/>
+      <elt size="4" type="raw" id="S69"/>
+      <elt size="1" type="text" id="SH_N2" table-index="loop_index" table-index-format="+28"/>
+      <elt size="20" type="raw" id="S70"/>
+      <elt size="1" type="text" id="SH_N0" table-index="loop_index" table-index-format="+29"/>
+      <elt size="1" type="int" id="SH_TOTAL" table-index="loop_index" table-index-format="+29"/>
+      <elt size="4" type="raw" id="S71"/>
+      <elt size="1" type="text" id="SH_N2" table-index="loop_index" table-index-format="+29"/>
+      <elt size="1" type="text" id="SH_N1" table-index="loop_index" table-index-format="+29"/>
+      <elt size="6" type="raw" id="S72"/>
+    </loop>
+    <loop count="1">
+      <elt size="14" type="raw" id="S73"/>
+      <elt size="1" type="int" id="CR_TOTAL" table-index="loop_index" table-index-format="*4"/>
+      <elt size="4" type="raw" id="S74"/>
+      <elt size="1" type="text" id="CR_N2" table-index="loop_index" table-index-format="*4"/>
+      <elt size="1" type="text" id="CR_N1" table-index="loop_index" table-index-format="*4"/>
+      <elt size="1" type="text" id="CR_N0" table-index="loop_index" table-index-format="*4"/>
+      <elt size="24" type="raw" id="S75"/>
+      <elt size="1" type="text" id="CR_N2" table-index="loop_index" table-index-format="*4;+1"/>
+      <elt size="1" type="text" id="CR_N1" table-index="loop_index" table-index-format="*4;+1"/>
+      <elt size="1" type="text" id="CR_N0" table-index="loop_index" table-index-format="*4;+1"/>
+      <elt size="1" type="int" id="CR_TOTAL" table-index="loop_index" table-index-format="*4;+1"/>
+      <elt size="24" type="raw" id="S76"/>
+      <elt size="1" type="text" id="CR_N1" table-index="loop_index" table-index-format="*4;+2"/>
+      <elt size="1" type="text" id="CR_N0" table-index="loop_index" table-index-format="*4;+2"/>
+      <elt size="1" type="int" id="CR_TOTAL" table-index="loop_index" table-index-format="*4;+2"/>
+      <elt size="4" type="raw" id="S77"/>
+      <elt size="1" type="text" id="CR_N2" table-index="loop_index" table-index-format="*4;+2"/>
+      <elt size="20" type="raw" id="S78"/>
+      <elt size="1" type="text" id="CR_N0" table-index="loop_index" table-index-format="*4;+3"/>
+      <elt size="1" type="int" id="CR_TOTAL" table-index="loop_index" table-index-format="*4;+3"/>
+      <elt size="4" type="raw" id="S79"/>
+      <elt size="1" type="text" id="CR_N2" table-index="loop_index" table-index-format="*4;+3"/>
+      <elt size="1" type="text" id="CR_N1" table-index="loop_index" table-index-format="*4;+3"/>
+      <elt size="6" type="raw" id="S80"/>
+    </loop>
+    <loop count="6">
+      <elt size="14" type="raw" id="S81"/>
+      <elt size="1" type="int" id="CR_TOTAL" table-index="loop_index" table-index-format="+1;*4;+0"/>
+      <elt size="4" type="raw" id="S82"/>
+      <elt size="1" type="text" id="CR_N2" table-index="loop_index" table-index-format="+1;*4;+0"/>
+      <elt size="1" type="text" id="CR_N1" table-index="loop_index" table-index-format="+1;*4;+0"/>
+      <elt size="1" type="text" id="CR_N0" table-index="loop_index" table-index-format="+1;*4;+0"/>
+      <elt size="24" type="raw" id="S83"/>
+      <elt size="1" type="text" id="CR_N2" table-index="loop_index" table-index-format="+1;*4;+1"/>
+      <elt size="1" type="text" id="CR_N1" table-index="loop_index" table-index-format="+1;*4;+1"/>
+      <elt size="1" type="text" id="CR_N0" table-index="loop_index" table-index-format="+1;*4;+1"/>
+      <elt size="1" type="int" id="CR_TOTAL" table-index="loop_index" table-index-format="+1;*4;+1"/>
+      <elt size="24" type="raw" id="S84"/>
+      <elt size="1" type="text" id="CR_N1" table-index="loop_index" table-index-format="+1;*4;+2"/>
+      <elt size="1" type="text" id="CR_N0" table-index="loop_index" table-index-format="+1;*4;+2"/>
+      <elt size="1" type="int" id="CR_TOTAL" table-index="loop_index" table-index-format="+1;*4;+2"/>
+      <elt size="4" type="raw" id="S85"/>
+      <elt size="1" type="text" id="CR_N2" table-index="loop_index" table-index-format="+1;*4;+2"/>
+      <elt size="20" type="raw" id="S86"/>
+      <elt size="1" type="text" id="CR_N0" table-index="loop_index" table-index-format="+1;*4;+3"/>
+      <elt size="1" type="int" id="CR_TOTAL" table-index="loop_index" table-index-format="+1;*4;+3"/>
+      <elt size="4" type="raw" id="S87"/>
+      <elt size="1" type="text" id="CR_N2" table-index="loop_index" table-index-format="+1;*4;+3"/>
+      <elt size="1" type="text" id="CR_N1" table-index="loop_index" table-index-format="+1;*4;+3"/>
+      <elt size="6" type="raw" id="S88"/>
+    </loop>
+    <loop count="1">
+      <elt size="14" type="raw" id="S89"/>
+      <elt size="1" type="int" id="CR_TOTAL" table-index="loop_index" table-index-format="+28"/>
+      <elt size="4" type="raw" id="S90"/>
+      <elt size="1" type="text" id="CR_N2" table-index="loop_index" table-index-format="+28"/>
+      <elt size="1" type="text" id="CR_N1" table-index="loop_index" table-index-format="+28"/>
+      <elt size="1" type="text" id="CR_N0" table-index="loop_index" table-index-format="+28"/>
+      <elt size="24" type="raw" id="S91"/>
+      <elt size="1" type="text" id="CR_N2" table-index="loop_index" table-index-format="+29"/>
+      <elt size="1" type="text" id="CR_N1" table-index="loop_index" table-index-format="+29"/>
+      <elt size="1" type="text" id="CR_N0" table-index="loop_index" table-index-format="+29"/>
+      <elt size="1" type="int" id="CR_TOTAL" table-index="loop_index" table-index-format="+29"/>
+      <elt size="8" type="raw" id="S92"/>
+    </loop>
+  </structure>
+  <output>
+    <table id="LEADERBOARD - STONE VALLEY" sort="SV_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" format="SV_name"/>
+      <column id="SCORE" src="SV_TOTAL" format="-69;parscore"/>
+      <column id="SV_SORT" src="SV_TOTAL" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - SEA HAVEN" sort="SH_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" format="SH_name"/>
+      <column id="SCORE" src="SH_TOTAL" format="-70;parscore"/>
+      <column id="SH_SORT" src="SH_TOTAL" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - COYOTE RUN" sort="CR_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" format="CR_name"/>
+      <column id="SCORE" src="CR_TOTAL" format="-73;parscore"/>
+      <column id="CR_SORT" src="CR_TOTAL" display="debug"/>
+    </table>
+    <table id="STONE VALLEY">
+      <column id="STAT" src="index" format="statmap"/>
+      <column id="COURSE RECORD" format="SV_val;SV_mark"/>
+      <column id="RECORD HOLDER" format="SV_hold"/>
+    </table>
+    <table id="SEA HAVEN">
+      <column id="STAT" src="index" format="statmap"/>
+      <column id="COURSE RECORD" format="SH_val;SH_mark"/>
+      <column id="RECORD HOLDER" format="SH_hold"/>
+    </table>
+    <table id="COYOTE RUN">
+      <column id="STAT" src="index" format="statmap"/>
+      <column id="COURSE RECORD" format="CR_val;CR_mark"/>
+      <column id="RECORD HOLDER" format="CR_hold"/>
+    </table>
+    <table id="LONGEST DRIVE / PUTT EVER">
+      <column id="RECORD" src="index" format="evermap"/>
+      <column id="HOLDER" format="ever_hold"/>
+      <column id="COURSE" src="ED_CRS" format="coursemap"/>
+      <column id="HOLE" src="ED_HOLE" format="holefmt"/>
+      <column id="DISTANCE" format="ever_dist;evermark"/>
+    </table>
+  </output>
+  <format id="SV_name"><concat><column id="SV_N0"/><column id="SV_N1"/><column id="SV_N2"/></concat></format>
+  <format id="SV_hold"><concat><column id="SV_H0"/><column id="SV_H1"/><column id="SV_H2"/></concat></format>
+  <format id="SV_val"><sum><column id="SV_VHI" format="*256"/><column id="SV_VLO"/></sum></format>
+  <format id="SH_name"><concat><column id="SH_N0"/><column id="SH_N1"/><column id="SH_N2"/></concat></format>
+  <format id="SH_hold"><concat><column id="SH_H0"/><column id="SH_H1"/><column id="SH_H2"/></concat></format>
+  <format id="SH_val"><sum><column id="SH_VHI" format="*256"/><column id="SH_VLO"/></sum></format>
+  <format id="CR_name"><concat><column id="CR_N0"/><column id="CR_N1"/><column id="CR_N2"/></concat></format>
+  <format id="CR_hold"><concat><column id="CR_H0"/><column id="CR_H1"/><column id="CR_H2"/></concat></format>
+  <format id="CR_val"><sum><column id="CR_VHI" format="*256"/><column id="CR_VLO"/></sum></format>
+  <format id="SV_total" input-as-subcolumns-input="true"><concat><column format="+0"/><column>,</column><column format="-73;parscore"/></concat></format>
+  <format id="SH_total" input-as-subcolumns-input="true"><concat><column format="+0"/><column>,</column><column format="-72;parscore"/></concat></format>
+  <format id="CR_total" input-as-subcolumns-input="true"><concat><column format="+0"/><column>,</column><column format="-72;parscore"/></concat></format>
+  <format id="SV_mark"><case src="6000" operator="&gt;=" format="yrds"/><case src="1000" operator="&gt;=" format="+0"/><case src="100" operator="&gt;=" format="feet"/><case src="60" operator="&gt;=" format="SV_total"/><case src="0" default="yes" format="+0"/></format>
+  <format id="SH_mark"><case src="6000" operator="&gt;=" format="yrds"/><case src="1000" operator="&gt;=" format="+0"/><case src="100" operator="&gt;=" format="feet"/><case src="60" operator="&gt;=" format="SH_total"/><case src="0" default="yes" format="+0"/></format>
+  <format id="CR_mark"><case src="6000" operator="&gt;=" format="yrds"/><case src="1000" operator="&gt;=" format="+0"/><case src="100" operator="&gt;=" format="feet"/><case src="60" operator="&gt;=" format="CR_total"/><case src="0" default="yes" format="+0"/></format>
+  <format id="ever_hold"><concat><column id="ED_H0"/><column id="ED_H1"/><column id="ED_H2"/></concat></format>
+  <format id="ever_dist"><sum><column id="ED_VHI" format="*256"/><column id="ED_VLO"/></sum></format>
+  <format id="evermark"><case src="6000" operator="&gt;=" format="yrds"/><case src="100" operator="&gt;=" format="feet"/><case src="0" default="yes" format="+0"/></format>
+  <format id="holefmt"><prefix>#</prefix></format>
+  <format id="evermap"><case src="0" dst="Longest Drive Ever"/><case src="1" dst="Longest Putt Ever"/></format>
+  <format id="coursemap"><case src="0" dst="Stone Valley"/><case src="1" dst="Sea Haven"/><case src="2" dst="Coyote Run"/></format>
+  <format id="plus"><prefix>+</prefix></format>
+  <format id="parscore"><case src="0" dst="E"/><case src="0" operator="&gt;" format="plus"/></format>
+  <format id="yrds"><divide_trunc>36</divide_trunc><suffix> Yrds</suffix></format>
+  <format id="feet"><divide_trunc>12</divide_trunc><suffix> Ft</suffix></format>
+  <format id="statmap"><case src="0" dst="Total Score"/><case src="1" dst="Greens Hit"/><case src="2" dst="Number Of Putts"/><case src="3" dst="Fairways Hit"/><case src="4" dst="Eagles or Better"/><case src="5" dst="Birdies"/><case src="6" dst="Longest Drive"/><case src="7" dst="Longest Putt"/><case src="8" dst="Great Shot Points"/></format>
+</hi2txt>

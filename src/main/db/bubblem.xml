@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  bubblem - Bubble Memories: The Story of Bubble Bobble III (Taito, 1995)
+  Taito F3 hardware, 68EC020 CPU (big-endian).
+  hiscore.dat:
+    @:maincpu,program,40f2ec,10e,00,08
+    @:maincpu,program,407135,3,27,13
+    @:maincpu,program,40eb04,50,00,00
+  353 bytes = 270B range1 + 3B range2 + 80B range3
+
+  Block-interleaved layout (similar to mysticri):
+    [0-39]    Story scores     (10 × 4B big-endian int, stored / 10)
+    [40-79]   Story names      (10 × 4B ASCII, null-terminated)
+    [80-99]   Story rounds     (10 × 2B big-endian int)
+    [100-109] Gap              (10B padding)
+    [110-149] Practice scores  (10 × 4B big-endian int, stored / 10)
+    [150-189] Practice names   (10 × 4B ASCII, null-terminated)
+    [190-209] Practice records (10 × 2B big-endian int — trophy count)
+    [210-269] Tail / metadata  (60B in range1)
+    [270-272] Range 2 trigger  (3B)
+    [273-352] Range 3 metadata (80B)
+
+  Scores are stored as (display / 10). The game's on-screen 300000 is
+  0x7530 = 30000 in the file, so we multiply by 10 on display.
+
+  NEW RECORD column is an integer trophy count (0-10+) displayed in-game
+  as trophy icons.
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>353</size>
+    </check>
+
+    <!-- ====== STORY GAME ====== -->
+
+    <!-- 10 × 4B BE scores (stored / 10) -->
+    <loop count="10">
+      <elt size="4" type="int" id="ST_SCORE" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+
+    <!-- 10 × 4B names (3 ASCII + 1 null) -->
+    <loop count="10">
+      <elt size="4" type="text" id="ST_NAME" table-index="loop_index"/>
+    </loop>
+
+    <!-- 10 × 2B BE rounds -->
+    <loop count="10">
+      <elt size="2" type="int" id="ST_ROUND" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+
+    <!-- 10B gap -->
+    <elt size="10" type="raw" id="GAP"/>
+
+    <!-- ====== PRACTICE GAME ====== -->
+
+    <!-- 10 × 4B BE scores (stored / 10) -->
+    <loop count="10">
+      <elt size="4" type="int" id="PR_SCORE" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+
+    <!-- 10 × 4B names (3 ASCII + 1 null) -->
+    <loop count="10">
+      <elt size="4" type="text" id="PR_NAME" table-index="loop_index"/>
+    </loop>
+
+    <!-- 10 × 2B BE new record trophy counts -->
+    <loop count="10">
+      <elt size="2" type="int" id="PR_RECORD" endianness="big_endian" table-index="loop_index"/>
+    </loop>
+
+    <!-- Tail (range1 continues) -->
+    <elt size="60" type="raw" id="TAIL"/>
+
+    <!-- Range 2: trigger (3B) -->
+    <elt size="3" type="raw" id="RANGE2"/>
+
+    <!-- Range 3: RAM metadata (80B) -->
+    <elt size="80" type="raw" id="RANGE3"/>
+  </structure>
+
+  <output>
+    <table id="STORY GAME - BEST 10" sort="SCORE" sort-order="desc" sort-format="sort_num">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="SCORE" src="ST_SCORE" format="score_x10;comma_score"/>
+      <column id="NAME" src="ST_NAME"/>
+      <column id="ROUND" src="ST_ROUND"/>
+    </table>
+
+    <table id="PRACTICE GAME - BEST 10" sort="SCORE" sort-order="desc" sort-format="sort_num">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="SCORE" src="PR_SCORE" format="score_x10;comma_score"/>
+      <column id="NAME" src="PR_NAME"/>
+      <column id="NEW RECORD" src="PR_RECORD"/>
+    </table>
+  </output>
+
+  <!-- Ordinal rank (0-9 -> 1ST-10TH) -->
+  <format id="ordinal">
+    <case src="0" operator="=" dst="1ST"/>
+    <case src="1" operator="=" dst="2ND"/>
+    <case src="2" operator="=" dst="3RD"/>
+    <case src="3" operator="=" dst="4TH"/>
+    <case src="4" operator="=" dst="5TH"/>
+    <case src="5" operator="=" dst="6TH"/>
+    <case src="6" operator="=" dst="7TH"/>
+    <case src="7" operator="=" dst="8TH"/>
+    <case src="8" operator="=" dst="9TH"/>
+    <case src="9" operator="=" dst="10TH"/>
+  </format>
+
+  <!-- Scores stored as (display/10); multiply by 10 before comma formatting -->
+  <format id="score_x10"><multiply>10</multiply></format>
+
+  <!-- Pass-through for numeric sort (uses raw /10 value, still sorts correctly) -->
+  <format id="sort_num"><multiply>10</multiply></format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+</hi2txt>

@@ -1,0 +1,42 @@
+<hi2txt>
+<table id="BEGINNER COURSE">
+<col>RANK</col><col>SCORE</col><col>STAGE</col><col>NAME</col><col>TIME</col>
+<row><cell>1ST</cell><cell>100000</cell><cell>1</cell><cell>KAN</cell><cell></cell></row>
+<row><cell>2ND</cell><cell>90000</cell><cell>1</cell><cell>OHE</cell><cell></cell></row>
+<row><cell>3RD</cell><cell>80000</cell><cell>1</cell><cell>KAG</cell><cell></cell></row>
+<row><cell>4TH</cell><cell>70000</cell><cell>1</cell><cell>MIZ</cell><cell></cell></row>
+<row><cell>5TH</cell><cell>60000</cell><cell>1</cell><cell>SAT</cell><cell></cell></row>
+<row><cell>6TH</cell><cell>50000</cell><cell>1</cell><cell>TAK</cell><cell></cell></row>
+<row><cell>7TH</cell><cell>40000</cell><cell>1</cell><cell>MIY</cell><cell></cell></row>
+</table>
+<table id="JUNIOR COURSE">
+<col>RANK</col><col>SCORE</col><col>STAGE</col><col>NAME</col><col>TIME</col>
+<row><cell>1ST</cell><cell>200000</cell><cell>1</cell><cell>KAN</cell><cell></cell></row>
+<row><cell>2ND</cell><cell>190000</cell><cell>1</cell><cell>OHE</cell><cell></cell></row>
+<row><cell>3RD</cell><cell>180000</cell><cell>1</cell><cell>KAG</cell><cell></cell></row>
+<row><cell>4TH</cell><cell>170000</cell><cell>1</cell><cell>MIZ</cell><cell></cell></row>
+<row><cell>5TH</cell><cell>160000</cell><cell>1</cell><cell>SAT</cell><cell></cell></row>
+<row><cell>6TH</cell><cell>150000</cell><cell>1</cell><cell>TAK</cell><cell></cell></row>
+<row><cell>7TH</cell><cell>140000</cell><cell>1</cell><cell>MAK</cell><cell></cell></row>
+</table>
+<table id="SENIOR COURSE">
+<col>RANK</col><col>SCORE</col><col>STAGE</col><col>NAME</col><col>TIME</col>
+<row><cell>1ST</cell><cell>300000</cell><cell>1</cell><cell>KAN</cell><cell></cell></row>
+<row><cell>2ND</cell><cell>290000</cell><cell>1</cell><cell>OHE</cell><cell></cell></row>
+<row><cell>3RD</cell><cell>280000</cell><cell>1</cell><cell>KAG</cell><cell></cell></row>
+<row><cell>4TH</cell><cell>270000</cell><cell>1</cell><cell>MIZ</cell><cell></cell></row>
+<row><cell>5TH</cell><cell>260000</cell><cell>1</cell><cell>SAT</cell><cell></cell></row>
+<row><cell>6TH</cell><cell>250000</cell><cell>1</cell><cell>TAK</cell><cell></cell></row>
+<row><cell>7TH</cell><cell>240000</cell><cell>1</cell><cell>MIY</cell><cell></cell></row>
+</table>
+<table id="EXPERT COURSE">
+<col>RANK</col><col>SCORE</col><col>STAGE</col><col>NAME</col><col>TIME</col>
+<row><cell>1ST</cell><cell>400000</cell><cell>1</cell><cell>KAN</cell><cell></cell></row>
+<row><cell>2ND</cell><cell>390000</cell><cell>1</cell><cell>OHE</cell><cell></cell></row>
+<row><cell>3RD</cell><cell>380000</cell><cell>1</cell><cell>KAG</cell><cell></cell></row>
+<row><cell>4TH</cell><cell>370000</cell><cell>1</cell><cell>MIZ</cell><cell></cell></row>
+<row><cell>5TH</cell><cell>360000</cell><cell>1</cell><cell>SAT</cell><cell></cell></row>
+<row><cell>6TH</cell><cell>350000</cell><cell>1</cell><cell>TAK</cell><cell></cell></row>
+<row><cell>7TH</cell><cell>340000</cell><cell>1</cell><cell>MAK</cell><cell></cell></row>
+</table>
+</hi2txt>

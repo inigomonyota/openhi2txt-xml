@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="RANKING">
+    <col>RANK</col><col>NAME</col><col>TEAM CAPTAIN</col><col>SCORE</col>
+    <row><cell>1ST</cell><cell>KUN</cell><cell>KUNIO</cell><cell>10000</cell></row>
+    <row><cell>2ND</cell><cell>RIK</cell><cell>RIKI</cell><cell>9000</cell></row>
+    <row><cell>3RD</cell><cell>SIN</cell><cell>SHINJI</cell><cell>8000</cell></row>
+    <row><cell>4TH</cell><cell>MIS</cell><cell>MISUZU</cell><cell>7000</cell></row>
+    <row><cell>5TH</cell><cell>KEN</cell><cell>KENJI</cell><cell>6000</cell></row>
+    <row><cell>6TH</cell><cell>MIY</cell><cell>MIYUKI</cell><cell>5000</cell></row>
+    <row><cell>7TH</cell><cell>SAB</cell><cell>SABU</cell><cell>4000</cell></row>
+    <row><cell>8TH</cell><cell>MAO</cell><cell>KUNIO</cell><cell>3000</cell></row>
+    <row><cell>9TH</cell><cell>MGM</cell><cell>RIKI</cell><cell>2000</cell></row>
+    <row><cell>10TH</cell><cell>DE.</cell><cell>SHINJI</cell><cell>1000</cell></row>
+  </table>
+</hi2txt>

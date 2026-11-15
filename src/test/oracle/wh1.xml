@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="RANKING">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1</cell><cell>TAT</cell><cell>0010000</cell></row>
+    <row><cell>2</cell><cell>UFO</cell><cell>0009000</cell></row>
+    <row><cell>3</cell><cell>TCN</cell><cell>0008000</cell></row>
+    <row><cell>4</cell><cell>SAR</cell><cell>0007000</cell></row>
+    <row><cell>5</cell><cell>SHO</cell><cell>0006000</cell></row>
+    <row><cell>6</cell><cell>YAM</cell><cell>0005000</cell></row>
+    <row><cell>7</cell><cell>NOG</cell><cell>0004000</cell></row>
+    <row><cell>8</cell><cell>WOR</cell><cell>0003000</cell></row>
+    <row><cell>9</cell><cell>LD </cell><cell>0002000</cell></row>
+    <row><cell>10</cell><cell>HER</cell><cell>0001000</cell></row>
+  </table>
+</hi2txt>

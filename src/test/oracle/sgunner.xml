@@ -1,0 +1,18 @@
+<hi2txt>
+  <table id="TODAY'S BEST 5">
+    <col>RANK</col><col>SCORE</col><col>CR</col><col>INI</col>
+    <row><cell>1.</cell><cell>40000</cell><cell>1</cell><cell>N.N</cell></row>
+    <row><cell>2.</cell><cell>35000</cell><cell>1</cell><cell>A.A</cell></row>
+    <row><cell>3.</cell><cell>30000</cell><cell>1</cell><cell>M.M</cell></row>
+    <row><cell>4.</cell><cell>25000</cell><cell>1</cell><cell>C.C</cell></row>
+    <row><cell>5.</cell><cell>20000</cell><cell>1</cell><cell>O.O</cell></row>
+  </table>
+  <table id="TODAY'S WORST 5">
+    <col>RANK</col><col>MISS SHOT</col><col>INI</col>
+    <row><cell>1.</cell><cell>200</cell><cell>N.N</cell></row>
+    <row><cell>2.</cell><cell>180</cell><cell>A.A</cell></row>
+    <row><cell>3.</cell><cell>160</cell><cell>M.M</cell></row>
+    <row><cell>4.</cell><cell>140</cell><cell>C.C</cell></row>
+    <row><cell>5.</cell><cell>120</cell><cell>O.O</cell></row>
+  </table>
+</hi2txt>

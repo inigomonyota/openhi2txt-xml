@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hi2txt>
+  <!--
+    dsaber (.hi) definition for hi2txt (final)
+
+    Text is stored as 16-bit big-endian words; we read the LOW byte with byte-skip="odd".
+
+    BRAVES table (first 0x8C bytes) is 5 entries x 28 bytes (14 chars x 2 bytes).
+
+    Per entry (14 chars):
+      PAD(4) | SCORE(4, right-aligned; leading spaces possible) | AR(1) | SEP(1) | NAME(4)
+
+    Important charset fix:
+      0x71 is a digit code ("1") in the score field, so it MUST NOT be mapped to space.
+  -->
+
+  <structure file=".hi">
+    <check><size>205</size></check>
+
+    <loop count="5">
+      <elt size="8" type="raw"  id="_PAD4"/> <!-- 4 chars -->
+      <elt size="8" type="text" id="SCORE" byte-skip="odd" charset="dsaber"/> <!-- 4 chars -->
+      <elt size="2" type="text" id="AR"    byte-skip="odd" charset="dsaber"/> <!-- 1 char -->
+      <elt size="2" type="raw"  id="_SEP"/> <!-- 1 char -->
+      <elt size="8" type="text" id="NAME"  byte-skip="odd" charset="dsaber"/> <!-- 4 chars -->
+    </loop>
+
+    <elt size="65" type="raw" id="_TAIL"/>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SCORE" format="trimlr"/>
+      <column id="NAME"  src="NAME"  format="trimlr"/>
+      <column id="AR"    src="AR"    format="trimlr"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="trimlr">
+    <trim direction="left"> </trim>
+    <trim direction="right"> </trim>
+  </format>
+
+  <charset id="dsaber">
+    <char src="0x00" dst=" "/>
+    <char src="0x20" dst=" "/>
+    <char src="0x70" dst="0"/>
+    <char src="0x71" dst="1"/>
+    <char src="0x72" dst="2"/>
+    <char src="0x73" dst="3"/>
+    <char src="0x74" dst="4"/>
+    <char src="0x75" dst="5"/>
+    <char src="0x76" dst="6"/>
+    <char src="0x77" dst="7"/>
+    <char src="0x78" dst="8"/>
+    <char src="0x79" dst="9"/>
+    <char src="0x5f" dst="0"/>
+    <char src="0x60" dst="1"/>
+    <char src="0x61" dst="2"/>
+    <char src="0x62" dst="3"/>
+    <char src="0x63" dst="4"/>
+    <char src="0x64" dst="5"/>
+    <char src="0x65" dst="6"/>
+    <char src="0x66" dst="7"/>
+    <char src="0x67" dst="8"/>
+    <char src="0x68" dst="9"/>
+    <char src="0x81" dst="A"/>
+    <char src="0x82" dst="B"/>
+    <char src="0x83" dst="C"/>
+    <char src="0x84" dst="D"/>
+    <char src="0x85" dst="E"/>
+    <char src="0x86" dst="F"/>
+    <char src="0x87" dst="G"/>
+    <char src="0x88" dst="H"/>
+    <char src="0x89" dst="I"/>
+    <char src="0x8a" dst="J"/>
+    <char src="0x8b" dst="K"/>
+    <char src="0x8c" dst="L"/>
+    <char src="0x8d" dst="M"/>
+    <char src="0x8e" dst="N"/>
+    <char src="0x8f" dst="O"/>
+    <char src="0x90" dst="P"/>
+    <char src="0x91" dst="Q"/>
+    <char src="0x92" dst="R"/>
+    <char src="0x93" dst="S"/>
+    <char src="0x94" dst="T"/>
+    <char src="0x95" dst="U"/>
+    <char src="0x96" dst="V"/>
+    <char src="0x97" dst="W"/>
+    <char src="0x98" dst="X"/>
+    <char src="0x99" dst="Y"/>
+    <char src="0x9a" dst="Z"/>
+  </charset>
+</hi2txt>

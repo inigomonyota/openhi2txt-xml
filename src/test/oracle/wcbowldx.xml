@@ -1,0 +1,31 @@
+<hi2txt>
+  <table id="HIGH SCORE KINGPINS">
+    <col>NAME</col><col>SCORE</col>
+    <row><cell>ZZZ</cell><cell>300</cell></row>
+    <row><cell>SJJ</cell><cell>220</cell></row>
+    <row><cell>RAD</cell><cell>210</cell></row>
+    <row><cell>BHN</cell><cell>200</cell></row>
+    <row><cell>RWM</cell><cell>190</cell></row>
+    <row><cell>KDH</cell><cell>180</cell></row>
+    <row><cell>RSM</cell><cell>170</cell></row>
+    <row><cell>KLJ</cell><cell>160</cell></row>
+  </table>
+  <table id="FLASH HIGHSCORES">
+    <col>NAME</col><col>SCORE</col>
+    <row><cell>SJJ</cell><cell>220</cell></row>
+    <row><cell>RAD</cell><cell>210</cell></row>
+    <row><cell>BHN</cell><cell>200</cell></row>
+    <row><cell>RWM</cell><cell>190</cell></row>
+    <row><cell>KDH</cell><cell>180</cell></row>
+    <row><cell>RSM</cell><cell>170</cell></row>
+    <row><cell>KLJ</cell><cell>160</cell></row>
+    <row><cell>WTL</cell><cell>150</cell></row>
+  </table>
+  <table id="7-10 SPLIT CLUB">
+    <col>NAME</col>
+  </table>
+  <table id="300 CLUB">
+    <col>NAME</col>
+    <row><cell>ZZZ</cell></row>
+  </table>
+</hi2txt>

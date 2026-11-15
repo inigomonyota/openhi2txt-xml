@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 167 bytes -->
+    <check><size>167</size></check>
+    
+    <!-- 8-byte initial padding/header before the table starts -->
+    <elt size="8" type="raw" id="SKIP_HEADER"/>
+    
+    <!-- 10 Records * 16 Bytes = 160 Bytes. 
+         The 10th record is missing the very last byte of padding! -->
+    <loop count="10" skip-last-bytes="1">
+      <!-- 4-byte Big-Endian BCD Score -->
+      <elt size="4" type="int"  id="SCORE" base="16" endianness="big_endian"/>
+      
+      <!-- 3-character ASCII Name -->
+      <elt size="3" type="text" id="NAME"/>
+      
+      <!-- 1 byte name padding (0x00) + 8 bytes of record padding -->
+      <elt size="9" type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+  <!-- Translates the visual row index to 1-10 -->
+  <format id="+1">
+    <add>1</add>
+  </format>
+</hi2txt>

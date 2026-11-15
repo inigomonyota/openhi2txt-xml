@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Judge Dredd (Midway)">
+  <!--
+    Judge Dredd (Midway T-unit, 1993). Scores live in the game's own nvram
+    (the AT28C16 chip file, 2080 bytes); the game persists them itself. Single
+    HIGH SCORES table of 10 records starting at file offset 0x5C (a 92-byte
+    header precedes it). Each record is 20 bytes:
+      [ score 4, little-endian ][ name 11 ascii, null padded ]
+      [ level 3 ascii "d-d" ][ pad 2 ]
+    Scores are plain little-endian ints (0x7530 = 30000). Names/levels are plain
+    ASCII. Verified against the nvram's real entered initials (JIM T / SYD F /
+    DAVE L / ZAZ ...) and clean descending scores. The <check> definition mirrors
+    a hiscore.dat entry describing the full 2080-byte nvram (first byte 00, last
+    FF) so the C# hi2txt matcher selects this structure. Authored by the HI2TXT
+    project.
+  //-->
+
+  <structure file="nvram">
+    <check>
+      <definition>@:maincpu,program,000000,820,00,ff</definition>
+      <size>2080</size>
+    </check>
+
+    <elt size="92" type="raw" id="HEADER"/>
+    <loop count="10">
+      <elt size="4"  type="int"  id="SCORE" endianness="little_endian"/>
+      <elt size="11" type="text" id="NAME"/>
+      <elt size="3"  type="text" id="LEVEL"/>
+      <elt size="2"  type="raw"  id="PAD"/>
+    </loop>
+    <elt size="1788" type="raw" id="FOOTER"/>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORES">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="LEVEL" src="LEVEL"/>
+      <column id="PAD"   src="PAD" format="hexadecimal_string" display="debug"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+</hi2txt>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- gloc by Sega, 1990 -->
+<!-- hiscore.dat: @:suby,program,1ffa00,ee,02,04 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>239</size>
+    </check>
+
+    <!-- BLOCK 1: BEGINNER (80 bytes) -->
+    <!-- Structure: 4(Score) + 4(Time) + 3(Name) + 1(NPAD) + 1(Miss) + 1(Class) + 2(Pad) -->
+    <loop count="5">
+      <elt size="4" type="int"  id="B_SCORE" base="16"/>
+      <elt size="4" type="int"  id="B_TIME"  base="16"/>
+      <elt size="3" type="text" id="B_NAME"/>
+      <elt size="1" type="raw"  id="B_NPAD"/>
+      <elt size="1" type="int"  id="B_MISS"/>
+      <elt size="1" type="int"  id="B_CLASS"/>
+      <elt size="2" type="raw"  id="B_PAD"/>
+    </loop>
+
+    <!-- BLOCK 2: MEDIUM (80 bytes) -->
+    <loop count="5">
+      <elt size="4" type="int"  id="M_SCORE" base="16"/>
+      <elt size="4" type="int"  id="M_TIME"  base="16"/>
+      <elt size="3" type="text" id="M_NAME"/>
+      <elt size="1" type="raw"  id="M_NPAD"/>
+      <elt size="1" type="int"  id="M_MISS"/>
+      <elt size="1" type="int"  id="M_CLASS"/>
+      <elt size="2" type="raw"  id="M_PAD"/>
+    </loop>
+
+    <!-- BLOCK 3: EXPERT (79 bytes) -->
+    <loop count="5" skip-last-bytes="1">
+      <elt size="4" type="int"  id="E_SCORE" base="16"/>
+      <elt size="4" type="int"  id="E_TIME"  base="16"/>
+      <elt size="3" type="text" id="E_NAME"/>
+      <elt size="1" type="raw"  id="E_NPAD"/>
+      <elt size="1" type="int"  id="E_MISS"/>
+      <elt size="1" type="int"  id="E_CLASS"/>
+      <elt size="2" type="raw"  id="E_PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING - BEGINNER">
+      <column id="RANK"    src="index"  format="ordinal"/>
+      <column id="NAME"    src="B_NAME"  format="trim_right"/>
+      <column id="TIME"    src="B_TIME"  format="time_fmt"/>
+      <column id="MISSION" src="B_MISS"  format="PadL20"/>
+      <column id="CLASS"   src="B_CLASS" format="class_map"/>
+    </table>
+
+    <table id="RANKING - MEDIUM">
+      <column id="RANK"    src="index"  format="ordinal"/>
+      <column id="NAME"    src="M_NAME"  format="trim_right"/>
+      <column id="TIME"    src="M_TIME"  format="time_fmt"/>
+      <column id="MISSION" src="M_MISS"  format="PadL20"/>
+      <column id="CLASS"   src="M_CLASS" format="class_map"/>
+    </table>
+
+    <table id="RANKING - EXPERT">
+      <column id="RANK"    src="index"  format="ordinal"/>
+      <column id="NAME"    src="E_NAME"  format="trim_right"/>
+      <column id="TIME"    src="E_TIME"  format="time_fmt"/>
+      <column id="MISSION" src="E_MISS"  format="PadL20"/>
+      <column id="CLASS"   src="E_CLASS" format="class_map"/>
+    </table>
+  </output>
+
+  <!-- Formatters -->
+  <format id="ordinal">
+    <case src="0" dst="1"/><case src="1" dst="2"/><case src="2" dst="3"/>
+    <case src="3" dst="4"/><case src="4" dst="5"/>
+  </format>
+
+  <!-- Updated time_fmt with PadL20 for minutes to ensure 01'XX''X format -->
+  <format id="time_fmt" input-as-subcolumns-input="yes">
+    <concat><column format="d1000;PadL20"/><txt>'</txt><column format="%1000;d10;PadL20"/><txt>''</txt><column format="%10"/></concat>
+  </format>
+
+  <format id="class_map">
+    <case src="0" dst="SUPREME COMMANDER"/>
+    <case src="1" dst="DISTINGUISHED SERVICE"/>
+    <case src="2" dst="ELITE ACE"/>
+    <case src="3" dst="SQUADRON LEADER"/>
+    <case src="4" dst="FLIGHT TRAINEE"/>
+  </format>
+
+  <format id="trim_right"><trim direction="right"> </trim></format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat><column format="d1000000000"/><txt>,</txt><column format="%1000000000;d1000000;PadL30"/><txt>,</txt><column format="%1000000;d1000;PadL30"/><txt>,</txt><column format="%1000;PadL30"/></concat>
+  </format>
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat><column format="d1000000"/><txt>,</txt><column format="%1000000;d1000;PadL30"/><txt>,</txt><column format="%1000;PadL30"/></concat>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat><column format="d1000"/><txt>,</txt><column format="%1000;PadL30"/></concat>
+  </format>
+</hi2txt>

@@ -1,0 +1,18 @@
+<hi2txt>
+  <table id="SCORE RANKING">
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>FIGHTER</col>
+    <row><cell>1ST</cell><cell>20000</cell><cell>RYU</cell><cell>RYU</cell></row>
+    <row><cell>2ND</cell><cell>10000</cell><cell>KEN</cell><cell>KEN</cell></row>
+    <row><cell>3RD</cell><cell>5000</cell><cell>CHN</cell><cell>CHUN-LI</cell></row>
+    <row><cell>4TH</cell><cell>4000</cell><cell>SKR</cell><cell>SAKURA</cell></row>
+    <row><cell>5TH</cell><cell>2000</cell><cell>ZAN</cell><cell>ZANGIEF</cell></row>
+  </table>
+  <table id="VS RANKING">
+    <col>RANK</col><col>WINS</col><col>NAME</col><col>FIGHTER</col>
+    <row><cell>1ST</cell><cell>6</cell><cell>MOR</cell><cell>MORRIGAN</cell></row>
+    <row><cell>2ND</cell><cell>5</cell><cell>FEL</cell><cell>FELICIA</cell></row>
+    <row><cell>3RD</cell><cell>4</cell><cell>LEI</cell><cell>LEI-LEI</cell></row>
+    <row><cell>4TH</cell><cell>3</cell><cell>IBK</cell><cell>IBUKI</cell></row>
+    <row><cell>5TH</cell><cell>2</cell><cell>TBS</cell><cell>TESSA</cell></row>
+  </table>
+</hi2txt>

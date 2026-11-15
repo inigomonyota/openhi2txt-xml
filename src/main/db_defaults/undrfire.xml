@@ -1,0 +1,15 @@
+<hi2txt>
+<table id="BEST 10">
+<col>RANK</col><col>SCORE</col><col>NAME</col><col>ROUND</col><col>HIT RATIO</col>
+<row><cell>1</cell><cell>550,000</cell><cell>JBY</cell><cell>5-2</cell><cell>100%</cell></row>
+<row><cell>2</cell><cell>500,000</cell><cell>GOO</cell><cell>5-1</cell><cell>95%</cell></row>
+<row><cell>3</cell><cell>450,000</cell><cell>TMR</cell><cell>4-2</cell><cell>90%</cell></row>
+<row><cell>4</cell><cell>400,000</cell><cell>YAG</cell><cell>4-1</cell><cell>85%</cell></row>
+<row><cell>5</cell><cell>350,000</cell><cell>TKA</cell><cell>3-2</cell><cell>80%</cell></row>
+<row><cell>6</cell><cell>300,000</cell><cell>MAE</cell><cell>3-1</cell><cell>75%</cell></row>
+<row><cell>7</cell><cell>250,000</cell><cell>USI</cell><cell>2-2</cell><cell>70%</cell></row>
+<row><cell>8</cell><cell>200,000</cell><cell>SHI</cell><cell>2-1</cell><cell>65%</cell></row>
+<row><cell>9</cell><cell>150,000</cell><cell>AGA</cell><cell>1-2</cell><cell>60%</cell></row>
+<row><cell>10</cell><cell>100,000</cell><cell>NIS</cell><cell>1-1</cell><cell>55%</cell></row>
+</table>
+</hi2txt>

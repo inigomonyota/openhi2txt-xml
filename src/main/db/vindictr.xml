@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    vindictr - Vindicators (rev 5)
+    EEPROM format (512 bytes)
+
+    LIMITATIONS:
+    * Only top 4 entries are stored in EEPROM (entries #5-15 are ROM defaults)
+    * Odd-position names (entries #1, #3) have a checksum byte between the
+      two base-40 name bytes — hi2txt reads sequentially and CANNOT skip it,
+      so those names will appear garbled (e.g. ZZZ shows as ZW4)
+    * Even-position names (entries #2, #4) decode correctly
+    * Scores are stored internally as (display_value × 2) — Vindicators is
+      a 2-player co-op game and stores combined totals
+
+    For accurate results, use the vindictr_decode.py Python script instead,
+    or set up hiscore.dat to capture a .hi file from RAM.
+  //-->
+
+  <structure file="eeprom">
+    <check>
+      <size>512</size>
+    </check>
+
+    <!-- Config header: 60 bytes (mirrored 2×30 at 0x00 and 0x1E) -->
+    <elt size="60" type="raw" id="HEADER"/>
+
+    <!-- Score records: 4 × 15 bytes -->
+    <!-- Each 15-byte record holds 2 entries: -->
+    <!--   Bytes 0-4:   Metadata/checksum prefix -->
+    <!--   Bytes 5-6:   Score A (2B big-endian, value × 2) -->
+    <!--   Bytes 7:     Name A high byte (base-40) -->
+    <!--   Byte  8:     Checksum (corrupts Name A for sequential readers) -->
+    <!--   Byte  9:     Name A low byte (base-40) -->
+    <!--   Byte  10:    Padding (0x00) -->
+    <!--   Bytes 11-12: Score B (2B big-endian, value × 2) -->
+    <!--   Bytes 13-14: Name B (2B base-40, contiguous = reads correctly) -->
+    <loop count="4">
+      <elt size="5" type="raw" id="PREFIX"/>
+      <elt size="2" type="int" id="ODD SCORE"/>
+      <elt size="2" type="text" id="ODD NAME" decoding-profile="base-40" charset="vindictr"/>
+      <elt size="1" type="raw" id="SKIP1"/>
+      <elt size="1" type="raw" id="SKIP2"/>
+      <elt size="2" type="int" id="EVEN SCORE"/>
+      <elt size="2" type="text" id="EVEN NAME" decoding-profile="base-40" charset="vindictr"/>
+    </loop>
+
+    <!-- DIP switch / settings block: 16 bytes -->
+    <elt size="16" type="raw" id="SETTINGS"/>
+
+    <!-- FF padding + footer -->
+    <elt size="376" type="raw" id="TAIL"/>
+  </structure>
+
+  <output>
+    <!-- NOTE: Odd entries (#1,#3) have garbled names due to checksum byte -->
+    <!-- Scores show as ×2 of the displayed values (co-op game internal format) -->
+    <table id="ODD ENTRIES (names garbled)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="ODD SCORE"/>
+      <column id="NAME" src="ODD NAME"/>
+    </table>
+    <table id="EVEN ENTRIES (names correct)">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="EVEN SCORE"/>
+      <column id="NAME" src="EVEN NAME"/>
+    </table>
+  </output>
+
+  <charset id="vindictr">
+    <char src="0x00" dst=" "/>
+  </charset>
+</hi2txt>

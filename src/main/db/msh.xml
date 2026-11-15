@@ -1,103 +1,129 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
-<hi2txt label="Marvel Super Heroes">
-    <!--
-      tested with mame 0.229 and embedded hiscore.dat
-      source: GreatStone
-    //-->
-    <structure file=".hi">
-        <check>
-            <!-- optional: if defined and hiscore.dat provided, it allows to select the good structure versus the provided file //-->
-            <definition>@:maincpu,program,ff2720,9f,00,0b</definition>
-            <!-- optional: if defined, it allows to select the good structure versus the provided file
-                         useful if multiple structures are defined but hiscore.dat not provided //-->
-            <size>159</size>
-        </check>
-        <loop count="5">
-            <elt id="SR_SCORE"     size="4" type="int" base="16"/>
-            <elt id="SR_CHARACTER" size="1" type="int"/>
-            <elt id="SR_MODE"      size="1" type="int"/>
-            <elt id="SR_NAME"      size="3" type="text" ascii-offset="65" charset="chars"/>
-            <elt id="SR_skip3"     size="1" type="raw"/>
-        </loop>
-        <loop count="5">
-            <elt id="VR_WINS"      size="2" type="int" base="16"/>
-            <elt id="VR_skip0"     size="2" type="int"/>
-            <elt id="VR_CHARACTER" size="1" type="int"/>
-            <elt id="VR_MODE"      size="1" type="int"/>
-            <elt id="VR_NAME"      size="3" type="text" ascii-offset="65" charset="chars"/>
-            <elt id="VR_skip3"     size="1" type="raw"/>
-        </loop>
-        <loop count="5">
-            <elt id="TR_TIME_M"    size="2" type="int" base="16"/>
-            <elt id="TR_TIME_S"    size="1" type="int" base="16"/>
-            <elt id="TR_TIME_C"    size="1" type="int" base="16"/>
-            <elt id="TR_CHARACTER" size="1" type="int"/>
-            <elt id="TR_MODE"      size="1" type="int"/>
-            <elt id="TR_NAME"      size="3" type="text" ascii-offset="65" charset="chars"/>
-            <elt id="TR_skip3"     size="1" type="raw"/>
-        </loop>
-    </structure>
+<hi2txt>
+  <!--
+    Marvel Super Heroes (Capcom, 1995)
+    msh, msha, mshb, mshbr1, mshh, mshj, mshjr1, mshu, mshud
 
-    <output>
-        <table id="Score Ranking">
-            <column id="RANK"      src="index"        format="+1"/>
-            <column id="SCORE"     src="SR_SCORE"/>
-            <column id="NAME"      src="SR_NAME"/>
-            <column id="MODE"      src="SR_MODE"      format="mode"/>
-            <column id="CHARACTER" src="SR_CHARACTER" format="character"/>
-            <column id="skip3"     src="SR_skip3"     display="debug"/>
-        </table>
-        <table id="Time Ranking">
-            <column id="RANK"      src="index"        format="+1"/>
-            <column id="TIME"                         format="time"/>
-            <column id="NAME"      src="TR_NAME"/>
-            <column id="MODE"      src="TR_MODE"      format="mode"/>
-            <column id="CHARACTER" src="TR_CHARACTER" format="character"/>
-            <column id="skip3"     src="TR_skip3"     display="debug"/>
-        </table>
-        <table id="Versus Ranking">
-            <column id="RANK"      src="index"        format="+1"/>
-            <column id="WINS"      src="VR_WINS"/>
-            <column id="NAME"      src="VR_NAME"/>
-            <column id="MODE"      src="VR_MODE"      format="mode"/>
-            <column id="CHARACTER" src="VR_CHARACTER" format="character"/>
-            <column id="skip0"     src="VR_skip0"     display="debug"/>
-            <column id="skip3"     src="VR_skip3"     display="debug"/>
-        </table>
-    </output>
+    .hi file: 159 bytes (1 chunk from hiscore.dat)
+      @:maincpu,program,ff2720,9f,00,0b
 
-    <format id="character">
-        <case src="0"  dst="SPIDER-MAN"/>
-        <case src="2"  dst="CAPTAIN AMERICA"/>
-        <case src="4"  dst="HULK"/>
-        <case src="6"  dst="IRON MAN"/>
-        <case src="8"  dst="WOLVERINE"/>
-        <case src="10" dst="PSYLOCKE"/>
-        <case src="12" dst="BLACKHEART"/>
-        <case src="14" dst="SHUMA-GORATH"/>
-        <case src="16" dst="JUGGERNAUT"/>
-        <case src="18" dst="MAGNETO"/>
-        <case src="20" dst="DOCTOR DOOM"/>
-        <case src="22" dst="THANOS"/>
-        <case src="24" dst="ANITA"/>
-    </format>
-    <format id="mode">
-        <case src="0" dst="NORMAL"/>
-        <case src="2" dst="TURBO"/>
-    </format>
-    <format id="time">
-        <concat>
-            <column id="TR_TIME_M"/>
-            <txt>'</txt>
-            <column id="TR_TIME_S" format="PadL20"/>
-            <txt>''</txt>
-            <column id="TR_TIME_C" format="PadL20"/>
-        </concat>
-    </format>
-    <charset id="chars">
-        <char src="0x1C" dst="-"/>
-        <char src="0x1B" dst=","/>
-        <char src="0x1A" dst="."/>
-    </charset>
+    3 ranking tables, 10-byte records:
+      [VALUE:4 BCD] [CHAR:1] [00:1] [NAME:3] [00:1]
+      Entries 1-5:   Score Ranking (BCD score)
+      Entries 6-10:  VS Ranking (BCD wins x10000)
+      Entries 11-16: Time Ranking (BCD M'SS"CC), 6 entries display 5
+
+    Custom charset: 0x00=A..0x19=Z, 0x1D=space (letters + space only, no digits)
+
+    Defaults:
+      Score: 50000 PSY, 40000 CAP, 30000 HUL, 20000 IRO, 10000 WOL
+      VS:    2 WINS SPI, 2 WINS BLA, 2 WINS SHU, 2 WINS JUG, 2 WINS MAG
+      Time:  5'00"00 PSY, 6'00"00 CAP, 7'00"00 HUL, 8'00"00 IRO, 9'00"00 WOL
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,ff2720,9f,00,0b</definition>
+      <size>159</size>
+    </check>
+    <!-- Score Ranking (5 entries) -->
+    <loop count="5">
+      <elt size="4" type="int" base="16" id="SCORE"/>
+      <elt size="1" type="raw" id="SCHAR"/>
+      <elt size="1" type="raw" id="SPAD"/>
+      <elt size="3" type="text" id="SNAME"/>
+      <elt size="1" type="raw" id="STERM"/>
+    </loop>
+    <!-- VS Ranking (5 entries) -->
+    <loop count="5">
+      <elt size="4" type="int" base="16" id="WINS"/>
+      <elt size="1" type="raw" id="VCHAR"/>
+      <elt size="1" type="raw" id="VPAD"/>
+      <elt size="3" type="text" id="VNAME"/>
+      <elt size="1" type="raw" id="VTERM"/>
+    </loop>
+    <!-- Time Ranking (6 entries, last entry short by 1, display 5) -->
+    <loop count="6" skip-last-bytes="1">
+      <elt size="4" type="int" base="16" id="TIME"/>
+      <elt size="1" type="raw" id="TCHAR"/>
+      <elt size="1" type="raw" id="TPAD"/>
+      <elt size="3" type="text" id="TNAME"/>
+      <elt size="1" type="raw" id="TTERM"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="HALL OF SUPER HEROES - SCORE RANKING">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE"/>
+      <column id="NAME" src="SNAME" format="cps2name"/>
+    </table>
+    <table id="HALL OF SUPER HEROES - VS RANKING">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="WINS" format="/10000"/>
+      <column id="NAME" src="VNAME" format="cps2name"/>
+    </table>
+    <table id="HALL OF SUPER HEROES - TIME RANKING" lines-max="5">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="TIME" format="time_fmt"/>
+      <column id="NAME" src="TNAME" format="cps2name"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="/10000"><divide>10000</divide></format>
+
+  <format id="cps2name" apply-to="char">
+    <case src="0x00" dst="A"/>
+    <case src="0x01" dst="B"/>
+    <case src="0x02" dst="C"/>
+    <case src="0x03" dst="D"/>
+    <case src="0x04" dst="E"/>
+    <case src="0x05" dst="F"/>
+    <case src="0x06" dst="G"/>
+    <case src="0x07" dst="H"/>
+    <case src="0x08" dst="I"/>
+    <case src="0x09" dst="J"/>
+    <case src="0x0A" dst="K"/>
+    <case src="0x0B" dst="L"/>
+    <case src="0x0C" dst="M"/>
+    <case src="0x0D" dst="N"/>
+    <case src="0x0E" dst="O"/>
+    <case src="0x0F" dst="P"/>
+    <case src="0x10" dst="Q"/>
+    <case src="0x11" dst="R"/>
+    <case src="0x12" dst="S"/>
+    <case src="0x13" dst="T"/>
+    <case src="0x14" dst="U"/>
+    <case src="0x15" dst="V"/>
+    <case src="0x16" dst="W"/>
+    <case src="0x17" dst="X"/>
+    <case src="0x18" dst="Y"/>
+    <case src="0x19" dst="Z"/>
+    <case src="0x1D" dst=" "/>
+  </format>
+
+  <!-- Time format: BCD 50000 → 5'00"00 -->
+  <format id="time_fmt" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="time_min"/>
+      <txt>'</txt>
+      <column format="time_sec"/>
+      <txt>"</txt>
+      <column format="time_cs"/>
+    </concat>
+  </format>
+  <format id="time_min">
+    <divide_trunc>10000</divide_trunc>
+  </format>
+  <format id="time_sec">
+    <remainder>10000</remainder>
+    <divide_trunc>100</divide_trunc>
+    <pad direction="left" max="2">0</pad>
+  </format>
+  <format id="time_cs">
+    <remainder>100</remainder>
+    <pad direction="left" max="2">0</pad>
+  </format>
 </hi2txt>

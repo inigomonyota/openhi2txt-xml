@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>240</size>
+    </check>
+
+    <!-- Table A: 10 records x 16 bytes (maincpu 0x1003D0, big-endian 68000) -->
+    <loop count="10">
+
+      <!-- +00..+03: binary score/10, big-endian u32 -->
+      <elt size="4" type="int" id="SCORE"/>
+
+      <!-- +04..+07: packed BCD mirror of the score (rendered in attract) - raw -->
+      <elt size="4" type="raw" id="_SCORE_BCD"/>
+
+      <!-- +08..+13: name stored as 00 XX 00 XX 00 XX; drop odd positions -->
+      <elt size="6" type="text" id="NAME" byte-skip="odd" charset="starblad"/>
+
+      <!-- +14..+15: FF FF record terminator -->
+      <elt size="2" type="raw" id="_REC_END"/>
+    </loop>
+
+    <!-- Table B: 10 records x 8 bytes (maincpu 0x10FFB0) - mirror, kept raw -->
+    <elt size="80" type="raw" id="_TABLE_B"/>
+  </structure>
+
+  <output>
+    <table id="HALL OF GREAT FIGHTERS"
+           sort="SCORE"
+           sort-order="desc"
+           lines-max="10">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="NAME"/>
+      <column id="SCORE" format="*10"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+
+  <charset id="starblad">
+    <char src="0x0A" dst="A"/><char src="0x0B" dst="B"/><char src="0x0C" dst="C"/>
+    <char src="0x0D" dst="D"/><char src="0x0E" dst="E"/><char src="0x0F" dst="F"/>
+    <char src="0x10" dst="G"/><char src="0x11" dst="H"/><char src="0x12" dst="I"/>
+    <char src="0x13" dst="J"/><char src="0x14" dst="K"/><char src="0x15" dst="L"/>
+    <char src="0x16" dst="M"/><char src="0x17" dst="N"/><char src="0x18" dst="O"/>
+    <char src="0x19" dst="P"/><char src="0x1A" dst="Q"/><char src="0x1B" dst="R"/>
+    <char src="0x1C" dst="S"/><char src="0x1D" dst="T"/><char src="0x1E" dst="U"/>
+    <char src="0x1F" dst="V"/><char src="0x20" dst="W"/><char src="0x21" dst="X"/>
+    <char src="0x22" dst="Y"/><char src="0x23" dst="Z"/>
+  </charset>
+
+</hi2txt>

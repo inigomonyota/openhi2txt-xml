@@ -1,0 +1,26 @@
+<hi2txt>
+  <table id="RANKING - BEGINNER">
+    <col>RANK</col><col>NAME</col><col>TIME</col><col>MISSION</col><col>CLASS</col>
+    <row><cell>1</cell><cell>YAS</cell><cell>16&apos;00&apos;&apos;0</cell><cell>07</cell><cell>SUPREME COMMANDER</cell></row>
+    <row><cell>2</cell><cell>HIR</cell><cell>15&apos;00&apos;&apos;0</cell><cell>06</cell><cell>DISTINGUISHED SERVICE</cell></row>
+    <row><cell>3</cell><cell>IWA</cell><cell>14&apos;00&apos;&apos;0</cell><cell>05</cell><cell>ELITE ACE</cell></row>
+    <row><cell>4</cell><cell>KEN</cell><cell>13&apos;00&apos;&apos;0</cell><cell>04</cell><cell>SQUADRON LEADER</cell></row>
+    <row><cell>5</cell><cell>PAP</cell><cell>12&apos;00&apos;&apos;0</cell><cell>03</cell><cell>FLIGHT TRAINEE</cell></row>
+  </table>
+  <table id="RANKING - MEDIUM">
+    <col>RANK</col><col>NAME</col><col>TIME</col><col>MISSION</col><col>CLASS</col>
+    <row><cell>1</cell><cell>SAD</cell><cell>16&apos;00&apos;&apos;0</cell><cell>11</cell><cell>SUPREME COMMANDER</cell></row>
+    <row><cell>2</cell><cell>GAK</cell><cell>15&apos;00&apos;&apos;0</cell><cell>09</cell><cell>DISTINGUISHED SERVICE</cell></row>
+    <row><cell>3</cell><cell>NAG</cell><cell>14&apos;00&apos;&apos;0</cell><cell>07</cell><cell>ELITE ACE</cell></row>
+    <row><cell>4</cell><cell>MKA</cell><cell>13&apos;00&apos;&apos;0</cell><cell>05</cell><cell>SQUADRON LEADER</cell></row>
+    <row><cell>5</cell><cell>KYO</cell><cell>12&apos;00&apos;&apos;0</cell><cell>03</cell><cell>FLIGHT TRAINEE</cell></row>
+  </table>
+  <table id="RANKING - EXPERT">
+    <col>RANK</col><col>NAME</col><col>TIME</col><col>MISSION</col><col>CLASS</col>
+    <row><cell>1</cell><cell>YU.</cell><cell>16&apos;00&apos;&apos;0</cell><cell>15</cell><cell>SUPREME COMMANDER</cell></row>
+    <row><cell>2</cell><cell>MAC</cell><cell>15&apos;00&apos;&apos;0</cell><cell>12</cell><cell>DISTINGUISHED SERVICE</cell></row>
+    <row><cell>3</cell><cell>SUN</cell><cell>14&apos;00&apos;&apos;0</cell><cell>09</cell><cell>ELITE ACE</cell></row>
+    <row><cell>4</cell><cell>SIM</cell><cell>13&apos;00&apos;&apos;0</cell><cell>06</cell><cell>SQUADRON LEADER</cell></row>
+    <row><cell>5</cell><cell>KOB</cell><cell>12&apos;00&apos;&apos;0</cell><cell>03</cell><cell>FLIGHT TRAINEE</cell></row>
+  </table>
+</hi2txt>

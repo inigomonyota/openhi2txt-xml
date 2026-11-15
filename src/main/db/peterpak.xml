@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Peter Pack-Rat">
+
+  <!--
+    peterpak.hi layout produced by the matching hiscore.dat entry:
+
+      0x00-0x0F : stable prefix / guard bytes
+      0x10-0x41 : 10 leaderboard records x 5 bytes
+      0x42-0x51 : stable suffix / guard bytes
+
+    Each leaderboard record:
+      +0x00 : score byte 1
+      +0x01 : score byte 2
+      +0x02 : score byte 3
+              24-bit big-endian integer
+      +0x03 : packed initials high byte
+      +0x04 : packed initials low byte
+
+    Initials are packed base-40:
+      value = first*1600 + second*40 + third
+      A=1 ... Z=26
+  -->
+
+  <structure file=".hi">
+    <check>
+  <size>52</size>
+</check>
+
+<elt size="1" type="raw" id="_PREFIX"/>
+
+<loop count="10">
+  <elt size="3" type="int" id="SCORE" endianness="big_endian"/>
+  <elt size="2" type="int" id="NAMECODE" endianness="big_endian"/>
+</loop>
+
+<elt size="1" type="raw" id="_SUFFIX"/>
+  </structure>
+
+  <output>
+
+  <table id="GREAT RATS OF HISTORY" lines-max="4">
+    <column id="RANK" src="index" format="rank_colon"/>
+	<column id="NAME" src="NAMECODE" format="name"/>
+    <column id="SCORE" format="comma_score"/>
+  </table>
+
+  <table id="CONTEMPORARY RATS"
+       line-ignore="FILTER_RANK:5"
+       line-ignore-operator="&lt;"
+       lines-max="6">
+
+  <column id="FILTER_RANK" src="index" format="+1" display="debug"/>
+  <column id="RANK" src="index" format="rank_colon"/>
+  <column id="NAME" src="NAMECODE" format="name"/>
+  <column id="SCORE" format="comma_score"/>
+  </table>
+
+</output>
+
+  <format id="name" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1600;char40"/>
+      <column format="%1600;d40;char40"/>
+      <column format="%40;char40"/>
+    </concat>
+  </format>
+  
+  <format id="rank_colon" input-as-subcolumns-input="yes">
+  <concat>
+    <column format="+1"/>
+    <txt>:</txt>
+  </concat>
+</format>
+  
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <!-- If score is >= 1,000,000,000 (Billions) -->
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    
+    <!-- If score is >= 1,000,000 (Millions) -->
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    
+    <!-- If score is >= 1,000 (Thousands) -->
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    
+    <!-- Fallback for scores under 1,000 (Passes the number through as-is) -->
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <!-- Formats like: 1,234,567,890 -->
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234,567 -->
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234 -->
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="char40">
+    <case src="0" dst=" "/>
+    <case src="1" dst="A"/>
+    <case src="2" dst="B"/>
+    <case src="3" dst="C"/>
+    <case src="4" dst="D"/>
+    <case src="5" dst="E"/>
+    <case src="6" dst="F"/>
+    <case src="7" dst="G"/>
+    <case src="8" dst="H"/>
+    <case src="9" dst="I"/>
+    <case src="10" dst="J"/>
+    <case src="11" dst="K"/>
+    <case src="12" dst="L"/>
+    <case src="13" dst="M"/>
+    <case src="14" dst="N"/>
+    <case src="15" dst="O"/>
+    <case src="16" dst="P"/>
+    <case src="17" dst="Q"/>
+    <case src="18" dst="R"/>
+    <case src="19" dst="S"/>
+    <case src="20" dst="T"/>
+    <case src="21" dst="U"/>
+    <case src="22" dst="V"/>
+    <case src="23" dst="W"/>
+    <case src="24" dst="X"/>
+    <case src="25" dst="Y"/>
+    <case src="26" dst="Z"/>
+  </format>
+
+</hi2txt>

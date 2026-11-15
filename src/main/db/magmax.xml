@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <definition>0:18ce0:46:00:00
+0:18d2e:4:00:00
+0:18d23:1:35:35</definition>
+      <size>75</size>
+    </check>
+
+    <!-- BEST 5: 5 entries of (SCORE 4 bytes packed BCD digits) + (NAME 10 bytes) -->
+    <loop count="5">
+      <elt id="SCORE" size="4" type="int" base="16"/>
+      <elt id="NAME"  size="10" type="text" charset="magmax"/>
+    </loop>
+
+    <!-- TOP SCORE repeated at end -->
+    <elt id="TOP SCORE" size="4" type="int" base="16"/>
+    <!-- checksum / terminator -->
+    <elt id="CHECKSUM" size="1" type="raw"/>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <charset id="magmax">
+    <char src="0x00" dst=" "/>
+    <char src="0x1D" dst="-"/>
+
+    <char src="0x21" dst="A"/>
+    <char src="0x22" dst="B"/>
+    <char src="0x23" dst="C"/>
+    <char src="0x24" dst="D"/>
+    <char src="0x25" dst="E"/>
+    <char src="0x26" dst="F"/>
+    <char src="0x27" dst="G"/>
+    <char src="0x28" dst="H"/>
+    <char src="0x29" dst="I"/>
+    <char src="0x2A" dst="J"/>
+    <char src="0x2B" dst="K"/>
+    <char src="0x2C" dst="L"/>
+    <char src="0x2D" dst="M"/>
+    <char src="0x2E" dst="N"/>
+    <char src="0x2F" dst="O"/>
+    <char src="0x30" dst="P"/>
+    <char src="0x31" dst="Q"/>
+    <char src="0x32" dst="R"/>
+    <char src="0x33" dst="S"/>
+    <char src="0x34" dst="T"/>
+    <char src="0x35" dst="U"/>
+    <char src="0x36" dst="V"/>
+    <char src="0x37" dst="W"/>
+    <char src="0x38" dst="X"/>
+    <char src="0x39" dst="Y"/>
+    <char src="0x3A" dst="Z"/>
+  </charset>
+
+</hi2txt>

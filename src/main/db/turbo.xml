@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hi2txt>
+  <!--
+    turbo (.hi) definition for hi2txt
+
+    hiscore.dat ranges (reference):
+      @:maincpu,program,e400,1e,94,94   -> 0x1E (30 bytes)  (aux/flags; often 0x94 filled)
+      @:maincpu,program,f310,1e,00,00   -> 0x1E (30 bytes)  (10 scores x 3 bytes)
+      @:maincpu,program,f292,d,0f,f0    -> 0x0D (13 bytes)  (checksum/aux)
+      Total .hi size = 73 bytes
+
+    The score table is the middle 0x1E block:
+      10 entries, each 3 bytes packed BCD (base=16), e.g. 00 22 90 -> 2290.
+  -->
+
+  <structure file=".hi">
+    <check><size>73</size></check>
+
+    <elt size="30" type="raw" id="_AUX0"/>
+
+    <loop count="10">
+      <elt size="3" type="int" id="SCORE" base="16"/>
+    </loop>
+
+    <elt size="13" type="raw" id="_AUX1"/>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SCORE" format="blank_zero"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <!-- Hide empty/default scores -->
+  <format id="blank_zero">
+    <case src="0" dst=""/>
+  </format>
+</hi2txt>

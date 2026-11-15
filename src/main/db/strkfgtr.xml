@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!--
+  Strike Fighter (World), Sega 1991  [customized override]
+
+  Based on the built-in strkfgtr def, with three presentation changes so the
+  decode matches the project's default high-score table exactly:
+    * RANK is rendered with a trailing period ("1.", "2." ...).
+    * HIT is zero-padded to 3 digits (100, 090, 080 ...).
+    * SCORE is stored as score/10; multiplied back by 10 and zero-padded to
+      9 digits with no comma grouping (000500000, 000400000 ...).
+
+  hiscore.dat: strkfgtr @:suby,program,1ffa00,50,00,00
+  Five 16-byte records: SCORE(4 BE, /10) HIT(4 BE) NAME(4 ASCII, NUL-trunc)
+  STAGE(1) METADATA(3).
+-->
+
+<hi2txt label="Strike Fighter">
+  <structure file=".hi">
+    <check>
+      <size>80</size>
+    </check>
+
+    <loop count="5">
+      <elt id="SCORE" type="int" size="4"/>
+      <elt id="HIT" type="int" size="4"/>
+      <elt id="NAME" type="text" size="4" byte-trunc="0x00"/>
+      <elt id="STAGE" type="int" size="1"/>
+      <elt id="METADATA" type="raw" size="3"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="NAME"/>
+      <column id="STAGE"/>
+      <column id="HIT" format="PadL30"/>
+      <column id="SCORE" format="*10;PadL90"/>
+    </table>
+  </output>
+
+  <!-- index -> "N." -->
+  <format id="rank" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="+1"/>
+      <txt>.</txt>
+    </concat>
+  </format>
+</hi2txt>

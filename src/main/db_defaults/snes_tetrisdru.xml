@@ -1,0 +1,18 @@
+<hi2txt>
+<table id="TETRIS: A-TYPE">
+<col>RANK</col><col>NAME</col><col>SCORE</col><col>LV</col>
+<row><cell>1</cell><cell>HOWARD</cell><cell>010000</cell><cell>09</cell></row>
+<row><cell>2</cell><cell>OTASAN</cell><cell>007500</cell><cell>05</cell></row>
+<row><cell>3</cell><cell>LANCE</cell><cell>005000</cell><cell>00</cell></row>
+</table>
+<table id="TETRIS: B-TYPE">
+<col>RANK</col><col>NAME</col><col>SCORE</col><col>LV</col>
+<row><cell>1</cell><cell>ALEX</cell><cell>002000</cell><cell>09</cell></row>
+<row><cell>2</cell><cell>TONY</cell><cell>001000</cell><cell>05</cell></row>
+<row><cell>3</cell><cell>NINTEN</cell><cell>000500</cell><cell>00</cell></row>
+</table>
+<table id="DR. MARIO TOP SCORE">
+<col>SCORE</col>
+<row><cell>0010000</cell></row>
+</table>
+</hi2txt>

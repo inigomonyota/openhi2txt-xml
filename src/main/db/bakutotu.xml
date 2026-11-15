@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  hi2txt description for Baku Totsu Kijuutei (bakutotu)  [Namco System 21]
+
+  96-byte hiscore dump, laid out as two separate blocks rather than
+  interleaved records:
+
+      0x00-0x3F   8 names,  8 bytes each: 7 bytes of space-padded ascii
+                            followed by a 0x00 terminator
+      0x40-0x5F   8 scores, 4 bytes each: packed bcd
+                            00 07 65 00  =  76500
+
+  Verified against a real entry: score 26300 with a 6-character name is
+  stored as 40 5b 5d 5c 5e 41 20 00 at 0x28 and 00 02 63 00 at 0x54.
+
+  The game's font renders 0x40 as a copyright symbol rather than '@', so
+  the charset below maps it. Remove that <char> line if your front end
+  cannot display the character.
+
+  Names are up to 6 characters, right-padded with spaces to 7.
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>96</size>
+    </check>
+
+    <!-- names block //-->
+    <loop count="8">
+      <elt size="7" type="text" id="NAME" charset="bakutotu"/>
+      <elt size="1" type="raw"  id="NAME TERMINATOR"/>
+    </loop>
+
+    <!-- scores block //-->
+    <loop count="8">
+      <elt size="4" type="int" id="SCORE" base="16"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME" format="trim"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <add>1</add>
+    <case src="1" dst="1ST"/>
+    <case src="2" dst="2ND"/>
+    <case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/>
+    <case src="5" dst="5TH"/>
+    <case src="6" dst="6TH"/>
+    <case src="7" dst="7TH"/>
+    <case src="8" dst="8TH"/>
+  </format>
+
+  <!-- strips the space padding from short names //-->
+  <format id="trim"><trim/></format>
+
+  <charset id="bakutotu">
+    <!-- the game's font shows 0x40 as a copyright symbol //-->
+    <char src="0x40" dst="©"/>
+  </charset>
+
+</hi2txt>

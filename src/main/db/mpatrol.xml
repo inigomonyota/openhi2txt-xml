@@ -14,7 +14,7 @@
                      useful if multiple structures are defined but hiscore.dat not provided //-->
       <size>44</size>
     </check>
-    <loop>
+    <loop count="1">
       <elt size="3"  type="int"  id="SCORE" endianness="little_endian" base="16"/>
       <elt size="1"  type="int"  id="STAGE_RAW"/>
     </loop>
@@ -43,59 +43,75 @@
   
   <output>
     <table id="TOP SCORES">
-      <column id="RANK" src="index" format="+1"/>
-      <column id="SCORE"/>
-      <column id="STAGE" format="stage"/>
+      <column id="RANK" src="index" format="+1" display="debug"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="STAGE" src="STAGE_RAW" format="stage"/>
     </table>
     <table id="TOP TIMES">
-      <column id="RANK" src="index" format="difficulty" display="extra"/>
-      <column id="E" format="time;not_set"              display="extra"/>
-      <column id="J" format="time;not_set"              display="extra"/>
-      <column id="O" format="time;not_set"              display="extra"/>
-      <column id="T" format="time;not_set"              display="extra"/>
-      <column id="Z" format="time;not_set"              display="extra"/>
+      <column id="COURSE" src="index" format="difficulty"/>
+      <column id="POINT E" src="E" format="time;not_set"/>
+      <column id="POINT J" src="J" format="time;not_set"/>
+      <column id="POINT O" src="O" format="time;not_set"/>
+      <column id="POINT T" src="T" format="time;not_set"/>
+      <column id="POINT Z" src="Z" format="time;not_set"/>
     </table>
   </output>
   
   <format id="+1"><add>1</add></format>
-  <format id="stage_prefix">
-    <case src="26" operator="&gt;"  dst="CHAMPION - "/>
-    <case src="26" operator="&lt;=" dst="BEGINNER - "/>
-  </format>
-  <format id="stage_letter_1"><remainder>26</remainder></format>
-  <format id="stage_letter_2">
-    <case src="1"  dst="A"/>
-    <case src="2"  dst="B"/>
-    <case src="3"  dst="C"/>
-    <case src="4"  dst="D"/>
-    <case src="5"  dst="E"/>
-    <case src="6"  dst="F"/>
-    <case src="7"  dst="G"/>
-    <case src="8"  dst="H"/>
-    <case src="9"  dst="I"/>
-    <case src="10" dst="J"/>
-    <case src="11" dst="K"/>
-    <case src="12" dst="L"/>
-    <case src="13" dst="M"/>
-    <case src="14" dst="N"/>
-    <case src="15" dst="O"/>
-    <case src="16" dst="P"/>
-    <case src="17" dst="Q"/>
-    <case src="18" dst="R"/>
-    <case src="19" dst="S"/>
-    <case src="20" dst="T"/>
-    <case src="21" dst="U"/>
-    <case src="22" dst="V"/>
-    <case src="23" dst="W"/>
-    <case src="24" dst="X"/>
-    <case src="25" dst="Y"/>
-    <case src="26" dst="Z"/>
-  </format>
   <format id="stage">
-    <concat>
-      <column id="STAGE_RAW" format="stage_prefix"/>
-      <column id="STAGE_RAW" format="stage_letter_1;stage_letter_2"/>
-    </concat>
+    <case src="1"  dst="BEGINNER - A"/>
+    <case src="2"  dst="BEGINNER - B"/>
+    <case src="3"  dst="BEGINNER - C"/>
+    <case src="4"  dst="BEGINNER - D"/>
+    <case src="5"  dst="BEGINNER - E"/>
+    <case src="6"  dst="BEGINNER - F"/>
+    <case src="7"  dst="BEGINNER - G"/>
+    <case src="8"  dst="BEGINNER - H"/>
+    <case src="9"  dst="BEGINNER - I"/>
+    <case src="10"  dst="BEGINNER - J"/>
+    <case src="11"  dst="BEGINNER - K"/>
+    <case src="12"  dst="BEGINNER - L"/>
+    <case src="13"  dst="BEGINNER - M"/>
+    <case src="14"  dst="BEGINNER - N"/>
+    <case src="15"  dst="BEGINNER - O"/>
+    <case src="16"  dst="BEGINNER - P"/>
+    <case src="17"  dst="BEGINNER - Q"/>
+    <case src="18"  dst="BEGINNER - R"/>
+    <case src="19"  dst="BEGINNER - S"/>
+    <case src="20"  dst="BEGINNER - T"/>
+    <case src="21"  dst="BEGINNER - U"/>
+    <case src="22"  dst="BEGINNER - V"/>
+    <case src="23"  dst="BEGINNER - W"/>
+    <case src="24"  dst="BEGINNER - X"/>
+    <case src="25"  dst="BEGINNER - Y"/>
+    <case src="26"  dst="BEGINNER - Z"/>
+    <case src="27"  dst="CHAMPION - A"/>
+    <case src="28"  dst="CHAMPION - B"/>
+    <case src="29"  dst="CHAMPION - C"/>
+    <case src="30"  dst="CHAMPION - D"/>
+    <case src="31"  dst="CHAMPION - E"/>
+    <case src="32"  dst="CHAMPION - F"/>
+    <case src="33"  dst="CHAMPION - G"/>
+    <case src="34"  dst="CHAMPION - H"/>
+    <case src="35"  dst="CHAMPION - I"/>
+    <case src="36"  dst="CHAMPION - J"/>
+    <case src="37"  dst="CHAMPION - K"/>
+    <case src="38"  dst="CHAMPION - L"/>
+    <case src="39"  dst="CHAMPION - M"/>
+    <case src="40"  dst="CHAMPION - N"/>
+    <case src="41"  dst="CHAMPION - O"/>
+    <case src="42"  dst="CHAMPION - P"/>
+    <case src="43"  dst="CHAMPION - Q"/>
+    <case src="44"  dst="CHAMPION - R"/>
+    <case src="45"  dst="CHAMPION - S"/>
+    <case src="46"  dst="CHAMPION - T"/>
+    <case src="47"  dst="CHAMPION - U"/>
+    <case src="48"  dst="CHAMPION - V"/>
+    <case src="49"  dst="CHAMPION - W"/>
+    <case src="50"  dst="CHAMPION - X"/>
+    <case src="51"  dst="CHAMPION - Y"/>
+    <case src="52"  dst="CHAMPION - Z"/>
+    <case src="0"  dst="BEGINNER - A" default="yes"/>
   </format>
   <format id="difficulty">
     <case src="0" dst="BEGINNER"/>
@@ -104,5 +120,5 @@
     <case src="3" dst="CHAMPION 3"/>
   </format>
   <format id="time"><suffix> sec</suffix></format>
-  <format id="not_set"><case src="0 sec" dst="NOT SET YET"/></format>
+  <format id="not_set"><case src="0 sec" dst="-"/></format>
 </hi2txt>

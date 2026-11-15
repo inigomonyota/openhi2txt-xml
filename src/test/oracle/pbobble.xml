@@ -1,10 +1,12 @@
 <hi2txt>
-  <table>
-    <col>RANK</col><col>SCORE</col><col>NAME</col><col>ROUND</col>
-    <row><cell>1</cell><cell>169610</cell><cell>3.&amp;</cell><cell>6</cell></row>
-    <row><cell>2</cell><cell>10000</cell><cell>I.F</cell><cell>5</cell></row>
-    <row><cell>3</cell><cell>9000</cell><cell>HAS</cell><cell>4</cell></row>
-    <row><cell>4</cell><cell>8000</cell><cell>NOB</cell><cell>3</cell></row>
-    <row><cell>5</cell><cell>7000</cell><cell>VAN</cell><cell>2</cell></row>
+  <table id="BEST 5">
+    <col>RANK</col><col>SCORE</col><col>ROUND</col><col>NAME</col><col>UNKNOWN</col>
+    <row><cell>1ST</cell><cell>10000</cell><cell>5</cell><cell>I.F</cell><cell>0x00</cell></row>
+    <row><cell>2ND</cell><cell>9000</cell><cell>4</cell><cell>HAS</cell><cell>0x00</cell></row>
+    <row><cell>3RD</cell><cell>8000</cell><cell>3</cell><cell>NOB</cell><cell>0x00</cell></row>
+    <row><cell>4TH</cell><cell>7000</cell><cell>2</cell><cell>VAN</cell><cell>0x00</cell></row>
+    <row><cell>5TH</cell><cell>6000</cell><cell>1</cell><cell>G.R</cell><cell>0x00</cell></row>
   </table>
+  <field id="INIT FLAG">0xFF</field>
+  <field id="PADDING">0x000000</field>
 </hi2txt>

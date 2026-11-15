@@ -1,0 +1,15 @@
+<hi2txt>
+<table id="BEST COPS">
+<col>RANK</col><col>NAME</col><col>SCORE</col><col>ACCURACY</col><col>CLASS</col>
+<row><cell>1</cell><cell>AKM</cell><cell>1,000</cell><cell>90%</cell><cell>COMMANDER</cell></row>
+<row><cell>2</cell><cell>FNC</cell><cell>900</cell><cell>85%</cell><cell>CAPTAIN</cell></row>
+<row><cell>3</cell><cell>HSC</cell><cell>800</cell><cell>80%</cell><cell>CAPTAIN</cell></row>
+<row><cell>4</cell><cell>SMG</cell><cell>700</cell><cell>77%</cell><cell>LIEUTENANT</cell></row>
+<row><cell>5</cell><cell>UZI</cell><cell>600</cell><cell>90%</cell><cell>LIEUTENANT</cell></row>
+<row><cell>6</cell><cell>AUG</cell><cell>500</cell><cell>99%</cell><cell>SERGEANT</cell></row>
+<row><cell>7</cell><cell>MAG</cell><cell>400</cell><cell>60%</cell><cell>SERGEANT</cell></row>
+<row><cell>8</cell><cell>IMI</cell><cell>300</cell><cell>48%</cell><cell>DETECTIVE</cell></row>
+<row><cell>9</cell><cell>SIG</cell><cell>200</cell><cell>60%</cell><cell>DETECTIVE</cell></row>
+<row><cell>10</cell><cell>PPK</cell><cell>100</cell><cell>70%</cell><cell>PATROLMAN</cell></row>
+</table>
+</hi2txt>

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  Jail Break (Konami, 1986)
+  ROM: jailbrek  |  Hi score file: jailbrek.hi  |  Size: 83 bytes
+  No interleaving - raw bytes are real data.
+
+  10 entries ("SCORE RANKING"), 8 bytes each = 80 bytes.
+  Trailing 3 bytes (offset 80-82) = copy of top score bytes, likely checksum. Ignored.
+
+  Entry layout:
+    +0..+2   3 bytes  score: 6-digit nibble-packed BCD representing score/10
+                       e.g. 00 26 20 -> nibbles "002620" -> *10 = 26,200
+    +3       1 byte   stage: direct integer
+    +4       1 byte   unknown (appears to be a counter/index)
+    +5..+7   3 bytes  name: ascii-offset=48, with 0x0c -> '.' (see charset below)
+
+  Score read as type="text" nibble extraction, "0" appended, leading zeros trimmed.
+  Lex descending sort = numeric descending sort (all strings zero-padded to 6 chars).
+-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check><size>83</size></check>
+    <loop count="10">
+      <elt id="score"   size="3" type="text" src-unit-size="4" dst-unit-size="1" ascii-offset="48"/>
+      <elt id="stage"   size="1" type="int"/>
+      <elt id="unk"     size="1" type="raw"/>
+      <elt id="name"    size="3" type="text" ascii-offset="48" charset="jailbrek_chars"/>
+    </loop>
+    <elt id="checksum" size="3" type="raw"/>
+  </structure>
+
+  <output>
+    <table id="SCORE RANKING" sort="SCORE" sort-order="desc">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="POINT" src="score" format="score_fmt"/>
+      <column id="STAGE" src="stage"/>
+      <column id="NAME"  src="name"/>
+    </table>
+  </output>
+
+  <!-- Append "0" to 6-digit nibble string, strip leading zeros -> full score -->
+  <format id="score_fmt">
+    <concat><txt>0</txt></concat>
+    <trim direction="left">0</trim>
+  </format>
+
+  <!-- Ordinal rank to match the on-screen SCORE RANKING (1ST..10TH) -->
+  <format id="rank">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+
+  <!-- Name charset: raw byte 0x0c maps to '.', all others via ascii-offset=48 -->
+  <charset id="jailbrek_chars">
+    <char src="0x0c" dst="."/>
+  </charset>
+
+</hi2txt>

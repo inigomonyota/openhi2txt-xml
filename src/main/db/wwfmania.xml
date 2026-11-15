@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    wwfmania - WWF: WrestleMania (Midway, 1995)
+    Native CMOS: nvram\wwfmania\nvram (49152 bytes). Midway 16-bit CMOS stores one
+    data byte in every EVEN byte and 0x00 in every ODD byte, so every element uses
+    byte-skip="even" (keep 1 raw byte, skip 1) and all size= values count RAW bytes
+    (de-interleaved length x2). Five sparse record tables, reached with raw padding:
+      LONGEST WINNING STREAKS  18 recs, first record @ raw 4186 (de 2093)
+      FASTEST PINDOWN TIMES     9 recs, first record @ raw 4648 (de 2324)
+      WORLD CHAMPIONS           8 recs, first record @ raw 4916 (de 2458)
+      INTERCONTINENTAL CHAMPS   9 recs, first record @ raw 5620 (de 2810)
+      TAG TEAM CHAMPIONS        9 teams, first record @ raw 6324 (de 3162)
+    Names are plain ASCII in the de-interleaved stream. Wins are 1-byte BCD; pindown
+    times are 1-byte BCD seconds with an opponent stored as an ASCII index letter;
+    tag-team times are a 2-byte big-endian BCD pair (hi byte = hundreds).
+  //-->
+
+  <structure file="nvram">
+    <check>
+      <size>49152</size>
+    </check>
+
+    <!-- reach LONGEST WINNING STREAKS (first record = de 2093 = raw 4186) -->
+    <elt size="4186" type="raw" id="PRE1"/>
+    <loop count="18">
+      <elt size="2" type="int"  base="16" byte-skip="even" id="WINS"/>
+      <elt size="6" type="text"            byte-skip="even" id="SNAME"/>
+      <elt size="2" type="raw"             byte-skip="even" id="SFLAG"/>
+      <elt size="2" type="raw"             byte-skip="even" id="SSEP"/>
+      <elt size="2" type="raw"             byte-skip="even" id="SCK"/>
+      <elt size="6" type="raw"             byte-skip="even" id="SPAD"/>
+    </loop>
+
+    <!-- gap to FASTEST PINDOWN TIMES (raw 4648 - 4546 = 102) -->
+    <elt size="102" type="raw" id="GAP1"/>
+    <loop count="9">
+      <elt size="2" type="int"  base="16" byte-skip="even" id="PTIME"/>
+      <elt size="2" type="raw"             byte-skip="even" id="PP1"/>
+      <elt size="6" type="text"            byte-skip="even" id="PNAME"/>
+      <elt size="2" type="text"            byte-skip="even" id="POPP"/>
+      <elt size="2" type="raw"             byte-skip="even" id="PSEP"/>
+      <elt size="2" type="raw"             byte-skip="even" id="PCK"/>
+      <elt size="4" type="raw"             byte-skip="even" id="PPAD"/>
+    </loop>
+
+    <!-- gap to WORLD CHAMPIONS (raw 4916 - 4828 = 88) -->
+    <elt size="88" type="raw" id="GAP2"/>
+    <loop count="8">
+      <elt size="10" type="text"           byte-skip="even" id="WNAME"/>
+      <elt size="2"  type="raw"            byte-skip="even" id="WCK"/>
+      <elt size="8"  type="raw"            byte-skip="even" id="WMON"/>
+    </loop>
+
+    <!-- gap to INTERCONTINENTAL CHAMPS (raw 5620 - 5076 = 544) -->
+    <elt size="544" type="raw" id="GAP3"/>
+    <loop count="9">
+      <elt size="10" type="text"           byte-skip="even" id="INAME"/>
+      <elt size="2"  type="raw"            byte-skip="even" id="ICK"/>
+      <elt size="8"  type="raw"            byte-skip="even" id="IMON"/>
+    </loop>
+
+    <!-- gap to TAG TEAM CHAMPIONS (raw 6324 - 5800 = 524) -->
+    <elt size="524" type="raw" id="GAP4"/>
+    <loop count="9">
+      <elt size="10" type="text"                        byte-skip="even" id="TNAME1"/>
+      <elt size="2"  type="raw"                         byte-skip="even" id="TCK1"/>
+      <elt size="2"  type="raw"                         byte-skip="even" id="TP6"/>
+      <elt size="4"  type="int" base="16" endianness="big_endian" byte-skip="even" id="TTIME"/>
+      <elt size="2"  type="raw"                         byte-skip="even" id="TP9"/>
+      <elt size="10" type="text"                        byte-skip="even" id="TNAME2"/>
+      <elt size="2"  type="raw"                         byte-skip="even" id="TCK2"/>
+      <elt size="8"  type="raw"                         byte-skip="even" id="TMON"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="LONGEST WINNING STREAKS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="SNAME"/>
+      <column id="WINS"/>
+    </table>
+
+    <table id="FASTEST PINDOWN TIMES">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="PNAME"/>
+      <column id="TIME" src="PTIME"/>
+      <column id="OPPONENT" src="POPP" format="opp"/>
+    </table>
+
+    <table id="WORLD CHAMPIONS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="WNAME"/>
+    </table>
+
+    <table id="INTERCONTINENTAL CHAMPS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="INAME"/>
+    </table>
+
+    <table id="TAG TEAM CHAMPIONS">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="TEAM1" src="TNAME1"/>
+      <column id="TEAM2" src="TNAME2"/>
+      <column id="TIME"  src="TTIME"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="opp">
+    <case src="A" dst="BRET HART"/>
+    <case src="B" dst="RAZOR RAMON"/>
+    <case src="C" dst="UNDERTAKER"/>
+    <case src="D" dst="YOKOZUNA"/>
+    <case src="E" dst="SHN. MICHAELS"/>
+    <case src="F" dst="BAM BAM"/>
+    <case src="G" dst="DOINK"/>
+    <case src="I" dst="LEX LUGER"/>
+  </format>
+
+</hi2txt>

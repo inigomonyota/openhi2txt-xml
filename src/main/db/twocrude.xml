@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 80 bytes -->
+    <check><size>80</size></check>
+    
+    <!-- BLOCK 1: All 10 Scores (4 bytes each) -->
+    <loop count="10">
+      <elt size="4" type="int" id="SCORE" base="16" endianness="big_endian"/>
+    </loop>
+    
+    <!-- BLOCK 2: All 10 Names (3 chars + 1 byte padding) -->
+    <loop count="10">
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <!-- Outputs a single 10-row table (The arcade splits it into two columns visually, but it's one continuous list) -->
+    <table id="BEST PLAYERS">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+  <!-- Translates the index from 0-9 to 1-10 -->
+  <format id="+1">
+    <add>1</add>
+  </format>
+</hi2txt>

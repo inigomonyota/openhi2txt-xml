@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<hi2txt>
+  <table id="SCORE RANKING">
+    <col>RANK</col><col>NAME</col><col>REWARD</col>
+    <row><cell>1st</cell><cell>G13</cell><cell>$5,000,000</cell></row>
+    <row><cell>2nd</cell><cell>G13</cell><cell>$4,000,000</cell></row>
+    <row><cell>3rd</cell><cell>G13</cell><cell>$3,000,000</cell></row>
+    <row><cell>4th</cell><cell>G13</cell><cell>$2,000,000</cell></row>
+    <row><cell>5th</cell><cell>G13</cell><cell>$1,000,000</cell></row>
+    <row><cell>6th</cell><cell>G13</cell><cell>$500,000</cell></row>
+    <row><cell>7th</cell><cell>G13</cell><cell>$400,000</cell></row>
+    <row><cell>8th</cell><cell>G13</cell><cell>$300,000</cell></row>
+    <row><cell>9th</cell><cell>G13</cell><cell>$200,000</cell></row>
+    <row><cell>10th</cell><cell>G13</cell><cell>$100,000</cell></row>
+  </table>
+  <table id="ACCURACY RANKING">
+    <col>RANK</col><col>NAME</col><col>POINT</col>
+    <row><cell>1st</cell><cell>G13</cell><cell>765.00</cell></row>
+    <row><cell>2nd</cell><cell>G13</cell><cell>700.00</cell></row>
+    <row><cell>3rd</cell><cell>G13</cell><cell>600.00</cell></row>
+    <row><cell>4th</cell><cell>G13</cell><cell>500.00</cell></row>
+    <row><cell>5th</cell><cell>G13</cell><cell>400.00</cell></row>
+    <row><cell>6th</cell><cell>G13</cell><cell>300.00</cell></row>
+    <row><cell>7th</cell><cell>G13</cell><cell>250.00</cell></row>
+    <row><cell>8th</cell><cell>G13</cell><cell>200.00</cell></row>
+    <row><cell>9th</cell><cell>G13</cell><cell>150.00</cell></row>
+    <row><cell>10th</cell><cell>G13</cell><cell>100.00</cell></row>
+  </table>
+</hi2txt>

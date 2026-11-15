@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!-- SWAT Police (swatpolc) - ESD16 / M68000 (big-endian) RANKING top-10.
+       The 93C46 EEPROM (128 bytes) does NOT hold the score table; the chart lives
+       in anonymous 68000 work RAM at 0x109390. The hiscore plugin (hiscore.dat entry
+       @:maincpu,program,109390,a0,00,00) captures the 160-byte region as swatpolc.hi.
+
+       Record = 16 bytes, stored rank 1 first:
+         +0   8 bytes  per-entry data (level/stage counters) - skipped
+         +8   u32 BE   score
+         +12  3 ASCII  initials
+         +15  0x00 pad
+       Score displays as 8 digits on the scoreboard, so it is zero-padded to 8. -->
+  <structure file=".hi">
+    <check>
+      <definition>0:109390:a0:00:00</definition>
+      <size>160</size>
+    </check>
+    <loop count="10">
+      <elt size="8" type="raw"  id="SKIP"  table-index="loop_index"/>
+      <elt size="4" type="int"  id="SCORE" table-index="loop_index"/>
+      <elt size="3" type="text" id="NAME"  table-index="loop_index"/>
+      <elt size="1" type="raw"  id="PAD"   table-index="loop_index"/>
+    </loop>
+  </structure>
+  <output>
+    <table id="RANKING">
+      <column id="RANK"  src="index" format="rank1"/>
+      <column id="SCORE" src="SCORE" format="score8"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+  <format id="rank1"><add>1</add></format>
+  <format id="score8"><pad direction="left" max="8">0</pad></format>
+</hi2txt>

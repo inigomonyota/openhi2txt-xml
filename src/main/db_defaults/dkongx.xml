@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<hi2txt>
+  <table id="TOP 5 SCORES">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>7650</cell><cell></cell></row>
+    <row><cell>2ND</cell><cell>6100</cell><cell></cell></row>
+    <row><cell>3RD</cell><cell>5950</cell><cell></cell></row>
+    <row><cell>4TH</cell><cell>5050</cell><cell></cell></row>
+    <row><cell>5TH</cell><cell>4300</cell><cell></cell></row>
+  </table>
+</hi2txt>

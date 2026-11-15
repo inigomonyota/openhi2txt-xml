@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Savage Reign">
+  <!--
+    Neo Geo saveram, byte-swap=2. BEST FIGHTERS @0x330, 5 x 8B:
+    [SCORE:4 BCD][CHARACTER:1][NAME:3 charset cs_name].
+    Fighter indices (ALL CONFIRMED): 0 HAYATE,1 EAGLE,2 GOZU,3 MEZU,4 CAROL,
+    5 NICOLA,6 JOKE,7 CHUNG,8 GORDON,9 KING LION.
+    NAME glyphs: 0xa4 boyface,0xa5 girlface,0xa7 male,0xab female,0xba smiley,
+    0xbb ghost,0xbc umbrella (+ printable ASCII). More can be added as captured.
+  //-->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+    <elt size="816" type="raw" id="HEADER"/>
+    <loop count="5">
+      <elt size="4" type="int"  id="SCORE" base="16"/>
+      <elt size="1" type="int"  id="CHARACTER"/>
+      <elt size="3" type="text" id="NAME" charset="cs_name"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST FIGHTERS">
+      <column id="RANK"      src="index"     format="rank"/>
+      <column id="SCORE"     src="SCORE"/>
+      <column id="TEAM CAPTAIN" src="CHARACTER" format="fighter"/>
+      <column id="NAME"      src="NAME"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <add>1</add>
+    <case src="1" dst="1ST"/><case src="2" dst="2ND"/><case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/><case src="5" dst="5TH"/>
+  </format>
+
+  <format id="fighter">
+    <case src="0" dst="HAYATE"/><case src="1" dst="EAGLE"/><case src="2" dst="GOZU"/>
+    <case src="3" dst="MEZU"/><case src="4" dst="CAROL"/><case src="5" dst="NICOLA"/>
+    <case src="6" dst="JOKE"/><case src="7" dst="CHUNG"/><case src="8" dst="GORDON"/>
+    <case src="9" dst="KING LION"/>
+  </format>
+
+  <charset id="cs_name">
+    <char src="0x20" dst=" "/><char src="0x21" dst="!"/><char src="0x22" dst="&quot;"/><char src="0x23" dst="#"/><char src="0x24" dst="$"/><char src="0x25" dst="%"/>
+    <char src="0x26" dst="&amp;"/><char src="0x27" dst="'"/><char src="0x28" dst="("/><char src="0x29" dst=")"/><char src="0x2a" dst="*"/><char src="0x2b" dst="+"/>
+    <char src="0x2c" dst=","/><char src="0x2d" dst="-"/><char src="0x2e" dst="."/><char src="0x2f" dst="/"/><char src="0x30" dst="0"/><char src="0x31" dst="1"/>
+    <char src="0x32" dst="2"/><char src="0x33" dst="3"/><char src="0x34" dst="4"/><char src="0x35" dst="5"/><char src="0x36" dst="6"/><char src="0x37" dst="7"/>
+    <char src="0x38" dst="8"/><char src="0x39" dst="9"/><char src="0x3a" dst=":"/><char src="0x3b" dst=";"/><char src="0x3c" dst="&lt;"/><char src="0x3d" dst="="/>
+    <char src="0x3e" dst="&gt;"/><char src="0x3f" dst="?"/><char src="0x40" dst="@"/><char src="0x41" dst="A"/><char src="0x42" dst="B"/><char src="0x43" dst="C"/>
+    <char src="0x44" dst="D"/><char src="0x45" dst="E"/><char src="0x46" dst="F"/><char src="0x47" dst="G"/><char src="0x48" dst="H"/><char src="0x49" dst="I"/>
+    <char src="0x4a" dst="J"/><char src="0x4b" dst="K"/><char src="0x4c" dst="L"/><char src="0x4d" dst="M"/><char src="0x4e" dst="N"/><char src="0x4f" dst="O"/>
+    <char src="0x50" dst="P"/><char src="0x51" dst="Q"/><char src="0x52" dst="R"/><char src="0x53" dst="S"/><char src="0x54" dst="T"/><char src="0x55" dst="U"/>
+    <char src="0x56" dst="V"/><char src="0x57" dst="W"/><char src="0x58" dst="X"/><char src="0x59" dst="Y"/><char src="0x5a" dst="Z"/><char src="0x5b" dst="["/>
+    <char src="0x5c" dst="\"/><char src="0x5d" dst="]"/><char src="0x5e" dst="^"/><char src="0x5f" dst="_"/><char src="0x60" dst="`"/><char src="0x61" dst="a"/>
+    <char src="0x62" dst="b"/><char src="0x63" dst="c"/><char src="0x64" dst="d"/><char src="0x65" dst="e"/><char src="0x66" dst="f"/><char src="0x67" dst="g"/>
+    <char src="0x68" dst="h"/><char src="0x69" dst="i"/><char src="0x6a" dst="j"/><char src="0x6b" dst="k"/><char src="0x6c" dst="l"/><char src="0x6d" dst="m"/>
+    <char src="0x6e" dst="n"/><char src="0x6f" dst="o"/><char src="0x70" dst="p"/><char src="0x71" dst="q"/><char src="0x72" dst="r"/><char src="0x73" dst="s"/>
+    <char src="0x74" dst="t"/><char src="0x75" dst="u"/><char src="0x76" dst="v"/><char src="0x77" dst="w"/><char src="0x78" dst="x"/><char src="0x79" dst="y"/>
+    <char src="0x7a" dst="z"/><char src="0x7b" dst="{"/><char src="0x7c" dst="|"/><char src="0x7d" dst="}"/><char src="0x7e" dst="~"/>
+    <char src="0xa4" dst="👦"/>   <!-- boyface -->
+    <char src="0xa5" dst="👧"/>   <!-- girlface -->
+    <char src="0xa7" dst="♂"/>   <!-- male symbol -->
+    <char src="0xab" dst="♀"/>   <!-- female symbol -->
+    <char src="0xba" dst="☺"/>   <!-- smiley face -->
+    <char src="0xbb" dst="👻"/>   <!-- ghost -->
+    <char src="0xbc" dst="☂"/>   <!-- umbrella -->
+  </charset>
+</hi2txt>

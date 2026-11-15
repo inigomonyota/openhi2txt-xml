@@ -1,0 +1,32 @@
+<hi2txt>
+  <table id="ALL TIME BEST">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1</cell><cell>P Z</cell><cell>1505300</cell></row>
+    <row><cell>2</cell><cell>JRC</cell><cell>1000000</cell></row>
+    <row><cell>3</cell><cell>ALS</cell><cell>950000</cell></row>
+    <row><cell>4</cell><cell>REP</cell><cell>900000</cell></row>
+    <row><cell>5</cell><cell>EZF</cell><cell>850000</cell></row>
+    <row><cell>6</cell><cell>VIL</cell><cell>800000</cell></row>
+    <row><cell>7</cell><cell>SNO</cell><cell>750000</cell></row>
+    <row><cell>8</cell><cell>RAY</cell><cell>700000</cell></row>
+    <row><cell>9</cell><cell>ROG</cell><cell>650000</cell></row>
+    <row><cell>10</cell><cell>DAS</cell><cell>600000</cell></row>
+  </table>
+  <table id="TODAY'S BEST">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1</cell><cell>GNP</cell><cell>310865</cell></row>
+    <row><cell>2</cell><cell>JEH</cell><cell>300000</cell></row>
+    <row><cell>3</cell><cell>WBD</cell><cell>280000</cell></row>
+    <row><cell>4</cell><cell>JCV</cell><cell>260000</cell></row>
+    <row><cell>5</cell><cell>TJC</cell><cell>240000</cell></row>
+    <row><cell>6</cell><cell>CPG</cell><cell>220000</cell></row>
+    <row><cell>7</cell><cell>DOZ</cell><cell>200000</cell></row>
+    <row><cell>8</cell><cell>CMM</cell><cell>180000</cell></row>
+    <row><cell>9</cell><cell>RJC</cell><cell>160000</cell></row>
+    <row><cell>10</cell><cell>P C</cell><cell>140000</cell></row>
+  </table>
+  <field id="AT HEADER SCORE">1500000</field>
+  <field id="AT HEADER NAME">GNP</field>
+  <field id="TD HEADER SCORE">310865</field>
+  <field id="TD HEADER NAME">GNP</field>
+</hi2txt>

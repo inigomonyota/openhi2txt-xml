@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  sgunner2 - Steel Gunner 2 (Namco, 1991)
+  .hi file format (via hiscore.dat plugin)
+  hiscore.dat:
+    @:maincpu,program,108e2b,1b7,00,02
+    @:maincpu,program,108c6b,9,00,00
+  448 bytes = 439B range1 + 9B range2
+  Entry 1: 44B (no rank prefix). Entries 2-9: 8x46B. Entry 10: 27B (truncated).
+  Score = d10k*10000 + d1k*1000 + d100*100 + d10*10. Rate = byte/10 for %.
+  Name = 4 bytes ASCII, null-padded (0x00 mapped to space via name_char).
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>448</size>
+    </check>
+
+    <!-- Entry 1 (44B, no rank) - row 0 -->
+    <elt size="4" type="raw" id="E1PAD"/>
+    <elt size="1" type="int" id="SD10K"/>
+    <elt size="1" type="raw" id="E1S1"/>
+    <elt size="1" type="int" id="SD1K"/>
+    <elt size="1" type="raw" id="E1S2"/>
+    <elt size="1" type="int" id="SD100"/>
+    <elt size="1" type="raw" id="E1S3"/>
+    <elt size="1" type="int" id="SD10"/>
+    <elt size="1" type="raw" id="E1S4"/>
+    <elt size="1" type="int" id="RATE"/>
+    <elt size="1" type="raw" id="E1RS"/>
+    <elt size="1" type="int" id="CT"/>
+    <elt size="2" type="raw" id="E1CP"/>
+    <elt size="1" type="int" id="NC1"/>
+    <elt size="1" type="int" id="NC2"/>
+    <elt size="1" type="int" id="NC3"/>
+    <elt size="1" type="int" id="NC4"/>
+    <elt size="1" type="raw" id="E1NP"/>
+    <elt size="1" type="int" id="STAGE"/>
+    <elt size="1" type="raw" id="E1SP"/>
+    <elt size="1" type="int" id="PLAYER"/>
+    <elt size="1" type="raw" id="E1PP"/>
+    <elt size="18" type="raw" id="E1TAIL"/>
+
+    <!-- Entries 2-9 (8 x 46B) - rows 1-8 -->
+    <loop count="8">
+      <elt size="6" type="raw" id="EPAD"/>
+      <elt size="1" type="int" id="SD10K" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw" id="ES1"/>
+      <elt size="1" type="int" id="SD1K" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw" id="ES2"/>
+      <elt size="1" type="int" id="SD100" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw" id="ES3"/>
+      <elt size="1" type="int" id="SD10" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw" id="ES4"/>
+      <elt size="1" type="int" id="RATE" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw" id="ERS"/>
+      <elt size="1" type="int" id="CT" table-index="loop_index" table-index-format="+1"/>
+      <elt size="2" type="raw" id="ECP"/>
+      <elt size="1" type="int" id="NC1" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="int" id="NC2" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="int" id="NC3" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="int" id="NC4" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw" id="ENP"/>
+      <elt size="1" type="int" id="STAGE" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw" id="ESP"/>
+      <elt size="1" type="int" id="PLAYER" table-index="loop_index" table-index-format="+1"/>
+      <elt size="1" type="raw" id="EPP"/>
+      <elt size="18" type="raw" id="ETAIL"/>
+    </loop>
+
+    <!-- Entry 10 (46B def, skip last 19B = reads 27B) - row 9 -->
+    <loop count="1" skip-last-bytes="19">
+      <elt size="6" type="raw" id="EPAD"/>
+      <elt size="1" type="int" id="SD10K" table-index="loop_index" table-index-format="+9"/>
+      <elt size="1" type="raw" id="ES1"/>
+      <elt size="1" type="int" id="SD1K" table-index="loop_index" table-index-format="+9"/>
+      <elt size="1" type="raw" id="ES2"/>
+      <elt size="1" type="int" id="SD100" table-index="loop_index" table-index-format="+9"/>
+      <elt size="1" type="raw" id="ES3"/>
+      <elt size="1" type="int" id="SD10" table-index="loop_index" table-index-format="+9"/>
+      <elt size="1" type="raw" id="ES4"/>
+      <elt size="1" type="int" id="RATE" table-index="loop_index" table-index-format="+9"/>
+      <elt size="1" type="raw" id="ERS"/>
+      <elt size="1" type="int" id="CT" table-index="loop_index" table-index-format="+9"/>
+      <elt size="2" type="raw" id="ECP"/>
+      <elt size="1" type="int" id="NC1" table-index="loop_index" table-index-format="+9"/>
+      <elt size="1" type="int" id="NC2" table-index="loop_index" table-index-format="+9"/>
+      <elt size="1" type="int" id="NC3" table-index="loop_index" table-index-format="+9"/>
+      <elt size="1" type="int" id="NC4" table-index="loop_index" table-index-format="+9"/>
+      <elt size="1" type="raw" id="ENP"/>
+      <elt size="1" type="int" id="STAGE" table-index="loop_index" table-index-format="+9"/>
+      <elt size="1" type="raw" id="ESP"/>
+      <elt size="1" type="int" id="PLAYER" table-index="loop_index" table-index-format="+9"/>
+      <elt size="1" type="raw" id="EPP"/>
+      <elt size="18" type="raw" id="ETAIL"/>
+    </loop>
+
+    <!-- Range 2 (9B) -->
+    <elt size="9" type="raw" id="RANGE2"/>
+  </structure>
+
+  <output>
+    <table id="TODAY'S BEST GUYS">
+      <column id="RANK" src="index" format="ordinal"/>      
+      <column id="NAME" src="NC1" format="name_fmt"/>
+	  <column id="SCORE" src="SD10K" format="score_fmt;comma_score"/>
+      <column id="RATE" format="rate_fmt"/>
+      <column id="CT"/>
+      <column id="STAGE"/>
+      <column id="PLAYER" format="player_fmt"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" operator="=" dst="1ST"/>
+    <case src="1" operator="=" dst="2ND"/>
+    <case src="2" operator="=" dst="3RD"/>
+    <case src="3" operator="=" dst="4TH"/>
+    <case src="4" operator="=" dst="5TH"/>
+    <case src="5" operator="=" dst="6TH"/>
+    <case src="6" operator="=" dst="7TH"/>
+    <case src="7" operator="=" dst="8TH"/>
+    <case src="8" operator="=" dst="9TH"/>
+    <case src="9" operator="=" dst="10TH"/>
+  </format>
+
+  <format id="score_fmt" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="SD10K"/>
+      <column src="SD1K"/>
+      <column src="SD100"/>
+      <column src="SD10"/>
+      <txt>0</txt>
+    </concat>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="rate_fmt" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d10"/>
+      <txt>.</txt>
+      <column format="%10"/>
+      <txt>%</txt>
+    </concat>
+  </format>
+
+  <format id="name_fmt" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="NC1" format="name_char"/>
+      <column src="NC2" format="name_char"/>
+      <column src="NC3" format="name_char"/>
+      <column src="NC4" format="name_char"/>
+    </concat>
+  </format>
+
+  <format id="name_char">
+    <case src="0" operator="=" dst=" "/>
+    <case src="32" operator="=" dst=" "/>
+    <case src="33" operator="=" dst="!"/>
+    <case src="45" operator="=" dst="-"/>
+    <case src="46" operator="=" dst="."/>
+    <case src="48" operator="=" dst="0"/>
+    <case src="49" operator="=" dst="1"/>
+    <case src="50" operator="=" dst="2"/>
+    <case src="51" operator="=" dst="3"/>
+    <case src="52" operator="=" dst="4"/>
+    <case src="53" operator="=" dst="5"/>
+    <case src="54" operator="=" dst="6"/>
+    <case src="55" operator="=" dst="7"/>
+    <case src="56" operator="=" dst="8"/>
+    <case src="57" operator="=" dst="9"/>
+    <case src="65" operator="=" dst="A"/>
+    <case src="66" operator="=" dst="B"/>
+    <case src="67" operator="=" dst="C"/>
+    <case src="68" operator="=" dst="D"/>
+    <case src="69" operator="=" dst="E"/>
+    <case src="70" operator="=" dst="F"/>
+    <case src="71" operator="=" dst="G"/>
+    <case src="72" operator="=" dst="H"/>
+    <case src="73" operator="=" dst="I"/>
+    <case src="74" operator="=" dst="J"/>
+    <case src="75" operator="=" dst="K"/>
+    <case src="76" operator="=" dst="L"/>
+    <case src="77" operator="=" dst="M"/>
+    <case src="78" operator="=" dst="N"/>
+    <case src="79" operator="=" dst="O"/>
+    <case src="80" operator="=" dst="P"/>
+    <case src="81" operator="=" dst="Q"/>
+    <case src="82" operator="=" dst="R"/>
+    <case src="83" operator="=" dst="S"/>
+    <case src="84" operator="=" dst="T"/>
+    <case src="85" operator="=" dst="U"/>
+    <case src="86" operator="=" dst="V"/>
+    <case src="87" operator="=" dst="W"/>
+    <case src="88" operator="=" dst="X"/>
+    <case src="89" operator="=" dst="Y"/>
+    <case src="90" operator="=" dst="Z"/>
+  </format>
+
+  <format id="player_fmt">
+    <case src="1" operator="=" dst="1P"/>
+    <case src="2" operator="=" dst="2P"/>
+  </format>
+
+  <format id="+1"><add>1</add></format>
+  <format id="+9"><add>9</add></format>
+
+</hi2txt>

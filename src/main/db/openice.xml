@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openhi2txt label="NHL Open Ice: 2 on 2 Challenge" requires="0.3.0">
+  <!--
+    The 26 team-use audits begin at raw CMOS offset 0x1000. Each is a
+    big-endian 32-bit counter stored in the meaningful bytes of an
+    eight-byte T-unit word.
+
+    Player profiles begin at raw offset 0x3000. There are 480 packed
+    32-byte records, expanded to 64 raw bytes by the even-byte CMOS bus.
+    The first two meaningful bytes contain three five-bit initials. Wins,
+    losses, and ties occupy a packed 32-bit field at meaningful byte 7.
+  -->
+  <structure file="nvram">
+    <check><size>49152</size></check>
+    <elt id="PREFIX" type="raw" size="4096"/>
+    <loop count="26"><elt id="TEAM USES" type="int" size="8" byte-skip="even" endianness="big_endian"/></loop>
+    <elt id="TO PLAYERS" type="raw" size="7984"/>
+    <loop count="480">
+      <elt id="NAME DATA" type="int" size="4" byte-skip="even" endianness="little_endian"/>
+      <elt id="PROFILE PREFIX" type="raw" size="10"/>
+      <elt id="STATS" type="int" size="8" byte-skip="even" endianness="little_endian"/>
+      <elt id="PROFILE SUFFIX" type="raw" size="42"/>
+    </loop>
+    <elt id="FINAL PADDING" type="raw" size="6144"/>
+  </structure>
+  <output sort-method="midway">
+    <table id="MOST GAMES PLAYED" sort="STATS" sort-format="GAMES" sort-order="desc"
+           lines-max="10" line-ignore="GAMES:0" line-ignore-operator="=">
+      <sort src="STATS" format="POINTS" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="NAME DATA" format="NAME"/>
+      <column id="WIN" src="STATS" format="WINS"/>
+      <column id="LOSS" src="STATS" format="LOSSES"/>
+      <column id="TIE" src="STATS" format="TIES"/>
+      <column id="TOTAL" src="STATS" format="GAMES"/>
+      <column id="GAMES" src="STATS" format="GAMES" display="debug"/>
+    </table>
+    <table id="MOST POINTS" sort="STATS" sort-format="POINTS" sort-order="desc"
+           lines-max="10" line-ignore="GAMES:0" line-ignore-operator="=">
+      <sort src="STATS" format="GAMES" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="NAME DATA" format="NAME"/>
+      <column id="WIN" src="STATS" format="WINS"/>
+      <column id="LOSS" src="STATS" format="LOSSES"/>
+      <column id="TIE" src="STATS" format="TIES"/>
+      <column id="PTS" src="STATS" format="POINTS"/>
+      <column id="GAMES" src="STATS" format="GAMES" display="debug"/>
+    </table>
+    <table id="BEST WIN PERCENTAGE" sort="STATS" sort-format="PERCENT SORT" sort-order="desc"
+           lines-max="8" line-ignore="GAMES:5" line-ignore-operator="&lt;">
+      <sort src="STATS" format="POINTS" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="NAME DATA" format="NAME"/>
+      <column id="WIN" src="STATS" format="WINS"/>
+      <column id="LOSS" src="STATS" format="LOSSES"/>
+      <column id="TIE" src="STATS" format="TIES"/>
+      <column id="PCT" src="STATS" format="PERCENT"/>
+      <column id="GAMES" src="STATS" format="GAMES" display="debug"/>
+    </table>
+    <table id="MOST POPULAR TEAMS" sort="TEAM USES" sort-order="desc" lines-max="10">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="TEAM" src="unsorted_index" format="TEAM NAME"/>
+      <column id="TEAM INDEX" src="unsorted_index" display="debug"/>
+      <column id="TEAM USES" display="debug"/>
+    </table>
+  </output>
+  <format id="WINS"><divide_trunc>32</divide_trunc><remainder>32</remainder></format>
+  <format id="LOSSES"><divide_trunc>65536</divide_trunc><remainder>256</remainder></format>
+  <format id="TIES"><divide_trunc>134217728</divide_trunc><remainder>32</remainder></format>
+  <format id="GAMES"><divide_trunc>32</divide_trunc><remainder>32</remainder><add><column id="STATS" format="LOSSES"/></add><add><column id="STATS" format="TIES"/></add></format>
+  <format id="POINTS"><divide_trunc>32</divide_trunc><remainder>32</remainder><multiply>2</multiply><add><column id="STATS" format="TIES"/></add></format>
+  <format id="DOUBLE GAMES"><divide_trunc>32</divide_trunc><remainder>32</remainder><add><column id="STATS" format="LOSSES"/></add><add><column id="STATS" format="TIES"/></add><multiply>2</multiply></format>
+  <format id="PERCENT SORT"><divide_trunc>32</divide_trunc><remainder>32</remainder><multiply>2</multiply><add><column id="STATS" format="TIES"/></add><multiply>1000</multiply><divide_trunc><column id="STATS" format="DOUBLE GAMES"/></divide_trunc></format>
+  <format id="PERCENT" formatter="%.3f"><divide_trunc>32</divide_trunc><remainder>32</remainder><multiply>2</multiply><add><column id="STATS" format="TIES"/></add><divide><column id="STATS" format="DOUBLE GAMES"/></divide></format>
+  <format id="INITIAL 1"><remainder>32</remainder></format>
+  <format id="INITIAL 2"><divide_trunc>32</divide_trunc><remainder>32</remainder></format>
+  <format id="INITIAL 3"><divide_trunc>1024</divide_trunc><remainder>32</remainder></format>
+  <format id="LETTER">
+    <case src="0" dst="A"/><case src="1" dst="B"/><case src="2" dst="C"/><case src="3" dst="D"/><case src="4" dst="E"/><case src="5" dst="F"/><case src="6" dst="G"/><case src="7" dst="H"/><case src="8" dst="I"/><case src="9" dst="J"/><case src="10" dst="K"/><case src="11" dst="L"/><case src="12" dst="M"/><case src="13" dst="N"/><case src="14" dst="O"/><case src="15" dst="P"/><case src="16" dst="Q"/><case src="17" dst="R"/><case src="18" dst="S"/><case src="19" dst="T"/><case src="20" dst="U"/><case src="21" dst="V"/><case src="22" dst="W"/><case src="23" dst="X"/><case src="24" dst="Y"/><case src="25" dst="Z"/><case default="true" dst=" "/>
+  </format>
+  <format id="NAME" input-as-subcolumns-input="true"><concat><column id="NAME DATA" format="INITIAL 1;LETTER"/><column id="NAME DATA" format="INITIAL 2;LETTER"/><column id="NAME DATA" format="INITIAL 3;LETTER"/></concat><trim direction="right"> </trim></format>
+  <format id="TEAM NAME">
+    <case src="3" dst="PHILADELPHIA"/>
+    <case src="9" dst="CHICAGO"/>
+    <case src="11" dst="CALGARY"/>
+    <case src="12" dst="VANCOUVER"/>
+    <case src="13" dst="DETROIT"/>
+    <case src="15" dst="PITTSBURGH"/>
+    <case src="16" dst="NEW JERSEY"/>
+    <case src="17" dst="SAN JOSE"/>
+    <case src="19" dst="ANAHEIM"/>
+    <case src="25" dst="NY RANGERS"/>
+    <case src="0" dst="BOSTON"/><case src="1" dst="BUFFALO"/>
+    <case src="2" dst="HARTFORD"/><case src="4" dst="MONTREAL"/>
+    <case src="5" dst="OTTAWA"/><case src="6" dst="COLORADO"/>
+    <case src="7" dst="FLORIDA"/><case src="8" dst="NY ISLANDERS"/>
+    <case src="10" dst="TAMPA BAY"/><case src="14" dst="WASHINGTON"/>
+    <case src="18" dst="DALLAS"/><case src="20" dst="ST. LOUIS"/>
+    <case src="21" dst="TORONTO"/><case src="22" dst="WINNIPEG"/>
+    <case src="23" dst="EDMONTON"/><case src="24" dst="LOS ANGELES"/>
+  </format>
+</openhi2txt>

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openhi2txt label="NBA Jam" requires="0.3.0">
+  <!--
+    NBA Jam stores 290 player profiles beginning at raw NVRAM offset 0x1000.
+    Each profile is a packed 168-bit (21-byte) record. On T-unit hardware,
+    each meaningful CMOS byte occupies the even byte of a 16-bit word, so a
+    profile consumes 42 raw bytes.
+
+    DATA 0 contains games played, wins, and last-used fields.
+    DATA 1 contains the packed three-letter initials and birth date.
+    DATA 2 begins at meaningful byte 15 and contains the 27-team defeated
+    mask, winning streak, and checksum.
+  -->
+  <structure file="nvram">
+    <check><size>16384</size></check>
+
+    <elt id="PREFIX TO TEAM AUDITS" type="raw" size="720"/>
+    <loop count="27">
+      <elt id="TEAM USES" type="int" size="8" byte-skip="even" endianness="big_endian"/>
+      <elt id="TEAM AUDIT CHECKSUM" type="raw" size="4"/>
+    </loop>
+
+    <elt id="PADDING TO PLAYER RECORDS" type="raw" size="3052"/>
+
+    <loop count="290">
+      <elt id="DATA 0" type="int" size="8" byte-skip="even" endianness="little_endian"/>
+      <elt id="DATA 1" type="int" size="8" byte-skip="even" endianness="little_endian"/>
+      <elt id="PACKED MIDDLE" type="raw" size="14"/>
+      <elt id="DATA 2" type="int" size="12" byte-skip="even" endianness="little_endian"/>
+    </loop>
+  </structure>
+
+  <output sort-method="midway">
+    <table id="GREATEST PLAYERS (MOST GAMES WON)"
+           sort="DATA 0" sort-format="WINS" sort-order="desc" lines-max="8">
+      <sort src="DATA 0" format="WIN PERCENTAGE SORT" order="desc"/>
+      <sort src="DATA 2" format="TEAM COUNT" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="DATA 1" format="NAME"/>
+      <column id="RECORD" src="DATA 0" format="RECORD"/>
+      <column id="PERCENTAGE" src="DATA 0" format="WIN PERCENTAGE"/>
+    </table>
+
+    <table id="GRAND CHAMPIONS (DEFEATED ALL 27 NBA TEAMS)"
+           sort="DATA 2" sort-format="TEAM COUNT" sort-order="desc"
+           lines-max="3" show-empty="false"
+           line-ignore="TEAM COUNT:27" line-ignore-operator="&lt;">
+      <sort src="DATA 0" format="WINS" order="desc"/>
+      <sort src="DATA 0" format="WIN PERCENTAGE SORT" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="DATA 1" format="NAME"/>
+      <column id="TEAM COUNT" src="DATA 2" format="TEAM COUNT" display="debug"/>
+    </table>
+
+    <table id="EXPERIENCED PLAYERS (MOST GAMES PLAYED)"
+           sort="DATA 0" sort-format="GAMES" sort-order="desc" lines-max="8">
+      <sort src="DATA 0" format="WINS" order="desc"/>
+      <sort src="DATA 0" format="WIN PERCENTAGE SORT" order="desc"/>
+      <sort src="DATA 2" format="TEAM COUNT" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="DATA 1" format="NAME"/>
+      <column id="GAMES" src="DATA 0" format="GAMES"/>
+      <column id="PERCENTAGE" src="DATA 0" format="WIN PERCENTAGE"/>
+    </table>
+
+    <table id="LONGEST WINNING STREAK (CONSECUTIVE WINS)"
+           sort="DATA 2" sort-format="STREAK" sort-order="desc" lines-max="8">
+      <sort src="DATA 0" format="WINS" order="desc"/>
+      <sort src="DATA 0" format="WIN PERCENTAGE SORT" order="desc"/>
+      <sort src="DATA 2" format="TEAM COUNT" order="desc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="DATA 1" format="NAME"/>
+      <column id="STREAK" src="DATA 2" format="STREAK DISPLAY"/>
+      <column id="RECORD" src="DATA 0" format="RECORD"/>
+    </table>
+
+    <table id="MOST POPULAR TEAMS (AT THIS LOCATION)"
+           sort="TEAM USES" sort-order="desc" lines-max="8">
+      <sort src="TEAM INDEX" order="asc"/>
+      <column id="RANK" src="index" format="+1"/>
+      <column id="TEAM" src="unsorted_index" format="TEAM NAME"/>
+      <column id="TEAM INDEX" src="unsorted_index" display="debug"/>
+      <column id="TEAM USES" src="TEAM USES" display="debug"/>
+    </table>
+  </output>
+
+  <format id="GAMES">
+    <remainder>2048</remainder>
+  </format>
+
+  <format id="WINS">
+    <divide_trunc>2048</divide_trunc>
+    <remainder>1024</remainder>
+  </format>
+
+  <format id="LOSSES">
+    <remainder>2048</remainder>
+    <substract><column id="DATA 0" format="WINS"/></substract>
+  </format>
+
+  <format id="RECORD" input-as-subcolumns-input="true">
+    <concat>
+      <column id="DATA 0" format="WINS"/>
+      <txt>-</txt>
+      <column id="DATA 0" format="LOSSES"/>
+    </concat>
+  </format>
+
+  <format id="WIN PERCENTAGE SORT">
+    <divide_trunc>2048</divide_trunc>
+    <remainder>1024</remainder>
+    <multiply>1000</multiply>
+    <divide_trunc><column id="DATA 0" format="GAMES"/></divide_trunc>
+  </format>
+
+  <format id="WIN PERCENTAGE" formatter="%.3f">
+    <divide_trunc>2048</divide_trunc>
+    <remainder>1024</remainder>
+    <divide><column id="DATA 0" format="GAMES"/></divide>
+  </format>
+
+  <format id="TEAM COUNT">
+    <divide_trunc>128</divide_trunc>
+    <remainder>134217728</remainder>
+    <bit-count/>
+  </format>
+
+  <format id="STREAK">
+    <divide_trunc>17179869184</divide_trunc>
+    <remainder>64</remainder>
+  </format>
+
+  <format id="STREAK DISPLAY">
+    <divide_trunc>17179869184</divide_trunc>
+    <remainder>64</remainder>
+    <suffix> WINS</suffix>
+  </format>
+
+  <format id="INITIAL 1">
+    <remainder>32</remainder>
+    <case src="0" dst="A"/><case src="1" dst="B"/><case src="2" dst="C"/>
+    <case src="3" dst="D"/><case src="4" dst="E"/><case src="5" dst="F"/>
+    <case src="6" dst="G"/><case src="7" dst="H"/><case src="8" dst="I"/>
+    <case src="9" dst="J"/><case src="10" dst="K"/><case src="11" dst="L"/>
+    <case src="12" dst="M"/><case src="13" dst="N"/><case src="14" dst="O"/>
+    <case src="15" dst="P"/><case src="16" dst="Q"/><case src="17" dst="R"/>
+    <case src="18" dst="S"/><case src="19" dst="T"/><case src="20" dst="U"/>
+    <case src="21" dst="V"/><case src="22" dst="W"/><case src="23" dst="X"/>
+    <case src="24" dst="Y"/><case src="25" dst="Z"/><case src="26" dst=" "/>
+  </format>
+
+  <format id="INITIAL 2">
+    <divide_trunc>32</divide_trunc>
+    <remainder>32</remainder>
+    <case src="0" dst="A"/><case src="1" dst="B"/><case src="2" dst="C"/>
+    <case src="3" dst="D"/><case src="4" dst="E"/><case src="5" dst="F"/>
+    <case src="6" dst="G"/><case src="7" dst="H"/><case src="8" dst="I"/>
+    <case src="9" dst="J"/><case src="10" dst="K"/><case src="11" dst="L"/>
+    <case src="12" dst="M"/><case src="13" dst="N"/><case src="14" dst="O"/>
+    <case src="15" dst="P"/><case src="16" dst="Q"/><case src="17" dst="R"/>
+    <case src="18" dst="S"/><case src="19" dst="T"/><case src="20" dst="U"/>
+    <case src="21" dst="V"/><case src="22" dst="W"/><case src="23" dst="X"/>
+    <case src="24" dst="Y"/><case src="25" dst="Z"/><case src="26" dst=" "/>
+  </format>
+
+  <format id="INITIAL 3">
+    <divide_trunc>1024</divide_trunc>
+    <remainder>32</remainder>
+    <case src="0" dst="A"/><case src="1" dst="B"/><case src="2" dst="C"/>
+    <case src="3" dst="D"/><case src="4" dst="E"/><case src="5" dst="F"/>
+    <case src="6" dst="G"/><case src="7" dst="H"/><case src="8" dst="I"/>
+    <case src="9" dst="J"/><case src="10" dst="K"/><case src="11" dst="L"/>
+    <case src="12" dst="M"/><case src="13" dst="N"/><case src="14" dst="O"/>
+    <case src="15" dst="P"/><case src="16" dst="Q"/><case src="17" dst="R"/>
+    <case src="18" dst="S"/><case src="19" dst="T"/><case src="20" dst="U"/>
+    <case src="21" dst="V"/><case src="22" dst="W"/><case src="23" dst="X"/>
+    <case src="24" dst="Y"/><case src="25" dst="Z"/><case src="26" dst=" "/>
+  </format>
+
+  <format id="NAME" input-as-subcolumns-input="true">
+    <concat>
+      <column id="DATA 1" format="INITIAL 1"/>
+      <column id="DATA 1" format="INITIAL 2"/>
+      <column id="DATA 1" format="INITIAL 3"/>
+    </concat>
+    <trim direction="right"> </trim>
+  </format>
+
+  <format id="TEAM NAME">
+    <case src="0" dst="ATLANTA HAWKS"/>
+    <case src="1" dst="BOSTON CELTICS"/>
+    <case src="2" dst="CHARLOTTE HORNETS"/>
+    <case src="3" dst="CHICAGO BULLS"/>
+    <case src="4" dst="CLEVELAND CAVALIERS"/>
+    <case src="5" dst="DALLAS MAVERICKS"/>
+    <case src="6" dst="DENVER NUGGETS"/>
+    <case src="7" dst="DETROIT PISTONS"/>
+    <case src="8" dst="GOLDEN STATE WARRIORS"/>
+    <case src="9" dst="HOUSTON ROCKETS"/>
+    <case src="10" dst="INDIANA PACERS"/>
+    <case src="11" dst="LOS ANGELES CLIPPERS"/>
+    <case src="12" dst="LOS ANGELES LAKERS"/>
+    <case src="13" dst="MIAMI HEAT"/>
+    <case src="14" dst="MILWAUKEE BUCKS"/>
+    <case src="15" dst="MINNESOTA TIMBERWOLVES"/>
+    <case src="16" dst="NEW JERSEY NETS"/>
+    <case src="17" dst="NEW YORK KNICKS"/>
+    <case src="18" dst="ORLANDO MAGIC"/>
+    <case src="19" dst="PHILADELPHIA 76ERS"/>
+    <case src="20" dst="PHOENIX SUNS"/>
+    <case src="21" dst="PORTLAND TRAIL BLAZERS"/>
+    <case src="22" dst="SACRAMENTO KINGS"/>
+    <case src="23" dst="SAN ANTONIO SPURS"/>
+    <case src="24" dst="SEATTLE SUPERSONICS"/>
+    <case src="25" dst="UTAH JAZZ"/>
+    <case src="26" dst="WASHINGTON BULLETS"/>
+  </format>
+</openhi2txt>

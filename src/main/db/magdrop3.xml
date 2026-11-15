@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    magdrop3 - Magical Drop III (Data East / SNK, Neo Geo)
+    Reads the MAME saveram file (nvram/magdrop3/saveram), 65536 bytes.
+
+    Neo Geo 68000: saveram is word-swapped, so structure uses byte-swap 2.
+    Three contiguous 5-entry tables of 12-byte records from 0x0529:
+      CHALLENGE @ 0x0529   ADVENTURE @ 0x0565   SURVIVAL @ 0x05A1
+    Common: [0:3] SCORE 3-byte BCD, [3:7] NAME 4 bytes (font charset below).
+    Then per table:
+      CHALLENGE: [7:9] TIME (2-byte BCD MMSS), [9] REACTIONS (BCD)
+      ADVENTURE: [8]   SPACES (BCD)
+      SURVIVAL:  [9]   REACTIONS (BCD)
+
+    NAME uses the game font where letters are spaced 4 apart:
+      A=0x40, B=0x44, ... Z=0xA4, middot=0xA8, pad=0x00.
+      (D=0x4C and E=0x50 are confirmed from the "D-mid-E" default; A-Z
+      follow the verified step-4 pattern.)
+  -->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+
+    <!-- skip to CHALLENGE at 0x0529 (1321 bytes) -->
+    <elt size="1321" type="raw" id="PRE"/>
+
+    <!-- VS CPU - CHALLENGE MODE -->
+    <loop count="5">
+      <elt size="3" type="int"  base="16" id="CH_SCORE"/>
+      <elt size="4" type="text" charset="md" id="CH_NAME"/>
+      <elt size="2" type="int"  base="16" id="CH_TIME"/>
+      <elt size="1" type="int"  base="16" id="CH_REACT"/>
+      <elt size="2" type="raw"  id="CH_TAIL"/>
+    </loop>
+
+    <!-- ADVENTURE - MAGICAL JOURNEY -->
+    <loop count="5">
+      <elt size="3" type="int"  base="16" id="AD_SCORE"/>
+      <elt size="4" type="text" charset="md" id="AD_NAME"/>
+      <elt size="1" type="raw"  id="AD_P7"/>
+      <elt size="1" type="int"  base="16" id="AD_SPACES"/>
+      <elt size="3" type="raw"  id="AD_TAIL"/>
+    </loop>
+
+    <!-- PUZZLE - SURVIVAL MODE -->
+    <loop count="5">
+      <elt size="3" type="int"  base="16" id="SU_SCORE"/>
+      <elt size="4" type="text" charset="md" id="SU_NAME"/>
+      <elt size="1" type="raw"  id="SU_P7"/>
+      <elt size="1" type="raw"  id="SU_P8"/>
+      <elt size="1" type="int"  base="16" id="SU_REACT"/>
+      <elt size="2" type="raw"  id="SU_TAIL"/>
+    </loop>
+  </structure>
+
+  <format id="rank">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+
+  <!-- 2-byte BCD MMSS -> MM:SS -->
+  <format id="tmin"><divide_trunc>100</divide_trunc><pad direction="left" max="2">0</pad></format>
+  <format id="tsec"><remainder>100</remainder><pad direction="left" max="2">0</pad></format>
+  <format id="ttime" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="tmin"/>
+      <txt>:</txt>
+      <column format="tsec"/>
+    </concat>
+  </format>
+
+  <format id="spaces"><suffix> SPACES</suffix></format>
+
+  <output>
+    <table id="VS CPU - CHALLENGE MODE">
+      <column id="RANK"      src="index" format="rank"/>
+      <column id="NAME"      src="CH_NAME"/>
+      <column id="SCORE"     src="CH_SCORE"/>
+      <column id="REACTIONS" src="CH_REACT"/>
+      <column id="TIME"      src="CH_TIME" format="ttime"/>
+    </table>
+    <table id="ADVENTURE - MAGICAL JOURNEY">
+      <column id="RANK"   src="index" format="rank"/>
+      <column id="NAME"   src="AD_NAME"/>
+      <column id="SCORE"  src="AD_SCORE"/>
+      <column id="SPACES" src="AD_SPACES" format="spaces"/>
+    </table>
+    <table id="PUZZLE - SURVIVAL MODE">
+      <column id="RANK"      src="index" format="rank"/>
+      <column id="NAME"      src="SU_NAME"/>
+      <column id="SCORE"     src="SU_SCORE"/>
+      <column id="REACTIONS" src="SU_REACT"/>
+    </table>
+  </output>
+
+  <!-- game font: letters spaced 4 apart (A=0x40..Z=0xA4), middot, pad -->
+  <charset id="md">
+    <char src="0x40" dst="A"/>
+    <char src="0x44" dst="B"/>
+    <char src="0x48" dst="C"/>
+    <char src="0x4C" dst="D"/>
+    <char src="0x50" dst="E"/>
+    <char src="0x54" dst="F"/>
+    <char src="0x58" dst="G"/>
+    <char src="0x5C" dst="H"/>
+    <char src="0x60" dst="I"/>
+    <char src="0x64" dst="J"/>
+    <char src="0x68" dst="K"/>
+    <char src="0x6C" dst="L"/>
+    <char src="0x70" dst="M"/>
+    <char src="0x74" dst="N"/>
+    <char src="0x78" dst="O"/>
+    <char src="0x7C" dst="P"/>
+    <char src="0x80" dst="Q"/>
+    <char src="0x84" dst="R"/>
+    <char src="0x88" dst="S"/>
+    <char src="0x8C" dst="T"/>
+    <char src="0x90" dst="U"/>
+    <char src="0x94" dst="V"/>
+    <char src="0x98" dst="W"/>
+    <char src="0x9C" dst="X"/>
+    <char src="0xA0" dst="Y"/>
+    <char src="0xA4" dst="Z"/>
+    <char src="0xA8" dst="·"/>
+    <char src="0x00" dst=""/>
+  </charset>
+
+</hi2txt>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Turkey Hunting USA">
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,000000,10000,ab,00</definition>
+      <size>65536</size>
+    </check>
+    <elt size="80" type="raw" id="HDR"/>
+    <loop count="10">
+      <elt size="1" type="int"  id="CAT1_SHI" base="16"/>
+      <elt size="2" type="raw"  id="CAT1_PA"/>
+      <elt size="1" type="int"  id="CAT1_SLO" base="16"/>
+      <elt size="1" type="int"  id="CAT1_STATE"/>
+      <elt size="9" type="raw"  id="CAT1_PB"/>
+      <elt size="2" type="int"  id="CAT1_BIRDS" endianness="little_endian"/>
+    </loop>
+    <loop count="10">
+      <elt size="1" type="int"  id="CAT2_SHI" base="16"/>
+      <elt size="2" type="raw"  id="CAT2_PA"/>
+      <elt size="1" type="int"  id="CAT2_SLO" base="16"/>
+      <elt size="1" type="int"  id="CAT2_STATE"/>
+      <elt size="9" type="raw"  id="CAT2_PB"/>
+      <elt size="2" type="int"  id="CAT2_BIRDS" endianness="little_endian"/>
+    </loop>
+    <loop count="10">
+      <elt size="1" type="int"  id="CAT3_SHI" base="16"/>
+      <elt size="2" type="raw"  id="CAT3_PA"/>
+      <elt size="1" type="int"  id="CAT3_SLO" base="16"/>
+      <elt size="1" type="int"  id="CAT3_STATE"/>
+      <elt size="9" type="raw"  id="CAT3_PB"/>
+      <elt size="2" type="int"  id="CAT3_BIRDS" endianness="little_endian"/>
+    </loop>
+    <loop count="10">
+      <elt size="1" type="int"  id="CAT4_SHI" base="16"/>
+      <elt size="2" type="raw"  id="CAT4_PA"/>
+      <elt size="1" type="int"  id="CAT4_SLO" base="16"/>
+      <elt size="1" type="int"  id="CAT4_STATE"/>
+      <elt size="9" type="raw"  id="CAT4_PB"/>
+      <elt size="2" type="int"  id="CAT4_BIRDS" endianness="little_endian"/>
+    </loop>
+    <loop count="10">
+      <elt size="1" type="int"  id="CAT5_SHI" base="16"/>
+      <elt size="2" type="raw"  id="CAT5_PA"/>
+      <elt size="1" type="int"  id="CAT5_SLO" base="16"/>
+      <elt size="1" type="int"  id="CAT5_STATE"/>
+      <elt size="9" type="raw"  id="CAT5_PB"/>
+      <elt size="2" type="int"  id="CAT5_BIRDS" endianness="little_endian"/>
+    </loop>
+    <loop count="10">
+      <elt size="1" type="int"  id="CAT6_SHI" base="16"/>
+      <elt size="2" type="raw"  id="CAT6_PA"/>
+      <elt size="1" type="int"  id="CAT6_SLO" base="16"/>
+      <elt size="1" type="int"  id="CAT6_STATE"/>
+      <elt size="9" type="raw"  id="CAT6_PB"/>
+      <elt size="2" type="int"  id="CAT6_BIRDS" endianness="little_endian"/>
+    </loop>
+  </structure>
+  <output>
+    <table id="20 ga. PUMP SHOTGUN">
+      <column id="RANK"  src="index" format="rk"/>
+      <column id="SCORE" src="CAT1_SHI" format="mk_CAT1"/>
+      <column id="STATE" src="CAT1_STATE" format="states"/>
+      <column id="BIRDS" src="CAT1_BIRDS"/>
+    </table>
+    <table id="12 ga. PUMP SHOTGUN">
+      <column id="RANK"  src="index" format="rk"/>
+      <column id="SCORE" src="CAT2_SHI" format="mk_CAT2"/>
+      <column id="STATE" src="CAT2_STATE" format="states"/>
+      <column id="BIRDS" src="CAT2_BIRDS"/>
+    </table>
+    <table id=".233 RIFLE WITH SCOPE">
+      <column id="RANK"  src="index" format="rk"/>
+      <column id="SCORE" src="CAT3_SHI" format="mk_CAT3"/>
+      <column id="STATE" src="CAT3_STATE" format="states"/>
+      <column id="BIRDS" src="CAT3_BIRDS"/>
+    </table>
+    <table id="OVER UNDER SHOTGUN">
+      <column id="RANK"  src="index" format="rk"/>
+      <column id="SCORE" src="CAT4_SHI" format="mk_CAT4"/>
+      <column id="STATE" src="CAT4_STATE" format="states"/>
+      <column id="BIRDS" src="CAT4_BIRDS"/>
+    </table>
+    <table id="COMPOUND BOW">
+      <column id="RANK"  src="index" format="rk"/>
+      <column id="SCORE" src="CAT5_SHI" format="mk_CAT5"/>
+      <column id="STATE" src="CAT5_STATE" format="states"/>
+      <column id="BIRDS" src="CAT5_BIRDS"/>
+    </table>
+    <table id="BLACK POWDER SHOTGUN">
+      <column id="RANK"  src="index" format="rk"/>
+      <column id="SCORE" src="CAT6_SHI" format="mk_CAT6"/>
+      <column id="STATE" src="CAT6_STATE" format="states"/>
+      <column id="BIRDS" src="CAT6_BIRDS"/>
+    </table>
+  </output>
+  <format id="rk"><add>1</add></format>
+  <format id="m10"><multiply>10</multiply></format>
+  <format id="mk_CAT1"><multiply>1000</multiply><add><column id="CAT1_SLO" format="m10"/></add><suffix>.0</suffix></format>
+  <format id="mk_CAT2"><multiply>1000</multiply><add><column id="CAT2_SLO" format="m10"/></add><suffix>.0</suffix></format>
+  <format id="mk_CAT3"><multiply>1000</multiply><add><column id="CAT3_SLO" format="m10"/></add><suffix>.0</suffix></format>
+  <format id="mk_CAT4"><multiply>1000</multiply><add><column id="CAT4_SLO" format="m10"/></add><suffix>.0</suffix></format>
+  <format id="mk_CAT5"><multiply>1000</multiply><add><column id="CAT5_SLO" format="m10"/></add><suffix>.0</suffix></format>
+  <format id="mk_CAT6"><multiply>1000</multiply><add><column id="CAT6_SLO" format="m10"/></add><suffix>.0</suffix></format>
+  <format id="states">
+    <case src="0" dst="FLORIDA"/>
+    <case src="1" dst="KANSAS"/>
+    <case src="2" dst="NEW MEXICO"/>
+    <case src="3" dst="PENNSYLVANIA"/>
+    <case src="4" dst="MONTANA"/>
+  </format>
+</hi2txt>

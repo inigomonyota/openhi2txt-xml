@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hi2txt>
+  <!--
+    bionicc (.hi) definition for hi2txt
+    (No DTD/doctype to avoid DTD lookup/validation warnings)
+
+    hiscore.dat ranges (reference):
+      @:maincpu,program,fff9e2,4f,00,4d   (79 bytes)
+      @:maincpu,program,ffc57a,4,00,00    (4 bytes)
+      @:maincpu,program,fec0d9..fec0e7    (8 bytes)
+      Total .hi size: 91 bytes
+
+    Observed table layout:
+      10 entries * 8 bytes = 80 bytes
+        SCORE : 4 bytes packed BCD (base="16")  e.g. 00 02 00 00 => 20000
+        NAME  : 4 bytes ASCII (3 letters + pad, often 0x00)
+      Remaining bytes are flags/checksum and ignored.
+  -->
+
+  <structure file=".hi">
+    <check>
+      <size>91</size>
+    </check>
+
+    <loop count="10">
+      <elt size="4" type="int"  id="SCORE" base="16"/>
+      <elt size="4" type="text" id="NAME"  charset="bionicc"/>
+    </loop>
+
+    <elt size="11" type="raw" id="_TAIL"/>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME" format="trimr"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="trimr">
+    <trim direction="right"> </trim>
+  </format>
+
+  <charset id="bionicc">
+    <char src="0x00" dst=" "/>
+  </charset>
+</hi2txt>

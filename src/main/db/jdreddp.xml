@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    jdreddp - Judge Dredd (Bally/Williams WPC pinball, 1993)
+    Reads the MAME nvram file (nvram/jdreddp/nvram), 16384 bytes.
+
+    WPC stores each logical byte as [value][00] (16-bit). Two ranking tables of
+    10 records x 20 bytes:
+      THE DAILY LAW     @ 0x0014
+      THE SUPREME COURT @ 0x0814
+    Record:
+      [0:8]   SCORE  4 BCD bytes at even offsets (byte-skip odd), 8 digits
+      [8:12]  padding
+      [12:18] NAME   3 ASCII chars at even offsets (byte-skip odd)
+      [18:20] rank/flag field
+    RANK is positional, shown as "N·".
+  -->
+
+  <structure file="nvram">
+    <check>
+      <size>16384</size>
+    </check>
+
+    <!-- skip to THE DAILY LAW at 0x0014 (20 bytes) -->
+    <elt size="20" type="raw" id="PRE"/>
+    <loop count="10">
+      <elt size="8" type="int"  byte-skip="odd" base="16" id="DL_SCORE"/>
+      <elt size="4" type="raw"  id="DL_PAD"/>
+      <elt size="6" type="text" byte-skip="odd" id="DL_NAME"/>
+      <elt size="2" type="raw"  id="DL_FLD"/>
+    </loop>
+
+    <!-- skip to THE SUPREME COURT at 0x0814 (1848 bytes) -->
+    <elt size="1848" type="raw" id="GAP"/>
+    <loop count="10">
+      <elt size="8" type="int"  byte-skip="odd" base="16" id="SC_SCORE"/>
+      <elt size="4" type="raw"  id="SC_PAD"/>
+      <elt size="6" type="text" byte-skip="odd" id="SC_NAME"/>
+      <elt size="2" type="raw"  id="SC_FLD"/>
+    </loop>
+  </structure>
+
+  <format id="rank">
+    <add>1</add>
+    <suffix>·</suffix>
+  </format>
+
+  <output>
+    <table id="THE DAILY LAW">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="DL_NAME"/>
+      <column id="SCORE" src="DL_SCORE"/>
+    </table>
+    <table id="THE SUPREME COURT">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="SC_NAME"/>
+      <column id="SCORE" src="SC_SCORE"/>
+    </table>
+  </output>
+
+</hi2txt>

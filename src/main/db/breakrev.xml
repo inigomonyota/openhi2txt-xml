@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Breakers Revenge">
+  <structure file="saveram" byte-swap="2">
+    <check><size>65536</size></check>
+    <elt size="802" type="raw" id="_PREFIX"/>
+    <loop count="6">
+      <elt size="1" type="raw"  id="_STATUS"/>
+      <elt size="3" type="int"  id="SCORE"/>
+      <elt size="2" type="raw"  id="_PROGRESS"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="_NAME_PAD"/>
+      <elt size="2" type="int"  id="CHARACTER"/>
+      <elt size="2" type="int"  id="VS"/>
+    </loop>
+    <elt size="64650" type="raw" id="_SUFFIX"/>
+  </structure>
+  <output>
+    <table id="SCORE RANKING">
+      <column id="RANK" src="index" format="rank6"/>
+      <column id="CHARACTER" format="character"/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+      <column id="VS"/>
+    </table>
+  </output>
+  <format id="rank6">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+  </format>
+  <format id="character">
+    <case src="0" dst="SHO"/>
+    <case src="1" dst="DAO-LONG"/>
+    <case src="2" dst="CONDOR"/>
+    <case src="3" dst="TIA"/>
+    <case src="4" dst="RILA"/>
+    <case src="5" dst="ALSION III"/>
+    <case src="6" dst="PIELLE"/>
+    <case src="7" dst="MAHERL"/>
+    <case src="8" dst="BAI-HU"/>
+    <case src="9" dst="SAIZO"/>
+    <case src="0" default="yes" dst="UNKNOWN"/>
+  </format>
+</hi2txt>

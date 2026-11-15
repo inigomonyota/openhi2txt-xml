@@ -1,0 +1,18 @@
+<hi2txt>
+  <table id="SINGLES">
+    <col>RANK</col><col>SCORE</col><col>STAGE</col><col>NAME</col>
+    <row><cell>1</cell><cell>100000</cell><cell>15</cell><cell>USA</cell></row>
+    <row><cell>2</cell><cell>80000</cell><cell>10</cell><cell>DAI</cell></row>
+    <row><cell>3</cell><cell>50000</cell><cell>8</cell><cell>PAN</cell></row>
+    <row><cell>4</cell><cell>30000</cell><cell>5</cell><cell>KNI</cell></row>
+    <row><cell>5</cell><cell>10000</cell><cell>3</cell><cell>GAI</cell></row>
+  </table>
+  <table id="DOUBLES">
+    <col>RANK</col><col>SCORE</col><col>STAGE</col><col>NAME P1</col><col>NAME P2</col>
+    <row><cell>1</cell><cell>200000</cell><cell>20</cell><cell>FKI</cell><cell>MYL</cell></row>
+    <row><cell>2</cell><cell>100000</cell><cell>15</cell><cell>FG1</cell><cell>YRD</cell></row>
+    <row><cell>3</cell><cell>80000</cell><cell>10</cell><cell>Y.T</cell><cell>ALE</cell></row>
+    <row><cell>4</cell><cell>50000</cell><cell>8</cell><cell>HRK</cell><cell>LTL</cell></row>
+    <row><cell>5</cell><cell>30000</cell><cell>5</cell><cell>NSD</cell><cell>HCT</cell></row>
+  </table>
+</hi2txt>

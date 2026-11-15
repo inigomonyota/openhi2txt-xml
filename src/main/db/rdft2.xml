@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    rdft2 (Raiden Fighters 2 - Operation Hell Dive, Seibu Kaihatsu, 1997). The
+    hiscore plugin captures a 427-byte block from :maincpu program RAM @0x285dc
+    (hiscore.dat: @:maincpu,program,285dc,1ab,01,2e). No hi2txt definition existed.
+
+    PLAIN little-endian. The 427 bytes hold three on-screen charts plus a gap:
+
+      MASTERS OF SHIPS            @0x000 : 16 records x 12B (one per ship type)
+      (gap / RTC "today" header)  @0x0C0 : 68 raw bytes
+      TODAY'S HI-SCORE SOLO PLAY  @0x104 : 7 records x 12B
+      TODAY'S HI-SCORE DUAL PLAY  @0x158 : 7 records x 12B (final pad truncated)
+
+    12-byte record (both chart kinds share it):
+      +00 flag   u8  (ship chart: 01=unlocked/00=hidden; ace charts: 00)
+      +01 area   u8  (stage area, "1" default)
+      +02 level  u8  (stage level, "1" default -> shown "AREA-LEVEL" e.g. 1-1)
+      +03 id     u8  (ship chart: ship-type id 0..15; ace charts: rank slot id)
+      +04 score  u32 LE  (10 27 00 00 = 10,000 ; 40 42 0f 00 = 1,000,000)
+      +08 name   3x ASCII (default 2e 2e 2e = "...")
+      +0B pad    u8  (00; absent on the very last DUAL record = end of file)
+
+    The ship-type id (+03 of the ship chart) maps to the names shown on the
+    MASTERS OF SHIPS screens. Ids 0..6 are proven from the captured snapshots
+    (the 7 default ships); ids 7..15 are taken from the Shmups Wiki RF2 roster,
+    whose order matches the proven 0..6 exactly so the sequence continues:
+      0 AEGIS IV,     1 BEAST WING,   2 CHASER 2000,  3 DEATH HEADER,
+      4 ERASER,       5 FLYING RAY,   6 GRIFFIN,      7 HELL DIVER,
+      8 RAIDEN MK-II, 9 JUDGE SPEAR,  10 AEGIS IIC,   11 RAIDEN MK-IIB,
+      12 BLUE JAVELIN, 13 MICLUS,     14 FAIRY,       15 SLAVE.
+    (RF2's 17th ship, Dark Sword, never appears in the select screen and sits
+    outside this 16-record chart.)
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>427</size>
+    </check>
+
+    <!-- MASTERS OF SHIPS: 16 ship-type records -->
+    <loop count="16">
+      <elt size="1" type="raw"  id="M_UNLK"  table-index="loop_index"/>
+      <elt size="1" type="raw"  id="M_A"     table-index="loop_index"/>
+      <elt size="1" type="raw"  id="M_B"     table-index="loop_index"/>
+      <elt size="1" type="int"  id="M_SHIP"  table-index="loop_index"/>
+      <elt size="4" type="int"  id="M_SCORE" endianness="little_endian" table-index="loop_index"/>
+      <elt size="3" type="text" id="M_NAME"  table-index="loop_index"/>
+      <elt size="1" type="raw"  id="M_PAD"   table-index="loop_index"/>
+    </loop>
+
+    <!-- gap + "today" RTC header: 0xC0 .. 0x103 -->
+    <elt size="68" type="raw" id="GAP"/>
+
+    <!-- TODAY'S HI-SCORE - SOLO PLAY: 7 records -->
+    <loop count="7">
+      <elt size="1" type="raw"  id="S_PF"    table-index="loop_index"/>
+      <elt size="1" type="int"  id="S_AREA"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="S_LEVEL" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="S_IDX"   table-index="loop_index"/>
+      <elt size="4" type="int"  id="S_SCORE" endianness="little_endian" table-index="loop_index"/>
+      <elt size="3" type="text" id="S_NAME"  table-index="loop_index"/>
+      <elt size="1" type="raw"  id="S_PAD"   table-index="loop_index"/>
+    </loop>
+
+    <!-- TODAY'S HI-SCORE - DUAL PLAY: 7 records (last pad truncated at EOF) -->
+    <loop count="7">
+      <elt size="1" type="raw"  id="D_PF"    table-index="loop_index"/>
+      <elt size="1" type="int"  id="D_AREA"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="D_LEVEL" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="D_IDX"   table-index="loop_index"/>
+      <elt size="4" type="int"  id="D_SCORE" endianness="little_endian" table-index="loop_index"/>
+      <elt size="3" type="text" id="D_NAME"  table-index="loop_index"/>
+      <elt size="1" type="raw"  id="D_PAD"   table-index="loop_index"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="MASTERS OF SHIPS">
+      <column id="SHIP TYPE" src="M_SHIP" format="shiptype"/>
+      <column id="TOP SCORE" src="M_SCORE"/>
+      <column id="NAME"      src="M_NAME"/>
+    </table>
+
+    <table id="TODAY'S HI-SCORE - SOLO PLAY">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="S_NAME"/>
+      <column id="SCORE" src="S_SCORE"/>
+      <column id="STAGE" format="s_stage"/>
+    </table>
+
+    <table id="TODAY'S HI-SCORE - DUAL PLAY">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="D_NAME"/>
+      <column id="SCORE" src="D_SCORE"/>
+      <column id="STAGE" format="d_stage"/>
+    </table>
+  </output>
+
+  <format id="+1">
+    <add>1</add>
+  </format>
+
+  <format id="s_stage">
+    <concat><column id="S_AREA"/><txt>-</txt><column id="S_LEVEL"/></concat>
+  </format>
+  <format id="d_stage">
+    <concat><column id="D_AREA"/><txt>-</txt><column id="D_LEVEL"/></concat>
+  </format>
+
+  <format id="shiptype">
+    <case src="0" dst="AEGIS IV"/>
+    <case src="1" dst="BEAST WING"/>
+    <case src="2" dst="CHASER 2000"/>
+    <case src="3" dst="DEATH HEADER"/>
+    <case src="4" dst="ERASER"/>
+    <case src="5" dst="FLYING RAY"/>
+    <case src="6" dst="GRIFFIN"/>
+    <case src="7" dst="HELL DIVER"/>
+    <case src="8" dst="RAIDEN MK-II"/>
+    <case src="9" dst="JUDGE SPEAR"/>
+    <case src="10" dst="AEGIS IIC"/>
+    <case src="11" dst="RAIDEN MK-IIB"/>
+    <case src="12" dst="BLUE JAVELIN"/>
+    <case src="13" dst="MICLUS"/>
+    <case src="14" dst="FAIRY"/>
+    <case src="15" dst="SLAVE"/>
+  </format>
+</hi2txt>

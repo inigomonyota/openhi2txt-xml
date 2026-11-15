@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE openhi2txt>
+<openhi2txt requires="0.2.0" label="Tekken Tag Tournament">
+  <!--
+    Tekken Tag Tournament (World, TEG2/VER.C1, set 1) [Namco System 12]
+    at28c16 EEPROM is encrypted with a rolling PRNG + slot-shifted keystream;
+    hiscore.dat dumps the decrypted RAM tables from :maincpu program space:
+      0x802fde5f..0x802fe06f (0x211 B): sentinel(1B) + CHARACTER TIME RECORD(34x12B) + VS GAME WINS RECORD(10x12B)
+      0x802fe3d3..0x802fe4e4 (0x112 B): sentinel(1B) + CHARACTERS usage(34x8B) + sentinel(1B)
+  -->
+  <structure file=".hi">
+    <check><size>803</size></check>
+    <elt size="1" type="raw" id="PAD0"/>
+    <loop count="34">
+      <elt size="4" type="int"  id="TIME" endianness="little_endian"/>
+      <elt size="1" type="int"  id="TCHAR1"/>
+      <elt size="1" type="int"  id="TCHAR2"/>
+      <elt size="3" type="text" id="TNAME"/>
+      <elt size="3" type="raw"  id="TPAD"/>
+    </loop>
+    <loop count="10">
+      <elt size="1" type="int"  id="WCHAR1"/>
+      <elt size="1" type="int"  id="WCHAR2"/>
+      <elt size="2" type="int"  id="WINCNT" endianness="little_endian"/>
+      <elt size="3" type="text" id="WNAME"/>
+      <elt size="3" type="raw"  id="WPAD1"/>
+    </loop>
+    <elt size="20" type="raw" id="VPAD_END"/>
+    <elt size="1" type="raw" id="PAD1"/>
+    <loop count="34">
+      <elt size="2" type="int" id="U0" endianness="little_endian"/>
+      <elt size="2" type="raw" id="U2"/>
+      <elt size="2" type="int" id="U4" endianness="little_endian"/>
+      <elt size="2" type="int" id="U6" endianness="little_endian"/>
+    </loop>
+    <elt size="1" type="raw" id="PAD2"/>
+  </structure>
+
+  <output>
+    <table id="CHARACTER TIME RECORD" sort="TIME" sort-order="asc" lines-max="20">
+      <column id="RANK"      src="index"  format="rank"/>
+      <column id="CHARACTER" src="TCHAR1" format="character"/>
+      <column id="PARTNER"   src="TCHAR2" format="character"/>
+      <column id="TIME"      src="TIME"   format="time_fmt"/>
+      <column id="NAME"      src="TNAME"/>
+    </table>
+
+    <table id="VS GAME WINS RECORD" line-ignore="NAME:" lines-max="10">
+      <column id="RANK"      src="index"  format="rank"/>
+      <column id="CHARACTER" src="WCHAR1" format="character"/>
+      <column id="PARTNER"   src="WCHAR2" format="character"/>
+      <column id="WINS"      format="wins"/>
+      <column id="NAME"      src="WNAME"/>
+    </table>
+
+    <table id="CHARACTERS" sort="U0COL" sort-order="asc" sort-format="sortkey">
+      <column id="RANK"      src="index"          format="rank"/>
+      <column id="CHARACTER" src="unsorted_index" format="character"/>
+      <column id="PLAYS"     format="playsum"/>
+      <column id="U0COL"     src="U0"             display="debug"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <case src="0"  dst="1ST"/>  <case src="1"  dst="2ND"/>  <case src="2"  dst="3RD"/>  <case src="3"  dst="4TH"/>
+    <case src="4"  dst="5TH"/>  <case src="5"  dst="6TH"/>  <case src="6"  dst="7TH"/>  <case src="7"  dst="8TH"/>
+    <case src="8"  dst="9TH"/>  <case src="9"  dst="10TH"/> <case src="10" dst="11TH"/> <case src="11" dst="12TH"/>
+    <case src="12" dst="13TH"/> <case src="13" dst="14TH"/> <case src="14" dst="15TH"/> <case src="15" dst="16TH"/>
+    <case src="16" dst="17TH"/> <case src="17" dst="18TH"/> <case src="18" dst="19TH"/> <case src="19" dst="20TH"/>
+    <case src="20" dst="21ST"/> <case src="21" dst="22ND"/> <case src="22" dst="23RD"/> <case src="23" dst="24TH"/>
+    <case src="24" dst="25TH"/> <case src="25" dst="26TH"/> <case src="26" dst="27TH"/> <case src="27" dst="28TH"/>
+    <case src="28" dst="29TH"/> <case src="29" dst="30TH"/> <case src="30" dst="31ST"/> <case src="31" dst="32ND"/>
+    <case src="32" dst="33RD"/> <case src="33" dst="34TH"/>
+  </format>
+
+  <format id="character">
+    <case src="0"  dst="PAUL"/>       <case src="1"  dst="LAW"/>        <case src="2"  dst="LEI"/>
+    <case src="3"  dst="KING"/>       <case src="4"  dst="YOSHIMITSU"/> <case src="5"  dst="NINA"/>
+    <case src="6"  dst="HWOARANG"/>   <case src="7"  dst="XIAOYU"/>     <case src="8"  dst="EDDY"/>
+    <case src="9"  dst="JIN"/>        <case src="10" dst="JULIA"/>      <case src="11" dst="KUMA"/>
+    <case src="12" dst="BRYAN"/>      <case src="13" dst="HEIHACHI"/>   <case src="14" dst="OGRE"/>
+    <case src="15" dst="TETSUJIN"/>   <case src="16" dst="GUNJACK"/>    <case src="17" dst="ROGER"/>
+    <case src="18" dst="ANNA"/>       <case src="19" dst="KAZUYA"/>     <case src="20" dst="TRUE OGRE"/>
+    <case src="21" dst="JACK-2"/>     <case src="22" dst="P.JACK"/>     <case src="23" dst="MICHELLE"/>
+    <case src="24" dst="WANG"/>       <case src="25" dst="LEE"/>        <case src="26" dst="ARMORKING"/>
+    <case src="27" dst="GANRYU"/>     <case src="28" dst="KUNIMITSU"/>  <case src="29" dst="DEVIL"/>
+    <case src="30" dst="JUN"/>        <case src="31" dst="BRUCE"/>      <case src="32" dst="BAEK"/>
+    <case src="33" dst="UNKNOWN"/>    <case default="true" dst="-"/>
+  </format>
+
+  <format id="tf_mm"><divide_trunc>3600</divide_trunc><pad direction="left" max="2" value="0"/></format>
+  <format id="tf_ss"><remainder>3600</remainder><divide_trunc>60</divide_trunc><pad direction="left" max="2" value="0"/></format>
+  <format id="tf_ff"><remainder>60</remainder><pad direction="left" max="2" value="0"/></format>
+  <format id="time_fmt" input-as-subcolumns-input="true">
+    <concat><column format="tf_mm"/><txt>'</txt><column format="tf_ss"/><txt>"</txt><column format="tf_ff"/></concat>
+  </format>
+
+  <format id="plural_s"><case src="1" dst=""/><case default="true" dst="S"/></format>
+  <format id="wins">
+    <concat><column id="WINCNT"/><txt> WIN</txt><column id="WINCNT" format="plural_s"/></concat>
+  </format>
+
+  <format id="playsum"><sum><column id="U0"/><column id="U4"/><column id="U6"/></sum></format>
+
+  <format id="sortkey">
+    <add><column id="U4"/></add>
+    <add><column id="U6"/></add>
+    <case src="0"  dst="9900"/><case src="1"  dst="9800"/><case src="2"  dst="9700"/><case src="3"  dst="9600"/>
+    <case src="4"  dst="9500"/><case src="5"  dst="9400"/><case src="6"  dst="9300"/><case src="7"  dst="9200"/>
+    <case src="8"  dst="9100"/><case src="9"  dst="9000"/><case src="10" dst="8900"/><case src="11" dst="8800"/>
+    <case src="12" dst="8700"/><case src="13" dst="8600"/><case src="14" dst="8500"/><case src="15" dst="8400"/>
+    <case src="16" dst="8300"/><case src="17" dst="8200"/><case src="18" dst="8100"/><case src="19" dst="8000"/>
+    <case src="20" dst="7900"/><case src="21" dst="7800"/><case src="22" dst="7700"/><case src="23" dst="7600"/>
+    <case src="24" dst="7500"/><case src="25" dst="7400"/><case default="true" dst="7000"/>
+    <add><column src="unsorted_index"/></add>
+    <pad direction="left" max="8" value="0"/>
+  </format>
+</openhi2txt>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Ganryu">
+  <structure file="saveram" byte-swap="2">
+    <check><size>65536</size></check>
+
+    <elt size="1576" type="raw" id="_PREFIX"/>
+
+    <!-- Five score records.
+         Stored as:
+           HIGH = SCORE / 10000
+           LOW  = SCORE % 10000
+         Both are 16-bit big-endian values after the Neo Geo swap-2. -->
+    <loop count="5">
+      <elt size="2" type="int" id="SCORE_HIGH" endianness="big_endian"/>
+      <elt size="2" type="int" id="SCORE_LOW"  endianness="big_endian"/>
+    </loop>
+
+    <elt size="4" type="raw" id="_BETWEEN"/>
+
+    <!-- Five names, 3 ASCII chars + 1 pad byte. -->
+    <loop count="5">
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw" id="_NAME_PAD"/>
+    </loop>
+
+    <elt size="63916" type="raw" id="_SUFFIX"/>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="NAME"/>
+      <column id="SCORE" src="SCORE_LOW" format="score"/>
+    </table>
+  </output>
+
+  <!--
+      Start with SCORE_LOW, then add SCORE_HIGH * 10000.
+
+      This deliberately avoids <sum>. OpenHi2Txt's supplied source explicitly
+      implements referenced arithmetic operands, including a referenced column
+      with its own format chain.
+  -->
+  <format id="score">
+    <add>
+      <column id="SCORE_HIGH" format="*10000"/>
+    </add>
+  </format>
+</hi2txt>

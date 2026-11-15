@@ -1,10 +1,10 @@
 <hi2txt>
-  <table>
+  <table id="HIGH SCORES">
     <col>RANK</col><col>SCORE</col><col>NAME</col>
-    <row><cell>1</cell><cell>22927</cell><cell>CAV</cell></row>
-    <row><cell>2</cell><cell>16543</cell><cell>EJD</cell></row>
-    <row><cell>3</cell><cell>15432</cell><cell>DFT</cell></row>
-    <row><cell>4</cell><cell>14320</cell><cell>CAD</cell></row>
+    <row><cell>1</cell><cell>21867</cell><cell>EEE</cell></row>
+    <row><cell>2</cell><cell>20281</cell><cell>CCC</cell></row>
+    <row><cell>3</cell><cell>18369</cell><cell>BBB</cell></row>
+    <row><cell>4</cell><cell>13660</cell><cell>GGG</cell></row>
     <row><cell>5</cell><cell>13210</cell><cell>DCB</cell></row>
     <row><cell>6</cell><cell>13010</cell><cell>ED </cell></row>
     <row><cell>7</cell><cell>12805</cell><cell>DEW</cell></row>

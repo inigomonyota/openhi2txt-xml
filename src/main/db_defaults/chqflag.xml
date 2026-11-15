@@ -1,0 +1,30 @@
+<hi2txt>
+<table id="CIRCUIT 1 RECORDS">
+<col>RANK</col><col>TIME (1/10s)</col>
+<row><cell>1</cell><cell>12339</cell></row>
+<row><cell>2</cell><cell>12336</cell></row>
+<row><cell>3</cell><cell>12336</cell></row>
+<row><cell>4</cell><cell>12352</cell></row>
+</table>
+<table id="CIRCUIT 2 RECORDS">
+<col>RANK</col><col>TIME (1/10s)</col>
+<row><cell>1</cell><cell>16419</cell></row>
+<row><cell>2</cell><cell>19777</cell></row>
+<row><cell>3</cell><cell>17187</cell></row>
+<row><cell>4</cell><cell>16435</cell></row>
+</table>
+<table id="CIRCUIT 3 RECORDS">
+<col>RANK</col><col>TIME (1/10s)</col>
+<row><cell>1</cell><cell>20003</cell></row>
+<row><cell>2</cell><cell>16439</cell></row>
+<row><cell>3</cell><cell>21576</cell></row>
+<row><cell>4</cell><cell>16448</cell></row>
+</table>
+<table id="CIRCUIT 4 RECORDS">
+<col>RANK</col><col>TIME (1/10s)</col>
+<row><cell>1</cell><cell>16448</cell></row>
+<row><cell>2</cell><cell>9034</cell></row>
+<row><cell>3</cell><cell>16707</cell></row>
+<row><cell>4</cell><cell>9009</cell></row>
+</table>
+</hi2txt>

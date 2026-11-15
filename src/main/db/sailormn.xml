@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  sailormn - Pretty Soldier Sailor Moon (Banpresto, 1995)
+  Cave hardware, 68000 CPU.
+  hiscore.dat:
+    @:maincpu,program,10944f,47,02,05
+  71 bytes total
+
+  Block-interleaved layout:
+    [0-19]  Header: 5 × 4B records
+            Each: char_id (2B LE) + flag (2B LE)
+            (flag is 1 for entry 1 only, 0 for the rest -
+             possibly "champion" or "newest" indicator)
+    [20-69] Score block: 5 × 10B records
+            Each: rank_idx(1B) + 00 + score(3B BCD BE) + name(3B ASCII) + 00 + 00
+    [70]    Trailer (0x05)
+
+  Score is 3-byte packed BCD big-endian.
+  Names are 3-byte ASCII.
+
+  Character IDs (5 sailor scouts):
+    1 = SAILOR JUPITER
+    2 = SAILOR MERCURY
+    3 = SAILOR MOON
+    4 = SAILOR VENUS
+    5 = SAILOR MARS
+
+  Note: Character is shown in-game as an avatar image but stored as
+  an integer ID. The header block stores all 5 character IDs, then
+  the score block stores all 5 score+name records.
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>71</size>
+    </check>
+
+    <!-- ====== HEADER: 5 × 4B character records ====== -->
+    <loop count="5">
+      <elt size="2" type="int" id="CHAR" endianness="little_endian" table-index="loop_index"/>
+      <elt size="2" type="raw" id="FLAG"/>
+    </loop>
+
+    <!-- ====== SCORE BLOCK: 5 × 10B records ====== -->
+    <loop count="5">
+      <elt size="1" type="raw" id="RIDX"/>
+      <elt size="1" type="raw" id="ESEP1"/>
+      <elt size="3" type="int" id="SCORE" base="16" table-index="loop_index"/>
+      <elt size="3" type="text" id="NAME" table-index="loop_index"/>
+      <elt size="2" type="raw" id="ETAIL"/>
+    </loop>
+
+    <!-- Trailer (1 byte) -->
+    <elt size="1" type="raw" id="TRAILER"/>
+  </structure>
+
+  <output>
+    <table id="SCORE RANKING">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="CHARACTER" src="CHAR" format="char_name"/>
+      <column id="NAME"/>
+      <column id="SCORE" format="comma_score"/>
+    </table>
+  </output>
+
+  <!-- Ordinal rank (0-4 -> 1ST-5TH) -->
+  <format id="ordinal">
+    <case src="0" operator="=" dst="1ST"/>
+    <case src="1" operator="=" dst="2ND"/>
+    <case src="2" operator="=" dst="3RD"/>
+    <case src="3" operator="=" dst="4TH"/>
+    <case src="4" operator="=" dst="5TH"/>
+  </format>
+
+  <!-- Character ID -> name -->
+  <format id="char_name">
+    <case src="1" operator="=" dst="SAILOR JUPITER"/>
+    <case src="2" operator="=" dst="SAILOR MERCURY"/>
+    <case src="3" operator="=" dst="SAILOR MOON"/>
+    <case src="4" operator="=" dst="SAILOR VENUS"/>
+    <case src="5" operator="=" dst="SAILOR MARS"/>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+</hi2txt>

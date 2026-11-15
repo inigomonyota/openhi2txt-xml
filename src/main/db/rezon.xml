@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    tested with mame 0.??? and related hiscore.dat
+    structure: 101 bytes = 10 entries x 10 bytes + 1 trailing byte (top score truncated)
+    per entry (10 bytes):
+      [0:2]  score, 2-byte big-endian integer (multiply by 100 for display)
+      [2:10] name, 8-byte ASCII, space-padded (0x20) and null-terminated
+    top score: stored as 2-byte big-endian at file end; only 1 byte extracted (truncated)
+    score display: *100, zero-padded to 6 digits (e.g. 036300, 099000)
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>101</size>
+    </check>
+    <loop count="10" skip-last-bytes="1">
+      <elt size="2" type="int"  id="SCORE"/>
+      <elt size="8" type="text" id="NAME"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="SCORE" format="*100;PadL60"/>
+      <column id="NAME"  format="TrimR "/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="NO.1"/>
+    <case src="1" dst="NO.2"/>
+    <case src="2" dst="NO.3"/>
+    <case src="3" dst="NO.4"/>
+    <case src="4" dst="NO.5"/>
+    <case src="5" dst="NO.6"/>
+    <case src="6" dst="NO.7"/>
+    <case src="7" dst="NO.8"/>
+    <case src="8" dst="NO.9"/>
+    <case src="9" dst="NO.10"/>
+  </format>
+
+  <format id="*100"><multiply>100</multiply></format>
+
+</hi2txt>

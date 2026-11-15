@@ -1,42 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
 <hi2txt>
-  <!--
-    tested with mame 0.148 and related hiscore.dat
-      source: HiToText
-  //-->
-  
+
   <structure file=".hi">
     <check>
-      <!-- optional: if defined and hiscore.dat provided, it allows to select the good structure versus the provided file //-->
-      <definition>0:6600:c8:00:00
-                  0:6700:28:00:00</definition>
-      <!-- optional: if defined, it allows to select the good structure versus the provided file
-                     useful if multiple structures are defined but hiscore.dat not provided //-->
       <size>240</size>
     </check>
-    <loop count="100">
-      <elt size="2" type="int"  id="SCORE" base="16"/>
-    </loop>
+
+    <!-- scores: 5 x 2 bytes, packed BCD -->
     <loop count="5">
-      <elt size="3" type="text" id="NAME"  charset="exerion"/>
-      <elt size="5" type="text" id="EMPTY" charset="exerion"/>
+      <elt size="2" type="int" id="SCORE" base="16" table-index="loop_index"/>
+    </loop>
+
+    <!-- 0xC8 is names; we've read 10 bytes so far -->
+    <elt size="190" type="raw" id="_SKIP"/>
+
+    <!-- names: 5 x (3 chars + 5 zero padding) -->
+    <loop count="5">
+      <elt size="3" type="text" id="NAME" charset="exerion" table-index="loop_index"/>
+      <elt size="5" type="raw"  id="_NPAD"/>
     </loop>
   </structure>
-  
+
   <output>
-    <table line-ignore="SCORE:0">
-      <column id="RANK" src="index" format="+1"/>
-      <column id="SCORE" format="*100"/>
-      <column id="NAME"/>
-      <column id="EMPTY" display="debug"/>
+    <table id="EXERION">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SCORE" format="*100"/>
+      <column id="NAME"  src="NAME"  format="trimr"/>
     </table>
   </output>
-  
+
   <charset id="exerion">
-    <char src="0x00" dst=" "/>
-    <char src="0x40" dst=" "/>
-    <char src="0x5B" dst="."/>
-    <char src="0x5F" dst=":"/>
+    <char src="0x5b" dst="."/>  <!-- '[' -> '.' -->
+    <char src="0x5f" dst=":"/>  <!-- '_' -> ':' -->
   </charset>
+
 </hi2txt>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<table id="GREAT RATS OF HISTORY">
+<col>RANK</col><col>NAME</col><col>SCORE</col>
+<row><cell>1:</cell><cell>PCT</cell><cell>10,000</cell></row>
+<row><cell>2:</cell><cell>DAH</cell><cell>5,000</cell></row>
+<row><cell>3:</cell><cell>REM</cell><cell>2,500</cell></row>
+<row><cell>4:</cell><cell>SLY</cell><cell>1,000</cell></row>
+</table>
+<table id="CONTEMPORARY RATS">
+<col>RANK</col><col>NAME</col><col>SCORE</col>
+<row><cell>5:</cell><cell>TUF</cell><cell>100</cell></row>
+<row><cell>6:</cell><cell>RAT</cell><cell>100</cell></row>
+<row><cell>7:</cell><cell>STJ</cell><cell>100</cell></row>
+<row><cell>8:</cell><cell>OWL</cell><cell>100</cell></row>
+<row><cell>9:</cell><cell>FLY</cell><cell>100</cell></row>
+<row><cell>10:</cell><cell>BAT</cell><cell>100</cell></row>
+</table>
+</hi2txt>

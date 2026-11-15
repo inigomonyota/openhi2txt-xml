@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    jojon  (JoJo's Venture, Capcom CPS-3, 1998 - the earlier game; jojoban is
+    the 1999 "Heritage for the Future"). CPS-3 runs an SH-2 (BIG-ENDIAN). The
+    ranking lives in :maincpu program-space work RAM at 0x020447CE (found by
+    dumping RAM from a save state). Two rankings sit back-to-back, both using
+    the SAME 12-byte record, 5 records each = 120 bytes total:
+      SCORE RANKING @ +0x00 : 5 records (name + score)
+      VS    RANKING @ +0x3C : 5 records (name + wins)
+    Record layout (12 bytes):
+      +00 name  : 3 bytes, plain ASCII (0x55 0x45 0x4E = "UEN")
+      +03 pad   : 3 bytes (00 00 00)
+      +06 value : 4 bytes packed BCD, big-endian. SCORE table = points
+                  (00 05 00 00 = 50000); VS table = win count (00 00 00 06 = 6).
+                  Decoded with base="16" (the deployed hi2txt/openhi2txt read
+                  packed 2-digit-per-byte BCD via base 16; decoding-profile="bcd"
+                  is UNPACKED 1-digit-per-byte and would give the wrong value).
+      +0A byteA : 1 byte  per-table record counter (1,2,3,4,0) - NOT displayed,
+                  discarded. (Unlike jojoban this game has no LEVEL column, so
+                  there is no staggered-level unroll.)
+      +0B byteB : 1 byte  character / avatar id (name-aligned). Column CHARACTER.
+    Big-endian, ASCII names, packed-BCD values.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>120</size>
+    </check>
+
+    <!-- SCORE RANKING: 5 records -->
+    <loop count="5">
+      <elt size="3" type="text" id="S_NAME"  charset="csJJ" table-index="loop_index"/>
+      <elt size="3" type="raw"  id="S_PAD"   table-index="loop_index"/>
+      <elt size="4" type="int"  id="S_SCORE" base="16" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="S_MISC"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="S_CHAR"  table-index="loop_index"/>
+    </loop>
+
+    <!-- VS RANKING: 5 records (value = win count) -->
+    <loop count="5">
+      <elt size="3" type="text" id="V_NAME"  charset="csJJ" table-index="loop_index"/>
+      <elt size="3" type="raw"  id="V_PAD"   table-index="loop_index"/>
+      <elt size="4" type="int"  id="V_WINS"  base="16" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="V_MISC"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="V_CHAR"  table-index="loop_index"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="SCORE RANKING" sort="S_SCORE" sort-order="desc">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="NAME"  src="S_NAME"/>
+      <column id="SCORE" src="S_SCORE"/>
+      <column id="CHARACTER" src="S_CHAR" format="jj_char"/>
+      <column id="S_CHAR" format="0x" display="debug"/>
+      <column id="S_PAD"  format="0x" display="debug"/>
+    </table>
+
+    <table id="VS RANKING" sort="V_WINS" sort-order="desc">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="NAME"  src="V_NAME"/>
+      <column id="WINS"  src="V_WINS"/>
+      <column id="CHARACTER" src="V_CHAR" format="jj_char"/>
+      <column id="V_CHAR" format="0x" display="debug"/>
+      <column id="V_PAD"  format="0x" display="debug"/>
+    </table>
+  </output>
+
+  <!-- 1st..5th ranking labels (index is 0-based) -->
+  <format id="ordinal">
+    <case src="0" dst="1st"/>
+    <case src="1" dst="2nd"/>
+    <case src="2" dst="3rd"/>
+    <case src="3" dst="4th"/>
+    <case src="4" dst="5th"/>
+  </format>
+
+  <!-- Avatar/character id lives in record byte +0x0B (name-aligned), column
+       CHARACTER. The byteB -> portrait map was proven EMPIRICALLY (2026-10-21)
+       by live byte-injection: writing byteB into the VS rank-1 record and
+       snapshotting the VS RANKING board, the small per-rank LIST portrait (a
+       28x47 face card drawn at screen x476,y174) follows the byte exactly;
+       a full id0-vs-id6 frame diff is black everywhere except that one card.
+       Clean portraits for ids 0-20 are in
+         _knowledge/jojon-chars/jojon_PORTRAIT_CONTACT.png
+       (per-id captures kept in _knowledge/jojon-chars/s_<id>/).
+       IMPORTANT: the BIG attract character SPLASH is FIXED, NOT record-driven
+       (identical across all 21 injected ids - same hammer-stand character), so
+       the earlier splash-derived names (1=Jotaro, 6=Iggy) were WRONG: byteB=1
+       is a magenta-haired character (not Jotaro) and byteB=6 is a human face
+       (not the dog Iggy). Those guesses are removed; CHARACTER now prints the
+       raw id. Final JoJo Part-3 names await the user's confirmation from the
+       contact sheet (ids 12/13/16/17/20 fall back to the id0 face = out of
+       range; id18 is blank; id19 is a stray sprite, so the live roster is
+       ~ids 0-15). TENTATIVE reading pending user sign-off: 0=Jotaro,
+       1=Kakyoin, 4=old Joseph, 11=Dio. -->
+  <format id="jj_char">
+    <case src="-1" default="true" format="jj_idnum"/>
+  </format>
+  <format id="jj_idnum"><add>0</add></format>
+
+  <charset id="csJJ">
+    <char src="0x20" dst=" "/>
+    <char src="0x30" dst="0"/>
+    <char src="0x31" dst="1"/>
+    <char src="0x32" dst="2"/>
+    <char src="0x33" dst="3"/>
+    <char src="0x34" dst="4"/>
+    <char src="0x35" dst="5"/>
+    <char src="0x36" dst="6"/>
+    <char src="0x37" dst="7"/>
+    <char src="0x38" dst="8"/>
+    <char src="0x39" dst="9"/>
+    <char src="0x41" dst="A"/>
+    <char src="0x42" dst="B"/>
+    <char src="0x43" dst="C"/>
+    <char src="0x44" dst="D"/>
+    <char src="0x45" dst="E"/>
+    <char src="0x46" dst="F"/>
+    <char src="0x47" dst="G"/>
+    <char src="0x48" dst="H"/>
+    <char src="0x49" dst="I"/>
+    <char src="0x4a" dst="J"/>
+    <char src="0x4b" dst="K"/>
+    <char src="0x4c" dst="L"/>
+    <char src="0x4d" dst="M"/>
+    <char src="0x4e" dst="N"/>
+    <char src="0x4f" dst="O"/>
+    <char src="0x50" dst="P"/>
+    <char src="0x51" dst="Q"/>
+    <char src="0x52" dst="R"/>
+    <char src="0x53" dst="S"/>
+    <char src="0x54" dst="T"/>
+    <char src="0x55" dst="U"/>
+    <char src="0x56" dst="V"/>
+    <char src="0x57" dst="W"/>
+    <char src="0x58" dst="X"/>
+    <char src="0x59" dst="Y"/>
+    <char src="0x5a" dst="Z"/>
+  </charset>
+</hi2txt>

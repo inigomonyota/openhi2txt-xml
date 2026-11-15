@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 62 bytes -->
+    <check><size>62</size></check>
+    
+    <!-- Skip the initial 2-byte padding -->
+    <elt size="2" type="raw" id="SKIP_HEADER"/>
+    
+    <!-- ARRAY 1: 5 Scores (4 bytes each) -->
+    <loop count="5">
+      <elt size="4" type="int" id="SCORE" endianness="big_endian"/>
+    </loop>
+    
+    <!-- ARRAY 2: 5 Character/Unknown data blocks (4 bytes each) -->
+    <loop count="5">
+      <elt size="4" type="raw" id="UNKNOWN"/>
+    </loop>
+    
+    <!-- ARRAY 3: 5 Names (4 bytes each) -->
+    <loop count="5">
+      <!-- Read 3 letters, skip the 1-byte terminator (0x00 or 0x5F) -->
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="NAME_PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="THE BEST 5 OUTFOXIES">
+      <column id="RANK"  src="index" format="+1"/>
+      
+      <!-- Multiply by 1000 to restore the missing zeroes -->
+      <column id="SCORE" src="SCORE" format="*1000"/>
+      
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+  <!-- Translates the index from 0-4 to 1-5 -->
+  <format id="+1">
+    <add>1</add>
+  </format>
+</hi2txt>

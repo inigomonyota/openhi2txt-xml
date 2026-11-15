@@ -66,36 +66,46 @@
   </structure>
   
   <output>
-    <table id="1 PLAYER" line-ignore="SCORE:0">
-      <column id="RANK"      src="index"        format="+1"/>
+    <table id="TODAY HIGH SCORE - 1P" line-ignore="SCORE:0">
+      <column id="RANK"      src="index"        format="rank"/>
       <column id="SCORE"     src="1P SCORE"/>
       <column id="NAME"      src="1P NAME"/>
       <column id="CHARACTER" src="1P CHARACTER" format="character"/>
     </table>
 	
-	<table id="2 PLAYERS" line-ignore="2P SCORE:0">
-      <column id="RANK" src="index" format="+1"/>
-      <column id="2P SCORE"/>
-      <column id="2P NAME"/>
+	<table id="TODAY HIGH SCORE - 1P-2P" line-ignore="SCORE:0">
+      <column id="RANK"        src="index"        format="rank"/>
+      <column id="SCORE"       src="2P SCORE"/>
+      <column id="NAME"        src="2P NAME"/>
       <column id="CHARACTER 1" src="2P CHARACTER" format="d10;character"/>
 	  <column id="CHARACTER 2" src="2P CHARACTER" format="%10;character"/>
     </table>
 	
-	<table id="1 PLAYER BIS" line-ignore="SCORE:0">
-      <column id="RANK"      src="index"        format="+1"          display="debug"/>
-      <column id="SCORE"     src="1P SCORE 2"                        display="debug"/>
-      <column id="NAME"      src="1P NAME 2"                         display="debug"/>
-      <column id="CHARACTER" src="1P CHARACTER 2" format="character" display="debug"/>
+	<table id="TOTAL HIGH SCORE - 1P">
+      <column id="RANK"      src="index"          format="rank"/>
+      <column id="SCORE"     src="1P SCORE 2"/>
+      <column id="NAME"      src="1P NAME 2"/>
+      <column id="CHARACTER" src="1P CHARACTER 2" format="character"/>
     </table>
 	
-	<table id="2 PLAYERS BIS" line-ignore="2P SCORE:0">
-      <column id="RANK" src="index" format="+1"                            display="debug"/>
-      <column id="2P SCORE 2"                                              display="debug"/>
-      <column id="2P NAME 2"                                               display="debug"/>
-      <column id="CHARACTER 1" src="2P CHARACTER 2" format="d10;character" display="debug"/>
-	  <column id="CHARACTER 2" src="2P CHARACTER 2" format="%10;character" display="debug"/>
+	<table id="TOTAL HIGH SCORE - 1P-2P">
+      <column id="RANK"        src="index"          format="rank"/>
+      <column id="SCORE"       src="2P SCORE 2"/>
+      <column id="NAME"        src="2P NAME 2"/>
+      <column id="CHARACTER 1" src="2P CHARACTER 2" format="d10;character"/>
+	  <column id="CHARACTER 2" src="2P CHARACTER 2" format="%10;character"/>
     </table>
   </output>
+  
+  <format id="rank">
+    <case src="0" dst="1:"/>
+    <case src="1" dst="2:"/>
+    <case src="2" dst="3:"/>
+    <case src="3" dst="4:"/>
+    <case src="4" dst="5:"/>
+    <case src="5" dst="6:"/>
+    <case src="6" dst="7:"/>
+  </format>
   
   <format id="character">
     <case src="0"  dst="Mecha Keaton US F4F Corsair"/>

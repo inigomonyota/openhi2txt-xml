@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<hi2txt>
+  <table id="TERRY BOGARD">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>S.U</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>A.K</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>S.E</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="ANDY BOGARD">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>V.O</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>S.M</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>C.M</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="JOE HIGASHI">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>A.E</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>N.R</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>D..</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="MAI SHIRANUI">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>OBC</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>OBC</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>OBC</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="NIGHTMARE GEESE">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>GHO</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>STD</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>ESU</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="SOKAKU MOCHIZUKI">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>UCH</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>UJI</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>NDA</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="BOB WILSON">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>I.R</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>K.I</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>A..</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="HON FU">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>N.G</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>E&amp;E</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>O.O</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="BLUE MARY">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>K.S</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>I.U</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>N..</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="FRANCO BASH">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>B.T</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>A.L</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>T.E</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="RYUJI YAMAZAKI">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>F.L</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>E.D</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>E..</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="JIN CHONSHU">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>NOP</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>O.O</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>P.N</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="JIN CHONREI">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>ARX</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>R.R</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>X.A</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="DUCK KING">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>J.A</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>I..</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>M..</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="KIM KAPHWAN">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>OGU</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>RAD</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>ESU</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="BILLY KANE">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>A.B</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>K.O</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>Y.N</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="CHENG SINZAN">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>R.R</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>R.R</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>R.R</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="TUNG FU RUE">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>HAI</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>NSE</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>R..</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="LAURENCE BLOOD">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>RED</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>INS</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>ECT</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="WOLFGANG KRAUSER">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>KOB</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>A.O</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>NOP</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="ANDY BOGARD">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>OSA</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>KA0</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>75.</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="BILLY KANE">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>UED</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>KAN</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>GOR</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="BLUE MARY">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>SUE</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>TAN</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>YAM</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="TUNG FU RUE">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>400000</cell><cell>ICH</cell><cell>ACE</cell></row>
+    <row><cell>2ND.</cell><cell>200000</cell><cell>YOS</cell><cell>AVERAGE</cell></row>
+    <row><cell>3RD.</cell><cell>100000</cell><cell>SUG</cell><cell>TRAINEE</cell></row>
+  </table>
+  <table id="CONTINUE PLAYER">
+    <col>RANK</col><col>POINTS</col><col>NAME</col><col>F. RANK</col>
+    <row><cell>1ST.</cell><cell>160005</cell><cell>M&amp;T</cell><cell>BABY</cell></row>
+    <row><cell>2ND.</cell><cell>80004</cell><cell>S&amp;F</cell><cell>BABY</cell></row>
+    <row><cell>3RD.</cell><cell>40003</cell><cell>ESK</cell><cell>BABY</cell></row>
+  </table>
+</hi2txt>

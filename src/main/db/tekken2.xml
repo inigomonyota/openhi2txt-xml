@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE openhi2txt>
+<openhi2txt requires="0.2.0" label="Tekken 2">
+  <!--
+    Tekken 2 [Namco System 11] - at28c16 EEPROM (2080 bytes). Records VALUE-FIRST.
+    Roster: 23 selectable (0-22, ALEX==ROGER idx 22) + hidden ANGEL (23).
+    TIME RECORD @0x200 24x8B [TIME:3 LE frames@60fps][SP][NAME:3][NUL]; top 10 by time.
+    VS WINS     @0x2c0 10x8B [CHAR:2 LE][WINS:2 LE][NAME:3][NUL] (pre-sorted).
+    CHARACTERS %: per-char 6B record @0x124 [P1:2][?:2][P2:2]; plays = P1+P2 (1P+2P side).
+      total plays @0x114. shows chars with a time record OR plays>0.
+      Sort: single computed key SORTKEY = (P1+P2)*100 + (23-index), sorted DESC
+      => % desc, then roster-index asc. (openhi2txt sort takes ONE column.)
+  //-->
+  <structure file="at28c16">
+    <check><size>2080</size></check>
+    <elt size="276" type="raw" id="HDR1"/>
+    <elt size="2"   type="int" id="TOTAL" endianness="little_endian"/>
+    <elt size="14"  type="raw" id="HDR2"/>
+    <loop count="24">
+      <elt size="2" type="int" id="P1"   endianness="little_endian"/>
+      <elt size="2" type="raw" id="PMID"/>
+      <elt size="2" type="int" id="P2"   endianness="little_endian"/>
+    </loop>
+    <elt size="76" type="raw" id="HDR3"/>
+    <loop count="24">
+      <elt size="3" type="int"  id="TIME" endianness="little_endian"/>
+      <elt size="1" type="raw"  id="SP"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="NUL"/>
+    </loop>
+    <loop count="10">
+      <elt size="2" type="int"  id="WCHAR"  endianness="little_endian"/>
+      <elt size="2" type="int"  id="WINCNT" endianness="little_endian"/>
+      <elt size="3" type="text" id="WNAME"/>
+      <elt size="1" type="raw"  id="WNUL"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="CHARACTER TIME RECORD" sort="TIME" sort-order="asc" lines-max="10">
+      <column id="RANK"      src="index"          format="rank"/>
+      <column id="CHARACTER" src="unsorted_index" format="character"/>
+      <column id="TIME"      src="TIME"           format="time_fmt"/>
+      <column id="NAME"      src="NAME"/>
+    </table>
+
+    <table id="VS GAME WINS RECORD">
+      <column id="RANK"      src="index" format="rank"/>
+      <column id="CHARACTER" src="WCHAR" format="character"/>
+      <column id="WINS"      format="wins"/>
+      <column id="NAME"      src="WNAME"/>
+    </table>
+
+    <table id="CHARACTERS" sort="P1COL" sort-order="asc"
+           sort-format="sortkey" line-ignore="KEEP:359999">
+      <column id="RANK"       src="index"          format="rank"/>
+      <column id="CHARACTER"  src="unsorted_index" format="character"/>
+      <column id="PERCENTAGE" format="playsum;pctmul;Suffix%"/>
+      <column id="P1COL"      src="P1"             display="debug"/>
+      <column id="KEEP"       format="keep"    display="debug"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+    <case src="10" dst="11TH"/>
+    <case src="11" dst="12TH"/>
+    <case src="12" dst="13TH"/>
+    <case src="13" dst="14TH"/>
+    <case src="14" dst="15TH"/>
+    <case src="15" dst="16TH"/>
+    <case src="16" dst="17TH"/>
+    <case src="17" dst="18TH"/>
+    <case src="18" dst="19TH"/>
+    <case src="19" dst="20TH"/>
+    <case src="20" dst="21ST"/>
+    <case src="21" dst="22ND"/>
+    <case src="22" dst="23RD"/>
+    <case src="23" dst="24TH"/>
+  </format>
+  <format id="character">
+    <case src="0" dst="KAZUYA"/>
+    <case src="1" dst="PAUL"/>
+    <case src="2" dst="LAW"/>
+    <case src="3" dst="JACK-2"/>
+    <case src="4" dst="NINA"/>
+    <case src="5" dst="KING"/>
+    <case src="6" dst="YOSHIMITSU"/>
+    <case src="7" dst="MICHELLE"/>
+    <case src="8" dst="WANG"/>
+    <case src="9" dst="HEIHACHI"/>
+    <case src="10" dst="LEE"/>
+    <case src="11" dst="P.JACK"/>
+    <case src="12" dst="ARMOR KING"/>
+    <case src="13" dst="ANNA"/>
+    <case src="14" dst="GANRYU"/>
+    <case src="15" dst="KUMA"/>
+    <case src="16" dst="KUNIMITSU"/>
+    <case src="17" dst="DEVIL"/>
+    <case src="18" dst="LEI"/>
+    <case src="19" dst="JUN"/>
+    <case src="20" dst="BRUCE"/>
+    <case src="21" dst="BAEK"/>
+    <case src="22" dst="ROGER"/>
+    <case src="23" dst="ANGEL"/>
+  </format>
+
+  <!-- TIME frames@60fps -> MM'SS"FF -->
+  <format id="tf_mm"><divide_trunc>3600</divide_trunc><pad direction="left" max="2" value="0"/></format>
+  <format id="tf_ss"><remainder>3600</remainder><divide_trunc>60</divide_trunc><pad direction="left" max="2" value="0"/></format>
+  <format id="tf_ff"><remainder>60</remainder><pad direction="left" max="2" value="0"/></format>
+  <format id="time_fmt" input-as-subcolumns-input="true">
+    <concat><column format="tf_mm"/><txt>'</txt><column format="tf_ss"/><txt>"</txt><column format="tf_ff"/></concat>
+  </format>
+
+  <format id="wins"><concat><column id="WINCNT"/><txt> WINS</txt></concat></format>
+
+  <!-- plays = P1 + P2 ; percentage = plays/total to 1 dp -->
+  <format id="playsum"><sum><column id="P1"/><column id="P2"/></sum></format>
+  <format id="pctmul" formatter="%.1f">
+    <multiply>1000</multiply><divide_trunc><column id="TOTAL"/></divide_trunc><divide>10</divide>
+  </format>
+
+  <!-- sort-format applied to the P1 sort key: start from P1, add P2, x100, + (23-index).
+       key = (P1+P2)*100 + (23-index), zero-padded; unique per row => DESC = % desc, index asc. -->
+  <!-- sort key = (99 - plays)*100 + index, sorted ASC.
+       plays is inverted with a <case> map (the only value-inversion this build honors in a key);
+       index is added raw; ASC => higher plays first, then lower index first. -->
+  <format id="sortkey">
+    <add><column id="P2"/></add>
+    <case src="0" dst="9900"/><case src="1" dst="9800"/><case src="2" dst="9700"/><case src="3" dst="9600"/><case src="4" dst="9500"/><case src="5" dst="9400"/>
+    <case src="6" dst="9300"/><case src="7" dst="9200"/><case src="8" dst="9100"/><case src="9" dst="9000"/><case src="10" dst="8900"/><case src="11" dst="8800"/>
+    <case src="12" dst="8700"/><case src="13" dst="8600"/><case src="14" dst="8500"/><case src="15" dst="8400"/><case src="16" dst="8300"/><case src="17" dst="8200"/>
+    <case src="18" dst="8100"/><case src="19" dst="8000"/><case src="20" dst="7900"/><case src="21" dst="7800"/><case src="22" dst="7700"/><case src="23" dst="7600"/>
+    <case src="24" dst="7500"/><case src="25" dst="7400"/>
+    <case default="true" dst="7000"/>
+    <add><column src="unsorted_index"/></add>
+    <pad direction="left" max="8" value="0"/>
+  </format>
+
+  <!-- filter: hide chars with no time record AND no plays (KEEP == 359999) -->
+  <format id="mul1M"><multiply>1000000</multiply></format>
+  <format id="keep"><sum><column id="TIME"/><column id="P1" format="playsum;mul1M"/></sum></format>
+</openhi2txt>

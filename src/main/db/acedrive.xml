@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>243</size>
+    </check>
+
+    <!-- Range 1: 0x1000C33E-0x1000C370 (0x33 bytes) -->
+    <elt size="2" type="raw" id="_REC_GUARD_HEAD"/>
+
+    <!-- SOLO BEGINNER fastest lap -->
+    <elt size="3" type="int" id="BEGINNER_LAP_RAW" endianness="big_endian" bitmask="timer23"/>
+    <elt size="3" type="text" id="BEGINNER_LAP_NAME" charset="acedrive"/>
+    <elt size="4" type="raw" id="_BEGINNER_LAP_META"/>
+
+    <!-- SOLO EXPERT fastest lap -->
+    <elt size="3" type="int" id="EXPERT_LAP_RAW" endianness="big_endian" bitmask="timer23"/>
+    <elt size="3" type="text" id="EXPERT_LAP_NAME" charset="acedrive"/>
+    <elt size="4" type="raw" id="_EXPERT_LAP_META"/>
+
+    <!-- SOLO EXPERT [PRO] fastest lap -->
+    <elt size="3" type="int" id="PRO_LAP_RAW" endianness="big_endian" bitmask="timer23"/>
+    <elt size="3" type="text" id="PRO_LAP_NAME" charset="acedrive"/>
+    <elt size="4" type="raw" id="_PRO_LAP_META"/>
+
+    <!-- Total course records -->
+    <elt size="3" type="int" id="BEGINNER_COURSE_RAW" endianness="big_endian" bitmask="timer23"/>
+    <elt size="3" type="text" id="BEGINNER_COURSE_NAME" charset="acedrive"/>
+
+    <elt size="3" type="int" id="EXPERT_COURSE_RAW" endianness="big_endian" bitmask="timer23"/>
+    <elt size="3" type="text" id="EXPERT_COURSE_NAME" charset="acedrive"/>
+
+    <elt size="3" type="int" id="PRO_COURSE_RAW" endianness="big_endian" bitmask="timer23"/>
+    <elt size="3" type="text" id="PRO_COURSE_NAME" charset="acedrive"/>
+
+    <elt size="1" type="raw" id="_REC_GUARD_TAIL"/>
+
+    <!-- Range 2: SOLO BEGINNER ranking, 10 x (3-byte timer + 3-byte name), plus 4 pad bytes -->
+    <loop count="10">
+      <elt size="3" type="int" id="BEGINNER_TIME_RAW" endianness="big_endian" bitmask="timer23"/>
+      <elt size="3" type="text" id="BEGINNER_NAME" charset="acedrive"/>
+    </loop>
+    <elt size="4" type="raw" id="_BEGINNER_PAD"/>
+
+    <!-- Range 3: SOLO EXPERT -->
+    <loop count="10">
+      <elt size="3" type="int" id="EXPERT_TIME_RAW" endianness="big_endian" bitmask="timer23"/>
+      <elt size="3" type="text" id="EXPERT_NAME" charset="acedrive"/>
+    </loop>
+    <elt size="4" type="raw" id="_EXPERT_PAD"/>
+
+    <!-- Range 4: SOLO EXPERT [PRO] -->
+    <loop count="10">
+      <elt size="3" type="int" id="PRO_TIME_RAW" endianness="big_endian" bitmask="timer23"/>
+      <elt size="3" type="text" id="PRO_NAME" charset="acedrive"/>
+    </loop>
+    <elt size="4" type="raw" id="_PRO_PAD"/>
+  </structure>
+
+  <!-- Clear the non-time flag at bit 7 of the low byte. -->
+  <bitmask id="timer23">
+    <character mask="11111111 11111111 01111111"/>
+  </bitmask>
+
+  <output>
+    <table id="SOLO BEGINNER" lines-max="10">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="TIME" src="BEGINNER_TIME_RAW" format="course_time"/>
+      <column id="NAME" src="BEGINNER_NAME"/>
+    </table>
+
+    <table id="SOLO BEGINNER RECORDS" lines-max="1">
+      <column id="COURSE NAME" src="BEGINNER_COURSE_NAME"/>
+      <column id="COURSE TIME" src="BEGINNER_COURSE_RAW" format="course_time"/>
+      <column id="LAP NAME" src="BEGINNER_LAP_NAME"/>
+      <column id="FASTEST LAP" src="BEGINNER_LAP_RAW" format="lap_time"/>
+    </table>
+
+    <table id="SOLO EXPERT" lines-max="10">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="TIME" src="EXPERT_TIME_RAW" format="course_time"/>
+      <column id="NAME" src="EXPERT_NAME"/>
+    </table>
+
+    <table id="SOLO EXPERT RECORDS" lines-max="1">
+      <column id="COURSE NAME" src="EXPERT_COURSE_NAME"/>
+      <column id="COURSE TIME" src="EXPERT_COURSE_RAW" format="course_time"/>
+      <column id="LAP NAME" src="EXPERT_LAP_NAME"/>
+      <column id="FASTEST LAP" src="EXPERT_LAP_RAW" format="lap_time"/>
+    </table>
+
+    <table id="SOLO EXPERT [PRO]" lines-max="10">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="TIME" src="PRO_TIME_RAW" format="course_time"/>
+      <column id="NAME" src="PRO_NAME"/>
+    </table>
+
+    <table id="SOLO EXPERT [PRO] RECORDS" lines-max="1">
+      <column id="COURSE NAME" src="PRO_COURSE_NAME"/>
+      <column id="COURSE TIME" src="PRO_COURSE_RAW" format="course_time"/>
+      <column id="LAP NAME" src="PRO_LAP_NAME"/>
+      <column id="FASTEST LAP" src="PRO_LAP_RAW" format="lap_time"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+
+  <!-- Stored timer -> centiseconds: floor((raw * 5) / 768). -->
+  <format id="course_time" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="*10;d768;d6000"/>
+      <txt>'</txt>
+      <column format="*10;d768;%6000;d100;PadL20"/>
+      <txt>''</txt>
+      <column format="*10;d768;%100;PadL20"/>
+    </concat>
+  </format>
+
+  <format id="lap_time" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="*10;d768;d100"/>
+      <txt>''</txt>
+      <column format="*10;d768;%100;PadL20"/>
+    </concat>
+  </format>
+
+  <charset id="acedrive">
+    <char src="0x41" dst="A"/>
+    <char src="0x42" dst="B"/>
+    <char src="0x43" dst="C"/>
+    <char src="0x44" dst="D"/>
+    <char src="0x45" dst="E"/>
+    <char src="0x46" dst="F"/>
+    <char src="0x47" dst="G"/>
+    <char src="0x48" dst="H"/>
+    <char src="0x49" dst="I"/>
+    <char src="0x4A" dst="J"/>
+    <char src="0x4B" dst="K"/>
+    <char src="0x4C" dst="L"/>
+    <char src="0x4D" dst="M"/>
+    <char src="0x4E" dst="N"/>
+    <char src="0x4F" dst="O"/>
+    <char src="0x50" dst="P"/>
+    <char src="0x51" dst="Q"/>
+    <char src="0x52" dst="R"/>
+    <char src="0x53" dst="S"/>
+    <char src="0x54" dst="T"/>
+    <char src="0x55" dst="U"/>
+    <char src="0x56" dst="V"/>
+    <char src="0x57" dst="W"/>
+    <char src="0x58" dst="X"/>
+    <char src="0x59" dst="Y"/>
+    <char src="0x5A" dst="Z"/>
+    <char src="0x30" dst="0"/>
+    <char src="0x31" dst="1"/>
+    <char src="0x32" dst="2"/>
+    <char src="0x33" dst="3"/>
+    <char src="0x34" dst="4"/>
+    <char src="0x35" dst="5"/>
+    <char src="0x36" dst="6"/>
+    <char src="0x37" dst="7"/>
+    <char src="0x38" dst="8"/>
+    <char src="0x39" dst="9"/>
+    <char src="0x20" dst=" "/>
+    <char src="0x2E" dst="."/>
+    <char src="0x10" dst="ウ"/>
+    <char src="0x11" dst="ッカ"/>
+    <char src="0x12" dst="リ"/>
+  </charset>
+
+</hi2txt>

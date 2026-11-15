@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<hi2txt>
+  <table id="RANKING">
+    <col>RANK</col><col>NAME</col><col>FIGHTER 1</col><col>FIGHTER 2</col><col>SCORE</col>
+    <row><cell>1ST</cell><cell>DON</cell><cell>GOZU</cell><cell>HAYATE</cell><cell>150000</cell></row>
+    <row><cell>2ND</cell><cell>SWF</cell><cell>MEZU</cell><cell>JOKER</cell><cell>120000</cell></row>
+    <row><cell>3RD</cell><cell>GOU</cell><cell>GOZU</cell><cell>KIM YOUNG-MOK</cell><cell>90000</cell></row>
+    <row><cell>4TH</cell><cell>NIC</cell><cell>EAGLE</cell><cell>KING LION</cell><cell>60000</cell></row>
+    <row><cell>5TH</cell><cell>JYA</cell><cell>GORDON</cell><cell>ROSA</cell><cell>40000</cell></row>
+  </table>
+  <table id="RUSH RANK - HAYATE">
+    <col>RANK</col><col>NAME</col><col>RUSH</col>
+    <row><cell>1ST</cell><cell>MTZ</cell><cell>13</cell></row>
+    <row><cell>2ND</cell><cell>JAR</cell><cell>11</cell></row>
+    <row><cell>3RD</cell><cell>T.O</cell><cell>8</cell></row>
+  </table>
+  <table id="RUSH RANK - EAGLE">
+    <col>RANK</col><col>NAME</col><col>RUSH</col>
+    <row><cell>1ST</cell><cell>WAD</cell><cell>8</cell></row>
+    <row><cell>2ND</cell><cell>KAT</cell><cell>7</cell></row>
+    <row><cell>3RD</cell><cell>BAS</cell><cell>5</cell></row>
+  </table>
+  <table id="RUSH RANK - GOZU">
+    <col>RANK</col><col>NAME</col><col>RUSH</col>
+    <row><cell>1ST</cell><cell>HPA</cell><cell>13</cell></row>
+    <row><cell>2ND</cell><cell>TOH</cell><cell>10</cell></row>
+    <row><cell>3RD</cell><cell>SUE</cell><cell>8</cell></row>
+  </table>
+  <table id="RUSH RANK - MEZU">
+    <col>RANK</col><col>NAME</col><col>RUSH</col>
+    <row><cell>1ST</cell><cell>MAM</cell><cell>13</cell></row>
+    <row><cell>2ND</cell><cell>EIK</cell><cell>9</cell></row>
+    <row><cell>3RD</cell><cell>JF9</cell><cell>7</cell></row>
+  </table>
+  <table id="RUSH RANK - ROSA">
+    <col>RANK</col><col>NAME</col><col>RUSH</col>
+    <row><cell>1ST</cell><cell>FUT</cell><cell>9</cell></row>
+    <row><cell>2ND</cell><cell>AKA</cell><cell>7</cell></row>
+    <row><cell>3RD</cell><cell>RUR</cell><cell>5</cell></row>
+  </table>
+  <table id="RUSH RANK - KIM YOUNG-MOK">
+    <col>RANK</col><col>NAME</col><col>RUSH</col>
+    <row><cell>1ST</cell><cell>ODA</cell><cell>14</cell></row>
+    <row><cell>2ND</cell><cell>K10</cell><cell>12</cell></row>
+    <row><cell>3RD</cell><cell>T.I</cell><cell>8</cell></row>
+  </table>
+  <table id="RUSH RANK - JOKER">
+    <col>RANK</col><col>NAME</col><col>RUSH</col>
+    <row><cell>1ST</cell><cell>G.I</cell><cell>7</cell></row>
+    <row><cell>2ND</cell><cell>SIJ</cell><cell>6</cell></row>
+    <row><cell>3RD</cell><cell>TAS</cell><cell>5</cell></row>
+  </table>
+  <table id="RUSH RANK - CHUNG">
+    <col>RANK</col><col>NAME</col><col>RUSH</col>
+    <row><cell>1ST</cell><cell>PON</cell><cell>9</cell></row>
+    <row><cell>2ND</cell><cell>GIN</cell><cell>7</cell></row>
+    <row><cell>3RD</cell><cell>PIN</cell><cell>6</cell></row>
+  </table>
+  <table id="RUSH RANK - GORDON">
+    <col>RANK</col><col>NAME</col><col>RUSH</col>
+    <row><cell>1ST</cell><cell>GAB</cell><cell>6</cell></row>
+    <row><cell>2ND</cell><cell>SAS</cell><cell>5</cell></row>
+    <row><cell>3RD</cell><cell>M0A</cell><cell>4</cell></row>
+  </table>
+  <table id="RUSH RANK - KING LION">
+    <col>RANK</col><col>NAME</col><col>RUSH</col>
+    <row><cell>1ST</cell><cell>ROR</cell><cell>10</cell></row>
+    <row><cell>2ND</cell><cell>DAI</cell><cell>8</cell></row>
+    <row><cell>3RD</cell><cell>E.M</cell><cell>7</cell></row>
+  </table>
+</hi2txt>

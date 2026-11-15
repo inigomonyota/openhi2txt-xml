@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Donkey Kong II: Jumpman Returns (hack, V1.2)">
+
+  <!--
+    Native 128-byte MAME EEPROM definition.
+    No hiscore.dat and no .hi file required.
+
+    EEPROM leaderboard starts at 0x55.
+    Each entry is 7 bytes:
+      NAME[3], PAD[1], SCORE[2], PAD[1]
+
+    SCORE is genuine packed decimal stored little-endian by byte:
+      00 95 -> endian swap -> 95 00 -> base="16" -> 9500
+      50 76 -> endian swap -> 76 50 -> base="16" -> 7650
+
+    Virgin EEPROM is FF-filled. nibble-trim="0xF" collapses FFFF
+    before base conversion, and the rank-specific score format replaces
+    the resulting zero with the built-in default score.
+
+    The five records are deliberately unrolled rather than using cross-column
+    sums or index-derived score calculations. This keeps the definition simple
+    for both hi2txt and OpenHi2Txt.
+  -->
+
+  <structure file="eeprom">
+    <check>
+      <size>128</size>
+    </check>
+
+    <!-- 0x00-0x54 -->
+    <elt size="85" type="raw" id="_SKIP"/>
+
+    <!-- Rank 1 @ 0x55 -->
+    <elt size="3" type="text" id="NAME" table-index="0" charset="dkongx_name"/>
+    <elt size="1" type="raw" id="_PAD1A"/>
+    <elt size="2" type="int" id="SCORE" table-index="0"
+         endianness="little_endian" nibble-trim="0xF" base="16" format="score1"/>
+    <elt size="1" type="raw" id="_PAD1B"/>
+
+    <!-- Rank 2 @ 0x5C -->
+    <elt size="3" type="text" id="NAME" table-index="1" charset="dkongx_name"/>
+    <elt size="1" type="raw" id="_PAD2A"/>
+    <elt size="2" type="int" id="SCORE" table-index="1"
+         endianness="little_endian" nibble-trim="0xF" base="16" format="score2"/>
+    <elt size="1" type="raw" id="_PAD2B"/>
+
+    <!-- Rank 3 @ 0x63 -->
+    <elt size="3" type="text" id="NAME" table-index="2" charset="dkongx_name"/>
+    <elt size="1" type="raw" id="_PAD3A"/>
+    <elt size="2" type="int" id="SCORE" table-index="2"
+         endianness="little_endian" nibble-trim="0xF" base="16" format="score3"/>
+    <elt size="1" type="raw" id="_PAD3B"/>
+
+    <!-- Rank 4 @ 0x6A -->
+    <elt size="3" type="text" id="NAME" table-index="3" charset="dkongx_name"/>
+    <elt size="1" type="raw" id="_PAD4A"/>
+    <elt size="2" type="int" id="SCORE" table-index="3"
+         endianness="little_endian" nibble-trim="0xF" base="16" format="score4"/>
+    <elt size="1" type="raw" id="_PAD4B"/>
+
+    <!-- Rank 5 @ 0x71 -->
+    <elt size="3" type="text" id="NAME" table-index="4" charset="dkongx_name"/>
+    <elt size="1" type="raw" id="_PAD5A"/>
+    <elt size="2" type="int" id="SCORE" table-index="4"
+         endianness="little_endian" nibble-trim="0xF" base="16" format="score5"/>
+    <elt size="1" type="raw" id="_PAD5B"/>
+  </structure>
+
+  <output>
+    <table id="TOP 5 SCORES">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+
+  <!-- Virgin/erased EEPROM fallback values -->
+  <format id="score1"><case src="0" dst="7650"/></format>
+  <format id="score2"><case src="0" dst="6100"/></format>
+  <format id="score3"><case src="0" dst="5950"/></format>
+  <format id="score4"><case src="0" dst="5050"/></format>
+  <format id="score5"><case src="0" dst="4300"/></format>
+
+  <charset id="dkongx_name">
+    <char src="0xFF" dst=" "/>
+    <char src="0x10" dst=" "/>
+    <char src="0x11" dst="A"/>
+    <char src="0x12" dst="B"/>
+    <char src="0x13" dst="C"/>
+    <char src="0x14" dst="D"/>
+    <char src="0x15" dst="E"/>
+    <char src="0x16" dst="F"/>
+    <char src="0x17" dst="G"/>
+    <char src="0x18" dst="H"/>
+    <char src="0x19" dst="I"/>
+    <char src="0x1A" dst="J"/>
+    <char src="0x1B" dst="K"/>
+    <char src="0x1C" dst="L"/>
+    <char src="0x1D" dst="M"/>
+    <char src="0x1E" dst="N"/>
+    <char src="0x1F" dst="O"/>
+    <char src="0x20" dst="P"/>
+    <char src="0x21" dst="Q"/>
+    <char src="0x22" dst="R"/>
+    <char src="0x23" dst="S"/>
+    <char src="0x24" dst="T"/>
+    <char src="0x25" dst="U"/>
+    <char src="0x26" dst="V"/>
+    <char src="0x27" dst="W"/>
+    <char src="0x28" dst="X"/>
+    <char src="0x29" dst="Y"/>
+    <char src="0x2A" dst="Z"/>
+    <char src="0x2B" dst="."/>
+    <char src="0x2C" dst="-"/>
+  </charset>
+
+</hi2txt>

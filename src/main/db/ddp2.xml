@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="DoDonPachi II - Bee Storm">
+  <!--
+    DoDonPachi II / Bee Storm (ddp2) - IGS PGM, 2001. 68000 main + ARM7
+    coprocessor, battery-backed SRAM (native MAME nvram file "sram", 131072
+    bytes). The RANKING board (20 entries) lives in that SRAM, NOT in a
+    hiscore.dat RAM window - it is read directly from the native nvram blob
+    (like rapidfir). Table base = 0x1620c, 20 records of 0x14 (20) bytes =
+    0x190 (400) bytes, zero-bounded, ends at 0x1639c.
+
+    Record layout (20 bytes), verified byte-for-byte against the four RANKING
+    screenshots (factory defaults, scores 40000000 down to 34300000):
+      +0x00  NG   : name char G (letter index, A=0 => 0x06 = 'G')
+      +0x01  NI   : name char I (0x08 = 'I')
+      +0x02  pad  : 0xff (name separator/terminator, constant)
+      +0x03  NS   : name char S (0x12 = 'S')  -> displayed "IGS"
+      +0x04  pad  : 4 bytes (00)
+      +0x08  SCORE: 4 bytes packed BCD, LITTLE-endian (ARM coproc is LE).
+                    e.g. 00 00 70 39 -> reversed 39 70 00 00 -> 39700000.
+                    Decoded with base="16" + endianness="little_endian".
+      +0x0c  pad  : 3 bytes (00)
+      +0x0f  SHIP : 1 byte ship-type: 2=TYPE-A (RED) 1=TYPE-B (GREEN)
+                    0=TYPE-C (BLUE). Drives the ship sprite colour at the far
+                    right of each row (verified vs all 20 sprites: red/green/
+                    blue cycle) and the left mode badge (I.R./COMBAT/blank).
+      +0x10  pad  : 4 bytes.
+
+    The BOMB-type badge (E/B) shown next to "IGS" is NOT a stored field - it is
+    purely rank-parity (odd rank = E = ENERGY, even rank = B = BOMB). It is
+    reproduced here from the output index, not from the save data.
+
+    Name order note: the field stores G,I,0xff,S in memory; "IGS" is the
+    concat of the +0x01, +0x00 and +0x03 chars. All 20 default names are
+    identical, so the exact in-memory order of a user-entered name is not
+    independently verifiable, but this reproduces the factory default exactly.
+    Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file="sram">
+    <check>
+      <size>131072</size>
+    </check>
+    <elt size="90636" type="raw" id="SKIP"/>
+    <loop count="20">
+      <elt size="1" type="text" id="NG"    ascii-offset="65" table-index="loop_index"/>
+      <elt size="1" type="text" id="NI"    ascii-offset="65" table-index="loop_index"/>
+      <elt size="1" type="raw"  id="NX"    table-index="loop_index"/>
+      <elt size="1" type="text" id="NS"    ascii-offset="65" table-index="loop_index"/>
+      <elt size="4" type="raw"  id="PAD1"  table-index="loop_index"/>
+      <elt size="4" type="int"  id="SCORE" base="16" endianness="little_endian" table-index="loop_index"/>
+      <elt size="3" type="raw"  id="PAD2"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="SHIP"  table-index="loop_index"/>
+      <elt size="4" type="raw"  id="PAD3"  table-index="loop_index"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORES">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NI"    format="namecat"/>
+      <column id="SHIP"  src="SHIP"  format="shiptype"/>
+      <column id="BOMB"  src="index" format="bombtype"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <format id="namecat" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="NI"/><column src="NG"/><column src="NS"/>
+    </concat>
+  </format>
+
+  <format id="shiptype">
+    <replace src="2" dst="TYPE-A (RED)"/>
+    <replace src="1" dst="TYPE-B (GREEN)"/>
+    <replace src="0" dst="TYPE-C (BLUE)"/>
+  </format>
+
+  <format id="bombtype">
+    <remainder>2</remainder>
+    <replace src="0" dst="ENERGY"/>
+    <replace src="1" dst="BOMB"/>
+  </format>
+</hi2txt>

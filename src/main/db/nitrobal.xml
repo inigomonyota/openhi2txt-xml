@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- nitrobal by Data East Corporation, 1992 -->
+<!-- hiscore.dat: @:maincpu,program,ff9deb,14b,54,00 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>336</size>
+    </check>
+
+    <!-- BLOCK 1: 1.STRANGE FOOTBALL (3 entries) -->
+    <loop count="3">
+      <!-- byte-skip="even" skips the structural spaces at bytes 2 and 4 -->
+      <elt size="8" type="text" id="S1_NAME" byte-skip="even" charset="nitrobal_nulls"/>
+      <elt size="4" type="int"  id="S1_SCORE" base="16"/>
+      <elt size="4" type="raw"  id="S1_PAD"/>
+    </loop>
+
+    <!-- BLOCK 2: 2.COMBAT FIELD (3 entries) -->
+    <loop count="3">
+      <elt size="8" type="text" id="S2_NAME" byte-skip="even" charset="nitrobal_nulls"/>
+      <elt size="4" type="int"  id="S2_SCORE" base="16"/>
+      <elt size="4" type="raw"  id="S2_PAD"/>
+    </loop>
+
+    <!-- BLOCK 3: 3.GHOST TOWN (3 entries) -->
+    <loop count="3">
+      <elt size="8" type="text" id="S3_NAME" byte-skip="even" charset="nitrobal_nulls"/>
+      <elt size="4" type="int"  id="S3_SCORE" base="16"/>
+      <elt size="4" type="raw"  id="S3_PAD"/>
+    </loop>
+
+    <!-- BLOCK 4: 4.ALIENS WORLD (3 entries) -->
+    <loop count="3">
+      <elt size="8" type="text" id="S4_NAME" byte-skip="even" charset="nitrobal_nulls"/>
+      <elt size="4" type="int"  id="S4_SCORE" base="16"/>
+      <elt size="4" type="raw"  id="S4_PAD"/>
+    </loop>
+
+    <!-- BLOCK 5: 5.SPACE STATION (3 entries) -->
+    <loop count="3">
+      <elt size="8" type="text" id="S5_NAME" byte-skip="even" charset="nitrobal_nulls"/>
+      <elt size="4" type="int"  id="S5_SCORE" base="16"/>
+      <elt size="4" type="raw"  id="S5_PAD"/>
+    </loop>
+
+    <!-- BLOCK 6: TOTAL BEST SCORES (6 entries) -->
+    <loop count="6">
+      <elt size="8" type="text" id="T_NAME" byte-skip="even" charset="nitrobal_nulls"/>
+      <elt size="4" type="int"  id="T_SCORE" base="16"/>
+      <elt size="4" type="raw"  id="T_PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TOTAL BEST SCORES">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="NAME"  src="T_NAME" format="trim_right"/>
+      <column id="SCORE" src="T_SCORE" format="d10;PadL80;comma_score"/>
+    </table>
+
+    <table id="1.STRANGE FOOTBALL">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="NAME"  src="S1_NAME" format="trim_right"/>
+      <column id="SCORE" src="S1_SCORE" format="d10;PadL80;comma_score"/>
+    </table>
+
+    <table id="2.COMBAT FIELD">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="NAME"  src="S2_NAME" format="trim_right"/>
+      <column id="SCORE" src="S2_SCORE" format="d10;PadL80;comma_score"/>
+    </table>
+
+    <table id="3.GHOST TOWN">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="NAME"  src="S3_NAME" format="trim_right"/>
+      <column id="SCORE" src="S3_SCORE" format="d10;PadL80;comma_score"/>
+    </table>
+
+    <table id="4.ALIENS WORLD">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="NAME"  src="S4_NAME" format="trim_right"/>
+      <column id="SCORE" src="S4_SCORE" format="d10;PadL80;comma_score"/>
+    </table>
+
+    <table id="5.SPACE STATION">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="NAME"  src="S5_NAME" format="trim_right"/>
+      <column id="SCORE" src="S5_SCORE" format="d10;PadL80;comma_score"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="1ST"/><case src="1" dst="2ND"/><case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/><case src="4" dst="5TH"/><case src="5" dst="6TH"/>
+  </format>
+
+  <format id="trim_right">
+    <trim direction="right"> </trim>
+  </format>
+
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/><txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <!-- This removes null bytes from names in an XML-safe way -->
+  <charset id="nitrobal_nulls">
+    <char src="0x00" dst=""/>
+  </charset>
+
+</hi2txt>

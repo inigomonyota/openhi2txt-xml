@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  orunners - OutRunners (Sega, 1992)
+
+  MAME's hiscore/orunners.hi dump is 61 bytes: 10 per-course records of
+  CAR(1) + NAME(3 ASCII) + TIME(2 LE centiseconds), back-to-back, followed
+  by a single trailing byte (0x21). This CAR-first record layout matches the
+  original OutRunners definition; a decode with NAME-first / 60-byte sizing
+  shifts every field by one byte and corrupts the output.
+
+  Course order in the dump: 0 Australia, 1 HongKong, 2 Japan, 3 China,
+  4 Russia, 5 Northern Europe, 6 Switzerland, 7 The Atlantic, 8 Spain, 9 Kenya.
+  TIME is little-endian centiseconds (30000 = 5'00"00, the factory default).
+  CAR is the car index, mapped to its name via car_name (0..8).
+
+  Verified byte-for-byte against the default board: every course's NAME, TIME
+  and CAR TYPE match (e.g. Australia SGA / MAD POWER, Kenya SMA / SPEED BUSTER).
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>61</size>
+    </check>
+    <loop count="10">
+      <elt size="1" type="int"  id="CAR"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="2" type="int"  id="TIME" endianness="little_endian"/>
+    </loop>
+    <elt size="1" type="raw" id="PAD"/>
+  </structure>
+
+  <output>
+    <table id="OutRunner of OutRunners">
+      <column id="COURSE"   src="index" format="course_name"/>
+      <column id="NAME"     src="NAME"/>
+      <column id="TIME"     src="TIME" format="time_fmt"/>
+      <column id="CAR TYPE" src="CAR"  format="car_name"/>
+    </table>
+  </output>
+
+  <format id="course_name">
+    <case src="0" operator="=" dst="Australia Course"/>
+    <case src="1" operator="=" dst="HongKong Course"/>
+    <case src="2" operator="=" dst="Japan Course"/>
+    <case src="3" operator="=" dst="China Course"/>
+    <case src="4" operator="=" dst="Russia Course"/>
+    <case src="5" operator="=" dst="Northern Europe Course"/>
+    <case src="6" operator="=" dst="Switzerland Course"/>
+    <case src="7" operator="=" dst="The Atlantic Course"/>
+    <case src="8" operator="=" dst="Spain Course"/>
+    <case src="9" operator="=" dst="Kenya Course"/>
+  </format>
+
+  <!-- car index -> car name (from the original OutRunners def) -->
+  <format id="car_name">
+    <case src="0" operator="=" dst="MAD POWER"/>
+    <case src="1" operator="=" dst="SPEED BUSTER"/>
+    <case src="2" operator="=" dst="EASY HANDLING"/>
+    <case src="3" operator="=" dst="SMOOTH OPERATOR"/>
+    <case src="4" operator="=" dst="BAD BOY"/>
+    <case src="5" operator="=" dst="ROAD MONSTER"/>
+    <case src="6" operator="=" dst="QUICK REACTOR"/>
+    <case src="7" operator="=" dst="WILD CHASER"/>
+    <case src="8" operator="=" dst="VIRTUA RACING CAR"/>
+  </format>
+
+  <!-- LE centiseconds -> M'SS"HH -->
+  <format id="time_fmt" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d6000"/>
+      <txt>'</txt>
+      <column format="%6000;d100;PadL20"/>
+      <txt>"</txt>
+      <column format="%100;PadL20"/>
+    </concat>
+  </format>
+
+</hi2txt>

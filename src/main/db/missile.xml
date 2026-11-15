@@ -23,8 +23,8 @@
   </structure>
   
   <output>
-    <table>
-      <column id="RANK" src="index" format="+1"/>
+    <table id="HIGH SCORES">
+      <column id="RANK" src="index" format="+1" display="debug"/>
       <column id="SCORE"/>
       <column id="NAME"/>
     </table>

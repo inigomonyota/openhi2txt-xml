@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    lghost - Laser Ghost (Sega System 18, 1990)
+    Reads the MAME nvram file (nvram/lghost/nvram), 16384 bytes.
+
+    Sega 68000 board: nvram is word-swapped, so structure uses byte-swap 2.
+    Ranking = 50 records of 8 bytes starting at 0x3C00 (post-swap):
+      [0:4] SCORE 4-byte BCD (00 08 00 00 gives 80000)
+      [4:7] NAME  3 ASCII chars
+      [7]   0xFF terminator
+    RANK is positional (1..50).
+  -->
+
+  <structure file="nvram" byte-swap="2">
+    <check>
+      <size>16384</size>
+    </check>
+
+    <!-- skip to table at 0x3C00 (15360 bytes) -->
+    <elt size="15360" type="raw" id="PRE"/>
+    <loop count="50">
+      <elt size="4" type="int"  base="16" id="SCORE"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="TERM"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+</hi2txt>

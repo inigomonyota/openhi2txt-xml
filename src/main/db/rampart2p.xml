@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Rampart (2-player version)">
+
+  <!--
+    Native MAME EEPROM: 2048 bytes.
+
+    Persistent high-score area:
+      0x078-0x095  1-PLAYER GAME
+      0x096-0x0B3  2-PLAYER GAME
+      0x0B4-0x0D1  3-PLAYER GAME
+
+    Atari stores only the top four editable records for each table in EEPROM.
+    Ranks 5-10 are the game's fixed factory entries and are supplied below
+    using synthetic table rows, as with Pit-Fighter.
+
+    Packed initials:
+      15-bit code = C1*1024 + C2*32 + C3
+      0 = space, 1=A ... 26=Z
+  -->
+
+  <structure file="eeprom">
+    <check>
+      <size>2048</size>
+    </check>
+
+    <!-- ============================================================= -->
+    <!-- Synthetic backing rows 5-10 for all three score tables.       -->
+    <!-- The raw EEPROM bytes consumed here are ignored by the formats. -->
+    <!-- 18 rows x (2-byte score + 2-byte name) = 72 bytes = 0x48.     -->
+    <!-- ============================================================= -->
+
+    <!-- 1-PLAYER ranks 5-10 -->
+    <elt size="2" type="int" id="P1_SCORE" table-index="4" format="p1_score5"/>
+    <elt size="2" type="int" id="P1_NAME"  table-index="4" format="p1_name5"/>
+    <elt size="2" type="int" id="P1_SCORE" table-index="5" format="p1_score6"/>
+    <elt size="2" type="int" id="P1_NAME"  table-index="5" format="p1_name6"/>
+    <elt size="2" type="int" id="P1_SCORE" table-index="6" format="p1_score7"/>
+    <elt size="2" type="int" id="P1_NAME"  table-index="6" format="p1_name7"/>
+    <elt size="2" type="int" id="P1_SCORE" table-index="7" format="p1_score8"/>
+    <elt size="2" type="int" id="P1_NAME"  table-index="7" format="p1_name8"/>
+    <elt size="2" type="int" id="P1_SCORE" table-index="8" format="p1_score9"/>
+    <elt size="2" type="int" id="P1_NAME"  table-index="8" format="p1_name9"/>
+    <elt size="2" type="int" id="P1_SCORE" table-index="9" format="p1_score10"/>
+    <elt size="2" type="int" id="P1_NAME"  table-index="9" format="p1_name10"/>
+
+    <!-- 2-PLAYER ranks 5-10 -->
+    <elt size="2" type="int" id="P2_SCORE" table-index="4" format="p2_score5"/>
+    <elt size="2" type="int" id="P2_NAME"  table-index="4" format="p2_name5"/>
+    <elt size="2" type="int" id="P2_SCORE" table-index="5" format="p2_score6"/>
+    <elt size="2" type="int" id="P2_NAME"  table-index="5" format="p2_name6"/>
+    <elt size="2" type="int" id="P2_SCORE" table-index="6" format="p2_score7"/>
+    <elt size="2" type="int" id="P2_NAME"  table-index="6" format="p2_name7"/>
+    <elt size="2" type="int" id="P2_SCORE" table-index="7" format="p2_score8"/>
+    <elt size="2" type="int" id="P2_NAME"  table-index="7" format="p2_name8"/>
+    <elt size="2" type="int" id="P2_SCORE" table-index="8" format="p2_score9"/>
+    <elt size="2" type="int" id="P2_NAME"  table-index="8" format="p2_name9"/>
+    <elt size="2" type="int" id="P2_SCORE" table-index="9" format="p2_score10"/>
+    <elt size="2" type="int" id="P2_NAME"  table-index="9" format="p2_name10"/>
+
+    <!-- 3-PLAYER ranks 5-10 -->
+    <elt size="2" type="int" id="P3_SCORE" table-index="4" format="p3_score5"/>
+    <elt size="2" type="int" id="P3_NAME"  table-index="4" format="p3_name5"/>
+    <elt size="2" type="int" id="P3_SCORE" table-index="5" format="p3_score6"/>
+    <elt size="2" type="int" id="P3_NAME"  table-index="5" format="p3_name6"/>
+    <elt size="2" type="int" id="P3_SCORE" table-index="6" format="p3_score7"/>
+    <elt size="2" type="int" id="P3_NAME"  table-index="6" format="p3_name7"/>
+    <elt size="2" type="int" id="P3_SCORE" table-index="7" format="p3_score8"/>
+    <elt size="2" type="int" id="P3_NAME"  table-index="7" format="p3_name8"/>
+    <elt size="2" type="int" id="P3_SCORE" table-index="8" format="p3_score9"/>
+    <elt size="2" type="int" id="P3_NAME"  table-index="8" format="p3_name9"/>
+    <elt size="2" type="int" id="P3_SCORE" table-index="9" format="p3_score10"/>
+    <elt size="2" type="int" id="P3_NAME"  table-index="9" format="p3_name10"/>
+
+    <!-- Continue from 0x048 to the first ranking block at 0x078. -->
+    <elt size="48" type="raw" id="_SKIP_TO_HISCORES"/>
+
+    <!-- ============================================================= -->
+    <!-- 1-PLAYER GAME @ 0x078, 30 bytes                               -->
+    <!-- ============================================================= -->
+    <elt size="2" type="raw" id="_P1_HEAD"/>
+
+    <!-- Rank 1: xx SCORE_LO xx SCORE_HI | xx NAME_LO xx NAME_HI -->
+    <elt size="4" type="int" id="P1_SCORE" table-index="0"
+         byte-skip="odd" endianness="little_endian"/>
+    <elt size="4" type="int" id="P1_NAME" table-index="0"
+         byte-skip="odd" endianness="little_endian" format="name"/>
+
+    <!-- Rank 2 -->
+    <elt size="2" type="int" id="P1_SCORE" table-index="1"
+         endianness="little_endian"/>
+    <elt size="1" type="raw" id="_P1_R2_PAD1"/>
+    <elt size="2" type="int" id="P1_NAME" table-index="1"
+         endianness="little_endian" format="name"/>
+    <elt size="2" type="raw" id="_P1_R2_PAD2"/>
+
+    <!-- Rank 3: xx SCORE_LO xx SCORE_HI | xx NAME_LO xx NAME_HI -->
+    <elt size="4" type="int" id="P1_SCORE" table-index="2"
+         byte-skip="odd" endianness="little_endian"/>
+    <elt size="4" type="int" id="P1_NAME" table-index="2"
+         byte-skip="odd" endianness="little_endian" format="name"/>
+
+    <!-- Rank 4 -->
+    <elt size="2" type="int" id="P1_SCORE" table-index="3"
+         endianness="little_endian"/>
+    <elt size="1" type="raw" id="_P1_R4_PAD"/>
+    <elt size="2" type="int" id="P1_NAME" table-index="3"
+         endianness="little_endian" format="name"/>
+
+    <!-- ============================================================= -->
+    <!-- 2-PLAYER GAME @ 0x096, 30 bytes                               -->
+    <!-- ============================================================= -->
+    <elt size="2" type="raw" id="_P2_HEAD"/>
+
+    <elt size="4" type="int" id="P2_SCORE" table-index="0"
+         byte-skip="odd" endianness="little_endian"/>
+    <elt size="4" type="int" id="P2_NAME" table-index="0"
+         byte-skip="odd" endianness="little_endian" format="name"/>
+
+    <elt size="2" type="int" id="P2_SCORE" table-index="1"
+         endianness="little_endian"/>
+    <elt size="1" type="raw" id="_P2_R2_PAD1"/>
+    <!-- This factory slot is a special NEW marker, not a normal packed name. -->
+    <elt size="2" type="int" id="P2_NAME" table-index="1"
+         endianness="little_endian" format="p2_name2"/>
+    <elt size="2" type="raw" id="_P2_R2_PAD2"/>
+
+    <elt size="4" type="int" id="P2_SCORE" table-index="2"
+         byte-skip="odd" endianness="little_endian"/>
+    <elt size="4" type="int" id="P2_NAME" table-index="2"
+         byte-skip="odd" endianness="little_endian" format="name"/>
+
+    <elt size="2" type="int" id="P2_SCORE" table-index="3"
+         endianness="little_endian"/>
+    <elt size="1" type="raw" id="_P2_R4_PAD"/>
+    <elt size="2" type="int" id="P2_NAME" table-index="3"
+         endianness="little_endian" format="name"/>
+
+    <!-- ============================================================= -->
+    <!-- 3-PLAYER GAME @ 0x0B4, 30 bytes                               -->
+    <!-- ============================================================= -->
+    <elt size="2" type="raw" id="_P3_HEAD"/>
+
+    <elt size="4" type="int" id="P3_SCORE" table-index="0"
+         byte-skip="odd" endianness="little_endian"/>
+    <elt size="4" type="int" id="P3_NAME" table-index="0"
+         byte-skip="odd" endianness="little_endian" format="name"/>
+
+    <elt size="2" type="int" id="P3_SCORE" table-index="1"
+         endianness="little_endian"/>
+    <elt size="1" type="raw" id="_P3_R2_PAD1"/>
+    <elt size="2" type="int" id="P3_NAME" table-index="1"
+         endianness="little_endian" format="name"/>
+    <elt size="2" type="raw" id="_P3_R2_PAD2"/>
+
+    <elt size="4" type="int" id="P3_SCORE" table-index="2"
+         byte-skip="odd" endianness="little_endian"/>
+    <elt size="4" type="int" id="P3_NAME" table-index="2"
+         byte-skip="odd" endianness="little_endian" format="name"/>
+
+    <elt size="2" type="int" id="P3_SCORE" table-index="3"
+         endianness="little_endian"/>
+    <elt size="1" type="raw" id="_P3_R4_PAD"/>
+    <elt size="2" type="int" id="P3_NAME" table-index="3"
+         endianness="little_endian" format="name"/>
+
+    <!-- 0x0D2-0x7FF -->
+    <elt size="1838" type="raw" id="_TAIL"/>
+  </structure>
+
+  <output>
+    <table id="1-PLAYER GAME" lines-max="10">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="P1_NAME"/>
+      <column id="SCORE" src="P1_SCORE"/>
+    </table>
+
+    <table id="2-PLAYER GAME" lines-max="10">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="P2_NAME"/>
+      <column id="SCORE" src="P2_SCORE"/>
+    </table>
+
+    <table id="3-PLAYER GAME" lines-max="10">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME" src="P3_NAME"/>
+      <column id="SCORE" src="P3_SCORE"/>
+    </table>
+  </output>
+
+  <!-- Standard Rampart/Pit-Fighter 5-bit Atari initials code. -->
+  <format id="name" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1024;char32"/>
+      <column format="%1024;d32;char32"/>
+      <column format="%32;char32"/>
+    </concat>
+  </format>
+
+  <format id="char32">
+    <case src="0"  dst=" "/>
+    <case src="1"  dst="A"/>
+    <case src="2"  dst="B"/>
+    <case src="3"  dst="C"/>
+    <case src="4"  dst="D"/>
+    <case src="5"  dst="E"/>
+    <case src="6"  dst="F"/>
+    <case src="7"  dst="G"/>
+    <case src="8"  dst="H"/>
+    <case src="9"  dst="I"/>
+    <case src="10" dst="J"/>
+    <case src="11" dst="K"/>
+    <case src="12" dst="L"/>
+    <case src="13" dst="M"/>
+    <case src="14" dst="N"/>
+    <case src="15" dst="O"/>
+    <case src="16" dst="P"/>
+    <case src="17" dst="Q"/>
+    <case src="18" dst="R"/>
+    <case src="19" dst="S"/>
+    <case src="20" dst="T"/>
+    <case src="21" dst="U"/>
+    <case src="22" dst="V"/>
+    <case src="23" dst="W"/>
+    <case src="24" dst="X"/>
+    <case src="25" dst="Y"/>
+    <case src="26" dst="Z"/>
+  </format>
+
+  <!-- Special factory marker used by 2-player rank 2. -->
+  <format id="p2_name2"><case src="0" default="yes" dst="NEW"/></format>
+
+  <!-- Fixed factory rows 5-10: 1-PLAYER -->
+  <format id="p1_score5"><case src="0" default="yes" dst="4995"/></format>
+  <format id="p1_name5"><case src="0" default="yes" dst="EEC"/></format>
+  <format id="p1_score6"><case src="0" default="yes" dst="4994"/></format>
+  <format id="p1_name6"><case src="0" default="yes" dst="RRL"/></format>
+  <format id="p1_score7"><case src="0" default="yes" dst="4993"/></format>
+  <format id="p1_name7"><case src="0" default="yes" dst="VVE"/></format>
+  <format id="p1_score8"><case src="0" default="yes" dst="4992"/></format>
+  <format id="p1_name8"><case src="0" default="yes" dst="EE "/></format>
+  <format id="p1_score9"><case src="0" default="yes" dst="4991"/></format>
+  <format id="p1_name9"><case src="0" default="yes" dst="   "/></format>
+  <format id="p1_score10"><case src="0" default="yes" dst="4990"/></format>
+  <format id="p1_name10"><case src="0" default="yes" dst="NOW"/></format>
+
+  <!-- Fixed factory rows 5-10: 2-PLAYER -->
+  <format id="p2_score5"><case src="0" default="yes" dst="2995"/></format>
+  <format id="p2_name5"><case src="0" default="yes" dst="RTR"/></format>
+  <format id="p2_score6"><case src="0" default="yes" dst="2994"/></format>
+  <format id="p2_name6"><case src="0" default="yes" dst="BWB"/></format>
+  <format id="p2_score7"><case src="0" default="yes" dst="2993"/></format>
+  <format id="p2_name7"><case src="0" default="yes" dst="DEH"/></format>
+  <format id="p2_score8"><case src="0" default="yes" dst="2992"/></format>
+  <format id="p2_name8"><case src="0" default="yes" dst="VNL"/></format>
+  <format id="p2_score9"><case src="0" default="yes" dst="2991"/></format>
+  <format id="p2_name9"><case src="0" default="yes" dst=" TL"/></format>
+  <format id="p2_score10"><case src="0" default="yes" dst="2990"/></format>
+  <format id="p2_name10"><case src="0" default="yes" dst="  V"/></format>
+
+  <!-- Fixed factory rows 5-10: 3-PLAYER -->
+  <format id="p3_score5"><case src="0" default="yes" dst="1995"/></format>
+  <format id="p3_name5"><case src="0" default="yes" dst="VIC"/></format>
+  <format id="p3_score6"><case src="0" default="yes" dst="1994"/></format>
+  <format id="p3_name6"><case src="0" default="yes" dst="TOR"/></format>
+  <format id="p3_score7"><case src="0" default="yes" dst="1993"/></format>
+  <format id="p3_name7"><case src="0" default="yes" dst="MOM"/></format>
+  <format id="p3_score8"><case src="0" default="yes" dst="1992"/></format>
+  <format id="p3_name8"><case src="0" default="yes" dst="SAM"/></format>
+  <format id="p3_score9"><case src="0" default="yes" dst="1991"/></format>
+  <format id="p3_name9"><case src="0" default="yes" dst="HFT"/></format>
+  <format id="p3_score10"><case src="0" default="yes" dst="1990"/></format>
+  <format id="p3_name10"><case src="0" default="yes" dst="EDL"/></format>
+
+</hi2txt>

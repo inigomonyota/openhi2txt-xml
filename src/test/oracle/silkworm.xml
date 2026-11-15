@@ -1,11 +1,11 @@
 <hi2txt>
   <table id="TOP SCORES">
     <col>RANK</col><col>SCORE</col><col>NAME</col><col>STAGE</col><col>TIME</col><col>MODE</col>
-    <row><cell>1</cell><cell>45100</cell><cell>ZD.</cell><cell>R-02</cell><cell>T-02:09</cell><cell>HELI</cell></row>
-    <row><cell>2</cell><cell>43700</cell><cell>PIE</cell><cell>R-02</cell><cell>T-02:03</cell><cell>HELI</cell></row>
-    <row><cell>3</cell><cell>30000</cell><cell>T.Y</cell><cell>R-01</cell><cell>T-00:16</cell><cell>HELI</cell></row>
-    <row><cell>4</cell><cell>30000</cell><cell>E..</cell><cell>R-01</cell><cell>T-00:16</cell><cell>HELI</cell></row>
-    <row><cell>5</cell><cell>30000</cell><cell>C.O</cell><cell>R-01</cell><cell>T-00:16</cell><cell>HELI</cell></row>
+    <row><cell>1</cell><cell>87300</cell><cell>BRE</cell><cell>R-03</cell><cell>T-04:13</cell><cell>HELI</cell></row>
+    <row><cell>2</cell><cell>44500</cell><cell>BRE</cell><cell>R-02</cell><cell>T-03:08</cell><cell>HELI</cell></row>
+    <row><cell>3</cell><cell>33400</cell><cell>BRE</cell><cell>R-02</cell><cell>T-02:29</cell><cell>HELI</cell></row>
+    <row><cell>4</cell><cell>30000</cell><cell>T.Y</cell><cell>R-01</cell><cell>T-00:16</cell><cell>HELI</cell></row>
+    <row><cell>5</cell><cell>30000</cell><cell>E..</cell><cell>R-01</cell><cell>T-00:16</cell><cell>HELI</cell></row>
     <row><cell>6</cell><cell>30000</cell><cell>T.M</cell><cell>R-01</cell><cell>T-00:16</cell><cell>JEEP</cell></row>
     <row><cell>7</cell><cell>30000</cell><cell>E.I</cell><cell>R-01</cell><cell>T-00:16</cell><cell>JEEP</cell></row>
     <row><cell>8</cell><cell>30000</cell><cell>C.R</cell><cell>R-01</cell><cell>T-00:16</cell><cell>JEEP</cell></row>
@@ -14,7 +14,7 @@
   </table>
   <table id="TOP SCORE PER VEHICULE">
     <col>MODE</col><col>TOP SCORE</col><col>TOP SCORE STRING</col>
-    <row><cell>JEEP</cell><cell>51040000</cell><cell>   30000</cell></row>
-    <row><cell>HELI</cell><cell>30000</cell><cell>HELI-TOP   45100</cell></row>
+    <row><cell>JEEP</cell><cell>73080000</cell><cell>   30000</cell></row>
+    <row><cell>HELI</cell><cell>30000</cell><cell>HELI-TOP   87300</cell></row>
   </table>
 </hi2txt>

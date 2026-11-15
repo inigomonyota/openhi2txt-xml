@@ -4,8 +4,10 @@
   <!--
     tested with mame 0.148 and related hiscore.dat
       source: HiToText
+    Pipmick 2026-09-04: RANK shown as ordinal (1ST..5TH); column order
+    RANK, SCORE, ROUND, NAME; STAGE renamed to ROUND.
   //-->
-  
+
   <structure file=".hi">
     <check>
       <!-- optional: if defined and hiscore.dat provided, it allows to select the good structure versus the provided file //-->
@@ -25,22 +27,28 @@
     </check>
     <loop count="5">
       <elt size="3" type="int"  id="SCORE" base="16"/>
-      <elt size="1" type="int"  id="STAGE" base="16"/>
+      <elt size="1" type="int"  id="ROUND" base="16"/>
       <elt size="3" type="text" id="NAME"/>
     </loop>
     <elt size="3" type="int" id="TOP SCORE" base="16"/>
   </structure>
-  
+
   <output>
     <table>
-      <column id="RANK" src="index" format="+1"/>
+      <column id="RANK" src="index" format="ordinal"/>
       <column id="SCORE" format="*10"/>
+      <column id="ROUND"/>
       <column id="NAME"/>
-      <column id="STAGE"/>
     </table>
     <field id="TOP SCORE" format="*10" display="extra"/>
   </output>
-  
-  <format id="+1"><add>1</add></format>
+
   <format id="*10"><multiply>10</multiply></format>
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
 </hi2txt>

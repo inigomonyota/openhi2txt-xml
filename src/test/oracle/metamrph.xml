@@ -1,0 +1,14 @@
+<hi2txt>
+  <table id="HALL OF FAME">
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>CHARACTER</col>
+    <row><cell>1ST</cell><cell>100</cell><cell>YOS</cell><cell>BAN</cell></row>
+    <row><cell>2ND</cell><cell>90</cell><cell>EGA</cell><cell>CLAUDE</cell></row>
+    <row><cell>3RD</cell><cell>80</cell><cell>KIT</cell><cell>MAX</cell></row>
+    <row><cell>4TH</cell><cell>70</cell><cell>WAD</cell><cell>IVAN</cell></row>
+    <row><cell>5TH</cell><cell>60</cell><cell>IZU</cell><cell>BAN</cell></row>
+    <row><cell>6TH</cell><cell>50</cell><cell>WAZ</cell><cell>CLAUDE</cell></row>
+    <row><cell>7TH</cell><cell>40</cell><cell>SAK</cell><cell>MAX</cell></row>
+    <row><cell>8TH</cell><cell>30</cell><cell>ASA</cell><cell>IVAN</cell></row>
+    <row><cell>9TH</cell><cell>20</cell><cell>SUZ</cell><cell>BAN</cell></row>
+  </table>
+</hi2txt>

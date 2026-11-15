@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="HIGH SCORES">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1</cell><cell>GFM</cell><cell>3000</cell></row>
+    <row><cell>2</cell><cell>MSP</cell><cell>2750</cell></row>
+    <row><cell>3</cell><cell>AJB</cell><cell>2320</cell></row>
+    <row><cell>4</cell><cell>E R</cell><cell>2100</cell></row>
+    <row><cell>5</cell><cell>MAK</cell><cell>1890</cell></row>
+    <row><cell>6</cell><cell>RMP</cell><cell>1880</cell></row>
+    <row><cell>7</cell><cell>BWP</cell><cell>1700</cell></row>
+    <row><cell>8</cell><cell>KEP</cell><cell>1630</cell></row>
+    <row><cell>9</cell><cell>ABG</cell><cell>1620</cell></row>
+    <row><cell>10</cell><cell>IJF</cell><cell>1500</cell></row>
+  </table>
+</hi2txt>

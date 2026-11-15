@@ -1,0 +1,28 @@
+<hi2txt>
+  <table id="BEST TIME RANKING">
+    <col>RANK</col><col>TIME</col><col>CHARACTER</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>20'00"00</cell><cell>HAYATO</cell><cell>HAY</cell></row>
+    <row><cell>2ND</cell><cell>20'05"00</cell><cell>JUNE</cell><cell>JUN</cell></row>
+    <row><cell>3RD</cell><cell>20'10"00</cell><cell>SATURN</cell><cell>SAT</cell></row>
+    <row><cell>4TH</cell><cell>20'15"00</cell><cell>GAMOF</cell><cell>GAM</cell></row>
+    <row><cell>5TH</cell><cell>20'20"00</cell><cell>GERELT</cell><cell>GER</cell></row>
+    <row><cell>6TH</cell><cell>20'25"00</cell><cell>VECTOR</cell><cell>VEC</cell></row>
+    <row><cell>7TH</cell><cell>20'30"00</cell><cell>RIMGAL</cell><cell>RIM</cell></row>
+    <row><cell>8TH</cell><cell>20'35"00</cell><cell>ZELKIN</cell><cell>ZEL</cell></row>
+    <row><cell>9TH</cell><cell>20'40"00</cell><cell>GORE</cell><cell>GOR</cell></row>
+    <row><cell>10TH</cell><cell>20'45"00</cell><cell>HAYATO</cell><cell>HAY</cell></row>
+  </table>
+  <table id="CHARACTER RANKING">
+    <col>RANK</col><col>CHARACTER</col><col>TIME</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>HAYATO</cell><cell>20'00"00</cell><cell>HAY</cell></row>
+    <row><cell>2ND</cell><cell>JUNE</cell><cell>20'05"00</cell><cell>JUN</cell></row>
+    <row><cell>3RD</cell><cell>SATURN</cell><cell>20'10"00</cell><cell>SAT</cell></row>
+    <row><cell>4TH</cell><cell>GAMOF</cell><cell>20'15"00</cell><cell>GAM</cell></row>
+    <row><cell>5TH</cell><cell>GERELT</cell><cell>20'20"00</cell><cell>GER</cell></row>
+    <row><cell>6TH</cell><cell>VECTOR</cell><cell>20'25"00</cell><cell>VEC</cell></row>
+    <row><cell>7TH</cell><cell>RIMGAL</cell><cell>20'30"00</cell><cell>RIM</cell></row>
+    <row><cell>8TH</cell><cell>ZELKIN</cell><cell>20'35"00</cell><cell>ZEL</cell></row>
+    <row><cell>9TH</cell><cell>GORE</cell><cell>20'40"00</cell><cell>GOR</cell></row>
+    <row><cell>10TH</cell><cell>HAYATO</cell><cell>20'45"00</cell><cell>HAY</cell></row>
+  </table>
+</hi2txt>

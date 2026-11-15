@@ -1,49 +1,55 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
-<hi2txt label="Snow Bros">
-    <!--
-      tested with mame 0.229 and related hiscore.dat
-      source: GreatStone
-    //-->
+<!--
+  snowbros - Snow Bros. (Toaplan, 1990)
+  .hi file format (via hiscore.dat plugin)
+  hiscore.dat:
+    @:maincpu,program,1001ca,40,00,4f
+    @:maincpu,program,1014ad,1,1f,1f
+    @:maincpu,program,1014b7,1,1f,1f
+    @:maincpu,program,1014c1,1,08,08
+    @:maincpu,program,1014cb,1,04,04
+    @:maincpu,program,1014d5,1,04,04
+    @:maincpu,program,1014df,1,04,04
+    @:maincpu,program,1014e9,1,04,04
+  71 bytes = 64B main + 7 x 1B triggers
+  16-bit platform (68000): floors and names stored as word-aligned data.
+  Block layout: 4B top score + 5 x 4B scores + 5 x 2B floors + 5 x 6B names
+  Scores: 4B BCD. Floors: 2B word (BCD in low byte). Names: 3 x 2B ASCII words.
+//-->
+<hi2txt>
 
-    <structure file=".hi">
-        <check>
-            <!-- optional: if defined and hiscore.dat provided, it allows to select the good structure versus the provided file //-->
-            <definition>@:maincpu,program,1001ca,40,00,4f
-                        @:maincpu,program,1014ad,1,1f,1f
-                        @:maincpu,program,1014b7,1,1f,1f
-                        @:maincpu,program,1014c1,1,08,08
-                        @:maincpu,program,1014cb,1,04,04
-                        @:maincpu,program,1014d5,1,04,04
-                        @:maincpu,program,1014df,1,04,04
-                        @:maincpu,program,1014e9,1,04,04</definition>
-            <!-- optional: if defined, it allows to select the good structure versus the provided file
-                           useful if multiple structures are defined but hiscore.dat not provided //-->
-            <size>71</size>
-        </check>
+  <structure file=".hi">
+    <check>
+      <size>71</size>
+    </check>
+    <!-- Top score (4B BCD) -->
+    <elt size="4" type="raw" id="TOPSCORE"/>
+    <!-- Scores: 5 x 4B BCD -->
+    <loop count="5">
+      <elt size="4" type="int" id="SCORE" base="16"/>
+    </loop>
+    <!-- Floors: 5 x 2B word (BCD in low byte) -->
+    <loop count="5">
+      <elt size="2" type="int" id="FLOOR" base="16"/>
+    </loop>
+    <!-- Names: 5 x 6B (3 chars x 2B word each) -->
+    <loop count="5">
+      <elt size="6" type="text" id="NAME"/>
+    </loop>
+    <!-- Trigger bytes (7 x 1B from separate ranges) -->
+    <elt size="7" type="raw" id="TRIGGERS"/>
+  </structure>
 
-        <elt size="4" type="int"  id="TOP SCORE" base="16"/>
-        <loop count="5">
-            <elt size="4" type="int"  id="SCORE" base="16"/>
-        </loop>
-        <loop count="5">
-            <elt size="2" type="int"  id="FLOOR" base="16"/>
-        </loop>
-        <loop count="5">
-            <elt size="6" type="text"  id="NAME" byte-skip="odd" charset="chars"/>
-        </loop>
-    </structure>
+  <output>
+    <table id="RANKING" sort="SCORE" sort-order="desc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="SCORE"/>
+      <column id="FLOOR"/>
+    </table>
+  </output>
 
-    <output>
-        <table>
-            <column id="RANK" src="index" format="+1"/>
-            <column id="SCORE"/>
-            <column id="NAME"/>
-            <column id="FLOOR"/>
-        </table>
-    </output>
+  <format id="+1"><add>1</add></format>
 
-    <charset id="chars">
-        <char src="0x40" dst=" "/>
-    </charset>
 </hi2txt>

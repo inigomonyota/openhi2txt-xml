@@ -1,0 +1,15 @@
+<hi2txt>
+  <table>
+    <col>RANK</col><col>CHARACTER</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>RICK</cell><cell>500000</cell><cell>BCP</cell></row>
+    <row><cell>2</cell><cell>ALLEN</cell><cell>450000</cell><cell>O</cell></row>
+    <row><cell>3</cell><cell>RICK</cell><cell>400000</cell><cell>AAW</cell></row>
+    <row><cell>4</cell><cell>ALLEN</cell><cell>350000</cell><cell>ISE</cell></row>
+    <row><cell>5</cell><cell>RICK</cell><cell>300000</cell><cell>NH</cell></row>
+    <row><cell>6</cell><cell>ALLEN</cell><cell>250000</cell><cell>DIC</cell></row>
+    <row><cell>7</cell><cell>RICK</cell><cell>200000</cell><cell>ELC</cell></row>
+    <row><cell>8</cell><cell>ALLEN</cell><cell>150000</cell><cell>NOC</cell></row>
+    <row><cell>9</cell><cell>RICK</cell><cell>100000</cell><cell>NMC</cell></row>
+    <row><cell>10</cell><cell>ALLEN</cell><cell>50000</cell><cell>OPC</cell></row>
+  </table>
+</hi2txt>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <check><size>19</size></check>
+    
+    <!-- Skip the 16 bytes of visual VRAM tiles -->
+    <elt size="16" type="raw" id="SKIP_VRAM"/>
+    
+    <!-- Wrap the single score in a 1-count loop so hi2txt builds a table row for it -->
+    <loop count="1">
+      <elt size="3" type="int" id="HIGH SCORE" base="16" endianness="little_endian"/>
+    </loop>
+  </structure>
+
+  <output>
+    <!-- Outputs a single-column table to keep your parser happy! -->
+    <table>
+      <column id="HIGH SCORE" src="HIGH SCORE" format="*100"/>
+    </table>
+  </output>
+</hi2txt>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<!-- Sengoku 3 / Sengoku Densho 2001 (Neo Geo, saveram). 68000 => byte-swap="2".
+     Two 5-entry tables, identical 10-byte record: [VALUE:3 BCD][pad:2][NAME:3][pad:2]
+       BEST RANKING - SCORE @ raw 0x329  (VALUE = SCORE, 3-byte BCD)
+       BEST RANKING - COMBO @ raw 0x365  (VALUE = COMBO, 3-byte BCD, small numbers)
+     NAME: A=0 (ascii-offset 65) for letters, plus charset for '-' (0x1d) and digits 0-9
+     (0x24..0x2d; base inferred from '3'=0x27 in the "S-3" default). -->
+<structure file="saveram" byte-swap="2">
+  <check>
+    <size>65536</size>
+  </check>
+  <elt size="809" type="raw" id="HEADER"/>
+  <loop count="5">
+    <elt size="3" type="int"  id="SCORE" base="16"/>
+    <elt size="2" type="raw"  id="SPAD"/>
+    <elt size="3" type="text" id="SNAME" ascii-offset="65" charset="sengoku3"/>
+    <elt size="2" type="raw"  id="SPAD2"/>
+  </loop>
+  <elt size="10" type="raw" id="GAP"/>
+  <loop count="5">
+    <elt size="3" type="int"  id="COMBO" base="16"/>
+    <elt size="2" type="raw"  id="CPAD"/>
+    <elt size="3" type="text" id="CNAME" ascii-offset="65" charset="sengoku3"/>
+    <elt size="2" type="raw"  id="CPAD2"/>
+  </loop>
+</structure>
+
+<format id="rank">
+  <case src="0" dst="1ST"/>
+  <case src="1" dst="2ND"/>
+  <case src="2" dst="3RD"/>
+  <case src="3" dst="4TH"/>
+  <case src="4" dst="5TH"/>
+</format>
+
+<output>
+  <table id="BEST RANKING - SCORE">
+    <column id="RANK"  src="index" format="rank"/>
+    <column id="SCORE"/>
+    <column id="NAME"  src="SNAME"/>
+  </table>
+  <table id="BEST RANKING - COMBO">
+    <column id="RANK"  src="index" format="rank"/>
+    <column id="COMBO"/>
+    <column id="NAME"  src="CNAME"/>
+  </table>
+</output>
+
+<charset id="sengoku3">
+  <char src="0x1d" dst="-"/>
+  <char src="0x24" dst="0"/>
+  <char src="0x25" dst="1"/>
+  <char src="0x26" dst="2"/>
+  <char src="0x27" dst="3"/>
+  <char src="0x28" dst="4"/>
+  <char src="0x29" dst="5"/>
+  <char src="0x2a" dst="6"/>
+  <char src="0x2b" dst="7"/>
+  <char src="0x2c" dst="8"/>
+  <char src="0x2d" dst="9"/>
+</charset>
+</hi2txt>

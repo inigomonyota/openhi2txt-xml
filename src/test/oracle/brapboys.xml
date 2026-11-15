@@ -1,0 +1,10 @@
+<hi2txt>
+  <table id="WINNERS">
+    <col>RANK</col><col>SCORE</col><col>CHARACTER</col><col>NAME</col>
+    <row><cell>1.</cell><cell>5450</cell><cell>TOP</cell><cell>A.B</cell></row>
+    <row><cell>2.</cell><cell>4230</cell><cell>PAN</cell><cell>C.D</cell></row>
+    <row><cell>3.</cell><cell>3910</cell><cell>PEA</cell><cell>E.F</cell></row>
+    <row><cell>4.</cell><cell>2780</cell><cell>PAN</cell><cell>G.H</cell></row>
+    <row><cell>5.</cell><cell>1650</cell><cell>TOP</cell><cell>I.J</cell></row>
+  </table>
+</hi2txt>

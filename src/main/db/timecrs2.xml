@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Time Crisis 2">
+  <!--
+    Namco System 23 nvram (65536B). Storage: 1 data byte per 16-bit word (byte+00),
+    and 16-bit words are pair-swapped within each 32-bit dword. Net decode =
+    structure byte-swap="4" (reverse each 4-byte group) + per-elt byte-skip="even"
+    (keep the odd bytes). All elt sizes below are LOGICAL (post-skip) bytes.
+
+    Two copies exist (main + backup @ +0x7800); use the first.
+    RANKING - SOLO PLAY @ logical 0x804 (file 0x1008), 5 x 20B.
+    RANKING - LINK PLAY @ logical 0x904 (file 0x1208), 5 x 20B.
+    Record: [NAME1:4 ASCII][NAME2:4 ASCII][SCORE:4 int BE][TIME:4 int BE][pad:4].
+      SOLO shows NAME1; LINK shows NAME1&NAME2 (partner). Scores/times identical.
+    TIME = centiseconds (125999 = 20'59"99): M=cs/6000, SS=(cs%6000)/100, CC=cs%100.
+  //-->
+
+  <structure file="nvram" byte-swap="4">
+    <check>
+      <size>65536</size>
+    </check>
+
+    <elt size="2052" type="raw" id="HDR" byte-skip="even"/>
+    <loop count="5">
+      <elt size="4" type="text" id="S_N1"    byte-skip="even" byte-trunc="0x00"/>
+      <elt size="4" type="text" id="S_N2"    byte-skip="even" byte-trunc="0x00"/>
+      <elt size="4" type="int"  id="S_SCORE" byte-skip="even" endianness="big_endian"/>
+      <elt size="4" type="int"  id="S_TIME"  byte-skip="even" endianness="big_endian"/>
+      <elt size="4" type="raw"  id="S_PAD"   byte-skip="even"/>
+    </loop>
+
+    <elt size="156" type="raw" id="GAP" byte-skip="even"/>
+    <loop count="5">
+      <elt size="4" type="text" id="L_N1"    byte-skip="even" byte-trunc="0x00"/>
+      <elt size="4" type="text" id="L_N2"    byte-skip="even" byte-trunc="0x00"/>
+      <elt size="4" type="int"  id="L_SCORE" byte-skip="even" endianness="big_endian"/>
+      <elt size="4" type="int"  id="L_TIME"  byte-skip="even" endianness="big_endian"/>
+      <elt size="4" type="raw"  id="L_PAD"   byte-skip="even"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING - SOLO PLAY">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="S_N1"/>
+      <column id="SCORE" src="S_SCORE"/>
+      <column id="TIME"  format="t_solo"/>
+    </table>
+    <table id="RANKING - LINK PLAY">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAMES" format="names_link"/>
+      <column id="SCORE" src="L_SCORE"/>
+      <column id="TIME"  format="t_link"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <add>1</add>
+    <case src="1" dst="1ST"/><case src="2" dst="2ND"/><case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/><case src="5" dst="5TH"/>
+  </format>
+
+  <format id="names_link">
+    <concat>
+      <column id="L_N1"/>
+      <txt>&amp;</txt>
+      <column id="L_N2"/>
+    </concat>
+  </format>
+
+  <format id="t_solo">
+    <concat>
+      <column id="S_TIME" format="cs_min;apos"/>
+      <column id="S_TIME" format="cs_sec;pad2;quot"/>
+      <column id="S_TIME" format="cs_hun;pad2"/>
+    </concat>
+  </format>
+  <format id="t_link">
+    <concat>
+      <column id="L_TIME" format="cs_min;apos"/>
+      <column id="L_TIME" format="cs_sec;pad2;quot"/>
+      <column id="L_TIME" format="cs_hun;pad2"/>
+    </concat>
+  </format>
+
+  <format id="cs_min"><divide_trunc>6000</divide_trunc></format>
+  <format id="cs_sec"><remainder>6000</remainder><divide_trunc>100</divide_trunc></format>
+  <format id="cs_hun"><remainder>100</remainder></format>
+  <format id="apos"><suffix>'</suffix></format>
+  <format id="quot"><suffix>"</suffix></format>
+  <format id="pad2" formatter="%02d"><multiply>1</multiply></format>
+</hi2txt>

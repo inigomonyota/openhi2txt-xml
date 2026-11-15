@@ -25,18 +25,31 @@
       <size>9</size>
     </check>
     <loop count="1">
-      <elt size="3" type="int" id="SCORE" base="16" endianness="little_endian"/>
-      <elt size="6" type="int" id="SCORE STRING" decoding-profile="bcd" byte-skip="0x25"/>
+      <elt size="3" type="raw" id="SCORE"/>
+      <elt size="6" type="text" id="HI-SCORE" charset="alpine_cs"/>
     </loop>
   </structure>
   
   <output>
     <table>
       <column id="RANK" src="index" format="+1"/>
-      <column id="SCORE"/>
-      <column id="SCORE STRING" display="debug"/>
+      <column id="HI-SCORE"/>
     </table>
   </output>
   
   <format id="+1"><add>1</add></format>
+  <charset id="alpine_cs">
+    <char src="0x00" dst="0"/>
+    <char src="0x01" dst="1"/>
+    <char src="0x02" dst="2"/>
+    <char src="0x03" dst="3"/>
+    <char src="0x04" dst="4"/>
+    <char src="0x05" dst="5"/>
+    <char src="0x06" dst="6"/>
+    <char src="0x07" dst="7"/>
+    <char src="0x08" dst="8"/>
+    <char src="0x09" dst="9"/>
+    <char src="0x25" dst=""/>
+    <char src="0x28" dst=":"/>
+  </charset>
 </hi2txt>

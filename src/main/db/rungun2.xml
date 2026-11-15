@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    rungun2 - Run and Gun 2 / Slam Dunk 2 (Konami, 1996)
+    .hi via hiscore.dat plugin, maincpu work RAM @0xc02f00 (volatile ranking, not eeprom).
+    96-byte capture = 6 TOP RANKING records x 16 bytes.
+    Record: [TEAM 1B index][0x00][NAME1 3B A=1 index][0x00][NAME2 3B][0x00]
+            [SCORE 2B BCD big-endian][pad 4]
+    Names stored as letter indices (A=1); ascii-offset 64 -> ASCII.
+    TEAM is an NBA-city index; mapped via format cTeam (known cities), else raw number.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>96</size>
+    </check>
+    <loop count="6">
+      <elt size="1" type="int"  id="TEAM"/>
+      <elt size="1" type="raw"  id="T0"/>
+      <elt size="3" type="text" id="NAME1" ascii-offset="64" charset="csRG2"/>
+      <elt size="1" type="raw"  id="T1"/>
+      <elt size="3" type="text" id="NAME2" ascii-offset="64" charset="csRG2"/>
+      <elt size="1" type="raw"  id="T2"/>
+      <elt size="2" type="int"  id="SCORE" base="16" endianness="big_endian"/>
+      <elt size="4" type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TOP RANKING" sort="SCORE" sort-order="desc">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="CITY"  src="TEAM"   format="cTeam"/>
+      <column id="1UP"   src="NAME1"/>
+      <column id="2UP"   src="NAME2"/>
+      <column id="SCORE"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <!-- TEAM is a 4-bit city index (0-15; the game masks &0x0F, so 16->0 etc.).
+       All 16 confirmed by live byte-injection into the chart + TOP RANKING snapshot. -->
+  <format id="cTeam">
+    <case src="0"  dst="SAN ANTONIO"/>
+    <case src="1"  dst="DENVER"/>
+    <case src="2"  dst="SEATTLE"/>
+    <case src="3"  dst="L.A."/>
+    <case src="4"  dst="PHOENIX"/>
+    <case src="5"  dst="PORTLAND"/>
+    <case src="6"  dst="UTAH"/>
+    <case src="7"  dst="HOUSTON"/>
+    <case src="8"  dst="ORLANDO"/>
+    <case src="9"  dst="BOSTON"/>
+    <case src="10" dst="CHARLOTTE"/>
+    <case src="11" dst="CHICAGO"/>
+    <case src="12" dst="INDIANA"/>
+    <case src="13" dst="ATLANTA"/>
+    <case src="14" dst="NEW YORK"/>
+    <case src="15" dst="CLEVELAND"/>
+  </format>
+
+  <charset id="csRG2">
+    <char src="0x00" dst=""/>
+  </charset>
+
+</hi2txt>

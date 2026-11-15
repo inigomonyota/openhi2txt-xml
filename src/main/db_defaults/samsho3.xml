@@ -1,0 +1,10 @@
+<hi2txt>
+<table id="PLAYER WITH THE HIGHEST SCORE">
+<col>NAME</col><col>SCORE</col>
+<row><cell></cell><cell>0</cell></row>
+</table>
+<table id="PLAYER WITH THE MOST NUMEROUS WIN">
+<col>NAME</col><col>WINS</col>
+<row><cell></cell><cell>0</cell></row>
+</table>
+</hi2txt>

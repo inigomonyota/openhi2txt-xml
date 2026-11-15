@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Demon Front">
+  <!-- Demon Front (dmnfrnt) - IGS PGM (68000, protected by ASIC/ARM).
+       The high-score data lives in the battery-backed SRAM at
+       nvram\dmnfrnt\sram (131072 bytes). A single 8-record ranking table is
+       stored 4x (double-buffer + backups); the first copy starts at file
+       offset 0x3908, stride 0x48 (72) bytes, 8 records.
+
+       The PGM 68000 stores 32-bit values WORD-SWAPPED ([hi16 LE][lo16 LE]),
+       so scores/combos are decoded with byte-swap="2" + big_endian, exactly
+       like joemacr.
+
+       Record layout (0x48 bytes):
+         +0x00  4  score  word-swapped BE   (e.g. 07 00 20 a1 -> 500000)
+         +0x04  4  combo  word-swapped BE   (combo-rank count, 240..100)
+         +0x08 44  (internal ids / glyph indices - skipped)
+         +0x34  6  name1  3 chars, each [idx,0x00]; char = idx + 0x20
+         +0x3a  6  name2  3 chars (2nd name of the BEST COUPLE pair)
+         +0x40  8  (pad / char ids - skipped)
+
+       The on-screen charts are three VIEWS of this one table:
+         THE RANKING OF HERO : rank, score, name1
+         COMBO RANK          : rank, combo, name1
+         BEST COUPLE         : rank, score, name1 / name2
+       LV (=10-rank) and ACT (=max(1,7-rank)) are rank-derived decorations,
+       not stored in the record. -->
+  <structure file="sram">
+    <check>
+      <size>131072</size>
+    </check>
+    <elt size="14600" type="raw" id="HEAD"/>
+    <loop count="8">
+      <elt size="4" type="int"  id="SCORE" byte-swap="2" endianness="big_endian" table-index="loop_index"/>
+      <elt size="4" type="int"  id="COMBO" byte-swap="2" endianness="big_endian" table-index="loop_index"/>
+      <elt size="44" type="raw" id="MID"   table-index="loop_index"/>
+      <elt size="6" type="text" id="NAME1" charset="csDMN" table-index="loop_index"/>
+      <elt size="6" type="text" id="NAME2" charset="csDMN" table-index="loop_index"/>
+      <elt size="8" type="raw" id="TAIL"   table-index="loop_index"/>
+    </loop>
+  </structure>
+  <output>
+    <table id="THE RANKING OF HERO">
+      <column id="RANK"  src="index" format="rank1"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME1"/>
+      <column id="COMBO" src="COMBO"/>
+      <column id="COUPLE" src="NAME2"/>
+      <column id="HEAD" src="HEAD" format="0x" display="debug"/>
+      <column id="MID"  src="MID"  format="0x" display="debug"/>
+      <column id="TAIL" src="TAIL" format="0x" display="debug"/>
+    </table>
+  </output>
+  <format id="rank1"><add>1</add></format>
+  <charset id="csDMN">
+    <char src="0x00" dst=""/>
+    <char src="0x10" dst="0"/>
+    <char src="0x11" dst="1"/>
+    <char src="0x12" dst="2"/>
+    <char src="0x13" dst="3"/>
+    <char src="0x14" dst="4"/>
+    <char src="0x15" dst="5"/>
+    <char src="0x16" dst="6"/>
+    <char src="0x17" dst="7"/>
+    <char src="0x18" dst="8"/>
+    <char src="0x19" dst="9"/>
+    <char src="0x21" dst="A"/>
+    <char src="0x22" dst="B"/>
+    <char src="0x23" dst="C"/>
+    <char src="0x24" dst="D"/>
+    <char src="0x25" dst="E"/>
+    <char src="0x26" dst="F"/>
+    <char src="0x27" dst="G"/>
+    <char src="0x28" dst="H"/>
+    <char src="0x29" dst="I"/>
+    <char src="0x2a" dst="J"/>
+    <char src="0x2b" dst="K"/>
+    <char src="0x2c" dst="L"/>
+    <char src="0x2d" dst="M"/>
+    <char src="0x2e" dst="N"/>
+    <char src="0x2f" dst="O"/>
+    <char src="0x30" dst="P"/>
+    <char src="0x31" dst="Q"/>
+    <char src="0x32" dst="R"/>
+    <char src="0x33" dst="S"/>
+    <char src="0x34" dst="T"/>
+    <char src="0x35" dst="U"/>
+    <char src="0x36" dst="V"/>
+    <char src="0x37" dst="W"/>
+    <char src="0x38" dst="X"/>
+    <char src="0x39" dst="Y"/>
+    <char src="0x3a" dst="Z"/>
+  </charset>
+</hi2txt>

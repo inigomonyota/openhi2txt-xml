@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="HI-SCORE">
+    <col>RANK</col><col>NAME</col><col>SCORE</col>
+    <row><cell>NO 1.</cell><cell>BOY</cell><cell>50000</cell></row>
+    <row><cell>NO 2.</cell><cell>KID</cell><cell>50000</cell></row>
+    <row><cell>NO 3.</cell><cell>MAN</cell><cell>50000</cell></row>
+    <row><cell>NO 4.</cell><cell>NET</cell><cell>10000</cell></row>
+    <row><cell>NO 5.</cell><cell>GAL</cell><cell>10000</cell></row>
+    <row><cell>NO 6.</cell><cell>B&amp;B</cell><cell>5000</cell></row>
+    <row><cell>NO 7.</cell><cell>SUN</cell><cell>5000</cell></row>
+    <row><cell>NO 8.</cell><cell>WET</cell><cell>100</cell></row>
+    <row><cell>NO 9.</cell><cell>K.K</cell><cell>50</cell></row>
+    <row><cell>NO 10.</cell><cell>PIN</cell><cell>10</cell></row>
+  </table>
+</hi2txt>

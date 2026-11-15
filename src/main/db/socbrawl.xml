@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Soccer Brawl">
+  <!--
+    Neo Geo saveram, byte-swap=2 ("BACKUP RAM OK !" signature confirmed).
+    BEST STRIKERS table @ post-swap offset 0x324, 10 records x 4 bytes:
+      [NAME:3 tile-charset][ROUND:1 int, byte-0xE0]
+    Name charset is a Neo Geo fix-tile layout: A-P = 0xA0-0xAF, Q-Z = 0xC0-0xC9
+    (the 0xB0 row holds other glyphs). Derived from the SNK default (S=0xC2,N=0xAD,K=0xAA).
+    ROUND stored as 0xE0 | round  (e.g. 0xE7 -> 7).
+  //-->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+    <elt size="804" type="raw" id="HEADER"/>
+    <loop count="10">
+      <elt size="3" type="text" id="NAME"  charset="csSocbrawl" byte-trunc="0x00"/>
+      <elt size="1" type="int"  id="ROUND" format="round"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST STRIKERS">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="ROUND"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="round"><substract>224</substract></format>
+
+  <charset id="csSocbrawl">
+    <char src="0xA0" dst="A"/>
+    <char src="0xA1" dst="B"/>
+    <char src="0xA2" dst="C"/>
+    <char src="0xA3" dst="D"/>
+    <char src="0xA4" dst="E"/>
+    <char src="0xA5" dst="F"/>
+    <char src="0xA6" dst="G"/>
+    <char src="0xA7" dst="H"/>
+    <char src="0xA8" dst="I"/>
+    <char src="0xA9" dst="J"/>
+    <char src="0xAA" dst="K"/>
+    <char src="0xAB" dst="L"/>
+    <char src="0xAC" dst="M"/>
+    <char src="0xAD" dst="N"/>
+    <char src="0xAE" dst="O"/>
+    <char src="0xAF" dst="P"/>
+    <char src="0xC0" dst="Q"/>
+    <char src="0xC1" dst="R"/>
+    <char src="0xC2" dst="S"/>
+    <char src="0xC3" dst="T"/>
+    <char src="0xC4" dst="U"/>
+    <char src="0xC5" dst="V"/>
+    <char src="0xC6" dst="W"/>
+    <char src="0xC7" dst="X"/>
+    <char src="0xC8" dst="Y"/>
+    <char src="0xC9" dst="Z"/>
+  </charset>
+</hi2txt>

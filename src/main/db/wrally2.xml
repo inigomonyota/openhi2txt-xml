@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    wrally2 - World Rally 2: Twin Racing (Gaelco, 1995)
+    .hi via hiscore.dat plugin: @:maincpu,program,fec766,288,5a,ff (648 bytes).
+    6-byte zero header, then 36 ranking records of 18 bytes (last record is
+    truncated at EOF - only 12 of its 18 bytes are present; hi2txt tolerates this).
+    Record:
+      +0  NAME   3 ASCII
+      +3  0x03   constant separator
+      +4  SCORE  4-byte big-endian int (high word is always 0000)
+      +8  five 2-byte big-endian aux values (per-stage data; kept as V1..V5)
+    No screenshots exist for this game (snap\wrally2\ is empty), so the readable
+    table is the decoded save itself rather than a screenshot transcription.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>0:fec766:288:5a:ff</definition>
+      <size>648</size>
+    </check>
+
+    <elt size="6" type="raw" id="HDR"/>
+    <loop count="36">
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="SEP"/>
+      <elt size="4" type="int"  id="SCORE" endianness="big_endian"/>
+      <elt size="2" type="int"  id="V1" endianness="big_endian"/>
+      <elt size="2" type="int"  id="V2" endianness="big_endian"/>
+      <elt size="2" type="int"  id="V3" endianness="big_endian"/>
+      <elt size="2" type="int"  id="V4" endianness="big_endian"/>
+      <elt size="2" type="int"  id="V5" endianness="big_endian"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST DRIVERS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="SCORE"/>
+      <column id="V1"/>
+      <column id="V2"/>
+      <column id="V3"/>
+      <column id="V4"/>
+      <column id="V5"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+</hi2txt>

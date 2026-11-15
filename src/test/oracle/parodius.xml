@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="RANKING">
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>SEX</col>
+    <row><cell>1</cell><cell>57,300</cell><cell>H.M</cell><cell>OTOKO</cell></row>
+    <row><cell>2</cell><cell>48,530</cell><cell>S.T</cell><cell>OTOKO</cell></row>
+    <row><cell>3</cell><cell>33,300</cell><cell>K.Y</cell><cell>OTOKO</cell></row>
+    <row><cell>4</cell><cell>25,700</cell><cell>K.K</cell><cell>OTOKO</cell></row>
+    <row><cell>5</cell><cell>21,500</cell><cell>K.N</cell><cell>OTOKO</cell></row>
+    <row><cell>6</cell><cell>17,700</cell><cell>M.N</cell><cell>ONNA</cell></row>
+    <row><cell>7</cell><cell>13,200</cell><cell>K.O</cell><cell>ONNA</cell></row>
+    <row><cell>8</cell><cell>10,000</cell><cell>M.I</cell><cell>ONNA</cell></row>
+    <row><cell>9</cell><cell>9,500</cell><cell>T.K</cell><cell>OTOKO</cell></row>
+    <row><cell>10</cell><cell>7,600</cell><cell>M.D</cell><cell>ONNA</cell></row>
+  </table>
+</hi2txt>

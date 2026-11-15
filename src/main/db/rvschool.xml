@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  rvschool - Rival Schools: United By Fate (Capcom, 1997)
+  hiscore.dat:
+    @:maincpu,program,1f6524,48,50,0f
+  72 bytes total = 5 entries x 16 bytes - 8 trailing bytes (last truncated)
+
+  Each 16-byte entry:
+    [0-3]   4B LE int score
+    [4]     1B name length (always 0x03)
+    [5-7]   3B name characters (custom charset)
+    [8-15]  8B trailing data (4B padding + 1B char/school ID + 3B padding)
+            Read as raw and ignored. School ID lookup will be added later.
+
+  Last entry's trailing 8 bytes are truncated by hiscore.dat (skip-last-bytes=8).
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>72</size>
+    </check>
+
+    <loop count="5" skip-last-bytes="8">
+      <!-- 4B LE int score -->
+      <elt size="4" type="int" id="SCORE" endianness="little_endian" table-index="loop_index"/>
+
+      <!-- 1B name length (always 0x03) -->
+      <elt size="1" type="raw" id="NAME_LEN"/>
+
+      <!-- 3 chars individually so the charset applies -->
+      <elt size="1" type="text" id="NAME_C1" charset="rvschool_chr" table-index="loop_index"/>
+      <elt size="1" type="text" id="NAME_C2" charset="rvschool_chr" table-index="loop_index"/>
+      <elt size="1" type="text" id="NAME_C3" charset="rvschool_chr" table-index="loop_index"/>
+
+      <!-- 8B trailing data (read as raw, ignored) -->
+      <elt size="8" type="raw" id="EXTRA"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORES">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="SCORE" src="SCORE" format="comma_score"/>
+      <column id="NAME" src="NAME_C1" format="name_fmt"/>
+    </table>
+  </output>
+
+  <!-- Ordinal rank for 5 entries -->
+  <format id="ordinal">
+    <add>1</add>
+    <case src="1" operator="=" dst="1ST"/>
+    <case src="2" operator="=" dst="2ND"/>
+    <case src="3" operator="=" dst="3RD"/>
+    <case src="4" operator="=" dst="4TH"/>
+    <case src="5" operator="=" dst="5TH"/>
+  </format>
+
+  <!-- Name formatter: concat the 3 character elements -->
+  <format id="name_fmt" input-as-subcolumns-input="yes">
+    <concat>
+      <column src="NAME_C1"/>
+      <column src="NAME_C2"/>
+      <column src="NAME_C3"/>
+    </concat>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <charset id="rvschool_chr">
+    <char src="0x00" dst="A"/>
+    <char src="0x01" dst="B"/>
+    <char src="0x02" dst="C"/>
+    <char src="0x03" dst="D"/>
+    <char src="0x04" dst="E"/>
+    <char src="0x05" dst="F"/>
+    <char src="0x06" dst="G"/>
+    <char src="0x07" dst="H"/>
+    <char src="0x08" dst="I"/>
+    <char src="0x09" dst="J"/>
+    <char src="0x0A" dst="K"/>
+    <char src="0x0B" dst="L"/>
+    <char src="0x0C" dst="M"/>
+    <char src="0x0D" dst="N"/>
+    <char src="0x0E" dst="O"/>
+    <char src="0x0F" dst="P"/>
+    <char src="0x10" dst="Q"/>
+    <char src="0x11" dst="R"/>
+    <char src="0x12" dst="S"/>
+    <char src="0x13" dst="T"/>
+    <char src="0x14" dst="U"/>
+    <char src="0x15" dst="V"/>
+    <char src="0x16" dst="W"/>
+    <char src="0x17" dst="X"/>
+    <char src="0x18" dst="Y"/>
+    <char src="0x19" dst="Z"/>
+    <char src="0x24" dst=","/>
+    <char src="0x25" dst="."/>
+    <char src="0x26" dst="'"/>
+    <char src="0x27" dst="&#xB7;"/>
+    <char src="0x28" dst="!"/>
+    <char src="0x29" dst="?"/>
+    <char src="0x2A" dst="&quot;"/>
+    <char src="0x2B" dst="$"/>
+    <char src="0x2C" dst="&amp;"/>
+  </charset>
+
+</hi2txt>

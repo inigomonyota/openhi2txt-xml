@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE openhi2txt>
+<openhi2txt requires="0.6.0" label="Golden Tee Fore! 2006 Complete">
+  <structure file="dif" filesystem="ext2" partition="1">
+    <!-- MYSTIC HILLS -->
+    <source file="/scores/mysticlead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C01_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C01_PAD0" type="raw" size="5"/>
+        <elt id="C01_HOLES" type="raw" size="68"/>
+        <elt id="C01_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C01_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C01_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C01_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- SUERTE DEL SOL -->
+    <source file="/scores/suertelead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C02_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C02_PAD0" type="raw" size="5"/>
+        <elt id="C02_HOLES" type="raw" size="68"/>
+        <elt id="C02_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C02_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C02_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C02_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- CRIMSON ROCK -->
+    <source file="/scores/crimsonlead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C03_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C03_PAD0" type="raw" size="5"/>
+        <elt id="C03_HOLES" type="raw" size="68"/>
+        <elt id="C03_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C03_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C03_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C03_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- PINE MEADOW -->
+    <source file="/scores/pinelead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C04_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C04_PAD0" type="raw" size="5"/>
+        <elt id="C04_HOLES" type="raw" size="68"/>
+        <elt id="C04_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C04_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C04_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C04_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- BAYSIDE C.C. -->
+    <source file="/scores/baysidelead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C05_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C05_PAD0" type="raw" size="5"/>
+        <elt id="C05_HOLES" type="raw" size="68"/>
+        <elt id="C05_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C05_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C05_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C05_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- RATTLESNAKE RIDGE -->
+    <source file="/scores/rattlelead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C06_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C06_PAD0" type="raw" size="5"/>
+        <elt id="C06_HOLES" type="raw" size="68"/>
+        <elt id="C06_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C06_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C06_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C06_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- CASTLESHIRE -->
+    <source file="/scores/castlelead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C07_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C07_PAD0" type="raw" size="5"/>
+        <elt id="C07_HOLES" type="raw" size="68"/>
+        <elt id="C07_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C07_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C07_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C07_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- MAPLE ACRES -->
+    <source file="/scores/maplelead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C08_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C08_PAD0" type="raw" size="5"/>
+        <elt id="C08_HOLES" type="raw" size="68"/>
+        <elt id="C08_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C08_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C08_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C08_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- KIWI SPRINGS -->
+    <source file="/scores/kiwilead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C09_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C09_PAD0" type="raw" size="5"/>
+        <elt id="C09_HOLES" type="raw" size="68"/>
+        <elt id="C09_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C09_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C09_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C09_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- CRAWDAD SWAMP -->
+    <source file="/scores/crawdadlead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C10_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C10_PAD0" type="raw" size="5"/>
+        <elt id="C10_HOLES" type="raw" size="68"/>
+        <elt id="C10_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C10_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C10_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C10_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- BUCKHORN C.C. -->
+    <source file="/scores/buckhornlead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C11_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C11_PAD0" type="raw" size="5"/>
+        <elt id="C11_HOLES" type="raw" size="68"/>
+        <elt id="C11_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C11_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C11_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C11_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- KINGS CANYON -->
+    <source file="/scores/kings_18lead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C12_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C12_PAD0" type="raw" size="5"/>
+        <elt id="C12_HOLES" type="raw" size="68"/>
+        <elt id="C12_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C12_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C12_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C12_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- KINGS CANYON AMATEUR -->
+    <source file="/scores/kingslead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C13_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C13_PAD0" type="raw" size="5"/>
+        <elt id="C13_HOLES" type="raw" size="68"/>
+        <elt id="C13_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C13_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C13_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C13_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- BLUESTONE -->
+    <source file="/scores/bluestone_18lead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C14_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C14_PAD0" type="raw" size="5"/>
+        <elt id="C14_HOLES" type="raw" size="68"/>
+        <elt id="C14_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C14_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C14_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C14_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- BLUESTONE AMATEUR -->
+    <source file="/scores/bluestonelead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C15_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C15_PAD0" type="raw" size="5"/>
+        <elt id="C15_HOLES" type="raw" size="68"/>
+        <elt id="C15_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C15_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C15_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C15_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- HEARTLAND CREEK -->
+    <source file="/scores/hudsonlead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C16_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C16_PAD0" type="raw" size="5"/>
+        <elt id="C16_HOLES" type="raw" size="68"/>
+        <elt id="C16_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C16_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C16_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C16_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- TROPICAL FALLS -->
+    <source file="/scores/tropicallead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C17_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C17_PAD0" type="raw" size="5"/>
+        <elt id="C17_HOLES" type="raw" size="68"/>
+        <elt id="C17_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C17_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C17_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C17_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- EAGLE'S PEAK -->
+    <source file="/scores/canada_18lead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C18_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C18_PAD0" type="raw" size="5"/>
+        <elt id="C18_HOLES" type="raw" size="68"/>
+        <elt id="C18_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C18_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C18_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C18_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- EAGLE'S PEAK AMATEUR -->
+    <source file="/scores/canadalead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C19_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C19_PAD0" type="raw" size="5"/>
+        <elt id="C19_HOLES" type="raw" size="68"/>
+        <elt id="C19_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C19_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C19_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C19_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- BLUE HORIZON -->
+    <source file="/scores/hawaii_18lead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C20_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C20_PAD0" type="raw" size="5"/>
+        <elt id="C20_HOLES" type="raw" size="68"/>
+        <elt id="C20_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C20_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C20_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C20_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- BLUE HORIZON AMATEUR -->
+    <source file="/scores/hawaiilead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C21_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C21_PAD0" type="raw" size="5"/>
+        <elt id="C21_HOLES" type="raw" size="68"/>
+        <elt id="C21_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C21_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C21_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C21_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- SWORD'S POINTE -->
+    <source file="/scores/scotlandlead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C22_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C22_PAD0" type="raw" size="5"/>
+        <elt id="C22_HOLES" type="raw" size="68"/>
+        <elt id="C22_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C22_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C22_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C22_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- CEDAR MEADOWS -->
+    <source file="/scores/cedarlead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C23_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C23_PAD0" type="raw" size="5"/>
+        <elt id="C23_HOLES" type="raw" size="68"/>
+        <elt id="C23_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C23_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C23_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C23_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- SHADOW SWAMP -->
+    <source file="/scores/shadowlead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C24_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C24_PAD0" type="raw" size="5"/>
+        <elt id="C24_HOLES" type="raw" size="68"/>
+        <elt id="C24_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C24_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C24_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C24_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- RIDGEWOOD C.C. -->
+    <source file="/scores/ridgewoodlead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C25_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C25_PAD0" type="raw" size="5"/>
+        <elt id="C25_HOLES" type="raw" size="68"/>
+        <elt id="C25_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C25_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C25_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C25_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- PAINTED GORGE -->
+    <source file="/scores/paintedlead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C26_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C26_PAD0" type="raw" size="5"/>
+        <elt id="C26_HOLES" type="raw" size="68"/>
+        <elt id="C26_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C26_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C26_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C26_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- OAK HOLLOW C.C. -->
+    <source file="/scores/oakhollowlead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C27_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C27_PAD0" type="raw" size="5"/>
+        <elt id="C27_HOLES" type="raw" size="68"/>
+        <elt id="C27_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C27_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C27_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C27_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- SAPPHIRE SPRINGS -->
+    <source file="/scores/sapphirelead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C28_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C28_PAD0" type="raw" size="5"/>
+        <elt id="C28_HOLES" type="raw" size="68"/>
+        <elt id="C28_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C28_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C28_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C28_TAIL" type="raw" size="944"/>
+    </source>
+    <!-- BALMORAL GREENS -->
+    <source file="/scores/balmorallead.bin">
+      <check><size>8024</size></check>
+      <loop count="30">
+        <elt id="C29_NAME" type="text" size="3" charset="gt_char" table-index="loop_index"/>
+        <elt id="C29_PAD0" type="raw" size="5"/>
+        <elt id="C29_HOLES" type="raw" size="68"/>
+        <elt id="C29_SCORE_LO" type="int" size="1" table-index="loop_index"/>
+        <elt id="C29_SCORE_SIGN" type="int" size="1" table-index="loop_index"/>
+        <elt id="C29_PAD1" type="raw" size="158"/>
+      </loop>
+      <elt id="C29_TAIL" type="raw" size="944"/>
+    </source>
+  </structure>
+  <output>
+    <table id="LEADERBOARD - MYSTIC HILLS" sort="C01_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C01_NAME" format="trim_space"/>
+      <column id="SCORE" format="C01_score;parscore"/>
+      <column id="C01_SORT" format="C01_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - SUERTE DEL SOL" sort="C02_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C02_NAME" format="trim_space"/>
+      <column id="SCORE" format="C02_score;parscore"/>
+      <column id="C02_SORT" format="C02_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - CRIMSON ROCK" sort="C03_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C03_NAME" format="trim_space"/>
+      <column id="SCORE" format="C03_score;parscore"/>
+      <column id="C03_SORT" format="C03_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - PINE MEADOW" sort="C04_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C04_NAME" format="trim_space"/>
+      <column id="SCORE" format="C04_score;parscore"/>
+      <column id="C04_SORT" format="C04_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - BAYSIDE C.C." sort="C05_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C05_NAME" format="trim_space"/>
+      <column id="SCORE" format="C05_score;parscore"/>
+      <column id="C05_SORT" format="C05_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - RATTLESNAKE RIDGE" sort="C06_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C06_NAME" format="trim_space"/>
+      <column id="SCORE" format="C06_score;parscore"/>
+      <column id="C06_SORT" format="C06_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - CASTLESHIRE" sort="C07_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C07_NAME" format="trim_space"/>
+      <column id="SCORE" format="C07_score;parscore"/>
+      <column id="C07_SORT" format="C07_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - MAPLE ACRES" sort="C08_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C08_NAME" format="trim_space"/>
+      <column id="SCORE" format="C08_score;parscore"/>
+      <column id="C08_SORT" format="C08_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - KIWI SPRINGS" sort="C09_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C09_NAME" format="trim_space"/>
+      <column id="SCORE" format="C09_score;parscore"/>
+      <column id="C09_SORT" format="C09_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - CRAWDAD SWAMP" sort="C10_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C10_NAME" format="trim_space"/>
+      <column id="SCORE" format="C10_score;parscore"/>
+      <column id="C10_SORT" format="C10_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - BUCKHORN C.C." sort="C11_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C11_NAME" format="trim_space"/>
+      <column id="SCORE" format="C11_score;parscore"/>
+      <column id="C11_SORT" format="C11_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - KINGS CANYON" sort="C12_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C12_NAME" format="trim_space"/>
+      <column id="SCORE" format="C12_score;parscore"/>
+      <column id="C12_SORT" format="C12_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - KINGS CANYON AMATEUR" sort="C13_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C13_NAME" format="trim_space"/>
+      <column id="SCORE" format="C13_score;parscore"/>
+      <column id="C13_SORT" format="C13_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - BLUESTONE" sort="C14_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C14_NAME" format="trim_space"/>
+      <column id="SCORE" format="C14_score;parscore"/>
+      <column id="C14_SORT" format="C14_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - BLUESTONE AMATEUR" sort="C15_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C15_NAME" format="trim_space"/>
+      <column id="SCORE" format="C15_score;parscore"/>
+      <column id="C15_SORT" format="C15_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - HEARTLAND CREEK" sort="C16_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C16_NAME" format="trim_space"/>
+      <column id="SCORE" format="C16_score;parscore"/>
+      <column id="C16_SORT" format="C16_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - TROPICAL FALLS" sort="C17_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C17_NAME" format="trim_space"/>
+      <column id="SCORE" format="C17_score;parscore"/>
+      <column id="C17_SORT" format="C17_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - EAGLE'S PEAK" sort="C18_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C18_NAME" format="trim_space"/>
+      <column id="SCORE" format="C18_score;parscore"/>
+      <column id="C18_SORT" format="C18_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - EAGLE'S PEAK AMATEUR" sort="C19_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C19_NAME" format="trim_space"/>
+      <column id="SCORE" format="C19_score;parscore"/>
+      <column id="C19_SORT" format="C19_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - BLUE HORIZON" sort="C20_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C20_NAME" format="trim_space"/>
+      <column id="SCORE" format="C20_score;parscore"/>
+      <column id="C20_SORT" format="C20_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - BLUE HORIZON AMATEUR" sort="C21_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C21_NAME" format="trim_space"/>
+      <column id="SCORE" format="C21_score;parscore"/>
+      <column id="C21_SORT" format="C21_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - SWORD'S POINTE" sort="C22_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C22_NAME" format="trim_space"/>
+      <column id="SCORE" format="C22_score;parscore"/>
+      <column id="C22_SORT" format="C22_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - CEDAR MEADOWS" sort="C23_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C23_NAME" format="trim_space"/>
+      <column id="SCORE" format="C23_score;parscore"/>
+      <column id="C23_SORT" format="C23_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - SHADOW SWAMP" sort="C24_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C24_NAME" format="trim_space"/>
+      <column id="SCORE" format="C24_score;parscore"/>
+      <column id="C24_SORT" format="C24_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - RIDGEWOOD C.C." sort="C25_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C25_NAME" format="trim_space"/>
+      <column id="SCORE" format="C25_score;parscore"/>
+      <column id="C25_SORT" format="C25_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - PAINTED GORGE" sort="C26_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C26_NAME" format="trim_space"/>
+      <column id="SCORE" format="C26_score;parscore"/>
+      <column id="C26_SORT" format="C26_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - OAK HOLLOW C.C." sort="C27_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C27_NAME" format="trim_space"/>
+      <column id="SCORE" format="C27_score;parscore"/>
+      <column id="C27_SORT" format="C27_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - SAPPHIRE SPRINGS" sort="C28_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C28_NAME" format="trim_space"/>
+      <column id="SCORE" format="C28_score;parscore"/>
+      <column id="C28_SORT" format="C28_score" display="debug"/>
+    </table>
+    <table id="LEADERBOARD - BALMORAL GREENS" sort="C29_SORT" sort-order="asc">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="GOLFER" src="C29_NAME" format="trim_space"/>
+      <column id="SCORE" format="C29_score;parscore"/>
+      <column id="C29_SORT" format="C29_score" display="debug"/>
+    </table>
+  </output>
+  <format id="C01_score"><sum><column id="C01_SCORE_LO"/><column id="C01_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C02_score"><sum><column id="C02_SCORE_LO"/><column id="C02_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C03_score"><sum><column id="C03_SCORE_LO"/><column id="C03_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C04_score"><sum><column id="C04_SCORE_LO"/><column id="C04_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C05_score"><sum><column id="C05_SCORE_LO"/><column id="C05_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C06_score"><sum><column id="C06_SCORE_LO"/><column id="C06_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C07_score"><sum><column id="C07_SCORE_LO"/><column id="C07_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C08_score"><sum><column id="C08_SCORE_LO"/><column id="C08_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C09_score"><sum><column id="C09_SCORE_LO"/><column id="C09_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C10_score"><sum><column id="C10_SCORE_LO"/><column id="C10_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C11_score"><sum><column id="C11_SCORE_LO"/><column id="C11_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C12_score"><sum><column id="C12_SCORE_LO"/><column id="C12_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C13_score"><sum><column id="C13_SCORE_LO"/><column id="C13_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C14_score"><sum><column id="C14_SCORE_LO"/><column id="C14_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C15_score"><sum><column id="C15_SCORE_LO"/><column id="C15_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C16_score"><sum><column id="C16_SCORE_LO"/><column id="C16_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C17_score"><sum><column id="C17_SCORE_LO"/><column id="C17_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C18_score"><sum><column id="C18_SCORE_LO"/><column id="C18_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C19_score"><sum><column id="C19_SCORE_LO"/><column id="C19_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C20_score"><sum><column id="C20_SCORE_LO"/><column id="C20_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C21_score"><sum><column id="C21_SCORE_LO"/><column id="C21_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C22_score"><sum><column id="C22_SCORE_LO"/><column id="C22_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C23_score"><sum><column id="C23_SCORE_LO"/><column id="C23_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C24_score"><sum><column id="C24_SCORE_LO"/><column id="C24_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C25_score"><sum><column id="C25_SCORE_LO"/><column id="C25_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C26_score"><sum><column id="C26_SCORE_LO"/><column id="C26_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C27_score"><sum><column id="C27_SCORE_LO"/><column id="C27_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C28_score"><sum><column id="C28_SCORE_LO"/><column id="C28_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="C29_score"><sum><column id="C29_SCORE_LO"/><column id="C29_SCORE_SIGN" format="sign_offset"/></sum></format>
+  <format id="sign_offset"><case src="255" dst="-256"/><case src="0" dst="0"/></format>
+  <format id="plus"><prefix>+</prefix></format>
+  <format id="parscore"><case src="200" dst=""/><case src="0" dst="E"/><case src="0" operator="&gt;" format="plus"/></format>
+  <format id="trim_space"><trim/></format>
+  <charset id="gt_char">
+    <char src="0x00" dst=" "/>
+  </charset>
+</openhi2txt>

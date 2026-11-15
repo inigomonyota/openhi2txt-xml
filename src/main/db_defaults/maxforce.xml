@@ -1,0 +1,23 @@
+<hi2txt>
+  <table id="HIGH SCORE">
+    <col>POS.</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1</cell><cell>JIM</cell><cell>117250</cell></row>
+    <row><cell>2</cell><cell>JMZ</cell><cell>96450</cell></row>
+    <row><cell>3</cell><cell>GUY</cell><cell>91875</cell></row>
+    <row><cell>4</cell><cell>DAV</cell><cell>70125</cell></row>
+    <row><cell>5</cell><cell>TAZ</cell><cell>63500</cell></row>
+    <row><cell>6</cell><cell>RW</cell><cell>55975</cell></row>
+    <row><cell>7</cell><cell>ROB</cell><cell>41350</cell></row>
+    <row><cell>8</cell><cell>CG</cell><cell>34625</cell></row>
+    <row><cell>9</cell><cell>DVE</cell><cell>27625</cell></row>
+    <row><cell>10</cell><cell>DSD</cell><cell>17550</cell></row>
+  </table>
+  <table id="TOURNAMENT">
+    <col>POS.</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1</cell><cell></cell><cell>50000</cell></row>
+    <row><cell>2</cell><cell></cell><cell>50000</cell></row>
+    <row><cell>3</cell><cell></cell><cell>50000</cell></row>
+    <row><cell>4</cell><cell></cell><cell>50000</cell></row>
+    <row><cell>5</cell><cell></cell><cell>50000</cell></row>
+  </table>
+</hi2txt>

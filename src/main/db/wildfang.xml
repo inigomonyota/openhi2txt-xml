@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  wildfang - Wild Fang / Tecmo Knight (Tecmo, 1990)
+  .hi file format (via hiscore.dat plugin)
+  hiscore.dat:
+    @:maincpu,program,609ce,28,00,1a
+  40 bytes = 5 entries x 8B
+  Record (8B): 4B score (BCD) + 1B pad + 3B name (charset A=0x0B)
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>40</size>
+    </check>
+    <loop count="5">
+      <elt size="4" type="int" id="SCORE" base="16"/>
+      <elt size="1" type="raw" id="PAD"/>
+      <elt size="3" type="text" id="NAME" charset="az"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="KING OF KINGS">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" format="comma_score"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <!-- If score is >= 1,000,000,000 (Billions) -->
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    
+    <!-- If score is >= 1,000,000 (Millions) -->
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    
+    <!-- If score is >= 1,000 (Thousands) -->
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    
+    <!-- Fallback for scores under 1,000 (Passes the number through as-is) -->
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <!-- Formats like: 1,234,567,890 -->
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234,567 -->
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234 -->
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <charset id="az">
+    <char src="0x0B" dst="A"/>
+    <char src="0x0C" dst="B"/>
+    <char src="0x0D" dst="C"/>
+    <char src="0x0E" dst="D"/>
+    <char src="0x0F" dst="E"/>
+    <char src="0x10" dst="F"/>
+    <char src="0x11" dst="G"/>
+    <char src="0x12" dst="H"/>
+    <char src="0x13" dst="I"/>
+    <char src="0x14" dst="J"/>
+    <char src="0x15" dst="K"/>
+    <char src="0x16" dst="L"/>
+    <char src="0x17" dst="M"/>
+    <char src="0x18" dst="N"/>
+    <char src="0x19" dst="O"/>
+    <char src="0x1A" dst="P"/>
+    <char src="0x1B" dst="Q"/>
+    <char src="0x1C" dst="R"/>
+    <char src="0x1D" dst="S"/>
+    <char src="0x1E" dst="T"/>
+    <char src="0x1F" dst="U"/>
+    <char src="0x20" dst="V"/>
+    <char src="0x21" dst="W"/>
+    <char src="0x22" dst="X"/>
+    <char src="0x23" dst="Y"/>
+    <char src="0x24" dst="Z"/>
+  </charset>
+
+</hi2txt>

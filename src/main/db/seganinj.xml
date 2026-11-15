@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    Ninja Princess / Sega Ninja (Sega, 1985)
+    seganinj, seganinja
+
+    .hi file: 49 bytes (1 chunk from hiscore.dat)
+      @:maincpu,program,ef00,31,00,43
+
+    7 entries x 7 bytes = 49 bytes
+    Entry format:
+      [SCORE:3] [PAD:1] [NAME:3]
+      SCORE: 3 bytes BCD little-endian
+             e.g. [00 21 05] reversed = [05 21 00] = 52100
+      PAD:   always 0x00
+      NAME:  3 bytes ASCII, 0x5D = period in game font
+
+    Default high scores (SPECIALISTS):
+      R. N 50000   M. O 45000   Y. K 40000   R. K 35000
+      M. K 30000   H. U 25000   TAC  20000
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,ef00,31,00,43</definition>
+      <size>49</size>
+    </check>
+    <loop count="7">
+      <elt size="3" type="int"  id="SCORE" base="16" endianness="little_endian"/>
+      <elt size="1" type="raw"  id="PAD"/>
+      <elt size="3" type="text" id="NAME" format="sn_char"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="sn_char" apply-to="char">
+    <case src="0x5D" dst="."/>
+  </format>
+</hi2txt>

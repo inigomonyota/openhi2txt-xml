@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="SCORE RANKING">
+    <col>RANK</col><col>NAME</col><col>KILLS</col><col>HIT RATE %</col><col>SCORE</col>
+    <row><cell>1ST</cell><cell>ABC</cell><cell>300</cell><cell>50.0%</cell><cell>50,000</cell></row>
+    <row><cell>2ND</cell><cell>DEF</cell><cell>300</cell><cell>50.0%</cell><cell>50,000</cell></row>
+    <row><cell>3RD</cell><cell>GHI</cell><cell>300</cell><cell>50.0%</cell><cell>50,000</cell></row>
+    <row><cell>4TH</cell><cell>JKL</cell><cell>300</cell><cell>50.0%</cell><cell>50,000</cell></row>
+    <row><cell>5TH</cell><cell>MNO</cell><cell>300</cell><cell>50.0%</cell><cell>50,000</cell></row>
+    <row><cell>6TH</cell><cell>PQR</cell><cell>300</cell><cell>50.0%</cell><cell>50,000</cell></row>
+    <row><cell>7TH</cell><cell>STU</cell><cell>300</cell><cell>50.0%</cell><cell>50,000</cell></row>
+    <row><cell>8TH</cell><cell>VWX</cell><cell>300</cell><cell>50.0%</cell><cell>50,000</cell></row>
+    <row><cell>9TH</cell><cell>YZ.</cell><cell>300</cell><cell>50.0%</cell><cell>50,000</cell></row>
+    <row><cell>10TH</cell><cell>,&#255;&#255;</cell><cell>300</cell><cell>50.0%</cell><cell>50,000</cell></row>
+  </table>
+</hi2txt>

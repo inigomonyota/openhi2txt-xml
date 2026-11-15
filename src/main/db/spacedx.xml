@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  spacedx - Space Invaders DX (Taito, 1994)
+  .hi file format (via hiscore.dat plugin)
+  hiscore.dat:
+    @:maincpu,program,902701,3,00,00
+    @:maincpu,program,90ff9b,1,37,37
+  4 bytes = 3B high score (BCD) + 1B trigger
+  Single high score value, no name entry.
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>4</size>
+    </check>
+    <elt size="3" type="int" id="SCORE" base="16"/>
+    <elt size="1" type="raw" id="TRIGGER"/>
+  </structure>
+
+  <output>
+    <table id="HIGH SCORE">
+      <column id="SCORE"/>
+    </table>
+  </output>
+
+</hi2txt>

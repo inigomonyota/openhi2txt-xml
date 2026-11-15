@@ -1,0 +1,10 @@
+<hi2txt>
+  <table id="RANKING">
+    <col>RANK</col><col>SCORE</col><col>NAME1</col><col>NAME2</col>
+    <row><cell>1</cell><cell>100</cell><cell>KON</cell><cell>AMI</cell></row>
+    <row><cell>2</cell><cell>90</cell><cell>RUN</cell><cell>GUN</cell></row>
+    <row><cell>3</cell><cell>60</cell><cell>J.B</cell><cell>MIK</cell></row>
+    <row><cell>4</cell><cell>50</cell><cell>PAT</cell><cell>K.T</cell></row>
+    <row><cell>5</cell><cell>40</cell><cell>REX</cell><cell>DAN</cell></row>
+  </table>
+</hi2txt>

@@ -1,0 +1,11 @@
+<hi2txt>
+  <table id="TOP RANKING">
+    <col>RANK</col><col>CITY</col><col>1UP</col><col>2UP</col><col>SCORE</col>
+    <row><cell>1</cell><cell>L.A.</cell><cell>LEE</cell><cell>INA</cell><cell>120</cell></row>
+    <row><cell>2</cell><cell>CHICAGO</cell><cell>SAS</cell><cell>AKI</cell><cell>100</cell></row>
+    <row><cell>3</cell><cell>CHARLOTTE</cell><cell>HAT</cell><cell>OHE</cell><cell>80</cell></row>
+    <row><cell>4</cell><cell>HOUSTON</cell><cell>TAK</cell><cell>YAS</cell><cell>50</cell></row>
+    <row><cell>5</cell><cell>DENVER</cell><cell>KEN</cell><cell>YTK</cell><cell>40</cell></row>
+    <row><cell>6</cell><cell>NEW YORK</cell><cell>KAT</cell><cell>MAS</cell><cell>30</cell></row>
+  </table>
+</hi2txt>

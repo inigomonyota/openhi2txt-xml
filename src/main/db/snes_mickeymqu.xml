@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    The Magical Quest Starring Mickey Mouse (USA) - SNES
+
+    .hi layout (6 bytes) = HI-SCORE range then LAST-SCORE range:
+
+      [0..2] HI-SCORE  : 3 decimal digit-bytes  D1 D2 D3  -> D1D2D300
+                         (7E0004-06, one digit per byte; 01 09 08 -> 19800)
+      [3..5] LAST SCORE: 3 little-endian BCD bytes B0 B1 B2 -> B2 B1 B0 (x100)
+                         (7E0365-67, 1P score; 00 23 01 -> 12300)
+
+    Displayed low two digits are always 00 (score awarded in 100s).
+  -->
+
+  <structure file=".hi">
+    <check>
+      <size>6</size>
+    </check>
+
+    <elt size="1" type="int" id="DIGIT1"/>
+    <elt size="1" type="int" id="DIGIT2"/>
+    <elt size="1" type="int" id="DIGIT3"/>
+
+    <elt size="1" type="int" id="LAST0"/>
+    <elt size="1" type="int" id="LAST1"/>
+    <elt size="1" type="int" id="LAST2"/>
+  </structure>
+
+  <output>
+    <table>
+      <column id="LAST PLAYED SCORE" format="last"/>
+      <column id="HI-SCORE"   format="score"/>
+    </table>
+  </output>
+
+  <format id="x10000"><multiply>10000</multiply></format>
+  <format id="x1000"><multiply>1000</multiply></format>
+  <format id="x100"><multiply>100</multiply></format>
+
+  <format id="score">
+    <sum>
+      <column id="DIGIT1" format="x10000"/>
+      <column id="DIGIT2" format="x1000"/>
+      <column id="DIGIT3" format="x100"/>
+    </sum>
+  </format>
+
+  <!-- 7E0365-67 is packed BCD, little-endian: each byte holds two decimal
+       digits (0x98 -> 98). Unpack a byte value V as (V div 16)*10 + (V mod 16),
+       then weight bytes as ones/hundreds/ten-thousands. -->
+  <format id="hinib"><divide_trunc>16</divide_trunc><multiply>10</multiply></format>
+  <format id="lonib"><remainder>16</remainder></format>
+  <format id="unbcd" input-as-subcolumns-input="yes">
+    <sum>
+      <column format="hinib"/>
+      <column format="lonib"/>
+    </sum>
+  </format>
+  <format id="last">
+    <sum>
+      <column id="LAST2" format="unbcd;x10000"/>
+      <column id="LAST1" format="unbcd;x100"/>
+      <column id="LAST0" format="unbcd"/>
+    </sum>
+  </format>
+</hi2txt>

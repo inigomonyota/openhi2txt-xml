@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<!-- Samurai Shodown (Neo Geo, saveram). 68000 => byte-swap="2".
+     SAMURAI TOP 5 table @ raw 0x328, 5 records x 16 bytes:
+       [0:7]   leading bytes (rank 1 has 75 00 x3 highlight/flag; others zero) - not displayed
+       [7:10]  SCORE 3-byte packed BCD
+       [10:13] NAME  3 chars, A=0 (ascii-offset 65); default SNK = 12 0d 0a
+       [13:16] padding -->
+<structure file="saveram" byte-swap="2">
+  <check>
+    <size>65536</size>
+  </check>
+  <elt size="808" type="raw" id="HEADER"/>
+  <loop count="5">
+    <elt size="7" type="raw"  id="LEAD"/>
+    <elt size="3" type="int"  id="SCORE" base="16"/>
+    <elt size="3" type="text" id="NAME" ascii-offset="65"/>
+    <elt size="3" type="raw"  id="PAD"/>
+  </loop>
+</structure>
+
+<output>
+  <table id="SAMURAI TOP 5">
+    <column id="RANK"  src="index" format="+1;Suffix."/>
+    <column id="NAME"/>
+    <column id="SCORE"/>
+  </table>
+</output>
+</hi2txt>

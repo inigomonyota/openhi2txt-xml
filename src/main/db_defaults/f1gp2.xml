@@ -1,101 +1,134 @@
 <hi2txt>
-  <table id="GP">
-    <col>GP</col><col>RANK</col><col>NAME</col><col>TIME</col>
-    <row><cell>South Africa</cell><cell>1</cell><cell>KAK</cell><cell>03&apos;00&apos;&apos;000</cell></row>
-    <row><cell>South Africa</cell><cell>2</cell><cell>OGI</cell><cell>03&apos;05&apos;&apos;000</cell></row>
-    <row><cell>South Africa</cell><cell>3</cell><cell>FNA</cell><cell>03&apos;10&apos;&apos;000</cell></row>
-    <row><cell>Brazil</cell><cell>1</cell><cell>KAK</cell><cell>03&apos;30&apos;&apos;000</cell></row>
-    <row><cell>Brazil</cell><cell>2</cell><cell>OGI</cell><cell>03&apos;35&apos;&apos;000</cell></row>
-    <row><cell>Brazil</cell><cell>3</cell><cell>FNA</cell><cell>03&apos;40&apos;&apos;000</cell></row>
-    <row><cell>San Marino</cell><cell>1</cell><cell>KAK</cell><cell>03&apos;00&apos;&apos;000</cell></row>
-    <row><cell>San Marino</cell><cell>2</cell><cell>OGI</cell><cell>03&apos;05&apos;&apos;000</cell></row>
-    <row><cell>San Marino</cell><cell>3</cell><cell>FNA</cell><cell>03&apos;10&apos;&apos;000</cell></row>
-    <row><cell>Monaco</cell><cell>1</cell><cell>KAK</cell><cell>04&apos;10&apos;&apos;000</cell></row>
-    <row><cell>Monaco</cell><cell>2</cell><cell>OGI</cell><cell>04&apos;15&apos;&apos;000</cell></row>
-    <row><cell>Monaco</cell><cell>3</cell><cell>FNA</cell><cell>04&apos;20&apos;&apos;000</cell></row>
-    <row><cell>Canada</cell><cell>1</cell><cell>KAK</cell><cell>03&apos;10&apos;&apos;000</cell></row>
-    <row><cell>Canada</cell><cell>2</cell><cell>OGI</cell><cell>03&apos;15&apos;&apos;000</cell></row>
-    <row><cell>Canada</cell><cell>3</cell><cell>FNA</cell><cell>03&apos;20&apos;&apos;000</cell></row>
-    <row><cell>Mexico</cell><cell>1</cell><cell>KAK</cell><cell>03&apos;00&apos;&apos;000</cell></row>
-    <row><cell>Mexico</cell><cell>2</cell><cell>OGI</cell><cell>03&apos;05&apos;&apos;000</cell></row>
-    <row><cell>Mexico</cell><cell>3</cell><cell>FNA</cell><cell>03&apos;10&apos;&apos;000</cell></row>
-    <row><cell>France</cell><cell>1</cell><cell>KAK</cell><cell>03&apos;30&apos;&apos;000</cell></row>
-    <row><cell>France</cell><cell>2</cell><cell>OGI</cell><cell>03&apos;35&apos;&apos;000</cell></row>
-    <row><cell>France</cell><cell>3</cell><cell>FNA</cell><cell>03&apos;40&apos;&apos;000</cell></row>
-    <row><cell>British</cell><cell>1</cell><cell>KAK</cell><cell>03&apos;00&apos;&apos;000</cell></row>
-    <row><cell>British</cell><cell>2</cell><cell>OGI</cell><cell>03&apos;05&apos;&apos;000</cell></row>
-    <row><cell>British</cell><cell>3</cell><cell>FNA</cell><cell>03&apos;10&apos;&apos;000</cell></row>
-    <row><cell>Germany</cell><cell>1</cell><cell>KAK</cell><cell>03&apos;00&apos;&apos;000</cell></row>
-    <row><cell>Germany</cell><cell>2</cell><cell>OGI</cell><cell>03&apos;05&apos;&apos;000</cell></row>
-    <row><cell>Germany</cell><cell>3</cell><cell>FNA</cell><cell>03&apos;10&apos;&apos;000</cell></row>
-    <row><cell>Hungary</cell><cell>1</cell><cell>KAK</cell><cell>03&apos;30&apos;&apos;000</cell></row>
-    <row><cell>Hungary</cell><cell>2</cell><cell>OGI</cell><cell>03&apos;35&apos;&apos;000</cell></row>
-    <row><cell>Hungary</cell><cell>3</cell><cell>FNA</cell><cell>03&apos;40&apos;&apos;000</cell></row>
-    <row><cell>Belgium</cell><cell>1</cell><cell>KAK</cell><cell>03&apos;30&apos;&apos;000</cell></row>
-    <row><cell>Belgium</cell><cell>2</cell><cell>OGI</cell><cell>03&apos;35&apos;&apos;000</cell></row>
-    <row><cell>Belgium</cell><cell>3</cell><cell>FNA</cell><cell>03&apos;40&apos;&apos;000</cell></row>
-    <row><cell>Italy</cell><cell>1</cell><cell>KAK</cell><cell>02&apos;30&apos;&apos;000</cell></row>
-    <row><cell>Italy</cell><cell>2</cell><cell>OGI</cell><cell>02&apos;35&apos;&apos;000</cell></row>
-    <row><cell>Italy</cell><cell>3</cell><cell>FNA</cell><cell>02&apos;40&apos;&apos;000</cell></row>
-    <row><cell>Portugal</cell><cell>1</cell><cell>KAK</cell><cell>03&apos;30&apos;&apos;000</cell></row>
-    <row><cell>Portugal</cell><cell>2</cell><cell>OGI</cell><cell>03&apos;35&apos;&apos;000</cell></row>
-    <row><cell>Portugal</cell><cell>3</cell><cell>FNA</cell><cell>03&apos;40&apos;&apos;000</cell></row>
-    <row><cell>Spain</cell><cell>1</cell><cell>KAK</cell><cell>03&apos;20&apos;&apos;000</cell></row>
-    <row><cell>Spain</cell><cell>2</cell><cell>OGI</cell><cell>03&apos;25&apos;&apos;000</cell></row>
-    <row><cell>Spain</cell><cell>3</cell><cell>FNA</cell><cell>03&apos;30&apos;&apos;000</cell></row>
-    <row><cell>Japan</cell><cell>1</cell><cell>KAK</cell><cell>03&apos;30&apos;&apos;000</cell></row>
-    <row><cell>Japan</cell><cell>2</cell><cell>OGI</cell><cell>03&apos;35&apos;&apos;000</cell></row>
-    <row><cell>Japan</cell><cell>3</cell><cell>FNA</cell><cell>03&apos;40&apos;&apos;000</cell></row>
-    <row><cell>Australia</cell><cell>1</cell><cell>KAK</cell><cell>03&apos;20&apos;&apos;000</cell></row>
-    <row><cell>Australia</cell><cell>2</cell><cell>OGI</cell><cell>03&apos;25&apos;&apos;000</cell></row>
-    <row><cell>Australia</cell><cell>3</cell><cell>FNA</cell><cell>03&apos;30&apos;&apos;000</cell></row>
-  </table>
-  <table id="COURSE">
-    <col>COURSE</col><col>RANK</col><col>NAME</col><col>TOTAL TIME</col><col>POINT</col>
-    <row><cell>A</cell><cell>1</cell><cell>MAN</cell><cell>07&apos;30&apos;&apos;000</cell><cell>20</cell></row>
-    <row><cell>A</cell><cell>2</cell><cell>SEN</cell><cell>07&apos;40&apos;&apos;000</cell><cell>16</cell></row>
-    <row><cell>A</cell><cell>3</cell><cell>PAT</cell><cell>07&apos;45&apos;&apos;000</cell><cell>12</cell></row>
-    <row><cell>A</cell><cell>4</cell><cell>SCH</cell><cell>07&apos;50&apos;&apos;000</cell><cell>09</cell></row>
-    <row><cell>A</cell><cell>5</cell><cell>BER</cell><cell>07&apos;55&apos;&apos;000</cell><cell>06</cell></row>
-    <row><cell>A</cell><cell>6</cell><cell>BRU</cell><cell>08&apos;00&apos;&apos;000</cell><cell>04</cell></row>
-    <row><cell>B</cell><cell>1</cell><cell>SCH</cell><cell>08&apos;35&apos;&apos;000</cell><cell>20</cell></row>
-    <row><cell>B</cell><cell>2</cell><cell>MAN</cell><cell>08&apos;40&apos;&apos;000</cell><cell>16</cell></row>
-    <row><cell>B</cell><cell>3</cell><cell>ALE</cell><cell>08&apos;45&apos;&apos;000</cell><cell>12</cell></row>
-    <row><cell>B</cell><cell>4</cell><cell>CAP</cell><cell>08&apos;50&apos;&apos;000</cell><cell>09</cell></row>
-    <row><cell>B</cell><cell>5</cell><cell>SUZ</cell><cell>08&apos;55&apos;&apos;000</cell><cell>06</cell></row>
-    <row><cell>B</cell><cell>6</cell><cell>KAT</cell><cell>09&apos;00&apos;&apos;000</cell><cell>04</cell></row>
-    <row><cell>C</cell><cell>1</cell><cell>MAN</cell><cell>08&apos;35&apos;&apos;000</cell><cell>20</cell></row>
-    <row><cell>C</cell><cell>2</cell><cell>PAT</cell><cell>08&apos;40&apos;&apos;000</cell><cell>16</cell></row>
-    <row><cell>C</cell><cell>3</cell><cell>SEN</cell><cell>08&apos;45&apos;&apos;000</cell><cell>12</cell></row>
-    <row><cell>C</cell><cell>4</cell><cell>BER</cell><cell>08&apos;50&apos;&apos;000</cell><cell>09</cell></row>
-    <row><cell>C</cell><cell>5</cell><cell>GAC</cell><cell>08&apos;55&apos;&apos;000</cell><cell>06</cell></row>
-    <row><cell>C</cell><cell>6</cell><cell>ALB</cell><cell>09&apos;00&apos;&apos;000</cell><cell>04</cell></row>
-    <row><cell>D</cell><cell>1</cell><cell>SEN</cell><cell>09&apos;25&apos;&apos;000</cell><cell>20</cell></row>
-    <row><cell>D</cell><cell>2</cell><cell>MAN</cell><cell>09&apos;30&apos;&apos;000</cell><cell>16</cell></row>
-    <row><cell>D</cell><cell>3</cell><cell>BRU</cell><cell>09&apos;35&apos;&apos;000</cell><cell>12</cell></row>
-    <row><cell>D</cell><cell>4</cell><cell>ALE</cell><cell>09&apos;40&apos;&apos;000</cell><cell>09</cell></row>
-    <row><cell>D</cell><cell>5</cell><cell>KAT</cell><cell>09&apos;45&apos;&apos;000</cell><cell>06</cell></row>
-    <row><cell>D</cell><cell>6</cell><cell>CAP</cell><cell>09&apos;50&apos;&apos;010</cell><cell>04</cell></row>
-  </table>
-  <table id="GP RECORD">
-    <col>GP</col><col>RECORD</col>
-    <row><cell>South Africa</cell><cell>59&apos;&apos;712</cell></row>
-    <row><cell>Brazil</cell><cell>59&apos;&apos;525</cell></row>
-    <row><cell>San Marino</cell><cell>59&apos;&apos;617</cell></row>
-    <row><cell>Monaco</cell><cell>59&apos;&apos;369</cell></row>
-    <row><cell>Canada</cell><cell>59&apos;&apos;842</cell></row>
-    <row><cell>Mexico</cell><cell>59&apos;&apos;534</cell></row>
-    <row><cell>France</cell><cell>59&apos;&apos;926</cell></row>
-    <row><cell>British</cell><cell>59&apos;&apos;278</cell></row>
-    <row><cell>Germany</cell><cell>59&apos;&apos;757</cell></row>
-    <row><cell>Hungary</cell><cell>59&apos;&apos;595</cell></row>
-    <row><cell>Belgium</cell><cell>59&apos;&apos;809</cell></row>
-    <row><cell>Italy</cell><cell>59&apos;&apos;458</cell></row>
-    <row><cell>Portugal</cell><cell>59&apos;&apos;531</cell></row>
-    <row><cell>Spain</cell><cell>59&apos;&apos;762</cell></row>
-    <row><cell>Japan</cell><cell>59&apos;&apos;810</cell></row>
-    <row><cell>Australia</cell><cell>59&apos;&apos;954</cell></row>
-  </table>
+<table id="SOUTH AFRICA GP (KYALAMI)">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>KAK</cell><cell>3'00"000</cell></row>
+<row><cell>2</cell><cell>OGI</cell><cell>3'05"000</cell></row>
+<row><cell>3</cell><cell>FNA</cell><cell>3'10"000</cell></row>
+</table>
+<table id="BRAZIL GP (INTERLAGOS)">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>KAK</cell><cell>3'30"000</cell></row>
+<row><cell>2</cell><cell>OGI</cell><cell>3'35"000</cell></row>
+<row><cell>3</cell><cell>FNA</cell><cell>3'40"000</cell></row>
+</table>
+<table id="SAN MARINO GP (IMOLA)">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>KAK</cell><cell>3'00"000</cell></row>
+<row><cell>2</cell><cell>OGI</cell><cell>3'05"000</cell></row>
+<row><cell>3</cell><cell>FNA</cell><cell>3'10"000</cell></row>
+</table>
+<table id="MONACO GP">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>KAK</cell><cell>4'10"000</cell></row>
+<row><cell>2</cell><cell>OGI</cell><cell>4'15"000</cell></row>
+<row><cell>3</cell><cell>FNA</cell><cell>4'20"000</cell></row>
+</table>
+<table id="CANADA GP (MONTREAL)">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>KAK</cell><cell>3'10"000</cell></row>
+<row><cell>2</cell><cell>OGI</cell><cell>3'15"000</cell></row>
+<row><cell>3</cell><cell>FNA</cell><cell>3'20"000</cell></row>
+</table>
+<table id="MEXICO GP (RODRIGUEZ)">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>KAK</cell><cell>3'00"000</cell></row>
+<row><cell>2</cell><cell>OGI</cell><cell>3'05"000</cell></row>
+<row><cell>3</cell><cell>FNA</cell><cell>3'10"000</cell></row>
+</table>
+<table id="FRANCE GP (MAGNY COURS)">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>KAK</cell><cell>3'30"000</cell></row>
+<row><cell>2</cell><cell>OGI</cell><cell>3'35"000</cell></row>
+<row><cell>3</cell><cell>FNA</cell><cell>3'40"000</cell></row>
+</table>
+<table id="BRITISH GP (SILVERSTONE)">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>KAK</cell><cell>3'00"000</cell></row>
+<row><cell>2</cell><cell>OGI</cell><cell>3'05"000</cell></row>
+<row><cell>3</cell><cell>FNA</cell><cell>3'10"000</cell></row>
+</table>
+<table id="GERMANY GP (HOCKENHEIM)">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>KAK</cell><cell>3'00"000</cell></row>
+<row><cell>2</cell><cell>OGI</cell><cell>3'05"000</cell></row>
+<row><cell>3</cell><cell>FNA</cell><cell>3'10"000</cell></row>
+</table>
+<table id="HUNGARY GP (HUNGARORING)">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>KAK</cell><cell>3'30"000</cell></row>
+<row><cell>2</cell><cell>OGI</cell><cell>3'35"000</cell></row>
+<row><cell>3</cell><cell>FNA</cell><cell>3'40"000</cell></row>
+</table>
+<table id="BELGIUM GP (SPA)">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>KAK</cell><cell>3'30"000</cell></row>
+<row><cell>2</cell><cell>OGI</cell><cell>3'35"000</cell></row>
+<row><cell>3</cell><cell>FNA</cell><cell>3'40"000</cell></row>
+</table>
+<table id="ITALY GP (MONZA)">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>KAK</cell><cell>2'30"000</cell></row>
+<row><cell>2</cell><cell>OGI</cell><cell>2'35"000</cell></row>
+<row><cell>3</cell><cell>FNA</cell><cell>2'40"000</cell></row>
+</table>
+<table id="PORTUGAL GP (ESTORIL)">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>KAK</cell><cell>3'30"000</cell></row>
+<row><cell>2</cell><cell>OGI</cell><cell>3'35"000</cell></row>
+<row><cell>3</cell><cell>FNA</cell><cell>3'40"000</cell></row>
+</table>
+<table id="SPAIN GP (CATARUNYA)">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>KAK</cell><cell>3'20"000</cell></row>
+<row><cell>2</cell><cell>OGI</cell><cell>3'25"000</cell></row>
+<row><cell>3</cell><cell>FNA</cell><cell>3'30"000</cell></row>
+</table>
+<table id="JAPAN GP (SUZUKA)">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>KAK</cell><cell>3'30"000</cell></row>
+<row><cell>2</cell><cell>OGI</cell><cell>3'35"000</cell></row>
+<row><cell>3</cell><cell>FNA</cell><cell>3'40"000</cell></row>
+</table>
+<table id="AUSTRALIA GP (ADELAIDE)">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>KAK</cell><cell>3'20"000</cell></row>
+<row><cell>2</cell><cell>OGI</cell><cell>3'25"000</cell></row>
+<row><cell>3</cell><cell>FNA</cell><cell>3'30"000</cell></row>
+</table>
+<table id="A COURSE - POINT RANKING">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>MAN</cell><cell>7'30"000</cell><cell>20</cell></row>
+<row><cell>2</cell><cell>SEN</cell><cell>7'40"000</cell><cell>16</cell></row>
+<row><cell>3</cell><cell>PAT</cell><cell>7'45"000</cell><cell>12</cell></row>
+<row><cell>4</cell><cell>SCH</cell><cell>7'50"000</cell><cell>9</cell></row>
+<row><cell>5</cell><cell>BER</cell><cell>7'55"000</cell><cell>6</cell></row>
+<row><cell>6</cell><cell>BRU</cell><cell>8'00"000</cell><cell>4</cell></row>
+</table>
+<table id="B COURSE - POINT RANKING">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>SCH</cell><cell>8'35"000</cell><cell>20</cell></row>
+<row><cell>2</cell><cell>MAN</cell><cell>8'40"000</cell><cell>16</cell></row>
+<row><cell>3</cell><cell>ALE</cell><cell>8'45"000</cell><cell>12</cell></row>
+<row><cell>4</cell><cell>CAP</cell><cell>8'50"000</cell><cell>9</cell></row>
+<row><cell>5</cell><cell>SUZ</cell><cell>8'55"000</cell><cell>6</cell></row>
+<row><cell>6</cell><cell>KAT</cell><cell>9'00"000</cell><cell>4</cell></row>
+</table>
+<table id="C COURSE - POINT RANKING">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>MAN</cell><cell>8'35"000</cell><cell>20</cell></row>
+<row><cell>2</cell><cell>PAT</cell><cell>8'40"000</cell><cell>16</cell></row>
+<row><cell>3</cell><cell>SEN</cell><cell>8'45"000</cell><cell>12</cell></row>
+<row><cell>4</cell><cell>BER</cell><cell>8'50"000</cell><cell>9</cell></row>
+<row><cell>5</cell><cell>GAC</cell><cell>8'55"000</cell><cell>6</cell></row>
+<row><cell>6</cell><cell>ALB</cell><cell>9'00"000</cell><cell>4</cell></row>
+</table>
+<table id="D COURSE - POINT RANKING">
+<col>RANK</col><col>NAME</col><col>TIME</col>
+<row><cell>1</cell><cell>SEN</cell><cell>9'25"000</cell><cell>20</cell></row>
+<row><cell>2</cell><cell>MAN</cell><cell>9'30"000</cell><cell>16</cell></row>
+<row><cell>3</cell><cell>BRU</cell><cell>9'35"000</cell><cell>12</cell></row>
+<row><cell>4</cell><cell>ALE</cell><cell>9'40"000</cell><cell>9</cell></row>
+<row><cell>5</cell><cell>KAT</cell><cell>9'45"000</cell><cell>6</cell></row>
+<row><cell>6</cell><cell>CAP</cell><cell>9'50"000</cell><cell>4</cell></row>
+</table>
 </hi2txt>
-
-

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>1188</size>
+    </check>
+
+    <!-- The first seven 12-byte slots are the scores displayed by the game. -->
+    <loop count="7">
+      <elt id="STATE" type="raw" size="4"/>
+      <elt id="SCORE"
+           type="int"
+           size="4"
+           base="16"
+           table-index="loop_index"/>
+      <elt id="NAME"
+           type="text"
+           size="3"
+           table-index="loop_index"/>
+      <elt id="NAME TERMINATOR" type="raw" size="1"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST 7 SCORES">
+      <column id="&#160;" src="index" format="+1;Suffix."/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+</hi2txt>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>73</size>
+    </check>
+    <loop count="10">
+      <elt size="3" type="int" base="16" id="SCORE"/>
+      <elt size="3" type="text" charset="combatsc_chr" id="NAME"/>
+      <elt size="1" type="int" id="TITLE"/>
+    </loop>
+    <elt size="3" type="raw" id="TAIL"/>
+  </structure>
+  <output>
+    <table id="RANKING">
+      <column src="index" format="+1" id="RANK"/>
+      <column src="SCORE" format="*10" id="SCORE"/>
+      <column src="NAME" id="NAME"/>
+      <column src="TITLE" format="title" id="TITLE"/>
+    </table>
+  </output>
+  <format id="title">
+    <case src="0" dst="GEN."/>
+    <case src="1" dst="COL."/>
+    <case src="2" dst="LTC."/>
+    <case src="3" dst="MAJ."/>
+    <case src="4" dst="CAPT."/>
+    <case src="5" dst="CPL."/>
+    <case src="6" dst="PRT."/>
+    <case src="7" dst="ROOKIE"/>
+  </format>
+  <charset id="combatsc_chr">
+    <char src="0x3D" dst="."/>
+  </charset>
+</hi2txt>

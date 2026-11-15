@@ -1,102 +1,142 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
-<hi2txt label="Super Pang">
-    <!--
-      tested with mame 0.229 and related hiscore.dat
-      source: GreatStone
-    //-->
 
-    <structure file=".hi">
-        <check>
-            <!-- optional: if defined and hiscore.dat provided, it allows to select the good structure versus the provided file //-->
-            <definition>@:maincpu,program,fc01,9e,00,07
-                        @:maincpu,program,e158,4,00,00</definition>
-            <!-- optional: if defined, it allows to select the good structure versus the provided file
-                           useful if multiple structures are defined but hiscore.dat not provided //-->
-            <size>162</size>
-        </check>
+<!-- spang by Mitchell Corporation, 1990 -->
+<!-- hiscore.dat: @:maincpu,program,fc01,9e,00,07 | @:maincpu,program,e158,4,00,00 -->
 
-        <loop count="5">
-            <elt size="4" type="int"  id="SCORE" base="16"/>
-            <elt size="1" type="raw"  id="EMPTY"/>
-            <elt size="6" type="text" id="NAME" src-unit-size="16" charset="chars"/>
-            <elt size="1" type="raw"  id="EMPTY2"/>
-            <elt size="1" type="int"  id="LEVEL1" base="16"/>
-            <elt size="1" type="int"  id="LEVEL2" base="16"/>
-            <elt size="2" type="raw"  id="UNKNOWN"/>
-        </loop>
-        <loop count="5">
-            <elt size="4" type="int"  id="SCORE_2" base="16"/>
-            <elt size="1" type="raw"  id="EMPTY_2"/>
-            <elt size="6" type="text" id="NAME_2" src-unit-size="16" charset="chars"/>
-            <elt size="1" type="raw"  id="EMPTY2_2"/>
-            <elt size="1" type="raw"  id="EMPTY3_2"/>
-            <elt size="1" type="int"  id="LEVEL_2" base="16"/>
-            <elt size="2" type="raw"  id="UNKNOWN"/>
-        </loop>
-    </structure>
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>162</size>
+    </check>
 
-    <output>
-        <table id="TOUR MODE">
-            <column id="RANK" src="index" format="+1"/>
-            <column id="SCORE"/>
-            <column id="NAME"/>
-            <column id="LEVEL" format="level"/>
-        </table>
-        <table id="PANIC MODE">
-            <column id="RANK" src="index" format="+1"/>
-            <column id="SCORE" src="SCORE_2"/>
-            <column id="NAME"  src="NAME_2"/>
-            <column id="LEVEL" src="LEVEL_2" format="PrefixL."/>
-        </table>
-    </output>
+    <!-- TOUR MODE RANKING (80 bytes) -->
+    <loop count="5">
+      <elt size="4" type="int"  id="T_SCORE" base="16"/>
+      <!-- Read 4 chars as 2-byte Big Endian Integers to distinguish N from Dot -->
+      <elt size="2" type="int"  id="T_C1"/>
+      <elt size="2" type="int"  id="T_C2"/>
+      <elt size="2" type="int"  id="T_C3"/>
+      <elt size="2" type="int"  id="T_C4"/>
+      <elt size="1" type="int"  id="T_STG_M" base="16"/>
+      <elt size="1" type="int"  id="T_STG_S" base="16"/>
+      <elt size="2" type="raw"  id="T_PAD"/>
+    </loop>
 
-    <format id="level">
-        <concat>
-          <column id="LEVEL1"/>
-            <txt>-</txt>
-          <column id="LEVEL2"/>
-        </concat>
-    </format>
+    <!-- PANIC MODE RANKING (80 bytes) -->
+    <loop count="5">
+      <elt size="4" type="int"  id="P_SCORE" base="16"/>
+      <elt size="2" type="int"  id="P_C1"/>
+      <elt size="2" type="int"  id="P_C2"/>
+      <elt size="2" type="int"  id="P_C3"/>
+      <elt size="2" type="int"  id="P_C4"/>
+      <elt size="1" type="raw"  id="P_LVL_M"/>
+      <elt size="1" type="int"  id="P_LVL_S" base="16"/>
+      <elt size="2" type="raw"  id="P_PAD"/>
+    </loop>
+  </structure>
 
-    <charset id="chars">
-        <char src="0x4003" dst="."/>
-        <char src="0xAA0A" dst="."/>
+  <output>
+    <table id="RANKING TOUR MODE">
+      <column id="RANK"  src="index"   format="ordinal"/>
+      <column id="SCORE" src="T_SCORE" format="comma_score"/>
+      <column id="NAME"  format="decode_tour_name"/>
+      <column id="STAGE" format="tour_stage"/>
+    </table>
 
-        <char src="0x0E07" dst=" "/>
+    <table id="RANKING PANIC MODE">
+      <column id="RANK"  src="index"   format="ordinal"/>
+      <column id="SCORE" src="P_SCORE" format="comma_score"/>
+      <column id="NAME"  format="decode_panic_name"/>
+      <column id="LEVEL" src="P_LVL_S" format="PadL20"/>
+    </table>
+  </output>
 
-        <char src="0x2A03" dst="?"/>
-        <char src="0x2803" dst="!"/>
+  <!-- Joins the 4 characters and strips all workaround underscores -->
+  <format id="decode_tour_name">
+    <concat>
+      <column id="T_C1" format="mitchell_logic"/>
+      <column id="T_C2" format="mitchell_logic"/>
+      <column id="T_C3" format="mitchell_logic"/>
+      <column id="T_C4" format="mitchell_logic"/>
+    </concat>
+    <replace src="_" dst=""/>
+  </format>
 
-        <char src="0x8000" dst="A"/>
-        <char src="0x8200" dst="B"/>
-        <char src="0x8400" dst="C"/>
-        <char src="0x8600" dst="D"/>
-        <char src="0x8800" dst="E"/>
-        <char src="0x8A00" dst="F"/>
-        <char src="0x8C00" dst="G"/>
-        <char src="0x8E00" dst="H"/>
+  <format id="decode_panic_name">
+    <concat>
+      <column id="P_C1" format="mitchell_logic"/>
+      <column id="P_C2" format="mitchell_logic"/>
+      <column id="P_C3" format="mitchell_logic"/>
+      <column id="P_C4" format="mitchell_logic"/>
+    </concat>
+    <replace src="_" dst=""/>
+  </format>
 
-        <char src="0xA000" dst="I"/>
-        <char src="0xA200" dst="J"/>
-        <char src="0xA400" dst="K"/>
-        <char src="0xA600" dst="L"/>
-        <char src="0xA800" dst="M"/>
-        <char src="0xAA00" dst="N"/>
-        <char src="0xAC00" dst="O"/>
-        <char src="0xAE00" dst="P"/>
+  <!-- The Master Mitchell Character Decoder -->
+  <format id="mitchell_logic">
+    <!-- Middle Dots -->
+    <case src="170"  dst="_·"/> <!-- 0x00AA Middle Dot -->
+    <!-- Alphabet -->
+    <case src="2730" dst="_N"/> <!-- 0x0AAA N -->
+    <case src="2724" dst="_K"/> <!-- 0x0AA4 K -->
+    <case src="164"  dst="_K"/> <!-- 0x00A4 K -->
+    <case src="168"  dst="_M"/> <!-- 0x00A8 M -->
+    <case src="2756" dst="_S"/> <!-- 0x0AC4 S -->
+    <case src="198"  dst="_T"/> <!-- 0x00C6 T -->
+    <case src="2760" dst="_U"/> <!-- 0x0AC8 U -->
+    <case src="128"  dst="_A"/> <!-- 0x0080 A -->
+    <case src="994"  dst="_Z"/> <!-- 0x03E2 Z -->
+    <case src="156"  dst="_F"/> <!-- 0x009C F -->
+    <!-- Symbols -->
+    <case src="2624" dst="_."/> <!-- 0x0A40 . -->
+    <case src="40"   dst="_!"/> <!-- 0x0028 ! -->
+    <case src="42"   dst="_?"/> <!-- 0x002A ? -->
+    <case src="808"  dst="_!"/> <!-- 0x0328 ! -->
+    <case src="810"  dst="_?"/> <!-- 0x032A ? -->
+    <!-- Null Padding -->
+    <case src="768"  dst="_"/>  <!-- 0x0300 padding -->
+    <case src="0"    dst="_" default="yes"/>
+  </format>
 
-        <char src="0xC000" dst="Q"/>
-        <char src="0xC200" dst="R"/>
-        <char src="0xC400" dst="S"/>
-        <char src="0xC600" dst="T"/>
-        <char src="0xC800" dst="U"/>
-        <char src="0xCA00" dst="V"/>
-        <char src="0xCC00" dst="W"/>
-        <char src="0xCE00" dst="X"/>
+  <format id="tour_stage" input-as-subcolumns-input="yes">
+    <concat>
+      <column id="T_STG_M"/>
+      <txt>-</txt>
+      <column id="T_STG_S" format="PadL20"/>
+    </concat>
+  </format>
 
-        <char src="0xE000" dst="Y"/>
-        <char src="0xE200" dst="Z"/>
-    </charset>
+  <format id="ordinal">
+    <case src="0" dst="1ST"/><case src="1" dst="2ND"/><case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/><case src="4" dst="5TH"/>
+  </format>
 
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/><txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
 </hi2txt>

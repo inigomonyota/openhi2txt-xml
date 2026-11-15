@@ -1,0 +1,10 @@
+<hi2txt>
+  <table id="SCORE RANKING">
+    <col>RANK</col><col>CHARACTER</col><col>NAME</col><col>SCORE</col>
+    <row><cell>1ST</cell><cell>SAILOR JUPITER</cell><cell>KOT</cell><cell>70,000</cell></row>
+    <row><cell>2ND</cell><cell>SAILOR MERCURY</cell><cell>AYA</cell><cell>60,000</cell></row>
+    <row><cell>3RD</cell><cell>SAILOR MARS</cell><cell>MIC</cell><cell>50,000</cell></row>
+    <row><cell>4TH</cell><cell>SAILOR VENUS</cell><cell>EMI</cell><cell>40,000</cell></row>
+    <row><cell>5TH</cell><cell>SAILOR MOON</cell><cell>RIK</cell><cell>37,500</cell></row>
+  </table>
+</hi2txt>

@@ -1,11 +1,11 @@
 <hi2txt>
   <table>
     <col>RANK</col><col>SCORE</col><col>NAME</col>
-    <row><cell>1</cell><cell>10000</cell><cell>TEH</cell></row>
-    <row><cell>2</cell><cell>10000</cell><cell>KAN</cell></row>
-    <row><cell>3</cell><cell>10000</cell><cell>TEH</cell></row>
-    <row><cell>4</cell><cell>10000</cell><cell>KAN</cell></row>
-    <row><cell>5</cell><cell>10000</cell><cell>TEH</cell></row>
+    <row><cell>1</cell><cell>57490</cell><cell>MOT</cell></row>
+    <row><cell>2</cell><cell>42760</cell><cell>MOT</cell></row>
+    <row><cell>3</cell><cell>39520</cell><cell>MOT</cell></row>
+    <row><cell>4</cell><cell>32970</cell><cell>MOT</cell></row>
+    <row><cell>5</cell><cell>32820</cell><cell>MOT</cell></row>
   </table>
-  <field id="TOP SCORE">10000</field>
+  <field id="TOP SCORE">57490</field>
 </hi2txt>

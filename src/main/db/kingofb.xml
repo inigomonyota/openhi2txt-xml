@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+
+<!-- kingofb by Woodplace Inc., 1985 -->
+<!-- hiscore.dat: @:maincpu,program,c22a,04,00,05 | @:video,program,8048,8c,00,12 -->
+
+<hi2txt>
+  <structure file=".hi">
+    <check>
+      <size>144</size>
+    </check>
+
+    <!-- Range 1: Top Prize (4 bytes) -->
+    <elt size="4" type="raw" id="HI_PRIZE_RAW"/>
+
+    <!-- Range 2: The Ranking Table (140 bytes) -->
+    <!-- Stored in reverse order (10th place up to 1st place) -->
+    
+    <!-- Block 1: Prizes (10 records x 3 bytes BCD) -->
+    <loop count="10">
+      <elt size="3" type="int" id="PRIZE" base="16" table-index="loop_reverse_index"/>
+    </loop>
+
+    <!-- Block 2: Names (10 records x 10 bytes ASCII) -->
+    <loop count="10">
+      <elt size="10" type="text" id="NAME" charset="kingofb_chars" table-index="loop_reverse_index"/>
+    </loop>
+
+    <!-- Block 3: Wins (10 records x 1 byte BCD) -->
+    <!-- base="16" is added here to fix the 18->12, 17->11, 16->10 conversion error -->
+    <loop count="10">
+      <elt size="1" type="int" id="WIN" base="16" table-index="loop_reverse_index"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TOTAL PRIZE RANKING">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="PRIZE" src="PRIZE" format="*10;comma_score;dollar_prefix"/>
+      <column id="WIN"   src="WIN"/>
+    </table>
+  </output>
+
+  <!-- Translates 0-9 into 1ST-10TH -->
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+
+  <!-- Adds the dollar sign prefix -->
+  <format id="dollar_prefix">
+    <prefix>$</prefix>
+  </format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       ========================================== -->
+  <format id="comma_score">
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/><txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/><txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/><txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <!-- Custom Charset for King of Boxer -->
+  <charset id="kingofb_chars">
+    <char src="0x5B" dst="."/>
+    <char src="0x40" dst=" "/>
+  </charset>
+</hi2txt>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Rave Racer">
+  <!-- [Rave Racer (Namco System 22). Unlike ridgerac/ridgera2 (which store packed-BCD
+       course records with NO names), Rave Racer's FASTEST RECORD board IS persisted in
+       the 8192-byte eeprom in PLAINTEXT at file 0x3c0: 4 records x 6 bytes =
+       [3-byte time][3-byte ASCII name], one per difficulty class (NOVICE / INTERMEDIATE
+       / ADVANCED / PROFESSIONAL). The time is a 24-bit BIG-ENDIAN BINARY integer in
+       units of 0.1 ms, so value/10 = milliseconds, shown M'SS"MMM.
+       GROUND TRUTH (factory eeprom, matches the attract FASTEST RECORD screenshot
+       byte-for-byte): 0x177672=1537650 -> 2'33"765 MKM; 0x194b32=1657650 -> 2'45"765
+       OAI; 0x209e32=2137650 -> 3'33"765 RKZ; 0x168c12=1477650 -> 2'27"765 IIU. Each
+       0x40-byte eeprom page ends with a "V154" (56 31 35 34) signature + 2-byte
+       checksum. No hiscore.dat exists for any System 22 game (eeprom-native). //-->
+  <structure file="eeprom">
+    <check><size>8192</size></check>
+    <elt type="raw" size="960" id="_PREFIX"/>
+    <loop count="4">
+      <elt size="3" type="int"  id="TIME" endianness="big_endian"/>
+      <elt size="3" type="text" id="NAME"/>
+    </loop>
+    <elt type="raw" size="7208" id="_REST"/>
+  </structure>
+  <output>
+    <table id="FASTEST RECORD">
+      <column id="CLASS" src="index" format="class"/>
+      <column id="TIME"  src="TIME"  format="gtime"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+  <format id="class">
+    <case src="0" dst="NOVICE"/>
+    <case src="1" dst="INTERMEDIATE"/>
+    <case src="2" dst="ADVANCED"/>
+    <case src="3" dst="PROFESSIONAL"/>
+  </format>
+  <format id="t_min"><divide_trunc>600000</divide_trunc><pad direction="left" max="2">0</pad></format>
+  <format id="t_sec"><divide_trunc>10000</divide_trunc><remainder>60</remainder><pad direction="left" max="2">0</pad></format>
+  <format id="t_ms"><divide_trunc>10</divide_trunc><remainder>1000</remainder><pad direction="left" max="3">0</pad></format>
+  <format id="gtime" input-as-subcolumns-input="yes">
+    <concat><column format="t_min"/><txt>'</txt><column format="t_sec"/><txt>"</txt><column format="t_ms"/></concat>
+  </format>
+</hi2txt>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    mk3 - Mortal Kombat 3 (Midway, 1995)
+    Reads the MAME nvram file (nvram/mk3/nvram), 49152 bytes.
+
+    "LONGEST WINNING STREAKS" = 15 records of 18 bytes from 0x1800.
+    Values are 16-bit little-endian; each logical byte is [value][00].
+    Record:
+      [0:6]  NAME  3 chars as 16-bit indices (low byte kept via byte-skip odd)
+             charset: A=0..Z=25, digits 0=0xEF..9=0xF8
+      [6:8]  WINS  16-bit little-endian
+      [8:18] padding
+    RANK is positional, shown as the number then a dot.
+  -->
+
+  <structure file="nvram">
+    <check>
+      <size>49152</size>
+    </check>
+
+    <!-- skip to table at 0x1800 (6144 bytes) -->
+    <elt size="6144" type="raw" id="PRE"/>
+    <loop count="15">
+      <elt size="6"  type="text" byte-skip="odd" charset="mk3n" id="NAME"/>
+      <elt size="2"  type="int"  endianness="little_endian" id="WINS"/>
+      <elt size="10" type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <format id="rank">
+    <add>1</add>
+    <suffix>.</suffix>
+  </format>
+
+  <format id="wins"><suffix> WINS IN A ROW</suffix></format>
+
+  <output>
+    <table id="LONGEST WINNING STREAKS">
+      <column id="RANK"          src="index" format="rank"/>
+      <column id="NAME"          src="NAME"/>
+      <column id="WINS IN A ROW" src="WINS" format="wins"/>
+    </table>
+  </output>
+
+  <!-- MK3 name font: A=0..Z=25, digits 0=0xEF..9=0xF8 -->
+  <charset id="mk3n">
+    <char src="0x00" dst="A"/>
+    <char src="0x01" dst="B"/>
+    <char src="0x02" dst="C"/>
+    <char src="0x03" dst="D"/>
+    <char src="0x04" dst="E"/>
+    <char src="0x05" dst="F"/>
+    <char src="0x06" dst="G"/>
+    <char src="0x07" dst="H"/>
+    <char src="0x08" dst="I"/>
+    <char src="0x09" dst="J"/>
+    <char src="0x0A" dst="K"/>
+    <char src="0x0B" dst="L"/>
+    <char src="0x0C" dst="M"/>
+    <char src="0x0D" dst="N"/>
+    <char src="0x0E" dst="O"/>
+    <char src="0x0F" dst="P"/>
+    <char src="0x10" dst="Q"/>
+    <char src="0x11" dst="R"/>
+    <char src="0x12" dst="S"/>
+    <char src="0x13" dst="T"/>
+    <char src="0x14" dst="U"/>
+    <char src="0x15" dst="V"/>
+    <char src="0x16" dst="W"/>
+    <char src="0x17" dst="X"/>
+    <char src="0x18" dst="Y"/>
+    <char src="0x19" dst="Z"/>
+    <char src="0xEF" dst="0"/>
+    <char src="0xF0" dst="1"/>
+    <char src="0xF1" dst="2"/>
+    <char src="0xF2" dst="3"/>
+    <char src="0xF3" dst="4"/>
+    <char src="0xF4" dst="5"/>
+    <char src="0xF5" dst="6"/>
+    <char src="0xF6" dst="7"/>
+    <char src="0xF7" dst="8"/>
+    <char src="0xF8" dst="9"/>
+  </charset>
+
+</hi2txt>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <check><size>39</size></check>
+    <loop count="5" skip-last-bytes="1">
+      <elt size="4" type="int"  id="SCOREVAL" base="16"/>
+      <elt size="3" type="text" id="NAMEVAL"  ascii-offset="65"/>
+      <elt size="1" type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="CATEGORY" src="index" format="idxprefix;cat0;cat1;cat2;cat3;cat4"/>
+      <column id="SCORE"    src="SCOREVAL"/>
+      <column id="NAME"     src="NAMEVAL" format="TrimR"/>
+    </table>
+  </output>
+
+  <format id="idxprefix"><prefix>IDX=</prefix></format>
+  <format id="cat0"><replace src="IDX=0" dst="BEST PLAYER"/></format>
+  <format id="cat1"><replace src="IDX=1" dst="BEST SHOOTER"/></format>
+  <format id="cat2"><replace src="IDX=2" dst="BEST KILLER"/></format>
+  <format id="cat3"><replace src="IDX=3" dst="BEST PERCENTAGE (%)"/></format>
+  <format id="cat4"><replace src="IDX=4" dst="BEST FRIEND"/></format>
+</hi2txt>

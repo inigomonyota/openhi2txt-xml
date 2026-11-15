@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    Iron Horse (Konami, 1986)
+    ROM: ironhors (also dairesya, farwest, ironhorsh)
+    tested with mame and embedded hiscore.dat
+      source: analysis of .hi file
+    .hi file: 67 bytes
+      +0   3 bytes  top score (BCD big-endian)
+      +3  64 bytes  8 entries x 8 bytes
+    Each entry (8 bytes):
+      +0  3 bytes  NAME (ascii-offset 48: 0x11=A)
+      +3  2 bytes  padding
+      +5  3 bytes  SCORE (BCD big-endian)
+  //-->
+  <structure file=".hi">
+    <check>
+      <definition>0:32f1:3:02:00
+                  0:3300:40:23:00</definition>
+      <size>67</size>
+    </check>
+    <elt size="3" type="int" id="TOP SCORE" base="16"/>
+    <loop count="8">
+      <elt size="3" type="text" id="NAME" ascii-offset="48" charset="ironhors"/>
+      <elt size="2" type="raw"  id="PAD"/>
+      <elt size="3" type="int"  id="SCORE" base="16"/>
+    </loop>
+  </structure>
+  <output>
+    <table id="SCORE RANKING">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="NAME"/>
+      <column id="SCORE"/>
+      <column id="PAD" format="hexadecimal_string" display="debug"/>
+    </table>
+    <field id="TOP SCORE" display="extra"/>
+  </output>
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+  </format>
+  <charset id="ironhors">
+    <char src="0x00" dst=" "/>
+    <char src="0x2c" dst="."/>
+    <char src="0x2b" dst="'"/>
+  </charset>
+</hi2txt>

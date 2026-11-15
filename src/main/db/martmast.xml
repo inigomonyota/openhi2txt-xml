@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE openhi2txt>
+<openhi2txt requires="0.3.0" label="Martial Masters">
+  <structure file="sram" byte-swap="2">
+    <check><size>131072</size></check>
+    <elt size="14494" type="raw" id="PRE"/>
+    <loop count="6">
+      <elt size="1" type="int" id="S_CIDX"/>
+      <elt size="3" type="text" id="S_NAME"/>
+      <elt size="4" type="raw" id="S_PAD"/>
+      <elt size="4" type="int" id="S_SCORE"/>
+      <elt size="2" type="raw" id="S_FLAG"/>
+    </loop>
+    <loop count="6">
+      <elt size="1" type="int" id="V_CIDX"/>
+      <elt size="3" type="text" id="V_NAME"/>
+      <elt size="4" type="raw" id="V_PAD"/>
+      <elt size="4" type="int" id="V_WINS"/>
+      <elt size="2" type="raw" id="V_FLAG"/>
+    </loop>
+    <loop count="6">
+      <elt size="1" type="int" id="R_CIDX"/>
+      <elt size="3" type="text" id="R_NAME"/>
+      <elt size="4" type="raw" id="R_PAD"/>
+      <elt size="4" type="int" id="R_PLAYS"/>
+      <elt size="2" type="raw" id="R_FLAG"/>
+    </loop>
+    <elt size="84" type="raw" id="SCORE_MIRROR"/>
+    <elt size="52" type="raw" id="PRIMARY_ROLE_COUNTERS"/>
+    <elt size="618" type="raw" id="GAP_TO_MIRROR"/>
+    <elt size="4" type="int" id="CNT_00"/>
+    <elt size="4" type="int" id="CNT_01"/>
+    <elt size="4" type="int" id="CNT_02"/>
+    <elt size="4" type="int" id="CNT_03"/>
+    <elt size="4" type="int" id="CNT_04"/>
+    <elt size="4" type="int" id="CNT_05"/>
+    <elt size="4" type="int" id="CNT_06"/>
+    <elt size="4" type="int" id="CNT_07"/>
+    <elt size="4" type="int" id="CNT_08"/>
+    <elt size="4" type="int" id="CNT_09"/>
+    <elt size="4" type="int" id="CNT_10"/>
+    <elt size="4" type="int" id="CNT_11"/>
+    <elt size="4" type="int" id="CNT_12"/>
+  </structure>
+
+  <output>
+    <table id="SCORE RANKING">
+      <column id="RANK" src="index" format="rankord"/>
+      <column id="SCORE" src="S_SCORE"/>
+      <column id="INITIALS" src="S_NAME"/>
+      <column id="CHARACTER" src="S_CIDX" format="charname"/>
+    </table>
+    <table id="VS RANKING">
+      <column id="RANK" src="index" format="rankord"/>
+      <column id="WINS" format="wins"/>
+      <column id="INITIALS" src="V_NAME"/>
+      <column id="CHARACTER" src="V_CIDX" format="charname"/>
+    </table>
+    <table id="ROLE RANKING">
+      <column id="RANK" src="index" format="rankord"/>
+      <column id="PERCENT" src="R_PLAYS" format="rolepercent;Suffix%"/>
+      <column id="INITIALS" src="R_NAME"/>
+	  <column id="CHARACTER" src="R_CIDX" format="charname"/>
+      <column id="PLAYS" src="R_PLAYS" display="extra"/>
+    </table>
+  </output>
+
+  <format id="rankord">
+    <case src="0" dst="1ST"/><case src="1" dst="2ND"/><case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/><case src="4" dst="5TH"/><case src="5" dst="6TH"/>
+    <case src="6" dst="-" default="yes"/>
+  </format>
+
+  <format id="wins">
+    <concat><column id="V_WINS"/><txt> WINS</txt></concat>
+  </format>
+
+  <format id="role_total">
+    <sum>
+      <column id="CNT_00"/><column id="CNT_01"/><column id="CNT_02"/>
+      <column id="CNT_03"/><column id="CNT_04"/><column id="CNT_05"/>
+      <column id="CNT_06"/><column id="CNT_07"/><column id="CNT_08"/>
+      <column id="CNT_09"/><column id="CNT_10"/><column id="CNT_11"/>
+      <column id="CNT_12"/>
+    </sum>
+  </format>
+
+  <format id="rolepercent" formatter="%.2f">
+    <multiply>10000</multiply>
+    <divide_trunc><field format="role_total"/></divide_trunc>
+    <divide>100</divide>
+  </format>
+
+  <format id="charname">
+    <case src="0" dst="MASTER HUANG"/><case src="1" dst="DRUNK MASTER"/>
+    <case src="2" dst="SCORPION"/><case src="3" dst="TIGER"/>
+    <case src="4" dst="MONK"/><case src="5" dst="REIKA"/>
+    <case src="6" dst="MONKEY BOY"/><case src="7" dst="GHOST KICK"/>
+    <case src="8" dst="CRANE"/><case src="9" dst="RED SNAKE"/>
+    <case src="10" dst="SAOJIN"/><case src="11" dst="LOTUS MASTER"/>
+    <case src="12" dst="TURE LOTUS MASTER"/><case src="13" dst="-"/>
+  </format>
+</openhi2txt>

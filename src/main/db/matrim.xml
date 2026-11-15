@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!--
+    matrim - Matrimelee / Shin Gouketsuji Ichizoku Toukon (Noise Factory, Neo Geo)
+    Reads the MAME saveram file (nvram/matrim/saveram), 65536 bytes.
+
+    Neo Geo 68000: saveram is word-swapped, so structure uses byte-swap 2.
+    RANKING = 5 records of 10 bytes from 0x032C (post-swap):
+      [0:4] SCORE 4-byte BCD (00 50 00 00 gives 500000; shown zero-padded to 7)
+      [4]   00
+      [5]   CHARACTER index (which fighter the player used)
+      [6:9] NAME  3 ASCII chars
+      [9]   padding
+    RANK is positional (1ST..5TH).
+
+    NOTE: CHARACTER is stored as an index (defaults: 6,1,8,4,10). The game shows
+    it as a portrait icon (blank in the text reference). It is output here as the
+    raw index; mapping index->fighter name needs the Matrimelee roster + a played
+    sample to verify (like the garou character map).
+  -->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+
+    <!-- skip to table at 0x032C (812 bytes) -->
+    <elt size="812" type="raw" id="PRE"/>
+    <loop count="5">
+      <elt size="4" type="int"  base="16" id="SCORE"/>
+      <elt size="1" type="raw"  id="CHI"/>
+      <elt size="1" type="int"  id="CHAR"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <format id="rank">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+
+  <!-- score zero-padded to 7 digits -->
+  <format id="score7"><pad direction="left" max="7">0</pad></format>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK"      src="index" format="rank"/>
+      <column id="SCORE"     src="SCORE" format="score7"/>
+      <column id="NAME"      src="NAME"/>
+      <column id="CHARACTER" src="CHAR"/>
+    </table>
+  </output>
+
+</hi2txt>

@@ -20,14 +20,14 @@
       <elt size="1" type="raw"  id="CHARACTER2"/>
       <elt size="1" type="raw"  id="CHARACTER3"/>
       <elt size="2" type="int"  id="STAGE"/>
-      <elt size="1" type="int"  id="ICON STAGE 1"/>
-      <elt size="1" type="int"  id="ICON STAGE 2"/>
-      <elt size="1" type="int"  id="ICON STAGE 3"/>
-      <elt size="1" type="int"  id="ICON STAGE 4"/>
-      <elt size="1" type="int"  id="ICON STAGE 5"/>
-      <elt size="1" type="int"  id="ICON STAGE 6"/>
-      <elt size="1" type="int"  id="ICON STAGE 7"/>
-      <elt size="1" type="int"  id="ICON STAGE 8"/>
+      <elt size="1" type="int"  id="STAGE 1"/>
+      <elt size="1" type="int"  id="STAGE 2"/>
+      <elt size="1" type="int"  id="STAGE 3"/>
+      <elt size="1" type="int"  id="STAGE 4"/>
+      <elt size="1" type="int"  id="STAGE 5"/>
+      <elt size="1" type="int"  id="STAGE 6"/>
+      <elt size="1" type="int"  id="STAGE 7"/>
+      <elt size="1" type="int"  id="STAGE 8"/>
       <elt size="2" type="raw"  id="UNKNOWN2"/>
     </loop>
     <elt size="70" type="raw"  id="UNKNOWN3"/>
@@ -39,29 +39,46 @@
       <column id="RANK" src="index" format="%5;+1"/>
       <column id="SCORE"/>
       <column id="NAME"/>
-      <column id="STAGE"/>
+      <column id="STAGE" format="stage"/>
       <column id="MODE" src="index" format="mode"/>
       <column id="CHARACTER1" format="character"/>
       <column id="CHARACTER2" format="character"/>
       <column id="CHARACTER3" format="character"/>
-      <column id="ICON STAGE 1"/>
-      <column id="ICON STAGE 2"/>
-      <column id="ICON STAGE 3"/>
-      <column id="ICON STAGE 4"/>
-      <column id="ICON STAGE 5"/>
-      <column id="ICON STAGE 6"/>
-      <column id="ICON STAGE 7"/>
-      <column id="ICON STAGE 8"/>
+      <column id="STAGE 1" format="icon"/>
+      <column id="STAGE 2" format="icon"/>
+      <column id="STAGE 3" format="icon"/>
+      <column id="STAGE 4" format="icon"/>
+      <column id="STAGE 5" format="icon"/>
+      <column id="STAGE 6" format="icon"/>
+      <column id="STAGE 7" format="icon"/>
+      <column id="STAGE 8" format="icon"/>
       <column id="UNKNOWN2" format="0x" display="debug"/>
     </table>
     <field id="UNKNOWN"  format="0x" display="debug"/>
   </output>
   
   <format id="mode">
-    <case src="7"  operator="&lt;" dst="training"/>
-    <case src="14" operator="&lt;" dst="normal"/>
-    <case src="21" operator="&lt;" dst="advanced"/>
-    <case src="28" operator="&lt;" dst="special"/>
+    <case src="0"  operator="&lt;" dst="training"/>
+	<case src="1"  operator="&lt;" dst="training"/>
+	<case src="2"  operator="&lt;" dst="training"/>
+	<case src="3"  operator="&lt;" dst="training"/>
+	<case src="4"  operator="&lt;" dst="training"/>
+	<case src="5"  operator="&lt;" dst="training"/>
+	<case src="6"  operator="&lt;" dst="normal"/>
+    <case src="7" operator="&lt;" dst="normal"/>
+    <case src="8" operator="&lt;" dst="normal"/>
+	<case src="9" operator="&lt;" dst="normal"/>
+	<case src="10" operator="&lt;" dst="normal"/>
+	<case src="11" operator="&lt;" dst="advanced"/>
+	<case src="12" operator="&lt;" dst="advanced"/>
+	<case src="13" operator="&lt;" dst="advanced"/>	
+	<case src="14" operator="&lt;" dst="advanced"/>
+	<case src="15" operator="&lt;" dst="advanced"/>
+	<case src="16" operator="&lt;" dst="special"/>
+	<case src="17" operator="&lt;" dst="special"/>
+	<case src="18" operator="&lt;" dst="special"/>
+	<case src="19" operator="&lt;" dst="special"/>
+	<case src="20" operator="&lt;" dst="special"/>
   </format>
   <format id="character">
     <case src="90" dst="SKY DRAGON (A)"/>
@@ -101,4 +118,36 @@
     <case src="B2" dst="BLADE OWL (C)"/>
     <case src="B3" dst="BLADE OWL (Start)"/>
   </format>
+  <format id="icon">
+    <case src="0" dst=""/>
+    <case src="96" dst="FOREST"/>
+    <case src="97" dst="DESERT"/>
+    <case src="98" dst="CLOUD"/>
+    <case src="99" dst="NAVAL"/>
+    <case src="100" dst="SEA SIDE"/>
+    <case src="101" dst="VALLEY"/>
+    <case src="102" dst="RAILROAD"/>
+    <case src="103" dst="EMPIRE"/>
+	<case src="104" dst="FOREST"/>
+    <case src="105" dst="DESERT"/>
+    <case src="106" dst="CLOUD"/>
+    <case src="107" dst="NAVAL"/>
+    <case src="108" dst="SEA SIDE"/>
+    <case src="109" dst="VALLEY"/>
+    <case src="110" dst="RAILROAD"/>
+    <case src="111" dst="EMPIRE"/>
+	<case src="192" dst="AXEBREAK"/>
+	<case src="193" dst="BAHAMUT"/>
+	<case src="194" dst="GARGOYLE"/>
+	<case src="195" dst="LEVIATHAN"/>
+	<case src="196" dst="BARLOG"/>
+	<case src="197" dst="GOLEM"/>
+	<case src="198" dst="CYCLOPS"/>
+	<case src="199" dst="VAMPIRE"/>
+	<case src="202" dst="GARGOYLE"/>
+   </format>
+<format id="stage">
+    <case src="0" dst=""/>
+   </format>
+  
 </hi2txt>

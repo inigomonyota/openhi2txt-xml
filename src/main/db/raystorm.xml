@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    raystorm - Ray Storm (Taito, 1996; ZN/PSX-based hardware).
+    BRAVEST FIGHTERS ranking. Scores are NOT in the at28c16 eeprom (plaintext absent);
+    the live table sits in PSX work RAM. Decoded from a save-state blob @0x3cc796.
+    .hi capture = 10 x 12 = 120 bytes.
+    Record (12 bytes): [NAME 3B ASCII][0x00][SCORE 4B little-endian binary]
+                       [STAGE 1B][SHIP 1B: 0=RG-1 1=RG-2][1B unknown][1B pad].
+    Default table: ABE 1000000 STAGE 3 .. KOJ 100000 STAGE 1, step 100000.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>120</size>
+    </check>
+
+    <loop count="10">
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="SEP"/>
+      <elt size="4" type="int"  id="SCORE" endianness="little_endian"/>
+      <elt size="1" type="int"  id="STAGE"/>
+      <elt size="1" type="int"  id="SHIP"/>
+      <elt size="1" type="raw"  id="U1"/>
+      <elt size="1" type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BRAVEST FIGHTERS">
+      <column id="RANK"      src="index" format="ordinal"/>
+      <column id="NAME"      src="NAME"/>
+      <column id="SCORE"     src="SCORE"/>
+      <column id="STAGE"     src="STAGE"/>
+      <column id="SHIP TYPE" src="SHIP"  format="fship"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="1st"/>  <case src="1" dst="2nd"/>  <case src="2" dst="3rd"/>
+    <case src="3" dst="4th"/>  <case src="4" dst="5th"/>  <case src="5" dst="6th"/>
+    <case src="6" dst="7th"/>  <case src="7" dst="8th"/>  <case src="8" dst="9th"/>
+    <case src="9" dst="10th"/>
+  </format>
+
+  <format id="fship">
+    <case src="0" dst="RG-1"/>
+    <case src="1" dst="RG-2"/>
+  </format>
+
+</hi2txt>

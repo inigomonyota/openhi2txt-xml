@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    Target Hits (Gaelco, 1994 - gaelco2.cpp / DS5002FP protected MCU).
+    The three "Best Shooters" charts (Shooting Range / Desert Chariots / Forest
+    Wagons) ARE persisted natively to the battery-backed DS5002FP SRAM, which MAME
+    saves as nvram\targeth\gaelco_ds5002fp_sram (32768 bytes). The high-score DATA
+    is stored PLAINTEXT in that SRAM even though the MCU program code is encrypted.
+
+    Proven empirically: the on-screen board (descrambled host view @0x84ec) is a
+    byte-for-byte copy of the SRAM table @0x5000, and editing the SRAM name bytes
+    is carried through boot (the nvram IS the live SRAM the game reads).
+
+    Three charts of 36 records live at 0x5000 / 0x5120 / 0x5240 (stride 0x120).
+    Each record is 8 bytes: [3 ASCII initials][0x03 0x00 marker][3-byte big-endian
+    score]. e.g. 55 4e 4f 03 00 26 25 a0 -> "UNO" 0x2625a0 = 2,500,000.
+    Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file="gaelco_ds5002fp_sram">
+    <check>
+      <size>32768</size>
+    </check>
+    <elt size="20480" type="raw" id="HEADER"/>
+
+    <!-- Shooting Range @0x5000 -->
+    <loop count="10">
+      <elt size="3" type="text" id="SR_NAME"  table-index="loop_index"/>
+      <elt size="2" type="raw"  id="SR_MK"    table-index="loop_index"/>
+      <elt size="3" type="int"  id="SR_SCORE" table-index="loop_index"
+           endianness="big_endian"/>
+    </loop>
+    <elt size="208" type="raw" id="PAD1"/>
+
+    <!-- Desert Chariots @0x5120 -->
+    <loop count="10">
+      <elt size="3" type="text" id="DC_NAME"  table-index="loop_index"/>
+      <elt size="2" type="raw"  id="DC_MK"    table-index="loop_index"/>
+      <elt size="3" type="int"  id="DC_SCORE" table-index="loop_index"
+           endianness="big_endian"/>
+    </loop>
+    <elt size="208" type="raw" id="PAD2"/>
+
+    <!-- Forest Wagons @0x5240 -->
+    <loop count="10">
+      <elt size="3" type="text" id="FW_NAME"  table-index="loop_index"/>
+      <elt size="2" type="raw"  id="FW_MK"    table-index="loop_index"/>
+      <elt size="3" type="int"  id="FW_SCORE" table-index="loop_index"
+           endianness="big_endian"/>
+    </loop>
+    <elt size="208" type="raw" id="PAD3"/>
+
+    <elt size="11424" type="raw" id="REST"/>
+  </structure>
+
+  <output>
+    <table id="SHOOTING RANGE">
+      <column id="RANK"  src="index"   format="+1"/>
+      <column id="NAME"  src="SR_NAME"/>
+      <column id="SCORE" src="SR_SCORE"/>
+    </table>
+    <table id="DESERT CHARIOTS">
+      <column id="RANK"  src="index"   format="+1"/>
+      <column id="NAME"  src="DC_NAME"/>
+      <column id="SCORE" src="DC_SCORE"/>
+    </table>
+    <table id="FOREST WAGONS">
+      <column id="RANK"  src="index"   format="+1"/>
+      <column id="NAME"  src="FW_NAME"/>
+      <column id="SCORE" src="FW_SCORE"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+</hi2txt>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- The file dumped by hiscore.dat is exactly 301 bytes -->
+    <check><size>301</size></check>
+    
+    <!-- Skip the 42 bytes of file header -->
+    <elt size="42" type="raw" id="SKIP_HEADER"/>
+    
+    <!-- 5 records * 60 bytes each = 300 bytes.
+         However, the last record is truncated by hiscore.dat (only 19 bytes of it are saved).
+         We use skip-last-bytes="41" to tell the parser to gracefully chop off the missing padding! -->
+    <loop count="5" skip-last-bytes="41">
+      <!-- Internal Memory Rank (01 00, 02 00, etc.) -->
+      <elt size="2" type="raw"  id="RANK_MEM"/>
+      
+      <!-- Scores are Big-Endian BCD -->
+      <elt size="4" type="int"  id="SCORE" base="16" endianness="big_endian"/>
+      
+      <!-- Stage/Round -->
+      <elt size="1" type="int"  id="ROUND"/>
+      
+      <!-- 3-Letter ASCII Name -->
+      <elt size="3" type="text" id="NAME"/>
+      
+      <!-- The gap between records is 50 bytes of padding -->
+      <elt size="50" type="raw" id="PADDING"/>
+    </loop>
+  </structure>
+
+  <!-- Alternate capture: the plugin-written hiscore/growl.hi is 249 bytes,
+       produced by the hiscore.dat growl entry shared with growla/growlu/runark
+       (@:maincpu,program,10e340,f9 = 249B, no 1-byte @10e342 range, no 42-byte
+       header). It is the SAME record data as the 301B structure above but begins
+       1 byte into record 0, so each 60-byte record here is
+       [1B leftover rank-marker low byte][SCORE 4 BE BCD][ROUND 1][NAME 3][51B pad].
+       249 = 4 full records + a 5th truncated to its first 9 bytes
+       (marker+score+round+name, no trailing pad) -> skip-last-bytes=51.
+       Verified against the live hiscore/growl.hi: 15000/T.S, 14600/AAA, 9000/H.F,
+       8100/???, 5300/TAC (field layout confirmed by mapping 249-file offsets back
+       to the trusted 301B structure's absolute memory addresses).
+       NOTE on the <definition>: hiscore.dat lists growl TWICE and this C# hi2txt
+       locks onto the FIRST entry (the 301B 10e342/10e316 region) when validating
+       ANY structure, so this 249B structure must carry that SAME definition string
+       to pass the check (hi2txt string-matches <definition> but size-checks the
+       actual file separately). This keeps the fix purely a db def addition and
+       touches no live hiscore.dat. //-->
+  <structure file=".hi">
+    <check>
+      <definition>0:10e342:01:01:01
+                  0:10e316:12c:00:00</definition>
+      <size>249</size>
+    </check>
+    <loop count="5" skip-last-bytes="51">
+      <elt size="1" type="raw"  id="RANK_MEM"/>
+      <elt size="4" type="int"  id="SCORE" base="16" endianness="big_endian"/>
+      <elt size="1" type="int"  id="ROUND"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="51" type="raw" id="PADDING"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEST 5">
+      <column id="RANK" src="index" format="ordinal"/>
+      
+      <!-- PadL60 = Pad Left side with up to a maximum of 6 Zeros -->
+      <column id="SCORE" src="SCORE" format="PadL60"/>
+      
+      <!-- PadL20 = Pad Left side with up to a maximum of 2 Zeros -->
+      <column id="ROUND" src="ROUND" format="PadL20"/>
+      
+      <column id="NAME" src="NAME"/>
+    </table>
+  </output>
+
+  <!-- Translates the Rank output from 0-4 to 1ST-5TH -->
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+</hi2txt>

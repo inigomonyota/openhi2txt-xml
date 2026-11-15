@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!-- The Last Blade 2 (lastbld2) - Neo Geo saveram, byte-swap=2 -->
+  <structure file="saveram">
+    <check><size>65536</size></check>
+    <!-- skip to 0x360 where the score table begins -->
+    <elt size="864" type="text" id="PAD0"/>
+    <!-- SCORE RANKING: 5 x 12 bytes = score(4 BCD) + name(3+NUL) + charindex(2) + pad(2) -->
+    <loop count="5">
+      <elt size="4" type="int" id="SCORE" byte-swap="2" endianness="big_endian" base="16"/>
+      <elt size="4" type="text" id="SNAME" byte-swap="2" charset="tb2name"/>
+      <elt size="2" type="int" id="CHARIDX" byte-swap="2" endianness="big_endian"/>
+      <elt size="2" type="int" id="SPAD" byte-swap="2"/>
+    </loop>
+    <!-- TIME ATTACK: 16 fighters x 3 entries = name(3+NUL) + beatby(1) + NUL(1) -->
+    <!-- KAEDE -->
+    <elt size="4" type="text" id="KAEDE_NAME" table-index="0" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="KAEDE_BEAT" table-index="0" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="KAEDE_NAME" table-index="1" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="KAEDE_BEAT" table-index="1" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="KAEDE_NAME" table-index="2" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="KAEDE_BEAT" table-index="2" byte-swap="2" endianness="little_endian"/>
+    <!-- MORIYA -->
+    <elt size="4" type="text" id="MORIYA_NAME" table-index="0" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="MORIYA_BEAT" table-index="0" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="MORIYA_NAME" table-index="1" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="MORIYA_BEAT" table-index="1" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="MORIYA_NAME" table-index="2" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="MORIYA_BEAT" table-index="2" byte-swap="2" endianness="little_endian"/>
+    <!-- YUKI -->
+    <elt size="4" type="text" id="YUKI_NAME" table-index="0" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="YUKI_BEAT" table-index="0" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="YUKI_NAME" table-index="1" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="YUKI_BEAT" table-index="1" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="YUKI_NAME" table-index="2" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="YUKI_BEAT" table-index="2" byte-swap="2" endianness="little_endian"/>
+    <!-- OKINA -->
+    <elt size="4" type="text" id="OKINA_NAME" table-index="0" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="OKINA_BEAT" table-index="0" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="OKINA_NAME" table-index="1" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="OKINA_BEAT" table-index="1" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="OKINA_NAME" table-index="2" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="OKINA_BEAT" table-index="2" byte-swap="2" endianness="little_endian"/>
+    <!-- AKARI -->
+    <elt size="4" type="text" id="AKARI_NAME" table-index="0" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="AKARI_BEAT" table-index="0" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="AKARI_NAME" table-index="1" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="AKARI_BEAT" table-index="1" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="AKARI_NAME" table-index="2" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="AKARI_BEAT" table-index="2" byte-swap="2" endianness="little_endian"/>
+    <!-- JUZOH -->
+    <elt size="4" type="text" id="JUZOH_NAME" table-index="0" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="JUZOH_BEAT" table-index="0" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="JUZOH_NAME" table-index="1" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="JUZOH_BEAT" table-index="1" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="JUZOH_NAME" table-index="2" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="JUZOH_BEAT" table-index="2" byte-swap="2" endianness="little_endian"/>
+    <!-- WASHIZUKA -->
+    <elt size="4" type="text" id="WASHIZUKA_NAME" table-index="0" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="WASHIZUKA_BEAT" table-index="0" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="WASHIZUKA_NAME" table-index="1" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="WASHIZUKA_BEAT" table-index="1" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="WASHIZUKA_NAME" table-index="2" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="WASHIZUKA_BEAT" table-index="2" byte-swap="2" endianness="little_endian"/>
+    <!-- MUKURO -->
+    <elt size="4" type="text" id="MUKURO_NAME" table-index="0" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="MUKURO_BEAT" table-index="0" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="MUKURO_NAME" table-index="1" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="MUKURO_BEAT" table-index="1" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="MUKURO_NAME" table-index="2" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="MUKURO_BEAT" table-index="2" byte-swap="2" endianness="little_endian"/>
+    <!-- AMANO -->
+    <elt size="4" type="text" id="AMANO_NAME" table-index="0" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="AMANO_BEAT" table-index="0" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="AMANO_NAME" table-index="1" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="AMANO_BEAT" table-index="1" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="AMANO_NAME" table-index="2" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="AMANO_BEAT" table-index="2" byte-swap="2" endianness="little_endian"/>
+    <!-- LEE -->
+    <elt size="4" type="text" id="LEE_NAME" table-index="0" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="LEE_BEAT" table-index="0" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="LEE_NAME" table-index="1" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="LEE_BEAT" table-index="1" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="LEE_NAME" table-index="2" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="LEE_BEAT" table-index="2" byte-swap="2" endianness="little_endian"/>
+    <!-- ZANTETSU -->
+    <elt size="4" type="text" id="ZANTETSU_NAME" table-index="0" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="ZANTETSU_BEAT" table-index="0" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="ZANTETSU_NAME" table-index="1" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="ZANTETSU_BEAT" table-index="1" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="ZANTETSU_NAME" table-index="2" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="ZANTETSU_BEAT" table-index="2" byte-swap="2" endianness="little_endian"/>
+    <!-- SHIGEN -->
+    <elt size="4" type="text" id="SHIGEN_NAME" table-index="0" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="SHIGEN_BEAT" table-index="0" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="SHIGEN_NAME" table-index="1" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="SHIGEN_BEAT" table-index="1" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="SHIGEN_NAME" table-index="2" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="SHIGEN_BEAT" table-index="2" byte-swap="2" endianness="little_endian"/>
+    <!-- KAGAMI -->
+    <elt size="4" type="text" id="KAGAMI_NAME" table-index="0" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="KAGAMI_BEAT" table-index="0" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="KAGAMI_NAME" table-index="1" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="KAGAMI_BEAT" table-index="1" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="KAGAMI_NAME" table-index="2" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="KAGAMI_BEAT" table-index="2" byte-swap="2" endianness="little_endian"/>
+    <!-- KOJIROH -->
+    <elt size="4" type="text" id="KOJIROH_NAME" table-index="0" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="KOJIROH_BEAT" table-index="0" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="KOJIROH_NAME" table-index="1" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="KOJIROH_BEAT" table-index="1" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="KOJIROH_NAME" table-index="2" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="KOJIROH_BEAT" table-index="2" byte-swap="2" endianness="little_endian"/>
+    <!-- HIBIKI -->
+    <elt size="4" type="text" id="HIBIKI_NAME" table-index="0" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="HIBIKI_BEAT" table-index="0" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="HIBIKI_NAME" table-index="1" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="HIBIKI_BEAT" table-index="1" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="HIBIKI_NAME" table-index="2" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="HIBIKI_BEAT" table-index="2" byte-swap="2" endianness="little_endian"/>
+    <!-- SETSUNA -->
+    <elt size="4" type="text" id="SETSUNA_NAME" table-index="0" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="SETSUNA_BEAT" table-index="0" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="SETSUNA_NAME" table-index="1" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="SETSUNA_BEAT" table-index="1" byte-swap="2" endianness="little_endian"/>
+    <elt size="4" type="text" id="SETSUNA_NAME" table-index="2" byte-swap="2" charset="tb2name"/>
+    <elt size="2" type="int" id="SETSUNA_BEAT" table-index="2" byte-swap="2" endianness="little_endian"/>
+  </structure>
+
+  <output>
+    <table id="SCORE RANKING">
+      <column id="RANK"      src="index"   format="ordinal"/>
+      <column id="NAME"      src="SNAME"/>
+      <column id="SCORE"     src="SCORE"/>
+      <column id="CHARACTER" src="CHARIDX" format="character"/>
+    </table>
+    <table id="TIME ATTACK RANKING - KAEDE">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="NAME"    src="KAEDE_NAME"/>
+      <column id="BEAT BY" src="KAEDE_BEAT" format="beatby"/>
+    </table>
+    <table id="TIME ATTACK RANKING - MORIYA">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="NAME"    src="MORIYA_NAME"/>
+      <column id="BEAT BY" src="MORIYA_BEAT" format="beatby"/>
+    </table>
+    <table id="TIME ATTACK RANKING - YUKI">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="NAME"    src="YUKI_NAME"/>
+      <column id="BEAT BY" src="YUKI_BEAT" format="beatby"/>
+    </table>
+    <table id="TIME ATTACK RANKING - OKINA">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="NAME"    src="OKINA_NAME"/>
+      <column id="BEAT BY" src="OKINA_BEAT" format="beatby"/>
+    </table>
+    <table id="TIME ATTACK RANKING - AKARI">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="NAME"    src="AKARI_NAME"/>
+      <column id="BEAT BY" src="AKARI_BEAT" format="beatby"/>
+    </table>
+    <table id="TIME ATTACK RANKING - JUZOH">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="NAME"    src="JUZOH_NAME"/>
+      <column id="BEAT BY" src="JUZOH_BEAT" format="beatby"/>
+    </table>
+    <table id="TIME ATTACK RANKING - WASHIZUKA">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="NAME"    src="WASHIZUKA_NAME"/>
+      <column id="BEAT BY" src="WASHIZUKA_BEAT" format="beatby"/>
+    </table>
+    <table id="TIME ATTACK RANKING - MUKURO">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="NAME"    src="MUKURO_NAME"/>
+      <column id="BEAT BY" src="MUKURO_BEAT" format="beatby"/>
+    </table>
+    <table id="TIME ATTACK RANKING - AMANO">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="NAME"    src="AMANO_NAME"/>
+      <column id="BEAT BY" src="AMANO_BEAT" format="beatby"/>
+    </table>
+    <table id="TIME ATTACK RANKING - LEE">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="NAME"    src="LEE_NAME"/>
+      <column id="BEAT BY" src="LEE_BEAT" format="beatby"/>
+    </table>
+    <table id="TIME ATTACK RANKING - ZANTETSU">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="NAME"    src="ZANTETSU_NAME"/>
+      <column id="BEAT BY" src="ZANTETSU_BEAT" format="beatby"/>
+    </table>
+    <table id="TIME ATTACK RANKING - SHIGEN">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="NAME"    src="SHIGEN_NAME"/>
+      <column id="BEAT BY" src="SHIGEN_BEAT" format="beatby"/>
+    </table>
+    <table id="TIME ATTACK RANKING - KAGAMI">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="NAME"    src="KAGAMI_NAME"/>
+      <column id="BEAT BY" src="KAGAMI_BEAT" format="beatby"/>
+    </table>
+    <table id="TIME ATTACK RANKING - KOJIROH">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="NAME"    src="KOJIROH_NAME"/>
+      <column id="BEAT BY" src="KOJIROH_BEAT" format="beatby"/>
+    </table>
+    <table id="TIME ATTACK RANKING - HIBIKI">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="NAME"    src="HIBIKI_NAME"/>
+      <column id="BEAT BY" src="HIBIKI_BEAT" format="beatby"/>
+    </table>
+    <table id="TIME ATTACK RANKING - SETSUNA">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="NAME"    src="SETSUNA_NAME"/>
+      <column id="BEAT BY" src="SETSUNA_BEAT" format="beatby"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+  <format id="beatby">
+    <case src="5"  dst="BEAT BY- 5"/>
+    <case src="10" dst="BEAT BY-10"/>
+    <case src="15" dst="BEAT BY-15"/>
+    <case src="0"  dst="BEAT BY- 0" default="yes"/>
+  </format>
+  <format id="character">
+    <case src="0" dst="KAEDE"/>
+    <case src="1" dst="MORIYA"/>
+    <case src="2" dst="YUKI"/>
+    <case src="3" dst="OKINA"/>
+    <case src="4" dst="AKARI"/>
+    <case src="5" dst="JUZOH"/>
+    <case src="6" dst="WASHIZUKA"/>
+    <case src="7" dst="MUKURO"/>
+    <case src="8" dst="AMANO"/>
+    <case src="9" dst="LEE"/>
+    <case src="10" dst="ZANTETSU"/>
+    <case src="11" dst="SHIGEN"/>
+    <case src="12" dst="KAGAMI"/>
+    <case src="13" dst="KOJIROH"/>
+    <case src="14" dst="HIBIKI"/>
+    <case src="15" dst="SETSUNA"/>
+    <!-- Hidden / code characters - all four indices verified from saveram
+         (16 Kouryu, 17 Original Kaede, 18 Hagure Hitogata, 19 Naoe Kotetsu) -->
+    <case src="16" dst="KOURYU"/>
+    <case src="17" dst="ORIGINAL KAEDE"/>
+    <case src="18" dst="HAGURE HITOGATA"/>
+    <case src="19" dst="NAOE KOTETSU"/>   <!-- verified: BBB / 471100 -->
+    <case src="255" dst="?" default="yes"/>
+  </format>
+  <charset id="tb2name">
+    <char src="0x00" dst=""/>
+  </charset>
+</hi2txt>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Windjammers">
+  <!--
+    Neo Geo saveram, byte-swap=2 ("BACKUP RAM OK !" confirmed).
+    RANKING TOP 5 = parallel arrays (two loops -> one table, paired by index):
+      SCORE array @0x528, 5 x 4B: [SCORE:3 BCD][pad:1].
+      NAME  array @0x550, 5 x 4B: [NAME:3 font-tile codes][CHARACTER:1 idx].
+    NAME tiles step by 4 per letter: A=0x40 .. Z=0xa4 (D=0x4c, E=0x50), '.'=0x34.
+    CHARACTER index 0 -> empty (no character in defaults).
+
+    [CHECK] Only D/./E are verified from the all-"D.E" default table; the step-4 A-Z
+    charset and the CHARACTER index->name map (1..6 = the 6 fighters) need a played dump.
+  //-->
+
+  <structure file="saveram" byte-swap="2">
+    <check>
+      <size>65536</size>
+    </check>
+    <elt size="1320" type="raw" id="HDR1"/>
+    <loop count="5">
+      <elt size="3" type="int" id="SCORE" base="16"/>
+      <elt size="1" type="raw" id="SPAD"/>
+    </loop>
+    <elt size="20" type="raw" id="HDR2"/>
+    <loop count="5">
+      <elt size="3" type="text" id="NAME" charset="wjfont"/>
+      <elt size="1" type="int"  id="CHAR"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING TOP 5">
+      <column id="RANK"      src="index" format="+1"/>
+      <column id="CHARACTER" src="CHAR"  format="chara"/>
+      <column id="SCORE"     src="SCORE"/>
+      <column id="NAME"      src="NAME"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="chara"><case src="0" dst=""/></format>
+
+  <charset id="wjfont">
+      <char src="0x34" dst="."/>
+      <char src="0x40" dst="A"/>
+      <char src="0x44" dst="B"/>
+      <char src="0x48" dst="C"/>
+      <char src="0x4c" dst="D"/>
+      <char src="0x50" dst="E"/>
+      <char src="0x54" dst="F"/>
+      <char src="0x58" dst="G"/>
+      <char src="0x5c" dst="H"/>
+      <char src="0x60" dst="I"/>
+      <char src="0x64" dst="J"/>
+      <char src="0x68" dst="K"/>
+      <char src="0x6c" dst="L"/>
+      <char src="0x70" dst="M"/>
+      <char src="0x74" dst="N"/>
+      <char src="0x78" dst="O"/>
+      <char src="0x7c" dst="P"/>
+      <char src="0x80" dst="Q"/>
+      <char src="0x84" dst="R"/>
+      <char src="0x88" dst="S"/>
+      <char src="0x8c" dst="T"/>
+      <char src="0x90" dst="U"/>
+      <char src="0x94" dst="V"/>
+      <char src="0x98" dst="W"/>
+      <char src="0x9c" dst="X"/>
+      <char src="0xa0" dst="Y"/>
+      <char src="0xa4" dst="Z"/>
+    </charset>
+</hi2txt>

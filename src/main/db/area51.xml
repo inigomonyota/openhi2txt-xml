@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    area51 (Atari Games, 1995 - Cojag hardware) top-10 chart.
+    Cojag CPUs are BIG-ENDIAN, so every 32-bit field is big-endian and the significant
+    character byte is the LAST byte of each 4-byte name cell (bytes +03/+07/+0B).
+    .hi layout: 10 records * 32 bytes = 320 bytes, then a 1-byte plugin sentinel = 321 total.
+      +00 name cell 1 (3 pad bytes + letter: 0x0A='A'..0x23='Z', 0xFF=space)
+      +04 name cell 2
+      +08 name cell 3
+      +0C score        (big-endian int, e.g. 0x0001CA02 = 117250)
+      +10 leaderboard position (0-based; 0 = champion, 0xFFFFFFFF on unranked rows)
+      +14 always 0
+      +18 win streak
+      +1C Kronn Hunter flag (1 = green alien emblem rank, else 0)
+    Trailing sentinel byte (0x01) is written by the MAME hiscore plugin (0x88D3 row).
+    Authored by the HI2TXT project (area51 support). Big-endian corrected.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>321</size>
+    </check>
+    <loop count="10">
+      <elt size="3" type="raw"  id="PAD1"   table-index="loop_index"/>
+      <elt size="1" type="text" id="INIT1"  charset="csA51" table-index="loop_index"/>
+      <elt size="3" type="raw"  id="PAD2"   table-index="loop_index"/>
+      <elt size="1" type="text" id="INIT2"  charset="csA51" table-index="loop_index"/>
+      <elt size="3" type="raw"  id="PAD3"   table-index="loop_index"/>
+      <elt size="1" type="text" id="INIT3"  charset="csA51" table-index="loop_index"/>
+      <elt size="4" type="int"  id="SCORE"  endianness="big_endian" table-index="loop_index"/>
+      <elt size="4" type="int"  id="POS"    endianness="big_endian" table-index="loop_index"/>
+      <elt size="4" type="raw"  id="ZERO"   table-index="loop_index"/>
+      <elt size="4" type="int"  id="STREAK" endianness="big_endian" table-index="loop_index"/>
+      <elt size="4" type="int"  id="KRONN"  endianness="big_endian" table-index="loop_index"/>
+    </loop>
+    <elt size="1" type="raw" id="SENTINEL"/>
+  </structure>
+
+  <output>
+    <table id="STAAR TEAM" sort="SCORE" sort-order="desc">
+      <column id="POS."   src="index" format="+1"/>
+      <column id="RANK"   format="ranktitle"/>
+      <column id="NAME"   format="fname"/>
+      <column id="SCORE"  src="SCORE"/>
+      <column id="STREAK" src="STREAK"/>
+      <column id="INIT1"   display="debug"/>
+      <column id="INIT2"   display="debug"/>
+      <column id="INIT3"   display="debug"/>
+      <column id="KRONN"   display="debug"/>
+      <column id="POS"   format="0x" display="debug"/>
+      <column id="PAD1"  format="0x" display="debug"/>
+      <column id="PAD2"  format="0x" display="debug"/>
+      <column id="PAD3"  format="0x" display="debug"/>
+      <column id="ZERO"  format="0x" display="debug"/>
+      <column id="SENTINEL" format="0x" display="debug"/>
+    </table>
+  </output>
+
+  <!-- RANK = 1-based row index -->
+  <format id="+1"><add>1</add></format>
+
+  <!-- NAME = the three initials joined, outer padding trimmed -->
+  <format id="fname">
+    <concat><column id="INIT1"/><column id="INIT2"/><column id="INIT3"/></concat>
+    <trim direction="both"> </trim>
+  </format>
+
+  <!-- Kronn flag scaled so the score-title case chain can detect the override -->
+  <format id="kbig"><multiply>100000000</multiply></format>
+
+  <!-- RANK TITLE from the score boundaries in _knowledge/area51_rank_boundaries.txt.
+       Adding KRONN*1e8 pushes the value above the sentinel so the Kronn Hunter case wins. -->
+  <format id="ranktitle">
+    <sum>
+      <column id="SCORE"/>
+      <column id="KRONN" format="kbig"/>
+    </sum>
+    <case src="100000000" operator="&gt;=" dst="Kronn Hunter"/>
+    <case src="200000" operator="&gt;=" dst="General"/>
+    <case src="180000" operator="&gt;=" dst="Colonel"/>
+    <case src="160000" operator="&gt;=" dst="Lieutenant Colonel"/>
+    <case src="140000" operator="&gt;=" dst="Major"/>
+    <case src="120000" operator="&gt;=" dst="Captain"/>
+    <case src="100000" operator="&gt;=" dst="First Lieutenant"/>
+    <case src="80000"  operator="&gt;=" dst="Second Lieutenant"/>
+    <case src="60000"  operator="&gt;=" dst="Sergeant Major"/>
+    <case src="40000"  operator="&gt;=" dst="Sergeant"/>
+    <case src="20000"  operator="&gt;=" dst="Corporal"/>
+    <case src="0"      operator="&gt;=" dst="Private"/>
+  </format>
+
+  <charset id="csA51">
+    <char src="0x0a" dst="A"/>
+    <char src="0x0b" dst="B"/>
+    <char src="0x0c" dst="C"/>
+    <char src="0x0d" dst="D"/>
+    <char src="0x0e" dst="E"/>
+    <char src="0x0f" dst="F"/>
+    <char src="0x10" dst="G"/>
+    <char src="0x11" dst="H"/>
+    <char src="0x12" dst="I"/>
+    <char src="0x13" dst="J"/>
+    <char src="0x14" dst="K"/>
+    <char src="0x15" dst="L"/>
+    <char src="0x16" dst="M"/>
+    <char src="0x17" dst="N"/>
+    <char src="0x18" dst="O"/>
+    <char src="0x19" dst="P"/>
+    <char src="0x1a" dst="Q"/>
+    <char src="0x1b" dst="R"/>
+    <char src="0x1c" dst="S"/>
+    <char src="0x1d" dst="T"/>
+    <char src="0x1e" dst="U"/>
+    <char src="0x1f" dst="V"/>
+    <char src="0x20" dst="W"/>
+    <char src="0x21" dst="X"/>
+    <char src="0x22" dst="Y"/>
+    <char src="0x23" dst="Z"/>
+    <char src="0xff" dst=" "/>
+  </charset>
+</hi2txt>

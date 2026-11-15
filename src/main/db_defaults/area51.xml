@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="STAAR TEAM">
+    <col>POS.</col><col>RANK</col><col>NAME</col><col>SCORE</col><col>STREAK</col>
+    <row><cell>1</cell><cell>First Lieutenant</cell><cell>J M</cell><cell>117250</cell><cell>16</cell></row>
+    <row><cell>2</cell><cell>Second Lieutenant</cell><cell>JIM</cell><cell>96450</cell><cell>23</cell></row>
+    <row><cell>3</cell><cell>Second Lieutenant</cell><cell>GUY</cell><cell>91875</cell><cell>20</cell></row>
+    <row><cell>4</cell><cell>Sergeant Major</cell><cell>HS</cell><cell>70125</cell><cell>12</cell></row>
+    <row><cell>5</cell><cell>Sergeant Major</cell><cell>TAZ</cell><cell>63500</cell><cell>32</cell></row>
+    <row><cell>6</cell><cell>Sergeant</cell><cell>RW</cell><cell>55975</cell><cell>18</cell></row>
+    <row><cell>7</cell><cell>Sergeant</cell><cell>ROB</cell><cell>41350</cell><cell>21</cell></row>
+    <row><cell>8</cell><cell>Kronn Hunter</cell><cell>CG</cell><cell>34625</cell><cell>34</cell></row>
+    <row><cell>9</cell><cell>Corporal</cell><cell>MLH</cell><cell>27625</cell><cell>19</cell></row>
+	<row><cell>10</cell><cell>Private</cell><cell>DDD</cell><cell>17550</cell><cell>15</cell></row>
+  </table>
+</hi2txt>

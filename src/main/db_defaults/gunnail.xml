@@ -1,0 +1,23 @@
+<hi2txt>
+<table id="TOTAL HIGH SCORES">
+<col>RANK</col><col>STAGE</col><col>SCORE</col><col>NAME</col>
+<row><cell>1ST</cell><cell>STAGE1</cell><cell>1,964</cell><cell>SMK</cell></row>
+<row><cell>2ND</cell><cell>STAGE1</cell><cell>1,789</cell><cell>AOA</cell></row>
+<row><cell>3RD</cell><cell>STAGE1</cell><cell>1,191</cell><cell>NRR</cell></row>
+<row><cell>4TH</cell><cell>STAGE1</cell><cell>618</cell><cell>CIA</cell></row>
+<row><cell>5TH</cell><cell>STAGE1</cell><cell>119</cell><cell>HOS</cell></row>
+<row><cell>6TH</cell><cell>STAGE1</cell><cell>32</cell><cell>ADH</cell></row>
+<row><cell>7TH</cell><cell>STAGE1</cell><cell>3</cell><cell>NAI</cell></row>
+</table>
+<table id="STAGE HIGH SCORES">
+<col>STAGE</col><col>SCORE</col><col>NAME</col>
+<row><cell>STAGE1</cell><cell>100,000</cell><cell>BSU</cell></row>
+<row><cell>STAGE2</cell><cell>100,000</cell><cell>AYS</cell></row>
+<row><cell>STAGE3</cell><cell>100,000</cell><cell>ISA</cell></row>
+<row><cell>STAGE4</cell><cell>100,000</cell><cell>RTI</cell></row>
+<row><cell>STAGE5</cell><cell>100,000</cell><cell>IEC</cell></row>
+<row><cell>STAGE6</cell><cell>100,000</cell><cell>TMH</cell></row>
+<row><cell>STAGE7</cell><cell>100,000</cell><cell>STU</cell></row>
+<row><cell>STAGE8</cell><cell>100,000</cell><cell>UOU</cell></row>
+</table>
+</hi2txt>

@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="OutRunner of OutRunners">
+    <col>COURSE</col><col>NAME</col><col>TIME</col><col>CAR TYPE</col>
+    <row><cell>Australia Course</cell><cell>SGA</cell><cell>5&apos;00&quot;00</cell><cell>MAD POWER</cell></row>
+    <row><cell>HongKong Course</cell><cell>TSU</cell><cell>5&apos;00&quot;00</cell><cell>SPEED BUSTER</cell></row>
+    <row><cell>Japan Course</cell><cell>WIZ</cell><cell>5&apos;00&quot;00</cell><cell>EASY HANDLING</cell></row>
+    <row><cell>China Course</cell><cell>AIK</cell><cell>5&apos;00&quot;00</cell><cell>SMOOTH OPERATOR</cell></row>
+    <row><cell>Russia Course</cell><cell>SNB</cell><cell>5&apos;00&quot;00</cell><cell>BAD BOY</cell></row>
+    <row><cell>Northern Europe Course</cell><cell>KND</cell><cell>5&apos;00&quot;00</cell><cell>ROAD MONSTER</cell></row>
+    <row><cell>Switzerland Course</cell><cell>HDK</cell><cell>5&apos;00&quot;00</cell><cell>QUICK REACTOR</cell></row>
+    <row><cell>The Atlantic Course</cell><cell>---</cell><cell>3&apos;02&quot;41</cell><cell>ROAD MONSTER</cell></row>
+    <row><cell>Spain Course</cell><cell>MKA</cell><cell>5&apos;00&quot;00</cell><cell>MAD POWER</cell></row>
+    <row><cell>Kenya Course</cell><cell>SMA</cell><cell>5&apos;00&quot;00</cell><cell>SPEED BUSTER</cell></row>
+  </table>
+</hi2txt>

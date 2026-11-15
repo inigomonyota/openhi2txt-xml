@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Gaia Crusaders">
+  <!--
+    tested with mame 0.??? and related hiscore.dat
+    structure: 154 bytes = 10 entries x 16 bytes, skip-last-bytes=6
+    per entry (16 bytes):
+      [0:3]  score, 3-byte BCD (base16)
+      [3:6]  name, 3 bytes, sequential charset A=0x11..Z=0x2A (ascii-offset=48)
+      [6:8]  2 bytes raw (0xD0FF marker, or 0x1000 for some entries)
+      [8]    character: 0=GERARD, 1=GALAHAD, 2=ELAINE
+      [9:16] 7 bytes raw (zeros)
+    note: game uses stylized pixel font - K displays as H, N displays as H,
+          M displays as N, C displays as G, etc. Data is correct.
+    scores are ROM-hardcoded defaults except for player-entered scores.
+    applies to: gaiapols, gaiapolsj, gaiapolsu
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>154</size>
+    </check>
+    <loop count="10" skip-last-bytes="6">
+      <elt size="3"  type="int"  id="SCORE" base="16"/>
+      <elt size="3"  type="text" id="NAME" ascii-offset="48"/>
+      <elt size="2"  type="raw"  id="MARKER"/>
+      <elt size="1"  type="int"  id="CHARACTER"/>
+      <elt size="7"  type="raw"  id="PAD"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK"      src="index" format="+1"/>
+      <column id="SCORE"/>
+	  <column id="NAME"/>
+      <column id="CHARACTER" format="character"/>
+    </table>
+  </output>
+
+  <format id="+1">
+    <add>1</add>
+  </format>
+
+  <format id="character">
+    <case src="0" dst="PRINCE"/>
+    <case src="1" dst="FAIRY"/>
+    <case src="2" dst="DRAGON"/>
+  </format>
+</hi2txt>

@@ -1,0 +1,61 @@
+<hi2txt>
+  <table id="TIME ATTACK RANKING">
+    <col>RANK</col><col>NAME</col><col>MIN</col><col>SEC</col><col>CS</col><col>CHARACTER</col>
+    <row><cell>1st</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>0</cell></row>
+    <row><cell>2nd</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>1</cell></row>
+    <row><cell>3rd</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>2</cell></row>
+    <row><cell>4th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>3</cell></row>
+    <row><cell>5th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>4</cell></row>
+    <row><cell>6th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>5</cell></row>
+    <row><cell>7th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>6</cell></row>
+    <row><cell>8th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>7</cell></row>
+    <row><cell>9th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>8</cell></row>
+    <row><cell>10th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>9</cell></row>
+    <row><cell>11th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>0</cell></row>
+    <row><cell>12th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>1</cell></row>
+    <row><cell>13th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>2</cell></row>
+    <row><cell>14th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>3</cell></row>
+    <row><cell>15th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>4</cell></row>
+    <row><cell>16th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>5</cell></row>
+    <row><cell>17th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>6</cell></row>
+    <row><cell>18th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>7</cell></row>
+    <row><cell>19th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>8</cell></row>
+    <row><cell>20th</cell><cell>IGS</cell><cell>99</cell><cell>59</cell><cell>99</cell><cell>9</cell></row>
+  </table>
+  <table id="WINNING RANKING">
+    <col>RANK</col><col>NAME</col><col>WINS</col><col>CHARACTER</col>
+    <row><cell>1st</cell><cell>IGS</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>2nd</cell><cell>IGS</cell><cell>0</cell><cell>1</cell></row>
+    <row><cell>3rd</cell><cell>IGS</cell><cell>0</cell><cell>2</cell></row>
+    <row><cell>4th</cell><cell>IGS</cell><cell>0</cell><cell>3</cell></row>
+    <row><cell>5th</cell><cell>IGS</cell><cell>0</cell><cell>4</cell></row>
+    <row><cell>6th</cell><cell>IGS</cell><cell>0</cell><cell>5</cell></row>
+    <row><cell>7th</cell><cell>IGS</cell><cell>0</cell><cell>6</cell></row>
+    <row><cell>8th</cell><cell>IGS</cell><cell>0</cell><cell>7</cell></row>
+    <row><cell>9th</cell><cell>IGS</cell><cell>0</cell><cell>8</cell></row>
+    <row><cell>10th</cell><cell>IGS</cell><cell>0</cell><cell>9</cell></row>
+    <row><cell>11th</cell><cell>IGS</cell><cell>0</cell><cell>0</cell></row>
+    <row><cell>12th</cell><cell>IGS</cell><cell>0</cell><cell>1</cell></row>
+    <row><cell>13th</cell><cell>IGS</cell><cell>0</cell><cell>2</cell></row>
+    <row><cell>14th</cell><cell>IGS</cell><cell>0</cell><cell>3</cell></row>
+    <row><cell>15th</cell><cell>IGS</cell><cell>0</cell><cell>4</cell></row>
+    <row><cell>16th</cell><cell>IGS</cell><cell>0</cell><cell>5</cell></row>
+    <row><cell>17th</cell><cell>IGS</cell><cell>0</cell><cell>6</cell></row>
+    <row><cell>18th</cell><cell>IGS</cell><cell>0</cell><cell>7</cell></row>
+    <row><cell>19th</cell><cell>IGS</cell><cell>0</cell><cell>8</cell></row>
+    <row><cell>20th</cell><cell>IGS</cell><cell>0</cell><cell>9</cell></row>
+  </table>
+  <table id="USAGE RANKING">
+    <col>RANK</col><col>COUNT</col><col>CHARACTER</col>
+    <row><cell>1st</cell><cell>2</cell><cell>0</cell></row>
+    <row><cell>2nd</cell><cell>2</cell><cell>1</cell></row>
+    <row><cell>3rd</cell><cell>0</cell><cell>2</cell></row>
+    <row><cell>4th</cell><cell>0</cell><cell>3</cell></row>
+    <row><cell>5th</cell><cell>0</cell><cell>4</cell></row>
+    <row><cell>6th</cell><cell>0</cell><cell>5</cell></row>
+    <row><cell>7th</cell><cell>0</cell><cell>6</cell></row>
+    <row><cell>8th</cell><cell>0</cell><cell>7</cell></row>
+    <row><cell>9th</cell><cell>0</cell><cell>8</cell></row>
+    <row><cell>10th</cell><cell>0</cell><cell>9</cell></row>
+  </table>
+</hi2txt>

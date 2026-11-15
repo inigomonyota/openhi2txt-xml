@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 83 bytes -->
+    <check><size>83</size></check>
+    
+    <!-- 10 Records * 8 Bytes = 80 Bytes -->
+    <loop count="10">
+      <!-- 4-byte Big-Endian BCD Score (Missing the last zero) -->
+      <elt size="4" type="int"  id="SCORE" base="16" endianness="big_endian"/>
+      
+      <!-- 3-character ASCII Name -->
+      <elt size="3" type="text" id="NAME"/>
+      
+      <!-- 1 byte padding (usually 0x40 '@') -->
+      <elt size="1" type="raw"  id="PAD"/>
+    </loop>
+    
+    <!-- Remaining 3 bytes is the standalone Top Score tracker -->
+    <elt size="3" type="raw" id="TOP_SCORE"/>
+  </structure>
+
+  <output>
+    <table id="BEST PLAYERS">
+      <column id="RANK"  src="index" format="ordinal"/>
+      
+      <!-- Multiply the BCD output by 10 to restore the missing zero! -->
+      <column id="SCORE" src="SCORE" format="*10"/>
+      
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+  <!-- Translates the index from 0-9 to 1ST-10TH -->
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+</hi2txt>

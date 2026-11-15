@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file="nvram" byte-swap="2">
+    <check><size>32768</size></check>
+
+    <!-- skip to 0x6400 -->
+    <elt size="25600" type="raw" id="_PRE"/>
+
+    <!-- BEGINNER -->
+    <loop count="7">
+      <elt size="4" type="int"  id="B_SCORE" base="16" endianness="big_endian"/>
+      <elt size="2" type="int"  id="B_STAGE" base="16" endianness="big_endian"/>
+      <elt size="4" type="text" id="B_NAME"/>
+      <elt size="4" type="int"  id="B_TIME"  base="16" endianness="big_endian"/>
+    </loop>
+    <elt size="14" type="raw" id="_GAP1"/>
+
+    <!-- JUNIOR -->
+    <loop count="7">
+      <elt size="4" type="int"  id="S_SCORE" base="16" endianness="big_endian"/>
+      <elt size="2" type="int"  id="S_STAGE" base="16" endianness="big_endian"/>
+      <elt size="4" type="text" id="S_NAME"/>
+      <elt size="4" type="int"  id="S_TIME"  base="16" endianness="big_endian"/>
+    </loop>
+    <elt size="14" type="raw" id="_GAP2"/>
+
+    <!-- SENIOR -->
+    <loop count="7">
+      <elt size="4" type="int"  id="J_SCORE" base="16" endianness="big_endian"/>
+      <elt size="2" type="int"  id="J_STAGE" base="16" endianness="big_endian"/>
+      <elt size="4" type="text" id="J_NAME"/>
+      <elt size="4" type="int"  id="J_TIME"  base="16" endianness="big_endian"/>
+    </loop>
+    <elt size="14" type="raw" id="_GAP3"/>
+
+    <!-- EXPERT -->
+    <loop count="7">
+      <elt size="4" type="int"  id="E_SCORE" base="16" endianness="big_endian"/>
+      <elt size="2" type="int"  id="E_STAGE" base="16" endianness="big_endian"/>
+      <elt size="4" type="text" id="E_NAME"/>
+      <elt size="4" type="int"  id="E_TIME"  base="16" endianness="big_endian"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="BEGINNER COURSE">
+      <column id="RANK"  src="index"  format="ordinal"/>
+      <column id="SCORE" src="B_SCORE"/>
+      <column id="STAGE" src="B_STAGE"/>
+      <column id="NAME"  src="B_NAME" format="TrimR "/>
+      <column id="TIME"  src="B_TIME" format="time_fmt"/>
+    </table>
+
+    <table id="JUNIOR COURSE">
+      <column id="RANK"  src="index"  format="ordinal"/>
+      <column id="SCORE" src="S_SCORE"/>
+      <column id="STAGE" src="S_STAGE"/>
+      <column id="NAME"  src="S_NAME" format="TrimR "/>
+      <column id="TIME"  src="S_TIME" format="time_fmt"/>
+    </table>
+
+    <table id="SENIOR COURSE">
+      <column id="RANK"  src="index"  format="ordinal"/>
+      <column id="SCORE" src="J_SCORE"/>
+      <column id="STAGE" src="J_STAGE"/>
+      <column id="NAME"  src="J_NAME" format="TrimR "/>
+      <column id="TIME"  src="J_TIME" format="time_fmt"/>
+    </table>
+
+    <table id="EXPERT COURSE">
+      <column id="RANK"  src="index"  format="ordinal"/>
+      <column id="SCORE" src="E_SCORE"/>
+      <column id="STAGE" src="E_STAGE"/>
+      <column id="NAME"  src="E_NAME" format="TrimR "/>
+      <column id="TIME"  src="E_TIME" format="time_fmt"/>
+    </table>
+  </output>
+    
+  <!-- Check the raw value first! -->
+  <format id="time_fmt">
+    <!-- If the raw time is 0, output a blank string -->
+    <case src="0" dst="-&apos;--&quot;--"/>
+    <!-- If the time is NOT 0, pass it to the time_concat format -->
+    <case src="0" operator="!=" format="time_concat"/>
+  </format>
+
+  <!-- Your brilliant formatting block (just renamed) -->
+  <format id="time_concat" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="time_min"/>
+      <txt>'</txt>
+      <column format="time_sec"/>
+      <txt>"</txt>
+      <column format="time_cs"/>
+    </concat>
+  </format>
+
+  <format id="time_min">
+    <divide_trunc>10000</divide_trunc>
+  </format>
+  <format id="time_sec">
+    <remainder>10000</remainder>
+    <divide_trunc>100</divide_trunc>
+    <pad direction="left" max="2">0</pad>
+  </format>
+  <format id="time_cs">
+    <remainder>100</remainder>
+    <pad direction="left" max="2">0</pad>
+  </format>
+
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+  </format>
+</hi2txt>

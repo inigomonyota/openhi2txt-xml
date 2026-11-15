@@ -3,17 +3,17 @@
   <table id="DAILY TOP SCORES">
     <col>RANK</col><col>DAILY SCORE</col><col>DAILY BUZZARD</col><col>DAILY CHECKSUM</col>
     <row><cell>1</cell><cell>23310</cell><cell>JRN</cell><cell>240</cell></row>
-    <row><cell>2</cell><cell>23300</cell><cell>DFH</cell><cell>250</cell></row>
-    <row><cell>3</cell><cell>22917</cell><cell>PFZ</cell><cell>240</cell></row>
-    <row><cell>4</cell><cell>22552</cell><cell>KFL</cell><cell>240</cell></row>
-    <row><cell>5</cell><cell>20522</cell><cell>CWK</cell><cell>240</cell></row>
-    <row><cell>6</cell><cell>17635</cell><cell>JAN</cell><cell>240</cell></row>
+    <row><cell>2</cell><cell>22917</cell><cell>PFZ</cell><cell>240</cell></row>
+    <row><cell>3</cell><cell>22552</cell><cell>KFL</cell><cell>240</cell></row>
+    <row><cell>4</cell><cell>20522</cell><cell>CWK</cell><cell>240</cell></row>
+    <row><cell>5</cell><cell>17635</cell><cell>JAN</cell><cell>240</cell></row>
+    <row><cell>6</cell><cell>16535</cell><cell>MRS</cell><cell>240</cell></row>
   </table>
   <table id="TOP SCORES">
     <col>RANK</col><col>SCORE</col><col>NAME</col><col>BUZZARD</col><col>CHECKSUM</col>
-    <row><cell>1</cell><cell>23300</cell><cell>ABC                 </cell><cell>DFH</cell><cell>248</cell></row>
-    <row><cell>2</cell><cell>14750</cell><cell>B  </cell><cell></cell><cell>241</cell></row>
-    <row><cell>3</cell><cell>12500</cell><cell> BB</cell><cell></cell><cell>250</cell></row>
+    <row><cell>1</cell><cell>4000</cell><cell>                    </cell><cell>   </cell><cell>250</cell></row>
+    <row><cell>2</cell><cell>4000</cell><cell>   </cell><cell></cell><cell>242</cell></row>
+    <row><cell>3</cell><cell>4000</cell><cell>   </cell><cell></cell><cell>242</cell></row>
     <row><cell>4</cell><cell>4000</cell><cell>   </cell><cell></cell><cell>242</cell></row>
     <row><cell>5</cell><cell>4000</cell><cell>   </cell><cell></cell><cell>242</cell></row>
     <row><cell>6</cell><cell>4000</cell><cell>   </cell><cell></cell><cell>242</cell></row>
@@ -73,14 +73,14 @@
   <field id="AUTO CYCLE">NO</field>
   <field id="SET ATTRACT MODE MESSAGE">NO</field>
   <field id="SET HIGHEST SCORE NAME">NO</field>
-  <field id="LEFT SLOT COINS">3</field>
+  <field id="LEFT SLOT COINS">0</field>
   <field id="CENTER SLOT COINS">0</field>
   <field id="RIGHT SLOT COINS">0</field>
-  <field id="PAID CREDITS">3</field>
-  <field id="FREE MEN">1</field>
-  <field id="TOTAL TIME IN MINUTES">7</field>
-  <field id="TOTAL MEN PLAYED">16</field>
-  <field id="TOTAL SINGLE PLAYER">3</field>
+  <field id="PAID CREDITS">0</field>
+  <field id="FREE MEN">0</field>
+  <field id="TOTAL TIME IN MINUTES">0</field>
+  <field id="TOTAL MEN PLAYED">0</field>
+  <field id="TOTAL SINGLE PLAYER">0</field>
   <field id="TOTAL DUAL PLAYER">0</field>
-  <field id="TOTAL CREDITS PLAYED">3</field>
+  <field id="TOTAL CREDITS PLAYED">0</field>
 </hi2txt>

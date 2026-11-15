@@ -1,0 +1,35 @@
+<hi2txt>
+  <table id="BEGINNER COURSE">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>159,000</cell><cell>GAMEST</cell></row>
+    <row><cell>2</cell><cell>158,000</cell><cell>GAMEST</cell></row>
+    <row><cell>3</cell><cell>157,000</cell><cell>GAMEST</cell></row>
+    <row><cell>4</cell><cell>156,000</cell><cell>GAMEST</cell></row>
+    <row><cell>5</cell><cell>155,000</cell><cell>GAMEST</cell></row>
+    <row><cell>6</cell><cell>154,000</cell><cell>GAMEST</cell></row>
+    <row><cell>7</cell><cell>153,000</cell><cell>GAMEST</cell></row>
+    <row><cell>8</cell><cell>152,000</cell><cell>GAMEST</cell></row>
+  </table>
+  <table id="MEDIUM COURSE">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>259,000</cell><cell>GAMEST</cell></row>
+    <row><cell>2</cell><cell>258,000</cell><cell>GAMEST</cell></row>
+    <row><cell>3</cell><cell>257,000</cell><cell>GAMEST</cell></row>
+    <row><cell>4</cell><cell>256,000</cell><cell>GAMEST</cell></row>
+    <row><cell>5</cell><cell>255,000</cell><cell>GAMEST</cell></row>
+    <row><cell>6</cell><cell>254,000</cell><cell>GAMEST</cell></row>
+    <row><cell>7</cell><cell>253,000</cell><cell>GAMEST</cell></row>
+    <row><cell>8</cell><cell>252,000</cell><cell>GAMEST</cell></row>
+  </table>
+  <table id="EXPERT COURSE">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>309,000</cell><cell>GAMEST</cell></row>
+    <row><cell>2</cell><cell>308,000</cell><cell>GAMEST</cell></row>
+    <row><cell>3</cell><cell>307,000</cell><cell>GAMEST</cell></row>
+    <row><cell>4</cell><cell>306,000</cell><cell>GAMEST</cell></row>
+    <row><cell>5</cell><cell>305,000</cell><cell>GAMEST</cell></row>
+    <row><cell>6</cell><cell>304,000</cell><cell>GAMEST</cell></row>
+    <row><cell>7</cell><cell>303,000</cell><cell>GAMEST</cell></row>
+    <row><cell>8</cell><cell>302,000</cell><cell>GAMEST</cell></row>
+  </table>
+</hi2txt>

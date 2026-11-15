@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<!--
+  mutantf - Mutant Fighter / Death Brade (Data East, 1991)
+  .hi file format (via hiscore.dat plugin)
+  hiscore.dat:
+    @:maincpu,program,1000fc,32,01,00
+    @:maincpu,program,10012c,1,01,01
+  51 bytes = 50B main (5 x 10B) + 1B trigger
+  Record (10B): 3B name (charset A=0x01) + 1B pad + 4B score (BCD) +
+                1B stage (stored-1) + 1B credits (stored-1)
+//-->
+<hi2txt>
+
+  <structure file=".hi">
+    <check>
+      <size>51</size>
+    </check>
+    <loop count="5">
+      <elt size="3" type="text" id="NAME" charset="az"/>
+      <elt size="1" type="raw" id="PAD1"/>
+      <elt size="4" type="int" id="SCORE" base="16"/>
+      <elt size="1" type="int" id="STAGE"/>
+      <elt size="1" type="int" id="CREDITS"/>
+    </loop>
+    <!-- Trigger byte -->
+    <elt size="1" type="raw" id="TRIGGER"/>
+  </structure>
+
+  <output>
+    <table id="BEST CHALLENGERS">
+      <column id="RANK" src="index" format="ordinal"/>
+      <column id="SCORE" format="comma_score"/>
+      <column id="STAGE" format="+1"/>
+      <column id="NAME"/>
+      <column id="CREDITS USED" src="CREDITS" format="+1"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" operator="=" dst="1ST"/>
+    <case src="1" operator="=" dst="2ND"/>
+    <case src="2" operator="=" dst="3RD"/>
+    <case src="3" operator="=" dst="4TH"/>
+    <case src="4" operator="=" dst="5TH"/>
+  </format>
+
+  <format id="+1"><add>1</add></format>
+
+  <!-- ==========================================
+       UNIVERSAL COMMA FORMATTER
+       Just apply format="comma_score" to any column!
+       ========================================== -->
+  <format id="comma_score">
+    <!-- If score is >= 1,000,000,000 (Billions) -->
+    <case src="1000000000" operator="&gt;=" format="three_commas"/>
+    
+    <!-- If score is >= 1,000,000 (Millions) -->
+    <case src="1000000"    operator="&gt;=" format="two_commas"/>
+    
+    <!-- If score is >= 1,000 (Thousands) -->
+    <case src="1000"       operator="&gt;=" format="one_comma"/>
+    
+    <!-- Fallback for scores under 1,000 (Passes the number through as-is) -->
+    <case src="1000"       operator="&lt;"  format="*1" default="yes"/>
+  </format>
+  <!-- Formats like: 1,234,567,890 -->
+  <format id="three_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000000"/>
+      <txt>,</txt>
+      <column format="%1000000000;d1000000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234,567 -->
+  <format id="two_commas" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000000"/>
+      <txt>,</txt>
+      <column format="%1000000;d1000;PadL30"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+  <!-- Formats like: 1,234 -->
+  <format id="one_comma" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="d1000"/>
+      <txt>,</txt>
+      <column format="%1000;PadL30"/>
+    </concat>
+  </format>
+
+  <charset id="az">
+    <char src="0x01" dst="A"/>
+    <char src="0x02" dst="B"/>
+    <char src="0x03" dst="C"/>
+    <char src="0x04" dst="D"/>
+    <char src="0x05" dst="E"/>
+    <char src="0x06" dst="F"/>
+    <char src="0x07" dst="G"/>
+    <char src="0x08" dst="H"/>
+    <char src="0x09" dst="I"/>
+    <char src="0x0A" dst="J"/>
+    <char src="0x0B" dst="K"/>
+    <char src="0x0C" dst="L"/>
+    <char src="0x0D" dst="M"/>
+    <char src="0x0E" dst="N"/>
+    <char src="0x0F" dst="O"/>
+    <char src="0x10" dst="P"/>
+    <char src="0x11" dst="Q"/>
+    <char src="0x12" dst="R"/>
+    <char src="0x13" dst="S"/>
+    <char src="0x14" dst="T"/>
+    <char src="0x15" dst="U"/>
+    <char src="0x16" dst="V"/>
+    <char src="0x17" dst="W"/>
+    <char src="0x18" dst="X"/>
+    <char src="0x19" dst="Y"/>
+    <char src="0x1A" dst="Z"/>
+  </charset>
+
+</hi2txt>

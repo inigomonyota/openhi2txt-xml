@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="TOP 10">
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>PAD</col>
+    <row><cell>1st</cell><cell>90720</cell><cell>T.K</cell><cell>0x495348494B4157412E</cell></row>
+    <row><cell>2nd</cell><cell>89880</cell><cell>OSK</cell><cell>0x495348494B4157412E</cell></row>
+    <row><cell>3rd</cell><cell>88640</cell><cell>Y.H</cell><cell>0x495348494B4157412E</cell></row>
+    <row><cell>4th</cell><cell>67300</cell><cell>I.I</cell><cell>0x495348494B4157412E</cell></row>
+    <row><cell>5th</cell><cell>65660</cell><cell>ABC</cell><cell>0x495348494B4157412E</cell></row>
+    <row><cell>6th</cell><cell>55520</cell><cell>---</cell><cell>0x495348494B4157412E</cell></row>
+    <row><cell>7th</cell><cell>44980</cell><cell>STU</cell><cell>0x495348494B4157412E</cell></row>
+    <row><cell>8th</cell><cell>34120</cell><cell>VWX</cell><cell>0x495348494B4157412E</cell></row>
+    <row><cell>9th</cell><cell>33860</cell><cell>YZa</cell><cell>0x495348494B4157412E</cell></row>
+    <row><cell>10th</cell><cell>12480</cell><cell>bcd</cell><cell>0x495348494B4157412E</cell></row>
+  </table>
+</hi2txt>

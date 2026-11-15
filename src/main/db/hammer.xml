@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Hammer">
+  <!--
+    Hammer (Andamiro 2000, midas.cpp, MC68000 big-endian).
+    8-row RANKING, SCORE only, NO name entries.
+    Scores live in volatile 68000 work RAM and are never written to the
+    128-byte 93C46 eeprom; the MAME hiscore plugin provides persistence by
+    restoring this 0x20-byte block at :maincpu program 0xe0a058 on boot
+    (see hiscore.dat "hammer:" entry). The .hi file is that block: 8 plain
+    big-endian 32-bit scores, 4 bytes each.
+    source: Pipmick @ CoinOPS
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>0:e0a058:20:00:00</definition>
+      <size>32</size>
+    </check>
+    <loop count="8">
+      <elt size="4" type="int" id="SCORE"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" format="score8"/>
+    </table>
+  </output>
+
+  <format id="score8"><pad direction="left" max="8">0</pad></format>
+</hi2txt>

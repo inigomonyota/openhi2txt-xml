@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt>
+
+  <!-- 720 Degrees (Atari System 2) - reads the EEPROM/NVRAM file, not a .hi.
+       The game persists ONLY the 15 overall "TOP SKATERS" scores here.
+       Layout: 512-byte eeprom; from offset 0x0172, fifteen 5-byte records:
+         [ 00 ] [ marker ] [ score : 3 bytes, 24-bit big-endian ]
+       Records are stored rank 15 -> rank 1, so we reverse them.
+       The game displays score modulo 10,000,000 (7 digits). -->
+
+  <structure file="eeprom">
+    <check>
+      <size>512</size>
+    </check>
+
+    <!-- skip to the score table at offset 0x0172 (370 bytes) -->
+    <elt size="370" type="raw" id="HEADER"/>
+
+    <loop count="15">
+      <elt size="2" type="raw" id="MARKER"/>
+      <elt size="3" type="int" id="SCORE" table-index="loop_reverse_index"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TOP SKATERS">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" src="SCORE"  format="score7"/>
+    </table>
+  </output>
+
+  <!-- wrap value to its low 7 decimal digits, then pad to 7 -->
+  <format id="score7">
+    <case src="90000000" operator="&gt;=" format="m9"/>
+    <case src="80000000" operator="&gt;=" format="m8"/>
+    <case src="70000000" operator="&gt;=" format="m7"/>
+    <case src="60000000" operator="&gt;=" format="m6"/>
+    <case src="50000000" operator="&gt;=" format="m5"/>
+    <case src="40000000" operator="&gt;=" format="m4"/>
+    <case src="30000000" operator="&gt;=" format="m3"/>
+    <case src="20000000" operator="&gt;=" format="m2"/>
+    <case src="10000000" operator="&gt;=" format="m1"/>
+    <case src="10000000" operator="&lt;"  format="asis"/>
+  </format>
+  <format id="m9"><substract>90000000</substract><pad direction="left" max="7">0</pad></format>
+  <format id="m8"><substract>80000000</substract><pad direction="left" max="7">0</pad></format>
+  <format id="m7"><substract>70000000</substract><pad direction="left" max="7">0</pad></format>
+  <format id="m6"><substract>60000000</substract><pad direction="left" max="7">0</pad></format>
+  <format id="m5"><substract>50000000</substract><pad direction="left" max="7">0</pad></format>
+  <format id="m4"><substract>40000000</substract><pad direction="left" max="7">0</pad></format>
+  <format id="m3"><substract>30000000</substract><pad direction="left" max="7">0</pad></format>
+  <format id="m2"><substract>20000000</substract><pad direction="left" max="7">0</pad></format>
+  <format id="m1"><substract>10000000</substract><pad direction="left" max="7">0</pad></format>
+  <format id="asis"><pad direction="left" max="7">0</pad></format>
+
+</hi2txt>

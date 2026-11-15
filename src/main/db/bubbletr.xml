@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+
+  <!--
+    MAME hiscore.dat:
+      bubbletr:
+      @:maincpu,program,106970,278,01,01
+
+    .hi size = 0x278 = 632 bytes
+
+    Layout confirmed from the supplied save data:
+      0x000-0x13F : SINGLE PLAYER TOP 10, 10 records x 32 bytes
+      0x140-0x277 : DOUBLE PLAYER TOP 10
+                    10 records x 32 bytes, with the final record's
+                    trailing 8 unused bytes not present in the .hi file.
+
+    Record layout (32 bytes):
+      +0x00  2 bytes SCORE, packed BCD, BIG-ENDIAN (high byte first)
+                         e.g. bytes 01 74 -> "0174" -> 174
+      +0x02 18 bytes NAME, 9 characters stored as 16-bit tile codes
+                         (use low byte; colour is encoded in bit 7)
+      +0x14  2 bytes unknown
+      +0x16  2 bytes SCENE, BIG-ENDIAN integer (bytes 00 03 -> 3)
+      +0x18  8 bytes unknown
+  -->
+
+  <structure file=".hi">
+    <check>
+<size>632</size>
+    </check>
+
+    <!-- SINGLE PLAYER TOP 10 -->
+    <loop count="10">
+      <elt size="2"  type="int"  id="P1_SCORE" endianness="big_endian" base="16"/>
+      <elt size="18" type="text" id="P1_NAME" byte-skip="odd" charset="bubbletr_name"/>
+      <elt size="2"  type="raw"  id="_P1_UNKNOWN1"/>
+      <elt size="2"  type="int"  id="P1_SCENE" endianness="big_endian"/>
+      <elt size="8"  type="raw"  id="_P1_UNKNOWN2"/>
+    </loop>
+
+    <!-- DOUBLE PLAYER TOP 10 -->
+    <loop count="10" skip-last-bytes="8">
+      <elt size="2"  type="int"  id="P2_SCORE" endianness="big_endian" base="16"/>
+      <elt size="18" type="text" id="P2_NAME" byte-skip="odd" charset="bubbletr_name"/>
+      <elt size="2"  type="raw"  id="_P2_UNKNOWN1"/>
+      <elt size="2"  type="int"  id="P2_SCENE" endianness="big_endian"/>
+      <elt size="8"  type="raw"  id="_P2_UNKNOWN2"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="SINGLE PLAYER TOP 10">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="P1_SCORE"/>
+      <column id="NAME" src="P1_NAME"/>
+      <column id="SCE." src="P1_SCENE"/>
+    </table>
+
+    <table id="DOUBLE PLAYER TOP 10">
+      <column id="RANK" src="index" format="+1"/>
+      <column id="SCORE" src="P2_SCORE"/>
+      <column id="NAME" src="P2_NAME"/>
+      <column id="SCE." src="P2_SCENE"/>
+    </table>
+  </output>
+
+  <!--
+    Character tiles:
+      cyan player 1 letters = ASCII in the low byte
+      red  player 2 letters = ASCII + 0x80 in the low byte
+      high byte is 0x01 and is discarded by byte-skip="odd"
+  -->
+  <charset id="bubbletr_name">
+    <char src="0x00" dst=""/>
+    <char src="0x20" dst=" "/>
+    <char src="0x26" dst="&amp;"/>
+
+    <char src="0x41" dst="A"/><char src="0x42" dst="B"/><char src="0x43" dst="C"/>
+    <char src="0x44" dst="D"/><char src="0x45" dst="E"/><char src="0x46" dst="F"/>
+    <char src="0x47" dst="G"/><char src="0x48" dst="H"/><char src="0x49" dst="I"/>
+    <char src="0x4A" dst="J"/><char src="0x4B" dst="K"/><char src="0x4C" dst="L"/>
+    <char src="0x4D" dst="M"/><char src="0x4E" dst="N"/><char src="0x4F" dst="O"/>
+    <char src="0x50" dst="P"/><char src="0x51" dst="Q"/><char src="0x52" dst="R"/>
+    <char src="0x53" dst="S"/><char src="0x54" dst="T"/><char src="0x55" dst="U"/>
+    <char src="0x56" dst="V"/><char src="0x57" dst="W"/><char src="0x58" dst="X"/>
+    <char src="0x59" dst="Y"/><char src="0x5A" dst="Z"/>
+
+    <char src="0xC1" dst="A"/><char src="0xC2" dst="B"/><char src="0xC3" dst="C"/>
+    <char src="0xC4" dst="D"/><char src="0xC5" dst="E"/><char src="0xC6" dst="F"/>
+    <char src="0xC7" dst="G"/><char src="0xC8" dst="H"/><char src="0xC9" dst="I"/>
+    <char src="0xCA" dst="J"/><char src="0xCB" dst="K"/><char src="0xCC" dst="L"/>
+    <char src="0xCD" dst="M"/><char src="0xCE" dst="N"/><char src="0xCF" dst="O"/>
+    <char src="0xD0" dst="P"/><char src="0xD1" dst="Q"/><char src="0xD2" dst="R"/>
+    <char src="0xD3" dst="S"/><char src="0xD4" dst="T"/><char src="0xD5" dst="U"/>
+    <char src="0xD6" dst="V"/><char src="0xD7" dst="W"/><char src="0xD8" dst="X"/>
+    <char src="0xD9" dst="Y"/><char src="0xDA" dst="Z"/>
+  </charset>
+
+</hi2txt>

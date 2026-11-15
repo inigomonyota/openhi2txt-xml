@@ -1,0 +1,11 @@
+<hi2txt>
+  <table id="SCORE RANKING">
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>PLAYER</col>
+    <row><cell>NO. 1</cell><cell>277100</cell><cell>ZZZ</cell><cell>ROY</cell></row>
+    <row><cell>NO. 2</cell><cell>203400</cell><cell></cell><cell>ARNOLD</cell></row>
+    <row><cell>NO. 3</cell><cell>199700</cell><cell>AAA</cell><cell>ROY</cell></row>
+    <row><cell>NO. 4</cell><cell>80600</cell><cell>ABB</cell><cell>ROY</cell></row>
+    <row><cell>NO. 5</cell><cell>52800</cell><cell></cell><cell>ARNOLD</cell></row>
+    <row><cell>NO. 6</cell><cell>50900</cell><cell>BBB</cell><cell>ARNOLD</cell></row>
+  </table>
+</hi2txt>

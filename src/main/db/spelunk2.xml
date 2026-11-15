@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <structure file=".hi">
+    <!-- File is exactly 102 bytes -->
+    <check><size>102</size></check>
+    
+    <!-- 10 records * 10 bytes = 100 bytes -->
+    <loop count="10">
+      <!-- 2-byte Little-Endian BCD Score (Missing the last two zeros) -->
+      <elt size="2" type="int"  id="SCORE" base="16" endianness="little_endian"/>
+      
+      <!-- 8-character ASCII Name -->
+      <elt size="8" type="text" id="NAME"/>
+    </loop>
+    
+    <!-- The remaining 2 bytes duplicate the Top Score -->
+    <elt size="2" type="raw" id="TOP_SCORE"/>
+  </structure>
+
+  <output>
+    <table id="BEST 10 PLAYERS">
+      <column id="NO."   src="index" format="+1"/>
+      
+      <!-- Multiply by 100 to restore the missing zeroes, then Pad Left up to 6 characters -->
+      <column id="SCORE" src="SCORE" format="*100;PadL60"/>
+      
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+
+  <!-- Translates the index from 0-9 to 1-10 -->
+  <format id="+1">
+    <add>1</add>
+  </format>
+</hi2txt>

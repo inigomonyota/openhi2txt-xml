@@ -1,15 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <hi2txt>
-  <table>
-    <col>RANK</col><col>SCORE</col><col>NAME</col>
-    <row><cell>1</cell><cell>7500</cell><cell>DFT</cell></row>
-    <row><cell>2</cell><cell>7495</cell><cell>DLS</cell></row>
-    <row><cell>3</cell><cell>7330</cell><cell>SRC</cell></row>
-    <row><cell>4</cell><cell>7250</cell><cell>RDA</cell></row>
-    <row><cell>5</cell><cell>7200</cell><cell>MJP</cell></row>
-    <row><cell>6</cell><cell>7150</cell><cell>JED</cell></row>
-    <row><cell>7</cell><cell>7005</cell><cell>DEW</cell></row>
-    <row><cell>8</cell><cell>6950</cell><cell>GJL</cell></row>
-  </table>
+	<table id="HIGH SCORES">
+		<col>NAME</col><col>SCORE</col>
+		<row><cell>DFT</cell><cell>7500</cell></row>
+		<row><cell>DLS</cell><cell>7495</cell></row>
+		<row><cell>SRC</cell><cell>7330</cell></row>
+		<row><cell>RDA</cell><cell>7250</cell></row>
+		<row><cell>MJP</cell><cell>7200</cell></row>
+		<row><cell>JED</cell><cell>7150</cell></row>
+		<row><cell>DEW</cell><cell>7005</cell></row>
+		<row><cell>GJL</cell><cell>6950</cell></row>
+	</table>
 </hi2txt>
-
-

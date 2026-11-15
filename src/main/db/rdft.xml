@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    rdft  (Raiden Fighters, Seibu Kaihatsu, 1996). The hiscore plugin captures a
+    170-byte "ACE PILOTS" block from :maincpu program RAM @0x29bc1 (hiscore.dat
+    entry: @:maincpu,program,29bc1,aa,40,4f). Nobody had authored a hi2txt
+    definition for it; this is that definition.
+
+    170 bytes = 17 records of 10 bytes, PLAIN little-endian, split into three
+    on-screen charts:
+      ACE PILOTS - SOLO PLAY            : 7 records
+      ACE PILOTS - DUAL PLAYER (1 PLAYER): 5 records
+      ACE PILOTS - DUAL PLAYER (2 PLAYER): 5 records
+
+    Each 10-byte record:
+      +00 score u32 LE (e.g. 40 42 0f 00 = 1,000,000)
+      +04 area   u8   (stage area, "1" in all defaults)
+      +05 level  u8   (stage sub-level; default 1, shown as "AREA-LEVEL" e.g. 1-1)
+      +06 ship   u8   (ship/character id for the right-hand glyph; named via shiptype)
+      +07 name   3x ASCII (e.g. 48 2e 48 = "H.H"; player entries like "STU" have no dot)
+
+    Ship-id (+06) -> name. Anchored in-game: the pristine SOLO snapshot fills ranks
+    1..7 with ship ids 0..6 ascending, and rank 6 (id 5) is unmistakably the red
+    RAIDEN MK-II glyph, pinning the hidden-ship boundary at id 5 (exactly after the
+    5 default ships). Names from the Shmups Wiki RF1 roster (shmups.wiki/library/
+    Raiden_Fighters), 5 default + 3 hidden:
+      0 AEGIS, 1 BEAST ARROW, 2 CHASER, 3 DEVASTATOR, 4 ENDEAVOR,
+      5 RAIDEN MK-II, 6 JUDGE SPEAR, 7 SLAVE.
+    (RF1 uses the earlier short names: AEGIS/CHASER/BEAST ARROW, which the sequels
+    later renamed AEGIS IV/CHASER 2000/BEAST WING.)
+
+    Records are stored pre-sorted by score descending, so RANK = storage index.
+    Verified against the real plugin .hi: DUAL charts still hold the default values
+    (C.T/W.S/T.H/K.M/M.I and G.S/Y.Y/K.M/T.H/Y.O, all 1-1), while the SOLO chart was
+    played (initials "STU" inserted 1,128,318 and 700,060, matching the snapshots).
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>170</size>
+    </check>
+
+    <!-- ACE PILOTS - SOLO PLAY: 7 records -->
+    <loop count="7">
+      <elt size="4" type="int"  id="S_SCORE" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int"  id="S_AREA"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="S_LEVEL" table-index="loop_index"/>
+      <elt size="1" type="int"  id="S_SHIP"  table-index="loop_index"/>
+      <elt size="3" type="text" id="S_NAME"  table-index="loop_index"/>
+    </loop>
+
+    <!-- ACE PILOTS - DUAL PLAYER (1 PLAYER): 5 records -->
+    <loop count="5">
+      <elt size="4" type="int"  id="A_SCORE" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int"  id="A_AREA"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="A_LEVEL" table-index="loop_index"/>
+      <elt size="1" type="int"  id="A_SHIP"  table-index="loop_index"/>
+      <elt size="3" type="text" id="A_NAME"  table-index="loop_index"/>
+    </loop>
+
+    <!-- ACE PILOTS - DUAL PLAYER (2 PLAYER): 5 records -->
+    <loop count="5">
+      <elt size="4" type="int"  id="B_SCORE" endianness="little_endian" table-index="loop_index"/>
+      <elt size="1" type="int"  id="B_AREA"  table-index="loop_index"/>
+      <elt size="1" type="int"  id="B_LEVEL" table-index="loop_index"/>
+      <elt size="1" type="int"  id="B_SHIP"  table-index="loop_index"/>
+      <elt size="3" type="text" id="B_NAME"  table-index="loop_index"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="ACE PILOTS - SOLO PLAY">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="S_NAME"/>
+      <column id="SCORE" src="S_SCORE"/>
+      <column id="SHIP"  src="S_SHIP" format="shiptype"/>
+      <column id="STAGE" format="s_stage"/>
+    </table>
+
+    <table id="ACE PILOTS - DUAL PLAYER (1 PLAYER)">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="A_NAME"/>
+      <column id="SCORE" src="A_SCORE"/>
+      <column id="SHIP"  src="A_SHIP" format="shiptype"/>
+      <column id="STAGE" format="a_stage"/>
+    </table>
+
+    <table id="ACE PILOTS - DUAL PLAYER (2 PLAYER)">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="B_NAME"/>
+      <column id="SCORE" src="B_SCORE"/>
+      <column id="SHIP"  src="B_SHIP" format="shiptype"/>
+      <column id="STAGE" format="b_stage"/>
+    </table>
+  </output>
+
+  <format id="+1">
+    <add>1</add>
+  </format>
+
+  <format id="s_stage">
+    <concat><column id="S_AREA"/><txt>-</txt><column id="S_LEVEL"/></concat>
+  </format>
+  <format id="a_stage">
+    <concat><column id="A_AREA"/><txt>-</txt><column id="A_LEVEL"/></concat>
+  </format>
+  <format id="b_stage">
+    <concat><column id="B_AREA"/><txt>-</txt><column id="B_LEVEL"/></concat>
+  </format>
+
+  <format id="shiptype">
+    <case src="0" dst="AEGIS"/>
+    <case src="1" dst="BEAST ARROW"/>
+    <case src="2" dst="CHASER"/>
+    <case src="3" dst="DEVASTATOR"/>
+    <case src="4" dst="ENDEAVOR"/>
+    <case src="5" dst="RAIDEN MK-II"/>
+    <case src="6" dst="JUDGE SPEAR"/>
+    <case src="7" dst="SLAVE"/>
+  </format>
+</hi2txt>

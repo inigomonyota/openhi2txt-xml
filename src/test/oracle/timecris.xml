@@ -1,0 +1,34 @@
+<hi2txt>
+  <table id="RANKING - STORY GAME">
+    <col>RANK</col><col>NAME</col><col>TIME</col><col>STARS</col>
+    <row><cell>1ST</cell><cell>KAM</cell><cell>14&apos;00&quot;00</cell><cell>&#9733;10</cell></row>
+    <row><cell>2ND</cell><cell>T.S</cell><cell>14&apos;20&quot;00</cell><cell>&#9733;9</cell></row>
+    <row><cell>3RD</cell><cell>P/?</cell><cell>14&apos;32&quot;60</cell><cell>&#9733;6</cell></row>
+    <row><cell>4TH</cell><cell>TAN</cell><cell>14&apos;58&quot;00</cell><cell>&#9733;8</cell></row>
+    <row><cell>5TH</cell><cell>KAI</cell><cell>15&apos;07&quot;00</cell><cell>&#9733;7</cell></row>
+  </table>
+  <table id="RANKING - TIMED GAME - STAGE 1">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1ST</cell><cell>P.!</cell><cell>2&apos;35&quot;80</cell></row>
+    <row><cell>2ND</cell><cell>K.N</cell><cell>3&apos;04&quot;00</cell></row>
+    <row><cell>3RD</cell><cell>MIZ</cell><cell>3&apos;06&quot;00</cell></row>
+    <row><cell>4TH</cell><cell>SSS</cell><cell>3&apos;08&quot;00</cell></row>
+    <row><cell>5TH</cell><cell>DON</cell><cell>3&apos;10&quot;00</cell></row>
+  </table>
+  <table id="RANKING - TIMED GAME - STAGE 2">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1ST</cell><cell>ONI</cell><cell>3&apos;52&quot;00</cell></row>
+    <row><cell>2ND</cell><cell>HAL</cell><cell>3&apos;54&quot;00</cell></row>
+    <row><cell>3RD</cell><cell>TEA</cell><cell>3&apos;56&quot;00</cell></row>
+    <row><cell>4TH</cell><cell>T.I</cell><cell>3&apos;58&quot;00</cell></row>
+    <row><cell>5TH</cell><cell>KAJ</cell><cell>4&apos;00&quot;00</cell></row>
+  </table>
+  <table id="RANKING - TIMED GAME - STAGE 3">
+    <col>RANK</col><col>NAME</col><col>TIME</col>
+    <row><cell>1ST</cell><cell>KIK</cell><cell>5&apos;16&quot;00</cell></row>
+    <row><cell>2ND</cell><cell>S.K</cell><cell>5&apos;18&quot;00</cell></row>
+    <row><cell>3RD</cell><cell>JUN</cell><cell>5&apos;20&quot;00</cell></row>
+    <row><cell>4TH</cell><cell>H.Y</cell><cell>5&apos;22&quot;00</cell></row>
+    <row><cell>5TH</cell><cell>FUJ</cell><cell>5&apos;24&quot;00</cell></row>
+  </table>
+</hi2txt>

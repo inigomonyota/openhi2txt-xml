@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Shock Troopers">
+  <!--
+    tested with mame 0.??? and related hiscore.dat
+    structure: 5 entries x 8 bytes = 40 bytes, last byte missing (39 total)
+    per entry (8 bytes):
+      [0:4]  score, 4-byte BCD big-endian (base16)
+      [4:7]  name, 3 chars encoded as (byte / 2) + 'A' (ascii-step=2, ascii-offset=65)
+      [7]    unknown (0x52 for EMZ entries, 0x00 for AAA, missing for last entry)
+    score display: zero-padded to 8 digits matching game (e.g. 01896000)
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>39</size>
+    </check>
+    <loop count="5" skip-last-bytes="1">
+      <elt size="4" type="int"  id="SCORE" base="16"/>
+      <elt size="3" type="text" id="NAME"  ascii-offset="65" ascii-step="2"/>
+      <elt size="1" type="raw"  id="UNKNOWN"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK"    src="index" format="ordinal"/>
+      <column id="SCORE"   format="pad8"/>
+      <column id="NAME"/>
+      <column id="UNKNOWN" format="hexadecimal_string" display="debug"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+
+  <format id="pad8">
+    <pad direction="left" max="8">0</pad>
+  </format>
+
+
+
+</hi2txt>

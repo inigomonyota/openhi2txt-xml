@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hi2txt>
+<table id="TODAY'S REVOLUTIONARIES">
+<col>RANK</col><col>NAME</col><col>SCORE</col>
+<row><cell>1)</cell><cell>GNP</cell><cell>310,865</cell></row>
+<row><cell>2)</cell><cell>JEH</cell><cell>300,000</cell></row>
+<row><cell>3)</cell><cell>DOZ</cell><cell>280,000</cell></row>
+<row><cell>4)</cell><cell>WBD</cell><cell>260,000</cell></row>
+<row><cell>5)</cell><cell>SAB</cell><cell>240,000</cell></row>
+<row><cell>6)</cell><cell>MAM</cell><cell>220,000</cell></row>
+<row><cell>7)</cell><cell>JCV</cell><cell>200,000</cell></row>
+<row><cell>8)</cell><cell>JMS</cell><cell>180,000</cell></row>
+</table>
+<table id="ALL TIME REVOLUTIONARIES">
+<col>RANK</col><col>NAME</col><col>SCORE</col>
+<row><cell>1)</cell><cell>SVT</cell><cell>1,000,000</cell></row>
+<row><cell>2)</cell><cell>AJP</cell><cell>950,000</cell></row>
+<row><cell>3)</cell><cell>BEW</cell><cell>900,000</cell></row>
+<row><cell>4)</cell><cell>TWH</cell><cell>850,000</cell></row>
+<row><cell>5)</cell><cell>JMK</cell><cell>800,000</cell></row>
+<row><cell>6)</cell><cell>TJC</cell><cell>750,000</cell></row>
+<row><cell>7)</cell><cell>KAG</cell><cell>700,000</cell></row>
+<row><cell>8)</cell><cell>RAF</cell><cell>650,000</cell></row>
+</table>
+<table id="NUMBER ONE PLATINUM PLAYER">
+<col>NAME</col><col>SCORE</col>
+<row><cell>SVT</cell><cell>1,000,000</cell></row>
+</table>
+</hi2txt>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="BlaZeon">
+  <!--
+    tested with mame 0.??? and related hiscore.dat
+    structure: 127 bytes = 10 entries x 12 bytes + 7-byte top-score trailer
+    per entry (12 bytes):
+      [0:6]  score: 6 bytes, lower nibble of each byte = one score digit (upper nibbles always 0)
+             read as nibble-skip="odd" base="16", multiply by 100 for display
+      [6:8]  2 bytes raw padding (zeros)
+      [8:11] name: 3 x 1-byte text fields with blazeon charset (A=0x00..Z=0x19, 0x1B='.')
+             split into 3 separate 1-byte fields to avoid null-termination on 0x00='A'
+      [11]   1 byte raw padding (zero)
+    trailer [120:127]: top-score entry truncated to 7 bytes (skip-last-bytes=5)
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>127</size>
+    </check>
+    <loop count="10">
+      <elt size="6" type="int"  id="SCORE" nibble-skip="odd" base="16"/>
+      <elt size="2" type="raw"  id="PAD1"/>
+      <elt size="1" type="text" id="NAME1" ascii-offset="65" charset="blazeon"/>
+      <elt size="1" type="text" id="NAME2" ascii-offset="65" charset="blazeon"/>
+      <elt size="1" type="text" id="NAME3" ascii-offset="65" charset="blazeon"/>
+      <elt size="1" type="raw"  id="PAD2"/>
+    </loop>
+    <elt size="7" type="raw" id="TOP SCORE"/>
+  </structure>
+
+  <output>
+    <table id="RANKING">
+      <column id="RANK"  src="index" format="ordinal"/>
+      <column id="SCORE" format="*100"/>
+      <column id="NAME"  format="name"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+
+  <format id="*100"><multiply>100</multiply></format>
+
+  <format id="name">
+    <concat>
+      <column id="NAME1"/>
+      <column id="NAME2"/>
+      <column id="NAME3"/>
+    </concat>
+  </format>
+
+  <charset id="blazeon">
+    <char src="0x1B" dst="."/>
+  </charset>
+
+</hi2txt>

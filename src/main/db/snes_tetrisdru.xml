@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Tetris &amp; Dr. Mario">
+  <!--
+    SNES / Tetris & Dr. Mario (softlist: tetrisdru, "Tetris & Dr. Mario (USA)";
+    note the MAME short name is tetrisdru, not "tetridru"). Launch:
+    mame64.exe snes tetrisdru. All three score stores live in 5A22 work RAM
+    (0x7e0000-0x7fffff, read via maincpu/program) and are NOT battery-backed.
+    The cart copies its default high-score tables from ROM into WRAM at boot, so
+    the hiscore.dat entry checks each region's DEFAULT first/last bytes after a
+    short @delay (NOT a boot-zero check).
+
+    Verified against snap/snes "Tetris - A-Type.png", "Tetris - B-Type.png" and
+    "Dr Mario.png".
+
+    TETRIS name tiles (both A- and B-type): 0x00-0x09 = '0'-'9', 0x0a-0x23 =
+    'A'-'Z', 0xff = blank pad. Records are 11 bytes each:
+        6 bytes name (tiles, left-justified, 0xff padded)
+        4 bytes score (little-endian BINARY, e.g. 10 27 00 00 = 10000)
+        1 byte  level (binary, shown 2-digit)
+    A-TYPE table: 3 records at 0x7e1e30. B-TYPE table: 3 records immediately
+    after at 0x7e1e51 (so 6 contiguous records, 66 bytes, from 0x7e1e30).
+    Defaults: A = HOWARD 10000/09, OTASAN 7500/05, LANCE 5000/00;
+              B = ALEX 2000/09, TONY 1000/05, NINTEN 500/00.
+
+    DR. MARIO top score: single 4-byte little-endian BINARY value at 0x7e1e8a
+    (default 10000). This is record0's score field in Dr. Mario's OWN high-score
+    table at 0x7e1e84 and is RESIDENT in every mode (same as the Tetris block).
+    NOTE: 0x7e0b0b holds a live display/working copy only while Dr. Mario runs -
+    do NOT target it; it is not resident and cannot be restored.
+
+    hiscore.dat captures two blocks: the 66-byte Tetris block then the 4-byte
+    Dr. Mario value, in that order.
+
+    .hi layout (70 bytes):
+      0x00-0x41 : 6 records x 11 bytes (A-type x3 then B-type x3)
+      0x42-0x45 : Dr. Mario top score, 4-byte little-endian binary
+  //-->
+  <structure file=".hi">
+    <check>
+      <size>70</size>
+    </check>
+    <loop count="3">
+      <elt size="6" type="text" charset="tdtile" id="ANAME"/>
+      <elt size="4" type="int" endianness="little_endian" id="ASCORE"/>
+      <elt size="1" type="int" id="ALV"/>
+    </loop>
+    <loop count="3">
+      <elt size="6" type="text" charset="tdtile" id="BNAME"/>
+      <elt size="4" type="int" endianness="little_endian" id="BSCORE"/>
+      <elt size="1" type="int" id="BLV"/>
+    </loop>
+    <elt size="4" type="int" endianness="little_endian" id="DSCORE"/>
+  </structure>
+
+  <output>
+    <table id="TETRIS: A-TYPE">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="NAME" src="ANAME" format="trimname"/>
+      <column id="SCORE" src="ASCORE" format="score6"/>
+      <column id="LV" src="ALV" format="lv2"/>
+    </table>
+    <table id="TETRIS: B-TYPE">
+      <column id="RANK" src="index" format="rank"/>
+      <column id="NAME" src="BNAME" format="trimname"/>
+      <column id="SCORE" src="BSCORE" format="score6"/>
+      <column id="LV" src="BLV" format="lv2"/>
+    </table>
+    <table id="DR. MARIO TOP SCORE">
+      <column id="SCORE" src="DSCORE" format="score7"/>
+    </table>
+  </output>
+
+  <format id="rank"><add>1</add></format>
+  <format id="trimname"><trim direction="right"> </trim></format>
+  <format id="score6"><pad direction="left" max="6">0</pad></format>
+  <format id="score7"><pad direction="left" max="7">0</pad></format>
+  <format id="lv2"><pad direction="left" max="2">0</pad></format>
+
+  <charset id="tdtile">
+    <char src="0x00" dst="0"/>
+    <char src="0x01" dst="1"/>
+    <char src="0x02" dst="2"/>
+    <char src="0x03" dst="3"/>
+    <char src="0x04" dst="4"/>
+    <char src="0x05" dst="5"/>
+    <char src="0x06" dst="6"/>
+    <char src="0x07" dst="7"/>
+    <char src="0x08" dst="8"/>
+    <char src="0x09" dst="9"/>
+    <char src="0x0a" dst="A"/>
+    <char src="0x0b" dst="B"/>
+    <char src="0x0c" dst="C"/>
+    <char src="0x0d" dst="D"/>
+    <char src="0x0e" dst="E"/>
+    <char src="0x0f" dst="F"/>
+    <char src="0x10" dst="G"/>
+    <char src="0x11" dst="H"/>
+    <char src="0x12" dst="I"/>
+    <char src="0x13" dst="J"/>
+    <char src="0x14" dst="K"/>
+    <char src="0x15" dst="L"/>
+    <char src="0x16" dst="M"/>
+    <char src="0x17" dst="N"/>
+    <char src="0x18" dst="O"/>
+    <char src="0x19" dst="P"/>
+    <char src="0x1a" dst="Q"/>
+    <char src="0x1b" dst="R"/>
+    <char src="0x1c" dst="S"/>
+    <char src="0x1d" dst="T"/>
+    <char src="0x1e" dst="U"/>
+    <char src="0x1f" dst="V"/>
+    <char src="0x20" dst="W"/>
+    <char src="0x21" dst="X"/>
+    <char src="0x22" dst="Y"/>
+    <char src="0x23" dst="Z"/>
+    <char src="0xff" dst=" "/>
+  </charset>
+</hi2txt>

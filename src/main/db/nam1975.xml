@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt>
+  <!--
+    tested with mame 0.??? and related hiscore.dat
+    structure: 79 bytes = 10 entries x 8 bytes, skip-last-bytes=1
+    per entry (8 bytes):
+      [0:4]  score, 4-byte BCD (base16)
+      [4:7]  name, 3-byte ASCII
+      [7]    player flag (0xFF = player entry, 0x00 = default)
+              missing in final entry (skip-last-bytes=1)
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>79</size>
+    </check>
+    <loop count="10" skip-last-bytes="1">
+      <elt size="4" type="int"  id="SCORE" base="16"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="FLAG"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="TOP 10 RANKING">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"/>
+      <column id="SCORE"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+
+</hi2txt>

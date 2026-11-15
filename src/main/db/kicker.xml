@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hi2txt>
+  <!--
+    kicker (.hi) definition for hi2txt
+    Reads the 8-entry SCORE RANKING table: RANK | NAME | STEP | SCORE
+
+    hiscore.dat ranges (reference):
+      @:maincpu,program,2af1,2,02,58   (duplicate top score)
+      @:maincpu,program,2af3,1,00,00   (flag/pad)
+      @:maincpu,program,2b00,3e,1d,01  (main table)
+      @:maincpu,program,2b3e,2,00,00   (last 2 bytes of table)
+
+    .hi layout (kicker.hi, 67 bytes):
+      - first 3 bytes: duplicate/aux (ignored)
+      - then 8 entries x 8 bytes = 64 bytes:
+          NAME : 3 bytes (custom charset; 0x11='A' ... 0x2A='Z', 0x2C='.')
+          STEP : 1 byte (0=1, 1=2)  -> add 1 for display
+          PAD  : 1 byte (unused)
+          SCORE_BCD : 2 bytes packed BCD ("0258" => 258) -> multiply 100 => 25800
+          PAD  : 1 byte (unused)
+  -->
+
+  <structure file=".hi">
+    <elt size="3" type="raw" id="_AUX"/>
+
+    <loop count="8">
+      <elt size="3" type="text" id="NAME" charset="kicker"/>
+      <elt size="1" type="int"  id="STEP_RAW"/>
+      <elt size="1" type="raw"  id="_PAD0"/>
+      <elt size="2" type="int"  id="SCORE_BASE" base="16"/>
+      <elt size="1" type="raw"  id="_PAD1"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NAME" format="trimr"/>
+      <column id="STEP"  src="STEP_RAW" format="+1"/>
+      <column id="SCORE" src="SCORE_BASE" format="x100"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+  <format id="x100"><multiply>100</multiply></format>
+
+  <format id="trimr">
+    <trim direction="right"> </trim>
+  </format>
+
+  <charset id="kicker">
+    <char src="0x00" dst=" "/>
+    <char src="0x2c" dst="."/>
+    <char src="0x11" dst="A"/>
+    <char src="0x12" dst="B"/>
+    <char src="0x13" dst="C"/>
+    <char src="0x14" dst="D"/>
+    <char src="0x15" dst="E"/>
+    <char src="0x16" dst="F"/>
+    <char src="0x17" dst="G"/>
+    <char src="0x18" dst="H"/>
+    <char src="0x19" dst="I"/>
+    <char src="0x1a" dst="J"/>
+    <char src="0x1b" dst="K"/>
+    <char src="0x1c" dst="L"/>
+    <char src="0x1d" dst="M"/>
+    <char src="0x1e" dst="N"/>
+    <char src="0x1f" dst="O"/>
+    <char src="0x20" dst="P"/>
+    <char src="0x21" dst="Q"/>
+    <char src="0x22" dst="R"/>
+    <char src="0x23" dst="S"/>
+    <char src="0x24" dst="T"/>
+    <char src="0x25" dst="U"/>
+    <char src="0x26" dst="V"/>
+    <char src="0x27" dst="W"/>
+    <char src="0x28" dst="X"/>
+    <char src="0x29" dst="Y"/>
+    <char src="0x2a" dst="Z"/>
+  </charset>
+</hi2txt>

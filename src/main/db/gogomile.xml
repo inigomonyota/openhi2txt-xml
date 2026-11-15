@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="go go! mile smile">
+    <!--
+      tested with mame 0.277 and related hiscore.dat
+      source: Danz83
+    //-->
+
+    <structure file=".hi">
+        <check>
+          <!-- optional: if defined and hiscore.dat provided, it allows to select the good structure versus the provided file //-->
+          <definition>@:maincpu,program,40660d,161,01,14
+                      @:maincpu,program,4066cf,1,05,05</definition>
+          <!-- optional: if defined, it allows to select the good structure versus the provided file
+                         useful if multiple structures are defined but hiscore.dat not provided //-->
+          <size>354</size>
+        </check>
+        <loop count="5">
+            <elt id="singles_score" size="3" type="int"/>
+            <elt id="skip_score" size="1" type="raw"/>
+        </loop>
+        <loop count="5">
+            <elt id="singles_stage" size="1" type="int"/>
+            <elt id="skip_stage" size="1" type="raw"/>
+        </loop>
+        <loop count="5">
+            <elt id="singles_name" size="6" type="text" byte-skip="even" charset="gogo_alpha"/>
+            <elt id="skip_name_pad" size="2" type="raw"/>
+        </loop>
+        <elt id="skip_singles_dup" size="40" type="raw"/>
+
+        <elt id="gap" size="56" type="raw"/>
+
+        <loop count="5">
+            <elt id="doubles_score" size="3" type="int"/>
+            <elt id="skip_dscore" size="1" type="raw"/>
+        </loop>
+        <loop count="5">
+            <elt id="doubles_stage" size="1" type="int"/>
+            <elt id="skip_dstage" size="1" type="raw"/>
+        </loop>
+        <loop count="5">
+            <elt id="doubles_name_p1" size="6" type="text" byte-skip="even" charset="gogo_alpha"/>
+            <elt id="skip_doubles_p1_pad" size="2" type="raw"/>
+        </loop>
+        <elt id="skip_doubles_p1_dup" size="40" type="raw"/>
+        
+        <loop count="5">
+            <elt id="doubles_name_p2" size="6" type="text" byte-skip="even" charset="gogo_alpha"/>
+            <elt id="skip_doubles_p2_pad" size="2" type="raw"/>
+        </loop>
+        <elt id="skip_doubles_p2_dup" size="38" type="raw"/>
+    </structure>
+
+    <output>
+        <table id="SINGLES">
+            <column id="RANK" src="index" format="+1"/>
+            <column id="SCORE" src="singles_score"/>
+            <column id="STAGE" src="singles_stage"/>
+            <column id="NAME" src="singles_name"/>
+        </table>
+        
+        <table id="DOUBLES">
+            <column id="RANK" src="index" format="+1"/>
+            <column id="SCORE" src="doubles_score"/>
+            <column id="STAGE" src="doubles_stage"/>
+            <column id="NAME P1" src="doubles_name_p1"/>
+            <column id="NAME P2" src="doubles_name_p2"/>
+        </table>
+    </output>
+
+    <format id="+1">
+        <add>1</add>
+    </format>
+
+    <charset id="gogo_alpha">
+        <char src="00" dst=" "/>
+        <char src="01" dst="A"/>
+        <char src="02" dst="B"/>
+        <char src="03" dst="C"/>
+        <char src="04" dst="D"/>
+        <char src="05" dst="E"/>
+        <char src="06" dst="F"/>
+        <char src="07" dst="G"/>
+        <char src="08" dst="H"/>
+        <char src="09" dst="I"/>
+        <char src="0A" dst="J"/>
+        <char src="0B" dst="K"/>
+        <char src="0C" dst="L"/>
+        <char src="0D" dst="M"/>
+        <char src="0E" dst="N"/>
+        <char src="0F" dst="O"/>
+        <char src="10" dst="P"/>
+        <char src="11" dst="Q"/>
+        <char src="12" dst="R"/>
+        <char src="13" dst="S"/>
+        <char src="14" dst="T"/>
+        <char src="15" dst="U"/>
+        <char src="16" dst="V"/>
+        <char src="17" dst="W"/>
+        <char src="18" dst="X"/>
+        <char src="19" dst="Y"/>
+        <char src="1A" dst="Z"/>
+        <char src="1B" dst="0"/>
+        <char src="1C" dst="1"/>
+        <char src="1D" dst="2"/>
+        <char src="1E" dst="3"/>
+        <char src="1F" dst="4"/>
+        <char src="20" dst="5"/>
+        <char src="21" dst="6"/>
+        <char src="22" dst="7"/>
+        <char src="23" dst="8"/>
+        <char src="24" dst="9"/>
+        <char src="25" dst="/"/>
+        <char src="26" dst="("/>
+        <char src="27" dst=")"/>
+        <char src="28" dst="["/>
+        <char src="29" dst="]"/>
+        <char src="2A" dst="{"/>
+        <char src="2B" dst="}"/>
+        <char src="2C" dst="!"/>
+        <char src="2D" dst="&amp;"/>
+        <char src="2E" dst="~"/>
+        <char src="2F" dst="&#8221;"/>
+        <char src="30" dst="&#8220;"/>
+        <char src="31" dst="."/>
+        <char src="32" dst=","/>
+        <char src="33" dst=";"/>
+        <char src="34" dst=":"/>
+        <char src="35" dst="+"/>
+        <char src="36" dst="-"/>
+    </charset>
+
+</hi2txt>

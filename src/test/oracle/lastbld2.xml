@@ -1,0 +1,106 @@
+<hi2txt>
+  <table id="SCORE RANKING">
+    <col>RANK</col><col>NAME</col><col>SCORE</col><col>CHARACTER</col>
+    <row><cell>1ST</cell><cell>PIP</cell><cell>561700</cell><cell>KOURYU</cell></row>
+    <row><cell>2ND</cell><cell>SNK</cell><cell>500000</cell><cell>KAEDE</cell></row>
+    <row><cell>3RD</cell><cell>AAA</cell><cell>475800</cell><cell>ORIGINAL KAEDE</cell></row>
+    <row><cell>4TH</cell><cell>BBB</cell><cell>471100</cell><cell>NAOE KOTETSU</cell></row>
+    <row><cell>5TH</cell><cell>CCC</cell><cell>415700</cell><cell>HAGURE HITOGATA</cell></row>
+  </table>
+  <table id="TIME ATTACK RANKING - KAEDE">
+    <col>RANK</col><col>NAME</col><col>BEAT BY</col>
+    <row><cell>1ST</cell><cell>KED</cell><cell>BEAT BY-15</cell></row>
+    <row><cell>2ND</cell><cell>DRA</cell><cell>BEAT BY-10</cell></row>
+    <row><cell>3RD</cell><cell>BLU</cell><cell>BEAT BY- 5</cell></row>
+  </table>
+  <table id="TIME ATTACK RANKING - MORIYA">
+    <col>RANK</col><col>NAME</col><col>BEAT BY</col>
+    <row><cell>1ST</cell><cell>MOR</cell><cell>BEAT BY-15</cell></row>
+    <row><cell>2ND</cell><cell>MOO</cell><cell>BEAT BY-10</cell></row>
+    <row><cell>3RD</cell><cell>SIL</cell><cell>BEAT BY- 5</cell></row>
+  </table>
+  <table id="TIME ATTACK RANKING - YUKI">
+    <col>RANK</col><col>NAME</col><col>BEAT BY</col>
+    <row><cell>1ST</cell><cell>YUK</cell><cell>BEAT BY-15</cell></row>
+    <row><cell>2ND</cell><cell>SNO</cell><cell>BEAT BY-10</cell></row>
+    <row><cell>3RD</cell><cell>GOL</cell><cell>BEAT BY- 5</cell></row>
+  </table>
+  <table id="TIME ATTACK RANKING - OKINA">
+    <col>RANK</col><col>NAME</col><col>BEAT BY</col>
+    <row><cell>1ST</cell><cell>OKI</cell><cell>BEAT BY-15</cell></row>
+    <row><cell>2ND</cell><cell>KAM</cell><cell>BEAT BY-10</cell></row>
+    <row><cell>3RD</cell><cell>BLA</cell><cell>BEAT BY- 5</cell></row>
+  </table>
+  <table id="TIME ATTACK RANKING - AKARI">
+    <col>RANK</col><col>NAME</col><col>BEAT BY</col>
+    <row><cell>1ST</cell><cell>AKA</cell><cell>BEAT BY-15</cell></row>
+    <row><cell>2ND</cell><cell>LIG</cell><cell>BEAT BY-10</cell></row>
+    <row><cell>3RD</cell><cell>PAP</cell><cell>BEAT BY- 5</cell></row>
+  </table>
+  <table id="TIME ATTACK RANKING - JUZOH">
+    <col>RANK</col><col>NAME</col><col>BEAT BY</col>
+    <row><cell>1ST</cell><cell>JYU</cell><cell>BEAT BY-15</cell></row>
+    <row><cell>2ND</cell><cell>RAK</cell><cell>BEAT BY-10</cell></row>
+    <row><cell>3RD</cell><cell>AKA</cell><cell>BEAT BY- 5</cell></row>
+  </table>
+  <table id="TIME ATTACK RANKING - WASHIZUKA">
+    <col>RANK</col><col>NAME</col><col>BEAT BY</col>
+    <row><cell>1ST</cell><cell>KEI</cell><cell>BEAT BY-15</cell></row>
+    <row><cell>2ND</cell><cell>WOL</cell><cell>BEAT BY-10</cell></row>
+    <row><cell>3RD</cell><cell>LIB</cell><cell>BEAT BY- 5</cell></row>
+  </table>
+  <table id="TIME ATTACK RANKING - MUKURO">
+    <col>RANK</col><col>NAME</col><col>BEAT BY</col>
+    <row><cell>1ST</cell><cell>MUK</cell><cell>BEAT BY-15</cell></row>
+    <row><cell>2ND</cell><cell>MAD</cell><cell>BEAT BY-10</cell></row>
+    <row><cell>3RD</cell><cell>MUR</cell><cell>BEAT BY- 5</cell></row>
+  </table>
+  <table id="TIME ATTACK RANKING - AMANO">
+    <col>RANK</col><col>NAME</col><col>BEAT BY</col>
+    <row><cell>1ST</cell><cell>AMA</cell><cell>BEAT BY-15</cell></row>
+    <row><cell>2ND</cell><cell>ASO</cell><cell>BEAT BY-10</cell></row>
+    <row><cell>3RD</cell><cell>PIN</cell><cell>BEAT BY- 5</cell></row>
+  </table>
+  <table id="TIME ATTACK RANKING - LEE">
+    <col>RANK</col><col>NAME</col><col>BEAT BY</col>
+    <row><cell>1ST</cell><cell>LEE</cell><cell>BEAT BY-15</cell></row>
+    <row><cell>2ND</cell><cell>SOU</cell><cell>BEAT BY-10</cell></row>
+    <row><cell>3RD</cell><cell>GRE</cell><cell>BEAT BY- 5</cell></row>
+  </table>
+  <table id="TIME ATTACK RANKING - ZANTETSU">
+    <col>RANK</col><col>NAME</col><col>BEAT BY</col>
+    <row><cell>1ST</cell><cell>ZAN</cell><cell>BEAT BY-15</cell></row>
+    <row><cell>2ND</cell><cell>NIN</cell><cell>BEAT BY-10</cell></row>
+    <row><cell>3RD</cell><cell>MID</cell><cell>BEAT BY- 5</cell></row>
+  </table>
+  <table id="TIME ATTACK RANKING - SHIGEN">
+    <col>RANK</col><col>NAME</col><col>BEAT BY</col>
+    <row><cell>1ST</cell><cell>SIG</cell><cell>BEAT BY-15</cell></row>
+    <row><cell>2ND</cell><cell>TIG</cell><cell>BEAT BY-10</cell></row>
+    <row><cell>3RD</cell><cell>WHI</cell><cell>BEAT BY- 5</cell></row>
+  </table>
+  <table id="TIME ATTACK RANKING - KAGAMI">
+    <col>RANK</col><col>NAME</col><col>BEAT BY</col>
+    <row><cell>1ST</cell><cell>SIN</cell><cell>BEAT BY-15</cell></row>
+    <row><cell>2ND</cell><cell>BUS</cell><cell>BEAT BY-10</cell></row>
+    <row><cell>3RD</cell><cell>RED</cell><cell>BEAT BY- 5</cell></row>
+  </table>
+  <table id="TIME ATTACK RANKING - KOJIROH">
+    <col>RANK</col><col>NAME</col><col>BEAT BY</col>
+    <row><cell>1ST</cell><cell>KOJ</cell><cell>BEAT BY-15</cell></row>
+    <row><cell>2ND</cell><cell>ZER</cell><cell>BEAT BY-10</cell></row>
+    <row><cell>3RD</cell><cell>KON</cell><cell>BEAT BY- 5</cell></row>
+  </table>
+  <table id="TIME ATTACK RANKING - HIBIKI">
+    <col>RANK</col><col>NAME</col><col>BEAT BY</col>
+    <row><cell>1ST</cell><cell>HIB</cell><cell>BEAT BY-15</cell></row>
+    <row><cell>2ND</cell><cell>IAI</cell><cell>BEAT BY-10</cell></row>
+    <row><cell>3RD</cell><cell>ENJ</cell><cell>BEAT BY- 5</cell></row>
+  </table>
+  <table id="TIME ATTACK RANKING - SETSUNA">
+    <col>RANK</col><col>NAME</col><col>BEAT BY</col>
+    <row><cell>1ST</cell><cell>SET</cell><cell>BEAT BY-15</cell></row>
+    <row><cell>2ND</cell><cell>UND</cell><cell>BEAT BY-10</cell></row>
+    <row><cell>3RD</cell><cell>GIN</cell><cell>BEAT BY- 5</cell></row>
+  </table>
+</hi2txt>

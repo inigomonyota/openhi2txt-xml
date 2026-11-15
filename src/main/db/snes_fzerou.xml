@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="F-Zero (USA) - SNES">
+  <!--
+    Output order:
+      1) FASTEST LAP TIMES: all 15 courses, one row each
+      2) 15 course tables, each containing ONLY its TOP 10 completion times
+
+    SRAM record format (3 bytes):
+      byte 0 high nibble = vehicle/mode
+      byte 0 low nibble  = minutes
+      byte 1 = packed-BCD seconds
+      byte 2 = packed-BCD hundredths
+
+    Vehicle/mode high nibble:
+      8 Blue Falcon / Grand Prix
+      9 Wild Goose / Grand Prix
+      A Golden Fox / Grand Prix
+      B Fire Stingray / Grand Prix
+      C Blue Falcon / Practice
+      D Wild Goose / Practice
+      E Golden Fox / Practice
+      F Fire Stingray / Practice
+      0 unset / ignored
+
+    Default/unset time = 09 59 99 = 9'59''99.
+  -->
+
+  <structure file=".hi">
+    <check><size>2048</size></check>
+    <elt size="5" type="raw" id="HEADER"/>
+    <!-- MUTE CITY I: TOP 10 completion times -->
+    <loop count="10">
+      <elt size="1" type="int" id="MCI_META"/>
+      <elt size="1" type="int" id="MCI_SEC"/>
+      <elt size="1" type="int" id="MCI_HUND"/>
+    </loop>
+    <!-- MUTE CITY I: FASTEST LAP, inserted into shared LAP arrays at course index 0 -->
+    <loop count="1" start="0">
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+    </loop>
+    <!-- BIG BLUE: TOP 10 completion times -->
+    <loop count="10">
+      <elt size="1" type="int" id="BB_META"/>
+      <elt size="1" type="int" id="BB_SEC"/>
+      <elt size="1" type="int" id="BB_HUND"/>
+    </loop>
+    <!-- BIG BLUE: FASTEST LAP, inserted into shared LAP arrays at course index 1 -->
+    <loop count="1" start="1">
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+    </loop>
+    <!-- SAND OCEAN: TOP 10 completion times -->
+    <loop count="10">
+      <elt size="1" type="int" id="SO_META"/>
+      <elt size="1" type="int" id="SO_SEC"/>
+      <elt size="1" type="int" id="SO_HUND"/>
+    </loop>
+    <!-- SAND OCEAN: FASTEST LAP, inserted into shared LAP arrays at course index 2 -->
+    <loop count="1" start="2">
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+    </loop>
+    <!-- DEATH WIND I: TOP 10 completion times -->
+    <loop count="10">
+      <elt size="1" type="int" id="DWI_META"/>
+      <elt size="1" type="int" id="DWI_SEC"/>
+      <elt size="1" type="int" id="DWI_HUND"/>
+    </loop>
+    <!-- DEATH WIND I: FASTEST LAP, inserted into shared LAP arrays at course index 3 -->
+    <loop count="1" start="3">
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+    </loop>
+    <!-- SILENCE: TOP 10 completion times -->
+    <loop count="10">
+      <elt size="1" type="int" id="SIL_META"/>
+      <elt size="1" type="int" id="SIL_SEC"/>
+      <elt size="1" type="int" id="SIL_HUND"/>
+    </loop>
+    <!-- SILENCE: FASTEST LAP, inserted into shared LAP arrays at course index 4 -->
+    <loop count="1" start="4">
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+    </loop>
+    <elt size="2" type="raw" id="CHECKSUM_1"/>
+    <!-- MUTE CITY II: TOP 10 completion times -->
+    <loop count="10">
+      <elt size="1" type="int" id="MCII_META"/>
+      <elt size="1" type="int" id="MCII_SEC"/>
+      <elt size="1" type="int" id="MCII_HUND"/>
+    </loop>
+    <!-- MUTE CITY II: FASTEST LAP, inserted into shared LAP arrays at course index 5 -->
+    <loop count="1" start="5">
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+    </loop>
+    <!-- PORT TOWN I: TOP 10 completion times -->
+    <loop count="10">
+      <elt size="1" type="int" id="PTI_META"/>
+      <elt size="1" type="int" id="PTI_SEC"/>
+      <elt size="1" type="int" id="PTI_HUND"/>
+    </loop>
+    <!-- PORT TOWN I: FASTEST LAP, inserted into shared LAP arrays at course index 6 -->
+    <loop count="1" start="6">
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+    </loop>
+    <!-- RED CANYON I: TOP 10 completion times -->
+    <loop count="10">
+      <elt size="1" type="int" id="RCI_META"/>
+      <elt size="1" type="int" id="RCI_SEC"/>
+      <elt size="1" type="int" id="RCI_HUND"/>
+    </loop>
+    <!-- RED CANYON I: FASTEST LAP, inserted into shared LAP arrays at course index 7 -->
+    <loop count="1" start="7">
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+    </loop>
+    <!-- WHITE LAND I: TOP 10 completion times -->
+    <loop count="10">
+      <elt size="1" type="int" id="WLI_META"/>
+      <elt size="1" type="int" id="WLI_SEC"/>
+      <elt size="1" type="int" id="WLI_HUND"/>
+    </loop>
+    <!-- WHITE LAND I: FASTEST LAP, inserted into shared LAP arrays at course index 8 -->
+    <loop count="1" start="8">
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+    </loop>
+    <!-- WHITE LAND II: TOP 10 completion times -->
+    <loop count="10">
+      <elt size="1" type="int" id="WLII_META"/>
+      <elt size="1" type="int" id="WLII_SEC"/>
+      <elt size="1" type="int" id="WLII_HUND"/>
+    </loop>
+    <!-- WHITE LAND II: FASTEST LAP, inserted into shared LAP arrays at course index 9 -->
+    <loop count="1" start="9">
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+    </loop>
+    <elt size="2" type="raw" id="CHECKSUM_2"/>
+    <!-- MUTE CITY III: TOP 10 completion times -->
+    <loop count="10">
+      <elt size="1" type="int" id="MCIII_META"/>
+      <elt size="1" type="int" id="MCIII_SEC"/>
+      <elt size="1" type="int" id="MCIII_HUND"/>
+    </loop>
+    <!-- MUTE CITY III: FASTEST LAP, inserted into shared LAP arrays at course index 10 -->
+    <loop count="1" start="10">
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+    </loop>
+    <!-- DEATH WIND II: TOP 10 completion times -->
+    <loop count="10">
+      <elt size="1" type="int" id="DWII_META"/>
+      <elt size="1" type="int" id="DWII_SEC"/>
+      <elt size="1" type="int" id="DWII_HUND"/>
+    </loop>
+    <!-- DEATH WIND II: FASTEST LAP, inserted into shared LAP arrays at course index 11 -->
+    <loop count="1" start="11">
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+    </loop>
+    <!-- PORT TOWN II: TOP 10 completion times -->
+    <loop count="10">
+      <elt size="1" type="int" id="PTII_META"/>
+      <elt size="1" type="int" id="PTII_SEC"/>
+      <elt size="1" type="int" id="PTII_HUND"/>
+    </loop>
+    <!-- PORT TOWN II: FASTEST LAP, inserted into shared LAP arrays at course index 12 -->
+    <loop count="1" start="12">
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+    </loop>
+    <!-- RED CANYON II: TOP 10 completion times -->
+    <loop count="10">
+      <elt size="1" type="int" id="RCII_META"/>
+      <elt size="1" type="int" id="RCII_SEC"/>
+      <elt size="1" type="int" id="RCII_HUND"/>
+    </loop>
+    <!-- RED CANYON II: FASTEST LAP, inserted into shared LAP arrays at course index 13 -->
+    <loop count="1" start="13">
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+    </loop>
+    <!-- FIRE FIELD: TOP 10 completion times -->
+    <loop count="10">
+      <elt size="1" type="int" id="FF_META"/>
+      <elt size="1" type="int" id="FF_SEC"/>
+      <elt size="1" type="int" id="FF_HUND"/>
+    </loop>
+    <!-- FIRE FIELD: FASTEST LAP, inserted into shared LAP arrays at course index 14 -->
+    <loop count="1" start="14">
+      <elt size="1" type="int" id="LAP_META" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_SEC" table-index="loop_index"/>
+      <elt size="1" type="int" id="LAP_HUND" table-index="loop_index"/>
+    </loop>
+    <elt size="2" type="raw" id="CHECKSUM_3"/>
+    <elt size="1" type="raw" id="MASTER_CLASS"/>
+    <elt size="5" type="raw" id="FOOTER"/>
+    <elt size="1536" type="raw" id="UNUSED"/>
+  </structure>
+
+  <output>
+    <!-- FIRST TABLE: one fastest lap for each of the 15 courses -->
+    <table id="FASTEST LAP TIMES"><column id="COURSE" src="index" format="course_name"/><column id="TIME" format="lap_time"/><column id="VEHICLE" src="LAP_META" format="vehicle"/><column id="MODE" src="LAP_META" format="mode"/>
+    </table>
+
+    <!-- FOLLOWED BY TOP 10 COMPLETION TIMES FOR EACH COURSE -->
+    <table id="MUTE CITY I - TOP 10 COMPLETION TIMES"><column id="RANK" src="index" format="rank10"/><column id="TIME" format="time_MCI"/><column id="VEHICLE" src="MCI_META" format="vehicle"/><column id="MODE" src="MCI_META" format="mode"/>
+    </table>
+    <table id="BIG BLUE - TOP 10 COMPLETION TIMES"><column id="RANK" src="index" format="rank10"/><column id="TIME" format="time_BB"/><column id="VEHICLE" src="BB_META" format="vehicle"/><column id="MODE" src="BB_META" format="mode"/>
+    </table>
+    <table id="SAND OCEAN - TOP 10 COMPLETION TIMES"><column id="RANK" src="index" format="rank10"/><column id="TIME" format="time_SO"/><column id="VEHICLE" src="SO_META" format="vehicle"/><column id="MODE" src="SO_META" format="mode"/>
+    </table>
+    <table id="DEATH WIND I - TOP 10 COMPLETION TIMES"><column id="RANK" src="index" format="rank10"/><column id="TIME" format="time_DWI"/><column id="VEHICLE" src="DWI_META" format="vehicle"/><column id="MODE" src="DWI_META" format="mode"/>
+    </table>
+    <table id="SILENCE - TOP 10 COMPLETION TIMES"><column id="RANK" src="index" format="rank10"/><column id="TIME" format="time_SIL"/><column id="VEHICLE" src="SIL_META" format="vehicle"/><column id="MODE" src="SIL_META" format="mode"/>
+    </table>
+    <table id="MUTE CITY II - TOP 10 COMPLETION TIMES"><column id="RANK" src="index" format="rank10"/><column id="TIME" format="time_MCII"/><column id="VEHICLE" src="MCII_META" format="vehicle"/><column id="MODE" src="MCII_META" format="mode"/>
+    </table>
+    <table id="PORT TOWN I - TOP 10 COMPLETION TIMES"><column id="RANK" src="index" format="rank10"/><column id="TIME" format="time_PTI"/><column id="VEHICLE" src="PTI_META" format="vehicle"/><column id="MODE" src="PTI_META" format="mode"/>
+    </table>
+    <table id="RED CANYON I - TOP 10 COMPLETION TIMES"><column id="RANK" src="index" format="rank10"/><column id="TIME" format="time_RCI"/><column id="VEHICLE" src="RCI_META" format="vehicle"/><column id="MODE" src="RCI_META" format="mode"/>
+    </table>
+    <table id="WHITE LAND I - TOP 10 COMPLETION TIMES"><column id="RANK" src="index" format="rank10"/><column id="TIME" format="time_WLI"/><column id="VEHICLE" src="WLI_META" format="vehicle"/><column id="MODE" src="WLI_META" format="mode"/>
+    </table>
+    <table id="WHITE LAND II - TOP 10 COMPLETION TIMES"><column id="RANK" src="index" format="rank10"/><column id="TIME" format="time_WLII"/><column id="VEHICLE" src="WLII_META" format="vehicle"/><column id="MODE" src="WLII_META" format="mode"/>
+    </table>
+    <table id="MUTE CITY III - TOP 10 COMPLETION TIMES"><column id="RANK" src="index" format="rank10"/><column id="TIME" format="time_MCIII"/><column id="VEHICLE" src="MCIII_META" format="vehicle"/><column id="MODE" src="MCIII_META" format="mode"/>
+    </table>
+    <table id="DEATH WIND II - TOP 10 COMPLETION TIMES"><column id="RANK" src="index" format="rank10"/><column id="TIME" format="time_DWII"/><column id="VEHICLE" src="DWII_META" format="vehicle"/><column id="MODE" src="DWII_META" format="mode"/>
+    </table>
+    <table id="PORT TOWN II - TOP 10 COMPLETION TIMES"><column id="RANK" src="index" format="rank10"/><column id="TIME" format="time_PTII"/><column id="VEHICLE" src="PTII_META" format="vehicle"/><column id="MODE" src="PTII_META" format="mode"/>
+    </table>
+    <table id="RED CANYON II - TOP 10 COMPLETION TIMES"><column id="RANK" src="index" format="rank10"/><column id="TIME" format="time_RCII"/><column id="VEHICLE" src="RCII_META" format="vehicle"/><column id="MODE" src="RCII_META" format="mode"/>
+    </table>
+    <table id="FIRE FIELD - TOP 10 COMPLETION TIMES"><column id="RANK" src="index" format="rank10"/><column id="TIME" format="time_FF"/><column id="VEHICLE" src="FF_META" format="vehicle"/><column id="MODE" src="FF_META" format="mode"/>
+    </table>
+  </output>
+
+  <format id="rank10">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+
+  <format id="course_name">
+    <case src="0" dst="MUTE CITY I"/>
+    <case src="1" dst="BIG BLUE"/>
+    <case src="2" dst="SAND OCEAN"/>
+    <case src="3" dst="DEATH WIND I"/>
+    <case src="4" dst="SILENCE"/>
+    <case src="5" dst="MUTE CITY II"/>
+    <case src="6" dst="PORT TOWN I"/>
+    <case src="7" dst="RED CANYON I"/>
+    <case src="8" dst="WHITE LAND I"/>
+    <case src="9" dst="WHITE LAND II"/>
+    <case src="10" dst="MUTE CITY III"/>
+    <case src="11" dst="DEATH WIND II"/>
+    <case src="12" dst="PORT TOWN II"/>
+    <case src="13" dst="RED CANYON II"/>
+    <case src="14" dst="FIRE FIELD"/>
+  </format>
+
+  <format id="minute"><remainder>16</remainder></format>
+
+  <format id="vehicle">
+    <divide_trunc>16</divide_trunc>
+    <case src="0" dst=""/>
+    <case src="8" dst="BLUE FALCON"/>
+    <case src="9" dst="WILD GOOSE"/>
+    <case src="10" dst="GOLDEN FOX"/>
+    <case src="11" dst="FIRE STINGRAY"/>
+    <case src="12" dst="BLUE FALCON"/>
+    <case src="13" dst="WILD GOOSE"/>
+    <case src="14" dst="GOLDEN FOX"/>
+    <case src="15" dst="FIRE STINGRAY"/>
+  </format>
+
+  <format id="mode">
+    <divide_trunc>16</divide_trunc>
+    <case src="0" dst=""/>
+    <case src="8" dst="GRAND PRIX"/>
+    <case src="9" dst="GRAND PRIX"/>
+    <case src="10" dst="GRAND PRIX"/>
+    <case src="11" dst="GRAND PRIX"/>
+    <case src="12" dst="PRACTICE"/>
+    <case src="13" dst="PRACTICE"/>
+    <case src="14" dst="PRACTICE"/>
+    <case src="15" dst="PRACTICE"/>
+  </format>
+
+  <format id="div16"><divide_trunc>16</divide_trunc></format>
+  <format id="mod16"><remainder>16</remainder></format>
+
+  <!-- Decode one packed-BCD byte, e.g. 0x59 -> 59 and 0x21 -> 21. -->
+  <format id="bcd_byte" input-as-subcolumns-input="true">
+    <concat><column format="div16"/><column format="mod16"/></concat>
+  </format>
+
+  <format id="lap_time">
+    <concat>
+      <column src="LAP_META" format="minute"/>
+      <txt>'</txt>
+      <column src="LAP_SEC" format="bcd_byte"/>
+      <txt>''</txt>
+      <column src="LAP_HUND" format="bcd_byte"/>
+    </concat>
+  </format>
+  <format id="time_MCI">
+    <concat>
+      <column src="MCI_META" format="minute"/>
+      <txt>'</txt>
+      <column src="MCI_SEC" format="bcd_byte"/>
+      <txt>''</txt>
+      <column src="MCI_HUND" format="bcd_byte"/>
+    </concat>
+  </format>
+  <format id="time_BB">
+    <concat>
+      <column src="BB_META" format="minute"/>
+      <txt>'</txt>
+      <column src="BB_SEC" format="bcd_byte"/>
+      <txt>''</txt>
+      <column src="BB_HUND" format="bcd_byte"/>
+    </concat>
+  </format>
+  <format id="time_SO">
+    <concat>
+      <column src="SO_META" format="minute"/>
+      <txt>'</txt>
+      <column src="SO_SEC" format="bcd_byte"/>
+      <txt>''</txt>
+      <column src="SO_HUND" format="bcd_byte"/>
+    </concat>
+  </format>
+  <format id="time_DWI">
+    <concat>
+      <column src="DWI_META" format="minute"/>
+      <txt>'</txt>
+      <column src="DWI_SEC" format="bcd_byte"/>
+      <txt>''</txt>
+      <column src="DWI_HUND" format="bcd_byte"/>
+    </concat>
+  </format>
+  <format id="time_SIL">
+    <concat>
+      <column src="SIL_META" format="minute"/>
+      <txt>'</txt>
+      <column src="SIL_SEC" format="bcd_byte"/>
+      <txt>''</txt>
+      <column src="SIL_HUND" format="bcd_byte"/>
+    </concat>
+  </format>
+  <format id="time_MCII">
+    <concat>
+      <column src="MCII_META" format="minute"/>
+      <txt>'</txt>
+      <column src="MCII_SEC" format="bcd_byte"/>
+      <txt>''</txt>
+      <column src="MCII_HUND" format="bcd_byte"/>
+    </concat>
+  </format>
+  <format id="time_PTI">
+    <concat>
+      <column src="PTI_META" format="minute"/>
+      <txt>'</txt>
+      <column src="PTI_SEC" format="bcd_byte"/>
+      <txt>''</txt>
+      <column src="PTI_HUND" format="bcd_byte"/>
+    </concat>
+  </format>
+  <format id="time_RCI">
+    <concat>
+      <column src="RCI_META" format="minute"/>
+      <txt>'</txt>
+      <column src="RCI_SEC" format="bcd_byte"/>
+      <txt>''</txt>
+      <column src="RCI_HUND" format="bcd_byte"/>
+    </concat>
+  </format>
+  <format id="time_WLI">
+    <concat>
+      <column src="WLI_META" format="minute"/>
+      <txt>'</txt>
+      <column src="WLI_SEC" format="bcd_byte"/>
+      <txt>''</txt>
+      <column src="WLI_HUND" format="bcd_byte"/>
+    </concat>
+  </format>
+  <format id="time_WLII">
+    <concat>
+      <column src="WLII_META" format="minute"/>
+      <txt>'</txt>
+      <column src="WLII_SEC" format="bcd_byte"/>
+      <txt>''</txt>
+      <column src="WLII_HUND" format="bcd_byte"/>
+    </concat>
+  </format>
+  <format id="time_MCIII">
+    <concat>
+      <column src="MCIII_META" format="minute"/>
+      <txt>'</txt>
+      <column src="MCIII_SEC" format="bcd_byte"/>
+      <txt>''</txt>
+      <column src="MCIII_HUND" format="bcd_byte"/>
+    </concat>
+  </format>
+  <format id="time_DWII">
+    <concat>
+      <column src="DWII_META" format="minute"/>
+      <txt>'</txt>
+      <column src="DWII_SEC" format="bcd_byte"/>
+      <txt>''</txt>
+      <column src="DWII_HUND" format="bcd_byte"/>
+    </concat>
+  </format>
+  <format id="time_PTII">
+    <concat>
+      <column src="PTII_META" format="minute"/>
+      <txt>'</txt>
+      <column src="PTII_SEC" format="bcd_byte"/>
+      <txt>''</txt>
+      <column src="PTII_HUND" format="bcd_byte"/>
+    </concat>
+  </format>
+  <format id="time_RCII">
+    <concat>
+      <column src="RCII_META" format="minute"/>
+      <txt>'</txt>
+      <column src="RCII_SEC" format="bcd_byte"/>
+      <txt>''</txt>
+      <column src="RCII_HUND" format="bcd_byte"/>
+    </concat>
+  </format>
+  <format id="time_FF">
+    <concat>
+      <column src="FF_META" format="minute"/>
+      <txt>'</txt>
+      <column src="FF_SEC" format="bcd_byte"/>
+      <txt>''</txt>
+      <column src="FF_HUND" format="bcd_byte"/>
+    </concat>
+  </format>
+</hi2txt>

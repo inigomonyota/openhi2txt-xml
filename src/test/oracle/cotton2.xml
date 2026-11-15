@@ -1,0 +1,25 @@
+<hi2txt>
+  <table id="RANKING">
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>STAGE</col><col>CHARACTER</col><col>MAX HIT</col><col>MAX CHAIN</col>
+    <row><cell>TOP</cell><cell>20000</cell><cell>BIG</cell><cell>1</cell><cell>COTTON</cell><cell>40</cell><cell>20</cell></row>
+    <row><cell>2ND</cell><cell>19000</cell><cell>COT</cell><cell>1</cell><cell>APPLI</cell><cell>38</cell><cell>19</cell></row>
+    <row><cell>3RD</cell><cell>18500</cell><cell>BBB</cell><cell>1</cell><cell>COTTON</cell><cell>17</cell><cell>4</cell></row>
+    <row><cell>4TH</cell><cell>18000</cell><cell>TON</cell><cell>1</cell><cell>COTTON</cell><cell>36</cell><cell>18</cell></row>
+    <row><cell>5TH</cell><cell>17000</cell><cell>PAN</cell><cell>1</cell><cell>APPLI</cell><cell>34</cell><cell>17</cell></row>
+    <row><cell>6TH</cell><cell>16000</cell><cell>TSU</cell><cell>1</cell><cell>COTTON</cell><cell>32</cell><cell>16</cell></row>
+    <row><cell>7TH</cell><cell>15000</cell><cell>LOW</cell><cell>1</cell><cell>APPLI</cell><cell>30</cell><cell>15</cell></row>
+    <row><cell>8TH</cell><cell>14000</cell><cell>NOA</cell><cell>1</cell><cell>COTTON</cell><cell>28</cell><cell>14</cell></row>
+    <row><cell>9TH</cell><cell>13000</cell><cell>PPU</cell><cell>1</cell><cell>APPLI</cell><cell>26</cell><cell>13</cell></row>
+    <row><cell>10TH</cell><cell>12000</cell><cell>RIK</cell><cell>1</cell><cell>COTTON</cell><cell>24</cell><cell>12</cell></row>
+    <row><cell>11TH</cell><cell>11000</cell><cell>ENO</cell><cell>1</cell><cell>APPLI</cell><cell>22</cell><cell>11</cell></row>
+    <row><cell>12TH</cell><cell>10000</cell><cell>USH</cell><cell>1</cell><cell>COTTON</cell><cell>20</cell><cell>10</cell></row>
+    <row><cell>13TH</cell><cell>9000</cell><cell>ITO</cell><cell>1</cell><cell>APPLI</cell><cell>18</cell><cell>9</cell></row>
+    <row><cell>14TH</cell><cell>8000</cell><cell>KAW</cell><cell>1</cell><cell>COTTON</cell><cell>16</cell><cell>8</cell></row>
+    <row><cell>15TH</cell><cell>7000</cell><cell>AII</cell><cell>1</cell><cell>APPLI</cell><cell>14</cell><cell>7</cell></row>
+    <row><cell>16TH</cell><cell>6000</cell><cell>WIL</cell><cell>1</cell><cell>COTTON</cell><cell>12</cell><cell>6</cell></row>
+    <row><cell>17TH</cell><cell>5000</cell><cell>SYA</cell><cell>1</cell><cell>APPLI</cell><cell>10</cell><cell>5</cell></row>
+    <row><cell>18TH</cell><cell>4400</cell><cell>ZZZ</cell><cell>1</cell><cell>COTTON</cell><cell>16</cell><cell>1</cell></row>
+    <row><cell>19TH</cell><cell>4000</cell><cell>BER</cell><cell>1</cell><cell>COTTON</cell><cell>8</cell><cell>4</cell></row>
+    <row><cell>20TH</cell><cell>3000</cell><cell>USI</cell><cell>1</cell><cell>APPLI</cell><cell>6</cell><cell>3</cell></row>
+  </table>
+</hi2txt>

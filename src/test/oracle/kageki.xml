@@ -1,0 +1,10 @@
+<hi2txt>
+  <table id="RANKING">
+    <col>RANK</col><col>NAME</col><col>ROUND</col><col>LEVEL</col><col>ROUND WINNER</col>
+    <row><cell>1</cell><cell>H.K</cell><cell>5 RD</cell><cell>LEVEL B</cell><cell>RIKI</cell></row>
+    <row><cell>2</cell><cell>N.N</cell><cell>4 RD</cell><cell>LEVEL C</cell><cell>HOOK</cell></row>
+    <row><cell>3</cell><cell>ZAA</cell><cell>4 RD</cell><cell>LEVEL D</cell><cell>HOOK</cell></row>
+    <row><cell>4</cell><cell>KMO</cell><cell>3 RD</cell><cell>LEVEL D</cell><cell>BRAD</cell></row>
+    <row><cell>5</cell><cell>H.S</cell><cell>2 RD</cell><cell>LEVEL D</cell><cell>HYENA</cell></row>
+  </table>
+</hi2txt>
