@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<hi2txt label="Capcom Sports Club">
+  <!--
+    Capcom Sports Club (CPS-1.5 / CPS-Q Sound), reads the hiscore-plugin .hi dump.
+    hiscore.dat:
+      @:maincpu,program,ff9894,50,00,b2   (region1: 20 x 4-byte pointers, ignored)
+      @:maincpu,program,ff98e4,dc,1a,01   (region2: the actual entries)
+    .hi = 300 bytes: [80B pointer table][region2 220B].
+    region2 = four score tables, entry = [NAME:3][flag:1][SCORE:4 BE int][extra]:
+      KICK STARS  (soccer)     entries 0-4   : 10-byte records (extra=2)
+      SMASH STARS (tennis)     entries 5-9   : 10-byte records (extra=2)
+      DUNK STARS  (basketball) entries 10-14 : 10-byte records (extra=2)
+      YOUR WINNINGS            entries 15-19 : 14-byte records (extra=6)
+    NAME charset is a letter/digit index: A=0x00..Z=0x19, '0'-'9'=0x1a..0x23.
+    SCORE is a plain 32-bit big-endian value (0x3a98 = 15000).
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <definition>0:ff9894:50:00:b2
+                  0:ff98e4:dc:1a:01</definition>
+      <size>300</size>
+    </check>
+
+    <elt size="80" type="raw" id="PTR_TABLE"/>
+
+    <loop count="5">
+      <elt size="3" type="text" id="KICK_NAME" ascii-offset="65" charset="cscs"/>
+      <elt size="1" type="raw"  id="KICK_FLAG"/>
+      <elt size="4" type="int"  id="KICK_SCORE"/>
+      <elt size="2" type="raw"  id="KICK_EXTRA"/>
+    </loop>
+
+    <loop count="5">
+      <elt size="3" type="text" id="SMASH_NAME" ascii-offset="65" charset="cscs"/>
+      <elt size="1" type="raw"  id="SMASH_FLAG"/>
+      <elt size="4" type="int"  id="SMASH_SCORE"/>
+      <elt size="2" type="raw"  id="SMASH_EXTRA"/>
+    </loop>
+
+    <loop count="5">
+      <elt size="3" type="text" id="DUNK_NAME" ascii-offset="65" charset="cscs"/>
+      <elt size="1" type="raw"  id="DUNK_FLAG"/>
+      <elt size="4" type="int"  id="DUNK_SCORE"/>
+      <elt size="2" type="raw"  id="DUNK_EXTRA"/>
+    </loop>
+
+    <loop count="5">
+      <elt size="3" type="text" id="WIN_NAME" ascii-offset="65" charset="cscs"/>
+      <elt size="1" type="raw"  id="WIN_FLAG"/>
+      <elt size="4" type="int"  id="WIN_SCORE"/>
+      <elt size="6" type="raw"  id="WIN_EXTRA"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table id="KICK STARS">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="KICK_NAME"/>
+      <column id="SCORE" src="KICK_SCORE"/>
+    </table>
+    <table id="SMASH STARS">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="SMASH_NAME"/>
+      <column id="SCORE" src="SMASH_SCORE"/>
+    </table>
+    <table id="DUNK STARS">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="DUNK_NAME"/>
+      <column id="SCORE" src="DUNK_SCORE"/>
+    </table>
+    <table id="YOUR WINNINGS">
+      <column id="RANK"  src="index" format="rank"/>
+      <column id="NAME"  src="WIN_NAME"/>
+      <column id="SCORE" src="WIN_SCORE"/>
+    </table>
+  </output>
+
+  <format id="rank">
+    <add>1</add>
+    <case src="1" dst="1ST"/><case src="2" dst="2ND"/><case src="3" dst="3RD"/>
+    <case src="4" dst="4TH"/><case src="5" dst="5TH"/>
+  </format>
+
+  <charset id="cscs">
+    <char src="0x1a" dst="0"/>
+    <char src="0x1b" dst="1"/>
+    <char src="0x1c" dst="2"/>
+    <char src="0x1d" dst="3"/>
+    <char src="0x1e" dst="4"/>
+    <char src="0x1f" dst="5"/>
+    <char src="0x20" dst="6"/>
+    <char src="0x21" dst="7"/>
+    <char src="0x22" dst="8"/>
+    <char src="0x23" dst="9"/>
+  </charset>
+</hi2txt>

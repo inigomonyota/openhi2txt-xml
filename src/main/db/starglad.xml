@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Star Gladiator Episode I: Final Crusade">
+  <!--
+    starglad (Star Gladiator Episode:I - Final Crusade, Capcom ZN-1 / Sony PSX
+    R3000, big save but LITTLE-endian CPU; the ranking bytes read here are plain
+    binary, not BCD). No nvram scoreboard: the at28c16 EEPROM (2080 bytes) holds
+    only config/region ("PS1U"); the rankings live in volatile PSX work RAM and
+    must be restored by the MAME hiscore plugin (same situation as sgemf/rsgun).
+    ZN-1 plugin addressing confirmed by the shipped tgmj entry
+    (@:maincpu,program,80171198,...), so the kseg0 0x80xxxxxx address is used.
+
+    hiscore.dat (authored for this game, two ranges):
+      @:maincpu,program,80195c18,140,14,00   BEST TIME RANKING  (2 copies, 320B)
+      @:maincpu,program,801ddafc,140,14,00   CHARACTER RANKING  (2 copies, 320B)
+    Each chart lives in RAM as a 160-byte display block (10 x 16B) immediately
+    followed by a 160-byte working copy, so 0x140 captures both. The two charts
+    hold the same ten entries (BEST TIME shows TIME then CHARACTER; CHARACTER
+    RANKING shows CHARACTER then TIME). Captured .hi = 640 bytes:
+      [BEST TIME display 160][BEST TIME work 160][CHARACTER display 160][CHARACTER work 160]
+
+    Record (16 bytes):
+      +0  TIME   3 bytes binary big-endian: minutes, seconds, centiseconds
+                 (0x14 0x00 0x00 = 20'00"00). Displayed MM'SS"CC.
+      +3  CHAR   1 byte fighter index. Confirmed from the charts:
+                 1=HAYATO 2=JUNE 3=SATURN 4=GERELT 5=GAMOF 6=GORE
+                 7=VECTOR 8=RIMGAL 9=ZELKIN. Secret/boss fighters
+                 (Bilstein, Kappah, ...) occupy other indices never shown in the
+                 captured charts, so they pass through as the raw index (TODO).
+      +4  (1 byte flag), +5 (1 byte slot index)
+      +6  NAME   3 ASCII initials, null-padded (HAY, JUN, ...).
+      +9  (7 bytes pad)
+
+    Proven byte-for-byte against the six save states and the attract screenshots:
+      1 20'00"00 HAYATO HAY / 2 20'05"00 JUNE JUN / 3 20'10"00 SATURN SAT /
+      4 20'15"00 GAMOF GAM / 5 20'20"00 GERELT GER / 6 20'25"00 VECTOR VEC /
+      7 20'30"00 RIMGAL RIM / 8 20'35"00 ZELKIN ZEL / 9 20'40"00 GORE GOR /
+      10 20'45"00 HAYATO HAY.
+    Authored by Pipmick @ CoinOPS.
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <size>640</size>
+    </check>
+
+    <!-- BEST TIME RANKING: 10 records (display copy) -->
+    <loop count="10">
+      <elt size="3" type="int"  id="B_TIME" endianness="big_endian" table-index="loop_index"/>
+      <elt size="1" type="int"  id="B_CHAR"                         table-index="loop_index"/>
+      <elt size="1" type="raw"  id="B_FLAG"                         table-index="loop_index"/>
+      <elt size="1" type="raw"  id="B_SLOT"                         table-index="loop_index"/>
+      <elt size="3" type="text" id="B_NAME" byte-trunc="0x00"       table-index="loop_index"/>
+      <elt size="7" type="raw"  id="B_PAD"                          table-index="loop_index"/>
+    </loop>
+    <elt size="160" type="raw" id="_B_WORK"/>
+
+    <!-- CHARACTER RANKING: 10 records (display copy) -->
+    <loop count="10">
+      <elt size="3" type="int"  id="C_TIME" endianness="big_endian" table-index="loop_index"/>
+      <elt size="1" type="int"  id="C_CHAR"                         table-index="loop_index"/>
+      <elt size="1" type="raw"  id="C_FLAG"                         table-index="loop_index"/>
+      <elt size="1" type="raw"  id="C_SLOT"                         table-index="loop_index"/>
+      <elt size="3" type="text" id="C_NAME" byte-trunc="0x00"       table-index="loop_index"/>
+      <elt size="7" type="raw"  id="C_PAD"                          table-index="loop_index"/>
+    </loop>
+    <elt size="160" type="raw" id="_C_WORK"/>
+  </structure>
+
+  <output>
+    <table id="BEST TIME RANKING">
+      <column id="RANK"      src="index"  format="ordinal"/>
+      <column id="TIME"      src="B_TIME" format="stime"/>
+      <column id="CHARACTER" src="B_CHAR" format="fighter"/>
+      <column id="NAME"      src="B_NAME"/>
+    </table>
+    <table id="CHARACTER RANKING">
+      <column id="RANK"      src="index"  format="ordinal"/>
+      <column id="CHARACTER" src="C_CHAR" format="fighter"/>
+      <column id="TIME"      src="C_TIME" format="stime"/>
+      <column id="NAME"      src="C_NAME"/>
+    </table>
+  </output>
+
+  <format id="ordinal">
+    <case src="0" dst="1ST"/><case src="1" dst="2ND"/><case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/><case src="4" dst="5TH"/><case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/><case src="7" dst="8TH"/><case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+
+  <!-- 3-byte binary time -> MM'SS"CC -->
+  <format id="s_min"><divide_trunc>65536</divide_trunc><pad direction="left" max="2">0</pad></format>
+  <format id="s_sec"><divide_trunc>256</divide_trunc><remainder>256</remainder><pad direction="left" max="2">0</pad></format>
+  <format id="s_cs"><remainder>256</remainder><pad direction="left" max="2">0</pad></format>
+  <format id="stime" input-as-subcolumns-input="yes">
+    <concat>
+      <column format="s_min"/><txt>'</txt>
+      <column format="s_sec"/><txt>"</txt>
+      <column format="s_cs"/>
+    </concat>
+  </format>
+
+  <!-- Fighter index -> name (1-9 confirmed from the charts). -->
+  <format id="fighter">
+    <case src="1" dst="HAYATO"/>
+    <case src="2" dst="JUNE"/>
+    <case src="3" dst="SATURN"/>
+    <case src="4" dst="GERELT"/>
+    <case src="5" dst="GAMOF"/>
+    <case src="6" dst="GORE"/>
+    <case src="7" dst="VECTOR"/>
+    <case src="8" dst="RIMGAL"/>
+    <case src="9" dst="ZELKIN"/>
+    <case src="-1" default="true" format="idnum"/>
+  </format>
+  <format id="idnum"><add>0</add></format>
+</hi2txt>
