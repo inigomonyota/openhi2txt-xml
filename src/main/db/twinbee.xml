@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hi2txt>
+<hi2txt label="TwinBee">
+  <structure file=".hi">
+    <check><size>92</size></check>
+    <loop count="10">
+      <elt id="SCORE" type="int" size="4" base="16"/>
+    </loop>
+    <elt id="PAD0" type="raw" size="8"/>
+    <loop count="10">
+      <elt id="NAME" type="text" size="4" ascii-offset="48" charset="CS_TWINBEE"/>
+    </loop>
+    <elt id="TOP_SCORE" type="int" size="4" base="16"/>
+  </structure>
+
+  <charset id="CS_TWINBEE">
+    <char src="0x0a" dst="."/>
+  </charset>
+
+  <format id="RANK_FMT">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+    <case src="7" dst="8TH"/>
+    <case src="8" dst="9TH"/>
+    <case src="9" dst="10TH"/>
+  </format>
+
+  <output>
+    <field id="TOP SCORE" src="TOP_SCORE" display="extra"/>
+    <table id="TODAY'S SCORE RANKING" lines-max="10">
+      <column id="RANK"  src="index" format="RANK_FMT"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+</hi2txt>

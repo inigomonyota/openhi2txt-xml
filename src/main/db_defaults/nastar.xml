@@ -1,0 +1,11 @@
+<hi2txt>
+  <table id="TODAY'S SPECIALIST">
+    <col>RANK</col><col>SCORE</col><col>ROUND</col><col>NAME</col>
+    <row><cell>KING</cell><cell>7700</cell><cell>?</cell><cell>TOM</cell></row>
+    <row><cell>PRINCE</cell><cell>7000</cell><cell>?</cell><cell>MAR</cell></row>
+    <row><cell>BRAVE MAN</cell><cell>6500</cell><cell>?</cell><cell>KAZ</cell></row>
+    <row><cell>HERO</cell><cell>6000</cell><cell>?</cell><cell>TED</cell></row>
+    <row><cell>SOLDIER</cell><cell>5500</cell><cell>?</cell><cell>DOI</cell></row>
+    <row><cell>EXPERT</cell><cell>5000</cell><cell>?</cell><cell>YAB</cell></row>
+  </table>
+</hi2txt>

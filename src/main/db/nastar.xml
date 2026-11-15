@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hi2txt>
+<hi2txt label="Nastar Warrior">
+  <structure file=".hi">
+    <check><size>61</size></check>
+    <loop count="6" skip-last-bytes="2">
+      <elt id="SCORE" type="int" size="4" base="16"/>
+      <elt id="ROUND" type="int" size="1"/>
+      <elt id="NAME"  type="text" size="3"/>
+      <elt id="PAD"   type="raw" size="2"/>
+    </loop>
+    <elt id="TOP_SCORE" type="int" size="3" base="16"/>
+  </structure>
+
+  <format id="RANK_FMT">
+    <case src="0" dst="KING"/>
+    <case src="1" dst="PRINCE"/>
+    <case src="2" dst="BRAVE MAN"/>
+    <case src="3" dst="HERO"/>
+    <case src="4" dst="SOLDIER"/>
+    <case src="5" dst="EXPERT"/>
+  </format>
+
+  <format id="ROUND_FMT">
+    <case src="0" dst="?"/>
+  </format>
+
+  <format id="*100"><multiply>100</multiply></format>
+
+  <output>
+    <field id="TOP SCORE" src="TOP_SCORE" format="*100" display="extra"/>
+    <table id="TODAY'S SPECIALIST" lines-max="6">
+      <column id="RANK"  src="index" format="RANK_FMT"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="ROUND" src="ROUND" format="ROUND_FMT"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+</hi2txt>

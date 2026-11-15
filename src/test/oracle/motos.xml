@@ -1,0 +1,11 @@
+<hi2txt>
+  <field id="TOP SCORE">10000</field>
+  <table id="THE TOP-RANKERS">
+    <col>RANK</col><col>SCORE</col><col>RD.</col><col>NAME</col>
+    <row><cell>1</cell><cell>10000</cell><cell>6</cell><cell>MORITARO</cell></row>
+    <row><cell>2</cell><cell>7900</cell><cell>5</cell><cell></cell></row>
+    <row><cell>3</cell><cell>7650</cell><cell>4</cell><cell>OKADAMAN</cell></row>
+    <row><cell>4</cell><cell>7580</cell><cell>4</cell><cell>TAGUCHIN</cell></row>
+    <row><cell>5</cell><cell>5550</cell><cell>3</cell><cell>OKUBOMAN</cell></row>
+  </table>
+</hi2txt>

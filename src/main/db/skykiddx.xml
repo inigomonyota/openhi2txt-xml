@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hi2txt>
+<hi2txt label="Sky Kid Deluxe">
+  <structure file=".hi">
+    <check><size>70</size></check>
+    <elt id="TOP_SCORE" type="int" size="4" base="16"/>
+    <loop count="5">
+      <elt id="SCORE"  type="int"  size="4" base="16"/>
+      <elt id="MEDALS" type="int"  size="1"/>
+      <elt id="NAME"   type="text" size="8" ascii-offset="55" charset="CS_SKYKIDDX"/>
+    </loop>
+    <elt id="TAIL" type="raw" size="1"/>
+  </structure>
+
+  <charset id="CS_SKYKIDDX">
+    <char src="0x00" dst="0"/>
+    <char src="0x01" dst="1"/>
+    <char src="0x02" dst="2"/>
+    <char src="0x03" dst="3"/>
+    <char src="0x04" dst="4"/>
+    <char src="0x05" dst="5"/>
+    <char src="0x06" dst="6"/>
+    <char src="0x07" dst="7"/>
+    <char src="0x08" dst="8"/>
+    <char src="0x09" dst="9"/>
+    <char src="0x2f" dst=" "/>
+  </charset>
+
+  <output>
+    <field id="TOP SCORE" src="TOP_SCORE" display="extra"/>
+    <table id="SKYKID TOP5" lines-max="5">
+      <column id="NO."    src="index"  format="+1"/>
+      <column id="SCORE"  src="SCORE"/>
+      <column id="MEDALS" src="MEDALS"/>
+      <column id="NAME"   src="NAME"   format="Trim "/>
+    </table>
+  </output>
+</hi2txt>

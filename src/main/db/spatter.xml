@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hi2txt>
+<hi2txt label="Spatter">
+  <structure file=".hi">
+    <check><size>53</size></check>
+    <loop count="7">
+      <elt id="SCORE" type="int"  size="3" base="16"/>
+      <elt id="ROUND" type="int"  size="1" base="16"/>
+      <elt id="NAME"  type="text" size="3" charset="CS_SPATTER"/>
+    </loop>
+    <elt id="TOP_SCORE" type="int" size="3" base="16"/>
+    <elt id="TRAILER"   type="raw" size="1"/>
+  </structure>
+
+  <charset id="CS_SPATTER">
+    <char src="0x5c" dst="."/>
+  </charset>
+
+  <format id="RANK_FMT">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+    <case src="5" dst="6TH"/>
+    <case src="6" dst="7TH"/>
+  </format>
+
+  <format id="*10"><multiply>10</multiply></format>
+
+  <output>
+    <field id="TOP SCORE" src="TOP_SCORE" format="*10" display="extra"/>
+    <table id="SUPER PLAYERS" lines-max="7">
+      <column id="RANK"  src="index" format="RANK_FMT"/>
+      <column id="SCORE" src="SCORE" format="*10"/>
+      <column id="ROUND" src="ROUND"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+</hi2txt>

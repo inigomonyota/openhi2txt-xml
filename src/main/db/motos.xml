@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hi2txt>
+<hi2txt label="Motos">
+  <structure file=".hi">
+    <check><size>164</size></check>
+    <loop count="5">
+      <elt id="RANK"  type="text" size="4"/>
+      <elt id="SCORE" type="text" size="8"/>
+      <elt id="RD"    type="text" size="4"/>
+      <elt id="NAME"  type="text" size="12"/>
+      <elt id="PAD0"  type="raw"  size="4"/>
+    </loop>
+    <elt id="TOP_SCORE" type="int" size="4" base="16"/>
+  </structure>
+
+  <output>
+    <field id="TOP SCORE" src="TOP_SCORE" display="extra"/>
+    <table id="THE TOP-RANKERS" lines-max="5">
+      <column id="RANK"  src="RANK"  format="Trim "/>
+      <column id="SCORE" src="SCORE" format="Trim "/>
+      <column id="RD."   src="RD"    format="Trim "/>
+      <column id="NAME"  src="NAME"  format="Trim "/>
+    </table>
+  </output>
+</hi2txt>

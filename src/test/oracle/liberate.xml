@@ -1,0 +1,16 @@
+<hi2txt>
+  <table>
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>58000</cell><cell>YUMIKO</cell></row>
+    <row><cell>2</cell><cell>38400</cell><cell>IWAO</cell></row>
+    <row><cell>3</cell><cell>28800</cell><cell>FUJIO</cell></row>
+    <row><cell>4</cell><cell>25600</cell><cell>CHIBI</cell></row>
+    <row><cell>5</cell><cell>19200</cell><cell>SONO-1</cell></row>
+    <row><cell>6</cell><cell>14400</cell><cell>SONO-2</cell></row>
+    <row><cell>7</cell><cell>9600</cell><cell>YUKI</cell></row>
+    <row><cell>8</cell><cell>7680</cell><cell>TICHAN</cell></row>
+    <row><cell>9</cell><cell>3840</cell><cell>ONI</cell></row>
+    <row><cell>10</cell><cell>2560</cell><cell>KOTETU</cell></row>
+  </table>
+  <field id="TOP SCORE">58000</field>
+</hi2txt>

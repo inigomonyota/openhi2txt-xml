@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hi2txt>
+<hi2txt label="Mr. TNT">
+  <structure file=".hi">
+    <check><size>66</size></check>
+    <loop count="10">
+      <elt id="NAME"  type="text" size="3" charset="CS_MRTNT"/>
+      <elt id="SCORE" type="int"  size="3" endianness="little_endian" base="16"/>
+    </loop>
+    <elt id="TOP_SCORE" type="int" size="6" endianness="little_endian" nibble-skip="odd" base="16"/>
+  </structure>
+
+  <charset id="CS_MRTNT">
+    <char src="0x40" dst=" "/>
+  </charset>
+
+  <output>
+    <field id="TOP SCORE" src="TOP_SCORE" display="extra"/>
+    <table id="HALL OF FAME" lines-max="10">
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="NAME"  src="NAME"/>
+      <column id="SCORE" src="SCORE"/>
+    </table>
+  </output>
+
+  <format id="+1"><add>1</add></format>
+</hi2txt>

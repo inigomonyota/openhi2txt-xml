@@ -1,0 +1,15 @@
+<hi2txt>
+  <table id="TODAY'S SCORE RANKING">
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1ST</cell><cell>20000</cell><cell>HIRO</cell></row>
+    <row><cell>2ND</cell><cell>19000</cell><cell>FUKU</cell></row>
+    <row><cell>3RD</cell><cell>18000</cell><cell>KITA</cell></row>
+    <row><cell>4TH</cell><cell>17000</cell><cell>XMAS</cell></row>
+    <row><cell>5TH</cell><cell>16000</cell><cell>TAKA</cell></row>
+    <row><cell>6TH</cell><cell>15000</cell><cell>AOYA</cell></row>
+    <row><cell>7TH</cell><cell>14000</cell><cell>ISO.</cell></row>
+    <row><cell>8TH</cell><cell>13000</cell><cell>TAKE</cell></row>
+    <row><cell>9TH</cell><cell>12000</cell><cell>TWIN</cell></row>
+    <row><cell>10TH</cell><cell>11000</cell><cell>BEE.</cell></row>
+  </table>
+</hi2txt>

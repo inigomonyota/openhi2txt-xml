@@ -1,0 +1,7 @@
+# RANKING TABLE
+RANK|SCORE|NAME
+1ST|0|        
+2ND|0|        
+3RD|0|        
+4TH|0|        
+5TH|0|

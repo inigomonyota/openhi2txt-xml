@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hi2txt>
+<hi2txt label="Raimais">
+  <structure file=".hi">
+    <check><size>48</size></check>
+    <elt id="TOP_SCORE" type="int" size="3" endianness="little_endian" base="10"/>
+    <elt id="PAD0"      type="raw" size="10"/>
+    <loop count="5">
+      <elt id="SCORE" type="int"  size="3" endianness="little_endian" base="10"/>
+      <elt id="ROUND" type="int"  size="1"/>
+      <elt id="NAME"  type="text" size="3"/>
+    </loop>
+  </structure>
+
+  <format id="RANK_FMT">
+    <case src="0" dst="1ST"/>
+    <case src="1" dst="2ND"/>
+    <case src="2" dst="3RD"/>
+    <case src="3" dst="4TH"/>
+    <case src="4" dst="5TH"/>
+  </format>
+
+  <output>
+    <field id="HIGH SCORE" src="TOP_SCORE" display="extra"/>
+    <table id="BEST 5" lines-max="5">
+      <column id="RANK"  src="index" format="RANK_FMT"/>
+      <column id="SCORE" src="SCORE"/>
+      <column id="ROUND" src="ROUND"/>
+      <column id="NAME"  src="NAME"/>
+    </table>
+  </output>
+</hi2txt>
