@@ -1,0 +1,15 @@
+<hi2txt>
+  <table>
+    <col>RANK</col><col>SCORE</col><col>NAME</col>
+    <row><cell>1</cell><cell>54000</cell><cell>K.MIURA </cell></row>
+    <row><cell>2</cell><cell>42300</cell><cell>K.SATOH </cell></row>
+    <row><cell>3</cell><cell>39200</cell><cell>HIROMI.N</cell></row>
+    <row><cell>4</cell><cell>25600</cell><cell>H.OHARA </cell></row>
+    <row><cell>5</cell><cell>19900</cell><cell>N.ATSUMI</cell></row>
+    <row><cell>6</cell><cell>12600</cell><cell>AKIKO.O </cell></row>
+    <row><cell>7</cell><cell>9800</cell><cell>K.SHOJA </cell></row>
+    <row><cell>8</cell><cell>7800</cell><cell>OHTSUKA </cell></row>
+    <row><cell>9</cell><cell>2900</cell><cell>LUMCHAN </cell></row>
+    <row><cell>10</cell><cell>1600</cell><cell>        </cell></row>
+  </table>
+</hi2txt>

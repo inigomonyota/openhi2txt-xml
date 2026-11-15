@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Marchen Maze">
+  <!--
+    tested with mame 0.251 and embedded hiscore.dat
+    source: Antigravity
+  //-->
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,12c1,3,00,00
+                  @:maincpu,program,1241,27,00,01
+                  @:maincpu,program,1100,1,95,95</definition>
+      <size>43</size>
+    </check>
+    <elt size="3" type="int" id="TOP SCORE" endianness="little_endian" base="16"/>
+    <loop count="5">
+      <elt size="3" type="int"  id="SCORE" endianness="little_endian" base="16"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="int"  id="STAGE"/>
+      <elt size="1" type="raw"  id="EMPTY"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" format="*10"/>
+      <column id="NAME"/>
+      <column id="STAGE"/>
+    </table>
+    <field id="TOP SCORE" format="*10" display="extra"/>
+  </output>
+</hi2txt>

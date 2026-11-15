@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Zing Zing Zip">
+  <!--
+    tested with mame 0.251 and embedded hiscore.dat
+    source: Antigravity
+  //-->
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,2028fd,69,00,a2</definition>
+      <size>105</size>
+    </check>
+    <loop count="9" skip-last-bytes="3">
+      <elt size="3" type="int"  id="SCORE" base="10"/>
+      <elt size="1" type="raw"  id="PAD1"/>
+      <elt size="1" type="text" id="CHAR1" charset="zingzip" ascii-offset="-128"/>
+      <elt size="1" type="raw"  id="PAD2"/>
+      <elt size="1" type="text" id="CHAR2" charset="zingzip" ascii-offset="-128"/>
+      <elt size="1" type="raw"  id="PAD3"/>
+      <elt size="1" type="text" id="CHAR3" charset="zingzip" ascii-offset="-128"/>
+      <elt size="3" type="raw"  id="PAD4"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" format="*10"/>
+      <column id="NAME"  format="name"/>
+    </table>
+  </output>
+
+  <format id="name">
+    <concat>
+      <column id="CHAR1"/>
+      <column id="CHAR2"/>
+      <column id="CHAR3"/>
+    </concat>
+  </format>
+
+  <charset id="zingzip">
+    <char src="0xa2" dst=" "/>
+  </charset>
+</hi2txt>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Itazura Tenshi">
+  <!--
+    tested with mame 0.251 and embedded hiscore.dat
+    source: Antigravity
+  //-->
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,a266,1e,56,4b
+                  @:maincpu,program,a02c,1,54,54</definition>
+      <size>31</size>
+    </check>
+    <loop count="5">
+      <elt size="3" type="int" id="SCORE" endianness="little_endian" base="16"/>
+    </loop>
+    <loop count="5">
+      <elt size="1" type="text" id="C3"/>
+      <elt size="1" type="text" id="C2"/>
+      <elt size="1" type="text" id="C1"/>
+    </loop>
+    <elt size="1" type="raw" id="EMPTY"/>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" format="*100"/>
+      <column id="NAME"  format="name"/>
+    </table>
+  </output>
+
+  <format id="name">
+    <concat>
+      <column id="C1"/>
+      <column id="C2"/>
+      <column id="C3"/>
+    </concat>
+  </format>
+</hi2txt>

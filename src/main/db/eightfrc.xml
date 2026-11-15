@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Eight Forces">
+  <!--
+    tested with mame 0.251 and embedded hiscore.dat
+    source: Antigravity
+  //-->
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,20c526,5f,00,43
+                  @:maincpu,program,20c5bf,1,7a,7a</definition>
+      <size>96</size>
+    </check>
+    <loop count="8">
+      <elt size="4" type="int"  id="SCORE"/>
+      <elt size="2" type="int"  id="STAGE"/>
+      <elt size="1" type="int"  id="SHIP"/>
+      <elt size="1" type="raw"  id="PAD1"/>
+      <elt size="3" type="text" id="NAME"/>
+      <elt size="1" type="raw"  id="PAD2"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+      <column id="STAGE"/>
+      <column id="SHIP"/>
+    </table>
+  </output>
+</hi2txt>

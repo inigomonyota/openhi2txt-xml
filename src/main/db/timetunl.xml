@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Time Tunnel">
+  <!--
+    tested with mame 0.251 and embedded hiscore.dat
+    source: Antigravity
+  //-->
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,801f,6,0,0
+                  @:maincpu,program,c46d,6,63,63</definition>
+      <size>12</size>
+    </check>
+    <elt size="6" type="raw"  id="EMPTY"/>
+    <elt size="6" type="text" id="TOP SCORE" charset="timetunl"/>
+  </structure>
+
+  <output>
+    <field id="TOP SCORE" display="extra"/>
+  </output>
+
+  <charset id="timetunl">
+    <char src="0x62" dst=" "/>
+    <char src="0x63" dst="0"/>
+    <char src="0x64" dst="1"/>
+    <char src="0x65" dst="2"/>
+    <char src="0x66" dst="3"/>
+    <char src="0x67" dst="4"/>
+    <char src="0x68" dst="5"/>
+    <char src="0x69" dst="6"/>
+    <char src="0x6a" dst="7"/>
+    <char src="0x6b" dst="8"/>
+    <char src="0x6c" dst="9"/>
+  </charset>
+</hi2txt>

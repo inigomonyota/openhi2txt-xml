@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Laguna Racer">
+  <!--
+    tested with mame 0.251 and embedded hiscore.dat
+    source: Antigravity
+  //-->
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,2011,9,00,00
+                  @:maincpu,program,2005,3,00,00
+                  @:maincpu,program,2031,1,89,89</definition>
+      <size>13</size>
+    </check>
+    <loop count="3">
+      <elt size="2" type="int" id="WHOLE" base="16"/>
+      <elt size="1" type="int" id="TENTH" base="16"/>
+    </loop>
+    <elt size="4" type="raw" id="EMPTY"/>
+  </structure>
+
+  <output>
+    <table>
+      <column id="CATEGORY" src="index" format="category"/>
+      <column id="MILES" format="miles"/>
+    </table>
+  </output>
+
+  <format id="category">
+    <case src="0" dst="LAST"/>
+    <case src="1" dst="HIGH"/>
+    <case src="2" dst="LOW"/>
+  </format>
+
+  <format id="miles">
+    <concat>
+      <column id="WHOLE"/>
+      <txt>.</txt>
+      <column id="TENTH" format="/10"/>
+    </concat>
+  </format>
+</hi2txt>

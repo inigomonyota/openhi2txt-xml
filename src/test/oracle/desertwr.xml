@@ -1,0 +1,26 @@
+<hi2txt>
+  <table id="TABLE 1">
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>STAGE</col>
+    <row><cell>1</cell><cell>9851392</cell><cell>STU</cell><cell>2</cell></row>
+    <row><cell>2</cell><cell>4665344</cell><cell>STU</cell><cell>3</cell></row>
+    <row><cell>3</cell><cell>4207872</cell><cell>STU</cell><cell>2</cell></row>
+    <row><cell>4</cell><cell>463360</cell><cell>UUU</cell><cell>1</cell></row>
+    <row><cell>5</cell><cell>148628</cell><cell>KUA</cell><cell>5</cell></row>
+  </table>
+  <table id="TABLE 2">
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>STAGE</col>
+    <row><cell>1</cell><cell>4342272</cell><cell>...</cell><cell>1</cell></row>
+    <row><cell>2</cell><cell>164484</cell><cell>COM</cell><cell>5</cell></row>
+    <row><cell>3</cell><cell>156759</cell><cell>BAT</cell><cell>4</cell></row>
+    <row><cell>4</cell><cell>148628</cell><cell>AND</cell><cell>3</cell></row>
+    <row><cell>5</cell><cell>140128</cell><cell>RES</cell><cell>2</cell></row>
+  </table>
+  <table id="TABLE 3">
+    <col>RANK</col><col>SCORE</col><col>NAME</col><col>STAGE</col>
+    <row><cell>1</cell><cell>202274</cell><cell>PYR</cell><cell>5</cell></row>
+    <row><cell>2</cell><cell>164484</cell><cell>ROA</cell><cell>4</cell></row>
+    <row><cell>3</cell><cell>156759</cell><cell>OUV</cell><cell>3</cell></row>
+    <row><cell>4</cell><cell>148628</cell><cell>VRE</cell><cell>2</cell></row>
+    <row><cell>5</cell><cell>140128</cell><cell>EB </cell><cell>1</cell></row>
+  </table>
+</hi2txt>

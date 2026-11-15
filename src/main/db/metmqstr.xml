@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Metamoqester">
+  <!--
+    tested with mame 0.251 and embedded hiscore.dat
+    source: Antigravity
+  //-->
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,f080e0,100,0a,01</definition>
+      <size>256</size>
+    </check>
+    <elt size="32" type="raw" id="HEADER"/>
+    <loop count="32">
+      <elt size="2" type="int" id="SCORE" base="10"/>
+    </loop>
+    <loop count="32">
+      <elt size="4" type="text" id="NAME"/>
+    </loop>
+    <loop count="32">
+      <elt size="1" type="int" id="CHAR"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+      <column id="CHAR"/>
+    </table>
+  </output>
+</hi2txt>

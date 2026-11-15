@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Moon Alien Part 2">
+  <!--
+    tested with mame 0.285 and hiscore.dat
+    source: openhi2txt
+  //-->
+
+  <structure file=".hi">
+    <check>
+      <!-- optional: if defined and hiscore.dat provided, it allows to select the good structure version the provided file is for -->
+      <definition>0:80a8:3:00:00
+                  0:83f4:2:ff:ff
+                  0:83fd:1:ff:ff</definition>
+      <!-- optional: if defined, it allows to select the good structure version the provided file is for
+                     useful if multiple structures are defined, but hiscore.dat is not provided -->
+      <size>6</size>
+    </check>
+    <elt id="TOP SCORE" type="int" size="3" endianness="little_endian" base="16"/>
+    <elt id="EMPTY" type="raw" size="3"/>
+  </structure>
+
+  <output>
+    <field id="TOP SCORE"/>
+  </output>
+</hi2txt>

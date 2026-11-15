@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Rolling Crash / Moon Base">
+  <!--
+    tested with mame 0.251 and embedded hiscore.dat
+    source: Antigravity
+  //-->
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,2302,0f,00,00</definition>
+      <size>15</size>
+    </check>
+    <elt size="6" type="raw" id="EMPTY"/>
+    <elt size="3" type="int" id="TOP SCORE" base="16"/>
+    <elt size="6" type="raw" id="EMPTY2"/>
+  </structure>
+
+  <output>
+    <field id="TOP SCORE" display="extra"/>
+  </output>
+</hi2txt>

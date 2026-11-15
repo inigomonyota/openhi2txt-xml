@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Twin Brats">
+  <!--
+    tested with mame 0.251 and embedded hiscore.dat
+    source: Antigravity
+  //-->
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,11200f,3a,00,4e</definition>
+      <size>58</size>
+    </check>
+    <elt size="3" type="int" id="SCORE" base="16" table-index="6"/>
+    <loop count="6">
+      <elt size="4" type="int" id="SCORE" base="16" table-index="loop_reverse_index"/>
+    </loop>
+    <elt size="4" type="raw" id="EMPTY"/>
+    <loop count="7" skip-last-bytes="1">
+      <elt size="3" type="text" id="NAME" table-index="loop_reverse_index"/>
+      <elt size="1" type="raw"  id="SPACE"/>
+    </loop>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+</hi2txt>

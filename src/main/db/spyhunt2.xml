@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Spy Hunter II">
+  <!--
+    tested with mame 0.251 and embedded hiscore.dat
+    source: Antigravity
+  //-->
+  <structure file=".hi">
+    <check>
+      <definition>@:maincpu,program,60130,4,00,00
+                  @:maincpu,program,600b3,1,32,32</definition>
+      <size>5</size>
+    </check>
+    <elt size="4" type="int" id="TOP SCORE" base="16"/>
+    <elt size="1" type="raw" id="EMPTY"/>
+  </structure>
+
+  <output>
+    <field id="TOP SCORE" display="extra"/>
+  </output>
+</hi2txt>

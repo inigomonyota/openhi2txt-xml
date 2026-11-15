@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE hi2txt SYSTEM "hi2txt.dtd">
+<hi2txt label="Super Cross II">
+  <!--
+    tested with mame 0.251 and embedded hiscore.dat
+    source: Antigravity
+  //-->
+  <structure file=".hi">
+    <check>
+      <definition>@:master_cpu,program,fa00,78,00,4a
+                  @:master_cpu,program,f012,6,00,00
+                  @:master_cpu,program,f013,1,03,03</definition>
+      <size>127</size>
+    </check>
+    <loop count="10">
+      <elt size="1" type="int"  id="D0"/>
+      <elt size="1" type="int"  id="D1"/>
+      <elt size="1" type="int"  id="D2"/>
+      <elt size="1" type="int"  id="D3"/>
+      <elt size="1" type="int"  id="D4"/>
+      <elt size="1" type="int"  id="D5"/>
+      <elt size="1" type="raw"  id="EMPTY"/>
+      <elt size="5" type="text" id="NAME"/>
+    </loop>
+    <elt size="7" type="raw" id="EMPTY2"/>
+  </structure>
+
+  <output>
+    <table>
+      <column id="RANK"  src="index" format="+1"/>
+      <column id="SCORE" format="score"/>
+      <column id="NAME"/>
+    </table>
+  </output>
+
+  <format id="score">
+    <concat>
+      <column id="D0"/>
+      <column id="D1"/>
+      <column id="D2"/>
+      <column id="D3"/>
+      <column id="D4"/>
+      <column id="D5"/>
+    </concat>
+  </format>
+</hi2txt>
