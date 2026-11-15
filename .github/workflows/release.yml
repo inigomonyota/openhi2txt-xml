@@ -1,0 +1,59 @@
+name: Release XML Archives
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag name (e.g. v0.5.0)
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Package and publish release
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Build flat XML zip archives
+        run: |
+          python3 - <<'EOF'
+          import glob, os, zipfile
+
+          def build_flat_zip(src_dir: str, out_zip: str) -> None:
+              files = sorted(glob.glob(os.path.join(src_dir, "*.xml")))
+              if not files:
+                  raise SystemExit(f"No XML files found in {src_dir}")
+              with zipfile.ZipFile(out_zip, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+                  for path in files:
+                      zf.write(path, arcname=os.path.basename(path))
+              print(f"Created {out_zip}: {len(files)} files ({os.path.getsize(out_zip)} bytes)")
+
+          build_flat_zip("src/main/db", "hi2txt.zip")
+          build_flat_zip("src/main/db_defaults", "hi2txt_defaults.zip")
+          EOF
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG_NAME: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+        run: |
+          if gh release view "$TAG_NAME" >/dev/null 2>&1; then
+            gh release upload "$TAG_NAME" hi2txt.zip hi2txt_defaults.zip --clobber
+          else
+            gh release create "$TAG_NAME" hi2txt.zip hi2txt_defaults.zip \
+              --target "${{ github.sha }}" \
+              --title "$TAG_NAME" \
+              --generate-notes
+          fi
